@@ -14,6 +14,7 @@ import Exam from "./pages/Exam";
 import Revision from "./pages/Revision";
 import Progress from "./pages/Progress";
 import Admin from "./pages/Admin";
+import ErrorRevision from "./pages/ErrorRevision";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/revision" element={<Revision />} />
             <Route path="/progress" element={<Progress />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/revision-erreurs" element={<ErrorRevision />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

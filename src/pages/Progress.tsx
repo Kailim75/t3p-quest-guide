@@ -15,7 +15,8 @@ import {
   GraduationCap,
   AlertCircle,
   CheckCircle2,
-  XCircle
+  XCircle,
+  RotateCcw
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -242,8 +243,9 @@ const ProgressPage = () => {
               <p className="text-muted-foreground mb-4">
                 Vous avez {stats.failedQuestions.length} question(s) à réviser.
               </p>
-              <Button variant="outline" disabled>
-                Mode révision des erreurs (bientôt disponible)
+              <Button onClick={() => navigate('/revision-erreurs')}>
+                <RotateCcw className="h-4 w-4 mr-2" />
+                Réviser mes erreurs
               </Button>
             </CardContent>
           </Card>
