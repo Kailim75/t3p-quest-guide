@@ -1,7 +1,10 @@
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Trophy, XCircle, Clock, Target, CheckCircle2, X, RotateCcw, Home, ChevronDown, ChevronUp } from 'lucide-react';
 import { Question } from '@/data/quizData';
-import { useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
+import { useQuizResults } from '@/hooks/useQuizResults';
+import { useToast } from '@/hooks/use-toast';
 
 interface Answer {
   questionId: string;
@@ -12,6 +15,7 @@ interface Answer {
 interface ExamResultsProps {
   examName: string;
   examIcon: string;
+  examId: string;
   questions: Question[];
   answers: Answer[];
   passingScore: number;
@@ -22,6 +26,7 @@ interface ExamResultsProps {
 const ExamResults = ({
   examName,
   examIcon,
+  examId,
   questions,
   answers,
   passingScore,
@@ -29,6 +34,10 @@ const ExamResults = ({
   totalTime
 }: ExamResultsProps) => {
   const [showDetails, setShowDetails] = useState(false);
+  const { user } = useAuth();
+  const { saveResult } = useQuizResults();
+  const { toast } = useToast();
+  const savedRef = useRef(false);
   
   const correctCount = answers.filter(a => a.isCorrect).length;
   const score = Math.round((correctCount / questions.length) * 100);
@@ -41,6 +50,41 @@ const ExamResults = ({
   };
 
   const unansweredCount = questions.length - answers.length;
+
+  // Save result to database for authenticated users
+  useEffect(() => {
+    if (user && !savedRef.current) {
+      savedRef.current = true;
+      const failedQuestionIds = answers
+        .filter(a => !a.isCorrect)
+        .map(a => a.questionId);
+
+      saveResult.mutate({
+        quiz_type: 'exam',
+        quiz_id: examId,
+        score: correctCount,
+        total_questions: questions.length,
+        percentage: score,
+        passed,
+        time_spent: timeTaken,
+        questions_failed: failedQuestionIds,
+      }, {
+        onSuccess: () => {
+          toast({
+            title: 'Résultat sauvegardé',
+            description: 'Votre progression a été enregistrée.',
+          });
+        },
+        onError: () => {
+          toast({
+            title: 'Erreur',
+            description: 'Impossible de sauvegarder le résultat.',
+            variant: 'destructive',
+          });
+        }
+      });
+    }
+  }, [user]);
 
   return (
     <div className="animate-fade-in">

@@ -184,6 +184,7 @@ const Exam = () => {
           <ExamResults
             examName={config.name}
             examIcon={config.icon}
+            examId={config.id}
             questions={questions}
             answers={answers}
             passingScore={config.passingScore}

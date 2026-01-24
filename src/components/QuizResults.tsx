@@ -1,6 +1,10 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Trophy, Target, Clock, RotateCcw, Home, CheckCircle2, XCircle } from 'lucide-react';
 import { Question } from '@/data/quizData';
+import { useAuth } from '@/contexts/AuthContext';
+import { useQuizResults } from '@/hooks/useQuizResults';
+import { useToast } from '@/hooks/use-toast';
 
 interface QuizResultsProps {
   questions: Question[];
@@ -11,10 +15,50 @@ interface QuizResultsProps {
 }
 
 const QuizResults = ({ questions, answers, moduleName, moduleId, timeTaken }: QuizResultsProps) => {
+  const { user } = useAuth();
+  const { saveResult } = useQuizResults();
+  const { toast } = useToast();
+  const savedRef = useRef(false);
+
   const correctCount = answers.filter(a => a.isCorrect).length;
   const totalQuestions = questions.length;
   const percentage = Math.round((correctCount / totalQuestions) * 100);
   const passed = percentage >= 70;
+
+  // Save result to database for authenticated users
+  useEffect(() => {
+    if (user && !savedRef.current) {
+      savedRef.current = true;
+      const failedQuestionIds = answers
+        .filter(a => !a.isCorrect)
+        .map(a => a.questionId);
+
+      saveResult.mutate({
+        quiz_type: 'module',
+        quiz_id: moduleId,
+        score: correctCount,
+        total_questions: totalQuestions,
+        percentage,
+        passed,
+        time_spent: timeTaken || null,
+        questions_failed: failedQuestionIds,
+      }, {
+        onSuccess: () => {
+          toast({
+            title: 'Résultat sauvegardé',
+            description: 'Votre progression a été enregistrée.',
+          });
+        },
+        onError: () => {
+          toast({
+            title: 'Erreur',
+            description: 'Impossible de sauvegarder le résultat.',
+            variant: 'destructive',
+          });
+        }
+      });
+    }
+  }, [user]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
