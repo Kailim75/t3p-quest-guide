@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuizResults } from '@/hooks/useQuizResults';
 import Header from '@/components/Header';
+import ProgressCharts from '@/components/ProgressCharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -168,6 +169,13 @@ const ProgressPage = () => {
               </div>
             </CardContent>
           </Card>
+        )}
+
+        {/* Charts Section */}
+        {results && results.length >= 3 && (
+          <div className="mb-8">
+            <ProgressCharts results={results} />
+          </div>
         )}
 
         {/* Recent Results */}
