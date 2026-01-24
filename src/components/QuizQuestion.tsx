@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Check, X, AlertCircle, BookOpen, Lightbulb, GraduationCap } from 'lucide-react';
-import { Question } from '@/data/quizData';
+import { Question, modules } from '@/data/quizData';
+import { getQuestionExplanation, getDefaultModuleExplanation } from '@/data/questionExplanations';
 
 interface QuizQuestionProps {
   question: Question;
@@ -10,9 +11,26 @@ interface QuizQuestionProps {
   showResult: boolean;
 }
 
-// Explications de cours détaillées par thématique
-const getCourseExplanation = (question: Question, isCorrect: boolean): { title: string; content: string; tip: string } => {
-  const moduleExplanations: Record<string, Record<string, { title: string; content: string; tip: string }>> = {
+// Récupère l'explication spécifique ou par défaut
+const getCourseExplanation = (question: Question): { title: string; content: string; tip: string } => {
+  const specificExplanation = getQuestionExplanation(question.id);
+  const module = modules.find(m => m.id === question.moduleId);
+  const moduleName = module?.name || 'Point de cours';
+  
+  if (specificExplanation) {
+    return {
+      title: moduleName,
+      content: specificExplanation.content,
+      tip: specificExplanation.tip
+    };
+  }
+  
+  const defaultExplanation = getDefaultModuleExplanation(question.moduleId);
+  return {
+    title: moduleName,
+    content: defaultExplanation.content,
+    tip: defaultExplanation.tip
+  };
     'gestion': {
       default: {
         title: 'Gestion & Comptabilité',
