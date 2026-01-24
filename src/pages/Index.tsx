@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpen, Target, Award, Clock } from 'lucide-react';
+import { ArrowRight, BookOpen, Target, Award, Clock, FileText } from 'lucide-react';
 import Header from '@/components/Header';
 import { getCommonModules, getSpecificModules } from '@/data/quizData';
 
@@ -27,6 +27,11 @@ const Index = () => {
       icon: Clock,
       title: 'Mode examen',
       description: 'Conditions réelles avec chronomètre',
+    },
+    {
+      icon: FileText,
+      title: 'Fiches de cours',
+      description: 'Révision théorique sans QCM',
     },
   ];
 
@@ -57,6 +62,10 @@ const Index = () => {
               <Link to="/modules" className="btn-primary">
                 Mode entraînement
                 <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/revision" className="btn-outline">
+                <FileText className="h-4 w-4" />
+                Fiches de cours
               </Link>
               <Link to="/exam" className="btn-outline">
                 Examen blanc

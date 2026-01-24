@@ -10,6 +10,7 @@ import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
 import ExamSelect from "./pages/ExamSelect";
 import Exam from "./pages/Exam";
+import Revision from "./pages/Revision";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/results" element={<Results />} />
           <Route path="/exam" element={<ExamSelect />} />
           <Route path="/exam/:examId" element={<Exam />} />
+          <Route path="/revision" element={<Revision />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

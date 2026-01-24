@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, Home, Trophy, Settings } from 'lucide-react';
+import { BookOpen, Home, Trophy, FileText, GraduationCap } from 'lucide-react';
 
 const Header = () => {
   const location = useLocation();
@@ -7,7 +7,8 @@ const Header = () => {
   const navItems = [
     { path: '/', label: 'Accueil', icon: Home },
     { path: '/modules', label: 'Modules', icon: BookOpen },
-    { path: '/resultats', label: 'Résultats', icon: Trophy },
+    { path: '/revision', label: 'Fiches', icon: FileText },
+    { path: '/exam', label: 'Examen', icon: GraduationCap },
   ];
 
   return (
