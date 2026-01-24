@@ -1391,6 +1391,218 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     tip: "TPE = obligatoire depuis 2019. CB = tout montant. Refus = infraction sanctionnable.",
     legalRef: "Article L3121-11-2 du Code des transports"
   },
+  // =====================
+  // TOPOGRAPHIE PARIS - MONUMENTS (topo-001 à topo-010)
+  // =====================
+  'topo-001': {
+    content: "La Tour Eiffel, construite pour l'Exposition Universelle de 1889, est située dans le 7ème arrondissement sur le Champ de Mars. Elle culmine à 330 mètres et offre une vue panoramique sur Paris.",
+    tip: "7ème = Tour Eiffel, Invalides, Musée d'Orsay. Adresse : Champ de Mars, 5 avenue Anatole France.",
+    legalRef: "Topographie Paris - Monuments"
+  },
+  'topo-002': {
+    content: "L'avenue des Champs-Élysées s'étend sur 1,9 km entre la Place de la Concorde et la Place de l'Étoile (Arc de Triomphe). C'est l'une des avenues les plus célèbres au monde.",
+    tip: "Champs-Élysées = 8ème arrondissement. Concorde → Étoile = montée. Commerces, cinémas, cafés.",
+    legalRef: "Topographie Paris - Axes majeurs"
+  },
+  'topo-003': {
+    content: "Le Musée du Louvre, ancien palais royal, est le plus grand musée du monde. Il est situé sur la rive droite dans le 1er arrondissement, reconnaissable à sa pyramide de verre.",
+    tip: "Louvre = 1er (rive droite). Entrée principale par la pyramide. Station métro : Palais Royal-Musée du Louvre.",
+    legalRef: "Topographie Paris - Monuments"
+  },
+  'topo-004': {
+    content: "La Basilique du Sacré-Cœur domine Paris depuis la butte Montmartre dans le 18ème arrondissement. Construite à partir de 1875, elle offre un panorama exceptionnel sur la capitale.",
+    tip: "18ème = Montmartre, Sacré-Cœur, Place du Tertre. Accès par funiculaire ou escaliers.",
+    legalRef: "Topographie Paris - Monuments"
+  },
+  'topo-005': {
+    content: "La Cathédrale Notre-Dame de Paris est située sur l'Île de la Cité, berceau historique de Paris. L'île fait partie du 4ème arrondissement et abrite également la Sainte-Chapelle.",
+    tip: "Île de la Cité = cœur de Paris. Notre-Dame, Sainte-Chapelle, Conciergerie, Préfecture de Police.",
+    legalRef: "Topographie Paris - Monuments"
+  },
+  'topo-006': {
+    content: "Le Panthéon, mausolée des grands personnages de l'histoire de France, est situé sur la montagne Sainte-Geneviève dans le Quartier Latin (5ème). Il abrite les tombes de Voltaire, Rousseau, Victor Hugo, Marie Curie...",
+    tip: "5ème = Quartier Latin. Panthéon, Jardin du Luxembourg (6ème juste à côté), Sorbonne.",
+    legalRef: "Topographie Paris - Monuments"
+  },
+  'topo-007': {
+    content: "Le Palais de l'Élysée, résidence officielle du Président de la République depuis 1848, est situé au 55 rue du Faubourg Saint-Honoré dans le 8ème arrondissement.",
+    tip: "Élysée = Faubourg Saint-Honoré (8ème). Ministère de l'Intérieur = Place Beauvau (juste à côté).",
+    legalRef: "Topographie Paris - Institutions"
+  },
+  'topo-008': {
+    content: "Le Centre Georges Pompidou (Beaubourg) est un centre culturel d'art moderne et contemporain situé dans le 4ème arrondissement. Son architecture avant-gardiste expose les structures techniques à l'extérieur.",
+    tip: "Pompidou/Beaubourg = 4ème. Architecture reconnaissable (tuyaux colorés). Bibliothèque publique.",
+    legalRef: "Topographie Paris - Culture"
+  },
+  'topo-009': {
+    content: "L'Opéra Garnier, chef-d'œuvre architectural du Second Empire, se trouve Place de l'Opéra dans le 9ème arrondissement. Il a été construit par Charles Garnier entre 1861 et 1875.",
+    tip: "Opéra Garnier = 9ème. Opéra Bastille = 12ème. Les deux forment l'Opéra national de Paris.",
+    legalRef: "Topographie Paris - Culture"
+  },
+  'topo-010': {
+    content: "Le Stade de France, plus grand stade français (80 000 places), est situé à Saint-Denis (93). Il accueille les matchs de l'équipe de France et les grands événements sportifs et culturels.",
+    tip: "Stade de France = Saint-Denis (93). Métro ligne 13 (Saint-Denis Porte de Paris) ou RER D.",
+    legalRef: "Topographie Paris - Événementiel"
+  },
+  // =====================
+  // TOPOGRAPHIE PARIS - GARES (topo-011 à topo-020)
+  // =====================
+  'topo-011': {
+    content: "La Gare du Nord, la plus fréquentée d'Europe, est située dans le 10ème arrondissement. Elle dessert le Nord de la France, la Belgique, les Pays-Bas, l'Allemagne et le Royaume-Uni (Eurostar).",
+    tip: "Gare du Nord = 10ème. Eurostar (Londres), Thalys (Bruxelles, Amsterdam). TGV Nord.",
+    legalRef: "Topographie Paris - Transports"
+  },
+  'topo-012': {
+    content: "La Gare de Lyon dessert le Sud-Est de la France (Lyon, Marseille, Côte d'Azur), la Suisse et l'Italie. Son beffroi de 64 mètres est un repère visuel important.",
+    tip: "Gare de Lyon = 12ème. TGV Sud-Est. Restaurant Le Train Bleu (classé). Accès A4/A6.",
+    legalRef: "Topographie Paris - Transports"
+  },
+  'topo-013': {
+    content: "La Gare Montparnasse dessert l'Ouest (Bretagne, Normandie partielle) et le Sud-Ouest (Pays de Loire, Aquitaine, Bordeaux). Elle est située dans le 15ème arrondissement.",
+    tip: "Montparnasse = 15ème. TGV Atlantique. Accès A10/A11. Tour Montparnasse à proximité.",
+    legalRef: "Topographie Paris - Transports"
+  },
+  'topo-014': {
+    content: "La Gare du Nord accueille l'Eurostar vers Londres (2h15 de trajet) et le Thalys vers Bruxelles, Amsterdam et Cologne. C'est le hub international nord de Paris.",
+    tip: "International via Gare du Nord. Terminal Eurostar séparé. Contrôles douaniers sur place.",
+    legalRef: "Topographie Paris - Transports internationaux"
+  },
+  'topo-015': {
+    content: "La Gare de Lyon se trouve Place Louis-Armand dans le 12ème arrondissement. Elle est facilement reconnaissable grâce à sa tour horloge. Métro lignes 1 et 14.",
+    tip: "12ème = Gare de Lyon, Bercy, Bois de Vincennes. Proche de l'A4 (Est) et A6 (Sud).",
+    legalRef: "Topographie Paris - Transports"
+  },
+  'topo-016': {
+    content: "L'aéroport Paris-Charles de Gaulle (CDG/Roissy) est le principal aéroport international. Situé principalement dans le Val-d'Oise (95), il est à environ 25 km au nord de Paris.",
+    tip: "CDG = Val-d'Oise (95). Accès A1/A3. RER B. Terminal 2 = TGV.",
+    legalRef: "Topographie Paris - Aéroports"
+  },
+  'topo-017': {
+    content: "L'aéroport d'Orly, au sud de Paris, est accessible par plusieurs moyens : RER B + Orlyval, RER C + navette Go C Paris, tramway T7, ou bus OrlyBus depuis Denfert-Rochereau.",
+    tip: "Orly = Val-de-Marne/Essonne. Accès A6/A106. Plus proche de Paris que CDG (13 km).",
+    legalRef: "Topographie Paris - Aéroports"
+  },
+  'topo-018': {
+    content: "La Gare de l'Est dessert l'Est de la France (Champagne, Alsace, Lorraine, Strasbourg) et l'Allemagne. Elle est voisine de la Gare du Nord, toutes deux dans le 10ème.",
+    tip: "Gare de l'Est = 10ème. TGV Est (Strasbourg 1h50). À 500m de la Gare du Nord.",
+    legalRef: "Topographie Paris - Transports"
+  },
+  'topo-019': {
+    content: "La gare routière Paris-Bercy Seine est située boulevard de Bercy dans le 12ème, à proximité de la Gare de Lyon. Elle accueille les cars longue distance (FlixBus, BlaBlaCar Bus).",
+    tip: "Gare routière Bercy = 12ème. Cars internationaux et nationaux. Près Gare de Lyon et AccorHotels Arena.",
+    legalRef: "Topographie Paris - Transports"
+  },
+  'topo-020': {
+    content: "Paris compte 6 grandes gares SNCF : Gare du Nord, Gare de l'Est, Gare de Lyon, Gare d'Austerlitz, Gare Montparnasse et Gare Saint-Lazare. Chacune dessert une direction géographique.",
+    tip: "6 gares : Nord (N/NE), Est (E), Lyon (SE), Austerlitz (S/SO), Montparnasse (O/SO), Saint-Lazare (NO).",
+    legalRef: "Topographie Paris - Transports"
+  },
+  // =====================
+  // TOPOGRAPHIE PARIS - HÔPITAUX (topo-021 à topo-030)
+  // =====================
+  'topo-021': {
+    content: "L'hôpital de la Pitié-Salpêtrière, dans le 13ème arrondissement, est le plus grand hôpital de France. Il dispose de nombreuses spécialités et d'un service d'urgences majeur.",
+    tip: "Pitié-Salpêtrière = 13ème (Bd de l'Hôpital). CHU. Métro Chevaleret ou Saint-Marcel.",
+    legalRef: "Topographie Paris - Santé"
+  },
+  'topo-022': {
+    content: "L'Hôpital Européen Georges-Pompidou (HEGP) est un établissement moderne situé rue Leblanc dans le 15ème arrondissement, près du Parc André Citroën.",
+    tip: "HEGP = 15ème (Javel). Hôpital neuf (2000). Métro Balard ou RER C Javel.",
+    legalRef: "Topographie Paris - Santé"
+  },
+  'topo-023': {
+    content: "L'hôpital Necker-Enfants malades, dans le 15ème arrondissement, est le principal hôpital pédiatrique de Paris. Il est spécialisé dans les soins aux enfants et la recherche pédiatrique.",
+    tip: "Necker = 15ème. Pédiatrie. Rue de Sèvres. Métro Duroc ou Sèvres-Lecourbe.",
+    legalRef: "Topographie Paris - Santé"
+  },
+  'topo-024': {
+    content: "L'hôpital Bichat-Claude Bernard est situé dans le 18ème arrondissement, près de la Porte de Saint-Ouen. C'est un grand centre hospitalier avec un service d'urgences.",
+    tip: "Bichat = 18ème (Porte Saint-Ouen). Métro Porte de Saint-Ouen (ligne 13).",
+    legalRef: "Topographie Paris - Santé"
+  },
+  'topo-025': {
+    content: "L'Hôtel-Dieu, fondé au VIIème siècle, est le plus ancien hôpital de Paris. Situé sur l'Île de la Cité, face à Notre-Dame, il fait partie de l'AP-HP.",
+    tip: "Hôtel-Dieu = Île de la Cité (4ème). Plus vieil hôpital de Paris. Métro Cité.",
+    legalRef: "Topographie Paris - Santé"
+  },
+  'topo-026': {
+    content: "La Préfecture de Police de Paris est située sur l'Île de la Cité, Place Louis Lépine. Elle gère la police, la circulation et délivre les documents administratifs (passeports, CNI).",
+    tip: "Préfecture de Police = Île de la Cité. À ne pas confondre avec Préfecture de Paris (Bd Morland).",
+    legalRef: "Topographie Paris - Institutions"
+  },
+  'topo-027': {
+    content: "L'Hôpital Saint-Louis, dans le 10ème arrondissement, est un centre de référence en dermatologie et cancérologie. Son architecture historique (XVIIème) est remarquable.",
+    tip: "Saint-Louis = 10ème (avenue Claude-Vellefaux). Dermatologie. Métro Goncourt ou Colonel Fabien.",
+    legalRef: "Topographie Paris - Santé"
+  },
+  'topo-028': {
+    content: "L'hôpital Cochin est situé rue du Faubourg Saint-Jacques dans le 14ème arrondissement. C'est un hôpital universitaire avec de nombreuses spécialités et une maternité réputée.",
+    tip: "Cochin = 14ème (Port-Royal). Maternité Port-Royal. RER B Port-Royal.",
+    legalRef: "Topographie Paris - Santé"
+  },
+  'topo-029': {
+    content: "Le Ministère de l'Intérieur est situé Place Beauvau dans le 8ème arrondissement. Il supervise la police, la gendarmerie et l'administration territoriale.",
+    tip: "Place Beauvau = Intérieur (8ème). À côté de l'Élysée. Quai d'Orsay = Affaires étrangères (7ème).",
+    legalRef: "Topographie Paris - Institutions"
+  },
+  'topo-030': {
+    content: "L'Ambassade des États-Unis à Paris est située avenue Gabriel dans le 8ème arrondissement, près de la Place de la Concorde et des jardins des Champs-Élysées.",
+    tip: "Ambassade USA = Avenue Gabriel (8ème). Consulat = Rue Saint-Florentin. Zone très surveillée.",
+    legalRef: "Topographie Paris - Diplomatie"
+  },
+  // =====================
+  // TOPOGRAPHIE PARIS - AXES (topo-031 à topo-040)
+  // =====================
+  'topo-031': {
+    content: "Le Boulevard Périphérique est une autoroute urbaine de 35 km qui encercle Paris. Il compte 38 portes d'accès et supporte un trafic de plus de 1 million de véhicules par jour.",
+    tip: "Périph' = 35 km, 38 portes. Intérieur = sens horaire. Extérieur = sens anti-horaire.",
+    legalRef: "Topographie Paris - Circulation"
+  },
+  'topo-032': {
+    content: "La Porte Maillot (17ème) est la principale porte d'accès vers La Défense et l'Ouest parisien. Elle donne sur l'avenue de la Grande Armée et le Palais des Congrès.",
+    tip: "Porte Maillot = La Défense, Neuilly, A14. Palais des Congrès. RER C, métro 1, Ligne C.",
+    legalRef: "Topographie Paris - Circulation"
+  },
+  'topo-033': {
+    content: "L'autoroute A1 (Autoroute du Nord) commence à Porte de la Chapelle et mène vers Lille, Bruxelles et l'aéroport CDG. C'est l'axe principal vers le nord.",
+    tip: "A1 = Porte de la Chapelle (18ème). Direction Lille, CDG. Souvent très chargée.",
+    legalRef: "Topographie Paris - Autoroutes"
+  },
+  'topo-034': {
+    content: "L'autoroute A6 (Autoroute du Soleil) part des Portes d'Orléans et d'Italie vers Lyon et le Sud. Elle dessert également l'aéroport d'Orly via l'A106.",
+    tip: "A6 = Porte d'Orléans/Italie. Direction Lyon, Orly. Branche A6a/A6b près de Paris.",
+    legalRef: "Topographie Paris - Autoroutes"
+  },
+  'topo-035': {
+    content: "La Place de la République est un carrefour majeur à la jonction des 3ème, 10ème et 11ème arrondissements. Rénovée en 2013, elle est devenue un espace piétonnier emblématique.",
+    tip: "République = 3ème/10ème/11ème. 5 lignes de métro. Place des manifestations.",
+    legalRef: "Topographie Paris - Places"
+  },
+  'topo-036': {
+    content: "Le Boulevard Haussmann traverse les 8ème et 9ème arrondissements. Il est célèbre pour ses grands magasins (Galeries Lafayette, Printemps) et son architecture haussmannienne.",
+    tip: "Haussmann = 8ème/9ème. Grands magasins. Métro Havre-Caumartin, Chaussée d'Antin.",
+    legalRef: "Topographie Paris - Axes commerciaux"
+  },
+  'topo-037': {
+    content: "La voie Georges Pompidou, ancienne voie express sur berges rive droite, est fermée à la circulation automobile depuis 2016. Elle est désormais un espace de promenade piétonnier.",
+    tip: "Voies sur berges = piétonnes. Report de circulation sur quais hauts. Rive gauche = ouverte.",
+    legalRef: "Topographie Paris - Circulation"
+  },
+  'topo-038': {
+    content: "La Défense, premier quartier d'affaires européen, se situe principalement sur les communes de Puteaux et Courbevoie (92). L'Arche de la Défense prolonge l'axe historique parisien.",
+    tip: "La Défense = Puteaux/Courbevoie (92). Métro 1, RER A. Grande Arche, CNIT.",
+    legalRef: "Topographie Paris - Quartiers d'affaires"
+  },
+  'topo-039': {
+    content: "L'Avenue Foch, avec ses 120 mètres de large, est l'une des plus larges avenues du monde. Elle relie la Place de l'Étoile au Bois de Boulogne (Porte Dauphine).",
+    tip: "Avenue Foch = 16ème. 120m de large. Étoile → Bois de Boulogne. Résidentiel très huppé.",
+    legalRef: "Topographie Paris - Axes majeurs"
+  },
+  'topo-040': {
+    content: "Le Parc des Expositions de la Porte de Versailles est le plus grand centre d'expositions de France. Situé dans le 15ème arrondissement, il accueille salons et événements majeurs.",
+    tip: "Porte de Versailles = 15ème. Parc des Expos. Métro 12 (Porte de Versailles). Tramway T2/T3.",
+    legalRef: "Topographie Paris - Événementiel"
+  },
 };
 
 // Fonction pour obtenir l'explication d'une question
@@ -1440,6 +1652,10 @@ export const getDefaultModuleExplanation = (moduleId: string): QuestionExplanati
     'vmdtr': {
       content: "Les VMDTR (Véhicules Motorisés à Deux ou Trois Roues) ont une réglementation spécifique concernant les équipements de sécurité et les conditions de transport.",
       tip: "Casque et gants homologués = obligatoires pour conducteur ET passager. Équipements spécifiques selon le type de véhicule."
+    },
+    'topographie-paris': {
+      content: "La topographie parisienne comprend la connaissance des monuments, gares, hôpitaux et axes de circulation. Maîtriser ces repères est essentiel pour un chauffeur professionnel.",
+      tip: "Organisez Paris par arrondissements : 1-4 (centre), 5-7 (rive gauche), 8-9 (affaires), 10-12 (gares), 13-15 (sud), 16-17 (ouest), 18-20 (nord-est)."
     }
   };
 
