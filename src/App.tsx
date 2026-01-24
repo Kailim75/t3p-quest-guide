@@ -13,6 +13,7 @@ import ExamSelect from "./pages/ExamSelect";
 import Exam from "./pages/Exam";
 import Revision from "./pages/Revision";
 import Progress from "./pages/Progress";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/exam/:examId" element={<Exam />} />
             <Route path="/revision" element={<Revision />} />
             <Route path="/progress" element={<Progress />} />
+            <Route path="/admin" element={<Admin />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
