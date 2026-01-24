@@ -55,11 +55,11 @@ const Index = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/modules" className="btn-primary">
-                Commencer l'entraînement
+                Mode entraînement
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/modules" className="btn-outline">
-                Voir les modules
+              <Link to="/exam" className="btn-outline">
+                Examen blanc
               </Link>
             </div>
           </div>

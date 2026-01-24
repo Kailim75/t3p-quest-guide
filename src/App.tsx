@@ -8,6 +8,8 @@ import Modules from "./pages/Modules";
 import ModuleDetail from "./pages/ModuleDetail";
 import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
+import ExamSelect from "./pages/ExamSelect";
+import Exam from "./pages/Exam";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,7 +25,9 @@ const App = () => (
           <Route path="/modules" element={<Modules />} />
           <Route path="/module/:moduleId" element={<ModuleDetail />} />
           <Route path="/quiz/:moduleId" element={<Quiz />} />
-          <Route path="/resultats" element={<Results />} />
+          <Route path="/results" element={<Results />} />
+          <Route path="/exam" element={<ExamSelect />} />
+          <Route path="/exam/:examId" element={<Exam />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
