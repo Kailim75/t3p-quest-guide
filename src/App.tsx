@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import Modules from "./pages/Modules";
 import ModuleDetail from "./pages/ModuleDetail";
@@ -32,20 +33,21 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/modules" element={<Modules />} />
-            <Route path="/module/:moduleId" element={<ModuleDetail />} />
-            <Route path="/quiz/:moduleId" element={<Quiz />} />
-            <Route path="/results" element={<Results />} />
-            <Route path="/exam" element={<ExamSelect />} />
-            <Route path="/exam/:examId" element={<Exam />} />
-            <Route path="/revision" element={<Revision />} />
-            <Route path="/progress" element={<Progress />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/revision-erreurs" element={<ErrorRevision />} />
-            <Route path="/badges" element={<Badges />} />
-            <Route path="/flashcards" element={<Flashcards />} />
-            <Route path="/install" element={<Install />} />
+            {/* All routes are protected - require authentication */}
+            <Route path="/" element={<ProtectedRoute><Index /></ProtectedRoute>} />
+            <Route path="/modules" element={<ProtectedRoute><Modules /></ProtectedRoute>} />
+            <Route path="/module/:moduleId" element={<ProtectedRoute><ModuleDetail /></ProtectedRoute>} />
+            <Route path="/quiz/:moduleId" element={<ProtectedRoute><Quiz /></ProtectedRoute>} />
+            <Route path="/results" element={<ProtectedRoute><Results /></ProtectedRoute>} />
+            <Route path="/exam" element={<ProtectedRoute><ExamSelect /></ProtectedRoute>} />
+            <Route path="/exam/:examId" element={<ProtectedRoute><Exam /></ProtectedRoute>} />
+            <Route path="/revision" element={<ProtectedRoute><Revision /></ProtectedRoute>} />
+            <Route path="/progress" element={<ProtectedRoute><Progress /></ProtectedRoute>} />
+            <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+            <Route path="/revision-erreurs" element={<ProtectedRoute><ErrorRevision /></ProtectedRoute>} />
+            <Route path="/badges" element={<ProtectedRoute><Badges /></ProtectedRoute>} />
+            <Route path="/flashcards" element={<ProtectedRoute><Flashcards /></ProtectedRoute>} />
+            <Route path="/install" element={<ProtectedRoute><Install /></ProtectedRoute>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

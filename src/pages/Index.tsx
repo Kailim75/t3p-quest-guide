@@ -175,24 +175,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Warning Banner */}
-      <section className="py-8 border-t bg-warning/5">
-        <div className="container mx-auto px-4">
-          <div className="flex items-start gap-4 max-w-3xl mx-auto">
-            <span className="text-2xl">⚠️</span>
-            <div>
-              <h4 className="font-semibold text-foreground mb-1">
-                Questions d'exemple
-              </h4>
-              <p className="text-sm text-muted-foreground">
-                Cette version contient des questions d'exemple pour démonstration. 
-                Les vraies questions conformes au référentiel officiel T3P doivent être 
-                ajoutées pour une préparation réelle à l'examen.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="py-8 border-t">
