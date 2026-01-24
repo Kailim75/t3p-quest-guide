@@ -1603,6 +1603,210 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     tip: "Porte de Versailles = 15ème. Parc des Expos. Métro 12 (Porte de Versailles). Tramway T2/T3.",
     legalRef: "Topographie Paris - Événementiel"
   },
+
+  // =====================
+  // MODULE ANGLAIS TOURISME INTERNATIONAL (ang-041 à ang-080)
+  // =====================
+  'ang-041': {
+    content: "The Eiffel Tower (Tour Eiffel) is the most iconic landmark in Paris and the most visited paid monument in the world. It was built by Gustave Eiffel for the 1889 World's Fair.",
+    tip: "Tower = tour. Key vocabulary: landmark (monument), attraction (attraction), view (vue), iron (fer).",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-042': {
+    content: "Sightseeing means visiting places of interest in a city or area as a tourist. It's one of the most common activities for visitors to Paris.",
+    tip: "Sightseeing = visite touristique. Related: tour (visite), attraction (attraction), monument.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-043': {
+    content: "The Louvre Museum is the world's largest art museum and home to the Mona Lisa. Understanding museum-related vocabulary is essential for tourism.",
+    tip: "Museum = musée. Ticket = billet. Exhibition = exposition. Art = art. Masterpiece = chef-d'œuvre.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-044': {
+    content: "A landmark is a famous or easily recognizable building, monument, or place that helps people identify a location. Paris has many famous landmarks.",
+    tip: "Landmark = point de repère / monument emblématique. Examples: Arc de Triomphe, Sacré-Cœur, Notre-Dame.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-045': {
+    content: "Restaurant recommendations are common tourist requests. Knowing vocabulary for dining helps provide better service to international visitors.",
+    tip: "Nearby = à proximité. Restaurant types: bistro, brasserie, café, fine dining (gastronomique).",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-046': {
+    content: "Duty-free shops sell goods without local taxes, typically found in airports for international travelers. Common purchases include perfume, alcohol, and luxury goods.",
+    tip: "Duty-free = hors taxes (HT). VAT/TVA = Value Added Tax / Taxe sur la Valeur Ajoutée.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-047': {
+    content: "Airport terminals are buildings where passengers check in, go through security, and board flights. Paris CDG has 3 terminals; always confirm which one.",
+    tip: "Terminal = aérogare. Check which terminal: Terminal 1, 2 (2A-2G), or 3. Orly: Sud/Ouest became 1-4.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-048': {
+    content: "A boarding pass is the document required to board an aircraft, showing the passenger's name, flight number, seat, and boarding time.",
+    tip: "Boarding pass = carte d'embarquement. Flight = vol. Gate = porte. Boarding time = heure d'embarquement.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-049': {
+    content: "Travel tickets can be one-way (aller simple) or round-trip/return (aller-retour). Understanding these terms helps with airport and station transfers.",
+    tip: "One-way = aller simple. Round-trip / Return = aller-retour. Single = simple. Open return = retour ouvert.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-050': {
+    content: "Check-in is the process of registering upon arrival at a hotel. Check-out is leaving the hotel. These are essential hospitality terms.",
+    tip: "Check-in = enregistrement (arrivée). Check-out = départ. Reservation/Booking = réservation.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-051': {
+    content: "Opening and closing hours are important information for tourists planning visits to museums, monuments, and attractions.",
+    tip: "Open = ouvert. Closed = fermé. Hours = horaires. Daily = tous les jours. Except = sauf.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-052': {
+    content: "Currency exchange offices (bureaux de change) allow tourists to convert their money. The Euro (€) is the official currency in France.",
+    tip: "Currency = devise. Exchange rate = taux de change. Euro (€). Useful: ATM (distributeur), cash (espèces).",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-053': {
+    content: "Airport transfers require understanding flight schedules. 'To catch a flight' means to be on time to board the plane.",
+    tip: "Catch a flight = prendre un avion. Departure = départ. Arrival = arrivée. Allow extra time for traffic!",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-054': {
+    content: "A guided tour includes a professional guide who provides information and explanations. Many Paris attractions offer guided tours in multiple languages.",
+    tip: "Guided tour = visite guidée. Self-guided = visite libre. Audio guide = audioguide. Group = groupe.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-055': {
+    content: "Paris is famous for shopping, with areas like the Champs-Élysées, Le Marais, and Galeries Lafayette attracting millions of visitors.",
+    tip: "Shopping area = zone commerciale. Department store = grand magasin. Boutique = boutique. Sale = soldes.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-056': {
+    content: "The word 'souvenir' is the same in English and French, meaning a memento or keepsake from a trip. Paris is famous for its souvenir shops.",
+    tip: "Souvenir = souvenir (mot emprunté du français!). Gift = cadeau. Present = présent. Memento = souvenir.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-057': {
+    content: "Hotel room types include single (for one person), double (for two), twin (two beds), and suite (luxury rooms). Understanding these helps with hotel transfers.",
+    tip: "Single = simple. Double = double. Twin = lits jumeaux. Suite = suite. Upgrade = surclassement.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-058': {
+    content: "The Champs-Élysées is one of the world's most famous avenues, running from Place de la Concorde to the Arc de Triomphe.",
+    tip: "Avenue = avenue. The Champs-Élysées is known for luxury shops, cafés, and the July 14th parade.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-059': {
+    content: "Business travelers often have tight schedules and specific needs. Understanding business travel vocabulary helps provide appropriate service.",
+    tip: "Business trip = voyage d'affaires. Meeting = réunion. Conference = conférence. Convention center = palais des congrès.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-060': {
+    content: "In tourism, a transfer refers to transportation from one place to another, typically between airports, hotels, and stations.",
+    tip: "Transfer = transfert. Airport transfer = navette aéroport. Private transfer = transfert privé.",
+    legalRef: "Module 6 – Anglais Tourisme"
+  },
+  'ang-061': {
+    content: "A proper greeting sets the tone for the entire journey. 'Good morning/afternoon' combined with an offer to help is professional and welcoming.",
+    tip: "Morning = matin. Afternoon = après-midi. Evening = soir. 'How may I help you?' = 'Comment puis-je vous aider?'",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-062': {
+    content: "'May I help you with...?' is a polite way to offer assistance. It shows willingness to serve without being pushy.",
+    tip: "'May I' = puis-je (poli). 'Can I' = puis-je (moins formel). Use 'May I' for professional situations.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-063': {
+    content: "Confirming the destination avoids misunderstandings. 'Could you confirm...?' is more polite than 'Tell me...'",
+    tip: "'Could you' = pourriez-vous (très poli). 'Would you' = voudriez-vous. 'Please' = s'il vous plaît.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-064': {
+    content: "Giving estimated arrival times helps manage customer expectations. 'Approximately' indicates the time is not exact.",
+    tip: "Approximately/About = environ. Exactly = exactement. More or less = plus ou moins.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-065': {
+    content: "Informing customers about traffic conditions and offering solutions demonstrates professionalism and proactive service.",
+    tip: "Traffic = circulation. Alternative route = itinéraire alternatif. Delay = retard. Congestion = embouteillage.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-066': {
+    content: "Offering choices shows customer-focused service. The scenic route may be longer but more pleasant; the fastest route prioritizes time.",
+    tip: "Scenic = pittoresque. Fastest = le plus rapide. Shortest = le plus court. Preference = préférence.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-067': {
+    content: "Checking passenger comfort regarding temperature shows attention to service quality and makes the journey more pleasant.",
+    tip: "Temperature = température. Air conditioning (AC) = climatisation. Heating = chauffage. Comfortable = confortable.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-068': {
+    content: "Announcing arrival at the destination helps passengers prepare to exit. A clear announcement is professional and helpful.",
+    tip: "Destination = destination. Arrived = arrivé. Drop-off point = point de dépose. Here we are = nous y voilà.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-069': {
+    content: "Asking about payment preference is professional. Offering options (card, cash, app) improves customer satisfaction.",
+    tip: "Payment = paiement. Cash = espèces. Credit card = carte de crédit. Contactless = sans contact.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-070': {
+    content: "'I apologize for...' is a professional way to express regret. Taking responsibility, even for traffic, shows respect for the customer's time.",
+    tip: "I apologize = je m'excuse (formel). Sorry = désolé (moins formel). Delay = retard. Inconvenience = désagrément.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-071': {
+    content: "Reminding customers to check for their belongings prevents forgotten items. It's a thoughtful gesture at the end of the journey.",
+    tip: "Belongings = effets personnels. Items = articles. Don't forget = n'oubliez pas. Check = vérifiez.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-072': {
+    content: "Thanking customers for choosing your service creates a positive final impression and encourages repeat business.",
+    tip: "Thank you = merci. Choosing = choisir. Service = service. It was a pleasure = ce fut un plaisir.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-073': {
+    content: "Asking for spelling ensures you have the correct address or name, especially for unfamiliar locations or international names.",
+    tip: "Spell = épeler. How do you spell that? = Comment épelez-vous ça? Letter by letter = lettre par lettre.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-074': {
+    content: "'I'm afraid...' is a polite way to deliver bad news. It softens the message and sounds more professional than being direct.",
+    tip: "'I'm afraid' = je crains que / malheureusement. Use before bad news: delays, problems, unavailability.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-075': {
+    content: "Asking about special requests (music preferences, stops, temperature) shows customer focus and enhances the service experience.",
+    tip: "Special request = demande particulière. Preference = préférence. Would you like...? = Souhaiteriez-vous...?",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-076': {
+    content: "Opening doors for passengers is a sign of premium service. It shows courtesy and attention to detail.",
+    tip: "Let me = laissez-moi. Open = ouvrir. Door = porte. After you = après vous.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-077': {
+    content: "'Feel free to...' invites the customer to make requests without hesitation. It creates a comfortable, service-oriented atmosphere.",
+    tip: "Feel free = n'hésitez pas. Let me know = faites-moi savoir. Anything = quoi que ce soit.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-078': {
+    content: "Providing a receipt is professional and often required by business travelers for expense reports.",
+    tip: "Receipt = reçu/ticket. Invoice = facture. Sir = monsieur. Madam = madame.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-079': {
+    content: "Wishing a pleasant flight is a thoughtful farewell when dropping customers at the airport. It shows attention to the complete journey.",
+    tip: "Pleasant = agréable. Flight = vol. Have a safe trip = bon voyage. Enjoy your stay = bon séjour.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
+  'ang-080': {
+    content: "Recommending attractions shows local knowledge and adds value to the service. It enhances the customer's Paris experience.",
+    tip: "I recommend = je recommande. Worth visiting = vaut le détour. Must-see = incontournable.",
+    legalRef: "Module 6 – Anglais Phrases types"
+  },
 };
 
 // Fonction pour obtenir l'explication d'une question
