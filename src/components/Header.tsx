@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, Home, FileText, GraduationCap, User, LogOut, BarChart3, Shield } from 'lucide-react';
+import { BookOpen, Home, FileText, GraduationCap, User, LogOut, BarChart3, Shield, Trophy } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useAdmin } from '@/hooks/useAdmin';
 import { Button } from '@/components/ui/button';
@@ -86,6 +86,12 @@ const Header = () => {
                     <Link to="/progress" className="flex items-center gap-2 cursor-pointer">
                       <BarChart3 className="h-4 w-4" />
                       Ma progression
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/badges" className="flex items-center gap-2 cursor-pointer">
+                      <Trophy className="h-4 w-4" />
+                      Mes badges
                     </Link>
                   </DropdownMenuItem>
                   {isAdmin && (
