@@ -17,6 +17,7 @@ export interface UserWithProfile {
   display_name: string | null;
   created_at: string;
   roles: AppRole[];
+  is_approved: boolean;
 }
 
 export const useAdmin = () => {
@@ -66,6 +67,7 @@ export const useAdmin = () => {
         email: profile.email || '',
         display_name: profile.display_name,
         created_at: profile.created_at,
+        is_approved: profile.is_approved,
         roles: (roles || [])
           .filter(r => r.user_id === profile.id)
           .map(r => r.role as AppRole),
@@ -106,6 +108,36 @@ export const useAdmin = () => {
     },
   });
 
+  // Approve user
+  const approveUser = useMutation({
+    mutationFn: async (userId: string) => {
+      const { error } = await supabase
+        .from('profiles')
+        .update({ is_approved: true })
+        .eq('id', userId);
+
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-users'] });
+    },
+  });
+
+  // Reject/unapprove user
+  const rejectUser = useMutation({
+    mutationFn: async (userId: string) => {
+      const { error } = await supabase
+        .from('profiles')
+        .update({ is_approved: false })
+        .eq('id', userId);
+
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-users'] });
+    },
+  });
+
   return {
     isAdmin: isAdmin ?? false,
     isCheckingAdmin,
@@ -114,5 +146,7 @@ export const useAdmin = () => {
     refetchUsers,
     addRole,
     removeRole,
+    approveUser,
+    rejectUser,
   };
 };
