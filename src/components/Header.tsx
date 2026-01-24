@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import AuthModal from '@/components/AuthModal';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Header = () => {
   const location = useLocation();
@@ -64,8 +65,9 @@ const Header = () => {
             })}
           </nav>
 
-          {/* Auth Section */}
-          <div className="flex items-center gap-2">
+          {/* Theme Toggle & Auth Section */}
+          <div className="flex items-center gap-1">
+            <ThemeToggle />
             {loading ? (
               <div className="h-9 w-9 animate-pulse rounded-full bg-muted" />
             ) : user ? (
