@@ -1295,6 +1295,102 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     tip: "Décès = 1 an pour transmettre la licence. Délai à respecter impérativement par les héritiers.",
     legalRef: "Article L3121-2 du Code des transports"
   },
+  // =====================
+  // TAXI PARIS 75 - RÉGLEMENTATION NATIONALE (tx75-013 à tx75-020)
+  // =====================
+  'tx75-013': {
+    content: "La carte professionnelle de conducteur de taxi a une durée de validité de 5 ans. Elle doit être renouvelée avant son expiration, sous peine de ne plus pouvoir exercer. Le renouvellement nécessite une formation continue de 14 heures.",
+    tip: "Carte pro = 5 ans. Anticiper le renouvellement (3 mois avant). Formation continue obligatoire.",
+    legalRef: "Article R3120-7 du Code des transports"
+  },
+  'tx75-014': {
+    content: "L'autorisation de stationnement (ADS) est délivrée par le maire pour les communes, ou par le préfet pour les zones aéroportuaires et certaines zones spécifiques. À Paris, c'est la Préfecture de Police qui gère les ADS.",
+    tip: "Commune = Maire. Aéroports/zones spéciales = Préfet. Paris = Préfecture de Police.",
+    legalRef: "Article L3121-1 du Code des transports"
+  },
+  'tx75-015': {
+    content: "Une autorisation de stationnement (ADS) délivrée gratuitement après le 1er octobre 2014 ne peut être cédée à titre onéreux qu'après 5 ans d'exploitation effective par le titulaire. Ce délai vise à éviter la spéculation.",
+    tip: "ADS gratuite = 5 ans avant cession payante. Anti-spéculation. Cession à titre gratuit possible avant.",
+    legalRef: "Article L3121-2 du Code des transports"
+  },
+  'tx75-016': {
+    content: "La maraude (recherche de clients sur la voie publique avec un véhicule en circulation ou stationné) est un droit exclusif des taxis. Les VTC doivent obligatoirement faire l'objet d'une réservation préalable.",
+    tip: "Maraude = TAXI uniquement. VTC = réservation préalable obligatoire. C'est LA différence fondamentale.",
+    legalRef: "Article L3120-2 du Code des transports"
+  },
+  'tx75-017': {
+    content: "Les conducteurs de taxi doivent suivre une formation continue de 14 heures tous les 5 ans pour le renouvellement de leur carte professionnelle. Cette formation porte sur la réglementation, la sécurité et les évolutions du métier.",
+    tip: "Formation continue = 14h / 5 ans. Obligatoire pour renouveler la carte. Centre agréé par la préfecture.",
+    legalRef: "Article R3120-7 du Code des transports"
+  },
+  'tx75-018': {
+    content: "Deux documents doivent être obligatoirement visibles des passagers : la carte professionnelle du conducteur et l'affichette tarifaire indiquant les prix en vigueur. Le défaut d'affichage est sanctionné.",
+    tip: "Carte pro + affichette tarifs = visibles du passager. Vérifiables lors de tout contrôle.",
+    legalRef: "Article R3121-1 du Code des transports"
+  },
+  'tx75-019': {
+    content: "L'exercice illégal de la profession de taxi (sans carte professionnelle ou sans ADS) constitue un délit puni d'un an d'emprisonnement et de 15 000 € d'amende. Le véhicule peut également être immobilisé.",
+    tip: "Taxi clandestin = délit. 1 an prison + 15 000 €. Immobilisation du véhicule possible.",
+    legalRef: "Article L3124-4 du Code des transports"
+  },
+  'tx75-020': {
+    content: "Le dispositif lumineux (lumineux taxi) doit porter la mention 'TAXI' et indiquer la commune de rattachement du véhicule. Il doit être allumé (vert) lorsque le taxi est libre et éteint lorsqu'il est occupé.",
+    tip: "Lumineux = TAXI + commune. Vert = libre. Éteint = occupé ou hors service.",
+    legalRef: "Article R3121-1 du Code des transports"
+  },
+  // =====================
+  // TAXI PARIS 75 - RÉGLEMENTATION LOCALE (tx75-021 à tx75-030)
+  // =====================
+  'tx75-021': {
+    content: "Paris compte environ 18 000 licences de taxi (numerus clausus). Ce nombre est fixé par la Préfecture de Police et n'évolue que très lentement. L'obtention d'une licence gratuite se fait sur liste d'attente (plusieurs années).",
+    tip: "Paris ≈ 18 000 taxis. Liste d'attente longue. Achat de licence = plusieurs centaines de milliers d'euros.",
+    legalRef: "Préfecture de Police de Paris"
+  },
+  'tx75-022': {
+    content: "À Paris, contrairement aux autres communes, c'est la Préfecture de Police (et non la mairie) qui délivre et gère les autorisations de stationnement des taxis. C'est une particularité historique de la capitale.",
+    tip: "Paris = Préfecture de Police. Province = Maire ou Préfet selon les cas.",
+    legalRef: "Préfecture de Police de Paris"
+  },
+  'tx75-023': {
+    content: "Les taxis parisiens ont une zone de rattachement élargie qui inclut Paris et les départements de la petite couronne (92, 93, 94). Ils peuvent donc pratiquer la maraude dans cette zone étendue.",
+    tip: "Zone Paris = 75 + 92 + 93 + 94. Maraude possible dans toute cette zone. Retour à vide autorisé.",
+    legalRef: "Arrêté préfectoral zone taxi Paris"
+  },
+  'tx75-024': {
+    content: "Les taxis parisiens appliquent différents tarifs : Tarif A (jour en semaine dans Paris), Tarif B (nuit 17h-10h, dimanches et fériés dans Paris), Tarif C (jour banlieue), Tarif D (nuit banlieue). Les tarifs B, C, D sont plus élevés que le tarif A.",
+    tip: "A = jour Paris. B = nuit/dimanche Paris. C = jour banlieue. D = nuit banlieue. De A à D = du moins cher au plus cher.",
+    legalRef: "Arrêté préfectoral tarifs taxi Paris"
+  },
+  'tx75-025': {
+    content: "Des forfaits aéroports sont en vigueur : Paris rive droite - CDG = 56 €, Paris rive gauche - CDG = 62 €, Paris rive droite - Orly = 44 €, Paris rive gauche - Orly = 39 €. Ces forfaits s'appliquent dans les deux sens.",
+    tip: "Forfaits aéroports = fixes, quel que soit le trajet exact. Rive droite/gauche détermine le prix.",
+    legalRef: "Arrêté préfectoral forfaits aéroports Paris"
+  },
+  'tx75-026': {
+    content: "Le refus de course est strictement interdit pour les taxis. Un chauffeur ne peut refuser un client sous prétexte de la destination, de l'heure ou de la distance. Le refus est sanctionné et peut entraîner des poursuites.",
+    tip: "Refus de course = INTERDIT. Obligation de transporter. Peut être signalé à la préfecture.",
+    legalRef: "Article R3124-6 du Code des transports"
+  },
+  'tx75-027': {
+    content: "Les taxis ne peuvent stationner en attente de clients que sur les emplacements officiels (stations de taxi). Le stationnement sur voie publique hors station, même bref, est interdit et verbalisable.",
+    tip: "Attente clients = stations uniquement. Pas de stationnement sauvage. Amende en cas d'infraction.",
+    legalRef: "Code de la route et arrêtés municipaux Paris"
+  },
+  'tx75-028': {
+    content: "Les files d'attente taxi des aéroports parisiens (CDG et Orly) sont accessibles aux taxis parisiens et aux taxis des départements franciliens. Les taxis provinciaux peuvent déposer mais pas charger.",
+    tip: "Aéroports Paris = taxis IDF uniquement pour charger. Taxis province = dépôt seulement.",
+    legalRef: "Règlement aéroports de Paris"
+  },
+  'tx75-029': {
+    content: "Le macaron taxi parisien est de couleur bleue et doit être apposé sur le pare-brise du véhicule. Il atteste de l'enregistrement du taxi auprès de la Préfecture de Police et de la validité de l'autorisation.",
+    tip: "Macaron bleu = Paris. Chaque département a sa couleur. Visible sur pare-brise avant.",
+    legalRef: "Préfecture de Police de Paris"
+  },
+  'tx75-030': {
+    content: "Depuis le 1er janvier 2019, tous les taxis doivent obligatoirement être équipés d'un terminal de paiement électronique (TPE). Le paiement par carte bancaire ne peut être refusé, quel que soit le montant de la course.",
+    tip: "TPE = obligatoire depuis 2019. CB = tout montant. Refus = infraction sanctionnable.",
+    legalRef: "Article L3121-11-2 du Code des transports"
+  },
 };
 
 // Fonction pour obtenir l'explication d'une question
