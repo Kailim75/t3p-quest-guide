@@ -4,6 +4,7 @@ import { Trophy, XCircle, Clock, Target, CheckCircle2, X, RotateCcw, Home, Chevr
 import { Question } from '@/data/quizData';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuizResults } from '@/hooks/useQuizResults';
+import { useBadges } from '@/hooks/useBadges';
 import { useToast } from '@/hooks/use-toast';
 
 interface Answer {
@@ -36,6 +37,7 @@ const ExamResults = ({
   const [showDetails, setShowDetails] = useState(false);
   const { user } = useAuth();
   const { saveResult } = useQuizResults();
+  const { checkBadges, updateStreak, badges } = useBadges();
   const { toast } = useToast();
   const savedRef = useRef(false);
   
@@ -69,11 +71,25 @@ const ExamResults = ({
         time_spent: timeTaken,
         questions_failed: failedQuestionIds,
       }, {
-        onSuccess: () => {
-          toast({
-            title: 'Résultat sauvegardé',
-            description: 'Votre progression a été enregistrée.',
-          });
+        onSuccess: async () => {
+          // Update streak and check for new badges
+          await updateStreak.mutateAsync();
+          const newBadges = await checkBadges();
+          
+          if (newBadges.length > 0) {
+            const badgeNames = newBadges.map(id => 
+              badges.find(b => b.id === id)?.name || id
+            ).join(', ');
+            toast({
+              title: '🏆 Nouveau badge débloqué !',
+              description: badgeNames,
+            });
+          } else {
+            toast({
+              title: 'Résultat sauvegardé',
+              description: 'Votre progression a été enregistrée.',
+            });
+          }
         },
         onError: () => {
           toast({
