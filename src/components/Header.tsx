@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, Home, FileText, GraduationCap, User, LogOut, BarChart3, Shield, Trophy, Layers } from 'lucide-react';
+import { BookOpen, Home, FileText, GraduationCap, User, LogOut, BarChart3, Shield, Trophy, Layers, Download } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useAdmin } from '@/hooks/useAdmin';
+import { usePWA } from '@/hooks/usePWA';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -18,6 +19,7 @@ const Header = () => {
   const location = useLocation();
   const { user, signOut, loading } = useAuth();
   const { isAdmin } = useAdmin();
+  const { isInstallable, isInstalled } = usePWA();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
 
@@ -97,6 +99,14 @@ const Header = () => {
                       Mes badges
                     </Link>
                   </DropdownMenuItem>
+                  {isInstallable && !isInstalled && (
+                    <DropdownMenuItem asChild>
+                      <Link to="/install" className="flex items-center gap-2 cursor-pointer">
+                        <Download className="h-4 w-4" />
+                        Installer l'app
+                      </Link>
+                    </DropdownMenuItem>
+                  )}
                   {isAdmin && (
                     <DropdownMenuItem asChild>
                       <Link to="/admin" className="flex items-center gap-2 cursor-pointer">
