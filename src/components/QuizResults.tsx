@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Trophy, Target, Clock, RotateCcw, Home, CheckCircle2, XCircle } from 'lucide-react';
 import { Question } from '@/data/quizData';
 import { useAuth } from '@/contexts/AuthContext';
-import { useQuizResults } from '@/hooks/useQuizResults';
+import { useQuizResults, QuizAnswer } from '@/hooks/useQuizResults';
 import { useBadges } from '@/hooks/useBadges';
 import { useToast } from '@/hooks/use-toast';
 
@@ -17,35 +17,54 @@ interface QuizResultsProps {
 
 const QuizResults = ({ questions, answers, moduleName, moduleId, timeTaken }: QuizResultsProps) => {
   const { user } = useAuth();
-  const { saveResult } = useQuizResults();
+  const { saveResultSecure } = useQuizResults();
   const { checkBadges, updateStreak, badges } = useBadges();
   const { toast } = useToast();
   const savedRef = useRef(false);
+  const [serverResult, setServerResult] = useState<{
+    score: number;
+    percentage: number;
+    passed: boolean;
+    questions_failed: string[];
+  } | null>(null);
 
-  const correctCount = answers.filter(a => a.isCorrect).length;
+  // Calculate local results for immediate display (will be replaced by server result)
+  const localCorrectCount = answers.filter(a => a.isCorrect).length;
+  const localPercentage = Math.round((localCorrectCount / questions.length) * 100);
+  const localPassed = localPercentage >= 70;
+
+  // Use server result if available, otherwise use local calculation
+  const correctCount = serverResult?.score ?? localCorrectCount;
   const totalQuestions = questions.length;
-  const percentage = Math.round((correctCount / totalQuestions) * 100);
-  const passed = percentage >= 70;
+  const percentage = serverResult?.percentage ?? localPercentage;
+  const passed = serverResult?.passed ?? localPassed;
 
-  // Save result to database for authenticated users
+  // Save result to database for authenticated users using server-side validation
   useEffect(() => {
     if (user && !savedRef.current) {
       savedRef.current = true;
-      const failedQuestionIds = answers
-        .filter(a => !a.isCorrect)
-        .map(a => a.questionId);
+      
+      // Prepare answers for server validation (only questionId and answer letter)
+      const serverAnswers: QuizAnswer[] = answers.map(a => ({
+        questionId: a.questionId,
+        answer: a.answer as 'A' | 'B' | 'C' | 'D',
+      }));
 
-      saveResult.mutate({
+      saveResultSecure.mutate({
         quiz_type: 'module',
         quiz_id: moduleId,
-        score: correctCount,
-        total_questions: totalQuestions,
-        percentage,
-        passed,
+        answers: serverAnswers,
         time_spent: timeTaken || null,
-        questions_failed: failedQuestionIds,
       }, {
-        onSuccess: async () => {
+        onSuccess: async (result) => {
+          // Update display with server-validated result
+          setServerResult({
+            score: result.score,
+            percentage: result.percentage,
+            passed: result.passed,
+            questions_failed: result.questions_failed,
+          });
+          
           // Update streak and check for new badges
           await updateStreak.mutateAsync();
           const newBadges = await checkBadges();
@@ -65,7 +84,8 @@ const QuizResults = ({ questions, answers, moduleName, moduleId, timeTaken }: Qu
             });
           }
         },
-        onError: () => {
+        onError: (error) => {
+          console.error('Error saving quiz result:', error);
           toast({
             title: 'Erreur',
             description: 'Impossible de sauvegarder le résultat.',
