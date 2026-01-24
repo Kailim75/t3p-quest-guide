@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, Home, FileText, GraduationCap, User, LogOut, BarChart3, Shield, Trophy } from 'lucide-react';
+import { BookOpen, Home, FileText, GraduationCap, User, LogOut, BarChart3, Shield, Trophy, Layers } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useAdmin } from '@/hooks/useAdmin';
 import { Button } from '@/components/ui/button';
@@ -24,6 +24,7 @@ const Header = () => {
     { path: '/', label: 'Accueil', icon: Home },
     { path: '/modules', label: 'Modules', icon: BookOpen },
     { path: '/revision', label: 'Fiches', icon: FileText },
+    { path: '/flashcards', label: 'Flashcards', icon: Layers },
     { path: '/exam', label: 'Examen', icon: GraduationCap },
   ];
 
