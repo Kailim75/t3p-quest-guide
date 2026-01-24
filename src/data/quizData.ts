@@ -6498,3 +6498,11 @@ export const getCommonModules = (): Module[] => {
 export const getSpecificModules = (): Module[] => {
   return modules.filter(m => m.type === 'specifique');
 };
+
+export const getQuestionsByIds = (questionIds: string[]): Question[] => {
+  return officialQuestions.filter(q => questionIds.includes(q.id));
+};
+
+export const getAllQuestions = (): Question[] => {
+  return officialQuestions;
+};
