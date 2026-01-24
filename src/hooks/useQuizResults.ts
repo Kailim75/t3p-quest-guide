@@ -16,8 +16,24 @@ export interface QuizResult {
   created_at: string;
 }
 
+// Interface for the answer format expected by the server
+export interface QuizAnswer {
+  questionId: string;
+  answer: 'A' | 'B' | 'C' | 'D';
+}
+
+// Interface for validated result from server
+export interface ValidatedQuizResult {
+  id: string;
+  score: number;
+  total_questions: number;
+  percentage: number;
+  passed: boolean;
+  questions_failed: string[];
+}
+
 export const useQuizResults = () => {
-  const { user } = useAuth();
+  const { user, session } = useAuth();
   const queryClient = useQueryClient();
 
   const { data: results, isLoading } = useQuery({
@@ -37,6 +53,56 @@ export const useQuizResults = () => {
     enabled: !!user,
   });
 
+  // Server-side validated quiz result saving
+  const saveResultSecure = useMutation({
+    mutationFn: async (params: {
+      quiz_type: 'module' | 'exam';
+      quiz_id: string;
+      answers: QuizAnswer[];
+      time_spent: number | null;
+    }): Promise<ValidatedQuizResult> => {
+      if (!user || !session?.access_token) {
+        throw new Error('User not authenticated');
+      }
+
+      // Call the edge function for server-side validation
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/validate-quiz-result`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${session.access_token}`,
+          },
+          body: JSON.stringify({
+            quiz_type: params.quiz_type,
+            quiz_id: params.quiz_id,
+            answers: params.answers,
+            time_spent: params.time_spent,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        throw new Error(errorData.error || 'Failed to save quiz result');
+      }
+
+      const data = await response.json();
+      
+      if (!data.success || !data.result) {
+        throw new Error('Invalid response from server');
+      }
+
+      return data.result as ValidatedQuizResult;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['quiz-results', user?.id] });
+    },
+  });
+
+  // Legacy saveResult mutation (kept for backwards compatibility during migration)
+  // This should eventually be removed once all components use saveResultSecure
   const saveResult = useMutation({
     mutationFn: async (result: Omit<QuizResult, 'id' | 'user_id' | 'created_at'>) => {
       if (!user) throw new Error('User not authenticated');
@@ -95,6 +161,7 @@ export const useQuizResults = () => {
     results,
     isLoading,
     saveResult,
+    saveResultSecure,
     stats,
     getResultsByModule,
     getBestScore,
