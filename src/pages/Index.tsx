@@ -2,10 +2,31 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Target, Award, Clock, FileText } from 'lucide-react';
 import Header from '@/components/Header';
 import { getCommonModules, getSpecificModules } from '@/data/quizData';
+import { useAuth } from '@/contexts/AuthContext';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
 
 const Index = () => {
+  const { user } = useAuth();
   const commonModules = getCommonModules();
   const specificModules = getSpecificModules();
+
+  // Fetch user profile for display name
+  const { data: profile } = useQuery({
+    queryKey: ['user-profile-name', user?.id],
+    queryFn: async () => {
+      if (!user) return null;
+      const { data } = await supabase
+        .from('profiles')
+        .select('display_name')
+        .eq('id', user.id)
+        .maybeSingle();
+      return data;
+    },
+    enabled: !!user,
+  });
+
+  const displayName = profile?.display_name || user?.email?.split('@')[0] || 'Candidat';
 
   const features = [
     {
@@ -43,6 +64,12 @@ const Index = () => {
       <section className="relative overflow-hidden border-b bg-gradient-to-b from-primary/5 to-background">
         <div className="container mx-auto px-4 py-16 sm:py-24">
           <div className="max-w-3xl mx-auto text-center">
+            {/* Welcome Message */}
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary mb-4">
+              <span>👋</span>
+              Bonjour, {displayName} !
+            </div>
+
             <div className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-2 text-sm font-medium text-accent mb-6">
               <span>🎓</span>
               Préparation à l'examen T3P
