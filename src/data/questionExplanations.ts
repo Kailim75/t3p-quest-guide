@@ -1232,6 +1232,69 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     tip: "Veille réglementaire importante. Code des transports + décrets/arrêtés. Les règles évoluent, se tenir informé.",
     legalRef: "Code des transports - Partie VTC"
   },
+  // =====================
+  // TAXI PARIS 75 (tx75-001 à tx75-012)
+  // =====================
+  'tx75-001': {
+    content: "C'est le Ministère de la Transition écologique (et non les Transports ou l'Économie) qui publie chaque année l'arrêté fixant les tarifs maximaux des courses de taxis. Cet arrêté définit les plafonds de la prise en charge, du kilomètre parcouru et de l'heure d'attente que chaque préfet peut ensuite adapter localement.",
+    tip: "Transition écologique = tarifs taxis nationaux. Le préfet applique ces plafonds au niveau départemental.",
+    legalRef: "Arrêté annuel relatif aux tarifs des courses de taxi"
+  },
+  'tx75-002': {
+    content: "Lors d'un contrôle routier, deux éléments permettent de vérifier que le taximètre est bien à jour : la lettre de couleur (changée chaque année lors de la révision tarifaire) apposée sur le taximètre, et le scellé intact qui garantit que l'appareil n'a pas été manipulé frauduleusement.",
+    tip: "Lettre de couleur = année tarifaire. Scellé = intégrité du taximètre. Les deux sont vérifiés lors des contrôles.",
+    legalRef: "Arrêté du 3 mars 2009 relatif aux taximètres"
+  },
+  'tx75-003': {
+    content: "Depuis 2019, les taxis sont obligés d'accepter le paiement par carte bancaire pour tout montant dès que le client le demande. Il n'existe plus de seuil minimum. Le refus d'accepter la carte bancaire est passible d'une amende.",
+    tip: "CB obligatoire = tout montant. Pas de seuil. Équipement terminal de paiement = obligatoire pour tout taxi.",
+    legalRef: "Article L3121-11-2 du Code des transports"
+  },
+  'tx75-004': {
+    content: "L'application « le.taxi » est le registre national de disponibilité des taxis. Un chauffeur inscrit peut être sollicité dans l'ensemble de son département d'exercice, pas uniquement dans sa commune de rattachement. Cela élargit sa zone de chalandise.",
+    tip: "le.taxi = département entier. C'est un avantage par rapport à la maraude classique limitée à la zone de rattachement.",
+    legalRef: "Décret n°2014-1725 du 30 décembre 2014"
+  },
+  'tx75-005': {
+    content: "Le véhicule relais est un véhicule de remplacement temporaire autorisé uniquement en cas de panne, accident ou entretien prolongé du véhicule principal. Il doit être déclaré en préfecture et respecter les mêmes normes que le véhicule habituel.",
+    tip: "Véhicule relais = panne/entretien seulement. Pas pour augmenter la flotte. Déclaration préfecture obligatoire.",
+    legalRef: "Article R3121-5 du Code des transports"
+  },
+  'tx75-006': {
+    content: "Le non-respect des tarifs fixés par la préfecture (surfacturation) constitue une contravention de 5e classe, punie d'une amende pouvant atteindre 1 500 € (3 000 € en récidive). Le taximètre doit afficher le tarif exact conforme à l'arrêté préfectoral.",
+    tip: "Tarifs non respectés = amende 5e classe (1 500 €). La surfacturation peut aussi entraîner un retrait de licence.",
+    legalRef: "Article R3124-10 du Code des transports"
+  },
+  'tx75-007': {
+    content: "La carte professionnelle de conducteur de taxi doit être présentée immédiatement lors de tout contrôle. La non-présentation immédiate (même si le conducteur la possède) est une contravention de 4e classe, punie d'une amende de 750 €.",
+    tip: "Carte pro = toujours sur soi et présentable immédiatement. Non-présentation = 4e classe même si vous l'avez oubliée.",
+    legalRef: "Article R3124-7 du Code des transports"
+  },
+  'tx75-008': {
+    content: "Le préfet de département fixe, par arrêté, les tarifs applicables aux taxis de son ressort dans le respect des plafonds nationaux. Il détermine notamment le montant de la prise en charge, les tarifs horaires et kilométriques, et les suppléments autorisés.",
+    tip: "Préfet = tarifs départementaux. Ministère = plafonds nationaux. Le préfet peut être plus bas, jamais plus haut.",
+    legalRef: "Article L3121-2 du Code des transports"
+  },
+  'tx75-009': {
+    content: "Le client peut demander à s'asseoir à l'avant du véhicule et le chauffeur peut l'autoriser. Ce n'est pas interdit par la réglementation. Cependant, en cas de transport de plusieurs passagers, la place avant peut être utilisée pour atteindre la capacité maximale.",
+    tip: "Place avant = au choix du client avec accord du chauffeur. Pas d'interdiction réglementaire.",
+    legalRef: "Usage professionnel - Pas de texte restrictif"
+  },
+  'tx75-010': {
+    content: "Les suppléments (4e passager, bagages volumineux, réservation...) s'ajoutent au montant affiché au compteur (taximètre) à la fin de la course. Ils doivent être affichés de manière visible dans le véhicule et conformes à l'arrêté préfectoral.",
+    tip: "Suppléments = sur le montant compteur. Affichage obligatoire. Ne peuvent dépasser les plafonds préfectoraux.",
+    legalRef: "Arrêté préfectoral sur les tarifs taxi"
+  },
+  'tx75-011': {
+    content: "Les taxis bénéficient d'une dérogation : ils ne sont pas obligés de disposer d'un siège enfant homologué. L'enfant peut voyager sans dispositif de retenue adapté, sous la responsabilité de l'accompagnateur adulte. Cette exception ne s'applique qu'aux taxis.",
+    tip: "Taxi = dispense siège enfant (art. R412-2). VTC = pas de dispense claire, équipement recommandé.",
+    legalRef: "Article R412-2 du Code de la route"
+  },
+  'tx75-012': {
+    content: "En cas de décès du titulaire d'une autorisation de stationnement (licence taxi), les ayants droit disposent d'un délai d'un an pour présenter un successeur ou céder la licence. Passé ce délai, l'autorisation peut être retirée par l'autorité compétente.",
+    tip: "Décès = 1 an pour transmettre la licence. Délai à respecter impérativement par les héritiers.",
+    legalRef: "Article L3121-2 du Code des transports"
+  },
 };
 
 // Fonction pour obtenir l'explication d'une question
@@ -1273,6 +1336,10 @@ export const getDefaultModuleExplanation = (moduleId: string): QuestionExplanati
     'reglementation': {
       content: "La réglementation T3P encadre l'accès à la profession, les conditions d'exercice et les obligations des conducteurs de transport public particulier de personnes.",
       tip: "Carte professionnelle = obligatoire pour tous (taxi, VTC, VMDTR). Examen T3P = porte d'entrée dans la profession."
+    },
+    'taxi-75': {
+      content: "La réglementation Taxi Paris 75 couvre les spécificités des taxis parisiens : tarification préfectorale, taximètre, paiement CB obligatoire, zones de prise en charge et sanctions applicables.",
+      tip: "Préfet = tarifs. Taximètre = obligatoire avec lettre de couleur. CB = tout montant. Licence = transmissible sous conditions."
     },
     'vmdtr': {
       content: "Les VMDTR (Véhicules Motorisés à Deux ou Trois Roues) ont une réglementation spécifique concernant les équipements de sécurité et les conditions de transport.",
