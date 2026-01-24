@@ -18,6 +18,7 @@ import Admin from "./pages/Admin";
 import ErrorRevision from "./pages/ErrorRevision";
 import Badges from "./pages/Badges";
 import Flashcards from "./pages/Flashcards";
+import Install from "./pages/Install";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ const App = () => (
             <Route path="/revision-erreurs" element={<ErrorRevision />} />
             <Route path="/badges" element={<Badges />} />
             <Route path="/flashcards" element={<Flashcards />} />
+            <Route path="/install" element={<Install />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
