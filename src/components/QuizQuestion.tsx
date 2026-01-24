@@ -31,105 +31,6 @@ const getCourseExplanation = (question: Question): { title: string; content: str
     content: defaultExplanation.content,
     tip: defaultExplanation.tip
   };
-    'gestion': {
-      default: {
-        title: 'Gestion & Comptabilité',
-        content: 'La gestion d\'une entreprise de transport nécessite une bonne maîtrise des obligations comptables et fiscales. Les statuts juridiques (EI, EURL, SASU, SARL) ont chacun leurs avantages et contraintes.',
-        tip: 'Retenez les différences entre entreprise individuelle et société : responsabilité, fiscalité, formalités de création.'
-      },
-      'fiscal': {
-        title: 'Fiscalité de l\'entreprise',
-        content: 'Les obligations fiscales comprennent la TVA, l\'impôt sur le revenu ou l\'impôt sur les sociétés, et les cotisations sociales. La CRDS et la CSG financent la protection sociale.',
-        tip: 'La CRDS (Contribution au Remboursement de la Dette Sociale) sert exclusivement à rembourser la dette de la Sécurité sociale.'
-      },
-      'statut': {
-        title: 'Statuts juridiques',
-        content: 'Le choix du statut juridique impacte la responsabilité du dirigeant, le régime fiscal et les obligations comptables. Une société nécessite une publication d\'annonce légale.',
-        tip: 'Seules les sociétés (SARL, SAS, EURL, SASU) nécessitent une annonce légale. Pas les entreprises individuelles ni les micro-entreprises.'
-      }
-    },
-    'securite': {
-      default: {
-        title: 'Sécurité Routière',
-        content: 'La sécurité routière repose sur le respect du Code de la route, une conduite préventive et la maîtrise des facteurs de risque (vitesse, fatigue, alcool, téléphone).',
-        tip: 'L\'anticipation et l\'observation sont les clés d\'une conduite sûre. Adaptez toujours votre vitesse aux conditions.'
-      },
-      'alcool': {
-        title: 'Alcool et conduite',
-        content: 'Le taux légal d\'alcoolémie est de 0,5 g/L de sang (0,25 mg/L d\'air expiré) pour les conducteurs classiques, et 0,2 g/L pour les professionnels. L\'alcool altère les réflexes et le jugement.',
-        tip: 'Pour les conducteurs professionnels, la tolérance est quasi nulle : 0,2 g/L soit pratiquement aucune consommation.'
-      },
-      'vitesse': {
-        title: 'Vitesse et distances',
-        content: 'La distance d\'arrêt = distance de réaction + distance de freinage. Elle augmente exponentiellement avec la vitesse. Sur sol mouillé, les distances doublent.',
-        tip: 'Doublez vos distances de sécurité par temps de pluie et divisez votre vitesse par 2 en cas de brouillard dense.'
-      }
-    },
-    'francais': {
-      default: {
-        title: 'Compréhension française',
-        content: 'La maîtrise du français est essentielle pour communiquer avec les clients, comprendre les documents administratifs et rédiger des courriers professionnels.',
-        tip: 'Lisez attentivement chaque proposition. Les nuances de vocabulaire peuvent changer complètement le sens d\'une phrase.'
-      }
-    },
-    'anglais': {
-      default: {
-        title: 'English for Transport',
-        content: 'Basic English vocabulary is essential for welcoming international clients. Key phrases include greetings, directions, and fare information.',
-        tip: 'Learn common phrases: "Where would you like to go?", "The fare is...", "Have a nice trip!"'
-      }
-    },
-    'vtc': {
-      default: {
-        title: 'Réglementation VTC',
-        content: 'Les VTC doivent respecter l\'obligation de réservation préalable, posséder une carte professionnelle valide et être inscrits au registre des VTC.',
-        tip: 'La maraude (prise en charge sans réservation) est strictement interdite aux VTC. C\'est la principale différence avec les taxis.'
-      },
-      'carte': {
-        title: 'Carte professionnelle VTC',
-        content: 'La carte professionnelle VTC est délivrée par la préfecture après réussite à l\'examen. Elle est valide 5 ans et doit être renouvelée avec justification de l\'aptitude médicale.',
-        tip: 'La carte VTC doit toujours être visible dans le véhicule et présentable lors d\'un contrôle.'
-      }
-    },
-    'relation-client': {
-      default: {
-        title: 'Relation Client',
-        content: 'La qualité de service est primordiale : accueil courtois, véhicule propre, conduite souple, respect des demandes du client. La satisfaction client fidélise.',
-        tip: 'Un client satisfait en parle à 3 personnes, un client mécontent à 10. Soignez chaque course !'
-      }
-    },
-    'taxi': {
-      default: {
-        title: 'Réglementation Taxi',
-        content: 'Les taxis bénéficient du droit de maraude et de la prise en charge en station. Ils doivent posséder une autorisation de stationnement (licence) et utiliser un compteur horokilométrique homologué.',
-        tip: 'La licence taxi est attachée à une commune ou une zone géographique précise.'
-      }
-    }
-  };
-
-  const moduleData = moduleExplanations[question.moduleId] || {};
-  
-  // Chercher une explication spécifique basée sur le contenu de la question
-  let specificKey = 'default';
-  const questionText = question.text.toLowerCase();
-  
-  if (questionText.includes('alcool') || questionText.includes('alcoolémie')) {
-    specificKey = 'alcool';
-  } else if (questionText.includes('vitesse') || questionText.includes('distance')) {
-    specificKey = 'vitesse';
-  } else if (questionText.includes('carte') || questionText.includes('professionnelle')) {
-    specificKey = 'carte';
-  } else if (questionText.includes('statut') || questionText.includes('société') || questionText.includes('entreprise')) {
-    specificKey = 'statut';
-  } else if (questionText.includes('fiscal') || questionText.includes('impôt') || questionText.includes('tva') || questionText.includes('crds') || questionText.includes('csg')) {
-    specificKey = 'fiscal';
-  }
-
-  return moduleData[specificKey] || moduleData['default'] || {
-    title: 'Point de cours',
-    content: question.explanation || 'Cette question porte sur un point important du référentiel T3P.',
-    tip: 'Consultez le référentiel officiel pour approfondir ce sujet.'
-  };
 };
 
 const QuizQuestion = ({ 
@@ -178,7 +79,7 @@ const QuizQuestion = ({
   };
 
   const isCorrect = selectedAnswer === question.correctAnswer;
-  const courseInfo = getCourseExplanation(question, isCorrect);
+  const courseInfo = getCourseExplanation(question);
   const correctOption = question.options.find(opt => opt.letter === question.correctAnswer);
 
   return (
