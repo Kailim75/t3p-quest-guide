@@ -6,10 +6,26 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-// Quiz answer data structure
+// Quiz answer data structure - supports single or multiple answers
 interface QuizAnswer {
   questionId: string;
-  answer: 'A' | 'B' | 'C' | 'D';
+  answer: string; // Single: 'A' or Multiple: 'A,B' (comma-separated, sorted)
+}
+
+// Helper function to normalize and compare answers
+function normalizeAnswer(answer: string): string[] {
+  return answer.split(',').map(a => a.trim().toUpperCase()).sort();
+}
+
+function areAnswersEqual(userAnswer: string, correctAnswer: string): boolean {
+  const userNormalized = normalizeAnswer(userAnswer);
+  const correctNormalized = normalizeAnswer(correctAnswer);
+  
+  if (userNormalized.length !== correctNormalized.length) {
+    return false;
+  }
+  
+  return userNormalized.every((ans, idx) => ans === correctNormalized[idx]);
 }
 
 interface ValidateQuizRequest {
@@ -122,9 +138,20 @@ Deno.serve(async (req) => {
       }
       seenQuestionIds.add(answer.questionId);
 
-      if (!answer.answer || !validAnswerLetters.includes(answer.answer)) {
+      // Validate answer format (single or multiple, comma-separated)
+      if (!answer.answer || typeof answer.answer !== 'string') {
         return new Response(
           JSON.stringify({ error: `Invalid answer for question ${answer.questionId}` }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      // Parse and validate each answer letter
+      const answerLetters = normalizeAnswer(answer.answer);
+      const invalidLetters = answerLetters.filter(letter => !validAnswerLetters.includes(letter));
+      if (invalidLetters.length > 0 || answerLetters.length === 0) {
+        return new Response(
+          JSON.stringify({ error: `Invalid answer letters for question ${answer.questionId}: ${invalidLetters.join(', ')}` }),
           { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
@@ -139,7 +166,8 @@ Deno.serve(async (req) => {
       }
 
       // Check if answer is correct (SERVER-SIDE VALIDATION)
-      if (answer.answer === correctAnswer) {
+      // Supports both single answers ('A') and multiple answers ('A,B')
+      if (areAnswersEqual(answer.answer, correctAnswer)) {
         correctCount++;
       } else {
         questionsFailed.push(answer.questionId);

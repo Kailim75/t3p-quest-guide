@@ -17,9 +17,10 @@ export interface QuizResult {
 }
 
 // Interface for the answer format expected by the server
+// Supports single ('A') or multiple ('A,B') answers
 export interface QuizAnswer {
   questionId: string;
-  answer: 'A' | 'B' | 'C' | 'D';
+  answer: string; // Single: 'A' or Multiple: 'A,B' (comma-separated)
 }
 
 // Interface for validated result from server

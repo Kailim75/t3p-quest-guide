@@ -1,8 +1,9 @@
 // This file contains the correct answers for all quiz questions
 // Used by the validate-quiz-result edge function for server-side validation
 // IMPORTANT: Keep this synchronized with src/data/quizData.ts
+// Supports single answers ('A') and multiple answers ('A,B')
 
-export const correctAnswers: Record<string, 'A' | 'B' | 'C' | 'D'> = {
+export const correctAnswers: Record<string, string> = {
   // MODULE 2 - GESTION & COMPTABILITÉ (40 questions)
   'ges-001': 'B', 'ges-002': 'A', 'ges-003': 'A', 'ges-004': 'A', 'ges-005': 'B',
   'ges-006': 'A', 'ges-007': 'A', 'ges-008': 'A', 'ges-009': 'A', 'ges-010': 'B',
