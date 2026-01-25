@@ -80,8 +80,7 @@ const QuestionForm = ({ open, onOpenChange, onSubmit, initialData, isLoading }: 
       const isSelected = currentAnswers.includes(letter);
       
       if (isSelected) {
-        // Don't allow removing if it's the only answer
-        if (currentAnswers.length === 1) return prev;
+        // Permettre de tout décocher
         return { ...prev, correct_answers: currentAnswers.filter(a => a !== letter) };
       } else {
         // Max 2 answers allowed
@@ -92,6 +91,8 @@ const QuestionForm = ({ open, onOpenChange, onSubmit, initialData, isLoading }: 
       }
     });
   };
+
+  const hasValidAnswers = formData.correct_answers.length >= 1 && formData.correct_answers.length <= 2;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -303,11 +304,16 @@ const QuestionForm = ({ open, onOpenChange, onSubmit, initialData, isLoading }: 
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
               Annuler
             </Button>
-            <Button type="submit" disabled={isLoading}>
+            <Button type="submit" disabled={isLoading || !hasValidAnswers}>
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               {initialData ? 'Mettre à jour' : 'Ajouter'}
             </Button>
           </div>
+          {!hasValidAnswers && (
+            <p className="text-sm text-destructive text-center">
+              Veuillez sélectionner 1 ou 2 bonnes réponses
+            </p>
+          )}
         </form>
       </DialogContent>
     </Dialog>
