@@ -5,12 +5,15 @@ import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import ShareButton from '@/components/ShareButton';
+import BadgeShareCard from '@/components/BadgeShareCard';
 import { 
   Trophy, 
   AlertCircle, 
   Flame,
   Lock,
-  Loader2
+  Loader2,
+  Share2
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -31,6 +34,12 @@ const BadgeCard = ({ badge }: BadgeCardProps) => {
       {!badge.unlocked && (
         <div className="absolute top-2 right-2">
           <Lock className="h-4 w-4 text-muted-foreground" />
+        </div>
+      )}
+      
+      {badge.unlocked && (
+        <div className="absolute top-2 right-2">
+          <BadgeShareCard badge={badge} />
         </div>
       )}
       
@@ -123,9 +132,17 @@ const BadgesPage = () => {
           <h1 className="text-3xl font-bold text-foreground mb-2">
             Mes Badges
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground mb-4">
             Débloquez des succès en progressant
           </p>
+          
+          {/* Global Share Button */}
+          {unlockedCount > 0 && (
+            <ShareButton
+              title="Mes badges T3P Quest Guide"
+              text={`🏆 J'ai débloqué ${unlockedCount}/${totalBadges} badges sur T3P Quest Guide ! Série actuelle : ${streak} jours 🔥`}
+            />
+          )}
         </div>
 
         {/* Stats Cards */}

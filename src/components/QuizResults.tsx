@@ -6,6 +6,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useQuizResults, QuizAnswer } from '@/hooks/useQuizResults';
 import { useBadges } from '@/hooks/useBadges';
 import { useToast } from '@/hooks/use-toast';
+import ScoreShareCard from './ScoreShareCard';
 
 interface QuizResultsProps {
   questions: Question[];
@@ -190,6 +191,18 @@ const QuizResults = ({ questions, answers, moduleName, moduleId, timeTaken }: Qu
             );
           })}
         </div>
+      </div>
+
+      {/* Share */}
+      <div className="flex justify-center mb-6">
+        <ScoreShareCard
+          score={correctCount}
+          totalQuestions={totalQuestions}
+          percentage={percentage}
+          passed={passed}
+          quizType="module"
+          quizName={moduleName}
+        />
       </div>
 
       {/* Actions */}
