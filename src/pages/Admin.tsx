@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { useAdmin, AppRole } from '@/hooks/useAdmin';
@@ -5,6 +6,7 @@ import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Table,
   TableBody,
@@ -30,11 +32,13 @@ import {
   Loader2,
   UserCheck,
   UserX,
-  Clock
+  Clock,
+  FileQuestion
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { useToast } from '@/hooks/use-toast';
+import QuestionsManager from '@/components/admin/QuestionsManager';
 
 const roleLabels: Record<AppRole, string> = {
   admin: 'Administrateur',
@@ -193,264 +197,284 @@ const AdminPage = () => {
               Administration
             </h1>
             <p className="text-muted-foreground">
-              Gérez les utilisateurs et leurs rôles
+              Gérez les utilisateurs, rôles et questions
             </p>
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <Card>
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-orange-500/10">
-                  <Clock className="h-5 w-5 text-orange-500" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold">{pendingUsers.length}</p>
-                  <p className="text-xs text-muted-foreground">En attente</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+        {/* Tabs */}
+        <Tabs defaultValue="users" className="space-y-6">
+          <TabsList className="grid w-full max-w-md grid-cols-2">
+            <TabsTrigger value="users" className="flex items-center gap-2">
+              <Users className="h-4 w-4" />
+              Utilisateurs
+            </TabsTrigger>
+            <TabsTrigger value="questions" className="flex items-center gap-2">
+              <FileQuestion className="h-4 w-4" />
+              Questions
+            </TabsTrigger>
+          </TabsList>
 
-          <Card>
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <Users className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold">{approvedUsers.length}</p>
-                  <p className="text-xs text-muted-foreground">Utilisateurs approuvés</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <TabsContent value="users" className="space-y-6">
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-orange-500/10">
+                      <Clock className="h-5 w-5 text-orange-500" />
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold">{pendingUsers.length}</p>
+                      <p className="text-xs text-muted-foreground">En attente</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-accent">
-                  <Crown className="h-5 w-5 text-accent-foreground" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold">
-                    {users.filter(u => u.roles.includes('admin')).length}
-                  </p>
-                  <p className="text-xs text-muted-foreground">Administrateurs</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-primary/10">
+                      <Users className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold">{approvedUsers.length}</p>
+                      <p className="text-xs text-muted-foreground">Utilisateurs approuvés</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-secondary">
-                  <Shield className="h-5 w-5 text-secondary-foreground" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold">
-                    {users.filter(u => u.roles.includes('moderator')).length}
-                  </p>
-                  <p className="text-xs text-muted-foreground">Modérateurs</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-accent">
+                      <Crown className="h-5 w-5 text-accent-foreground" />
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold">
+                        {users.filter(u => u.roles.includes('admin')).length}
+                      </p>
+                      <p className="text-xs text-muted-foreground">Administrateurs</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
 
-        {/* Pending Approvals */}
-        {pendingUsers.length > 0 && (
-          <Card className="mb-8 border-orange-500/50">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-orange-600 dark:text-orange-400">
-                <Clock className="h-5 w-5" />
-                Inscriptions en attente ({pendingUsers.length})
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Utilisateur</TableHead>
-                      <TableHead>Inscrit le</TableHead>
-                      <TableHead className="text-right">Actions</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {pendingUsers.map((userItem) => (
-                      <TableRow key={userItem.id}>
-                        <TableCell>
-                          <div>
-                            <p className="font-medium">
-                              {userItem.display_name || 'Sans nom'}
-                            </p>
-                            <p className="text-sm text-muted-foreground">
-                              {userItem.email}
-                            </p>
-                          </div>
-                        </TableCell>
-                        <TableCell>
-                          {format(new Date(userItem.created_at), 'dd MMM yyyy à HH:mm', { locale: fr })}
-                        </TableCell>
-                        <TableCell className="text-right">
-                          <div className="flex justify-end gap-2">
-                            <Button
-                              size="sm"
-                              onClick={() => handleApproveUser(userItem.id)}
-                              className="bg-green-600 hover:bg-green-700"
-                            >
-                              <UserCheck className="h-4 w-4 mr-1" />
-                              Approuver
-                            </Button>
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            </CardContent>
-          </Card>
-        )}
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-secondary">
+                      <Shield className="h-5 w-5 text-secondary-foreground" />
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold">
+                        {users.filter(u => u.roles.includes('moderator')).length}
+                      </p>
+                      <p className="text-xs text-muted-foreground">Modérateurs</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
 
-        {/* Approved Users Table */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Users className="h-5 w-5" />
-              Utilisateurs approuvés
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            {isLoadingUsers ? (
-              <div className="flex items-center justify-center h-32">
-                <Loader2 className="h-6 w-6 animate-spin text-primary" />
-              </div>
-            ) : approvedUsers.length > 0 ? (
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Utilisateur</TableHead>
-                      <TableHead>Statut</TableHead>
-                      <TableHead>Rôles</TableHead>
-                      <TableHead>Inscrit le</TableHead>
-                      <TableHead className="text-right">Actions</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {approvedUsers.map((userItem) => (
-                      <TableRow key={userItem.id}>
-                        <TableCell>
-                          <div>
-                            <p className="font-medium">
-                              {userItem.display_name || 'Sans nom'}
-                            </p>
-                            <p className="text-sm text-muted-foreground">
-                              {userItem.email}
-                            </p>
-                          </div>
-                        </TableCell>
-                        <TableCell>
-                          <Badge variant="default" className="bg-green-600">
-                            <UserCheck className="h-3 w-3 mr-1" />
-                            Approuvé
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex flex-wrap gap-1">
-                            {userItem.roles.length > 0 ? (
-                              userItem.roles.map((role) => (
-                                <Badge 
-                                  key={role} 
-                                  variant={roleBadgeVariants[role]}
+            {/* Pending Approvals */}
+            {pendingUsers.length > 0 && (
+              <Card className="border-orange-500/50">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-orange-600 dark:text-orange-400">
+                    <Clock className="h-5 w-5" />
+                    Inscriptions en attente ({pendingUsers.length})
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Utilisateur</TableHead>
+                          <TableHead>Inscrit le</TableHead>
+                          <TableHead className="text-right">Actions</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {pendingUsers.map((userItem) => (
+                          <TableRow key={userItem.id}>
+                            <TableCell>
+                              <div>
+                                <p className="font-medium">
+                                  {userItem.display_name || 'Sans nom'}
+                                </p>
+                                <p className="text-sm text-muted-foreground">
+                                  {userItem.email}
+                                </p>
+                              </div>
+                            </TableCell>
+                            <TableCell>
+                              {format(new Date(userItem.created_at), 'dd MMM yyyy à HH:mm', { locale: fr })}
+                            </TableCell>
+                            <TableCell className="text-right">
+                              <div className="flex justify-end gap-2">
+                                <Button
+                                  size="sm"
+                                  onClick={() => handleApproveUser(userItem.id)}
+                                  className="bg-green-600 hover:bg-green-700"
                                 >
-                                  {roleLabels[role]}
-                                </Badge>
-                              ))
-                            ) : (
-                              <span className="text-muted-foreground text-sm">
-                                Aucun rôle
-                              </span>
-                            )}
-                          </div>
-                        </TableCell>
-                        <TableCell>
-                          {format(new Date(userItem.created_at), 'dd MMM yyyy', { locale: fr })}
-                        </TableCell>
-                        <TableCell className="text-right">
-                          <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" size="icon">
-                                <MoreHorizontal className="h-4 w-4" />
-                              </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                              {userItem.id !== user?.id && (
-                                <DropdownMenuItem 
-                                  onClick={() => handleRejectUser(userItem.id)}
-                                  className="text-destructive"
-                                >
-                                  <UserX className="mr-2 h-4 w-4" />
-                                  Révoquer l'accès
-                                </DropdownMenuItem>
-                              )}
-                              {!userItem.roles.includes('admin') && (
-                                <DropdownMenuItem 
-                                  onClick={() => handleAddRole(userItem.id, 'admin')}
-                                >
-                                  <UserPlus className="mr-2 h-4 w-4" />
-                                  Promouvoir Admin
-                                </DropdownMenuItem>
-                              )}
-                              {userItem.roles.includes('admin') && userItem.id !== user?.id && (
-                                <DropdownMenuItem 
-                                  onClick={() => handleRemoveRole(userItem.id, 'admin')}
-                                  className="text-destructive"
-                                >
-                                  <UserMinus className="mr-2 h-4 w-4" />
-                                  Retirer Admin
-                                </DropdownMenuItem>
-                              )}
-                              {!userItem.roles.includes('moderator') && (
-                                <DropdownMenuItem 
-                                  onClick={() => handleAddRole(userItem.id, 'moderator')}
-                                >
-                                  <UserPlus className="mr-2 h-4 w-4" />
-                                  Ajouter Modérateur
-                                </DropdownMenuItem>
-                              )}
-                              {userItem.roles.includes('moderator') && (
-                                <DropdownMenuItem 
-                                  onClick={() => handleRemoveRole(userItem.id, 'moderator')}
-                                  className="text-destructive"
-                                >
-                                  <UserMinus className="mr-2 h-4 w-4" />
-                                  Retirer Modérateur
-                                </DropdownMenuItem>
-                              )}
-                            </DropdownMenuContent>
-                          </DropdownMenu>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            ) : (
-              <div className="text-center py-8">
-                <Users className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
-                <p className="text-muted-foreground">
-                  Aucun utilisateur approuvé
-                </p>
-              </div>
+                                  <UserCheck className="h-4 w-4 mr-1" />
+                                  Approuver
+                                </Button>
+                              </div>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                </CardContent>
+              </Card>
             )}
-          </CardContent>
-        </Card>
+
+            {/* Approved Users Table */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Users className="h-5 w-5" />
+                  Utilisateurs approuvés
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {isLoadingUsers ? (
+                  <div className="flex items-center justify-center h-32">
+                    <Loader2 className="h-6 w-6 animate-spin text-primary" />
+                  </div>
+                ) : approvedUsers.length > 0 ? (
+                  <div className="overflow-x-auto">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Utilisateur</TableHead>
+                          <TableHead>Statut</TableHead>
+                          <TableHead>Rôles</TableHead>
+                          <TableHead>Inscrit le</TableHead>
+                          <TableHead className="text-right">Actions</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {approvedUsers.map((userItem) => (
+                          <TableRow key={userItem.id}>
+                            <TableCell>
+                              <div>
+                                <p className="font-medium">
+                                  {userItem.display_name || 'Sans nom'}
+                                </p>
+                                <p className="text-sm text-muted-foreground">
+                                  {userItem.email}
+                                </p>
+                              </div>
+                            </TableCell>
+                            <TableCell>
+                              <Badge variant="default" className="bg-green-600">
+                                <UserCheck className="h-3 w-3 mr-1" />
+                                Approuvé
+                              </Badge>
+                            </TableCell>
+                            <TableCell>
+                              <div className="flex flex-wrap gap-1">
+                                {userItem.roles.length > 0 ? (
+                                  userItem.roles.map((role) => (
+                                    <Badge 
+                                      key={role} 
+                                      variant={roleBadgeVariants[role]}
+                                    >
+                                      {roleLabels[role]}
+                                    </Badge>
+                                  ))
+                                ) : (
+                                  <span className="text-muted-foreground text-sm">
+                                    Aucun rôle
+                                  </span>
+                                )}
+                              </div>
+                            </TableCell>
+                            <TableCell>
+                              {format(new Date(userItem.created_at), 'dd MMM yyyy', { locale: fr })}
+                            </TableCell>
+                            <TableCell className="text-right">
+                              <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                  <Button variant="ghost" size="icon">
+                                    <MoreHorizontal className="h-4 w-4" />
+                                  </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end">
+                                  {userItem.id !== user?.id && (
+                                    <DropdownMenuItem 
+                                      onClick={() => handleRejectUser(userItem.id)}
+                                      className="text-destructive"
+                                    >
+                                      <UserX className="mr-2 h-4 w-4" />
+                                      Révoquer l'accès
+                                    </DropdownMenuItem>
+                                  )}
+                                  {!userItem.roles.includes('admin') && (
+                                    <DropdownMenuItem 
+                                      onClick={() => handleAddRole(userItem.id, 'admin')}
+                                    >
+                                      <UserPlus className="mr-2 h-4 w-4" />
+                                      Promouvoir Admin
+                                    </DropdownMenuItem>
+                                  )}
+                                  {userItem.roles.includes('admin') && userItem.id !== user?.id && (
+                                    <DropdownMenuItem 
+                                      onClick={() => handleRemoveRole(userItem.id, 'admin')}
+                                      className="text-destructive"
+                                    >
+                                      <UserMinus className="mr-2 h-4 w-4" />
+                                      Retirer Admin
+                                    </DropdownMenuItem>
+                                  )}
+                                  {!userItem.roles.includes('moderator') && (
+                                    <DropdownMenuItem 
+                                      onClick={() => handleAddRole(userItem.id, 'moderator')}
+                                    >
+                                      <UserPlus className="mr-2 h-4 w-4" />
+                                      Ajouter Modérateur
+                                    </DropdownMenuItem>
+                                  )}
+                                  {userItem.roles.includes('moderator') && (
+                                    <DropdownMenuItem 
+                                      onClick={() => handleRemoveRole(userItem.id, 'moderator')}
+                                      className="text-destructive"
+                                    >
+                                      <UserMinus className="mr-2 h-4 w-4" />
+                                      Retirer Modérateur
+                                    </DropdownMenuItem>
+                                  )}
+                                </DropdownMenuContent>
+                              </DropdownMenu>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                ) : (
+                  <div className="text-center py-8">
+                    <Users className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
+                    <p className="text-muted-foreground">
+                      Aucun utilisateur approuvé
+                    </p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="questions">
+            <QuestionsManager />
+          </TabsContent>
+        </Tabs>
       </main>
     </div>
   );

@@ -41,6 +41,57 @@ export type Database = {
         }
         Relationships: []
       }
+      questions: {
+        Row: {
+          correct_answer: string
+          created_at: string
+          difficulty: Database["public"]["Enums"]["question_difficulty"]
+          explanation: string
+          id: string
+          module_id: string
+          option_a: string
+          option_b: string
+          option_c: string
+          option_d: string
+          reference: string
+          sub_module_id: string
+          text: string
+          updated_at: string
+        }
+        Insert: {
+          correct_answer: string
+          created_at?: string
+          difficulty?: Database["public"]["Enums"]["question_difficulty"]
+          explanation?: string
+          id: string
+          module_id: string
+          option_a: string
+          option_b: string
+          option_c: string
+          option_d: string
+          reference?: string
+          sub_module_id: string
+          text: string
+          updated_at?: string
+        }
+        Update: {
+          correct_answer?: string
+          created_at?: string
+          difficulty?: Database["public"]["Enums"]["question_difficulty"]
+          explanation?: string
+          id?: string
+          module_id?: string
+          option_a?: string
+          option_b?: string
+          option_c?: string
+          option_d?: string
+          reference?: string
+          sub_module_id?: string
+          text?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       quiz_results: {
         Row: {
           created_at: string
@@ -167,6 +218,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
+      question_difficulty: "facile" | "moyen" | "difficile"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -295,6 +347,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
+      question_difficulty: ["facile", "moyen", "difficile"],
     },
   },
 } as const
