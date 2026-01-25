@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   Select,
   SelectContent,
@@ -17,8 +18,9 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { modules } from '@/data/quizData';
-import { QuestionInput } from '@/hooks/useQuestions';
-import { Loader2 } from 'lucide-react';
+import { QuestionInput, AnswerLetter, parseCorrectAnswers, formatCorrectAnswers } from '@/hooks/useQuestions';
+import { Loader2, AlertCircle } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 interface QuestionFormProps {
   open: boolean;
@@ -29,7 +31,7 @@ interface QuestionFormProps {
 }
 
 const QuestionForm = ({ open, onOpenChange, onSubmit, initialData, isLoading }: QuestionFormProps) => {
-  const [formData, setFormData] = useState<QuestionInput>({
+  const [formData, setFormData] = useState<Omit<QuestionInput, 'correct_answer'> & { correct_answers: AnswerLetter[] }>({
     id: '',
     module_id: '',
     sub_module_id: '',
@@ -38,7 +40,7 @@ const QuestionForm = ({ open, onOpenChange, onSubmit, initialData, isLoading }: 
     option_b: '',
     option_c: '',
     option_d: '',
-    correct_answer: 'A',
+    correct_answers: ['A'],
     explanation: '',
     reference: '',
     difficulty: 'moyen',
@@ -46,7 +48,11 @@ const QuestionForm = ({ open, onOpenChange, onSubmit, initialData, isLoading }: 
 
   useEffect(() => {
     if (initialData) {
-      setFormData(initialData);
+      const correctAnswers = parseCorrectAnswers(initialData.correct_answer);
+      setFormData({
+        ...initialData,
+        correct_answers: correctAnswers,
+      });
     } else {
       setFormData({
         id: `q-${Date.now()}`,
@@ -57,7 +63,7 @@ const QuestionForm = ({ open, onOpenChange, onSubmit, initialData, isLoading }: 
         option_b: '',
         option_c: '',
         option_d: '',
-        correct_answer: 'A',
+        correct_answers: ['A'],
         explanation: '',
         reference: '',
         difficulty: 'moyen',
@@ -68,10 +74,38 @@ const QuestionForm = ({ open, onOpenChange, onSubmit, initialData, isLoading }: 
   const selectedModule = modules.find(m => m.id === formData.module_id);
   const subModules = selectedModule?.subModules || [];
 
+  const handleAnswerToggle = (letter: AnswerLetter) => {
+    setFormData(prev => {
+      const currentAnswers = prev.correct_answers;
+      const isSelected = currentAnswers.includes(letter);
+      
+      if (isSelected) {
+        // Don't allow removing if it's the only answer
+        if (currentAnswers.length === 1) return prev;
+        return { ...prev, correct_answers: currentAnswers.filter(a => a !== letter) };
+      } else {
+        // Max 2 answers allowed
+        if (currentAnswers.length >= 2) {
+          return { ...prev, correct_answers: [currentAnswers[1], letter] };
+        }
+        return { ...prev, correct_answers: [...currentAnswers, letter] };
+      }
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await onSubmit(formData);
+    
+    const { correct_answers, ...rest } = formData;
+    const questionInput: QuestionInput = {
+      ...rest,
+      correct_answer: formatCorrectAnswers(correct_answers),
+    };
+    
+    await onSubmit(questionInput);
   };
+
+  const isMultipleAnswers = formData.correct_answers.length > 1;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -142,86 +176,106 @@ const QuestionForm = ({ open, onOpenChange, onSubmit, initialData, isLoading }: 
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="option_a">Option A</Label>
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="check_a"
+                  checked={formData.correct_answers.includes('A')}
+                  onCheckedChange={() => handleAnswerToggle('A')}
+                />
+                <Label htmlFor="option_a" className="flex-1">Option A</Label>
+              </div>
               <Input
                 id="option_a"
                 value={formData.option_a}
                 onChange={(e) => setFormData(prev => ({ ...prev, option_a: e.target.value }))}
                 placeholder="Réponse A"
                 required
+                className={formData.correct_answers.includes('A') ? 'border-green-500 bg-green-500/10' : ''}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="option_b">Option B</Label>
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="check_b"
+                  checked={formData.correct_answers.includes('B')}
+                  onCheckedChange={() => handleAnswerToggle('B')}
+                />
+                <Label htmlFor="option_b" className="flex-1">Option B</Label>
+              </div>
               <Input
                 id="option_b"
                 value={formData.option_b}
                 onChange={(e) => setFormData(prev => ({ ...prev, option_b: e.target.value }))}
                 placeholder="Réponse B"
                 required
+                className={formData.correct_answers.includes('B') ? 'border-green-500 bg-green-500/10' : ''}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="option_c">Option C</Label>
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="check_c"
+                  checked={formData.correct_answers.includes('C')}
+                  onCheckedChange={() => handleAnswerToggle('C')}
+                />
+                <Label htmlFor="option_c" className="flex-1">Option C</Label>
+              </div>
               <Input
                 id="option_c"
                 value={formData.option_c}
                 onChange={(e) => setFormData(prev => ({ ...prev, option_c: e.target.value }))}
                 placeholder="Réponse C"
                 required
+                className={formData.correct_answers.includes('C') ? 'border-green-500 bg-green-500/10' : ''}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="option_d">Option D</Label>
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="check_d"
+                  checked={formData.correct_answers.includes('D')}
+                  onCheckedChange={() => handleAnswerToggle('D')}
+                />
+                <Label htmlFor="option_d" className="flex-1">Option D</Label>
+              </div>
               <Input
                 id="option_d"
                 value={formData.option_d}
                 onChange={(e) => setFormData(prev => ({ ...prev, option_d: e.target.value }))}
                 placeholder="Réponse D"
                 required
+                className={formData.correct_answers.includes('D') ? 'border-green-500 bg-green-500/10' : ''}
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="correct_answer">Bonne réponse</Label>
-              <Select
-                value={formData.correct_answer}
-                onValueChange={(value: 'A' | 'B' | 'C' | 'D') => 
-                  setFormData(prev => ({ ...prev, correct_answer: value }))
-                }
-              >
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="A">A</SelectItem>
-                  <SelectItem value="B">B</SelectItem>
-                  <SelectItem value="C">C</SelectItem>
-                  <SelectItem value="D">D</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+          {isMultipleAnswers && (
+            <Alert>
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>
+                Cette question a <strong>2 bonnes réponses</strong> : {formData.correct_answers.join(' et ')}.
+                L'utilisateur devra sélectionner les deux pour valider.
+              </AlertDescription>
+            </Alert>
+          )}
 
-            <div className="space-y-2">
-              <Label htmlFor="difficulty">Difficulté</Label>
-              <Select
-                value={formData.difficulty}
-                onValueChange={(value: 'facile' | 'moyen' | 'difficile') => 
-                  setFormData(prev => ({ ...prev, difficulty: value }))
-                }
-              >
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="facile">Facile</SelectItem>
-                  <SelectItem value="moyen">Moyen</SelectItem>
-                  <SelectItem value="difficile">Difficile</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+          <div className="space-y-2">
+            <Label htmlFor="difficulty">Difficulté</Label>
+            <Select
+              value={formData.difficulty}
+              onValueChange={(value: 'facile' | 'moyen' | 'difficile') => 
+                setFormData(prev => ({ ...prev, difficulty: value }))
+              }
+            >
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="facile">Facile</SelectItem>
+                <SelectItem value="moyen">Moyen</SelectItem>
+                <SelectItem value="difficile">Difficile</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">

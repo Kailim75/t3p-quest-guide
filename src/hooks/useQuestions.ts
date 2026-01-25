@@ -2,6 +2,8 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 
+export type AnswerLetter = 'A' | 'B' | 'C' | 'D';
+
 export interface DbQuestion {
   id: string;
   module_id: string;
@@ -11,7 +13,7 @@ export interface DbQuestion {
   option_b: string;
   option_c: string;
   option_d: string;
-  correct_answer: 'A' | 'B' | 'C' | 'D';
+  correct_answer: string; // Format: "A" ou "A,B" pour 2 réponses
   explanation: string;
   reference: string;
   difficulty: 'facile' | 'moyen' | 'difficile';
@@ -28,11 +30,21 @@ export interface QuestionInput {
   option_b: string;
   option_c: string;
   option_d: string;
-  correct_answer: 'A' | 'B' | 'C' | 'D';
+  correct_answer: string; // Format: "A" ou "A,B" pour 2 réponses
   explanation: string;
   reference: string;
   difficulty: 'facile' | 'moyen' | 'difficile';
 }
+
+// Helper pour parser les réponses correctes
+export const parseCorrectAnswers = (correctAnswer: string): AnswerLetter[] => {
+  return correctAnswer.split(',').map(a => a.trim()) as AnswerLetter[];
+};
+
+// Helper pour formater les réponses correctes
+export const formatCorrectAnswers = (answers: AnswerLetter[]): string => {
+  return answers.sort().join(',');
+};
 
 export const useQuestions = () => {
   const { user } = useAuth();

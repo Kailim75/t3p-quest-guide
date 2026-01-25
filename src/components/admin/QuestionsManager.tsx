@@ -35,9 +35,10 @@ import {
   Search, 
   HelpCircle,
   Loader2,
-  FileQuestion
+  FileQuestion,
+  CheckCheck
 } from 'lucide-react';
-import { useQuestions, QuestionInput, DbQuestion } from '@/hooks/useQuestions';
+import { useQuestions, QuestionInput, DbQuestion, parseCorrectAnswers } from '@/hooks/useQuestions';
 import { modules } from '@/data/quizData';
 import { useToast } from '@/hooks/use-toast';
 import QuestionForm from './QuestionForm';
@@ -231,9 +232,18 @@ const QuestionsManager = () => {
                       <span className="text-sm">{getModuleName(question.module_id)}</span>
                     </TableCell>
                     <TableCell>
-                      <Badge variant="outline" className="font-bold">
-                        {question.correct_answer}
-                      </Badge>
+                      {parseCorrectAnswers(question.correct_answer).length > 1 ? (
+                        <div className="flex items-center gap-1">
+                          <CheckCheck className="h-3 w-3 text-primary" />
+                          <Badge variant="outline" className="font-bold">
+                            {question.correct_answer.replace(',', ' + ')}
+                          </Badge>
+                        </div>
+                      ) : (
+                        <Badge variant="outline" className="font-bold">
+                          {question.correct_answer}
+                        </Badge>
+                      )}
                     </TableCell>
                     <TableCell>
                       <Badge className={difficultyColors[question.difficulty]}>
