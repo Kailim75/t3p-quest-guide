@@ -16,6 +16,7 @@ import Exam from "./pages/Exam";
 import Revision from "./pages/Revision";
 import Progress from "./pages/Progress";
 import Admin from "./pages/Admin";
+import LearnersProgress from "./pages/LearnersProgress";
 import ErrorRevision from "./pages/ErrorRevision";
 import Badges from "./pages/Badges";
 import Flashcards from "./pages/Flashcards";
@@ -44,6 +45,7 @@ const App = () => (
             <Route path="/revision" element={<ProtectedRoute><Revision /></ProtectedRoute>} />
             <Route path="/progress" element={<ProtectedRoute><Progress /></ProtectedRoute>} />
             <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+            <Route path="/admin/learners" element={<ProtectedRoute><LearnersProgress /></ProtectedRoute>} />
             <Route path="/revision-erreurs" element={<ProtectedRoute><ErrorRevision /></ProtectedRoute>} />
             <Route path="/badges" element={<ProtectedRoute><Badges /></ProtectedRoute>} />
             <Route path="/flashcards" element={<ProtectedRoute><Flashcards /></ProtectedRoute>} />
