@@ -3,6 +3,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useAdmin } from '@/hooks/useAdmin';
 import { useLearnersProgress, LearnerStats } from '@/hooks/useLearnersProgress';
 import Header from '@/components/Header';
+import LearnersCharts from '@/components/admin/LearnersCharts';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -43,7 +44,7 @@ const LearnersProgressPage = () => {
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
   const { isAdmin, isCheckingAdmin: adminLoading } = useAdmin();
-  const { learnersStats, globalStats, isLoading } = useLearnersProgress();
+  const { learnersStats, globalStats, allResults, profiles, isLoading } = useLearnersProgress();
   const [selectedLearner, setSelectedLearner] = useState<LearnerStats | null>(null);
 
   if (authLoading || adminLoading) {
@@ -176,6 +177,9 @@ const LearnersProgressPage = () => {
                 </CardContent>
               </Card>
             </div>
+
+            {/* Charts Section */}
+            <LearnersCharts allResults={allResults} profiles={profiles} />
 
             {/* Learners Table */}
             <Card>
