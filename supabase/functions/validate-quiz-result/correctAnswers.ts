@@ -118,6 +118,13 @@ export const correctAnswers: Record<string, string> = {
   'rel-026': 'A', 'rel-027': 'A', 'rel-028': 'A', 'rel-029': 'A', 'rel-030': 'A',
   'rel-031': 'A', 'rel-032': 'A', 'rel-033': 'A', 'rel-034': 'A', 'rel-035': 'A',
   'rel-036': 'A', 'rel-037': 'A', 'rel-038': 'A', 'rel-039': 'A', 'rel-040': 'A',
+  
+  // QUESTIONS À RÉPONSES MULTIPLES (format: 'A,B')
+  'multi-001': 'A,C', // VTC: carte professionnelle + inscription registre
+  'multi-002': 'A,C', // Sécurité: téléphone + alcool
+  'multi-003': 'A,D', // Gestion: TVA + déclaration revenus
+  'multi-004': 'A,C', // Relation client: saluer + aide bagages
+  'multi-005': 'A,C', // VTC: date/heure + lieu prise en charge
 };
 
 // Valid module/quiz IDs for validation
