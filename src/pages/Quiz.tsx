@@ -4,11 +4,11 @@ import { ArrowLeft, ArrowRight, X } from 'lucide-react';
 import Header from '@/components/Header';
 import QuizQuestion from '@/components/QuizQuestion';
 import QuizResults from '@/components/QuizResults';
-import { getModuleById, getQuestionsByModule, Question } from '@/data/quizData';
+import { getModuleById, getQuestionsByModule, Question, AnswerLetter } from '@/data/quizData';
 
 interface Answer {
   questionId: string;
-  answer: string;
+  answers: AnswerLetter[];
   isCorrect: boolean;
 }
 
@@ -57,10 +57,10 @@ const Quiz = () => {
 
   const currentQuestion = questions[currentIndex];
 
-  const handleAnswer = (answer: 'A' | 'B' | 'C' | 'D', isCorrect: boolean) => {
+  const handleAnswer = (selectedAnswers: AnswerLetter[], isCorrect: boolean) => {
     setAnswers(prev => [
       ...prev.filter(a => a.questionId !== currentQuestion.id),
-      { questionId: currentQuestion.id, answer, isCorrect }
+      { questionId: currentQuestion.id, answers: selectedAnswers, isCorrect }
     ]);
     setShowResult(true);
   };

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Trophy, Target, Clock, RotateCcw, Home, CheckCircle2, XCircle } from 'lucide-react';
-import { Question } from '@/data/quizData';
+import { Question, AnswerLetter, parseCorrectAnswers } from '@/data/quizData';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuizResults, QuizAnswer } from '@/hooks/useQuizResults';
 import { useBadges } from '@/hooks/useBadges';
@@ -10,7 +10,7 @@ import ScoreShareCard from './ScoreShareCard';
 
 interface QuizResultsProps {
   questions: Question[];
-  answers: { questionId: string; answer: string; isCorrect: boolean }[];
+  answers: { questionId: string; answers: AnswerLetter[]; isCorrect: boolean }[];
   moduleName: string;
   moduleId: string;
   timeTaken?: number;
@@ -45,10 +45,11 @@ const QuizResults = ({ questions, answers, moduleName, moduleId, timeTaken }: Qu
     if (user && !savedRef.current) {
       savedRef.current = true;
       
-      // Prepare answers for server validation (only questionId and answer letter)
+      // Prepare answers for server validation
+      // For now, send first answer for each question (server only supports single answer)
       const serverAnswers: QuizAnswer[] = answers.map(a => ({
         questionId: a.questionId,
-        answer: a.answer as 'A' | 'B' | 'C' | 'D',
+        answer: a.answers[0] as 'A' | 'B' | 'C' | 'D',
       }));
 
       saveResultSecure.mutate({
@@ -183,7 +184,10 @@ const QuizResults = ({ questions, answers, moduleName, moduleId, timeTaken }: Qu
                   </p>
                   {!isCorrect && (
                     <p className="mt-1 text-xs text-muted-foreground">
-                      Bonne réponse : {question.correctAnswer}. {question.options.find(o => o.letter === question.correctAnswer)?.text}
+                      Bonne réponse : {parseCorrectAnswers(question.correctAnswer).map(letter => {
+                        const opt = question.options.find(o => o.letter === letter);
+                        return `${letter}. ${opt?.text}`;
+                      }).join(' et ')}
                     </p>
                   )}
                 </div>

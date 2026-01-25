@@ -8,11 +8,11 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuizResults } from '@/hooks/useQuizResults';
-import { getQuestionsByIds, Question } from '@/data/quizData';
+import { getQuestionsByIds, Question, AnswerLetter } from '@/data/quizData';
 
 interface Answer {
   questionId: string;
-  answer: string;
+  answers: AnswerLetter[];
   isCorrect: boolean;
 }
 
@@ -101,10 +101,10 @@ const ErrorRevision = () => {
 
   const currentQuestion = questions[currentIndex];
 
-  const handleAnswer = (answer: 'A' | 'B' | 'C' | 'D', isCorrect: boolean) => {
+  const handleAnswer = (selectedAnswers: AnswerLetter[], isCorrect: boolean) => {
     setAnswers(prev => [
       ...prev.filter(a => a.questionId !== currentQuestion.id),
-      { questionId: currentQuestion.id, answer, isCorrect }
+      { questionId: currentQuestion.id, answers: selectedAnswers, isCorrect }
     ]);
     setShowResult(true);
   };
