@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { Check, X, AlertCircle, BookOpen, Lightbulb, GraduationCap } from 'lucide-react';
-import { Question, modules } from '@/data/quizData';
+import { useState, useEffect } from 'react';
+import { Check, X, AlertCircle, BookOpen, Lightbulb, GraduationCap, CheckSquare } from 'lucide-react';
+import { Question, modules, AnswerLetter, parseCorrectAnswers, isAnswerCorrect, hasMultipleAnswers } from '@/data/quizData';
 import { getQuestionExplanation, getDefaultModuleExplanation } from '@/data/questionExplanations';
 
 interface QuizQuestionProps {
   question: Question;
   questionNumber: number;
   totalQuestions: number;
-  onAnswer: (answer: 'A' | 'B' | 'C' | 'D', isCorrect: boolean) => void;
+  onAnswer: (answers: AnswerLetter[], isCorrect: boolean) => void;
   showResult: boolean;
 }
 
@@ -40,47 +40,85 @@ const QuizQuestion = ({
   onAnswer, 
   showResult 
 }: QuizQuestionProps) => {
-  const [selectedAnswer, setSelectedAnswer] = useState<'A' | 'B' | 'C' | 'D' | null>(null);
+  const [selectedAnswers, setSelectedAnswers] = useState<AnswerLetter[]>([]);
+  const isMultiAnswer = hasMultipleAnswers(question.correctAnswer);
+  const correctAnswers = parseCorrectAnswers(question.correctAnswer);
+  const requiredAnswerCount = correctAnswers.length;
 
-  const handleSelect = (letter: 'A' | 'B' | 'C' | 'D') => {
+  // Reset selected answers when question changes
+  useEffect(() => {
+    if (!showResult) {
+      setSelectedAnswers([]);
+    }
+  }, [question.id, showResult]);
+
+  const handleSelect = (letter: AnswerLetter) => {
     if (showResult) return;
-    setSelectedAnswer(letter);
-    onAnswer(letter, letter === question.correctAnswer);
+
+    if (isMultiAnswer) {
+      // Multi-answer mode: toggle selection
+      setSelectedAnswers(prev => {
+        const newSelection = prev.includes(letter)
+          ? prev.filter(a => a !== letter)
+          : [...prev, letter];
+        
+        // Auto-validate when correct number of answers selected
+        if (newSelection.length === requiredAnswerCount) {
+          const correct = isAnswerCorrect(newSelection, question.correctAnswer);
+          // Delay to allow UI update
+          setTimeout(() => onAnswer(newSelection, correct), 100);
+        }
+        return newSelection;
+      });
+    } else {
+      // Single answer mode: immediate validation
+      setSelectedAnswers([letter]);
+      onAnswer([letter], correctAnswers.includes(letter));
+    }
   };
 
-  const getOptionClass = (letter: 'A' | 'B' | 'C' | 'D') => {
+  const getOptionClass = (letter: AnswerLetter) => {
+    const isSelected = selectedAnswers.includes(letter);
+    const isCorrectAnswer = correctAnswers.includes(letter);
+    
     if (!showResult) {
-      return selectedAnswer === letter ? 'quiz-option-selected' : '';
+      return isSelected ? 'quiz-option-selected' : '';
     }
     
-    if (letter === question.correctAnswer) {
+    if (isCorrectAnswer) {
       return 'quiz-option-correct';
     }
     
-    if (selectedAnswer === letter && letter !== question.correctAnswer) {
+    if (isSelected && !isCorrectAnswer) {
       return 'quiz-option-incorrect';
     }
     
     return 'opacity-50';
   };
 
-  const getOptionIcon = (letter: 'A' | 'B' | 'C' | 'D') => {
+  const getOptionIcon = (letter: AnswerLetter) => {
+    const isSelected = selectedAnswers.includes(letter);
+    const isCorrectAnswer = correctAnswers.includes(letter);
+    
     if (!showResult) return null;
     
-    if (letter === question.correctAnswer) {
+    if (isCorrectAnswer) {
       return <Check className="h-5 w-5 text-success" />;
     }
     
-    if (selectedAnswer === letter && letter !== question.correctAnswer) {
+    if (isSelected && !isCorrectAnswer) {
       return <X className="h-5 w-5 text-destructive" />;
     }
     
     return null;
   };
 
-  const isCorrect = selectedAnswer === question.correctAnswer;
+  const userIsCorrect = isAnswerCorrect(selectedAnswers, question.correctAnswer);
   const courseInfo = getCourseExplanation(question);
-  const correctOption = question.options.find(opt => opt.letter === question.correctAnswer);
+  const correctOptionTexts = question.options
+    .filter(opt => correctAnswers.includes(opt.letter))
+    .map(opt => `${opt.letter}. ${opt.text}`)
+    .join(' et ');
 
   return (
     <div className="animate-fade-in">
@@ -113,6 +151,19 @@ const QuizQuestion = ({
           </h2>
         </div>
         
+        {/* Multi-answer indicator */}
+        {isMultiAnswer && !showResult && (
+          <div className="flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm text-primary mb-4">
+            <CheckSquare className="h-4 w-4" />
+            <span className="font-medium">
+              Sélectionnez {requiredAnswerCount} réponses 
+              {selectedAnswers.length > 0 && (
+                <span className="ml-1">({selectedAnswers.length}/{requiredAnswerCount} sélectionnées)</span>
+              )}
+            </span>
+          </div>
+        )}
+        
         {question.text.startsWith('[EXEMPLE]') && (
           <div className="flex items-center gap-2 rounded-lg bg-warning/10 px-4 py-2 text-sm text-warning">
             <AlertCircle className="h-4 w-4" />
@@ -131,11 +182,11 @@ const QuizQuestion = ({
             className={`quiz-option w-full text-left ${getOptionClass(option.letter)}`}
           >
             <span className={`option-letter ${
-              showResult && option.letter === question.correctAnswer
+              showResult && correctAnswers.includes(option.letter)
                 ? 'bg-success text-success-foreground'
-                : showResult && selectedAnswer === option.letter && option.letter !== question.correctAnswer
+                : showResult && selectedAnswers.includes(option.letter) && !correctAnswers.includes(option.letter)
                   ? 'bg-destructive text-destructive-foreground'
-                  : selectedAnswer === option.letter
+                  : selectedAnswers.includes(option.letter)
                     ? 'bg-accent text-accent-foreground'
                     : ''
             }`}>
@@ -152,12 +203,12 @@ const QuizQuestion = ({
         <div className="mt-6 space-y-4 animate-slide-up">
           {/* Résultat immédiat */}
           <div className={`rounded-xl border-2 p-4 ${
-            isCorrect 
+            userIsCorrect 
               ? 'border-success/30 bg-success/10' 
               : 'border-destructive/30 bg-destructive/10'
           }`}>
             <div className="flex items-center gap-3 mb-2">
-              {isCorrect ? (
+              {userIsCorrect ? (
                 <>
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-success">
                     <Check className="h-5 w-5 text-success-foreground" />
@@ -175,7 +226,11 @@ const QuizQuestion = ({
                   <div>
                     <h4 className="font-bold text-destructive">Réponse incorrecte</h4>
                     <p className="text-sm text-muted-foreground">
-                      La bonne réponse était : <strong className="text-foreground">{question.correctAnswer}. {correctOption?.text}</strong>
+                      {isMultiAnswer ? (
+                        <>Les bonnes réponses étaient : <strong className="text-foreground">{correctOptionTexts}</strong></>
+                      ) : (
+                        <>La bonne réponse était : <strong className="text-foreground">{correctOptionTexts}</strong></>
+                      )}
                     </p>
                   </div>
                 </>

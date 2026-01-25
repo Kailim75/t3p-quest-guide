@@ -1,19 +1,39 @@
 // Questions officielles T3P conformes au référentiel
 
+export type AnswerLetter = 'A' | 'B' | 'C' | 'D';
+
 export interface Question {
   id: string;
   moduleId: string;
   subModuleId: string;
   text: string;
   options: {
-    letter: 'A' | 'B' | 'C' | 'D';
+    letter: AnswerLetter;
     text: string;
   }[];
-  correctAnswer: 'A' | 'B' | 'C' | 'D';
+  correctAnswer: string; // Format: "A" ou "A,B" pour 2 réponses
   explanation: string;
   reference: string;
   difficulty: 'facile' | 'moyen' | 'difficile';
 }
+
+// Helper pour parser les réponses correctes
+export const parseCorrectAnswers = (correctAnswer: string): AnswerLetter[] => {
+  return correctAnswer.split(',').map(a => a.trim()) as AnswerLetter[];
+};
+
+// Helper pour vérifier si la réponse est correcte
+export const isAnswerCorrect = (selectedAnswers: AnswerLetter[], correctAnswer: string): boolean => {
+  const correctAnswers = parseCorrectAnswers(correctAnswer);
+  if (selectedAnswers.length !== correctAnswers.length) return false;
+  return selectedAnswers.every(a => correctAnswers.includes(a)) && 
+         correctAnswers.every(a => selectedAnswers.includes(a));
+};
+
+// Helper pour savoir si une question a plusieurs réponses
+export const hasMultipleAnswers = (correctAnswer: string): boolean => {
+  return correctAnswer.includes(',');
+};
 
 export interface SubModule {
   id: string;
