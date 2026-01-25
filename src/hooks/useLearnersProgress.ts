@@ -52,7 +52,18 @@ export const useLearnersProgress = () => {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      return data;
+      return data as Array<{
+        id: string;
+        user_id: string;
+        quiz_type: string;
+        quiz_id: string;
+        score: number;
+        total_questions: number;
+        percentage: number;
+        passed: boolean;
+        time_spent: number | null;
+        created_at: string;
+      }>;
     },
     enabled: isAdmin,
   });
@@ -128,6 +139,8 @@ export const useLearnersProgress = () => {
   return {
     learnersStats,
     globalStats,
+    allResults: allResults ?? [],
+    profiles: profiles ?? [],
     isLoading: profilesLoading || resultsLoading || streaksLoading || badgesLoading,
   };
 };
