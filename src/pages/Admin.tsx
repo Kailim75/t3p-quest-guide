@@ -33,7 +33,8 @@ import {
   UserCheck,
   UserX,
   Clock,
-  FileQuestion
+  FileQuestion,
+  BarChart3
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -200,6 +201,14 @@ const AdminPage = () => {
               Gérez les utilisateurs, rôles et questions
             </p>
           </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex gap-3 mb-6">
+          <Button onClick={() => navigate('/admin/learners')} variant="outline">
+            <BarChart3 className="h-4 w-4 mr-2" />
+            Suivi des apprenants
+          </Button>
         </div>
 
         {/* Tabs */}
