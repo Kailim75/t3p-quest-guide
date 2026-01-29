@@ -1818,53 +1818,65 @@ export const getQuestionExplanation = (questionId: string): QuestionExplanation 
 export const getDefaultModuleExplanation = (moduleId: string): QuestionExplanation => {
   const defaults: Record<string, QuestionExplanation> = {
     'gestion': {
-      content: "La gestion d'une entreprise de transport nécessite une bonne maîtrise des obligations comptables, fiscales et sociales. Connaître les différents statuts juridiques et leurs implications est essentiel.",
-      tip: "Retenez les différences entre entreprise individuelle et société : responsabilité, fiscalité, formalités."
+      content: "La gestion d'une entreprise de transport nécessite une bonne maîtrise des obligations comptables, fiscales et sociales. Connaître les différents statuts juridiques et leurs implications est essentiel pour optimiser sa fiscalité et protéger son patrimoine.",
+      tip: "Retenez les différences entre entreprise individuelle et société : responsabilité, fiscalité, formalités. EI = simplicité, SARL/SAS = protection.",
+      legalRef: "Code de commerce L123-1 à L123-22 | CGI Art. 39"
     },
     'securite': {
-      content: "La sécurité routière repose sur le respect du Code de la route, une conduite préventive et la maîtrise des facteurs de risque. L'anticipation est la clé d'une conduite sûre.",
-      tip: "Distance d'arrêt = temps de réaction + distance de freinage. Elle quadruple quand la vitesse double."
+      content: "La sécurité routière repose sur le respect du Code de la route, une conduite préventive et la maîtrise des facteurs de risque (vitesse, alcool, fatigue, téléphone). L'anticipation est la clé d'une conduite sûre.",
+      tip: "Distance d'arrêt = temps de réaction + distance de freinage. Elle quadruple quand la vitesse double. 2 sec de distance de sécurité minimum.",
+      legalRef: "Code de la route R412-1 à R418-9"
     },
     'francais': {
-      content: "La maîtrise du français professionnel est essentielle pour communiquer efficacement avec les clients et rédiger des documents administratifs corrects.",
-      tip: "Relisez toujours vos écrits avant envoi. Les fautes d'orthographe nuisent à l'image professionnelle."
+      content: "La maîtrise du français professionnel est essentielle pour communiquer efficacement avec les clients et rédiger des documents administratifs corrects. L'orthographe et la syntaxe reflètent votre professionnalisme.",
+      tip: "Relisez toujours vos écrits avant envoi. Les fautes d'orthographe nuisent à l'image professionnelle. Niveau courant à soutenu avec les clients.",
+      legalRef: "Compétences linguistiques professionnelles"
     },
     'anglais': {
-      content: "L'anglais de base est indispensable pour accueillir une clientèle internationale. Les formules de politesse et le vocabulaire du transport sont prioritaires.",
-      tip: "Apprenez les phrases clés : accueil, destination, tarif, remerciements. La prononciation compte autant que le vocabulaire."
+      content: "L'anglais de base est indispensable pour accueillir une clientèle internationale, notamment près des aéroports et sites touristiques. Les formules de politesse et le vocabulaire du transport sont prioritaires.",
+      tip: "Apprenez les phrases clés : accueil (Hello, welcome), destination (Where to?), tarif (The fare is...), remerciements (Thank you, have a nice day).",
+      legalRef: "Module 5 – Anglais (Référentiel T3P)"
     },
     'vtc': {
-      content: "La réglementation VTC impose des conditions strictes : carte professionnelle, inscription au registre, réservation préalable obligatoire, véhicule conforme.",
-      tip: "Réservation préalable = obligatoire. Maraude = interdite. C'est LA différence fondamentale avec les taxis."
+      content: "La réglementation VTC impose des conditions strictes d'accès et d'exercice : carte professionnelle délivrée par le préfet, inscription au registre VTC, réservation préalable obligatoire avant toute prise en charge, véhicule conforme aux normes.",
+      tip: "Réservation préalable = OBLIGATOIRE avant chaque course. Maraude = INTERDITE aux VTC. Retour à la base entre deux courses (sauf nouvelle réservation).",
+      legalRef: "Code des transports L3120-1 à L3122-9 | R3120-1 à R3122-11"
     },
     'relation-client': {
-      content: "La qualité de service est le premier facteur de fidélisation. Accueil, ponctualité, conduite souple, discrétion et adaptabilité font la différence.",
-      tip: "Un client satisfait en parle à 3 personnes, un mécontent à 10. Chaque course est une opportunité de se démarquer."
+      content: "La qualité de service est le premier facteur de fidélisation et de différenciation. Accueil chaleureux, ponctualité, conduite souple, discrétion, propreté du véhicule et adaptabilité font la différence face à la concurrence.",
+      tip: "Un client satisfait en parle à 3 personnes, un mécontent à 10. Première impression en 7 secondes. Chaque course est une opportunité de se démarquer.",
+      legalRef: "Qualité de service – Référentiel formation T3P"
     },
     'taxi': {
-      content: "Les taxis bénéficient du droit de maraude et doivent posséder une licence (autorisation de stationnement) délivrée par le maire ou le préfet.",
-      tip: "Licence taxi = attachée à une commune. Compteur horokilométrique = obligatoire. Tarifs = réglementés."
+      content: "Les taxis bénéficient du droit exclusif de maraude (prise en charge sur la voie publique ou en station) et doivent posséder une licence (autorisation de stationnement - ADS) délivrée par le maire ou le préfet selon la zone.",
+      tip: "Licence taxi (ADS) = attachée à une commune/zone. Taximètre horokilométrique = obligatoire et vérifié annuellement. Tarifs = réglementés par arrêté préfectoral.",
+      legalRef: "Code des transports L3121-1 à L3121-11 | R3121-1 à R3121-36"
     },
     'reglementation': {
-      content: "La réglementation T3P encadre l'accès à la profession, les conditions d'exercice et les obligations des conducteurs de transport public particulier de personnes.",
-      tip: "Carte professionnelle = obligatoire pour tous (taxi, VTC, VMDTR). Examen T3P = porte d'entrée dans la profession."
+      content: "La réglementation T3P (Transport Public Particulier de Personnes) encadre strictement l'accès à la profession, les conditions d'exercice et les obligations des conducteurs. La carte professionnelle est obligatoire pour tous.",
+      tip: "Carte professionnelle = obligatoire pour taxi, VTC et VMDTR. Validité 5 ans. Conditions : permis B >3 ans, aptitude médicale, honorabilité, examen T3P réussi.",
+      legalRef: "Code des transports L3120-1 à L3120-6 | Loi Grandguillaume 2016"
     },
     'taxi-75': {
-      content: "La réglementation Taxi Paris 75 couvre les spécificités des taxis parisiens : tarification préfectorale, taximètre, paiement CB obligatoire, zones de prise en charge et sanctions applicables.",
-      tip: "Préfet = tarifs. Taximètre = obligatoire avec lettre de couleur. CB = tout montant. Licence = transmissible sous conditions."
+      content: "La réglementation Taxi Paris 75 couvre les spécificités des taxis parisiens : tarification fixée par le Préfet de Police, taximètre lumineux obligatoire (lettre A/B/C/D), paiement CB dès le 1er euro, zones de prise en charge définies.",
+      tip: "Paris 75 = Préfet de Police. Taximètre avec voyant lumineux (A=jour, B=nuit, C=banlieue jour, D=banlieue nuit). Forfaits aéroports réglementés. CB = obligatoire.",
+      legalRef: "Arrêtés préfectoraux Paris | Code des transports R3121-1"
     },
     'vmdtr': {
-      content: "Les VMDTR (Véhicules Motorisés à Deux ou Trois Roues) ont une réglementation spécifique concernant les équipements de sécurité et les conditions de transport.",
-      tip: "Casque et gants homologués = obligatoires pour conducteur ET passager. Équipements spécifiques selon le type de véhicule."
+      content: "Les VMDTR (Véhicules Motorisés à Deux ou Trois Roues) ont une réglementation spécifique : équipements de sécurité obligatoires pour conducteur et passager, conditions de transport adaptées, assurance spécifique.",
+      tip: "Casque homologué CE et gants certifiés = obligatoires pour conducteur ET passager. Gilet rétro-réfléchissant obligatoire de nuit/visibilité insuffisante.",
+      legalRef: "Code des transports L3123-1 à L3123-2 | Code de la route R431-1"
     },
     'topographie-paris': {
-      content: "La topographie parisienne comprend la connaissance des monuments, gares, hôpitaux et axes de circulation. Maîtriser ces repères est essentiel pour un chauffeur professionnel.",
-      tip: "Organisez Paris par arrondissements : 1-4 (centre), 5-7 (rive gauche), 8-9 (affaires), 10-12 (gares), 13-15 (sud), 16-17 (ouest), 18-20 (nord-est)."
+      content: "La topographie parisienne comprend la connaissance des monuments emblématiques, gares (6 gares SNCF principales), hôpitaux majeurs et axes de circulation stratégiques. Maîtriser ces repères est essentiel pour optimiser les trajets.",
+      tip: "Organisez Paris par arrondissements en spirale : 1-4 (centre historique), 5-7 (rive gauche), 8-9 (affaires/Opéra), 10-12 (gares Est/Lyon), 13-15 (sud), 16-17 (ouest résidentiel), 18-20 (nord-est populaire).",
+      legalRef: "Connaissance territoriale – Référentiel Taxi Paris"
     }
   };
 
   return defaults[moduleId] || {
-    content: "Cette question porte sur un point important du référentiel officiel T3P. Consultez les textes de référence pour approfondir.",
-    tip: "Relisez attentivement la question et toutes les propositions avant de répondre."
+    content: "Cette question porte sur un point important du référentiel officiel T3P (Transport Public Particulier de Personnes). Consultez les textes de référence du Code des transports pour approfondir.",
+    tip: "Relisez attentivement la question et toutes les propositions avant de répondre. Éliminez d'abord les réponses manifestement fausses.",
+    legalRef: "Code des transports – Livre I Titre II"
   };
 };
