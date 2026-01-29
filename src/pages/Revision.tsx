@@ -1,18 +1,35 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, BookOpen, ChevronRight, Lightbulb, FileText, GraduationCap } from 'lucide-react';
+import { ArrowLeft, BookOpen, ChevronRight, Lightbulb, GraduationCap } from 'lucide-react';
 import Header from '@/components/Header';
-import { getAllRevisionModules, RevisionModule, RevisionCard } from '@/data/revisionData';
+import { getAllRevisionModules, RevisionModule } from '@/data/revisionData';
+import RevisionCardContent from '@/components/revision/RevisionCardContent';
+import ModuleHeader from '@/components/revision/ModuleHeader';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Badge } from '@/components/ui/badge';
 
 const Revision = () => {
   const [selectedModule, setSelectedModule] = useState<RevisionModule | null>(null);
   const modules = getAllRevisionModules();
+
+  const domainColors = {
+    commun: 'bg-primary/10 text-primary',
+    taxi: 'bg-yellow-500/10 text-yellow-600',
+    vtc: 'bg-blue-500/10 text-blue-600',
+    vmdtr: 'bg-green-500/10 text-green-600'
+  };
+
+  const domainLabels = {
+    commun: 'Tronc commun',
+    taxi: 'Taxi',
+    vtc: 'VTC',
+    vmdtr: 'VMDTR'
+  };
 
   if (selectedModule) {
     return (
@@ -30,22 +47,7 @@ const Revision = () => {
           </button>
 
           {/* Module Header */}
-          <div className="rounded-2xl border bg-card p-6 sm:p-8 mb-8">
-            <div className="flex items-start gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-2xl">
-                {selectedModule.moduleIcon}
-              </div>
-              
-              <div className="flex-1">
-                <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
-                  {selectedModule.moduleName}
-                </h1>
-                <p className="text-muted-foreground">
-                  {selectedModule.introduction}
-                </p>
-              </div>
-            </div>
-          </div>
+          <ModuleHeader module={selectedModule} />
 
           {/* Fiches de cours */}
           <Accordion type="single" collapsible className="space-y-4">
@@ -114,12 +116,11 @@ const Revision = () => {
           </div>
           
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Fiches de cours théoriques
+            Fiches de cours optimisées
           </h1>
           
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Révisez les points clés de chaque module sans QCM. 
-            Idéal pour mémoriser la théorie avant de vous tester.
+            Révisez efficacement avec des fiches structurées : l'essentiel, exemples terrain et pièges à éviter.
           </p>
         </div>
 
@@ -135,19 +136,26 @@ const Revision = () => {
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-2xl group-hover:bg-primary/10 transition-colors">
                   {module.moduleIcon}
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {module.moduleName}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {module.cards.length} fiches
-                  </p>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors truncate">
+                      {module.moduleName}
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="secondary" className={`${domainColors[module.domain]} text-xs`}>
+                      {domainLabels[module.domain]}
+                    </Badge>
+                    <span className="text-xs text-muted-foreground">
+                      {module.cards.length} fiches
+                    </span>
+                  </div>
                 </div>
-                <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
               </div>
               
               <p className="text-sm text-muted-foreground line-clamp-2">
-                {module.introduction}
+                {module.examObjective}
               </p>
             </button>
           ))}
@@ -160,67 +168,11 @@ const Revision = () => {
             <span className="font-semibold">Conseil de révision</span>
           </div>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Alternez entre la lecture des fiches et les quiz pour une mémorisation optimale. 
-            Relisez les fiches après chaque erreur en quiz.
+            Chaque fiche contient l'essentiel à retenir, un exemple concret et les pièges à éviter. 
+            Alternez fiches et quiz pour une mémorisation optimale.
           </p>
         </div>
       </main>
-    </div>
-  );
-};
-
-// Composant pour afficher le contenu d'une fiche
-const RevisionCardContent = ({ card }: { card: RevisionCard }) => {
-  return (
-    <div className="space-y-6">
-      {/* Points clés */}
-      <div>
-        <div className="flex items-center gap-2 mb-3">
-          <BookOpen className="h-4 w-4 text-primary" />
-          <h4 className="font-semibold text-foreground">Points clés</h4>
-        </div>
-        <ul className="space-y-2">
-          {card.keyPoints.map((point, idx) => (
-            <li key={idx} className="flex items-start gap-3 text-sm text-muted-foreground">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-medium text-primary mt-0.5">
-                {idx + 1}
-              </span>
-              <span>{point}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Astuces */}
-      {card.tips.length > 0 && (
-        <div className="rounded-lg bg-warning/10 p-4">
-          <div className="flex items-center gap-2 mb-3">
-            <Lightbulb className="h-4 w-4 text-warning" />
-            <h4 className="font-semibold text-foreground">À retenir</h4>
-          </div>
-          <ul className="space-y-2">
-            {card.tips.map((tip, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-sm">
-                <span className="text-warning">💡</span>
-                <span className="text-foreground">{tip}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {/* Références légales */}
-      {card.legalRefs.length > 0 && (
-        <div className="flex flex-wrap items-center gap-2 pt-2 border-t">
-          <FileText className="h-4 w-4 text-muted-foreground" />
-          <span className="text-xs text-muted-foreground">Références :</span>
-          {card.legalRefs.map((ref, idx) => (
-            <span key={idx} className="text-xs rounded bg-muted px-2 py-1">
-              {ref}
-            </span>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

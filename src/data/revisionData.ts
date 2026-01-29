@@ -1,11 +1,25 @@
-// Fiches de cours théoriques pour le mode révision T3P
-// Contenu conforme au référentiel officiel de l'examen T3P
+// ============================================
+// FICHES DE COURS T3P - TEMPLATE PÉDAGOGIQUE EXPERT
+// Structure optimisée mobile-first, mémorisation rapide
+// Conformité référentiel officiel T3P 2026
+// ============================================
 
 export interface RevisionCard {
   id: string;
   title: string;
+  // ⭐ L'essentiel à retenir (1 phrase max - message clé examen)
+  essential: string;
+  // 📌 Points importants (3-5 points, 1 idée = 1 ligne)
   keyPoints: string[];
+  // 🚕 Exemple terrain (situation réelle courte)
+  fieldExample?: string;
+  // ⚠️ Attention à l'examen (piège fréquent)
+  examWarning?: string;
+  // 🧠 À ne pas confondre (Taxi/VTC/VMDTR)
+  confusionPoints?: string[];
+  // 💡 Astuces mémorisation
   tips: string[];
+  // ⚖️ Références légales
   legalRefs: string[];
 }
 
@@ -13,486 +27,457 @@ export interface RevisionModule {
   moduleId: string;
   moduleName: string;
   moduleIcon: string;
+  // Domaine concerné
+  domain: 'commun' | 'taxi' | 'vtc' | 'vmdtr';
+  // Objectif examen (1 phrase)
+  examObjective: string;
   introduction: string;
   cards: RevisionCard[];
 }
 
 export const revisionModules: RevisionModule[] = [
-  // =====================
-  // GESTION & COMPTABILITÉ
-  // =====================
+  // =====================================================
+  // MODULE 1 : GESTION & COMPTABILITÉ
+  // =====================================================
   {
     moduleId: 'gestion',
     moduleName: 'Gestion & Comptabilité',
     moduleIcon: '📊',
-    introduction: "La gestion d'une activité de transport nécessite des compétences en comptabilité, fiscalité et droit des sociétés. Ce module couvre les fondamentaux pour créer et gérer votre entreprise de transport.",
+    domain: 'commun',
+    examObjective: 'Maîtriser les bases comptables et fiscales pour créer et gérer une entreprise de transport.',
+    introduction: "Fondamentaux de la création d'entreprise, comptabilité et fiscalité pour conducteurs T3P.",
     cards: [
       {
         id: 'ges-formes-juridiques',
-        title: 'Formes juridiques d\'entreprise',
+        title: 'Formes juridiques',
+        essential: "Le choix de la forme juridique impacte la responsabilité, les cotisations et la fiscalité.",
         keyPoints: [
-          "Entreprise individuelle (EI) : pas de capital minimum, responsabilité limitée au patrimoine professionnel depuis la loi du 14 février 2022",
-          "EURL : société unipersonnelle à responsabilité limitée, capital libre, gérant unique = TNS si majoritaire",
-          "SARL : 2 à 100 associés, capital divisé en parts sociales, cession contrôlée",
-          "SASU : société par actions simplifiée unipersonnelle, capital libre en actions, président = assimilé salarié",
-          "SAS : 2 associés minimum, grande liberté statutaire, actions librement cessibles",
-          "Immatriculation obligatoire au Répertoire des Métiers (RM) pour les activités artisanales (VTC = artisanat)",
-          "Code APE transport : 49.32Z (transport de voyageurs par taxis)"
+          "EI : pas de capital, responsabilité limitée au patrimoine pro (loi 2022)",
+          "EURL/SARL : capital libre, gérant = TNS si majoritaire (~45% cotisations)",
+          "SASU/SAS : président = assimilé salarié (~80% cotisations, régime général)",
+          "VTC = artisanat → inscription au Répertoire des Métiers obligatoire"
+        ],
+        fieldExample: "Un VTC choisit la SASU : il cotise plus mais bénéficie du régime général Sécu comme un salarié.",
+        examWarning: "Ne pas confondre TNS (gérant majoritaire SARL) et assimilé salarié (président SAS).",
+        confusionPoints: [
+          "TNS = Travailleur Non Salarié (SARL/EURL) ≠ Assimilé salarié (SAS/SASU)",
+          "EI ≠ Auto-entrepreneur (l'EI est la forme, le micro est le régime fiscal)"
         ],
         tips: [
-          "Gérant majoritaire SARL/EURL = TNS : cotisations ~45% mais protection sociale moindre",
-          "Président SAS/SASU = assimilé salarié : cotisations ~80% mais régime général Sécurité sociale",
-          "L'EI est la forme la plus simple mais attention aux implications fiscales"
+          "Gérant majoritaire = TNS = moins de cotisations mais protection moindre",
+          "Code APE transport de voyageurs : 49.32Z"
         ],
-        legalRefs: ["Code de commerce Art. L123-1", "Loi n°2022-172 du 14 février 2022", "Code de l'artisanat"]
+        legalRefs: ["Code de commerce Art. L123-1", "Loi n°2022-172 du 14 février 2022"]
       },
       {
         id: 'ges-creation-entreprise',
         title: 'Création d\'entreprise',
+        essential: "Immatriculation au RCS/RM = existence légale. Sans elle, c'est du travail dissimulé.",
         keyPoints: [
-          "Annonce légale obligatoire pour les sociétés (SARL, SAS, SA) mais pas pour l'EI",
-          "Immatriculation au RCS (commerce) ou RM (artisanat) selon l'activité",
-          "Numéro SIREN (9 chiffres) = identifie l'entreprise / SIRET (14 chiffres) = identifie l'établissement",
-          "Durée de vie d'une société : 99 ans maximum, prorogeable",
-          "Centre de Formalités des Entreprises (CFE) : guichet unique pour les démarches",
-          "Statuts obligatoires pour les sociétés : objet social, siège, capital, gérance",
-          "Déclaration de non-condamnation et de filiation obligatoire pour le dirigeant"
+          "SIREN (9 chiffres) = entreprise / SIRET (14 chiffres) = établissement",
+          "Annonce légale obligatoire pour sociétés (pas pour EI)",
+          "Durée max d'une société : 99 ans prorogeable",
+          "Compte bancaire professionnel obligatoire pour les sociétés"
         ],
+        fieldExample: "Un chauffeur VTC reçoit son Kbis après 1 semaine : il peut désormais exercer légalement.",
+        examWarning: "Confondre SIREN et SIRET = erreur fréquente à l'examen.",
         tips: [
-          "Pas d'immatriculation = pas d'existence légale = travail dissimulé",
-          "Délai d'immatriculation : environ 1 semaine après dépôt complet",
-          "Penser à ouvrir un compte bancaire professionnel (obligatoire pour les sociétés)"
+          "SIREN = 9 chiffres (entreprise)",
+          "SIRET = SIREN + 5 chiffres (établissement)"
         ],
-        legalRefs: ["Articles L232-22 et L238-3 du Code de commerce", "Décret n°96-650 du 19 juillet 1996"]
+        legalRefs: ["Articles L232-22 et L238-3 du Code de commerce"]
       },
       {
         id: 'ges-comptabilite',
-        title: 'Documents comptables obligatoires',
+        title: 'Documents comptables',
+        essential: "Bilan = patrimoine à un instant T / Compte de résultat = activité sur l'exercice.",
         keyPoints: [
-          "Bilan : photographie du patrimoine à un instant T (Actif = Passif toujours)",
-          "Actif = emplois (immobilisations, stocks, créances, trésorerie)",
-          "Passif = ressources (capitaux propres + dettes fournisseurs/bancaires)",
-          "Compte de résultat : film de l'activité sur l'exercice (Produits - Charges = Résultat)",
-          "Annexe : complément d'information sur les comptes",
-          "Livre-journal : enregistrement chronologique des opérations",
-          "Grand livre : regroupement par compte comptable",
-          "Conservation obligatoire : 10 ans pour les documents comptables, 6 ans pour les documents fiscaux"
+          "Bilan : Actif (emplois) = Passif (ressources) → toujours équilibré",
+          "Résultat = Produits - Charges (positif = bénéfice)",
+          "Conservation : 10 ans docs comptables, 6 ans docs fiscaux",
+          "Micro-entrepreneur : obligations allégées (livre des recettes)"
         ],
+        fieldExample: "Fin d'année, le comptable établit le bilan : le taxi a 15 000€ d'actif et 10 000€ de dettes.",
+        examWarning: "Le bilan n'est pas le résultat ! Bilan = photo du patrimoine, Résultat = film de l'activité.",
         tips: [
-          "Résultat positif = bénéfice, Résultat négatif = déficit (perte)",
-          "Les micro-entrepreneurs ont des obligations comptables allégées (livre des recettes)",
-          "Un expert-comptable n'est pas obligatoire mais fortement conseillé"
+          "Bilan = photo instantanée",
+          "Compte de résultat = film de l'année"
         ],
-        legalRefs: ["Article L123-12 du Code de commerce", "Article L123-22 (conservation)", "Plan Comptable Général"]
+        legalRefs: ["Article L123-12 du Code de commerce", "Article L123-22 (conservation)"]
       },
       {
         id: 'ges-soldes-gestion',
-        title: 'Soldes intermédiaires de gestion',
+        title: 'Soldes de gestion',
+        essential: "L'EBE mesure la performance économique pure avant financement et amortissement.",
         keyPoints: [
-          "Chiffre d'affaires (CA) = total des ventes de prestations HT",
-          "Valeur ajoutée = CA - consommations intermédiaires (mesure la richesse créée)",
-          "EBE (Excédent Brut d'Exploitation) = VA - charges de personnel - impôts",
-          "Résultat d'exploitation = EBE - amortissements - provisions",
-          "Résultat financier = produits financiers - charges financières",
-          "Résultat exceptionnel = opérations hors activité normale",
-          "Résultat net = résultat d'exploitation + financier + exceptionnel - impôt sur les bénéfices",
-          "Seuil de rentabilité = niveau de CA à partir duquel l'entreprise devient bénéficiaire"
+          "CA = total des ventes HT",
+          "Valeur ajoutée = CA - consommations intermédiaires",
+          "EBE = VA - charges personnel - impôts",
+          "Seuil de rentabilité = CA minimum pour être bénéficiaire"
         ],
+        fieldExample: "Un VTC fait 60 000€ de CA avec 45 000€ de charges : son résultat net est de 15 000€.",
+        examWarning: "EBE positif ≠ résultat net positif (les charges financières peuvent créer un déficit).",
         tips: [
-          "L'EBE mesure la performance économique pure, avant financement et amortissement",
-          "Seuil de rentabilité = Charges fixes / Taux de marge sur coûts variables",
-          "Un EBE positif ne garantit pas un résultat net positif (attention aux charges financières)"
+          "Seuil de rentabilité = Charges fixes / Taux de marge"
         ],
-        legalRefs: ["Plan Comptable Général", "Analyse financière - SIG"]
+        legalRefs: ["Plan Comptable Général"]
       },
       {
         id: 'ges-fiscalite',
         title: 'Fiscalité et TVA',
+        essential: "TVA à décaisser = TVA collectée - TVA déductible. Transport = 20% (pas 10%).",
         keyPoints: [
-          "TVA = Taxe sur la Valeur Ajoutée, taux normal 20% pour le transport de personnes",
-          "TVA collectée = TVA facturée aux clients (dette envers l'État)",
-          "TVA déductible = TVA payée sur les achats (créance sur l'État)",
-          "TVA à décaisser = TVA collectée - TVA déductible (si positif = à payer)",
-          "Crédit de TVA = si TVA déductible > TVA collectée (remboursement possible)",
-          "Franchise en base : micro-entreprise exonérée de TVA si CA < seuils (77 700€ services)",
-          "TVA carburant : gazole/essence récupérable à 80%, GPL/GNV/électricité 100%",
-          "Régimes TVA : réel normal (mensuel), réel simplifié (acomptes + solde), franchise"
+          "TVA transport de personnes = 20%",
+          "Micro-entreprise : franchise TVA si CA < 77 700€ (services)",
+          "TVA carburant : gazole/essence 80% récupérable, électrique 100%",
+          "Crédit de TVA possible si déductible > collectée"
+        ],
+        fieldExample: "Un VTC collecte 2 000€ de TVA et en déduit 800€ sur ses achats : il reverse 1 200€ à l'État.",
+        examWarning: "La TVA transport est à 20%, pas 10% (le 10% c'est pour les transports collectifs).",
+        confusionPoints: [
+          "20% = T3P (taxi, VTC) ≠ 10% = transports collectifs (bus, train)"
         ],
         tips: [
-          "En micro-entreprise, pas de TVA = pas de récupération mais pas de facturation non plus",
-          "Plafond récupération TVA véhicule tourisme : limité sauf véhicules dédiés au transport",
-          "Conserver toutes les factures d'achat avec TVA détaillée"
+          "En micro, pas de TVA = pas de facturation mais pas de récupération non plus"
         ],
-        legalRefs: ["Article 256 du CGI", "Article 271 du CGI", "Article 298-4-1° du CGI (carburant)"]
+        legalRefs: ["Article 256 du CGI", "Article 298-4-1° du CGI (carburant)"]
       },
       {
         id: 'ges-charges-sociales',
         title: 'Charges sociales',
+        essential: "CSG = financement Sécu (9,2%) / CRDS = remboursement dette (0,5%).",
         keyPoints: [
-          "CSG (Contribution Sociale Généralisée) : 9,2% dont 6,8% déductibles, finance la Sécurité sociale",
-          "CRDS (Contribution au Remboursement de la Dette Sociale) : 0,5%, créée en 1996",
-          "Cotisations TNS : environ 45% du bénéfice (maladie, retraite, allocations familiales)",
-          "Cotisations assimilé salarié : environ 80% du salaire brut",
-          "URSSAF : organisme de recouvrement des cotisations sociales",
-          "SSI (Sécurité Sociale des Indépendants) : régime des TNS, intégré au régime général",
-          "Micro-entrepreneur : cotisations forfaitaires sur CA (22% pour les services)"
+          "CSG : 9,2% dont 6,8% déductibles → finance la Sécurité sociale",
+          "CRDS : 0,5% → rembourse la dette sociale (créée 1996)",
+          "TNS : ~45% du bénéfice / Assimilé salarié : ~80% du brut",
+          "Micro : 22% forfaitaire sur CA pour les services"
         ],
+        fieldExample: "Un VTC en SASU se verse 3 000€ brut : environ 2 400€ partent en cotisations.",
+        examWarning: "CSG ≠ CRDS : CSG finance la Sécu, CRDS rembourse la dette.",
         tips: [
-          "CSG = financement Sécurité sociale / CRDS = remboursement dette, ne pas confondre",
-          "Le régime TNS offre des cotisations moins élevées mais une protection moindre (retraite notamment)",
-          "Prévoir les cotisations dans le calcul du prix de revient d'une course"
+          "CSG = Contribution Sociale Généralisée",
+          "CRDS = Contribution Remboursement Dette Sociale"
         ],
-        legalRefs: ["Article L136-1-1 du Code de la sécurité sociale", "Ordonnance n°96-50 du 24 janvier 1996 (CRDS)"]
+        legalRefs: ["Article L136-1-1 du Code de la sécurité sociale"]
       },
       {
         id: 'ges-amortissement',
-        title: 'Amortissement et investissement',
+        title: 'Amortissement',
+        essential: "L'amortissement répartit le coût d'un investissement sur sa durée d'utilisation.",
         keyPoints: [
-          "Amortissement = répartition du coût d'un bien durable sur sa durée d'utilisation",
-          "Investissement = acquisition d'un bien utilisé plus d'un an (immobilisation)",
-          "Charge = consommation immédiate (carburant, entretien courant, fournitures)",
-          "Durée amortissement véhicule : généralement 4-5 ans (20-25% par an)",
-          "Amortissement linéaire = montant constant chaque année",
-          "Amortissement dégressif = montant décroissant (avantage fiscal au début)",
-          "Plafond fiscal véhicule : 18 300€ (ou 30 000€ si faibles émissions, 9 900€ si >200g CO2/km)",
-          "L'amortissement est une charge non décaissée qui réduit le bénéfice imposable"
+          "Véhicule : généralement 4-5 ans (20-25%/an)",
+          "Plafond fiscal : 18 300€ (30 000€ si faibles émissions)",
+          "Charge ≠ investissement : carburant = charge, véhicule = immobilisation",
+          "L'amortissement réduit le bénéfice imposable"
         ],
+        fieldExample: "Véhicule 25 000€ sur 5 ans = 5 000€/an déduit du bénéfice imposable.",
+        examWarning: "Au-delà du plafond (18 300€), la partie excédentaire n'est pas déductible.",
         tips: [
-          "Véhicule 25 000€ sur 5 ans = 5 000€/an de charge d'amortissement",
-          "Au-delà du plafond fiscal, l'amortissement n'est pas déductible",
-          "Le leasing (LOA/LLD) est une alternative à l'achat avec amortissement"
+          "Linéaire = montant constant / Dégressif = décroissant"
         ],
-        legalRefs: ["Article 39 du CGI", "Article 39 B du CGI", "Article 39-4 du CGI (plafonds)"]
+        legalRefs: ["Article 39 du CGI", "Article 39-4 du CGI (plafonds)"]
       },
       {
         id: 'ges-cout-revient',
-        title: 'Coût de revient et rentabilité',
+        title: 'Coût de revient',
+        essential: "Prix de vente = Coût de revient + Marge. Toujours calculer son coût kilométrique.",
         keyPoints: [
-          "Coût de revient = ensemble des charges pour réaliser une prestation",
-          "Charges directes : carburant, péages, usure kilométrique",
-          "Charges indirectes : assurance, abonnements, charges fixes (à répartir)",
-          "Prix de vente = coût de revient + marge souhaitée",
-          "Marge = prix de vente - coût de revient",
-          "Charges fixes : indépendantes du CA (assurance, loyer, abonnements)",
-          "Charges variables : proportionnelles à l'activité (carburant, commissions plateformes)",
-          "Point mort = nombre de courses minimum pour couvrir les charges fixes"
+          "Charges directes : carburant, péages, usure km",
+          "Charges indirectes : assurance, abonnements (à répartir)",
+          "Charges fixes ≠ variables (assurance vs carburant)",
+          "Point mort = nb de courses pour couvrir les charges fixes"
         ],
+        fieldExample: "Coût km = 0,35€. Pour une course de 20 km, le coût direct est de 7€.",
+        examWarning: "Oublier les charges fixes dans le prix minimum = vendre à perte.",
         tips: [
-          "Calculer son coût kilométrique : (carburant + usure + entretien) / km parcourus",
-          "Ne pas oublier les charges de structure dans le calcul du prix minimum",
-          "Objectif : CA > coût de revient total pour dégager un bénéfice"
+          "Coût km = (carburant + entretien + usure) / km parcourus"
         ],
-        legalRefs: ["Comptabilité de gestion", "Analyse des coûts"]
+        legalRefs: ["Comptabilité de gestion"]
       },
       {
         id: 'ges-difficultes',
         title: 'Difficultés et cessation',
+        essential: "Cessation de paiement = déclaration obligatoire au tribunal sous 45 jours.",
         keyPoints: [
-          "Cessation de paiement : impossibilité de faire face au passif exigible avec l'actif disponible",
-          "Déclaration obligatoire au tribunal de commerce dans les 45 jours",
-          "Procédures collectives : sauvegarde, redressement judiciaire, liquidation judiciaire",
-          "Sauvegarde : entreprise pas encore en cessation de paiement (prévention)",
-          "Redressement : poursuite de l'activité avec plan de redressement",
-          "Liquidation : arrêt définitif de l'activité et vente des actifs",
-          "Faute de gestion : engagement possible de la responsabilité personnelle du dirigeant"
+          "Cessation = passif exigible > actif disponible",
+          "Sauvegarde : avant cessation (prévention)",
+          "Redressement : continuation avec plan",
+          "Liquidation : arrêt définitif et vente des actifs"
         ],
+        fieldExample: "Un taxi ne peut plus payer ses dettes depuis 30 jours : il a 15 jours pour se déclarer au tribunal.",
+        examWarning: "Sauvegarde ≠ Redressement : la sauvegarde intervient AVANT la cessation de paiement.",
         tips: [
-          "Ne pas attendre pour déclarer les difficultés : le tribunal peut aider",
-          "La sauvegarde protège des créanciers tout en continuant l'activité",
-          "Consulter un avocat ou expert-comptable dès les premiers signes de difficulté"
+          "Ne pas attendre : le tribunal peut aider à trouver des solutions"
         ],
         legalRefs: ["Article L631-4 du Code de commerce", "Livre VI du Code de commerce"]
       }
     ]
   },
 
-  // =====================
-  // SÉCURITÉ ROUTIÈRE
-  // =====================
+  // =====================================================
+  // MODULE 2 : SÉCURITÉ ROUTIÈRE
+  // =====================================================
   {
     moduleId: 'securite',
     moduleName: 'Sécurité routière',
     moduleIcon: '🛡️',
-    introduction: "La sécurité routière est au cœur du métier de conducteur professionnel. Ce module aborde les règles essentielles du Code de la route, la prévention des risques, l'éco-conduite et les premiers secours.",
+    domain: 'commun',
+    examObjective: 'Connaître les règles du Code de la route, la prévention des risques et les premiers secours.',
+    introduction: "Règles essentielles de sécurité, prévention des risques, éco-conduite et secourisme.",
     cards: [
       {
         id: 'sec-distances',
-        title: 'Distances de sécurité et freinage',
+        title: 'Distances de sécurité',
+        essential: "Distance d'arrêt = réaction + freinage. Elle quadruple quand la vitesse double.",
         keyPoints: [
-          "Distance de sécurité : au moins 2 secondes entre véhicules (repère visuel)",
-          "Distance d'arrêt = distance de réaction + distance de freinage",
-          "Temps de réaction moyen : 1 seconde (variable selon fatigue, alcool...)",
-          "À 50 km/h : distance d'arrêt ≈ 28m (14m réaction + 14m freinage)",
-          "À 90 km/h : distance d'arrêt ≈ 70m (25m réaction + 45m freinage)",
-          "À 130 km/h : distance d'arrêt ≈ 130m (36m réaction + 94m freinage)",
-          "La distance d'arrêt quadruple quand la vitesse double",
-          "Sur route mouillée : distance de freinage multipliée par 1,5 à 2"
+          "Intervalle minimum : 2 secondes entre véhicules",
+          "À 50 km/h : arrêt ≈ 28m (14m réaction + 14m freinage)",
+          "À 130 km/h : arrêt ≈ 130m",
+          "Route mouillée : freinage x1,5 à x2"
         ],
+        fieldExample: "Sur autoroute à 130 km/h, il faut garder au moins 130m (2 chevrons) avec le véhicule devant.",
+        examWarning: "La distance d'arrêt quadruple si la vitesse double (pas le double !).",
         tips: [
-          "Méthode des 2 chevrons sur autoroute : au moins un chevron d'écart",
-          "En ville, la distance de sécurité reste primordiale malgré la faible vitesse",
-          "Anticiper les freinages pour un freinage souple (confort passager)"
+          "1 chevron = 50m environ sur autoroute",
+          "Temps de réaction moyen : 1 seconde"
         ],
         legalRefs: ["Article R412-12 du Code de la route"]
       },
       {
         id: 'sec-vitesses',
         title: 'Limitations de vitesse',
+        essential: "Ville 50 / Route 80 / 2x2 voies 110 / Autoroute 130 (pluie -10 à -20 km/h).",
         keyPoints: [
-          "Agglomération : 50 km/h (30 km/h en zone 30, 20 km/h en zone de rencontre)",
-          "Route hors agglomération : 80 km/h (certaines à 90 km/h sur décision locale)",
-          "Route à 2 chaussées séparées : 110 km/h",
-          "Autoroute : 130 km/h (110 km/h par temps de pluie)",
-          "Jeune conducteur : -10 km/h sur voies rapides (100/110 km/h au lieu de 110/130)",
-          "Visibilité < 50m (brouillard) : 50 km/h maximum partout",
-          "Le dépassement de 50 km/h ou plus entraîne suspension immédiate du permis"
+          "Agglomération : 50 km/h (30 en zone 30, 20 en zone rencontre)",
+          "Route : 80 km/h (90 sur décision locale)",
+          "Visibilité < 50m : 50 km/h maximum partout",
+          "Dépassement 50+ km/h = suspension immédiate du permis"
         ],
+        fieldExample: "Il pleut sur autoroute : la limite passe de 130 à 110 km/h automatiquement.",
+        examWarning: "Jeune conducteur = -10 km/h sur voies rapides (100/110 au lieu de 110/130).",
         tips: [
-          "Adapter sa vitesse aux conditions même en dessous des limites",
-          "Les radars mesurent la vitesse retenue (marge technique de 5% ou 5 km/h)",
-          "En tant que professionnel, montrer l'exemple : respect strict des limitations"
+          "Marge radar : 5% ou 5 km/h (le plus favorable)"
         ],
         legalRefs: ["Articles R413-1 à R413-17 du Code de la route"]
       },
       {
         id: 'sec-alcool-stupefiants',
         title: 'Alcool et stupéfiants',
+        essential: "Taux légal : 0,5 g/L sang. À partir de 0,8 g/L = délit pénal.",
         keyPoints: [
-          "Taux légal d'alcoolémie : 0,5 g/L de sang (0,25 mg/L d'air expiré)",
-          "Jeunes conducteurs et professionnels : 0,2 g/L de sang recommandé",
-          "Contravention : 0,5 à 0,79 g/L = 135€ + 6 points + immobilisation possible",
-          "Délit : ≥ 0,8 g/L = 4 500€ + 6 points + suspension/annulation + prison possible",
-          "Stupéfiants : tolérance zéro, dépistage salivaire ou sanguin",
-          "Stupéfiants + alcool : sanctions cumulées et aggravées",
-          "Refus de dépistage = mêmes sanctions que le délit de conduite sous influence"
+          "0,5-0,79 g/L = contravention (135€ + 6 points)",
+          "≥ 0,8 g/L = délit (4 500€ + prison possible)",
+          "Stupéfiants : tolérance zéro, test salivaire",
+          "Refus de dépistage = mêmes sanctions que délit"
         ],
+        fieldExample: "Un chauffeur contrôlé à 0,6 g/L perd 6 points et paie 135€ d'amende.",
+        examWarning: "0,5 g/L = contravention ≠ 0,8 g/L = délit. Ne pas confondre les seuils !",
         tips: [
-          "1 verre standard (10g d'alcool pur) ≈ 0,20-0,25 g/L en moyenne",
-          "Élimination : 0,10 à 0,15 g/L par heure (le café n'accélère pas l'élimination)",
-          "En cas de doute : ne pas conduire ou utiliser un éthylotest"
+          "1 verre standard ≈ 0,20-0,25 g/L",
+          "Élimination : ~0,15 g/L par heure (le café ne change rien)"
         ],
-        legalRefs: ["Articles L234-1 à L234-9 du Code de la route", "Article L235-1 (stupéfiants)"]
+        legalRefs: ["Articles L234-1 à L234-9 du Code de la route"]
       },
       {
         id: 'sec-fatigue-vigilance',
         title: 'Fatigue et vigilance',
+        essential: "Seul remède contre la fatigue : le sommeil. Pause 15-20 min toutes les 2h.",
         keyPoints: [
-          "La fatigue est impliquée dans près d'un accident mortel sur trois sur autoroute",
-          "Signes de fatigue : bâillements, yeux qui piquent, raideur nuque, ligne blanche franchie",
-          "Creux de vigilance : 2h-5h du matin et 13h-15h (rythme circadien)",
-          "Pause obligatoire recommandée : 15-20 min toutes les 2 heures de conduite",
-          "La dette de sommeil est cumulative (se récupère sur plusieurs jours)",
-          "Une micro-sieste de 15-20 min restaure la vigilance pour 2-3 heures",
-          "Les stimulants (café, energy drinks) masquent la fatigue temporairement (20-30 min)"
+          "Fatigue = 1/3 des accidents mortels sur autoroute",
+          "Creux de vigilance : 2h-5h et 13h-15h",
+          "Micro-sieste 15-20 min = 2-3h de vigilance restaurée",
+          "Les stimulants masquent temporairement (20-30 min)"
         ],
+        fieldExample: "Après 3h de conduite de nuit, le chauffeur s'arrête 20 min pour une micro-sieste.",
+        examWarning: "Café/musique/fenêtre = solutions inefficaces. Seul le sommeil fonctionne.",
         tips: [
-          "Seul remède efficace contre la fatigue : le sommeil",
-          "Ouvrir la fenêtre ou monter la musique ne fonctionne pas durablement",
-          "Planifier ses courses en tenant compte de la fatigue accumulée"
+          "Signes : bâillements, yeux qui piquent, ligne franchie"
         ],
-        legalRefs: ["Sécurité routière - Prévention", "Recommandations professionnelles"]
+        legalRefs: ["Recommandations Sécurité routière"]
       },
       {
         id: 'sec-eco-conduite',
         title: 'Éco-conduite',
+        essential: "Conduite souple = -15 à -25% de carburant + confort passager amélioré.",
         keyPoints: [
-          "Anticiper le trafic et les freinages (éviter accélérations/freinages brusques)",
-          "Maintenir une vitesse stable (régulateur de vitesse sur route)",
-          "Couper le moteur dès 20-30 secondes d'arrêt prévu",
-          "Utiliser le frein moteur en décélération (pas de consommation)",
-          "Pression des pneus : vérifier mensuellement (+0,2 bar si chargé)",
-          "Sous-gonflage = surconsommation de 3-4% et usure prématurée",
-          "Climatisation : +10 à 15% de consommation en ville",
-          "Économie potentielle : 15-25% de carburant avec une conduite souple"
+          "Anticiper : éviter accélérations/freinages brusques",
+          "Couper le moteur dès 20-30 sec d'arrêt prévu",
+          "Pneus : vérifier pression mensuelle (+0,2 bar si chargé)",
+          "Clim : +10-15% de conso en ville"
         ],
+        fieldExample: "En anticipant les feux, le VTC économise 20% de carburant sur sa journée.",
+        examWarning: "Sous-gonflage = +3-4% de conso + usure prématurée.",
         tips: [
-          "L'éco-conduite améliore aussi le confort des passagers",
-          "Passer les vitesses entre 2000-2500 tr/min (essence) ou 1500-2000 (diesel)",
-          "Les bonus écologiques évoluent : vérifier les aides en vigueur"
+          "Passages vitesses : 2000-2500 tr/min (essence), 1500-2000 (diesel)"
         ],
-        legalRefs: ["Transition énergétique", "Recommandations ADEME"]
+        legalRefs: ["Recommandations ADEME"]
       },
       {
         id: 'sec-equipements-securite',
-        title: 'Équipements de sécurité',
+        title: 'Équipements obligatoires',
+        essential: "Ceinture obligatoire pour tous. Gilet + triangle obligatoires à bord.",
         keyPoints: [
-          "Ceinture de sécurité obligatoire pour tous (conducteur et passagers)",
-          "Non-port de ceinture : 135€ + 3 points pour le conducteur",
-          "Enfants de moins de 10 ans : siège adapté obligatoire (sauf exceptions)",
-          "Gilet de sécurité et triangle de présignalisation obligatoires à bord",
-          "Gilet à portée de main (pas dans le coffre) en cas d'arrêt d'urgence",
-          "Éthylotest non obligatoire mais recommandé (pas de sanction si absent)",
-          "Extincteur non obligatoire pour les véhicules particuliers mais conseillé"
+          "Non-port ceinture : 135€ + 3 points pour le conducteur",
+          "Enfants < 10 ans : siège adapté obligatoire",
+          "Gilet : à portée de main (pas dans le coffre)",
+          "Éthylotest : recommandé mais pas de sanction si absent"
         ],
+        fieldExample: "Un passager ne met pas sa ceinture : c'est le conducteur qui écope de l'amende.",
+        examWarning: "Le conducteur est responsable du port de ceinture des passagers mineurs.",
         tips: [
-          "Le conducteur est responsable du port de la ceinture par les passagers mineurs",
-          "Toujours vérifier l'état des équipements de sécurité avant chaque service",
-          "Trousse de premiers secours recommandée dans le véhicule"
+          "Trousse de secours recommandée dans le véhicule"
         ],
-        legalRefs: ["Article R412-1 (ceinture)", "Article R416-19 (gilet et triangle)"]
+        legalRefs: ["Article R412-1 (ceinture)", "Article R416-19 (gilet/triangle)"]
       },
       {
         id: 'sec-premiers-secours',
         title: 'Premiers secours (PAS)',
+        essential: "PAS = Protéger → Alerter → Secourir. Toujours dans cet ordre.",
         keyPoints: [
-          "PAS : Protéger - Alerter - Secourir (ordre impératif)",
-          "Protéger : baliser les lieux, éviter le sur-accident, couper le contact",
-          "Alerter : 15 (SAMU), 17 (Police), 18 (Pompiers), 112 (numéro européen)",
-          "Message d'alerte : lieu précis, nombre de victimes, état apparent, gestes effectués",
-          "Position Latérale de Sécurité (PLS) : victime inconsciente qui respire",
-          "Massage cardiaque : 100-120 compressions/minute, profondeur 5-6 cm, au centre du thorax",
-          "Défibrillateur (DAE) : suit les instructions vocales, interrompt le massage pour l'analyse"
+          "15 = SAMU / 17 = Police / 18 = Pompiers / 112 = européen",
+          "PLS : victime inconsciente qui respire",
+          "Massage cardiaque : 100-120/min, 5-6 cm profondeur",
+          "Ne jamais déplacer sauf danger immédiat"
         ],
+        fieldExample: "Accident : le chauffeur balise les lieux (Protéger), appelle le 15 (Alerter), puis assiste la victime.",
+        examWarning: "PAS = ordre strict. Protéger AVANT d'alerter, pas l'inverse.",
         tips: [
-          "Ne jamais déplacer une victime sauf danger immédiat (feu, explosion, noyade)",
-          "Rester calme, parler doucement à la victime, la couvrir (prévention hypothermie)",
-          "Formation PSC1 recommandée pour tous les conducteurs professionnels"
+          "Formation PSC1 recommandée pour tous conducteurs pro"
         ],
-        legalRefs: ["Obligation d'assistance à personne en danger (art. 223-6 Code pénal)"]
+        legalRefs: ["Article 223-6 Code pénal (non-assistance)"]
       },
       {
         id: 'sec-signalisation',
         title: 'Signalisation et priorités',
+        essential: "Piéton engagé ou manifestant l'intention = priorité absolue.",
         keyPoints: [
-          "Feux tricolores : rouge = arrêt, orange = arrêt si possible, vert = passage",
-          "Panneau STOP : arrêt obligatoire à la ligne, céder le passage",
-          "Cédez le passage : ralentir, laisser passer les véhicules prioritaires",
-          "Rond-point : priorité aux véhicules déjà engagés (sauf signalisation contraire)",
-          "Véhicules prioritaires (gyrophare + sirène) : faciliter leur passage",
-          "Passage piéton : céder le passage aux piétons engagés ou manifestant l'intention",
-          "Tramway : toujours prioritaire sauf signalisation contraire"
+          "STOP : arrêt obligatoire à la ligne",
+          "Rond-point : priorité aux véhicules engagés",
+          "Véhicules prioritaires (gyrophare + sirène) : faciliter passage",
+          "Tramway : toujours prioritaire sauf signalisation"
         ],
+        fieldExample: "Un piéton attend au passage : le chauffeur s'arrête pour lui laisser traverser.",
+        examWarning: "Rond-point = priorité à gauche (véhicules engagés), pas à droite !",
         tips: [
-          "En cas de doute sur la priorité : prudence et courtoisie",
-          "Les véhicules prioritaires peuvent franchir les feux rouges (vous non)",
-          "Le piéton est toujours vulnérable : anticiper ses mouvements"
+          "En cas de doute : prudence et courtoisie"
         ],
         legalRefs: ["Articles R411 à R422 du Code de la route"]
       }
     ]
   },
 
-  // =====================
-  // RÉGLEMENTATION T3P
-  // =====================
+  // =====================================================
+  // MODULE 3 : RÉGLEMENTATION T3P
+  // =====================================================
   {
     moduleId: 'reglementation',
     moduleName: 'Réglementation T3P',
     moduleIcon: '📋',
-    introduction: "Le transport public particulier de personnes (T3P) regroupe les taxis, VTC et VMDTR. Il est encadré par le Code des transports et des textes réglementaires spécifiques. Ce module couvre les conditions d'accès communes à toutes les professions.",
+    domain: 'commun',
+    examObjective: 'Maîtriser le cadre légal du T3P : définitions, conditions d\'accès, carte professionnelle.',
+    introduction: "Cadre réglementaire commun aux taxis, VTC et VMDTR : accès à la profession et obligations.",
     cards: [
       {
         id: 'reg-definition-t3p',
-        title: 'Définition et cadre légal T3P',
+        title: 'Définition T3P',
+        essential: "T3P = Transport Public Particulier de Personnes : Taxi, VTC, VMDTR.",
         keyPoints: [
-          "T3P = Transport Public Particulier de Personnes",
-          "3 catégories : Taxi, VTC (Voiture de Transport avec Chauffeur), VMDTR (Véhicules Motorisés à 2 ou 3 Roues)",
-          "Transport à titre onéreux : rémunération obligatoire (≠ covoiturage)",
-          "Transport à la demande : le client choisit le trajet (≠ transport collectif)",
-          "Code des transports : Livre Ier, Titre II (articles L3120-1 et suivants)",
-          "Loi Thévenoud (1er octobre 2014) : réforme majeure du secteur",
-          "Loi Grandguillaume (29 décembre 2016) : renforcement des contrôles"
+          "Transport onéreux (rémunéré) ≠ covoiturage (partage de frais)",
+          "Transport à la demande : le client choisit le trajet",
+          "Loi Thévenoud (2014) + Loi Grandguillaume (2016)",
+          "Les centrales de réservation sont aussi réglementées"
+        ],
+        fieldExample: "Un conducteur prend 5€ de plus que ses frais : c'est du transport onéreux, pas du covoiturage.",
+        examWarning: "Covoiturage ≠ T3P : le covoiturage ne fait pas de bénéfice, juste partage des frais.",
+        confusionPoints: [
+          "Covoiturage = partage de frais ≠ T3P = activité commerciale"
         ],
         tips: [
-          "Le covoiturage n'est pas du T3P car le conducteur partage les frais et ne fait pas de bénéfice",
-          "Les centrales de réservation sont aussi encadrées par la réglementation T3P",
-          "Le non-respect de la réglementation expose à des sanctions pénales"
+          "Le non-respect expose à des sanctions pénales"
         ],
-        legalRefs: ["Articles L3120-1 à L3124-13 du Code des transports", "Loi n°2014-1104 (Thévenoud)", "Loi n°2016-1920 (Grandguillaume)"]
+        legalRefs: ["Articles L3120-1 à L3124-13 du Code des transports"]
       },
       {
         id: 'reg-acces-profession',
-        title: "Conditions d'accès à la profession",
+        title: 'Conditions d\'accès',
+        essential: "Permis B ≥ 3 ans + casier vierge + visite médicale + examen T3P.",
         keyPoints: [
-          "Permis B en cours de validité depuis au moins 3 ans (ou 2 ans si conduite accompagnée)",
-          "Casier judiciaire compatible : bulletin n°2 vérifié par la préfecture",
-          "Infractions incompatibles : crimes, délits à la sécurité des personnes, conduite sous influence...",
-          "Aptitude médicale : visite médicale par médecin agréé par la préfecture",
-          "Visite tous les 5 ans (ou plus fréquente selon l'âge ou l'état de santé)",
-          "Réussite à l'examen T3P ou équivalence/expérience professionnelle",
-          "Inscription obligatoire au registre des VTC ou détention d'une ADS (taxi)"
+          "Permis B depuis 3 ans (2 ans si conduite accompagnée)",
+          "Casier judiciaire compatible (vérifié chaque année)",
+          "Visite médicale tous les 5 ans (médecin agréé)",
+          "Examen T3P : 7 épreuves, moyenne ≥ 12/20, mini 10/20 par épreuve"
         ],
+        fieldExample: "Un candidat a 14 de moyenne mais 8 en réglementation : il échoue (< 10 à une épreuve).",
+        examWarning: "Moyenne 12/20 + minimum 10/20 à chaque épreuve. Les deux conditions sont cumulatives.",
         tips: [
-          "L'examen T3P comprend 7 épreuves réparties en admissibilité et admission",
-          "Moyenne générale requise : 12/20 avec minimum 10/20 à chaque épreuve",
-          "Le casier est vérifié automatiquement chaque année par la préfecture"
+          "Casier vérifié automatiquement chaque année par la préfecture"
         ],
-        legalRefs: ["Articles L3120-2-1 et R3120-7 du Code des transports", "Arrêté du 6 avril 2017 (examen)"]
+        legalRefs: ["Articles L3120-2-1 et R3120-7 du Code des transports"]
       },
       {
         id: 'reg-carte-professionnelle',
         title: 'Carte professionnelle',
+        essential: "Validité 5 ans + formation continue 14h minimum obligatoire pour renouveler.",
         keyPoints: [
           "Délivrée par le préfet du département de domicile",
-          "Validité : 5 ans renouvelable",
-          "Mention obligatoire de la catégorie : Taxi, VTC ou VMDTR",
-          "Doit être visible et accessible dans le véhicule pendant l'exercice",
-          "Photo d'identité, numéro d'enregistrement, date de validité",
-          "Renouvellement : demande 2 mois avant expiration + formation continue",
-          "Formation continue obligatoire : 14 heures minimum sur 5 ans",
-          "Retrait possible en cas de condamnation ou manquement grave"
+          "Mention : Taxi, VTC ou VMDTR",
+          "Visible et accessible dans le véhicule",
+          "Renouvellement : demande 2 mois avant expiration"
         ],
+        fieldExample: "Un VTC exerce avec une carte expirée : 1 an de prison + 15 000€ d'amende possibles.",
+        examWarning: "Sans carte professionnelle valide = exercice illégal = sanctions pénales.",
         tips: [
-          "Sans carte professionnelle valide = exercice illégal = sanctions pénales",
-          "La formation continue peut être faite en une fois ou répartie sur 5 ans",
-          "Signaler tout changement d'adresse à la préfecture"
+          "Formation continue : 14h sur 5 ans, en une fois ou réparties"
         ],
-        legalRefs: ["Article R3120-7 du Code des transports", "Arrêté du 2 février 2016 (formation continue)"]
+        legalRefs: ["Article R3120-7 du Code des transports"]
       },
       {
         id: 'reg-examen-t3p',
         title: 'Examen T3P',
+        essential: "Admissibilité (5 épreuves communes) + Admission (2 épreuves spécifiques).",
         keyPoints: [
-          "Épreuves d'admissibilité (communes) : Réglementation T3P, Gestion, Sécurité routière, Français, Anglais",
-          "Épreuves d'admission (spécifiques) : Réglementation locale + Conduite et comportement",
-          "QCM à 4 réponses avec une seule bonne réponse",
-          "Durée totale : environ 3h30 pour l'admissibilité",
-          "Seuil de réussite : 10/20 minimum à chaque épreuve + moyenne générale ≥ 12/20",
-          "En cas d'échec : représentation possible après 1 mois",
-          "Équivalence possible pour certains diplômes (BTS Tourisme, etc.)"
+          "Admissibilité : Réglementation, Gestion, Sécurité, Français, Anglais",
+          "Admission : Réglementation locale + Conduite",
+          "QCM 4 réponses, 1 seule bonne",
+          "Échec : représentation après 1 mois"
         ],
+        fieldExample: "Un candidat taxi passe les épreuves communes, puis réglementation Paris et conduite.",
+        examWarning: "Équivalence possible pour certains diplômes (BTS Tourisme, etc.).",
         tips: [
-          "Réviser le Code des transports et les arrêtés préfectoraux locaux",
-          "Les questions portent sur des situations concrètes du métier",
-          "L'épreuve de conduite évalue aussi le comportement (accueil client, etc.)"
+          "L'épreuve de conduite évalue aussi le comportement client"
         ],
         legalRefs: ["Arrêté du 6 avril 2017 relatif à l'examen T3P"]
       },
       {
         id: 'reg-obligations-communes',
-        title: 'Obligations professionnelles communes',
+        title: 'Obligations professionnelles',
+        essential: "Assurance RC pro + info prix + non-discrimination + chiens guides acceptés.",
         keyPoints: [
-          "Assurance responsabilité civile professionnelle obligatoire",
-          "Assurance transport de personnes à titre onéreux",
-          "Respect du Code de la route et des règles de stationnement",
-          "Obligation d'information du client sur le prix ou mode de calcul",
-          "Interdiction de refus de course discriminatoire (origine, handicap...)",
-          "Obligation d'accepter les animaux d'assistance (chiens guides)",
-          "Interdiction de fumer dans le véhicule en présence de passagers",
-          "Tenue vestimentaire correcte et véhicule propre"
+          "Assurance RC professionnelle obligatoire",
+          "Information client sur le prix ou mode de calcul",
+          "Refus discriminatoire interdit (origine, handicap...)",
+          "Chiens guides : transport obligatoire et gratuit"
         ],
+        fieldExample: "Un VTC refuse un client en fauteuil roulant sans raison : 45 000€ d'amende + 3 ans prison.",
+        examWarning: "Le refus pour motif légitime (sécurité, fin de service) reste possible.",
         tips: [
-          "Le refus de course pour motif légitime (sécurité, destination hors zone) est possible",
-          "Conserver les preuves de réservation et les factures",
-          "La ponctualité et le professionnalisme sont essentiels à la réputation"
+          "Tenue correcte et véhicule propre = obligations implicites"
         ],
         legalRefs: ["Articles L3120-4 à L3120-6 du Code des transports"]
       },
       {
         id: 'reg-vehicule-conditions',
-        title: 'Conditions relatives au véhicule',
+        title: 'Conditions véhicule',
+        essential: "Max 6 ans (7 ans si hybride/électrique), 4-9 places, contrôle technique annuel.",
         keyPoints: [
-          "Âge maximum du véhicule : 6 ans (7 ans pour hybrides/électriques)",
-          "Nombre de places : 4 à 9 places assises (conducteur compris)",
-          "État d'entretien irréprochable : propreté, fonctionnement de tous les équipements",
-          "Contrôle technique à jour (annuel pour usage professionnel)",
-          "Assurance en cours de validité avec attestation à bord",
-          "Carte grise (certificat d'immatriculation) mentionnant le nom de l'exploitant",
-          "Dimensions minimales VTC : puissance ≥ 84 kW OU longueur ≥ 4,50m OU largeur ≥ 1,70m"
+          "Âge max : 6 ans (7 ans pour hybrides/électriques)",
+          "Places : 4 à 9 assises (conducteur compris)",
+          "Contrôle technique annuel (pro = plus strict)",
+          "VTC : puissance ≥ 84 kW OU longueur ≥ 4,50m"
         ],
+        fieldExample: "Une Tesla Model 3 de 2019 peut encore rouler en VTC en 2026 (7 ans car électrique).",
+        examWarning: "Hybrides et électriques = 1 an de plus. Ne pas oublier cette exception !",
         tips: [
-          "Les véhicules hybrides et électriques bénéficient d'un an supplémentaire",
-          "Le contrôle technique professionnel est plus strict que le particulier",
           "Prévoir un véhicule de remplacement en cas d'immobilisation"
         ],
         legalRefs: ["Décret n°2017-483 du 6 avril 2017"]
@@ -500,784 +485,661 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'reg-sanctions',
         title: 'Sanctions et contrôles',
+        essential: "Sans carte pro = 1 an prison + 15 000€. Maraude illégale VTC = même sanction.",
         keyPoints: [
-          "Exercice sans carte professionnelle : 1 an de prison + 15 000€ d'amende",
-          "Maraude illégale (VTC) : 1 an de prison + 15 000€ d'amende",
-          "Défaut d'assurance : 3 750€ d'amende + suspension/annulation permis",
-          "Refus de course discriminatoire : 45 000€ d'amende + 3 ans de prison",
-          "Contrôles effectués par : police, gendarmerie, DGCCRF, agents assermentés",
-          "Immobilisation et mise en fourrière du véhicule possibles",
-          "Retrait ou suspension de la carte professionnelle par le préfet"
+          "Exercice sans carte : 1 an + 15 000€",
+          "Maraude VTC : 1 an + 15 000€",
+          "Défaut assurance : 3 750€ + suspension permis",
+          "Refus discriminatoire : 45 000€ + 3 ans"
+        ],
+        fieldExample: "Un VTC stationne devant une gare en attendant des clients : maraude = 15 000€ d'amende.",
+        examWarning: "La maraude est réservée aux taxis. VTC = réservation préalable obligatoire.",
+        confusionPoints: [
+          "Taxi = maraude autorisée ≠ VTC = réservation préalable uniquement"
         ],
         tips: [
-          "Les plateformes de mise en relation sont aussi contrôlées et sanctionnables",
-          "Coopérer avec les forces de l'ordre lors des contrôles",
-          "Avoir tous les documents à jour et accessibles dans le véhicule"
+          "Avoir tous les documents à portée de main lors des contrôles"
         ],
         legalRefs: ["Articles L3124-1 à L3124-13 du Code des transports"]
       }
     ]
   },
 
-  // =====================
-  // FRANÇAIS
-  // =====================
+  // =====================================================
+  // MODULE 4 : FRANÇAIS
+  // =====================================================
   {
     moduleId: 'francais',
     moduleName: 'Français',
     moduleIcon: '🇫🇷',
-    introduction: "La maîtrise du français professionnel est essentielle pour communiquer efficacement avec les clients, rédiger des documents administratifs et comprendre les textes réglementaires.",
+    domain: 'commun',
+    examObjective: 'Maîtriser la communication orale et écrite professionnelle en français.',
+    introduction: "Communication professionnelle avec les clients, documents administratifs et réglementaires.",
     cards: [
       {
         id: 'fra-communication-orale',
-        title: 'Communication orale professionnelle',
+        title: 'Communication orale',
+        essential: "Vouvoiement systématique + écoute active + ton calme et posé.",
         keyPoints: [
-          "Formules de politesse : Bonjour, Au revoir, S'il vous plaît, Merci, Je vous en prie",
-          "Vouvoiement systématique avec les clients",
-          "Écoute active : laisser parler, reformuler, confirmer la compréhension",
-          "Ton de voix : calme, posé, audible sans être trop fort",
-          "Éviter le jargon technique avec les clients non-initiés",
-          "S'adapter au niveau de langue du client",
-          "Annoncer les informations importantes : prix, durée estimée, itinéraire"
+          "Formules : Bonjour, S'il vous plaît, Merci, Je vous en prie",
+          "Écoute active : laisser parler, reformuler, confirmer",
+          "Éviter le jargon technique avec les clients",
+          "Annoncer : prix, durée estimée, itinéraire"
         ],
+        fieldExample: "Le chauffeur reformule : 'Si je comprends bien, vous souhaitez passer par les quais ?'",
+        examWarning: "Le tutoiement = faute professionnelle avec les clients.",
         tips: [
-          "Premier contact = première impression : soigner l'accueil",
-          "En cas de malentendu : reformuler calmement sans accuser le client",
-          "Le silence peut être préférable à un bavardage non souhaité"
+          "Premier contact = première impression : soigner l'accueil"
         ],
         legalRefs: []
       },
       {
         id: 'fra-communication-ecrite',
-        title: 'Communication écrite professionnelle',
+        title: 'Communication écrite',
+        essential: "Facture = mentions obligatoires (nom, SIRET, date, montant HT/TTC).",
         keyPoints: [
-          "Facture : mentions obligatoires (nom, adresse, SIRET, date, montant HT/TTC)",
-          "Note : version simplifiée pour les petits montants",
-          "Courriel professionnel : objet clair, formule d'appel, corps concis, signature",
-          "SMS/message : bref, informatif, sans abréviation excessive",
-          "Orthographe : relire avant envoi, utiliser un correcteur",
-          "Réclamation : accuser réception, répondre point par point, rester courtois"
+          "Facture : toutes mentions légales obligatoires",
+          "Courriel pro : objet clair, formule d'appel, signature",
+          "Orthographe : relire avant envoi",
+          "Conserver copies des échanges importants"
         ],
+        fieldExample: "Le VTC envoie sa facture avec nom, SIRET, date, montant HT, TVA et TTC.",
+        examWarning: "Une facture sans mentions obligatoires est irrégulière fiscalement.",
         tips: [
-          "Un courriel professionnel reflète l'image de votre entreprise",
-          "Éviter les majuscules (= crier) et les points d'exclamation multiples",
-          "Conserver une copie de tous les échanges écrits importants"
+          "Éviter les majuscules (= crier) et les !!! multiples"
         ],
-        legalRefs: ["Code de commerce (facturation)", "RGPD (données clients)"]
+        legalRefs: ["Code de commerce (facturation)"]
       },
       {
         id: 'fra-comprehension-textes',
         title: 'Compréhension de textes',
+        essential: "Textes réglementaires : lire chaque mot. Les nuances juridiques comptent.",
         keyPoints: [
-          "Lecture active : identifier le sujet, les mots-clés, la structure",
-          "Textes réglementaires : lire attentivement chaque mot (nuances juridiques)",
-          "Contrat : vérifier les obligations réciproques, les clauses de résiliation",
-          "Articles de presse : distinguer faits et opinions",
-          "Courriers administratifs : identifier l'émetteur, l'objet, les délais",
-          "Vocabulaire juridique courant : stipuler, abroger, en vigueur, préjudice"
+          "Identifier : sujet, mots-clés, structure",
+          "Vocabulaire juridique : stipuler, abroger, en vigueur",
+          "Contrat : vérifier obligations et clauses de résiliation",
+          "Ne jamais signer sans avoir tout lu"
         ],
+        fieldExample: "Le contrat dit 'résiliable avec préavis de 3 mois' : le chauffeur note cette échéance.",
+        examWarning: "Un document signé sans lecture = engagement quand même.",
         tips: [
-          "En cas de doute sur un texte juridique : consulter un professionnel",
-          "Surligner les points importants lors de la première lecture",
-          "Ne jamais signer un document sans l'avoir lu intégralement"
+          "En cas de doute juridique : consulter un professionnel"
         ],
         legalRefs: []
       }
     ]
   },
 
-  // =====================
-  // ANGLAIS
-  // =====================
+  // =====================================================
+  // MODULE 5 : ANGLAIS
+  // =====================================================
   {
     moduleId: 'anglais',
     moduleName: 'Anglais',
     moduleIcon: '🇬🇧',
-    introduction: "L'anglais est la langue internationale du tourisme et des affaires. Maîtriser les bases permet d'accueillir une clientèle internationale, notamment pour les transferts aéroport et les visites touristiques.",
+    domain: 'commun',
+    examObjective: 'Communiquer en anglais avec une clientèle internationale.',
+    introduction: "Vocabulaire anglais de base pour l'accueil, le trajet et le tourisme.",
     cards: [
       {
         id: 'ang-accueil',
-        title: 'Accueil et salutations',
+        title: 'Accueil en anglais',
+        essential: "'May I' est plus poli que 'Can I' dans un contexte professionnel.",
         keyPoints: [
-          "Good morning (matin) / Good afternoon (après-midi) / Good evening (soir)",
-          "Hello, welcome! = Bonjour, bienvenue !",
-          "How may I help you? = Comment puis-je vous aider ? (plus poli que 'Can I')",
-          "My name is... I will be your driver today = Je m'appelle... Je serai votre chauffeur",
+          "Good morning/afternoon/evening = Bonjour selon l'heure",
+          "How may I help you? = Comment puis-je vous aider ?",
           "May I take your luggage? = Puis-je prendre vos bagages ?",
-          "Please, make yourself comfortable = Je vous en prie, installez-vous confortablement",
-          "Is this your first time in Paris? = Est-ce votre première fois à Paris ?"
+          "Please make yourself comfortable = Installez-vous"
         ],
+        fieldExample: "Le chauffeur accueille : 'Good afternoon! I will be your driver today.'",
+        examWarning: "'May I' = plus poli que 'Can I' en contexte pro.",
         tips: [
-          "'May I' est plus poli que 'Can I' dans un contexte professionnel",
-          "Le sourire et le contact visuel sont universels",
-          "Adapter son débit de parole : plus lent si le client semble ne pas comprendre"
+          "Le sourire et le contact visuel sont universels"
         ],
         legalRefs: []
       },
       {
         id: 'ang-trajet-informations',
-        title: 'Informations pendant le trajet',
+        title: 'Informations trajet',
+        essential: "'Approximately' = environ. Ne jamais promettre une heure exacte.",
         keyPoints: [
-          "Could you please confirm the address? = Pouvez-vous confirmer l'adresse ?",
-          "We should arrive in approximately 30 minutes = Nous arriverons dans environ 30 minutes",
-          "There is some traffic ahead = Il y a du trafic devant nous",
-          "I will take an alternative route = Je vais prendre un itinéraire alternatif",
-          "Is the temperature comfortable for you? = La température vous convient-elle ?",
-          "Would you like some music? = Souhaitez-vous de la musique ?",
-          "Feel free to ask if you need anything = N'hésitez pas à demander si vous avez besoin de quelque chose"
+          "We should arrive in approximately 30 minutes",
+          "There is some traffic ahead = Il y a du trafic",
+          "I will take an alternative route = Je prends un autre itinéraire",
+          "Is the temperature comfortable? = La température convient ?"
         ],
+        fieldExample: "Le chauffeur informe : 'There is traffic, but we should arrive in about 40 minutes.'",
+        examWarning: "Toujours utiliser 'approximately' ou 'about' pour les estimations.",
         tips: [
-          "'Approximately' ou 'about' indiquent une estimation (ne pas promettre d'heure exacte)",
-          "Informer proactivement sur les conditions de circulation rassure le client",
-          "Proposer des choix montre un service personnalisé"
+          "Informer proactivement rassure le client"
         ],
         legalRefs: []
       },
       {
-        id: 'ang-tourisme-lieux',
-        title: 'Vocabulaire tourisme et lieux',
+        id: 'ang-vocabulaire-tourisme',
+        title: 'Vocabulaire tourisme',
+        essential: "Connaître le nom anglais des monuments : Eiffel Tower, Louvre Museum...",
         keyPoints: [
-          "Landmark = monument emblématique, point de repère",
+          "Landmark = monument emblématique",
           "Sightseeing = visite touristique",
-          "Museum = musée / Gallery = galerie",
-          "Cathedral = cathédrale / Church = église",
-          "Railway station = gare / Airport = aéroport / Terminal = aérogare",
           "City center / Downtown = centre-ville",
-          "Suburb = banlieue / Outskirts = périphérie",
-          "Bridge = pont / River = fleuve (Seine) / Avenue = avenue"
+          "Railway station = gare / Airport = aéroport"
         ],
+        fieldExample: "Le client demande 'Where is Notre-Dame?' → 'It's on the Île de la Cité.'",
+        examWarning: "Eiffel Tower, Arc de Triomphe, Notre-Dame Cathedral : mémoriser ces noms.",
         tips: [
-          "Connaître le nom anglais des principaux monuments parisiens",
-          "Eiffel Tower, Louvre Museum, Arc de Triomphe, Notre-Dame Cathedral",
           "CDG = Charles de Gaulle Airport, ORY = Orly Airport"
         ],
         legalRefs: []
       },
       {
-        id: 'ang-transport-aeroport',
-        title: 'Vocabulaire aéroport et transport',
+        id: 'ang-aeroport',
+        title: 'Vocabulaire aéroport',
+        essential: "Terminal, Gate, Check-in, Boarding pass : mots essentiels aéroport.",
         keyPoints: [
-          "Flight = vol / Departure = départ / Arrival = arrivée",
+          "Flight = vol / Gate = porte d'embarquement",
           "Boarding pass = carte d'embarquement",
-          "Gate = porte d'embarquement",
-          "Check-in = enregistrement / Check-out = départ (hôtel)",
-          "One-way ticket = aller simple / Round-trip = aller-retour",
-          "Duty-free = hors taxes (boutiques détaxées)",
-          "Luggage / Baggage = bagages / Carry-on = bagage cabine",
-          "Transfer = transfert / Pick-up = prise en charge"
+          "Check-in = enregistrement / Check-out = départ hôtel",
+          "Carry-on = bagage cabine / Luggage = bagages"
         ],
+        fieldExample: "Le client dit 'Terminal 2E, Gate 34' : le chauffeur le dépose au bon endroit.",
+        examWarning: "Check-in (enregistrement) ≠ Check-out (départ hôtel).",
         tips: [
-          "Toujours confirmer le terminal (CDG a les terminaux 1, 2A-2G, 3)",
-          "Demander l'heure du vol pour prévoir les marges de sécurité",
-          "Business travelers = voyageurs d'affaires (souvent pressés)"
+          "Toujours confirmer le terminal (CDG en a plusieurs)"
         ],
         legalRefs: []
       },
       {
-        id: 'ang-paiement-fin-course',
-        title: 'Paiement et fin de course',
+        id: 'ang-situations-pratiques',
+        title: 'Situations pratiques',
+        essential: "'Could you spell that, please?' pour éviter les erreurs d'adresse.",
         keyPoints: [
-          "We have arrived at your destination = Nous sommes arrivés",
-          "The fare is... euros = Le tarif est de... euros",
-          "How would you like to pay? = Comment souhaitez-vous payer ?",
-          "Cash or card? = Espèces ou carte ?",
-          "Here is your receipt = Voici votre reçu",
-          "Please don't forget your belongings = N'oubliez pas vos affaires",
-          "Thank you for choosing our service = Merci d'avoir choisi notre service",
-          "Have a pleasant stay / flight / day = Bon séjour / vol / journée"
+          "Could you spell that? = Pouvez-vous épeler ?",
+          "I'm sorry, there seems to be a problem = Il semble y avoir un problème",
+          "Do you prefer AC on or off? = Climatisation oui ou non ?",
+          "Here is your receipt = Voici votre reçu"
         ],
+        fieldExample: "Le chauffeur ne comprend pas l'adresse : 'Could you spell that, please?'",
+        examWarning: "Ne jamais prétendre avoir compris. Mieux vaut demander de répéter.",
         tips: [
-          "Préparer la monnaie et le terminal de paiement avant l'arrivée",
-          "Vérifier le véhicule après chaque course (objets oubliés)",
-          "Une formule de politesse finale laisse une bonne impression"
-        ],
-        legalRefs: []
-      },
-      {
-        id: 'ang-situations-difficiles',
-        title: 'Situations difficiles en anglais',
-        keyPoints: [
-          "I apologize for the delay = Je m'excuse pour le retard",
-          "I'm afraid there's been a problem = Je crains qu'il y ait eu un problème",
-          "Could you please repeat that? = Pourriez-vous répéter s'il vous plaît ?",
-          "I don't understand, could you speak more slowly? = Je ne comprends pas, parlez plus lentement ?",
-          "Let me check that for you = Laissez-moi vérifier cela",
-          "I will do my best to help you = Je ferai de mon mieux pour vous aider",
-          "Please remain calm = Restez calme s'il vous plaît"
-        ],
-        tips: [
-          "'I'm afraid' adoucit l'annonce d'une mauvaise nouvelle",
-          "Ne pas hésiter à demander de répéter ou d'épeler",
-          "Garder son calme même si le client s'énerve"
+          "Parler lentement si le client semble ne pas comprendre"
         ],
         legalRefs: []
       }
     ]
   },
 
-  // =====================
-  // VTC
-  // =====================
+  // =====================================================
+  // MODULE 6 : VTC SPÉCIFIQUE
+  // =====================================================
   {
     moduleId: 'vtc',
-    moduleName: 'Spécifique VTC',
-    moduleIcon: '🚗',
-    introduction: "Le VTC (Voiture de Transport avec Chauffeur) se distingue du taxi par l'obligation de réservation préalable et l'interdiction de la maraude. Ce module couvre les spécificités réglementaires du métier de conducteur VTC.",
+    moduleName: 'Métier VTC',
+    moduleIcon: '🚘',
+    domain: 'vtc',
+    examObjective: 'Maîtriser les spécificités VTC : réservation préalable, registre, tarification libre.',
+    introduction: "Réglementation spécifique aux VTC : interdiction de maraude, inscription au registre, plateformes.",
     cards: [
       {
-        id: 'vtc-definition-principes',
-        title: 'Définition et principes fondamentaux',
+        id: 'vtc-definition',
+        title: 'Définition VTC',
+        essential: "VTC = réservation préalable obligatoire. Maraude interdite sous peine de 15 000€.",
         keyPoints: [
-          "VTC = Voiture de Transport avec Chauffeur (anciennement 'Grande Remise')",
-          "Activité de transport de personnes sur réservation préalable",
-          "Interdiction absolue de la maraude (prendre des clients dans la rue sans réservation)",
-          "Interdiction de la maraude électronique (géolocalisation temps réel pour clients non réservés)",
-          "Le client doit avoir réservé AVANT que le véhicule ne se mette en route vers lui",
-          "Pas de signe distinctif obligatoire sauf vignette verte sur le pare-brise",
-          "Tarifs libres (contrairement aux taxis réglementés)"
+          "VTC = Voiture de Transport avec Chauffeur",
+          "Réservation préalable obligatoire (pas de prise en charge spontanée)",
+          "Maraude interdite : 1 an prison + 15 000€",
+          "Inscription au registre VTC préfectoral obligatoire"
+        ],
+        fieldExample: "Un client hèle un VTC dans la rue : le chauffeur doit refuser (maraude = interdit).",
+        examWarning: "VTC = JAMAIS de maraude. C'est LA différence fondamentale avec les taxis.",
+        confusionPoints: [
+          "Taxi = maraude autorisée ≠ VTC = réservation préalable uniquement"
         ],
         tips: [
-          "La réservation préalable est LA différence fondamentale avec le taxi",
-          "Conserver les preuves de réservation (application, mail, SMS)",
-          "Les contrôles de police vérifient l'existence de la réservation préalable"
-        ],
-        legalRefs: ["Article L3122-1 du Code des transports", "Article L3122-9 (réservation préalable)"]
-      },
-      {
-        id: 'vtc-inscription-registre',
-        title: 'Inscription au registre VTC',
-        keyPoints: [
-          "Inscription obligatoire au registre national des VTC",
-          "Tenu par le ministère des transports (plateforme en ligne)",
-          "Conditions : carte professionnelle VTC valide + assurance + véhicule conforme",
-          "Numéro d'inscription à afficher dans le véhicule (vignette)",
-          "Renouvellement annuel de l'inscription",
-          "Radiation en cas de non-respect des conditions ou manquement grave",
-          "Vérification possible en ligne par les clients et les autorités"
-        ],
-        tips: [
-          "L'inscription au registre est distincte de l'immatriculation de l'entreprise",
-          "Sans inscription = exercice illégal même avec carte professionnelle",
-          "Vérifier le renouvellement chaque année (ne pas attendre l'expiration)"
-        ],
-        legalRefs: ["Article L3122-3 du Code des transports", "Décret n°2014-1725"]
-      },
-      {
-        id: 'vtc-vehicule-specifications',
-        title: 'Véhicule VTC : spécifications',
-        keyPoints: [
-          "Nombre de places : 4 à 9 places assises (conducteur compris)",
-          "Âge maximum : 6 ans (7 ans si véhicule hybride ou électrique)",
-          "Conditions techniques alternatives : puissance ≥ 84 kW OU longueur ≥ 4,50m OU largeur ≥ 1,70m",
-          "Véhicule propre et en parfait état de fonctionnement",
-          "Pas de taximètre ni de lumineux de toit (réservés aux taxis)",
-          "Vignette VTC verte visible sur le pare-brise avant droit",
-          "Contrôle technique annuel (usage professionnel)"
-        ],
-        tips: [
-          "Les petits véhicules (citadines) ne respectent généralement pas les conditions VTC",
-          "Vérifier les critères avant l'achat d'un véhicule",
-          "L'état intérieur (propreté, odeurs) est aussi important que l'état mécanique"
-        ],
-        legalRefs: ["Décret n°2017-483 du 6 avril 2017", "Arrêté du 26 mars 2015"]
-      },
-      {
-        id: 'vtc-reservation-prealable',
-        title: 'Réservation préalable : règles',
-        keyPoints: [
-          "La réservation doit être effectuée AVANT la mise en route du véhicule",
-          "Modes de réservation acceptés : application, téléphone, mail, site web",
-          "La réservation doit être traçable et horodatée",
-          "Informations minimum : identité client, lieu de prise en charge, destination",
-          "Le véhicule ne peut pas stationner sur la voie publique en attente de client",
-          "Retour à la base obligatoire entre deux courses (ou nouvelle réservation)",
-          "La prise en charge 'à la volée' est interdite même si le client le demande"
-        ],
-        tips: [
-          "Toujours pouvoir justifier la réservation en cas de contrôle",
-          "Les plateformes (Uber, Bolt...) gèrent automatiquement la traçabilité",
-          "En cas de course spontanée demandée par un passant : refuser poliment"
+          "Retour à vide obligatoire sauf nouvelle réservation"
         ],
         legalRefs: ["Article L3122-9 du Code des transports"]
       },
       {
-        id: 'vtc-tarification-facturation',
-        title: 'Tarification et facturation',
+        id: 'vtc-inscription-registre',
+        title: 'Inscription au registre',
+        essential: "Inscription au registre VTC obligatoire. Numéro à afficher sur le véhicule.",
         keyPoints: [
-          "Tarifs libres : fixés par le VTC ou la plateforme (pas de réglementation)",
-          "Modes de tarification possibles : forfait, prix kilométrique, temps + distance",
-          "Information préalable du client obligatoire sur le prix ou mode de calcul",
-          "Devis recommandé pour les longues distances ou prestations particulières",
-          "Facturation obligatoire avec mentions légales (nom, SIRET, montant TTC...)",
-          "Moyens de paiement : espèces, carte bancaire, application",
-          "TVA à 10% pour le transport de voyageurs (si assujetti)"
+          "Registre tenu par la préfecture ou DRIEAT (Île-de-France)",
+          "Véhicule : ≥ 84 kW OU ≥ 4,50m OU ≥ 1,70m largeur",
+          "Vignette avec numéro d'inscription visible",
+          "Attestation d'inscription à bord obligatoire"
         ],
+        fieldExample: "Le VTC affiche sa vignette avec son numéro d'inscription sur le pare-brise avant droit.",
+        examWarning: "Sans inscription = exercice illégal même avec la carte pro.",
         tips: [
-          "Afficher clairement le prix avant la course évite les litiges",
-          "Les suppléments (bagages, animaux, nuit) doivent être annoncés à l'avance",
-          "Conserver une copie de chaque facture (obligations comptables)"
+          "Le numéro d'inscription est visible sur la vignette pare-brise"
         ],
-        legalRefs: ["Code de commerce (facturation)", "Article 279 du CGI (TVA 10%)"]
+        legalRefs: ["Article R3122-1 du Code des transports"]
       },
       {
-        id: 'vtc-plateformes-centrales',
-        title: 'Plateformes et centrales de réservation',
+        id: 'vtc-tarification',
+        title: 'Tarification VTC',
+        essential: "Tarifs libres mais information préalable du client obligatoire.",
         keyPoints: [
-          "Les centrales de réservation (Uber, Bolt, etc.) sont des intermédiaires",
-          "Elles doivent être inscrites au registre des intermédiaires T3P",
-          "Elles ne peuvent mettre en relation qu'avec des conducteurs/véhicules conformes",
-          "Commission prélevée sur chaque course (variable selon plateforme)",
-          "Le conducteur reste responsable de la conformité de son activité",
-          "Possibilité de travailler avec plusieurs plateformes simultanément",
-          "Statut du conducteur : indépendant (pas salarié de la plateforme)"
+          "Pas de tarif réglementé (libre concurrence)",
+          "Modes : forfait, kilométrique, temps + distance",
+          "Information prix AVANT la course obligatoire",
+          "TVA 10% pour le transport de voyageurs (si assujetti)"
+        ],
+        fieldExample: "L'application affiche 35€ pour la course : le client accepte en connaissance de cause.",
+        examWarning: "TVA transport = 10% pour les VTC (et non 20% comme la TVA standard).",
+        confusionPoints: [
+          "TVA VTC = 10% ≠ TVA standard = 20%"
         ],
         tips: [
-          "Comparer les conditions des différentes plateformes (commissions, zones)",
-          "Diversifier ses sources de clientèle (particuliers, entreprises, plateformes)",
-          "Le conducteur est son propre patron : il assume les risques et bénéfices"
+          "Les suppléments doivent être annoncés à l'avance"
         ],
-        legalRefs: ["Article L3141-1 du Code des transports (centrales)", "Loi n°2016-1088 (travail indépendant)"]
+        legalRefs: ["Article 279 du CGI (TVA 10%)"]
+      },
+      {
+        id: 'vtc-plateformes',
+        title: 'Plateformes VTC',
+        essential: "Le conducteur reste indépendant. La plateforme est un intermédiaire, pas un employeur.",
+        keyPoints: [
+          "Centrales (Uber, Bolt...) = intermédiaires inscrits",
+          "Commission prélevée sur chaque course",
+          "Possible de travailler avec plusieurs plateformes",
+          "Le conducteur reste responsable de sa conformité"
+        ],
+        fieldExample: "Un VTC travaille avec Uber et Bolt : il diversifie ses sources de clients.",
+        examWarning: "Statut = indépendant. Pas salarié de la plateforme (sauf requalification justice).",
+        tips: [
+          "Comparer les commissions des différentes plateformes"
+        ],
+        legalRefs: ["Article L3141-1 du Code des transports"]
       }
     ]
   },
 
-  // =====================
-  // TAXI PARIS 75
-  // =====================
+  // =====================================================
+  // MODULE 7 : TAXI PARIS 75
+  // =====================================================
   {
     moduleId: 'taxi-75',
     moduleName: 'Taxi Paris 75',
     moduleIcon: '🚖',
-    introduction: "Les taxis parisiens sont soumis à une réglementation spécifique combinant les règles nationales du Code des transports et les arrêtés préfectoraux locaux. Ce module couvre les particularités de l'exploitation d'un taxi à Paris.",
+    domain: 'taxi',
+    examObjective: 'Maîtriser la réglementation taxi parisien : ADS, tarifs, équipements, zones.',
+    introduction: "Réglementation spécifique taxi Paris : licence, tarifs réglementés, équipements obligatoires.",
     cards: [
       {
         id: 'tx75-ads-licence',
-        title: 'Autorisation de Stationnement (ADS)',
+        title: 'ADS (Licence taxi)',
+        essential: "ADS = Autorisation de Stationnement. Incessible depuis 2014 (loi Thévenoud).",
         keyPoints: [
-          "ADS = Autorisation de Stationnement, communément appelée 'licence taxi'",
-          "Délivrée par le préfet de police de Paris (pour le 75)",
-          "Nombre limité (environ 17 000 taxis parisiens)",
-          "Attachée à une zone géographique : Paris et communes limitrophes autorisées",
-          "Incessibilité des nouvelles ADS depuis la loi Thévenoud (1er octobre 2014)",
-          "Anciennes ADS (avant 2014) : cessibles sous conditions (exploitant unique depuis 5 ans)",
-          "L'ADS est distincte de la carte professionnelle (les deux sont obligatoires)"
+          "ADS ≠ carte pro : les deux sont obligatoires",
+          "Délivrée par le préfet de police de Paris",
+          "~17 000 taxis parisiens (nombre limité)",
+          "Anciennes ADS (avant 2014) cessibles si exploitées 5 ans"
+        ],
+        fieldExample: "Un chauffeur veut racheter une licence : si elle date de 2012, elle est cessible sous conditions.",
+        examWarning: "ADS = droit d'exploitation ≠ carte pro = aptitude à conduire. Deux documents distincts !",
+        confusionPoints: [
+          "ADS = exploitation du taxi ≠ Carte pro = aptitude du conducteur"
         ],
         tips: [
-          "Ne pas confondre ADS (exploitation du taxi) et carte pro (aptitude à conduire)",
-          "Liste d'attente pour les nouvelles ADS : plusieurs années",
-          "Rachat d'une ADS ancienne : vérifier les conditions avec la préfecture"
+          "Liste d'attente pour nouvelles ADS : plusieurs années"
         ],
-        legalRefs: ["Loi n°2014-1104 du 1er octobre 2014 (Thévenoud)", "Articles L3121-1 et suivants du Code des transports"]
+        legalRefs: ["Loi Thévenoud 2014", "Articles L3121-1 du Code des transports"]
       },
       {
         id: 'tx75-zones-maraude',
-        title: 'Zones de maraude et prise en charge',
+        title: 'Zones et maraude',
+        essential: "Maraude = réservée aux taxis. Client peut choisir n'importe quel taxi dans la file.",
         keyPoints: [
-          "Maraude = chercher des clients en circulant ou en stationnant (réservé aux taxis)",
-          "Zone de prise en charge : Paris et communes limitrophes autorisées",
-          "Stations de taxis : emplacements réservés avec tête de station",
-          "Règle de la file : le premier arrivé est le premier servi",
-          "Client peut choisir n'importe quel taxi de la file (pas forcément le premier)",
-          "Prise en charge hors zone : uniquement sur réservation préalable",
-          "Course vers une destination hors zone : obligatoire (pas de refus)"
+          "Maraude = chercher des clients en circulant/stationnant",
+          "Zone : Paris + communes limitrophes autorisées",
+          "Stations : file d'attente, 1er arrivé = 1er servi",
+          "Mais le client peut choisir n'importe quel taxi de la file"
         ],
+        fieldExample: "Un client passe devant 3 taxis et monte dans le 4ème : c'est son droit.",
+        examWarning: "Le client a le droit de choisir son taxi dans la file (pas obligé de prendre le premier).",
         tips: [
-          "Le client a le droit de choisir son taxi dans la file",
-          "Refuser une course vers une destination lointaine est interdit (sauf fin de service)",
-          "Connaître les stations de taxi principales de son secteur"
+          "Refuser une destination lointaine est interdit (sauf fin de service)"
         ],
-        legalRefs: ["Arrêté préfectoral relatif aux taxis parisiens"]
+        legalRefs: ["Arrêté préfectoral taxis parisiens"]
       },
       {
         id: 'tx75-taximetre-tarifs',
-        title: 'Taximètre et tarification',
+        title: 'Tarifs 2026',
+        essential: "4 tarifs (A, B, C, D). Forfaits aéroports 2026 : CDG 56€/65€, Orly 45€/36€.",
         keyPoints: [
-          "Taximètre homologué et scellé obligatoire (vérifié annuellement)",
-          "4 tarifs réglementés identifiés par des lettres lumineuses A, B, C, D",
-          "Tarif A : Paris jour (10h-17h) en semaine = le moins cher",
-          "Tarif B : Paris nuit (17h-10h) ou dimanche ou banlieue jour",
-          "Tarif C : Banlieue nuit (19h-7h) ou dimanche + retour à vide",
-          "Tarif D : Zone aéroport et longue distance (le plus cher)",
-          "Composition du prix : prise en charge + kilométrage + temps d'attente",
-          "Forfaits aéroports 2026 : CDG↔Paris rive droite 56€, rive gauche 65€ / Orly rive gauche 36€, rive droite 45€"
+          "A = Paris jour semaine (10h-17h) = le moins cher",
+          "B = Paris nuit/dimanche ou banlieue jour",
+          "C = Banlieue nuit/dimanche + retour à vide",
+          "D = Zone aéroport et longue distance (le plus cher)"
+        ],
+        fieldExample: "Course Paris Gare du Nord → CDG : forfait rive droite 56€ (tarifs 2026).",
+        examWarning: "Forfaits 2026 : CDG rive droite 56€, rive gauche 65€ / Orly rive droite 45€, rive gauche 36€.",
+        confusionPoints: [
+          "Rive droite CDG = 56€ ≠ Rive gauche CDG = 65€",
+          "Rive droite Orly = 45€ ≠ Rive gauche Orly = 36€"
         ],
         tips: [
-          "Le client peut voir le tarif appliqué sur le lumineux de toit",
-          "Les forfaits aéroports s'appliquent quelle que soit la durée effective",
-          "Le taximètre doit être visible du client pendant la course"
+          "Le forfait s'applique quelle que soit la durée effective"
         ],
-        legalRefs: ["Arrêté préfectoral tarifaire annuel", "Articles R3121-1 et suivants du Code des transports"]
+        legalRefs: ["Arrêté du 24 décembre 2025 (tarifs 2026)"]
       },
       {
         id: 'tx75-supplements',
         title: 'Suppléments autorisés',
+        essential: "4ème passager adulte, bagages volumineux, réservation. Chien guide = gratuit.",
         keyPoints: [
-          "4ème passager adulte : supplément autorisé (environ 4€)",
-          "Bagages en soute : supplément par bagage volumineux",
-          "Animal de compagnie : supplément possible (sauf chien guide = gratuit)",
-          "Réservation téléphonique : supplément prise en charge (environ 4€)",
-          "Trajets depuis gares/aéroports : la prise en charge inclut l'attente",
-          "Suppléments interdits : pourboire obligatoire, refus espèces, surtarification",
-          "Affichage obligatoire des tarifs et suppléments dans le véhicule"
+          "4ème passager adulte : ~4€ (pas les enfants < 10 ans)",
+          "Bagages volumineux en soute : supplément autorisé",
+          "Réservation téléphonique : ~4€",
+          "Chien guide = transport gratuit obligatoire"
         ],
+        fieldExample: "Un client avec 3 grandes valises : le chauffeur peut facturer un supplément bagages.",
+        examWarning: "Suppléments interdits : pourboire obligatoire, refus d'espèces, surtarification.",
         tips: [
-          "Le supplément 4ème passager ne s'applique pas aux enfants de moins de 10 ans",
-          "Les chiens d'assistance (aveugles, handicapés) sont transportés gratuitement",
           "Toujours annoncer les suppléments avant la course"
         ],
         legalRefs: ["Arrêté préfectoral tarifaire"]
       },
       {
-        id: 'tx75-equipements-obligatoires',
-        title: 'Équipements obligatoires du taxi parisien',
+        id: 'tx75-equipements',
+        title: 'Équipements obligatoires',
+        essential: "Lumineux (vert=libre), taximètre scellé, TPE obligatoire tout montant.",
         keyPoints: [
-          "Lumineux de toit : mention 'TAXI PARISIEN' + lettres de tarif",
-          "Vert = libre, éteint ou orange = occupé/réservé/hors service",
-          "Taximètre homologué, scellé et vérifié annuellement",
-          "Imprimante pour notes/factures ou système électronique",
-          "Terminal de paiement électronique (TPE) : carte bancaire obligatoire tout montant",
-          "Plaque d'identification fixée sur le véhicule (numéro ADS)",
-          "Affichage tarifaire visible par le client (grille des prix)",
-          "Carnet de bord ou système électronique équivalent"
+          "Lumineux : 'TAXI PARISIEN' + lettre tarif",
+          "Vert = libre, éteint/orange = occupé/réservé",
+          "Taximètre homologué, scellé, vérifié annuellement",
+          "TPE : carte bancaire acceptée pour tout montant"
         ],
+        fieldExample: "Un client veut payer 8€ en carte : le chauffeur ne peut pas refuser.",
+        examWarning: "Refuser la carte bancaire = infraction (150€ d'amende + signalement préfecture).",
         tips: [
-          "Refuser la carte bancaire est une infraction passible de sanction",
-          "Vérifier quotidiennement le bon fonctionnement de tous les équipements",
-          "Le lumineux doit être allumé en service (même occupé = visible)"
+          "Vérifier quotidiennement le bon fonctionnement des équipements"
         ],
-        legalRefs: ["Arrêté préfectoral relatif aux équipements", "Décret n°2017-235 (paiement électronique)"]
+        legalRefs: ["Décret n°2017-235 (paiement électronique)"]
       },
       {
-        id: 'tx75-obligations-droits',
-        title: 'Obligations et droits du taxi parisien',
+        id: 'tx75-obligations',
+        title: 'Obligations taxi',
+        essential: "Obligation de transport sauf motif légitime. Itinéraire le plus court ou rapide.",
         keyPoints: [
-          "Obligation de transport : ne peut refuser une course sauf motif légitime",
-          "Motifs légitimes de refus : sécurité, état du client, fin de service imminente",
-          "Itinéraire : le plus court ou le plus rapide selon demande du client",
-          "Information du client sur le tarif applicable dès la prise en charge",
-          "Droit de demander le règlement de la course avant le départ (courses longues)",
-          "Droit de refuser les animaux (sauf chiens guides)",
-          "Obligation de propreté du véhicule et tenue correcte du conducteur",
-          "Interdiction de fumer dans le véhicule"
+          "Obligation de transport (pas de refus arbitraire)",
+          "Motifs légitimes : sécurité, fin de service",
+          "Itinéraire : le plus court OU le plus rapide (au choix client)",
+          "Information tarif dès la prise en charge"
         ],
+        fieldExample: "Un client demande d'aller à 80 km : le chauffeur ne peut pas refuser (sauf fin de service).",
+        examWarning: "Refuser une course sans motif légitime = amende + suspension possible.",
         tips: [
-          "Noter le motif de refus en cas de course refusée (justification possible)",
-          "Le client peut demander un reçu systématiquement",
-          "En cas de litige : rester calme, donner le numéro de la préfecture"
+          "Noter le motif en cas de refus pour justification ultérieure"
         ],
         legalRefs: ["Articles R3121-1 et suivants du Code des transports"]
       },
       {
-        id: 'tx75-controles-sanctions',
-        title: 'Contrôles et sanctions spécifiques',
+        id: 'tx75-controles',
+        title: 'Contrôles et sanctions',
+        essential: "Refus CB : 150€. Tarification non conforme : amende + immobilisation possible.",
         keyPoints: [
-          "Contrôles par la Préfecture de Police, police, gendarmerie",
-          "Vérification : ADS, carte pro, taximètre, assurance, état du véhicule",
-          "Refus de transport non justifié : amende + suspension possible",
-          "Tarification non conforme : amende + immobilisation possible",
-          "Défaut de TPE ou refus CB : amende 150€ + signalement préfecture",
-          "Stationnement illicite sur station : verbalisation",
-          "Comportement non professionnel : avertissement puis suspension ADS"
+          "Contrôles par Préfecture de Police, police, gendarmerie",
+          "Vérification : ADS, carte pro, taximètre, assurance",
+          "Défaut TPE ou refus CB : 150€ + signalement",
+          "Comportement non pro : avertissement puis suspension ADS"
         ],
+        fieldExample: "Un taxi refuse une carte pour 12€ : le client peut signaler à la préfecture.",
+        examWarning: "Tous les documents doivent être à portée de main lors d'un contrôle.",
         tips: [
-          "Coopérer avec les agents lors des contrôles",
-          "Avoir tous les documents à portée de main",
-          "En cas de contestation : voie de recours devant le tribunal administratif"
+          "Coopérer avec les agents lors des contrôles"
         ],
-        legalRefs: ["Articles R3124-1 et suivants du Code des transports", "Arrêtés préfectoraux"]
+        legalRefs: ["Articles R3124-1 et suivants du Code des transports"]
       }
     ]
   },
 
-  // =====================
-  // TOPOGRAPHIE PARIS
-  // =====================
+  // =====================================================
+  // MODULE 8 : TOPOGRAPHIE PARIS
+  // =====================================================
   {
     moduleId: 'topographie-paris',
     moduleName: 'Topographie Paris',
     moduleIcon: '🗼',
-    introduction: "La connaissance de Paris est essentielle pour un chauffeur professionnel. Ce module couvre les monuments emblématiques, les gares, les hôpitaux, les axes de circulation et l'organisation des arrondissements.",
+    domain: 'taxi',
+    examObjective: 'Connaître Paris : arrondissements, monuments, gares, hôpitaux, axes de circulation.',
+    introduction: "Connaissance de Paris : monuments, gares, hôpitaux, arrondissements et axes principaux.",
     cards: [
       {
         id: 'topo-arrondissements',
-        title: 'Organisation des arrondissements',
+        title: 'Arrondissements',
+        essential: "20 arrondissements en spirale depuis le centre. Code postal = 75 + n° arrondissement.",
         keyPoints: [
-          "Paris : 20 arrondissements numérotés en spirale depuis le centre (1er = Louvre)",
-          "Rive droite (nord de la Seine) : 1er au 4ème, 8ème au 12ème, 16ème au 20ème",
-          "Rive gauche (sud de la Seine) : 5ème au 7ème, 13ème au 15ème",
-          "Centre historique : 1er-4ème (Louvre, Marais, Île de la Cité)",
-          "Beaux quartiers : 7ème, 8ème, 16ème (ambassades, luxe)",
-          "Quartiers d'affaires : 8ème (Champs-Élysées), 9ème (Opéra), La Défense (92)",
-          "Quartier latin : 5ème-6ème (universités, Sorbonne)",
-          "Montmartre : 18ème / Belleville-Ménilmontant : 19ème-20ème"
+          "1er = Louvre (centre), spirale vers extérieur",
+          "Rive droite (nord Seine) : 1-4, 8-12, 16-20",
+          "Rive gauche (sud Seine) : 5-7, 13-15",
+          "Code postal : 75008 = 8ème arrondissement"
         ],
+        fieldExample: "Client dit '75016' : c'est le 16ème arrondissement, quartier résidentiel ouest.",
+        examWarning: "Les 2 derniers chiffres du code postal = numéro d'arrondissement.",
         tips: [
-          "Les deux derniers chiffres du code postal = numéro d'arrondissement (75008 = 8ème)",
-          "Mémoriser les limites : boulevard périphérique = ceinture de Paris",
-          "Savoir situer approximativement chaque arrondissement sur une carte mentale"
+          "Périphérique = ceinture de Paris (35 km)"
         ],
         legalRefs: []
       },
       {
-        id: 'topo-monuments-majeurs',
-        title: 'Monuments emblématiques',
+        id: 'topo-monuments',
+        title: 'Monuments majeurs',
+        essential: "Axe historique : Louvre → Tuileries → Concorde → Champs → Arc de Triomphe → La Défense.",
         keyPoints: [
-          "Tour Eiffel : 7ème arr., Champ de Mars, métro Bir-Hakeim/Trocadéro",
-          "Arc de Triomphe : 8ème arr., place Charles de Gaulle (Étoile), 12 avenues",
-          "Sacré-Cœur : 18ème arr., butte Montmartre, métro Anvers/Abbesses",
-          "Notre-Dame : 4ème arr., Île de la Cité (en reconstruction après l'incendie 2019)",
-          "Panthéon : 5ème arr., montagne Sainte-Geneviève, métro Cardinal Lemoine",
-          "Invalides : 7ème arr., tombeau de Napoléon, métro Invalides/Varenne",
-          "Opéra Garnier : 9ème arr., métro Opéra",
-          "Place de la Concorde : 8ème arr., obélisque, entre Tuileries et Champs-Élysées"
+          "Tour Eiffel : 7ème, Champ de Mars, métro Bir-Hakeim",
+          "Arc de Triomphe : 8ème, place de l'Étoile, 12 avenues",
+          "Sacré-Cœur : 18ème, Montmartre, métro Anvers",
+          "Notre-Dame : 4ème, Île de la Cité"
         ],
+        fieldExample: "Client veut voir 'les Champs' puis 'la Tour' : Arc de Triomphe → Tour Eiffel.",
+        examWarning: "Place de l'Étoile = Place Charles de Gaulle (deux noms pour le même lieu).",
         tips: [
-          "L'axe historique : Louvre → Tuileries → Concorde → Champs-Élysées → Arc de Triomphe → La Défense",
-          "Savoir indiquer les accès les plus pratiques (métro, parkings)",
-          "Attention aux zones piétonnes et restrictions de circulation"
+          "Attention aux zones piétonnes autour des monuments"
         ],
         legalRefs: []
       },
       {
-        id: 'topo-musees-culture',
-        title: 'Musées et lieux culturels',
+        id: 'topo-gares',
+        title: 'Gares SNCF',
+        essential: "6 grandes gares, chacune dessert une direction géographique.",
         keyPoints: [
-          "Musée du Louvre : 1er arr., pyramide de verre, plus grand musée du monde",
-          "Musée d'Orsay : 7ème arr., ancienne gare, impressionnistes",
-          "Centre Pompidou (Beaubourg) : 4ème arr., art moderne, architecture remarquable",
-          "Musée Rodin : 7ème arr., hôtel Biron, jardin avec Le Penseur",
-          "Grand Palais / Petit Palais : 8ème arr., expositions temporaires",
-          "Palais de Tokyo : 16ème arr., art contemporain",
-          "Cité des Sciences : 19ème arr., Parc de la Villette",
-          "Philharmonie de Paris : 19ème arr., Parc de la Villette"
+          "Gare du Nord (10ème) : Londres, Belgique, TGV Nord",
+          "Gare de Lyon (12ème) : Lyon, Marseille, Suisse, Italie",
+          "Montparnasse (15ème) : Bordeaux, Nantes, Bretagne",
+          "Saint-Lazare (8ème) : Normandie (pas de TGV)"
         ],
+        fieldExample: "Client va à Marseille : Gare de Lyon, TGV Sud-Est.",
+        examWarning: "Gare du Nord = la plus fréquentée d'Europe.",
         tips: [
-          "Jours de fermeture : la plupart des musées nationaux ferment le mardi",
-          "Nocturnes : certains musées ouvrent tard certains soirs (Louvre mercredi/vendredi)",
-          "Prévoir les embouteillages lors des grandes expositions"
-        ],
-        legalRefs: []
-      },
-      {
-        id: 'topo-gares-sncf',
-        title: 'Gares SNCF parisiennes',
-        keyPoints: [
-          "Gare du Nord : 10ème arr., Eurostar (Londres), Thalys (Belgique), TGV Nord",
-          "Gare de l'Est : 10ème arr., TGV Est (Strasbourg, Allemagne), proche Gare du Nord",
-          "Gare de Lyon : 12ème arr., TGV Sud-Est (Lyon, Marseille), Suisse, Italie",
-          "Gare Montparnasse : 15ème arr., TGV Atlantique (Bordeaux, Nantes, Bretagne)",
-          "Gare Saint-Lazare : 8ème arr., trains vers Normandie (pas de TGV)",
-          "Gare d'Austerlitz : 13ème arr., trains vers Centre et Sud-Ouest (moins de TGV)"
-        ],
-        tips: [
-          "6 grandes gares parisiennes, chacune dessert une direction géographique",
-          "Gare du Nord = la plus fréquentée d'Europe",
           "Prévoir le temps de dépose (circulation + distance dans la gare)"
         ],
         legalRefs: []
       },
       {
         id: 'topo-aeroports',
-        title: 'Aéroports parisiens',
+        title: 'Aéroports',
+        essential: "CDG (Roissy) = 3 terminaux. Orly = 4 terminaux. Forfaits taxi 2026.",
         keyPoints: [
-          "Paris-Charles de Gaulle (CDG) : Roissy (95), 3 terminaux (1, 2A-2G, 3)",
-          "Accès CDG : A1 (Porte de la Chapelle), RER B, bus Roissybus",
-          "Paris-Orly (ORY) : Orly (94), 4 terminaux (1 à 4, anciennement Sud/Ouest)",
-          "Accès Orly : A6 (Porte d'Orléans), Orlyval+RER B, tramway T7, bus Orlybus",
-          "Paris-Le Bourget : aéroport d'affaires et salons aéronautiques",
-          "Paris-Beauvais : à 85 km, low-cost (Ryanair)",
-          "Forfaits taxi aéroports 2026 : CDG 56€ (rive droite) / 65€ (rive gauche), Orly 45€ (rive droite) / 36€ (rive gauche)"
+          "CDG : A1 Porte de la Chapelle, RER B, Roissybus",
+          "Orly : A6 Porte d'Orléans, Orlyval+RER B, T7",
+          "Forfaits 2026 : CDG 56€/65€, Orly 45€/36€",
+          "Le Bourget : affaires, Beauvais : low-cost (85 km)"
         ],
+        fieldExample: "Client va à CDG Terminal 2E : A1 Porte de la Chapelle, prévoir 1h.",
+        examWarning: "CDG a plusieurs terminaux 2 (2A, 2B, 2C, 2D, 2E, 2F, 2G). Toujours confirmer !",
         tips: [
-          "Toujours demander le terminal exact (CDG terminal 2 a plusieurs halls)",
-          "Prévoir 1h pour CDG depuis Paris (trafic), 30-45min pour Orly",
-          "Zones de dépose rapide : limitées en temps (risque d'amende)"
+          "Prévoir 1h pour CDG, 30-45min pour Orly depuis Paris"
         ],
         legalRefs: []
       },
       {
-        id: 'topo-hopitaux-urgences',
-        title: 'Hôpitaux et urgences',
+        id: 'topo-hopitaux',
+        title: 'Hôpitaux',
+        essential: "AP-HP = réseau public. Pitié-Salpêtrière = le plus grand de France.",
         keyPoints: [
-          "Pitié-Salpêtrière : 13ème arr., plus grand hôpital de France, toutes spécialités",
-          "Hôpital Européen Georges-Pompidou (HEGP) : 15ème arr., moderne, urgences",
-          "Hôtel-Dieu : 4ème arr., Île de la Cité, urgences centre de Paris",
-          "Cochin : 14ème arr., Port-Royal, maternité réputée",
-          "Necker-Enfants malades : 15ème arr., pédiatrie, urgences enfants",
-          "Lariboisière : 10ème arr., près Gare du Nord, urgences",
-          "Saint-Louis : 10ème arr., dermatologie, cancérologie",
-          "Américain de Paris : Neuilly (92), hôpital privé, clientèle internationale"
+          "Pitié-Salpêtrière (13ème) : le plus grand, toutes spécialités",
+          "HEGP Georges-Pompidou (15ème) : moderne, urgences",
+          "Necker (15ème) : pédiatrie, urgences enfants",
+          "Hôtel-Dieu (4ème) : Île de la Cité, urgences centre"
         ],
+        fieldExample: "Urgence enfant : Necker-Enfants malades, 15ème arrondissement.",
+        examWarning: "En urgence : appeler le 15 (SAMU) pour orientation vers l'hôpital approprié.",
         tips: [
-          "AP-HP = Assistance Publique - Hôpitaux de Paris (réseau public)",
-          "En urgence : appeler le 15 (SAMU) pour orientation vers l'hôpital approprié",
-          "Connaître l'hôpital le plus proche de chaque quartier de son secteur"
+          "Connaître l'hôpital le plus proche de son secteur"
         ],
         legalRefs: []
       },
       {
-        id: 'topo-axes-circulation',
-        title: 'Axes majeurs de circulation',
+        id: 'topo-axes',
+        title: 'Axes de circulation',
+        essential: "Périphérique 35 km, saturé 7h-9h et 17h-20h. A1 → CDG, A6 → Orly.",
         keyPoints: [
-          "Boulevard Périphérique : 35 km, ceinture de Paris, sens horaire et anti-horaire",
-          "Voies sur berges : fermées en grande partie (piétonisation)",
-          "Champs-Élysées : Concorde ↔ Étoile, 2 km, sens unique vers l'Ouest",
-          "Grands Boulevards : du 2ème au 10ème, anciens remparts",
-          "Boulevard Saint-Germain : rive gauche, 5ème-7ème arr.",
-          "Boulevard Haussmann : 8ème-9ème, grands magasins (Galeries Lafayette, Printemps)",
-          "A1 : Porte de la Chapelle → Roissy CDG",
+          "Périphérique : 35 km, sens horaire et anti-horaire",
+          "Champs-Élysées : Concorde ↔ Étoile, 2 km, sens unique vers Ouest",
+          "A1 : Porte de la Chapelle → CDG",
           "A6 : Porte d'Orléans → Orly et Lyon"
         ],
+        fieldExample: "Il est 18h, le périph est bouché : prendre les boulevards des Maréchaux.",
+        examWarning: "Voies sur berges largement fermées (piétonisation).",
         tips: [
-          "Le périphérique est souvent saturé aux heures de pointe (7h-9h, 17h-20h)",
-          "Connaître les portes principales et leur correspondance avec les destinations",
-          "Axes alternatifs en cas de bouchon : boulevards des Maréchaux"
+          "Connaître les portes principales et leurs destinations"
         ],
         legalRefs: []
       },
       {
-        id: 'topo-places-carrefours',
-        title: 'Places et carrefours stratégiques',
+        id: 'topo-places',
+        title: 'Places et carrefours',
+        essential: "Place de l'Étoile = 12 avenues. République = manifestations fréquentes.",
         keyPoints: [
-          "Place de l'Étoile (Charles de Gaulle) : 8ème, 12 avenues, Arc de Triomphe",
-          "Place de la Concorde : 8ème, obélisque, entre Tuileries et Champs",
-          "Place de la Bastille : 4ème/11ème/12ème, colonne de Juillet, Opéra Bastille",
-          "Place de la République : 3ème/10ème/11ème, statue de Marianne",
-          "Place du Châtelet : 1er, fontaine, deux théâtres, nœud de métro",
-          "Place de la Nation : 11ème/12ème, colonnes, fin du Cours de Vincennes",
-          "Place d'Italie : 13ème, centre commercial, carrefour majeur sud",
-          "Place Clichy : 8ème/9ème/17ème/18ème, carrefour Montmartre"
+          "Place de l'Étoile (8ème) : 12 avenues, Arc de Triomphe",
+          "Place de la Concorde (8ème) : obélisque, Tuileries-Champs",
+          "Place de la Bastille (4ème/11ème/12ème) : Opéra Bastille",
+          "Place de la République (3ème/10ème/11ème) : Marianne"
         ],
+        fieldExample: "Manifestation annoncée place de la République : éviter le secteur.",
+        examWarning: "Les grandes places = nœuds de circulation complexes. Mémoriser les sens.",
         tips: [
-          "Les grandes places sont souvent des nœuds de circulation complexes",
-          "Mémoriser les sens de circulation et les sorties principales",
-          "Attention aux manifestations fréquentes place de la République"
+          "Attention aux manifestations fréquentes République et Bastille"
         ],
         legalRefs: []
       }
     ]
   },
 
-  // =====================
-  // RELATION CLIENT
-  // =====================
+  // =====================================================
+  // MODULE 9 : RELATION CLIENT
+  // =====================================================
   {
     moduleId: 'relation-client',
     moduleName: 'Relation Client',
     moduleIcon: '🤝',
-    introduction: "La qualité de service est le premier facteur de fidélisation et de différenciation dans un marché concurrentiel. Chaque course est une opportunité de créer une expérience positive qui génèrera des recommandations.",
+    domain: 'commun',
+    examObjective: 'Maîtriser l\'accueil, la communication et la gestion des situations délicates.',
+    introduction: "Qualité de service, accueil, communication, gestion des conflits et fidélisation.",
     cards: [
       {
-        id: 'rel-accueil-premiere-impression',
-        title: 'Accueil et première impression',
+        id: 'rel-accueil',
+        title: 'Première impression',
+        essential: "Les 20 premières secondes déterminent l'impression générale.",
         keyPoints: [
-          "Les 20 premières secondes déterminent l'impression générale",
-          "Ponctualité : arriver à l'heure ou prévenir en cas de retard",
-          "Présentation personnelle : tenue correcte, propre, pas d'odeur désagréable",
-          "Véhicule : propre extérieur/intérieur, pas d'odeur de tabac, température agréable",
-          "Salutation : regarder le client, sourire, dire bonjour clairement",
-          "Proposer l'aide : bagages, portière, installation",
-          "Confirmation : destination, préférences (climatisation, musique, itinéraire)"
+          "Ponctualité : arriver à l'heure ou prévenir",
+          "Tenue correcte, propre, pas d'odeur désagréable",
+          "Véhicule propre, pas d'odeur de tabac",
+          "Salutation : regarder le client, sourire, bonjour clair"
         ],
+        fieldExample: "Le chauffeur arrive 5 min en avance, ouvre le coffre avant qu'on lui demande.",
+        examWarning: "Première impression = 20 secondes. Soigner l'arrivée et le premier contact.",
         tips: [
-          "Un sourire sincère coûte rien mais vaut beaucoup",
-          "Anticiper les besoins : ouvrir le coffre avant qu'on vous le demande",
-          "Adapter sa tenue au type de clientèle (affaires vs tourisme)"
+          "Anticiper les besoins : ouvrir le coffre, proposer l'aide"
         ],
         legalRefs: []
       },
       {
         id: 'rel-communication-trajet',
-        title: 'Communication pendant le trajet',
+        title: 'Pendant le trajet',
+        essential: "Observer le client : certains veulent parler, d'autres du silence.",
         keyPoints: [
-          "Écoute active : laisser parler le client, ne pas interrompre",
-          "Respecter les préférences : certains veulent parler, d'autres du silence",
-          "Informer spontanément : durée estimée, conditions de circulation, itinéraire choisi",
-          "Éviter les sujets polémiques : politique, religion, sujets sensibles",
-          "Répondre aux questions : tourisme, recommandations, informations pratiques",
-          "Volume et ton de voix : audible mais pas trop fort, ton calme et posé",
-          "Téléphone personnel : éviter les appels personnels en présence du client"
+          "Écoute active : ne pas interrompre",
+          "Éviter sujets polémiques (politique, religion)",
+          "Informer spontanément : durée, trafic, itinéraire",
+          "Téléphone perso : éviter en présence du client"
         ],
+        fieldExample: "Le client travaille sur son ordinateur : le chauffeur reste silencieux.",
+        examWarning: "Si le client travaille/téléphone : ne pas le déranger.",
         tips: [
-          "Observer le langage non-verbal du client pour adapter son attitude",
-          "Si le client travaille (ordinateur, téléphone) : ne pas le déranger",
           "Proposer sans imposer : 'Souhaitez-vous de la musique ?'"
         ],
         legalRefs: []
       },
       {
         id: 'rel-conduite-confort',
-        title: 'Conduite et confort passager',
+        title: 'Conduite et confort',
+        essential: "Conduite souple = passager rassuré. Anticiper pour éviter les à-coups.",
         keyPoints: [
-          "Conduite souple : pas d'accélérations/freinages brusques",
-          "Anticipation : regarder loin, prévoir les manœuvres",
-          "Respect du Code de la route : le client doit se sentir en sécurité",
-          "Climatisation/chauffage : vérifier le confort du client",
-          "Musique : volume adapté, style neutre ou choix du client",
-          "Vitesse : ne pas donner l'impression de 'trainer' ni de foncer",
-          "Itinéraire : expliquer les choix si le client le demande"
+          "Pas d'accélérations/freinages brusques",
+          "Respecter le Code : le client doit se sentir en sécurité",
+          "Climatisation : vérifier le confort",
+          "Expliquer les choix d'itinéraire si demandé"
         ],
+        fieldExample: "Le chauffeur anticipe le feu rouge et freine progressivement : confort optimal.",
+        examWarning: "Une conduite nerveuse stresse le passager et nuit à l'image.",
         tips: [
-          "Une conduite nerveuse stresse le passager et nuit à l'image",
-          "L'éco-conduite est aussi favorable au confort passager",
-          "Demander au client s'il a une préférence d'itinéraire"
+          "L'éco-conduite = confort passager + économies"
         ],
         legalRefs: []
       },
       {
-        id: 'rel-gestion-conflits',
-        title: 'Gestion des conflits et réclamations',
+        id: 'rel-conflits',
+        title: 'Gestion des conflits',
+        essential: "Rester calme, écouter, reformuler, s'excuser si nécessaire, proposer une solution.",
         keyPoints: [
-          "Rester calme : ne jamais s'énerver ni hausser le ton",
-          "Écouter entièrement : laisser le client exprimer son mécontentement",
-          "Reformuler : 'Si je comprends bien, vous êtes mécontent parce que...'",
-          "S'excuser si nécessaire : même si on n'est pas directement responsable",
-          "Proposer une solution : geste commercial, explication, engagement d'amélioration",
-          "Ne pas contredire frontalement : 'Je comprends votre point de vue'",
-          "Garder une trace : noter l'incident pour analyse ultérieure"
+          "Ne jamais s'énerver ni hausser le ton",
+          "Écouter entièrement avant de répondre",
+          "Reformuler : 'Si je comprends bien...'",
+          "S'excuser même si pas directement responsable"
         ],
+        fieldExample: "Client mécontent du temps de trajet : 'Je comprends, le trafic était exceptionnel aujourd'hui.'",
+        examWarning: "Jamais de violence verbale ou physique, même provoqué.",
         tips: [
-          "Un client mécontent bien traité peut devenir un client fidèle",
-          "En cas de conflit insoluble : donner les coordonnées de la préfecture",
-          "Jamais de violence verbale ou physique, même provoqué"
+          "Un client mécontent bien traité peut devenir fidèle"
         ],
         legalRefs: []
       },
       {
-        id: 'rel-fin-course-fidelisation',
-        title: 'Fin de course et fidélisation',
+        id: 'rel-fin-course',
+        title: 'Fin de course',
+        essential: "La dernière impression compte autant que la première.",
         keyPoints: [
           "Annoncer l'arrivée : 'Nous arrivons à destination'",
-          "Stationner au plus près : sécurité et confort du client",
-          "Aider à la descente : bagages, portière pour personnes âgées ou handicapées",
-          "Rappel des affaires : 'N'oubliez pas de vérifier vos affaires'",
-          "Remise du reçu : systématique ou sur demande selon réglementation",
-          "Formule de politesse finale : 'Merci, bonne journée/bon voyage'",
-          "Carte de visite : pour les clients potentiellement fidélisables"
+          "Stationner au plus près pour sécurité/confort",
+          "Rappeler : 'N'oubliez pas de vérifier vos affaires'",
+          "Remercier : 'Merci, bonne journée'"
         ],
+        fieldExample: "Le chauffeur aide à sortir les bagages et souhaite bon voyage au client.",
+        examWarning: "Vérifier le véhicule après chaque course (objets oubliés).",
         tips: [
-          "La dernière impression est aussi importante que la première",
-          "Un client satisfait en parle à 3 personnes, un mécontent à 10",
-          "Vérifier le véhicule après chaque course (objets oubliés)"
+          "Client satisfait = 3 personnes informées, mécontent = 10"
         ],
         legalRefs: []
       },
       {
-        id: 'rel-clientele-specifique',
+        id: 'rel-clienteles-specifiques',
         title: 'Clientèles spécifiques',
+        essential: "S'adapter sans préjugés. Chiens guides = transport obligatoire et gratuit.",
         keyPoints: [
-          "Personnes handicapées : patience, proposer l'aide sans imposer, accessibilité",
-          "Personnes âgées : prendre le temps, parler distinctement, aider aux bagages",
-          "Familles avec enfants : sièges enfants si disponibles, patience",
-          "Touristes : informations sur Paris, recommandations, quelques mots en anglais",
-          "Voyageurs d'affaires : efficacité, discrétion, ponctualité absolue",
-          "Clients alcoolisés : évaluer la situation, refuser si risque de trouble",
-          "Chiens guides : transport obligatoire et gratuit pour l'animal"
+          "Handicapés : proposer l'aide sans imposer",
+          "Personnes âgées : prendre le temps, parler distinctement",
+          "Touristes : quelques infos sur Paris, mots en anglais",
+          "Voyageurs d'affaires : efficacité, discrétion, ponctualité"
         ],
+        fieldExample: "Client âgé avec canne : le chauffeur l'aide à monter et attache sa ceinture.",
+        examWarning: "Le handicap n'est pas un motif de refus de transport.",
         tips: [
-          "S'adapter à chaque type de clientèle sans préjugés",
-          "Le handicap n'est pas un motif de refus de transport",
-          "Les voyageurs d'affaires apprécient le silence et le respect des délais"
+          "Chiens guides = transport gratuit obligatoire (loi)"
         ],
         legalRefs: ["Article L3121-8 du Code des transports (chiens guides)"]
       }
@@ -1285,11 +1147,18 @@ export const revisionModules: RevisionModule[] = [
   }
 ];
 
-// Fonctions utilitaires
+// ============================================
+// FONCTIONS UTILITAIRES
+// ============================================
+
 export const getRevisionModuleById = (moduleId: string): RevisionModule | undefined => {
   return revisionModules.find(m => m.moduleId === moduleId);
 };
 
 export const getAllRevisionModules = (): RevisionModule[] => {
   return revisionModules;
+};
+
+export const getModulesByDomain = (domain: 'commun' | 'taxi' | 'vtc' | 'vmdtr'): RevisionModule[] => {
+  return revisionModules.filter(m => m.domain === domain);
 };

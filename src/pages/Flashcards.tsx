@@ -1,20 +1,19 @@
-import { useState, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
+import { Badge } from '@/components/ui/badge';
 import { 
   RotateCcw, 
-  ArrowLeft, 
-  ArrowRight, 
   Shuffle, 
   BookOpen,
   ChevronLeft,
   Check,
   X,
-  Layers
+  Layers,
+  AlertTriangle
 } from 'lucide-react';
 import { revisionModules, RevisionCard } from '@/data/revisionData';
 
@@ -24,19 +23,20 @@ interface FlashcardData {
   moduleName: string;
   moduleIcon: string;
   question: string;
-  answer: string[];
+  essential: string;
+  keyPoints: string[];
+  examWarning?: string;
   tips: string[];
 }
 
 const Flashcards = () => {
-  const navigate = useNavigate();
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [knownCards, setKnownCards] = useState<Set<string>>(new Set());
   const [unknownCards, setUnknownCards] = useState<Set<string>>(new Set());
 
-  // Convert revision cards to flashcards
+  // Convert revision cards to flashcards with new structure
   const allFlashcards: FlashcardData[] = useMemo(() => {
     const cards: FlashcardData[] = [];
     
@@ -48,7 +48,9 @@ const Flashcards = () => {
           moduleName: module.moduleName,
           moduleIcon: module.moduleIcon,
           question: card.title,
-          answer: card.keyPoints,
+          essential: card.essential,
+          keyPoints: card.keyPoints,
+          examWarning: card.examWarning,
           tips: card.tips,
         });
       });
@@ -75,6 +77,9 @@ const Flashcards = () => {
     if (currentIndex < flashcards.length - 1) {
       setCurrentIndex(prev => prev + 1);
       setIsFlipped(false);
+    } else {
+      // Session terminée
+      setCurrentIndex(flashcards.length);
     }
   };
 
@@ -110,8 +115,6 @@ const Flashcards = () => {
   };
 
   const handleShuffle = () => {
-    const shuffled = [...flashcards].sort(() => Math.random() - 0.5);
-    // Reset to first card of shuffled deck
     setCurrentIndex(0);
     setIsFlipped(false);
   };
@@ -131,6 +134,20 @@ const Flashcards = () => {
     setUnknownCards(new Set());
   };
 
+  const domainColors = {
+    commun: 'bg-primary/10 text-primary',
+    taxi: 'bg-yellow-500/10 text-yellow-600',
+    vtc: 'bg-blue-500/10 text-blue-600',
+    vmdtr: 'bg-green-500/10 text-green-600'
+  };
+
+  const domainLabels = {
+    commun: 'Tronc commun',
+    taxi: 'Taxi',
+    vtc: 'VTC',
+    vmdtr: 'VMDTR'
+  };
+
   // Module selection view
   if (!selectedModule) {
     return (
@@ -146,7 +163,7 @@ const Flashcards = () => {
               Flashcards
             </h1>
             <p className="text-muted-foreground">
-              Révisez rapidement avec des cartes mémo
+              Mémorisez l'essentiel avec des cartes interactives
             </p>
           </div>
 
@@ -178,8 +195,13 @@ const Flashcards = () => {
                 >
                   <div className="flex items-center gap-4">
                     <span className="text-3xl">{module.moduleIcon}</span>
-                    <div>
-                      <h3 className="font-semibold text-foreground">{module.moduleName}</h3>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="font-semibold text-foreground">{module.moduleName}</h3>
+                        <Badge variant="secondary" className={`${domainColors[module.domain]} text-xs`}>
+                          {domainLabels[module.domain]}
+                        </Badge>
+                      </div>
                       <p className="text-sm text-muted-foreground">
                         {cardCount} carte{cardCount > 1 ? 's' : ''}
                       </p>
@@ -309,8 +331,8 @@ const Flashcards = () => {
               exit={{ rotateY: isFlipped ? 90 : -90, opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <Card className={`min-h-[300px] ${isFlipped ? 'bg-primary/5 border-primary/30' : ''}`}>
-                <CardContent className="p-6 flex flex-col justify-center min-h-[300px]">
+              <Card className={`min-h-[320px] ${isFlipped ? 'bg-primary/5 border-primary/30' : ''}`}>
+                <CardContent className="p-6 flex flex-col justify-center min-h-[320px]">
                   {!isFlipped ? (
                     // Question side
                     <div className="text-center">
@@ -323,22 +345,42 @@ const Flashcards = () => {
                       </p>
                     </div>
                   ) : (
-                    // Answer side
-                    <div>
-                      <h3 className="font-semibold text-primary mb-3">Points clés :</h3>
-                      <ul className="space-y-2 text-sm">
-                        {currentCard?.answer.slice(0, 5).map((point, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <span className="text-primary mt-0.5">•</span>
-                            <span className="text-foreground">{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      {currentCard?.tips && currentCard.tips.length > 0 && (
-                        <div className="mt-4 pt-4 border-t">
-                          <p className="text-xs font-medium text-muted-foreground mb-2">💡 Astuce :</p>
-                          <p className="text-xs text-muted-foreground">{currentCard.tips[0]}</p>
+                    // Answer side - new structure
+                    <div className="space-y-4">
+                      {/* L'essentiel */}
+                      <div className="rounded-lg bg-primary/10 p-3">
+                        <p className="text-sm font-medium text-primary">⭐ L'essentiel</p>
+                        <p className="text-sm text-foreground mt-1">{currentCard?.essential}</p>
+                      </div>
+
+                      {/* Points clés (max 3) */}
+                      <div>
+                        <p className="text-xs font-medium text-muted-foreground mb-2">📌 Points clés</p>
+                        <ul className="space-y-1">
+                          {currentCard?.keyPoints.slice(0, 3).map((point, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-xs">
+                              <span className="text-primary font-bold">{idx + 1}.</span>
+                              <span className="text-foreground">{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Piège examen */}
+                      {currentCard?.examWarning && (
+                        <div className="rounded-lg bg-destructive/10 p-2">
+                          <div className="flex items-start gap-2">
+                            <AlertTriangle className="h-3 w-3 text-destructive mt-0.5 shrink-0" />
+                            <p className="text-xs text-foreground">{currentCard.examWarning}</p>
+                          </div>
                         </div>
+                      )}
+
+                      {/* Astuce (1 seule) */}
+                      {currentCard?.tips && currentCard.tips.length > 0 && (
+                        <p className="text-xs text-muted-foreground">
+                          💡 {currentCard.tips[0]}
+                        </p>
                       )}
                     </div>
                   )}
@@ -375,7 +417,6 @@ const Flashcards = () => {
               onClick={handlePrevious}
               disabled={currentIndex === 0}
             >
-              <ArrowLeft className="h-4 w-4 mr-2" />
               Précédent
             </Button>
             <Button 
