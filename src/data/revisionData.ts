@@ -125,22 +125,22 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'ges-fiscalite',
         title: 'Fiscalité et TVA',
-        essential: "TVA à décaisser = TVA collectée - TVA déductible. Transport = 20% (pas 10%).",
+        essential: "TVA à décaisser = TVA collectée - TVA déductible. Transport de voyageurs = 10%.",
         keyPoints: [
-          "TVA transport de personnes = 20%",
+          "TVA transport de voyageurs = 10% (article 68 annexe III CGI)",
           "Micro-entreprise : franchise TVA si CA < 77 700€ (services)",
           "TVA carburant : gazole/essence 80% récupérable, électrique 100%",
           "Crédit de TVA possible si déductible > collectée"
         ],
-        fieldExample: "Un VTC collecte 2 000€ de TVA et en déduit 800€ sur ses achats : il reverse 1 200€ à l'État.",
-        examWarning: "La TVA transport est à 20%, pas 10% (le 10% c'est pour les transports collectifs).",
+        fieldExample: "Un VTC collecte 1 000€ de TVA (10%) et en déduit 400€ sur ses achats : il reverse 600€ à l'État.",
+        examWarning: "Le transport de voyageurs (taxi, VTC) bénéficie du taux réduit de 10%, pas du taux normal de 20%.",
         confusionPoints: [
-          "20% = T3P (taxi, VTC) ≠ 10% = transports collectifs (bus, train)"
+          "10% = transport de voyageurs (T3P) ≠ 20% = taux normal TVA"
         ],
         tips: [
           "En micro, pas de TVA = pas de facturation mais pas de récupération non plus"
         ],
-        legalRefs: ["Article 256 du CGI", "Article 298-4-1° du CGI (carburant)"]
+        legalRefs: ["Article 68 annexe III au CGI", "Article 279 b bis du CGI", "Article 298-4-1° du CGI (carburant)"]
       },
       {
         id: 'ges-charges-sociales',
