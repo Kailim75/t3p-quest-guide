@@ -6,16 +6,16 @@
 export const correctAnswers: Record<string, string> = {
   // MODULE 2 - GESTION & COMPTABILITÉ (40 questions)
   'ges-001': 'B', 'ges-002': 'A', 'ges-003': 'A', 'ges-004': 'A', 'ges-005': 'B',
-  'ges-006': 'A', 'ges-007': 'A', 'ges-008': 'A', 'ges-009': 'A', 'ges-010': 'B',
+  'ges-006': 'A,B', 'ges-007': 'A', 'ges-008': 'A,B', 'ges-009': 'A', 'ges-010': 'B',
   'ges-011': 'A', 'ges-012': 'A', 'ges-013': 'B', 'ges-014': 'B', 'ges-015': 'B',
-  'ges-016': 'A', 'ges-017': 'A', 'ges-018': 'A', 'ges-019': 'A', 'ges-020': 'A',
+  'ges-016': 'A', 'ges-017': 'A,B', 'ges-018': 'A', 'ges-019': 'A', 'ges-020': 'A',
   'ges-021': 'B', 'ges-022': 'A', 'ges-023': 'C', 'ges-024': 'A', 'ges-025': 'B',
   'ges-026': 'B', 'ges-027': 'A', 'ges-028': 'B', 'ges-029': 'A', 'ges-030': 'A',
   'ges-031': 'A', 'ges-032': 'A', 'ges-033': 'A', 'ges-034': 'A', 'ges-035': 'A',
   'ges-036': 'A', 'ges-037': 'A', 'ges-038': 'A', 'ges-039': 'A', 'ges-040': 'A',
   
   // MODULE 1 - RÉGLEMENTATION (45 questions)
-  'reg-001': 'A', 'reg-002': 'A', 'reg-003': 'A', 'reg-004': 'A', 'reg-005': 'A',
+  'reg-001': 'A', 'reg-002': 'A', 'reg-003': 'A', 'reg-004': 'A', 'reg-005': 'A,B',
   'reg-006': 'A', 'reg-007': 'A', 'reg-008': 'A', 'reg-009': 'A', 'reg-010': 'A',
   'reg-011': 'A', 'reg-012': 'A', 'reg-013': 'A', 'reg-014': 'A', 'reg-015': 'A',
   'reg-016': 'A', 'reg-017': 'A', 'reg-018': 'A', 'reg-019': 'A', 'reg-020': 'A',
@@ -26,7 +26,7 @@ export const correctAnswers: Record<string, string> = {
   'reg-041': 'A', 'reg-042': 'A', 'reg-043': 'A', 'reg-044': 'A', 'reg-045': 'A',
   
   // MODULE 3 - SÉCURITÉ ROUTIÈRE (45 questions)
-  'sec-001': 'B', 'sec-002': 'A', 'sec-003': 'A', 'sec-004': 'B', 'sec-005': 'A',
+  'sec-001': 'B', 'sec-002': 'A,B', 'sec-003': 'A,C', 'sec-004': 'B', 'sec-005': 'A,C',
   'sec-006': 'B', 'sec-007': 'A', 'sec-008': 'C', 'sec-009': 'C', 'sec-010': 'B',
   'sec-011': 'A', 'sec-012': 'A', 'sec-013': 'A', 'sec-014': 'A', 'sec-015': 'A',
   'sec-016': 'A', 'sec-017': 'A', 'sec-018': 'A', 'sec-019': 'A', 'sec-020': 'A',
@@ -77,7 +77,7 @@ export const correctAnswers: Record<string, string> = {
   // MODULE 7 - VTC SPÉCIFIQUE (41 questions)
   'vtc-001': 'C', 'vtc-002': 'C', 'vtc-003': 'A', 'vtc-004': 'A', 'vtc-005': 'B',
   'vtc-006': 'A', 'vtc-007': 'A', 'vtc-008': 'A', 'vtc-009': 'A', 'vtc-010': 'A',
-  'vtc-011': 'A', 'vtc-012': 'A', 'vtc-013': 'A', 'vtc-014': 'A', 'vtc-015': 'A',
+  'vtc-011': 'A', 'vtc-012': 'A', 'vtc-013': 'A,B', 'vtc-014': 'A', 'vtc-015': 'A',
   'vtc-016': 'A', 'vtc-017': 'A', 'vtc-018': 'A', 'vtc-019': 'A', 'vtc-020': 'A',
   'vtc-021': 'A', 'vtc-022': 'C', 'vtc-023': 'A', 'vtc-024': 'A', 'vtc-025': 'B',
   'vtc-026': 'C', 'vtc-027': 'A', 'vtc-028': 'A', 'vtc-029': 'B', 'vtc-030': 'A',
