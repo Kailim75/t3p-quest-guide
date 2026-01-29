@@ -899,7 +899,7 @@ export const revisionModules: RevisionModule[] = [
           "Tarif C : Banlieue nuit (19h-7h) ou dimanche + retour à vide",
           "Tarif D : Zone aéroport et longue distance (le plus cher)",
           "Composition du prix : prise en charge + kilométrage + temps d'attente",
-          "Forfaits aéroports : CDG↔Paris rive droite 56€, rive gauche 65€ / Orly 36€-44€"
+          "Forfaits aéroports 2026 : CDG↔Paris rive droite 56€, rive gauche 65€ / Orly rive gauche 36€, rive droite 45€"
         ],
         tips: [
           "Le client peut voir le tarif appliqué sur le lumineux de toit",
@@ -1086,7 +1086,7 @@ export const revisionModules: RevisionModule[] = [
           "Accès Orly : A6 (Porte d'Orléans), Orlyval+RER B, tramway T7, bus Orlybus",
           "Paris-Le Bourget : aéroport d'affaires et salons aéronautiques",
           "Paris-Beauvais : à 85 km, low-cost (Ryanair)",
-          "Forfaits taxi aéroports : CDG 56-65€, Orly 36-44€ selon rive"
+          "Forfaits taxi aéroports 2026 : CDG 56€ (rive droite) / 65€ (rive gauche), Orly 45€ (rive droite) / 36€ (rive gauche)"
         ],
         tips: [
           "Toujours demander le terminal exact (CDG terminal 2 a plusieurs halls)",
