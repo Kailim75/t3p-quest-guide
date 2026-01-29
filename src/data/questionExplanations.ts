@@ -1362,9 +1362,9 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Arrêté préfectoral tarifs taxi Paris"
   },
   'tx75-025': {
-    content: "Des forfaits aéroports sont en vigueur : Paris rive droite - CDG = 56 €, Paris rive gauche - CDG = 62 €, Paris rive droite - Orly = 44 €, Paris rive gauche - Orly = 39 €. Ces forfaits s'appliquent dans les deux sens.",
-    tip: "Forfaits aéroports = fixes, quel que soit le trajet exact. Rive droite/gauche détermine le prix.",
-    legalRef: "Arrêté préfectoral forfaits aéroports Paris"
+    content: "Des forfaits aéroports sont en vigueur (tarifs 2026) : Paris rive droite - CDG = 56 €, Paris rive gauche - CDG = 65 €, Paris rive droite - Orly = 45 €, Paris rive gauche - Orly = 36 €. Ces forfaits s'appliquent dans les deux sens.",
+    tip: "Forfaits aéroports = fixes, quel que soit le trajet exact. Rive droite/gauche détermine le prix. CDG rive gauche = le plus cher (65 €).",
+    legalRef: "Arrêté du 24 décembre 2025 relatif aux tarifs des courses de taxi"
   },
   'tx75-026': {
     content: "Le refus de course est strictement interdit pour les taxis. Un chauffeur ne peut refuser un client sous prétexte de la destination, de l'heure ou de la distance. Le refus est sanctionné et peut entraîner des poursuites.",
