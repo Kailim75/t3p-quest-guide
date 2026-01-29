@@ -12,7 +12,7 @@ interface QuizQuestionProps {
 }
 
 // Récupère l'explication spécifique ou par défaut
-const getCourseExplanation = (question: Question): { title: string; content: string; tip: string } => {
+const getCourseExplanation = (question: Question): { title: string; content: string; tip: string; legalRef?: string } => {
   const specificExplanation = getQuestionExplanation(question.id);
   const module = modules.find(m => m.id === question.moduleId);
   const moduleName = module?.name || 'Point de cours';
@@ -21,7 +21,8 @@ const getCourseExplanation = (question: Question): { title: string; content: str
     return {
       title: moduleName,
       content: specificExplanation.content,
-      tip: specificExplanation.tip
+      tip: specificExplanation.tip,
+      legalRef: specificExplanation.legalRef
     };
   }
   
@@ -29,7 +30,8 @@ const getCourseExplanation = (question: Question): { title: string; content: str
   return {
     title: moduleName,
     content: defaultExplanation.content,
-    tip: defaultExplanation.tip
+    tip: defaultExplanation.tip,
+    legalRef: defaultExplanation.legalRef
   };
 };
 
@@ -268,8 +270,13 @@ const QuizQuestion = ({
               </div>
 
               {/* Référence officielle */}
-              <div className="flex items-center gap-2 pt-2 border-t text-xs text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-2 pt-2 border-t text-xs text-muted-foreground">
                 <span className="rounded bg-muted px-2 py-1">📖 {question.reference}</span>
+                {courseInfo.legalRef && (
+                  <span className="rounded bg-primary/10 text-primary px-2 py-1 font-medium">
+                    ⚖️ {courseInfo.legalRef}
+                  </span>
+                )}
               </div>
             </div>
           </div>
