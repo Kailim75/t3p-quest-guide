@@ -18,6 +18,9 @@ export default defineConfig(({ mode }) => ({
     mode === "development" && componentTagger(),
     VitePWA({
       registerType: "autoUpdate",
+      devOptions: {
+        enabled: false,
+      },
       includeAssets: ["favicon.ico", "robots.txt"],
       manifest: {
         name: "Quiz T3P - Préparation Examen",
@@ -49,6 +52,7 @@ export default defineConfig(({ mode }) => ({
         ],
       },
       workbox: {
+        navigateFallbackDenylist: [/^\/~oauth/],
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
         runtimeCaching: [
           {
