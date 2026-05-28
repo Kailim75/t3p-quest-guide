@@ -1,4 +1,4 @@
-import { BookOpen, Lightbulb, FileText, AlertTriangle, Car, Brain } from 'lucide-react';
+import { BookOpen, Lightbulb, FileText, AlertTriangle, Car, Brain, ScrollText, ClipboardCheck } from 'lucide-react';
 import { RevisionCard } from '@/data/revisionData';
 
 interface RevisionCardContentProps {
@@ -18,6 +18,21 @@ const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
           </div>
         </div>
       </div>
+
+      {/* 📖 Narratif pédagogique */}
+      {card.narrative && (
+        <div className="rounded-xl border bg-card/50 p-5">
+          <div className="flex items-center gap-2 mb-3">
+            <ScrollText className="h-4 w-4 text-primary" />
+            <h4 className="font-semibold text-foreground text-sm uppercase tracking-wide">Comprendre la règle</h4>
+          </div>
+          <div className="prose prose-sm max-w-none text-foreground/90 leading-relaxed space-y-3">
+            {card.narrative.split('\n\n').map((para, idx) => (
+              <p key={idx} className="text-sm">{para}</p>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* 📌 Points importants */}
       <div>
@@ -47,6 +62,40 @@ const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
           <p className="text-sm text-muted-foreground italic">"{card.fieldExample}"</p>
         </div>
       )}
+
+      {/* 📝 Cas pratiques résolus */}
+      {card.practicalCases && card.practicalCases.length > 0 && (
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <ClipboardCheck className="h-4 w-4 text-primary" />
+            <h4 className="font-semibold text-foreground text-sm uppercase tracking-wide">Cas pratiques type examen</h4>
+          </div>
+          {card.practicalCases.map((pc, idx) => (
+            <div key={idx} className="rounded-xl border border-primary/20 bg-primary/[0.03] p-4 space-y-3">
+              <div>
+                <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground text-xs font-bold mr-2">
+                  {idx + 1}
+                </span>
+                <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Situation</span>
+                <p className="text-sm text-foreground mt-1.5">{pc.situation}</p>
+              </div>
+              <div className="border-l-2 border-primary/40 pl-3">
+                <span className="text-xs font-semibold uppercase tracking-wide text-primary">Question</span>
+                <p className="text-sm font-medium text-foreground mt-1">{pc.question}</p>
+              </div>
+              <div className="rounded-lg bg-success/10 border border-success/20 p-3">
+                <span className="text-xs font-semibold uppercase tracking-wide text-success">Réponse</span>
+                <p className="text-sm text-foreground mt-1">{pc.answer}</p>
+              </div>
+              <div>
+                <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Raisonnement</span>
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{pc.reasoning}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
 
       {/* ⚠️ Attention à l'examen */}
       {card.examWarning && (

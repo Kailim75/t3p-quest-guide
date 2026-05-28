@@ -4,15 +4,31 @@
 // Conformité référentiel officiel T3P 2026
 // ============================================
 
+// 📝 Cas pratique résolu type examen
+export interface PracticalCase {
+  // Situation concrète (énoncé)
+  situation: string;
+  // Question posée (formulation type examen)
+  question: string;
+  // Réponse attendue (réponse courte)
+  answer: string;
+  // Raisonnement détaillé (le "pourquoi" pédagogique)
+  reasoning: string;
+}
+
 export interface RevisionCard {
   id: string;
   title: string;
   // ⭐ L'essentiel à retenir (1 phrase max - message clé examen)
   essential: string;
+  // 📖 Narratif pédagogique (explication contextualisée, 150-250 mots, raconte la règle)
+  narrative?: string;
   // 📌 Points importants (3-5 points, 1 idée = 1 ligne)
   keyPoints: string[];
   // 🚕 Exemple terrain (situation réelle courte)
   fieldExample?: string;
+  // 📝 Cas pratiques résolus (2-3, type examen)
+  practicalCases?: PracticalCase[];
   // ⚠️ Attention à l'examen (piège fréquent)
   examWarning?: string;
   // 🧠 À ne pas confondre (Taxi/VTC/VMDTR)
@@ -50,166 +66,320 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'ges-formes-juridiques',
         title: 'Formes juridiques',
-        essential: "Le choix de la forme juridique impacte la responsabilité, les cotisations et la fiscalité.",
+        essential: "Le choix de la forme juridique détermine la responsabilité du dirigeant, son régime social et sa fiscalité — trois leviers indissociables.",
+        narrative: "Quand un futur conducteur T3P se lance, la première décision n'est pas le véhicule mais la structure. L'Entreprise Individuelle (EI), depuis la loi du 14 février 2022, sépare automatiquement patrimoine personnel et professionnel : les créanciers professionnels ne peuvent plus saisir la résidence principale ni les biens privés. C'est devenu la voie la plus simple pour démarrer seul.\n\nDès qu'on veut s'associer ou protéger un patrimoine important, on bascule en société. La SARL/EURL loge le gérant majoritaire au régime des Travailleurs Non Salariés (TNS) — environ 45% de cotisations sur le bénéfice, mais une protection sociale plus faible (pas d'assurance chômage, indemnités journalières limitées). La SAS/SASU range le président au régime assimilé salarié : ~80% de charges sur la rémunération, mais une couverture identique à un cadre du privé.\n\nPour le VTC, l'inscription au Répertoire des Métiers (RM) est obligatoire — l'activité est qualifiée d'artisanale (décret n°98-247). Le taxi, lui, s'inscrit au RCS. Le code APE de référence reste 49.32Z (transport de voyageurs par taxi) pour les deux.",
         keyPoints: [
-          "EI : pas de capital, responsabilité limitée au patrimoine pro (loi 2022)",
-          "EURL/SARL : capital libre, gérant = TNS si majoritaire (~45% cotisations)",
+          "EI : pas de capital, patrimoine personnel protégé depuis 2022",
+          "EURL/SARL : gérant majoritaire = TNS (~45% cotisations)",
           "SASU/SAS : président = assimilé salarié (~80% cotisations, régime général)",
-          "VTC = artisanat → inscription au Répertoire des Métiers obligatoire"
+          "VTC = artisanat → Répertoire des Métiers obligatoire",
+          "Code APE T3P : 49.32Z"
         ],
-        fieldExample: "Un VTC choisit la SASU : il cotise plus mais bénéficie du régime général Sécu comme un salarié.",
-        examWarning: "Ne pas confondre TNS (gérant majoritaire SARL) et assimilé salarié (président SAS).",
+        practicalCases: [
+          {
+            situation: "Karim démarre seul son activité VTC. Il hésite entre EI au régime micro et SASU. Son chiffre d'affaires prévisionnel est de 45 000€/an.",
+            question: "Quelle structure lui permet de bénéficier de la meilleure protection sociale, et à quel coût ?",
+            answer: "La SASU lui donne la protection du régime général (équivalent salarié), au prix de cotisations bien plus lourdes (~80% sur sa rémunération nette versée).",
+            reasoning: "En EI micro, Karim cotise 21,2% forfaitaire sur son CA via le régime des indépendants — protection sociale minimale (pas de chômage, IJ faibles). En SASU, dès qu'il se verse un salaire, il bascule en assimilé salarié avec couverture maladie, retraite, prévoyance d'un cadre. Le différentiel de cotisations finance cette protection. À 45 000€ de CA, beaucoup choisissent l'EI pour conserver de la trésorerie ; la SASU devient intéressante au-delà ou si la couverture sociale prime."
+          },
+          {
+            situation: "Sophie crée une SARL avec son frère ; elle détient 60% des parts et exerce la gérance.",
+            question: "Quel est son régime social et que se passerait-il si elle ne détenait que 40% ?",
+            answer: "Gérante majoritaire → TNS. Avec 40%, elle deviendrait gérante minoritaire et basculerait au régime assimilé salarié.",
+            reasoning: "Le seuil clé est 50% du capital (parts détenues par le gérant + conjoint + enfants mineurs). Au-delà = TNS, en dessous ou à égalité = assimilé salarié. C'est une question piège classique de l'examen : on confond souvent forme juridique et régime social, alors que c'est le pourcentage de détention qui tranche."
+          }
+        ],
+        fieldExample: "Un VTC choisit la SASU : il cotise davantage mais bénéficie de la même couverture sociale qu'un cadre salarié.",
+        examWarning: "Ne pas confondre TNS (gérant majoritaire SARL/EURL) et assimilé salarié (président SAS/SASU, gérant minoritaire SARL).",
         confusionPoints: [
-          "TNS = Travailleur Non Salarié (SARL/EURL) ≠ Assimilé salarié (SAS/SASU)",
-          "EI ≠ Auto-entrepreneur (l'EI est la forme, le micro est le régime fiscal)"
+          "TNS = Travailleur Non Salarié (SARL maj./EURL) ≠ Assimilé salarié (SAS/SASU, SARL min.)",
+          "EI ≠ Auto-entrepreneur (l'EI est la forme juridique, le micro est un régime fiscal/social)"
         ],
         tips: [
-          "Gérant majoritaire = TNS = moins de cotisations mais protection moindre",
-          "Code APE transport de voyageurs : 49.32Z"
+          "Règle des 50% : majoritaire = TNS, minoritaire ou égalitaire = assimilé salarié",
+          "VTC → RM (artisanat) / Taxi → RCS (commerce)"
         ],
-        legalRefs: ["Code de commerce Art. L123-1", "Loi n°2022-172 du 14 février 2022"]
+        legalRefs: ["Code de commerce Art. L123-1", "Loi n°2022-172 du 14 février 2022", "Décret n°98-247 (artisanat VTC)"]
       },
       {
         id: 'ges-creation-entreprise',
-        title: 'Création d\'entreprise',
-        essential: "Immatriculation au RCS/RM = existence légale. Sans elle, c'est du travail dissimulé.",
+        title: "Création d'entreprise",
+        essential: "L'immatriculation au RCS (taxi) ou au RM (VTC) donne l'existence légale ; exercer avant = travail dissimulé sanctionné pénalement.",
+        narrative: "La création d'une entreprise T3P n'est pas qu'une formalité administrative : c'est l'acte qui donne naissance à une personne juridique distincte. Le dossier passe par le guichet unique INPI depuis 2023 (qui a remplacé les CFE), centralisant l'inscription au registre, l'affiliation sociale, fiscale et — pour le VTC — l'inscription au Répertoire des Métiers.\n\nÀ la sortie, l'entrepreneur reçoit un SIREN à 9 chiffres (identifiant unique de l'entreprise) et autant de SIRET à 14 chiffres que d'établissements (SIREN + 5 chiffres de NIC). Le Kbis (sociétés) ou l'extrait K (EI commerçant) matérialise l'immatriculation et reste exigé par les banques, assureurs et plateformes.\n\nPour les sociétés, deux obligations s'ajoutent : la publication d'une annonce légale dans un journal habilité du département du siège (coût ~150-200€), et l'ouverture d'un compte bancaire dédié sur lequel doit être déposé le capital avant immatriculation. La durée de vie d'une société est limitée à 99 ans (prorogeable). L'EI échappe à ces deux contraintes : pas d'annonce, pas de capital, compte pro recommandé mais non obligatoire si le CA reste < 10 000€/an sur 2 ans.",
         keyPoints: [
+          "Guichet unique INPI depuis 2023 (ex-CFE)",
           "SIREN (9 chiffres) = entreprise / SIRET (14 chiffres) = établissement",
-          "Annonce légale obligatoire pour sociétés (pas pour EI)",
-          "Durée max d'une société : 99 ans prorogeable",
-          "Compte bancaire professionnel obligatoire pour les sociétés"
+          "Annonce légale obligatoire pour les sociétés (pas pour EI)",
+          "Durée maximale d'une société : 99 ans, prorogeable",
+          "Compte bancaire pro : obligatoire en société, recommandé en EI"
         ],
-        fieldExample: "Un chauffeur VTC reçoit son Kbis après 1 semaine : il peut désormais exercer légalement.",
-        examWarning: "Confondre SIREN et SIRET = erreur fréquente à l'examen.",
+        practicalCases: [
+          {
+            situation: "Mehdi a commencé à transporter des clients via une application VTC avant d'avoir reçu son extrait Kbis et son inscription au RM.",
+            question: "Que risque-t-il et pourquoi ?",
+            answer: "Travail dissimulé : jusqu'à 3 ans d'emprisonnement et 45 000€ d'amende (article L8224-1 du Code du travail), plus interdiction d'exercer.",
+            reasoning: "Sans immatriculation, l'activité n'a pas d'existence légale. Le simple fait d'encaisser une course constitue une dissimulation d'activité. À cela s'ajoutent les sanctions URSSAF (redressement des cotisations) et fiscales (rappel d'impôt + majoration de 80%). L'examen teste systématiquement ce piège : l'immatriculation est un préalable absolu, sans transition."
+          },
+          {
+            situation: "Léa crée une SARL VTC avec un capital social de 1 000€. Elle reçoit un SIRET pour son siège à Lyon et ouvre un dépôt à Marseille.",
+            question: "Combien de SIRET et de SIREN aura-t-elle ?",
+            answer: "1 SIREN (l'entreprise) et 2 SIRET (Lyon + Marseille, chaque établissement ayant son propre NIC de 5 chiffres).",
+            reasoning: "Le SIREN identifie la personne morale, unique et permanent. Le SIRET identifie chaque lieu d'exercice physique. Cette distinction est essentielle pour la facturation, la TVA et les déclarations sociales (chaque SIRET a sa propre déclaration URSSAF si du personnel y travaille)."
+          }
+        ],
+        fieldExample: "Un VTC reçoit son Kbis 7 jours après dépôt INPI : il peut désormais facturer légalement.",
+        examWarning: "Confondre SIREN et SIRET = erreur la plus fréquente. SIREN identifie l'entreprise, SIRET l'établissement.",
         tips: [
           "SIREN = 9 chiffres (entreprise)",
-          "SIRET = SIREN + 5 chiffres (établissement)"
+          "SIRET = SIREN + 5 chiffres NIC (établissement)",
+          "Guichet unique = INPI depuis 2023"
         ],
-        legalRefs: ["Articles L232-22 et L238-3 du Code de commerce"]
+        legalRefs: ["Articles L232-22 et L238-3 du Code de commerce", "Article L8224-1 du Code du travail (travail dissimulé)"]
       },
       {
         id: 'ges-comptabilite',
         title: 'Documents comptables',
-        essential: "Bilan = patrimoine à un instant T / Compte de résultat = activité sur l'exercice.",
+        essential: "Le bilan photographie le patrimoine à un instant T ; le compte de résultat filme l'activité sur l'exercice — deux outils complémentaires, jamais interchangeables.",
+        narrative: "Tout chef d'entreprise T3P, même en société unipersonnelle, doit présenter chaque année trois documents : bilan, compte de résultat et annexe. Ensemble, ils forment les comptes annuels imposés par l'article L123-12 du Code de commerce.\n\nLe bilan est une photographie : à la date de clôture, il liste à gauche tout ce que l'entreprise possède (actif : véhicule, trésorerie, créances clients) et à droite tout ce qui finance ces biens (passif : capital, réserves, emprunts, dettes fournisseurs). Par construction, actif = passif — toujours équilibré.\n\nLe compte de résultat est un film : il enregistre tous les produits (recettes des courses, ventes diverses) et toutes les charges (carburant, assurance, amortissements, cotisations) de l'exercice. La différence donne le résultat net : bénéfice si positif, perte si négatif. Ce résultat vient ensuite alimenter les capitaux propres au bilan suivant — c'est le lien entre les deux documents.\n\nLes durées de conservation sont strictes : 10 ans pour les livres et pièces comptables (article L123-22), 6 ans pour les documents fiscaux (article L102 B LPF). En cas de contrôle, l'absence d'un document peut entraîner rejet de comptabilité et taxation d'office. Le micro-entrepreneur, lui, est dispensé : un simple livre des recettes (et registre des achats si vente de biens) suffit.",
         keyPoints: [
-          "Bilan : Actif (emplois) = Passif (ressources) → toujours équilibré",
-          "Résultat = Produits - Charges (positif = bénéfice)",
-          "Conservation : 10 ans docs comptables, 6 ans docs fiscaux",
-          "Micro-entrepreneur : obligations allégées (livre des recettes)"
+          "Bilan : actif (emplois) = passif (ressources), toujours équilibré",
+          "Compte de résultat : produits − charges = résultat net",
+          "Résultat net alimente les capitaux propres au bilan suivant",
+          "Conservation : 10 ans comptable (L123-22), 6 ans fiscal (L102 B LPF)",
+          "Micro-entrepreneur : livre des recettes uniquement"
         ],
-        fieldExample: "Fin d'année, le comptable établit le bilan : le taxi a 15 000€ d'actif et 10 000€ de dettes.",
-        examWarning: "Le bilan n'est pas le résultat ! Bilan = photo du patrimoine, Résultat = film de l'activité.",
+        practicalCases: [
+          {
+            situation: "Un taxi clôture son exercice avec : véhicule 20 000€, trésorerie 5 000€, créances 2 000€ ; emprunt restant 12 000€, dettes fournisseurs 3 000€, capital 5 000€.",
+            question: "Quel est le montant du résultat de l'exercice, et où apparaît-il ?",
+            answer: "Résultat = 7 000€ (équilibre du bilan : 27 000 actif − 20 000 passif hors résultat). Il s'inscrit au passif, dans les capitaux propres.",
+            reasoning: "Le bilan doit s'équilibrer. Actif total = 27 000€. Passif hors résultat = capital 5 000 + emprunt 12 000 + dettes 3 000 = 20 000€. L'écart de 7 000€ est nécessairement le résultat de l'exercice, qui vient grossir les capitaux propres au passif. C'est ainsi qu'on retrouve la cohérence entre bilan et compte de résultat."
+          },
+          {
+            situation: "Un contrôleur fiscal demande à un VTC ses factures de carburant de l'année N-7.",
+            question: "L'entreprise est-elle obligée de les fournir ?",
+            answer: "Non au sens fiscal (délai 6 ans dépassé), mais oui au sens comptable si elles constituent des pièces justificatives (10 ans).",
+            reasoning: "Deux régimes coexistent : 10 ans comptable (Code de commerce) et 6 ans fiscal (LPF). Pour les pièces justificatives qui servent aux deux usages — c'est le cas des factures — c'est la durée la plus longue qui prévaut en pratique. Réponse pédagogique attendue : connaître les deux délais et savoir lequel s'applique selon l'origine de la demande."
+          }
+        ],
+        fieldExample: "Fin d'exercice : le comptable établit le bilan du taxi (15 000€ actif, 10 000€ dettes) et son compte de résultat (8 000€ bénéfice).",
+        examWarning: "Le bilan n'est pas le résultat. Bilan = photo du patrimoine à un instant T, compte de résultat = activité sur 12 mois.",
         tips: [
-          "Bilan = photo instantanée",
-          "Compte de résultat = film de l'année"
+          "Bilan = photo instantanée (PHOTO)",
+          "Compte de résultat = film de l'année (FILM)",
+          "Conservation : 10C / 6F (10 Comptable / 6 Fiscal)"
         ],
-        legalRefs: ["Article L123-12 du Code de commerce", "Article L123-22 (conservation)"]
+        legalRefs: ["Article L123-12 du Code de commerce", "Article L123-22 (conservation 10 ans)", "Article L102 B LPF (6 ans fiscal)"]
       },
       {
         id: 'ges-soldes-gestion',
-        title: 'Soldes de gestion',
-        essential: "L'EBE mesure la performance économique pure avant financement et amortissement.",
+        title: 'Soldes intermédiaires de gestion',
+        essential: "L'EBE mesure la performance économique pure de l'exploitation, avant politique de financement et d'amortissement.",
+        narrative: "Lire un compte de résultat ligne par ligne ne suffit pas pour piloter une activité T3P : il faut décomposer la formation du résultat en soldes intermédiaires de gestion (SIG). Cette cascade — imposée par le Plan Comptable Général — permet d'isoler ce qui crée vraiment de la valeur.\n\nLa première étape est le chiffre d'affaires (CA) : total des courses facturées HT sur l'exercice. On en soustrait les consommations intermédiaires (carburant, péages, entretien sous-traité, fournitures) pour obtenir la valeur ajoutée (VA) : ce que l'entreprise crée réellement par son travail, au-delà de ce qu'elle achète.\n\nDe la VA, on retranche les charges de personnel (salaires + cotisations patronales) et les impôts et taxes liés à l'exploitation (CFE, taxe sur véhicules). Reste l'Excédent Brut d'Exploitation (EBE) : c'est le solde clé, car il mesure la rentabilité économique avant tout choix de financement (intérêts d'emprunt) et avant amortissements (qui dépendent de la politique d'investissement). Un EBE positif signifie que l'activité génère du cash ; négatif, c'est l'exploitation elle-même qui est déficitaire.\n\nLe seuil de rentabilité (ou point mort) complète cette analyse : c'est le CA minimum à réaliser pour couvrir l'ensemble des charges fixes. Formule : CA seuil = Charges fixes / Taux de marge sur coûts variables. Connaître ce seuil permet au conducteur de savoir combien de courses par mois sont vitales — au-delà, c'est du bénéfice.",
         keyPoints: [
-          "CA = total des ventes HT",
-          "Valeur ajoutée = CA - consommations intermédiaires",
-          "EBE = VA - charges personnel - impôts",
-          "Seuil de rentabilité = CA minimum pour être bénéficiaire"
+          "Cascade : CA → VA → EBE → Résultat d'exploitation → Résultat net",
+          "Valeur ajoutée = CA − consommations intermédiaires",
+          "EBE = VA − charges personnel − impôts et taxes (hors IS)",
+          "EBE positif ≠ résultat net positif (financiers et amortissements peuvent inverser)",
+          "Seuil de rentabilité = Charges fixes / Taux de marge sur coûts variables"
         ],
-        fieldExample: "Un VTC fait 60 000€ de CA avec 45 000€ de charges : son résultat net est de 15 000€.",
-        examWarning: "EBE positif ≠ résultat net positif (les charges financières peuvent créer un déficit).",
+        practicalCases: [
+          {
+            situation: "Un VTC réalise 60 000€ de CA. Carburant et péages : 12 000€. Aucun salarié. CFE : 500€. Amortissement véhicule : 5 000€. Intérêts d'emprunt : 1 500€.",
+            question: "Calculer la VA, l'EBE et le résultat d'exploitation.",
+            answer: "VA = 48 000€ (60 000 − 12 000). EBE = 47 500€ (48 000 − 500). Résultat d'exploitation = 42 500€ (47 500 − 5 000 d'amortissement). Le résultat courant = 41 000€ après les 1 500€ d'intérêts.",
+            reasoning: "On déroule la cascade SIG. En l'absence de salaires, EBE et VA sont très proches. L'amortissement n'intervient qu'au niveau du résultat d'exploitation (il reflète l'usure de l'investissement). Les intérêts d'emprunt sont des charges financières, qui descendent encore d'un cran. Cet exercice est typique du Module 1 — il faut savoir où chaque charge 'tombe' dans la cascade."
+          },
+          {
+            situation: "Un taxi a 1 800€/mois de charges fixes (assurance, abonnement central, leasing). Son taux de marge sur coûts variables est de 60%.",
+            question: "Quel CA mensuel doit-il atteindre pour couvrir ses charges fixes ?",
+            answer: "Seuil = 1 800 / 0,60 = 3 000€ de CA mensuel.",
+            reasoning: "Au-dessous de 3 000€/mois, le taxi travaille à perte. Chaque euro de CA au-delà génère 0,60€ qui alimente le bénéfice. Connaître son point mort permet de fixer un objectif d'activité réaliste et de mesurer instantanément la rentabilité d'une journée."
+          }
+        ],
+        fieldExample: "Un VTC fait 60 000€ de CA, dégage 47 500€ d'EBE, mais après amortissement et intérêts son résultat net tombe à 35 000€.",
+        examWarning: "EBE positif n'implique pas résultat net positif : les amortissements et charges financières peuvent inverser la tendance.",
         tips: [
-          "Seuil de rentabilité = Charges fixes / Taux de marge"
+          "Mémo cascade : CA → VA → EBE → REX → RCAI → RN",
+          "EBE = performance économique pure (avant financement et amortissement)"
         ],
-        legalRefs: ["Plan Comptable Général"]
+        legalRefs: ["Plan Comptable Général", "Article L123-13 du Code de commerce"]
       },
       {
         id: 'ges-fiscalite',
         title: 'Fiscalité et TVA',
-        essential: "TVA à décaisser = TVA collectée - TVA déductible. Transport de voyageurs = 10%.",
+        essential: "Le transport public de voyageurs (taxi, VTC, VMDTR) relève strictement du taux réduit de TVA à 10%, sans exception.",
+        narrative: "La TVA est une taxe sur la valeur ajoutée : l'entreprise la collecte auprès du client (sur le prix de la course), en déduit celle qu'elle a payée à ses fournisseurs (carburant, entretien, véhicule), et reverse à l'État la différence. Si la TVA déductible dépasse la collectée, on obtient un crédit de TVA, remboursable ou imputable sur les périodes suivantes.\n\nLe taux applicable au transport de voyageurs est de 10% depuis 2014 (article 279 b bis du CGI, complété par l'article 68 de l'annexe III). Ce taux réduit s'applique à toutes les courses taxi, VTC et VMDTR — c'est une exception au taux normal de 20%. Erreur classique à l'examen : appliquer 20% à une course.\n\nPour le carburant, les règles de récupération de TVA dépendent de la motorisation : gazole et essence à 80% récupérables sur véhicules de tourisme ; GPL, électricité, hydrogène à 100%. C'est un levier fiscal important pour orienter la flotte vers les énergies propres.\n\nLe régime micro-entrepreneur bénéficie d'une franchise en base de TVA tant que le CA reste sous 37 500€/an pour les prestations de service (seuils 2025) : pas de TVA facturée, pas de récupération. Au-delà, bascule en régime réel avec collecte et déclarations périodiques.\n\nL'impôt sur le bénéfice dépend de la forme : EI à l'IR dans la catégorie BIC (bénéfices industriels et commerciaux), société à l'IS (15% jusqu'à 42 500€ de bénéfice, 25% au-delà).",
         keyPoints: [
-          "TVA transport de voyageurs = 10% (article 68 annexe III CGI)",
-          "Micro-entreprise : franchise TVA si CA < 77 700€ (services)",
-          "TVA carburant : gazole/essence 80% récupérable, électrique 100%",
-          "Crédit de TVA possible si déductible > collectée"
+          "TVA transport de voyageurs = 10% (art. 279 b bis CGI)",
+          "Franchise en base TVA : CA < 37 500€/an en services (2025)",
+          "Récupération TVA carburant : 80% gazole/essence, 100% électrique/GPL/H₂",
+          "Crédit de TVA si déductible > collectée (remboursable ou reportable)",
+          "IS : 15% jusqu'à 42 500€ de bénéfice, 25% au-delà"
         ],
-        fieldExample: "Un VTC collecte 1 000€ de TVA (10%) et en déduit 400€ sur ses achats : il reverse 600€ à l'État.",
-        examWarning: "Le transport de voyageurs (taxi, VTC) bénéficie du taux réduit de 10%, pas du taux normal de 20%.",
+        practicalCases: [
+          {
+            situation: "Un VTC en régime réel facture une course 110€ TTC. Il a engagé 40€ HT de carburant (gazole) et 20€ HT d'entretien sur la période.",
+            question: "Combien de TVA doit-il reverser à l'État pour cette opération ?",
+            answer: "TVA collectée = 10€ (110 / 1,10 × 0,10). TVA déductible carburant = 40 × 0,20 × 0,80 = 6,40€. TVA entretien = 20 × 0,20 = 4€. Net = 10 − 6,40 − 4 = −0,40€ → crédit de TVA de 0,40€.",
+            reasoning: "Course taxée à 10%, achats taxés à 20% (taux normal). Le carburant subit l'abattement de 80% propre aux véhicules de tourisme. L'entretien est récupérable à 100%. Sur cette opération, l'entreprise est en crédit — fréquent quand on investit beaucoup ou qu'on a peu de courses."
+          },
+          {
+            situation: "Sami est VTC en micro-entreprise. Sur l'année N, son CA atteint 38 000€.",
+            question: "Quelles sont les conséquences immédiates en matière de TVA ?",
+            answer: "Il dépasse le seuil de franchise (37 500€) en cours d'année : il devient redevable de la TVA à partir du 1er jour du mois de dépassement, sur l'intégralité des opérations de ce mois.",
+            reasoning: "La franchise en base est conditionnelle : dès que le CA dépasse le seuil, l'assujettissement à TVA prend effet rétroactivement au 1er du mois en cours. Sami devra rectifier ses factures du mois et collecter la TVA. Il pourra en contrepartie déduire la TVA sur ses achats à partir de cette date."
+          }
+        ],
+        fieldExample: "Un VTC collecte 1 000€ de TVA (sur 10 000€ de courses) et déduit 400€ : il reverse 600€ à l'État.",
+        examWarning: "Le transport de voyageurs T3P bénéficie du taux réduit de 10%, jamais du taux normal de 20% — piège récurrent.",
         confusionPoints: [
-          "10% = transport de voyageurs (T3P) ≠ 20% = taux normal TVA"
+          "10% = transport de voyageurs ≠ 20% = taux normal services",
+          "Franchise TVA (micro) ≠ Exonération (jamais redevable)"
         ],
         tips: [
-          "En micro, pas de TVA = pas de facturation mais pas de récupération non plus"
+          "T3P = TVA à 10%, à graver",
+          "En micro, pas de TVA collectée ⇒ pas de TVA récupérée"
         ],
-        legalRefs: ["Article 68 annexe III au CGI", "Article 279 b bis du CGI", "Article 298-4-1° du CGI (carburant)"]
+        legalRefs: ["Article 279 b bis CGI", "Article 68 annexe III CGI", "Article 298-4-1° CGI (carburant)", "Article 293 B CGI (franchise en base)"]
       },
       {
         id: 'ges-charges-sociales',
         title: 'Charges sociales',
-        essential: "CSG = financement Sécu (9,2%) / CRDS = remboursement dette (0,5%).",
+        essential: "CSG (9,2%) finance la Sécurité sociale ; CRDS (0,5%) rembourse la dette sociale créée en 1996 — deux contributions distinctes.",
+        narrative: "Les charges sociales d'un conducteur T3P dépendent directement de sa structure juridique : trois régimes coexistent et déterminent le coût réel du travail.\n\nLe micro-entrepreneur paie un forfait unique de 21,2% sur le CA encaissé (prestations de service BIC, taux 2025) — pas de bénéfice à calculer, pas de cotisations minimales en l'absence de CA. Simplicité maximale, protection sociale minimale.\n\nLe TNS (gérant majoritaire de SARL, EURL, entrepreneur individuel au réel) cotise environ 45% sur le bénéfice — maladie, retraite de base et complémentaire, invalidité-décès, allocations familiales, CSG/CRDS. Cotisations minimales dues même en l'absence de bénéfice (~1 200€/an).\n\nL'assimilé salarié (président de SAS/SASU, gérant minoritaire de SARL) supporte des cotisations équivalentes à un cadre du privé : ~80% de la rémunération nette (charges patronales + salariales). En contrepartie, il bénéficie du régime général : meilleure couverture maladie, retraite, prévoyance. Il n'a en revanche pas droit à l'assurance chômage (sauf adhésion volontaire type GSC).\n\nLa CSG (Contribution Sociale Généralisée, créée en 1991) finance la Sécurité sociale au sens large : 9,2% sur les revenus d'activité, dont 6,8% déductibles du revenu imposable. La CRDS (Contribution au Remboursement de la Dette Sociale, créée par l'ordonnance de 1996) sert exclusivement à rembourser la dette de la Sécurité sociale : 0,5% sur la même assiette, non déductible. Le piège examen : confondre les deux ou inverser leurs taux.",
         keyPoints: [
-          "CSG : 9,2% dont 6,8% déductibles → finance la Sécurité sociale",
-          "CRDS : 0,5% → rembourse la dette sociale (créée 1996)",
-          "TNS : ~45% du bénéfice / Assimilé salarié : ~80% du brut",
-          "Micro : 22% forfaitaire sur CA pour les services"
+          "Micro : 21,2% forfaitaire sur CA (services BIC, 2025)",
+          "TNS : ~45% du bénéfice + cotisations minimales annuelles",
+          "Assimilé salarié : ~80% de la rémunération, régime général Sécu",
+          "CSG : 9,2% (6,8% déductibles) → finance la Sécu",
+          "CRDS : 0,5% non déductible → rembourse la dette sociale (depuis 1996)"
         ],
-        fieldExample: "Un VTC en SASU se verse 3 000€ brut : environ 2 400€ partent en cotisations.",
-        examWarning: "CSG ≠ CRDS : CSG finance la Sécu, CRDS rembourse la dette.",
+        practicalCases: [
+          {
+            situation: "Yasmine est présidente de sa SASU VTC. Elle se verse une rémunération nette de 2 000€/mois.",
+            question: "Quel est l'ordre de grandeur du coût total chargé pour son entreprise ?",
+            answer: "Environ 3 600€/mois (2 000€ net × ~1,8). Soit ~1 600€ de cotisations sociales pour 2 000€ de net.",
+            reasoning: "En assimilé salarié, les charges patronales et salariales cumulées représentent ~80% du net versé. Pour 2 000€ net, l'entreprise débourse ~3 600€. C'est le coût de la protection sociale équivalente à un cadre. Si Yasmine était gérante majoritaire d'EURL (TNS), elle paierait ~45% sur son bénéfice prélevé, donc nettement moins, mais sans le filet de sécurité du régime général."
+          },
+          {
+            situation: "Un VTC TNS au réel déclare 30 000€ de bénéfice. Son comptable lui parle de CSG/CRDS.",
+            question: "À quoi servent respectivement ces deux contributions et laquelle est partiellement déductible ?",
+            answer: "CSG (9,2%) finance la Sécurité sociale et est déductible à hauteur de 6,8 points ; CRDS (0,5%) rembourse la dette sociale créée en 1996 et n'est pas déductible.",
+            reasoning: "Question type examen sur les libellés exacts. Mémoriser : CSG = Contribution Sociale Généralisée (finance), CRDS = Contribution au Remboursement de la Dette Sociale (rembourse). La déductibilité partielle de la CSG est une spécificité fiscale : 6,8 points sont retranchés du revenu imposable, 2,4 points restent à la charge effective."
+          }
+        ],
+        fieldExample: "Un VTC en SASU se verse 3 000€ brut : environ 2 400€ partent en cotisations (charges salariales + patronales).",
+        examWarning: "CSG ≠ CRDS : la CSG finance la Sécu (9,2%), la CRDS rembourse la dette (0,5% depuis 1996).",
         tips: [
-          "CSG = Contribution Sociale Généralisée",
-          "CRDS = Contribution Remboursement Dette Sociale"
+          "CSG = Contribution Sociale Généralisée (9,2%)",
+          "CRDS = Contribution au Remboursement de la Dette Sociale (0,5%)",
+          "Micro = 21,2% / TNS = ~45% / Assimilé = ~80%"
         ],
-        legalRefs: ["Article L136-1-1 du Code de la sécurité sociale"]
+        legalRefs: ["Article L136-1 du Code de la sécurité sociale", "Ordonnance n°96-50 du 24 janvier 1996 (CRDS)"]
       },
       {
         id: 'ges-amortissement',
         title: 'Amortissement',
-        essential: "L'amortissement répartit le coût d'un investissement sur sa durée d'utilisation.",
+        essential: "L'amortissement étale comptablement le coût d'un investissement sur sa durée d'utilisation et réduit chaque année le bénéfice imposable.",
+        narrative: "Quand un conducteur achète son véhicule, il ne déduit pas l'intégralité du prix la première année : ce serait fausser sa fiscalité. Il amortit : il répartit la charge sur la durée d'utilisation prévue, généralement 4 à 5 ans pour un véhicule professionnel (soit 20 à 25% par an en mode linéaire).\n\nDeux méthodes existent. L'amortissement linéaire applique un montant constant chaque année (ex : 25 000€ sur 5 ans = 5 000€/an). L'amortissement dégressif accélère la déduction au début (utile pour les véhicules à forte décote), réservé à certains biens éligibles. Le linéaire est la règle générale pour les véhicules T3P.\n\nLe législateur a fixé un plafond fiscal de déductibilité pour éviter les abus sur véhicules haut de gamme (article 39-4 CGI) : 9 900€ pour véhicules > 165 g CO₂/km, 18 300€ pour 130 à 165 g, 20 300€ pour < 130 g, 30 000€ pour les véhicules électriques (< 20 g CO₂/km).\n\nAttention : ces plafonds ne s'appliquent pas aux taxis ni aux VTC dans le cadre de l'exception 'transport public de voyageurs' — un point pédagogique souvent mal compris. Un taxi peut amortir intégralement son véhicule, quelle que soit sa valeur, car l'usage commercial neutralise la limitation prévue pour les véhicules de tourisme privés.\n\nDistinguer enfin immobilisation (bien durable > 500€ HT amorti sur plusieurs années) et charge (consommé dans l'exercice : carburant, péages, entretien courant déduits intégralement l'année du paiement).",
         keyPoints: [
-          "Véhicule : généralement 4-5 ans (20-25%/an)",
-          "Plafond fiscal : 18 300€ (30 000€ si faibles émissions)",
-          "Charge ≠ investissement : carburant = charge, véhicule = immobilisation",
-          "L'amortissement réduit le bénéfice imposable"
+          "Véhicule : amortissement sur 4-5 ans (20-25% linéaire/an)",
+          "Linéaire = constant / Dégressif = accéléré au début",
+          "Plafond fiscal art. 39-4 CGI : 9 900€ à 30 000€ selon CO₂",
+          "EXCEPTION T3P : pas de plafond pour taxis/VTC (transport public)",
+          "Immobilisation > 500€ HT (amortie) ≠ charge (déduite immédiatement)"
         ],
-        fieldExample: "Véhicule 25 000€ sur 5 ans = 5 000€/an déduit du bénéfice imposable.",
-        examWarning: "Au-delà du plafond (18 300€), la partie excédentaire n'est pas déductible.",
+        practicalCases: [
+          {
+            situation: "Karine achète un véhicule électrique 45 000€ HT pour son activité VTC. Durée d'amortissement choisie : 5 ans.",
+            question: "Quel montant peut-elle amortir chaque année et déduire fiscalement ?",
+            answer: "9 000€/an (45 000 / 5). Le plafond de 30 000€ ne s'applique pas car l'activité VTC relève du transport public de voyageurs.",
+            reasoning: "Pour un véhicule de tourisme classique, l'excédent au-delà du plafond serait réintégré au bénéfice imposable (15 000€ non déductibles sur 5 ans). Mais l'exception T3P permet la déduction intégrale. C'est un avantage fiscal majeur que l'examen vérifie : nombreux candidats appliquent à tort le plafond aux véhicules T3P."
+          },
+          {
+            situation: "Un taxi achète : 1 jeu de pneus à 600€ HT, 1 GPS embarqué à 300€ HT, 1 véhicule neuf à 22 000€ HT.",
+            question: "Quels biens doivent être immobilisés et amortis, lesquels passent en charges ?",
+            answer: "Véhicule (22 000€) et pneus (600€ > 500€) → immobilisés et amortis. GPS (300€ < 500€) → charge déductible immédiatement.",
+            reasoning: "Le seuil pratique de 500€ HT (tolérance fiscale) sert à distinguer charge et immobilisation. Au-dessus, on étale ; en dessous, on déduit en une fois. Cette règle simplifie la gestion des petits achats."
+          }
+        ],
+        fieldExample: "Véhicule 25 000€ sur 5 ans = 5 000€/an déduit du bénéfice imposable (taxi/VTC : intégral, hors plafond).",
+        examWarning: "Le plafond fiscal de l'art. 39-4 CGI ne s'applique PAS aux taxis et VTC dans le cadre du transport public de voyageurs.",
         tips: [
-          "Linéaire = montant constant / Dégressif = décroissant"
+          "Linéaire = même chaque année / Dégressif = beaucoup au début",
+          "Immobilisation > 500€ HT, charge si en dessous"
         ],
-        legalRefs: ["Article 39 du CGI", "Article 39-4 du CGI (plafonds)"]
+        legalRefs: ["Article 39 du CGI", "Article 39-4 CGI (plafonds véhicules)", "BOI-BIC-AMT-20-40-50 (exception T3P)"]
       },
       {
         id: 'ges-cout-revient',
-        title: 'Coût de revient',
-        essential: "Prix de vente = Coût de revient + Marge. Toujours calculer son coût kilométrique.",
+        title: 'Coût de revient et prix',
+        essential: "Le prix de vente d'une course doit couvrir l'intégralité des coûts (fixes + variables) et dégager une marge ; ignorer un poste = vendre à perte.",
+        narrative: "Calculer son coût de revient kilométrique est l'exercice fondamental du conducteur T3P : c'est lui qui détermine la rentabilité d'une course, le seuil de refus, et la viabilité de l'activité.\n\nLe coût se décompose en deux catégories. Les charges variables évoluent avec l'activité : carburant (~0,10 à 0,15€/km en thermique, ~0,03 à 0,05€ en électrique), péages, lavage, usure des pneus et plaquettes. Les charges fixes existent même véhicule à l'arrêt : assurance (~2 000€/an), entretien préventif, leasing ou amortissement, abonnements (centrale taxi, applications), CFE, mutuelle, expert-comptable.\n\nLa formule de base : coût kilométrique = (charges fixes annuelles / km annuels prévisionnels) + charges variables par km. Pour un VTC qui fait 40 000 km/an avec 15 000€ de fixes et 0,12€/km de variables : 15 000/40 000 + 0,12 = 0,495€/km. En dessous de ce tarif, chaque kilomètre creuse la perte.\n\nLe point mort (ou seuil de rentabilité) traduit cette logique en nombre de courses : c'est le volume minimum à réaliser pour couvrir les charges fixes. Au-delà, chaque euro de marge alimente directement le bénéfice. C'est l'indicateur de pilotage quotidien.\n\nLa distinction charges directes / indirectes sert à l'analyse fine : directes = imputables à une course précise (carburant de cette course) ; indirectes = à répartir (assurance, comptable). En gestion T3P, on raisonne plus souvent en fixes/variables, plus opérationnel.",
         keyPoints: [
-          "Charges directes : carburant, péages, usure km",
-          "Charges indirectes : assurance, abonnements (à répartir)",
-          "Charges fixes ≠ variables (assurance vs carburant)",
-          "Point mort = nb de courses pour couvrir les charges fixes"
+          "Charges variables : carburant, péages, usure (varient avec l'activité)",
+          "Charges fixes : assurance, leasing, abonnements (existent à l'arrêt)",
+          "Coût km = (Charges fixes / km annuels) + Variables par km",
+          "Point mort = Charges fixes / Marge sur coûts variables",
+          "Charges directes (imputables) vs indirectes (réparties)"
         ],
-        fieldExample: "Coût km = 0,35€. Pour une course de 20 km, le coût direct est de 7€.",
-        examWarning: "Oublier les charges fixes dans le prix minimum = vendre à perte.",
+        practicalCases: [
+          {
+            situation: "Un taxi a 18 000€/an de charges fixes et 0,15€/km de charges variables. Il prévoit 50 000 km/an. Tarif moyen perçu : 1,20€/km.",
+            question: "Quel est son coût kilométrique total et sa marge par kilomètre ?",
+            answer: "Coût km = 18 000/50 000 + 0,15 = 0,36 + 0,15 = 0,51€/km. Marge = 1,20 − 0,51 = 0,69€/km.",
+            reasoning: "Sur 50 000 km, sa marge totale atteint 34 500€, qui constituera son revenu avant impôts et cotisations. Si le tarif moyen chute à 0,50€/km, il bascule en perte. L'exercice montre l'effet de volume : plus on roule, plus les charges fixes s'amortissent par km."
+          },
+          {
+            situation: "Le même taxi accepte une course sèche à 8€ pour 25 km (course de complaisance).",
+            question: "Cette course est-elle rentable ?",
+            answer: "Coût direct variable = 25 × 0,15 = 3,75€. Marge brute = 4,25€. Mais elle ne couvre pas la quote-part de charges fixes (25 × 0,36 = 9€). Rentabilité globale négative de 4,75€.",
+            reasoning: "Piège classique : on raisonne souvent uniquement en charges variables ('je gagne 4€') en oubliant que les charges fixes courent. Sur le court terme, accepter peut faire sens si le véhicule serait à l'arrêt ; sur le long terme, multiplier ce type de course conduit à la cessation."
+          }
+        ],
+        fieldExample: "Coût km calculé à 0,35€. Pour une course de 20 km, le coût direct s'élève à 7€ — en dessous, on vend à perte.",
+        examWarning: "Oublier les charges fixes dans le calcul du prix minimum = vendre à perte sans s'en rendre compte.",
         tips: [
-          "Coût km = (carburant + entretien + usure) / km parcourus"
+          "Coût km = (Fixes/km annuels) + Variables/km",
+          "Point mort = Fixes / Taux de marge"
         ],
-        legalRefs: ["Comptabilité de gestion"]
+        legalRefs: ["Comptabilité analytique de gestion (PCG)"]
       },
       {
         id: 'ges-difficultes',
         title: 'Difficultés et cessation',
-        essential: "Cessation de paiement = déclaration obligatoire au tribunal sous 45 jours.",
+        essential: "La cessation des paiements doit être déclarée au tribunal sous 45 jours, sous peine de sanctions personnelles contre le dirigeant.",
+        narrative: "La cessation des paiements survient lorsque l'entreprise ne peut plus faire face au passif exigible (dettes échues) avec son actif disponible (trésorerie immédiate). Ce n'est pas une simple difficulté passagère : c'est une situation juridique précise qui déclenche des obligations légales strictes.\n\nLe dirigeant dispose de 45 jours à compter de la date de cessation pour la déclarer au tribunal (de commerce pour sociétés et EI commerçants, judiciaire pour les autres). Ne pas le faire constitue une faute de gestion qui peut entraîner la faillite personnelle ou l'interdiction de gérer pour 5 à 15 ans, voire des sanctions pénales (banqueroute).\n\nTrois procédures existent, dans l'ordre de gravité :\n\nSauvegarde (Livre VI Code de commerce) : à demander avant la cessation, quand l'entreprise rencontre des difficultés sérieuses mais reste solvable. C'est un outil préventif négocié, avec gel des dettes et plan sur 10 ans maximum.\n\nRedressement judiciaire : ouvert après cessation des paiements si l'activité semble redressable. Période d'observation de 6 mois (renouvelable), puis plan de continuation ou de cession.\n\nLiquidation judiciaire : prononcée quand le redressement est manifestement impossible. Arrêt de l'activité, vente des actifs, désintéressement des créanciers selon l'ordre légal (super-privilégiés salariés d'abord, puis Trésor, puis créanciers chirographaires).\n\nLa différence cruciale entre sauvegarde et redressement tient à la date : sauvegarde = anticipation, redressement = constat de cessation déjà intervenue.",
         keyPoints: [
-          "Cessation = passif exigible > actif disponible",
-          "Sauvegarde : avant cessation (prévention)",
-          "Redressement : continuation avec plan",
-          "Liquidation : arrêt définitif et vente des actifs"
+          "Cessation de paiement = passif exigible > actif disponible",
+          "Déclaration obligatoire sous 45 jours au tribunal",
+          "Sauvegarde : AVANT cessation (préventif, dirigeant à l'initiative)",
+          "Redressement : APRÈS cessation, si redressement possible",
+          "Liquidation : arrêt définitif, vente des actifs",
+          "Faute de déclaration : faillite perso, interdiction gérer 5-15 ans"
         ],
-        fieldExample: "Un taxi ne peut plus payer ses dettes depuis 30 jours : il a 15 jours pour se déclarer au tribunal.",
-        examWarning: "Sauvegarde ≠ Redressement : la sauvegarde intervient AVANT la cessation de paiement.",
+        practicalCases: [
+          {
+            situation: "Karim, gérant d'une EURL VTC, accumule des impayés URSSAF depuis 60 jours. Sa trésorerie est à zéro mais il a encore 8 000€ de factures clients à venir.",
+            question: "Est-il en cessation de paiements, et que doit-il faire ?",
+            answer: "Oui : passif exigible (dettes URSSAF échues) > actif disponible (0€, les créances clients ne sont pas immédiatement mobilisables). Il doit déclarer la cessation au tribunal sous 45 jours.",
+            reasoning: "L'actif disponible se limite à la trésorerie immédiate et aux valeurs réalisables sans délai (pas les créances à recouvrer ni les stocks). C'est la définition technique : le législateur veut éviter qu'on aggrave la situation des créanciers en continuant à fonctionner en insolvabilité. Karim peut, en parallèle, demander un redressement judiciaire s'il pense pouvoir continuer."
+          },
+          {
+            situation: "Lila pressent que sa SARL Taxi va connaître des difficultés (perte d'un gros client, baisse du CA prévisible). Elle est encore à jour de toutes ses dettes.",
+            question: "Quelle procédure peut-elle initier et avec quel intérêt ?",
+            answer: "La procédure de sauvegarde : ouverte uniquement si l'entreprise n'est pas en cessation des paiements. Elle permet de geler les dettes en cours et de négocier un plan de remboursement sur 10 ans maximum.",
+            reasoning: "La sauvegarde est l'outil préventif. Avantage majeur : Lila conserve les commandes, le dirigeant garde la main, et la procédure stigmatise moins que le redressement. C'est elle qui prend l'initiative auprès du tribunal — c'est un point qui différencie radicalement la sauvegarde du redressement (ouvert sur déclaration de cessation ou sur assignation d'un créancier)."
+          }
+        ],
+        fieldExample: "Un taxi ne peut plus payer ses dettes échues depuis 30 jours : il lui reste 15 jours pour se déclarer au tribunal.",
+        examWarning: "Sauvegarde ≠ Redressement : sauvegarde AVANT cessation (préventif), redressement APRÈS (constat).",
         tips: [
-          "Ne pas attendre : le tribunal peut aider à trouver des solutions"
+          "45 jours pour déclarer la cessation",
+          "Sauvegarde = anticipation / Redressement = réaction"
         ],
-        legalRefs: ["Article L631-4 du Code de commerce", "Livre VI du Code de commerce"]
+        legalRefs: ["Article L631-4 du Code de commerce (délai 45 jours)", "Livre VI du Code de commerce (procédures collectives)", "Article L653-8 (interdiction de gérer)"]
       }
     ]
   },
