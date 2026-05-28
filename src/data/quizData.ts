@@ -149,13 +149,15 @@ export const modules: Module[] = [
   {
     id: 'vmdtr',
     name: 'Spécifique VMDTR',
-    description: 'Véhicules motorisés à deux ou trois roues',
+    description: 'Épreuves F(M) et G(M) – Moto-taxi (RS5636)',
     type: 'specifique',
     icon: '🏍️',
     color: 'module-vmdtr',
     subModules: [
-      { id: 'vmd-1', name: 'Spécificités deux-roues', description: 'Réglementation spécifique', questionCount: 10 },
-      { id: 'vmd-2', name: 'Équipements obligatoires', description: 'Casque et protections', questionCount: 8 },
+      { id: 'vmd-securite', name: 'F(M) – Sécurité moto', description: 'Accidentologie, dynamique, conduite préventive, entretien', questionCount: 8 },
+      { id: 'vmd-reglementation', name: 'F(M) – Réglementation VMDTR', description: 'Carte pro, réservation préalable, véhicules, signalétique', questionCount: 8 },
+      { id: 'vmd-passager', name: 'G(M) – Prise en charge passager', description: 'Consignes, peur, EPI, comportement de la moto', questionCount: 8 },
+      { id: 'vmd-commercial', name: 'G(M) – Développement commercial', description: 'Marketing, fidélisation, communication, partenaires', questionCount: 8 },
     ]
   },
   {
