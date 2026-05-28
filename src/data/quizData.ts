@@ -49,8 +49,13 @@ export interface Module {
   type: 'commun' | 'specifique';
   icon: string;
   color: string;
+  /** Code(s) de compétence du référentiel France Compétences (ex: "F(T)", "G(V)"). */
+  rsCode?: string;
+  /** Code RS de la fiche (RS5635 taxi, RS5636 VMDTR, RS5637 VTC). */
+  rsFiche?: 'RS5635' | 'RS5636' | 'RS5637';
   subModules: SubModule[];
 }
+
 
 export const modules: Module[] = [
   // MODULES COMMUNS
