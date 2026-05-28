@@ -1953,33 +1953,67 @@ export const revisionModules: RevisionModule[] = [
         id: 'rel-accueil',
         title: 'Première impression',
         essential: "Les 20 premières secondes déterminent l'impression générale.",
+        narrative: "La psychologie de la perception est sans appel : un client se forge une opinion durable du conducteur en moins de 20 secondes. Cette « première impression » repose à 55 % sur le non-verbal (apparence, posture, regard), 38 % sur le paraverbal (ton, débit, volume) et seulement 7 % sur les mots eux-mêmes. Tout ce que le conducteur fera ensuite — même excellent — devra soit confirmer, soit corriger cette image initiale.\n\nQuatre piliers structurent un accueil professionnel. La PONCTUALITÉ : arriver à l'heure ou prévenir par SMS dès qu'un retard de plus de 3 min est probable. Un client qui a réservé pour 8h compte sur 8h, pas sur « entre 8h et 8h10 ». La TENUE du conducteur : propre, repassée, sans odeur (parfum trop prononcé = aussi gênant qu'odeur corporelle). Le VÉHICULE : intérieur aspiré, pas d'odeur de tabac (interdit légalement dans tout véhicule transportant un mineur, et déconseillé en toute circonstance pro), tableau de bord rangé. Le PREMIER CONTACT : descendre du véhicule, regarder le client dans les yeux, sourire sincère, « Bonjour Madame/Monsieur » clair, ouverture de portière côté trottoir.\n\nL'anticipation différencie l'expert du novice. Ouvrir le coffre AVANT que le client ne demande, proposer de l'aide pour les bagages lourds, indiquer la portière avec un geste de la main. Ces micro-attentions coûtent 5 secondes mais multiplient la note client. À l'inverse, rester téléphone à la main pendant que le client charge ses propres bagages dans le coffre est rédhibitoire.",
         keyPoints: [
-          "Ponctualité : arriver à l'heure ou prévenir",
-          "Tenue correcte, propre, pas d'odeur désagréable",
+          "Ponctualité : arriver à l'heure ou prévenir par SMS",
+          "Tenue correcte, propre, parfum discret",
           "Véhicule propre, pas d'odeur de tabac",
-          "Salutation : regarder le client, sourire, bonjour clair"
+          "Salutation : regard, sourire, bonjour clair",
+          "Anticiper : ouvrir le coffre, proposer l'aide"
         ],
         fieldExample: "Le chauffeur arrive 5 min en avance, ouvre le coffre avant qu'on lui demande.",
-        examWarning: "Première impression = 20 secondes. Soigner l'arrivée et le premier contact.",
-        tips: [
-          "Anticiper les besoins : ouvrir le coffre, proposer l'aide"
+        practicalCases: [
+          {
+            situation: "Un client réserve une course pour 7h30 (vol à 10h). À 7h28, le conducteur est encore à 8 min de l'adresse à cause d'un embouteillage imprévu.",
+            question: "Que faire ?",
+            answer: "Appeler ou envoyer un SMS immédiatement : « Léger retard d'environ 8 min dû à un imprévu, je suis en route, mes excuses. »",
+            reasoning: "Ne pas prévenir = anxiété pour le client (« est-il oublié ? va-t-il rater son vol ? »). Prévenir = transparence, sincérité, prise en main de la situation. Même si le client est contrarié, il appréciera l'honnêteté et reverra son jugement. Le silence aggrave systématiquement la perception du retard."
+          },
+          {
+            situation: "Un client monte et grimace en sentant une odeur de tabac froid dans le véhicule. Le conducteur a fumé une cigarette une heure plus tôt en pause.",
+            question: "Quelle est la bonne pratique ?",
+            answer: "NE JAMAIS fumer dans le véhicule professionnel. Aérer + désodoriser entre chaque service. S'excuser si une odeur subsiste.",
+            reasoning: "L'odeur de tabac froid est extrêmement persistante et perçue comme un manque de respect. Légalement, fumer dans un véhicule transportant un mineur est interdit (article L3512-9 du Code de la santé). Professionnellement, c'est une cause majeure de mauvaise note. La règle absolue : véhicule = espace non-fumeur, fumer dehors et changer de tenue si possible avant le service."
+          }
         ],
-        legalRefs: []
+        examWarning: "Première impression = 20 secondes. Le tabac dans le véhicule = sanction note client et risque légal.",
+        tips: [
+          "Anticiper les besoins : ouvrir le coffre, proposer l'aide",
+          "Parfum discret > parfum prononcé"
+        ],
+        legalRefs: ["Article L3512-9 du Code de la santé publique (tabac et mineurs)"]
       },
       {
         id: 'rel-communication-trajet',
         title: 'Pendant le trajet',
         essential: "Observer le client : certains veulent parler, d'autres du silence.",
+        narrative: "Le savoir-vivre en course repose sur une compétence rare : LIRE le client. Tous les passagers n'attendent pas la même chose. Le voyageur d'affaires entre deux rendez-vous a besoin de calme pour préparer ses dossiers. Le touriste en visite cherche des conseils et des anecdotes. Le client tardif veut être rassuré. Le client matinal préfère souvent le silence. Le conducteur professionnel propose, observe, s'adapte — il n'impose jamais.\n\nLa règle de base est d'OUVRIR LA PORTE à la conversation sans la forcer. Une question neutre (« Première fois à Paris ? », « Trajet rapide ou plutôt panoramique ? ») permet de tester le terrain. Si le client répond brièvement et se replonge dans son téléphone : message reçu, on respecte le silence. S'il rebondit avec enthousiasme : la conversation peut s'engager. Toujours sur des SUJETS NEUTRES : météo, monuments, événements culturels, sport (avec prudence). Sont strictement à BANNIR : politique, religion, immigration, opinion sur des personnalités publiques. Ces sujets peuvent faire perdre un client à vie en une seule phrase.\n\nL'INFORMATION SPONTANÉE est appréciée : annoncer l'itinéraire choisi (« je passe par les quais, c'est plus fluide à cette heure »), prévenir d'un imprévu (« petit bouchon devant nous, j'estime 5 min de plus »), confirmer la durée restante (« on devrait être à votre destination dans environ 15 min »). Cela rassure et donne au client une impression de contrôle. À l'inverse, le téléphone perso du conducteur en présence du client est un irritant majeur : appel à mains libres = OK si urgent et bref ; jamais consulter Instagram à l'arrêt ; jamais haut-parleur. Le client paie pour son confort, pas pour la vie sociale du conducteur.",
         keyPoints: [
           "Écoute active : ne pas interrompre",
           "Éviter sujets polémiques (politique, religion)",
           "Informer spontanément : durée, trafic, itinéraire",
-          "Téléphone perso : éviter en présence du client"
+          "Téléphone perso : éviter en présence du client",
+          "Adapter son comportement au profil observé"
         ],
-        fieldExample: "Le client travaille sur son ordinateur : le chauffeur reste silencieux.",
-        examWarning: "Si le client travaille/téléphone : ne pas le déranger.",
+        fieldExample: "Le client travaille sur son ordinateur : le chauffeur reste silencieux et coupe la radio.",
+        practicalCases: [
+          {
+            situation: "Un client engage la conversation sur la politique en disant : « Vous avez vu le dernier discours du président, c'est scandaleux non ? »",
+            question: "Comment répondre ?",
+            answer: "Désamorcer poliment : « Je préfère rester en dehors de la politique avec les clients, c'est plus simple pour tout le monde. Parlons plutôt de votre trajet ! »",
+            reasoning: "Donner son opinion = risque de braquer le client si désaccord, ou de devoir « tenir le rôle » si accord. Dans les deux cas, perte de neutralité professionnelle. La phrase de désamorçage est cadrée, polie, sans jugement. Elle redirige vers un sujet neutre. Aucun client raisonnable ne reprochera cette neutralité ; au contraire, beaucoup l'apprécient."
+          },
+          {
+            situation: "Pendant le trajet, le téléphone perso du conducteur sonne (un ami). Le client est sur un appel important.",
+            question: "Que doit faire le conducteur ?",
+            answer: "Couper la sonnerie immédiatement, ne pas répondre. Rappeler après dépose.",
+            reasoning: "Un téléphone qui sonne perturbe l'appel du client et donne une image non-pro. Idéal : passer le téléphone en silencieux AVANT chaque course. Si l'appel est vraiment urgent (famille), le conducteur peut s'excuser brièvement (« Pardonnez-moi, urgence familiale ») et répondre brièvement à mains libres avec voix discrète. Mais c'est une exception."
+          }
+        ],
+        examWarning: "Politique et religion = sujets bannis. Téléphone perso = irritant majeur.",
         tips: [
-          "Proposer sans imposer : 'Souhaitez-vous de la musique ?'"
+          "Proposer sans imposer : 'Souhaitez-vous de la musique ?'",
+          "Mettre le téléphone en silencieux avant chaque course"
         ],
         legalRefs: []
       },
@@ -1987,16 +2021,33 @@ export const revisionModules: RevisionModule[] = [
         id: 'rel-conduite-confort',
         title: 'Conduite et confort',
         essential: "Conduite souple = passager rassuré. Anticiper pour éviter les à-coups.",
+        narrative: "La qualité de la conduite est le critère le plus directement perceptible par le client : il la SUBIT physiquement. Un seul freinage brutal peut suffire à dégrader toute la note d'une course parfaite par ailleurs. À l'inverse, une conduite fluide rassure même un passager initialement nerveux et signe un conducteur expert.\n\nLe principe fondamental est l'ANTICIPATION. Lire la circulation 100-200 m à l'avance permet de lever le pied progressivement plutôt que de freiner brusquement à la dernière seconde. Sur le périph, repérer un ralentissement à distance et décélérer en relâchant l'accélérateur (frein moteur) est plus confortable qu'un coup de frein sec. En ville, anticiper le passage au rouge d'un feu en levant le pied 50 m avant évite l'à-coup. La règle d'or : si le passager doit se cramponner, c'est qu'on a mal conduit.\n\nLE CONFORT THERMIQUE est l'autre dimension cruciale, particulièrement en saison. La climatisation doit être adaptée AVANT la montée du client (préchauffage en hiver, refroidissement en été). Une fois le client à bord, DEMANDER : « La température vous convient-elle ? Souhaitez-vous que j'ajuste la climatisation ? » Ne pas demander = présumer = risque de mécontentement silencieux. Pour les véhicules avec sièges multi-zones, proposer un réglage individuel côté passager arrière. ENFIN, expliquer ses choix d'itinéraire si le client semble s'interroger : la transparence évite la suspicion de détour facturé. « Je prends les quais car les boulevards sont saturés à cette heure, ce sera plus rapide » suffit à rassurer.",
         keyPoints: [
           "Pas d'accélérations/freinages brusques",
           "Respecter le Code : le client doit se sentir en sécurité",
-          "Climatisation : vérifier le confort",
-          "Expliquer les choix d'itinéraire si demandé"
+          "Climatisation : vérifier le confort, demander avant d'ajuster",
+          "Expliquer les choix d'itinéraire si demandé",
+          "Éco-conduite = confort + économies + image"
         ],
         fieldExample: "Le chauffeur anticipe le feu rouge et freine progressivement : confort optimal.",
+        practicalCases: [
+          {
+            situation: "Un client âgé tient sa canne et semble nerveux pendant le trajet. Le conducteur prend habituellement les virages avec dynamisme.",
+            question: "Que doit-il adapter ?",
+            answer: "Réduire l'allure dans les virages, freiner plus tôt et plus doucement, accélérer plus progressivement.",
+            reasoning: "Les personnes âgées sont plus sensibles aux forces d'accélération latérales (risque de perte d'équilibre, douleurs cervicales). Adapter son style de conduite au profil du passager est un réflexe pro. Vitesse réduite de 10-15 %, anticipation accrue, virages amples. Le client âgé en retient l'impression d'un conducteur attentif et prévenant — ce qui génère souvent une fidélisation forte (et bons pourboires)."
+          },
+          {
+            situation: "En plein été, un client monte dans un véhicule garé au soleil pendant 30 min. Température intérieure : 38°C.",
+            question: "Quelle est la bonne pratique ?",
+            answer: "Anticiper : démarrer la climatisation 5 min avant l'arrivée du client (si possible à distance). Sinon : ouvrir les portes pour aérer, climatisation à fond pendant l'embarquement, demander ensuite si la température convient.",
+            reasoning: "Un véhicule surchauffé = clientèle perdue. La meilleure pratique est l'anticipation (clim à distance ou en attendant). Si impossible, le conducteur doit aérer (portes ouvertes), expliquer la situation au client, et ajuster en temps réel. Demander régulièrement le confort thermique (toutes les 5-10 min en début de course) montre l'attention au détail."
+          }
+        ],
         examWarning: "Une conduite nerveuse stresse le passager et nuit à l'image.",
         tips: [
-          "L'éco-conduite = confort passager + économies"
+          "L'éco-conduite = confort passager + économies",
+          "Anticiper 100-200 m à l'avance évite les à-coups"
         ],
         legalRefs: []
       },
@@ -2004,52 +2055,104 @@ export const revisionModules: RevisionModule[] = [
         id: 'rel-conflits',
         title: 'Gestion des conflits',
         essential: "Rester calme, écouter, reformuler, s'excuser si nécessaire, proposer une solution.",
+        narrative: "Tout conducteur T3P, quelle que soit son ancienneté, sera confronté à des conflits clients : retard, désaccord sur l'itinéraire, contestation tarifaire, énervement personnel du client. La compétence professionnelle ne consiste pas à éviter ces situations (impossibles) mais à les DÉSAMORCER avec méthode. Un client mécontent bien traité devient souvent un client fidèle ; mal traité, il publie une note 1 étoile qui coûte 10 courses futures.\n\nLa méthode éprouvée est l'ÉCOUTE ACTIVE - REFORMULATION - EXCUSE - SOLUTION. Étape 1 : laisser le client EXPRIMER sa frustration sans interrompre, même si c'est injuste, même si on n'est pas d'accord. La parole évacue la tension. Interrompre = redoubler la colère. Étape 2 : REFORMULER pour montrer qu'on a compris : « Si je comprends bien, vous trouvez que le trajet a pris trop de temps et que ça a impacté votre rendez-vous, c'est bien ça ? » Étape 3 : S'EXCUSER, même si on n'est pas directement responsable : « Je suis sincèrement désolé que cette situation vous ait causé du désagrément. » L'excuse ne reconnaît pas la faute, elle reconnaît le ressenti. Étape 4 : PROPOSER une solution : geste commercial, explication factuelle, contact ultérieur.\n\nDeux interdits absolus. JAMAIS hausser le ton ou monter en agressivité, même provoqué — un conducteur professionnel ne perd jamais son calme en service, c'est sa marque de fabrique. JAMAIS de violence verbale ou physique : insulter ou bousculer un client est un délit pénal (outrage, violence) qui détruit immédiatement la carrière. Si la situation dégénère réellement (client violent, ivre, menaçant), arrêter le véhicule en zone sûre, descendre, appeler le 17. La sécurité prime sur le chiffre d'affaires.",
         keyPoints: [
           "Ne jamais s'énerver ni hausser le ton",
           "Écouter entièrement avant de répondre",
           "Reformuler : 'Si je comprends bien...'",
-          "S'excuser même si pas directement responsable"
+          "S'excuser même si pas directement responsable",
+          "Si danger réel : arrêter en zone sûre, appeler le 17"
         ],
-        fieldExample: "Client mécontent du temps de trajet : 'Je comprends, le trafic était exceptionnel aujourd'hui.'",
-        examWarning: "Jamais de violence verbale ou physique, même provoqué.",
+        fieldExample: "Client mécontent du temps de trajet : 'Je comprends, le trafic était exceptionnel aujourd'hui, désolé pour ce désagrément.'",
+        practicalCases: [
+          {
+            situation: "À l'arrivée, un client conteste le montant et accuse le conducteur d'avoir « tourné en rond exprès » pour gonfler le prix.",
+            question: "Comment gérer ?",
+            answer: "Garder son calme, montrer l'itinéraire GPS pris (preuve), expliquer les contraintes (bouchon, déviation), proposer un geste commercial si client de bonne foi.",
+            reasoning: "L'accusation est grave mais émotionnelle. Réagir par la colère = escalade et plainte. Réponse pro : (1) calme, (2) preuve factuelle (historique GPS Uber, Waze), (3) explication objective, (4) éventuel geste commercial (5 € de remise par exemple) pour clore le différend. Cette méthode transforme un conflit en démonstration de professionnalisme. Documenter l'échange par écrit (SMS récapitulatif au client) protège en cas de plainte ultérieure."
+          },
+          {
+            situation: "Un client visiblement alcoolisé devient agressif verbalement, insulte le conducteur, menace de le frapper.",
+            question: "Que faire ?",
+            answer: "Arrêter le véhicule en lieu sûr (station-service, parking éclairé), descendre, appeler le 17 immédiatement. Ne pas répondre aux provocations.",
+            reasoning: "La sécurité physique prime sur tout. Continuer à conduire avec un client violent = risque d'agression en mouvement, accident. Arrêter en zone sûre + 17 = procédure standard. Le conducteur n'a aucune obligation de poursuivre une course avec un client violent (motif légitime de cessation). Le rapport de police protège juridiquement. NE JAMAIS répondre aux insultes : aggravation systématique."
+          }
+        ],
+        examWarning: "Jamais de violence verbale ou physique, même provoqué. La sécurité prime sur le chiffre d'affaires.",
         tips: [
-          "Un client mécontent bien traité peut devenir fidèle"
+          "Un client mécontent bien traité peut devenir fidèle",
+          "Documenter par écrit après tout incident"
         ],
-        legalRefs: []
+        legalRefs: ["Article 222-13 du Code pénal (violence)", "Article 433-5 (outrage)"]
       },
       {
         id: 'rel-fin-course',
         title: 'Fin de course',
         essential: "La dernière impression compte autant que la première.",
+        narrative: "La fin de course est sous-estimée par les conducteurs débutants, qui considèrent qu'une fois arrivés, la prestation est terminée. C'est une erreur stratégique majeure : les 30 dernières secondes pèsent autant que les 20 premières dans le souvenir du client. C'est le moment où il décide de noter 5 étoiles ou 4, de recommander ou pas, de redemander le même conducteur ou de zapper.\n\nLE PROTOCOLE de fin de course professionnel comporte 5 actes. (1) ANNONCER l'arrivée à 30-60 secondes : « Nous arrivons à destination, monsieur. » Cela permet au client de ranger ses affaires, de préparer son paiement, de finir un mail. (2) STATIONNER avec discernement : au plus près de l'entrée si possible, du bon côté (trottoir), en sécurité (pas en double file dangereuse pour le client qui descend). (3) RAPPELER les effets personnels : « N'oubliez pas de vérifier que vous avez bien toutes vos affaires : téléphone, sac, etc. » Ce rappel évite 90 % des oublis. (4) AIDER si nécessaire : descendre, ouvrir la portière côté trottoir, sortir les bagages du coffre, les déposer délicatement. (5) REMERCIER chaleureusement : « Merci pour la course, je vous souhaite une excellente fin de journée. »\n\nAPRÈS LE DÉPART, vérification systématique du véhicule : banquette arrière (téléphones, portefeuilles, gants, écouteurs), coffre (objet oublié, valise), sièges (papiers tombés). Un objet retrouvé doit être remonté immédiatement à la plateforme (Uber, Bolt) ou directement au client si contact disponible. La restitution rapide d'un objet oublié crée un client fidèle à vie. À l'inverse, ne pas vérifier = objet oublié signalé = plainte + procédure + image dégradée. Statistique éprouvée : un client satisfait parle de l'expérience à 3 personnes en moyenne ; un client mécontent à 10. La dernière impression est l'amplificateur de toute la course.",
         keyPoints: [
           "Annoncer l'arrivée : 'Nous arrivons à destination'",
           "Stationner au plus près pour sécurité/confort",
           "Rappeler : 'N'oubliez pas de vérifier vos affaires'",
-          "Remercier : 'Merci, bonne journée'"
+          "Aider si nécessaire (descendre, sortir les bagages)",
+          "Remercier chaleureusement",
+          "Vérifier le véhicule après chaque course"
         ],
-        fieldExample: "Le chauffeur aide à sortir les bagages et souhaite bon voyage au client.",
-        examWarning: "Vérifier le véhicule après chaque course (objets oubliés).",
+        fieldExample: "Le chauffeur aide à sortir les bagages, rappelle les affaires, et souhaite bon voyage au client.",
+        practicalCases: [
+          {
+            situation: "Après dépose d'un client à un hôtel, le conducteur découvre un téléphone sur la banquette arrière en faisant sa vérification.",
+            question: "Que doit-il faire ?",
+            answer: "Tenter de rattraper immédiatement le client (entrer dans l'hôtel demander à la réception) ou signaler via la plateforme + contacter le client. Conserver l'objet en sécurité.",
+            reasoning: "L'obligation de restitution s'impose au conducteur. Tentative immédiate = idéale (client encore présent). Sinon, signaler immédiatement à la plateforme (Uber, Bolt) qui met en relation. Ne JAMAIS garder l'objet sans le signaler = délit d'abus de confiance. La restitution rapide d'un téléphone = client à vie + recommandations. À l'inverse, signaler tardivement = plainte client + procédure plateforme + suspension possible."
+          },
+          {
+            situation: "Le conducteur dépose un client en double file sur une avenue passante. Le client descend côté circulation et frôle un scooter.",
+            question: "Faute du conducteur ?",
+            answer: "Oui. Le conducteur doit toujours déposer côté trottoir (pour la sécurité du client) ou trouver un emplacement sûr.",
+            reasoning: "L'article R415-11 du Code de la route impose de descendre côté trottoir. Une dépose côté circulation expose le client à un risque d'accident (responsabilité partagée du conducteur). Bonne pratique : si l'arrêt côté trottoir est impossible, faire le tour pour s'arrêter de l'autre côté, ou expliquer au client de descendre côté droit. Le confort de descente est un élément clé de la note finale."
+          }
+        ],
+        examWarning: "Vérifier le véhicule après chaque course (objets oubliés). Toujours descendre côté trottoir.",
         tips: [
-          "Client satisfait = 3 personnes informées, mécontent = 10"
+          "Client satisfait = 3 personnes informées, mécontent = 10",
+          "Dépose côté trottoir, jamais côté circulation"
         ],
-        legalRefs: []
+        legalRefs: ["Article R415-11 du Code de la route"]
       },
       {
         id: 'rel-clienteles-specifiques',
         title: 'Clientèles spécifiques',
         essential: "S'adapter sans préjugés. Chiens guides = transport obligatoire et gratuit.",
+        narrative: "Chaque profil de clientèle a ses attentes spécifiques. Le conducteur professionnel doit savoir adapter son comportement, son rythme et son service à la personne en face de lui, sans jamais tomber dans le stéréotype ni la condescendance. L'adaptation est une marque de respect, pas une discrimination.\n\nLES PERSONNES EN SITUATION DE HANDICAP. La règle absolue : PROPOSER l'aide sans l'IMPOSER. Demander : « Souhaitez-vous que je vous aide à monter / à charger votre fauteuil ? » Si oui, suivre les indications du client (chacun a sa technique). Si non, respecter. Pour les fauteuils roulants, le conducteur doit savoir les plier rapidement et les charger sans les abîmer. Le refus de transport pour cause de handicap est un DÉLIT pénal (article 225-2 du Code pénal, 5 ans d'emprisonnement et 75 000 € d'amende). Les chiens guides et chiens d'assistance sont transportés GRATUITEMENT et obligatoirement (article L3121-8 du Code des transports) — refus = délit aggravé.\n\nLES PERSONNES ÂGÉES : prendre le temps, parler plus distinctement (pas plus fort, juste plus articulé), conduire en douceur, aider à attacher la ceinture si demandé. Anticiper que monter et descendre prend plus de temps. LES ENFANTS : siège enfant si fourni par les parents, ceinture obligatoire, conduite particulièrement souple. LES TOURISTES : quelques mots dans leur langue, anecdote brève sur Paris, recommandation d'un restaurant si demandé. LES VOYAGEURS D'AFFAIRES : efficacité maximale, discrétion absolue (ne pas écouter leurs appels, ne pas commenter), ponctualité irréprochable. Anticiper les besoins (chargeur USB, eau, journaux) différencie le service premium du standard.",
         keyPoints: [
-          "Handicapés : proposer l'aide sans imposer",
+          "Handicap : proposer l'aide sans l'imposer, jamais de refus",
           "Personnes âgées : prendre le temps, parler distinctement",
           "Touristes : quelques infos sur Paris, mots en anglais",
-          "Voyageurs d'affaires : efficacité, discrétion, ponctualité"
-        ],
-        fieldExample: "Client âgé avec canne : le chauffeur l'aide à monter et attache sa ceinture.",
-        examWarning: "Le handicap n'est pas un motif de refus de transport.",
-        tips: [
+          "Voyageurs d'affaires : efficacité, discrétion, ponctualité",
           "Chiens guides = transport gratuit obligatoire (loi)"
         ],
-        legalRefs: ["Article L3121-8 du Code des transports (chiens guides)"]
+        fieldExample: "Client âgé avec canne : le chauffeur l'aide à monter, attache sa ceinture, conduit en douceur.",
+        practicalCases: [
+          {
+            situation: "Un VTC reçoit une demande de course pour un client en fauteuil roulant pliable. Il refuse en disant qu'il n'a pas le matériel pour.",
+            question: "Le refus est-il légal ?",
+            answer: "Non. Le refus pour cause de handicap est un délit pénal puni de 5 ans d'emprisonnement et 75 000 € d'amende.",
+            reasoning: "L'article 225-2 du Code pénal sanctionne la discrimination dans l'accès à un service. Un fauteuil pliable se charge dans tout coffre standard. Le conducteur a obligation de transport. Le seul refus légitime concerne un fauteuil motorisé non démontable nécessitant un véhicule TPMR adapté (et même dans ce cas, le conducteur doit aider à trouver une alternative, pas se contenter de refuser). Sanction administrative + pénale + dommages-intérêts au client."
+          },
+          {
+            situation: "Une cliente non-voyante avec son chien guide hèle un taxi. Le conducteur veut l'orienter vers un autre taxi en disant qu'il est allergique aux chiens.",
+            question: "Acceptable ?",
+            answer: "Non. Les chiens guides doivent être transportés gratuitement et obligatoirement. L'allergie n'est pas un motif légitime de refus.",
+            reasoning: "L'article L3121-8 du Code des transports est absolu : refus = discrimination liée au handicap = délit pénal aggravé (jusqu'à 75 000 € d'amende, suspension d'ADS, signalement à la défenseure des droits). Une allergie réelle se traite par antihistaminique avant service, pas par refus. La société exige que les personnes non-voyantes puissent se déplacer en autonomie — c'est non négociable."
+          }
+        ],
+        examWarning: "Le handicap n'est pas un motif de refus de transport. Chien guide = transport gratuit obligatoire.",
+        tips: [
+          "Chiens guides = transport gratuit obligatoire (loi)",
+          "Proposer l'aide sans l'imposer"
+        ],
+        legalRefs: ["Article L3121-8 du Code des transports (chiens guides)", "Article 225-2 du Code pénal (discrimination)"]
       }
     ]
   },
