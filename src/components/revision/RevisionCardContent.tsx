@@ -19,6 +19,21 @@ const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
         </div>
       </div>
 
+      {/* 📖 Narratif pédagogique */}
+      {card.narrative && (
+        <div className="rounded-xl border bg-card/50 p-5">
+          <div className="flex items-center gap-2 mb-3">
+            <ScrollText className="h-4 w-4 text-primary" />
+            <h4 className="font-semibold text-foreground text-sm uppercase tracking-wide">Comprendre la règle</h4>
+          </div>
+          <div className="prose prose-sm max-w-none text-foreground/90 leading-relaxed space-y-3">
+            {card.narrative.split('\n\n').map((para, idx) => (
+              <p key={idx} className="text-sm">{para}</p>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* 📌 Points importants */}
       <div>
         <div className="flex items-center gap-2 mb-3">
