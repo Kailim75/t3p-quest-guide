@@ -364,14 +364,15 @@ export const MODULE_TO_RS: Record<string, string[]> = {
   'reglementation': ['A'],
   'francais': ['D'],
   'anglais': ['E'],
-  // Pratique (à recentrer)
+  // Pratique
   'relation-client': ['PB', 'PA'],
   // Spécifique taxi
-  'taxi-75': ['G(T)'],
-  'topographie-paris': ['F(T)'],
+  'taxi': ['F(T)', 'G(T)'],
+  'taxi-national': ['G(T)'],
+  'taxi-territoire': ['F(T)'],
   // Spécifique VTC
   'vtc': ['F(V)', 'G(V)'],
-  // Spécifique VMDTR (MANQUANT actuellement)
-  // 'vmdtr-securite': ['F(M)'],
-  // 'vmdtr-commercial': ['G(M)'],
+  // Spécifique VMDTR
+  'vmdtr': ['F(M)', 'G(M)'],
 };
+

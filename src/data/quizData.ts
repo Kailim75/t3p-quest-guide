@@ -49,8 +49,13 @@ export interface Module {
   type: 'commun' | 'specifique';
   icon: string;
   color: string;
+  /** Code(s) de compétence du référentiel France Compétences (ex: "F(T)", "G(V)"). */
+  rsCode?: string;
+  /** Code RS de la fiche (RS5635 taxi, RS5636 VMDTR, RS5637 VTC). */
+  rsFiche?: 'RS5635' | 'RS5636' | 'RS5637';
   subModules: SubModule[];
 }
+
 
 export const modules: Module[] = [
   // MODULES COMMUNS
@@ -61,6 +66,7 @@ export const modules: Module[] = [
     type: 'commun',
     icon: '📋',
     color: 'module-reglementation',
+    rsCode: 'A',
     subModules: [
       { id: 'reg-1', name: 'Conditions d\'accès à la profession', description: 'Conditions et modalités d\'accès', questionCount: 15 },
       { id: 'reg-2', name: 'Obligations professionnelles', description: 'Droits et devoirs du conducteur', questionCount: 12 },
@@ -74,6 +80,7 @@ export const modules: Module[] = [
     type: 'commun',
     icon: '🛡️',
     color: 'module-securite',
+    rsCode: 'C',
     subModules: [
       { id: 'sec-1', name: 'Code de la route', description: 'Règles de circulation', questionCount: 20 },
       { id: 'sec-2', name: 'Prévention des accidents', description: 'Risques et comportements', questionCount: 15 },
@@ -87,6 +94,7 @@ export const modules: Module[] = [
     type: 'commun',
     icon: '📊',
     color: 'module-gestion',
+    rsCode: 'B',
     subModules: [
       { id: 'ges-1', name: 'Comptabilité de base', description: 'Notions comptables essentielles', questionCount: 20 },
       { id: 'ges-2', name: 'Fiscalité', description: 'Obligations fiscales', questionCount: 10 },
@@ -100,6 +108,7 @@ export const modules: Module[] = [
     type: 'commun',
     icon: '🇫🇷',
     color: 'module-francais',
+    rsCode: 'D',
     subModules: [
       { id: 'fra-1', name: 'Compréhension écrite', description: 'Lecture et analyse de textes', questionCount: 20 },
       { id: 'fra-2', name: 'Expression écrite', description: 'Rédaction professionnelle', questionCount: 20 },
@@ -112,6 +121,7 @@ export const modules: Module[] = [
     type: 'commun',
     icon: '🇬🇧',
     color: 'module-anglais',
+    rsCode: 'E',
     subModules: [
       { id: 'ang-1', name: 'Vocabulaire professionnel', description: 'Termes du transport', questionCount: 20 },
       { id: 'ang-2', name: 'Conversation client', description: 'Dialogues courants', questionCount: 20 },
@@ -119,14 +129,17 @@ export const modules: Module[] = [
       { id: 'ang-4', name: 'Phrases types & situations', description: 'Expressions clés par situation', questionCount: 20 },
     ]
   },
+
   // MODULES SPÉCIFIQUES
   {
     id: 'taxi',
     name: 'Spécifique Taxi',
-    description: 'Réglementation spécifique aux taxis',
+    description: 'Réglementation et pratique du métier de taxi',
     type: 'specifique',
     icon: '🚕',
     color: 'module-taxi',
+    rsCode: 'F(T) + G(T)',
+    rsFiche: 'RS5635',
     subModules: [
       { id: 'tax-1', name: 'Licence taxi', description: 'Obtention et exploitation', questionCount: 15 },
       { id: 'tax-2', name: 'Tarification', description: 'Compteur et tarifs réglementés', questionCount: 12 },
@@ -136,10 +149,12 @@ export const modules: Module[] = [
   {
     id: 'vtc',
     name: 'Spécifique VTC',
-    description: 'Réglementation spécifique aux VTC',
+    description: 'Réglementation et pratique du métier VTC',
     type: 'specifique',
     icon: '🚗',
     color: 'module-vtc',
+    rsCode: 'F(V) + G(V)',
+    rsFiche: 'RS5637',
     subModules: [
       { id: 'vtc-1', name: 'Carte professionnelle VTC', description: 'Conditions et renouvellement', questionCount: 20 },
       { id: 'vtc-2', name: 'Réservation préalable', description: 'Obligations de réservation', questionCount: 10 },
@@ -149,10 +164,12 @@ export const modules: Module[] = [
   {
     id: 'vmdtr',
     name: 'Spécifique VMDTR',
-    description: 'Épreuves F(M) et G(M) – Moto-taxi (RS5636)',
+    description: 'Épreuves F(M) et G(M) – Moto-taxi',
     type: 'specifique',
     icon: '🏍️',
     color: 'module-vmdtr',
+    rsCode: 'F(M) + G(M)',
+    rsFiche: 'RS5636',
     subModules: [
       { id: 'vmd-securite', name: 'F(M) – Sécurité moto', description: 'Accidentologie, dynamique, conduite préventive, entretien', questionCount: 8 },
       { id: 'vmd-reglementation', name: 'F(M) – Réglementation VMDTR', description: 'Carte pro, réservation préalable, véhicules, signalétique', questionCount: 8 },
@@ -161,25 +178,29 @@ export const modules: Module[] = [
     ]
   },
   {
-    id: 'taxi-75',
-    name: 'Taxi Paris 75',
-    description: 'Réglementation nationale et locale des taxis parisiens',
+    id: 'taxi-national',
+    name: 'Taxi – Réglementation nationale',
+    description: 'Code des transports et règles applicables à tous les taxis',
     type: 'specifique',
     icon: '🚖',
     color: 'module-taxi',
+    rsCode: 'G(T)',
+    rsFiche: 'RS5635',
     subModules: [
       { id: 'tx75-nat', name: 'Réglementation nationale', description: 'Code des transports et lois applicables à tous les taxis', questionCount: 10 },
-      { id: 'tx75-loc', name: 'Réglementation locale Paris', description: 'Arrêtés préfectoraux et règles spécifiques au 75', questionCount: 10 },
+      { id: 'tx75-loc', name: 'Réglementation locale', description: 'Arrêtés préfectoraux et règles spécifiques au département', questionCount: 10 },
       { id: 'tx75-pra', name: 'Pratique professionnelle', description: 'Tarification, équipements et exercice quotidien', questionCount: 10 },
     ]
   },
   {
-    id: 'topographie-paris',
-    name: 'Topographie Paris',
-    description: 'Connaissance de Paris : monuments, gares, hôpitaux, axes majeurs',
+    id: 'taxi-territoire',
+    name: 'Taxi – Territoire',
+    description: 'Connaissance du territoire d\'exercice : monuments, gares, hôpitaux, axes majeurs',
     type: 'specifique',
     icon: '🗼',
     color: 'module-taxi',
+    rsCode: 'F(T)',
+    rsFiche: 'RS5635',
     subModules: [
       { id: 'topo-mon', name: 'Monuments & Sites touristiques', description: 'Lieux emblématiques et attractions', questionCount: 10 },
       { id: 'topo-gar', name: 'Gares & Transports', description: 'Gares SNCF, routières et aéroports', questionCount: 10 },
@@ -187,6 +208,7 @@ export const modules: Module[] = [
       { id: 'topo-axe', name: 'Axes & Circulation', description: 'Boulevards, places et itinéraires', questionCount: 10 },
     ]
   },
+
   // Module Relation Client (nouveau)
   {
     id: 'relation-client',
@@ -5363,7 +5385,7 @@ export const officialQuestions: Question[] = [
   // =====================
   {
     id: 'tx75-001',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Quel ministère publie chaque année l\'arrêté relatif aux tarifs des courses de taxis ?',
     options: [
@@ -5379,7 +5401,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-002',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-pra',
     text: 'Quels éléments permettent de vérifier la mise à jour des tarifs sur le taximètre lors d\'un contrôle routier ?',
     options: [
@@ -5395,7 +5417,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-003',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'À partir de quel montant un taxi est-il obligé d\'accepter le paiement par carte bancaire ?',
     options: [
@@ -5411,7 +5433,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-004',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Dans quelle zone géographique un chauffeur de taxi est-il sollicité via l\'application agréée « le.taxi » ?',
     options: [
@@ -5427,7 +5449,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-005',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Dans quel cas un véhicule taxi peut-il être remplacé temporairement par un véhicule relais ?',
     options: [
@@ -5443,7 +5465,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-006',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-pra',
     text: 'Que risque un taxi qui ne respecte pas les tarifs fixés par la préfecture ?',
     options: [
@@ -5459,7 +5481,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-007',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Quelle infraction est associée à la non-présentation immédiate de la carte professionnelle lors d\'un contrôle ?',
     options: [
@@ -5475,7 +5497,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-008',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-loc',
     text: 'Qui fixe le montant de la prise en charge au niveau départemental ?',
     options: [
@@ -5491,7 +5513,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-009',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-pra',
     text: 'Un client demande à s\'asseoir à l\'avant du véhicule. Que faites-vous ?',
     options: [
@@ -5507,7 +5529,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-010',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-pra',
     text: 'Vous transportez 5 personnes. Sur quel montant s\'appliquent les suppléments ?',
     options: [
@@ -5523,7 +5545,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-011',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Est-il obligatoire de posséder un siège enfant homologué ?',
     options: [
@@ -5539,7 +5561,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-012',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Quel est le délai pour céder une autorisation de stationnement en cas de décès ?',
     options: [
@@ -5558,7 +5580,7 @@ export const officialQuestions: Question[] = [
   // =====================
   {
     id: 'tx75-013',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Quelle est la durée de validité de la carte professionnelle de conducteur de taxi ?',
     options: [
@@ -5574,7 +5596,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-014',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Qui délivre l\'autorisation de stationnement (licence taxi) ?',
     options: [
@@ -5590,7 +5612,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-015',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Combien de temps un taxi doit-il exploiter sa licence avant de pouvoir la céder à titre onéreux ?',
     options: [
@@ -5606,7 +5628,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-016',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Quel est le droit exclusif des taxis par rapport aux VTC ?',
     options: [
@@ -5622,7 +5644,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-017',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Quelle formation continue est obligatoire pour les conducteurs de taxi ?',
     options: [
@@ -5638,7 +5660,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-018',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Quel document doit obligatoirement être affiché dans le véhicule taxi ?',
     options: [
@@ -5654,7 +5676,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-019',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Quelle est la sanction pour exercice illégal de la profession de taxi ?',
     options: [
@@ -5670,7 +5692,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-020',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-nat',
     text: 'Le lumineux taxi doit indiquer :',
     options: [
@@ -5689,7 +5711,7 @@ export const officialQuestions: Question[] = [
   // =====================
   {
     id: 'tx75-021',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-loc',
     text: 'Combien de taxis sont autorisés à exercer à Paris intra-muros ?',
     options: [
@@ -5705,7 +5727,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-022',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-loc',
     text: 'Quelle autorité délivre les ADS pour les taxis parisiens ?',
     options: [
@@ -5721,7 +5743,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-023',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-loc',
     text: 'Un taxi parisien peut-il charger un client en maraude dans le 92 ?',
     options: [
@@ -5737,7 +5759,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-024',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-loc',
     text: 'Quel est le tarif de nuit applicable aux taxis parisiens ?',
     options: [
@@ -5753,7 +5775,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-025',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-loc',
     text: 'Quel est le forfait taxi pour une course Paris-Aéroport CDG (rive droite) ?',
     options: [
@@ -5769,7 +5791,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-026',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-loc',
     text: 'Un taxi parisien peut-il refuser une course vers la banlieue ?',
     options: [
@@ -5785,7 +5807,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-027',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-loc',
     text: 'Où un taxi parisien peut-il stationner en attente de clients ?',
     options: [
@@ -5801,7 +5823,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-028',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-loc',
     text: 'Quel véhicule peut accéder à la file taxi des aéroports parisiens ?',
     options: [
@@ -5817,7 +5839,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-029',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-loc',
     text: 'Quelle couleur caractérise le macaron des taxis parisiens ?',
     options: [
@@ -5833,7 +5855,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'tx75-030',
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     subModuleId: 'tx75-loc',
     text: 'Un taxi parisien doit-il obligatoirement être équipé d\'un terminal de paiement électronique ?',
     options: [
@@ -5852,7 +5874,7 @@ export const officialQuestions: Question[] = [
   // =====================
   {
     id: 'topo-001',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-mon',
     text: 'Dans quel arrondissement se situe la Tour Eiffel ?',
     options: [
@@ -5868,7 +5890,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-002',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-mon',
     text: 'Quelle avenue relie la Place de la Concorde à l\'Arc de Triomphe ?',
     options: [
@@ -5884,7 +5906,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-003',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-mon',
     text: 'Le musée du Louvre se trouve sur quelle rive de la Seine ?',
     options: [
@@ -5900,7 +5922,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-004',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-mon',
     text: 'Dans quel arrondissement se trouve la Basilique du Sacré-Cœur ?',
     options: [
@@ -5916,7 +5938,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-005',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-mon',
     text: 'La Cathédrale Notre-Dame de Paris est située sur :',
     options: [
@@ -5932,7 +5954,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-006',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-mon',
     text: 'Le Panthéon se trouve dans quel quartier ?',
     options: [
@@ -5948,7 +5970,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-007',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-mon',
     text: 'Le Palais de l\'Élysée (résidence du Président) est situé :',
     options: [
@@ -5964,7 +5986,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-008',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-mon',
     text: 'Le Centre Pompidou (Beaubourg) se trouve dans quel arrondissement ?',
     options: [
@@ -5980,7 +6002,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-009',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-mon',
     text: 'L\'Opéra Garnier se situe dans quel arrondissement ?',
     options: [
@@ -5996,7 +6018,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-010',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-mon',
     text: 'Le Stade de France est situé dans quelle commune ?',
     options: [
@@ -6015,7 +6037,7 @@ export const officialQuestions: Question[] = [
   // =====================
   {
     id: 'topo-011',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-gar',
     text: 'Dans quel arrondissement se trouve la Gare du Nord ?',
     options: [
@@ -6031,7 +6053,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-012',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-gar',
     text: 'Quelle gare dessert principalement les trains vers le Sud-Est (Lyon, Marseille) ?',
     options: [
@@ -6047,7 +6069,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-013',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-gar',
     text: 'La Gare Montparnasse dessert principalement :',
     options: [
@@ -6063,7 +6085,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-014',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-gar',
     text: 'Quelle gare parisienne accueille l\'Eurostar vers Londres ?',
     options: [
@@ -6079,7 +6101,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-015',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-gar',
     text: 'Dans quel arrondissement se situe la Gare de Lyon ?',
     options: [
@@ -6095,7 +6117,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-016',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-gar',
     text: 'L\'aéroport Paris-Charles de Gaulle (CDG) est situé dans quel département ?',
     options: [
@@ -6111,7 +6133,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-017',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-gar',
     text: 'L\'aéroport d\'Orly est accessible par quelle ligne de transport ?',
     options: [
@@ -6127,7 +6149,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-018',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-gar',
     text: 'Quelle gare dessert les trains vers l\'Est (Strasbourg, Allemagne) ?',
     options: [
@@ -6143,7 +6165,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-019',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-gar',
     text: 'La gare routière internationale de Paris-Bercy se trouve :',
     options: [
@@ -6159,7 +6181,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-020',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-gar',
     text: 'Combien y a-t-il de gares SNCF principales à Paris ?',
     options: [
@@ -6178,7 +6200,7 @@ export const officialQuestions: Question[] = [
   // =====================
   {
     id: 'topo-021',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-hop',
     text: 'L\'hôpital de la Pitié-Salpêtrière se trouve dans quel arrondissement ?',
     options: [
@@ -6194,7 +6216,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-022',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-hop',
     text: 'L\'Hôpital Européen Georges-Pompidou (HEGP) est situé :',
     options: [
@@ -6210,7 +6232,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-023',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-hop',
     text: 'L\'hôpital Necker-Enfants malades est spécialisé en :',
     options: [
@@ -6226,7 +6248,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-024',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-hop',
     text: 'L\'hôpital Bichat-Claude Bernard se trouve :',
     options: [
@@ -6242,7 +6264,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-025',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-hop',
     text: 'L\'Hôtel-Dieu de Paris, plus ancien hôpital de la ville, est situé :',
     options: [
@@ -6258,7 +6280,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-026',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-hop',
     text: 'La Préfecture de Police de Paris se trouve :',
     options: [
@@ -6274,7 +6296,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-027',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-hop',
     text: 'L\'Hôpital Saint-Louis, spécialisé en dermatologie, est dans quel arrondissement ?',
     options: [
@@ -6290,7 +6312,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-028',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-hop',
     text: 'L\'hôpital Cochin se trouve dans quel arrondissement ?',
     options: [
@@ -6306,7 +6328,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-029',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-hop',
     text: 'Le Ministère de l\'Intérieur se trouve :',
     options: [
@@ -6322,7 +6344,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-030',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-hop',
     text: 'L\'Ambassade des États-Unis à Paris est située :',
     options: [
@@ -6341,7 +6363,7 @@ export const officialQuestions: Question[] = [
   // =====================
   {
     id: 'topo-031',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-axe',
     text: 'Le Boulevard Périphérique fait combien de kilomètres environ ?',
     options: [
@@ -6357,7 +6379,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-032',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-axe',
     text: 'Quelle porte du Périphérique dessert le quartier de La Défense ?',
     options: [
@@ -6373,7 +6395,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-033',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-axe',
     text: 'L\'autoroute A1 en direction du Nord commence à quelle porte ?',
     options: [
@@ -6389,7 +6411,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-034',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-axe',
     text: 'Pour rejoindre l\'aéroport d\'Orly depuis Paris, quelle autoroute emprunter ?',
     options: [
@@ -6405,7 +6427,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-035',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-axe',
     text: 'La Place de la République est à la jonction de combien d\'arrondissements ?',
     options: [
@@ -6421,7 +6443,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-036',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-axe',
     text: 'Le Boulevard Haussmann traverse principalement :',
     options: [
@@ -6437,7 +6459,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-037',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-axe',
     text: 'La voie sur berge rive droite (Georges Pompidou) est actuellement :',
     options: [
@@ -6453,7 +6475,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-038',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-axe',
     text: 'Le quartier de La Défense se trouve dans quelle commune principale ?',
     options: [
@@ -6469,7 +6491,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-039',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-axe',
     text: 'L\'Avenue Foch, l\'une des plus larges de Paris, relie :',
     options: [
@@ -6485,7 +6507,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'topo-040',
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     subModuleId: 'topo-axe',
     text: 'Le Parc des Expositions de la Porte de Versailles se trouve :',
     options: [

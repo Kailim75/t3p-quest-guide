@@ -24,11 +24,25 @@ const ModuleCard = ({ module }: ModuleCardProps) => {
 
         {/* Content */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
+          <div className="flex flex-wrap items-center gap-2 mb-1">
             <span className={`badge-module ${module.type === 'commun' ? 'bg-primary/10 text-primary' : 'bg-accent/10 text-accent'}`}>
               {module.type === 'commun' ? 'Module commun' : 'Module spécifique'}
             </span>
+            {module.rsCode && (
+              <span
+                className="inline-flex items-center rounded-md border border-border bg-secondary/60 px-2 py-0.5 text-[11px] font-mono font-semibold text-foreground"
+                title={module.rsFiche ? `France Compétences ${module.rsFiche}` : 'Référentiel France Compétences'}
+              >
+                {module.rsCode}
+              </span>
+            )}
+            {module.rsFiche && (
+              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
+                {module.rsFiche}
+              </span>
+            )}
           </div>
+
           
           <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors">
             {module.name}

@@ -761,7 +761,7 @@ export const revisionModules: RevisionModule[] = [
   // MODULE 7 : TAXI PARIS 75
   // =====================================================
   {
-    moduleId: 'taxi-75',
+    moduleId: 'taxi-national',
     moduleName: 'Taxi Paris 75',
     moduleIcon: '🚖',
     domain: 'taxi',
@@ -901,7 +901,7 @@ export const revisionModules: RevisionModule[] = [
   // MODULE 8 : TOPOGRAPHIE PARIS
   // =====================================================
   {
-    moduleId: 'topographie-paris',
+    moduleId: 'taxi-territoire',
     moduleName: 'Topographie Paris',
     moduleIcon: '🗼',
     domain: 'taxi',

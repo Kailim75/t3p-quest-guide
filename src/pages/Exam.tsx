@@ -32,9 +32,10 @@ const examConfigs: Record<string, ExamConfig> = {
     duration: 30 * 60,
     questionCount: 20,
     passingScore: 70,
-    modules: ['taxi'],
+    modules: ['taxi', 'taxi-national', 'taxi-territoire'],
     icon: '🚕'
   },
+
   'admission-vtc': {
     id: 'admission-vtc',
     name: 'Épreuve d\'admission VTC',

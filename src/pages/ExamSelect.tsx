@@ -32,8 +32,9 @@ const examTypes: ExamType[] = [
     questionCount: 20,
     passingScore: 70, // 14/20
     icon: '🚕',
-    modules: ['taxi']
+    modules: ['taxi', 'taxi-national', 'taxi-territoire']
   },
+
   {
     id: 'admission-vtc',
     name: 'Épreuve d\'admission VTC',
@@ -137,29 +138,40 @@ const ExamSelect = () => {
         {/* Info */}
         <div className="max-w-3xl mx-auto mt-12">
           <h2 className="text-lg font-semibold text-foreground mb-4 text-center">
-            Barème officiel de l'examen T3P
+            Modalités officielles France Compétences
           </h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="rounded-xl bg-secondary/50 p-4">
-              <h3 className="font-semibold text-foreground mb-2">Épreuve d'admissibilité</h3>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-semibold text-foreground">Admissibilité</h3>
+                <span className="text-[10px] font-mono text-muted-foreground">A · B · C · D · E</span>
+              </div>
               <ul className="text-sm text-muted-foreground space-y-1">
-                <li>• 50 questions sur le tronc commun</li>
-                <li>• Durée : 1h30 (90 minutes)</li>
-                <li>• Seuil de réussite : 35/50 (70%)</li>
-                <li>• 1 point par bonne réponse</li>
+                <li>• 50 questions QCM — tronc commun</li>
+                <li>• Durée : 1h30 (90 min)</li>
+                <li>• Seuil : 35/50 (70%)</li>
+                <li>• Note éliminatoire anglais : &lt; 4/20</li>
+                <li>• Note éliminatoire matière : &lt; 6/20</li>
               </ul>
             </div>
             <div className="rounded-xl bg-secondary/50 p-4">
-              <h3 className="font-semibold text-foreground mb-2">Épreuve d'admission</h3>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-semibold text-foreground">Admission</h3>
+                <span className="text-[10px] font-mono text-muted-foreground">F(T)/G(T) · F(V)/G(V) · F(M)/G(M)</span>
+              </div>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• 20 questions spécifiques métier</li>
                 <li>• Durée : 30 minutes</li>
-                <li>• Seuil de réussite : 14/20 (70%)</li>
-                <li>• 1 point par bonne réponse</li>
+                <li>• Seuil : 14/20 (70%)</li>
+                <li>• Référentiels : RS5635 (Taxi), RS5637 (VTC), RS5636 (VMDTR)</li>
               </ul>
             </div>
           </div>
+          <p className="text-xs text-center text-muted-foreground mt-4">
+            Source : fiches France Compétences RS5635, RS5636, RS5637.
+          </p>
         </div>
+
       </main>
     </div>
   );
