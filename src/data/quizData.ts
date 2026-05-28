@@ -66,6 +66,7 @@ export const modules: Module[] = [
     type: 'commun',
     icon: '📋',
     color: 'module-reglementation',
+    rsCode: 'A',
     subModules: [
       { id: 'reg-1', name: 'Conditions d\'accès à la profession', description: 'Conditions et modalités d\'accès', questionCount: 15 },
       { id: 'reg-2', name: 'Obligations professionnelles', description: 'Droits et devoirs du conducteur', questionCount: 12 },
@@ -79,6 +80,7 @@ export const modules: Module[] = [
     type: 'commun',
     icon: '🛡️',
     color: 'module-securite',
+    rsCode: 'C',
     subModules: [
       { id: 'sec-1', name: 'Code de la route', description: 'Règles de circulation', questionCount: 20 },
       { id: 'sec-2', name: 'Prévention des accidents', description: 'Risques et comportements', questionCount: 15 },
@@ -92,6 +94,7 @@ export const modules: Module[] = [
     type: 'commun',
     icon: '📊',
     color: 'module-gestion',
+    rsCode: 'B',
     subModules: [
       { id: 'ges-1', name: 'Comptabilité de base', description: 'Notions comptables essentielles', questionCount: 20 },
       { id: 'ges-2', name: 'Fiscalité', description: 'Obligations fiscales', questionCount: 10 },
@@ -105,6 +108,7 @@ export const modules: Module[] = [
     type: 'commun',
     icon: '🇫🇷',
     color: 'module-francais',
+    rsCode: 'D',
     subModules: [
       { id: 'fra-1', name: 'Compréhension écrite', description: 'Lecture et analyse de textes', questionCount: 20 },
       { id: 'fra-2', name: 'Expression écrite', description: 'Rédaction professionnelle', questionCount: 20 },
@@ -117,6 +121,7 @@ export const modules: Module[] = [
     type: 'commun',
     icon: '🇬🇧',
     color: 'module-anglais',
+    rsCode: 'E',
     subModules: [
       { id: 'ang-1', name: 'Vocabulaire professionnel', description: 'Termes du transport', questionCount: 20 },
       { id: 'ang-2', name: 'Conversation client', description: 'Dialogues courants', questionCount: 20 },
@@ -124,6 +129,7 @@ export const modules: Module[] = [
       { id: 'ang-4', name: 'Phrases types & situations', description: 'Expressions clés par situation', questionCount: 20 },
     ]
   },
+
   // MODULES SPÉCIFIQUES
   {
     id: 'taxi',
