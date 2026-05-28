@@ -989,6 +989,7 @@ export const revisionModules: RevisionModule[] = [
         id: 'fra-communication-orale',
         title: 'Communication orale',
         essential: "Vouvoiement systématique + écoute active + ton calme et posé.",
+        narrative: "La communication orale dans le T3P n'est pas un simple échange de politesses : c'est l'outil principal de construction de la relation commerciale. Le client juge le professionnalisme du conducteur dès les premières secondes — voix, débit, choix des mots. Le vouvoiement est la règle absolue, quel que soit l'âge du client : il marque le respect et la distance professionnelle.\n\nL'écoute active est tout aussi cruciale. Il ne s'agit pas seulement d'entendre, mais de montrer qu'on a compris. Trois techniques : laisser le client finir sa phrase (jamais interrompre), reformuler pour vérifier (« Si je comprends bien, vous souhaitez… »), confirmer l'engagement (« C'est noté, nous partons donc vers… »). Cette boucle évite 80 % des malentendus sur la destination ou les arrêts.\n\nLe ton compte autant que les mots. Un débit calme rassure un client stressé (avion à prendre, rendez-vous médical). À l'inverse, un débit haché ou un ton agressif déclenche immédiatement une plainte potentielle. Enfin, le jargon technique (« on va prendre la N118 puis l'A86 ») doit être traduit en repères concrets (« on passe par l'ouest, environ 35 minutes »).",
         keyPoints: [
           "Formules : Bonjour, S'il vous plaît, Merci, Je vous en prie",
           "Écoute active : laisser parler, reformuler, confirmer",
@@ -996,9 +997,24 @@ export const revisionModules: RevisionModule[] = [
           "Annoncer : prix, durée estimée, itinéraire"
         ],
         fieldExample: "Le chauffeur reformule : 'Si je comprends bien, vous souhaitez passer par les quais ?'",
+        practicalCases: [
+          {
+            situation: "Un client monte et lance « Salut, on va à Roissy ». Le chauffeur a 25 ans, le client environ 40.",
+            question: "Comment le conducteur doit-il répondre ?",
+            answer: "« Bonjour Monsieur, je vous emmène à l'aéroport Charles-de-Gaulle. Quel terminal souhaitez-vous ? »",
+            reasoning: "Même si le client tutoie, le conducteur doit maintenir le vouvoiement (règle pro), saluer formellement, et confirmer la destination en précisant (terminal CDG). C'est à la fois du respect commercial et une sécurité (éviter de se tromper de terminal sur les 7 que compte CDG)."
+          },
+          {
+            situation: "Un client visiblement stressé monte en disant : « Je vais rater mon train à Gare de Lyon, faites vite ! »",
+            question: "Quelle est la bonne attitude verbale ?",
+            answer: "Reformuler avec calme : « Compris, Gare de Lyon le plus vite possible. Je vais prendre l'itinéraire le plus rapide compte tenu du trafic, nous y serons dans environ 20 minutes. »",
+            reasoning: "On NE PROMET PAS une heure d'arrivée précise (sinon engagement de résultat). On reformule (le client se sent entendu), on annonce l'itinéraire choisi (transparence), on donne une estimation (« environ »). Le ton calme désamorce le stress sans nier l'urgence."
+          }
+        ],
         examWarning: "Le tutoiement = faute professionnelle avec les clients.",
         tips: [
-          "Premier contact = première impression : soigner l'accueil"
+          "Premier contact = première impression : soigner l'accueil",
+          "Reformuler avant de démarrer évite les erreurs d'adresse"
         ],
         legalRefs: []
       },
@@ -1006,35 +1022,67 @@ export const revisionModules: RevisionModule[] = [
         id: 'fra-communication-ecrite',
         title: 'Communication écrite',
         essential: "Facture = mentions obligatoires (nom, SIRET, date, montant HT/TTC).",
+        narrative: "L'écrit engage le conducteur bien plus que l'oral. Une facture mal rédigée peut être rejetée fiscalement, un courriel maladroit peut coûter un contrat B2B, un SMS ambigu peut générer un litige client. Le T3P doit donc maîtriser quelques règles simples mais non négociables.\n\nLa facture est l'écrit le plus encadré. Le Code de commerce (article L441-9) impose : identité du prestataire (nom, adresse, SIRET, n° TVA si assujetti), identité du client, date d'émission, numéro de facture unique et chronologique, désignation de la prestation, prix HT, taux et montant de TVA (10 % pour le transport de voyageurs), prix TTC. Pour un VTC, ajouter le numéro d'inscription au registre VTC. L'absence d'une seule de ces mentions rend la facture irrégulière et peut entraîner un redressement.\n\nLe courriel professionnel répond à une logique simple : objet clair (« Confirmation course du 12/06 — 14h CDG »), formule d'appel (Bonjour Madame X), corps structuré (1 idée par paragraphe), formule de politesse (« Cordialement »), signature complète (nom, fonction, téléphone, SIRET). On évite les majuscules (perçues comme un cri) et les multiples points d'exclamation (perçus comme amateur).",
         keyPoints: [
           "Facture : toutes mentions légales obligatoires",
           "Courriel pro : objet clair, formule d'appel, signature",
           "Orthographe : relire avant envoi",
-          "Conserver copies des échanges importants"
+          "Conserver copies des échanges importants (10 ans pour les factures)"
         ],
-        fieldExample: "Le VTC envoie sa facture avec nom, SIRET, date, montant HT, TVA et TTC.",
-        examWarning: "Une facture sans mentions obligatoires est irrégulière fiscalement.",
+        fieldExample: "Le VTC envoie sa facture avec nom, SIRET, n° d'inscription registre VTC, date, montant HT, TVA 10 % et TTC.",
+        practicalCases: [
+          {
+            situation: "Un client professionnel demande une facture pour une course de 80 € TTC effectuée hier. Le conducteur lui envoie un SMS : « Course 80 euros, merci ».",
+            question: "Le client peut-il utiliser ce SMS comme facture pour sa comptabilité ?",
+            answer: "Non. Ce n'est pas une facture conforme et le client ne pourra pas la déduire.",
+            reasoning: "Il manque toutes les mentions obligatoires : identité complète du prestataire (SIRET, adresse), numéro de facture, date précise, ventilation HT/TVA/TTC, désignation de la prestation. Le conducteur doit émettre une vraie facture (PDF ou papier) avec un numéro chronologique unique."
+          },
+          {
+            situation: "Une entreprise demande au conducteur de modifier la date d'une facture pour qu'elle tombe sur l'exercice comptable précédent.",
+            question: "Que doit faire le conducteur ?",
+            answer: "Refuser. Une facture antidatée constitue un faux en écriture et un délit fiscal.",
+            reasoning: "Modifier la date d'une facture engage la responsabilité pénale du conducteur (faux et usage de faux, article 441-1 du Code pénal) et fiscale (fraude fiscale). La bonne pratique : émettre la facture à la date réelle de la prestation. Si erreur, faire un avoir et une nouvelle facture, jamais raturer."
+          }
+        ],
+        examWarning: "Une facture sans mentions obligatoires est irrégulière fiscalement (amende jusqu'à 15 € par mention manquante, plafonnée).",
         tips: [
-          "Éviter les majuscules (= crier) et les !!! multiples"
+          "Éviter les majuscules (= crier) et les !!! multiples",
+          "Numéroter les factures de façon strictement chronologique et continue"
         ],
-        legalRefs: ["Code de commerce (facturation)"]
+        legalRefs: ["Article L441-9 du Code de commerce", "Article 289 du CGI"]
       },
       {
         id: 'fra-comprehension-textes',
         title: 'Compréhension de textes',
         essential: "Textes réglementaires : lire chaque mot. Les nuances juridiques comptent.",
+        narrative: "Le conducteur T3P signe régulièrement des documents qui l'engagent juridiquement : contrats de partenariat avec une plateforme, contrats de location de véhicule, contrats d'assurance, conditions générales des centrales de réservation. Une lecture trop rapide peut transformer une opportunité en piège financier durable.\n\nLa première règle est de distinguer le vocabulaire juridique des mots du quotidien. « Stipuler » ne veut pas dire « préciser » mais « inscrire dans un contrat » (seul un contrat stipule, une loi dispose). « Abroger » signifie supprimer définitivement (pas suspendre). « En vigueur » signifie applicable actuellement. « Sous réserve de » introduit une condition suspensive. « Nonobstant » signifie « malgré ». Ces nuances changent radicalement la portée d'une clause.\n\nLa deuxième règle est de toujours chercher les clauses « pièges » : durée d'engagement, clause de tacite reconduction, délais et modalités de résiliation, pénalités, clause de non-concurrence, juridiction compétente en cas de litige. Une clause de tacite reconduction d'un an avec préavis de trois mois enferme le conducteur s'il rate la fenêtre. Avant de signer, il faut toujours lire l'intégralité, surligner ce qui est flou, et ne pas hésiter à demander un délai de réflexion ou un conseil professionnel.",
         keyPoints: [
           "Identifier : sujet, mots-clés, structure",
-          "Vocabulaire juridique : stipuler, abroger, en vigueur",
-          "Contrat : vérifier obligations et clauses de résiliation",
+          "Vocabulaire juridique : stipuler, abroger, en vigueur, nonobstant",
+          "Contrat : vérifier obligations, durée, résiliation, pénalités",
           "Ne jamais signer sans avoir tout lu"
         ],
-        fieldExample: "Le contrat dit 'résiliable avec préavis de 3 mois' : le chauffeur note cette échéance.",
-        examWarning: "Un document signé sans lecture = engagement quand même.",
-        tips: [
-          "En cas de doute juridique : consulter un professionnel"
+        fieldExample: "Le contrat dit 'résiliable avec préavis de 3 mois' : le chauffeur note cette échéance dans son agenda.",
+        practicalCases: [
+          {
+            situation: "Un conducteur signe un contrat avec une plateforme de réservation. L'article 7 stipule : « Le présent contrat est conclu pour une durée d'un an, renouvelable tacitement par périodes annuelles, sauf dénonciation par lettre recommandée avec accusé de réception au moins 90 jours avant l'échéance. »",
+            question: "Si le conducteur veut quitter la plateforme au bout d'un an, jusqu'à quand peut-il envoyer sa lettre de résiliation ?",
+            answer: "Au plus tard 90 jours (3 mois) avant la date anniversaire du contrat, par LRAR.",
+            reasoning: "La tacite reconduction reconduit automatiquement le contrat sauf dénonciation respectant les formes (LRAR) et le délai (90 jours). S'il rate cette fenêtre, il est engagé pour une année supplémentaire. Concrètement : si le contrat a été signé le 1er juin, la LRAR doit partir au plus tard le 3 mars de l'année suivante."
+          },
+          {
+            situation: "Un contrat d'assurance VTC contient la mention : « La garantie est acquise sous réserve du respect par l'assuré des conditions d'exercice prévues par le Code des transports. »",
+            question: "Que se passe-t-il si le conducteur fait une course de maraude (interdite en VTC) et a un accident ?",
+            answer: "L'assureur peut refuser sa garantie : la condition d'exercice légal n'était pas respectée.",
+            reasoning: "« Sous réserve de » est une condition suspensive : la garantie n'existe que si la condition est remplie. Comme la maraude est illégale pour un VTC (article L3122-9), le conducteur exerce hors cadre légal, ce qui annule la couverture. Conséquences potentielles : réparations du véhicule et indemnisation des tiers à sa charge personnelle."
+          }
         ],
-        legalRefs: []
+        examWarning: "Un document signé sans lecture = engagement quand même. La signature vaut acceptation pleine et entière.",
+        tips: [
+          "En cas de doute juridique : demander un délai et consulter",
+          "Toujours conserver l'original signé et un double"
+        ],
+        legalRefs: ["Article 1103 du Code civil (force obligatoire des contrats)"]
       }
     ]
   },
@@ -1054,16 +1102,32 @@ export const revisionModules: RevisionModule[] = [
         id: 'ang-accueil',
         title: 'Accueil en anglais',
         essential: "'May I' est plus poli que 'Can I' dans un contexte professionnel.",
+        narrative: "L'anglais T3P n'a pas vocation à être littéraire : il doit être professionnel, courtois et fonctionnel. La clientèle internationale (touristes, business travelers, équipages aériens) attend les codes de la communication anglo-saxonne hôtelière, où la politesse modale est centrale.\n\nLa distinction « Can I / May I » est l'archétype de cette politesse. « Can I take your luggage? » est correct grammaticalement mais demande une capacité. « May I take your luggage? » demande une permission — c'est la formule attendue dans un contexte de service haut de gamme. De même, « Would you like… » est plus poli que « Do you want… ». Maîtriser ces 3-4 modaux suffit pour passer d'un anglais touristique à un anglais professionnel.\n\nLes salutations s'adaptent au moment de la journée : Good morning (jusqu'à midi), Good afternoon (12 h-18 h), Good evening (après 18 h). « Good night » n'est PAS un salut d'accueil — c'est un « bonne nuit » qu'on dit quand on quitte quelqu'un le soir. Cette erreur courante trahit immédiatement un conducteur peu à l'aise. Enfin, le non-verbal — sourire, contact visuel, ouverture de portière — compense les éventuelles lacunes lexicales : un client se souvient surtout de la chaleur de l'accueil.",
         keyPoints: [
           "Good morning/afternoon/evening = Bonjour selon l'heure",
           "How may I help you? = Comment puis-je vous aider ?",
           "May I take your luggage? = Puis-je prendre vos bagages ?",
           "Please make yourself comfortable = Installez-vous"
         ],
-        fieldExample: "Le chauffeur accueille : 'Good afternoon! I will be your driver today.'",
-        examWarning: "'May I' = plus poli que 'Can I' en contexte pro.",
+        fieldExample: "Le chauffeur accueille : 'Good afternoon! I will be your driver today. May I take your luggage?'",
+        practicalCases: [
+          {
+            situation: "Il est 21h, un client international monte dans le véhicule. Le conducteur lui dit « Good night, sir ».",
+            question: "L'accueil est-il correct ?",
+            answer: "Non. « Good night » signifie « bonne nuit » (au moment où l'on se quitte). Il fallait dire « Good evening ».",
+            reasoning: "« Good night » est une formule de séparation, pas d'accueil. Le client peut être déstabilisé (est-ce que le chauffeur veut déjà qu'il descende ?). La bonne formule entre 18 h et minuit est « Good evening », qui est neutre et professionnelle."
+          },
+          {
+            situation: "Le conducteur doit demander au client s'il peut prendre ses bagages.",
+            question: "Quelle formulation choisir entre « Can I take your bag? » et « May I take your bag? » ?",
+            answer: "« May I take your bag, please? »",
+            reasoning: "« Can I » demande une capacité physique (« suis-je capable »), « May I » demande une permission polie. En contexte de service professionnel anglo-saxon, « May I » est la norme. L'ajout de « please » renforce la courtoisie. Ce détail différencie un service amateur d'un service premium."
+          }
+        ],
+        examWarning: "'May I' = plus poli que 'Can I' en contexte pro. 'Good night' ≠ accueil.",
         tips: [
-          "Le sourire et le contact visuel sont universels"
+          "Le sourire et le contact visuel sont universels",
+          "Apprendre 5 formules par cœur > improviser avec un anglais hésitant"
         ],
         legalRefs: []
       },
@@ -1071,6 +1135,7 @@ export const revisionModules: RevisionModule[] = [
         id: 'ang-trajet-informations',
         title: 'Informations trajet',
         essential: "'Approximately' = environ. Ne jamais promettre une heure exacte.",
+        narrative: "Pendant le trajet, le conducteur doit informer le client de manière claire et juridiquement prudente. Le piège classique est d'annoncer une heure d'arrivée ferme : en cas de retard, le client peut invoquer un engagement de résultat. La solution est d'utiliser systématiquement des modulateurs d'incertitude : « approximately », « about », « around », « roughly ».\n\nLa structure type d'une annonce de trajet est : situation actuelle + estimation + plan B. Exemple : « There is some traffic on the ring road (situation). We should arrive in approximately 35 minutes (estimation). If it gets worse, I will take an alternative route through the inner boulevards (plan B). » Cette structure rassure : le client comprend que le conducteur a anticipé.\n\nQuelques formulations clés à mémoriser. « We are now entering Paris » (annonce d'arrivée en zone urbaine). « The traffic is heavier than usual today » (justifie un retard sans promettre). « Would you mind if I take a different route? It will be faster » (demande l'accord avant de changer d'itinéraire — important pour la facturation et la confiance). « Is the temperature comfortable? » plutôt que « Are you hot? » (plus pro). Enfin, on évite « no problem » à toutes les sauces, qui sonne désinvolte ; on préfère « certainly » ou « of course ».",
         keyPoints: [
           "We should arrive in approximately 30 minutes",
           "There is some traffic ahead = Il y a du trafic",
@@ -1078,26 +1143,57 @@ export const revisionModules: RevisionModule[] = [
           "Is the temperature comfortable? = La température convient ?"
         ],
         fieldExample: "Le chauffeur informe : 'There is traffic, but we should arrive in about 40 minutes.'",
-        examWarning: "Toujours utiliser 'approximately' ou 'about' pour les estimations.",
+        practicalCases: [
+          {
+            situation: "Un client demande : « What time will we be at the airport? » Le conducteur sait qu'il faut environ 45 minutes mais le trafic est dense.",
+            question: "Quelle réponse adopter ?",
+            answer: "« We should arrive at the airport in approximately 45 to 55 minutes, depending on traffic. »",
+            reasoning: "Donner une fourchette plutôt qu'une heure fixe protège le conducteur et reste transparent. « Approximately » + fourchette + « depending on traffic » montrent qu'on a anticipé l'aléa. Donner « 14h30 précis » est un piège : si on arrive à 14h35, le client peut se plaindre."
+          },
+          {
+            situation: "À cause d'un accident sur l'itinéraire prévu, le conducteur souhaite passer par un trajet plus long mais plus fluide.",
+            question: "Comment l'annoncer en anglais sans froisser le client ?",
+            answer: "« There is an accident on our route. With your permission, I would like to take a slightly longer but much faster alternative. »",
+            reasoning: "On informe (transparence sur la cause), on demande l'accord (« with your permission »), on assume la conséquence (« slightly longer »), on justifie (« much faster »). Cette précaution évite la suspicion de surfacturation kilométrique et entretient la confiance."
+          }
+        ],
+        examWarning: "Toujours utiliser 'approximately' ou 'about' pour les estimations. Annoncer une heure ferme = engagement.",
         tips: [
-          "Informer proactivement rassure le client"
+          "Informer proactivement rassure le client",
+          "Demander l'accord avant tout changement d'itinéraire"
         ],
         legalRefs: []
       },
       {
         id: 'ang-vocabulaire-tourisme',
         title: 'Vocabulaire tourisme',
-        essential: "Connaître le nom anglais des monuments : Eiffel Tower, Louvre Museum...",
+        essential: "Connaître le nom anglais des monuments : Eiffel Tower, Louvre Museum, Notre-Dame Cathedral...",
+        narrative: "Un client touristique évalue le professionnalisme du conducteur à sa capacité de nommer correctement les lieux. Dire « the Eiffel Tower » au lieu de « la Tour Eiffel » est une marque de respect linguistique. La règle générale : on garde le nom propre français (Notre-Dame, Champs-Élysées, Louvre) mais on traduit le nom commun (Tower, Cathedral, Museum, Avenue).\n\nLes monuments incontournables à maîtriser : Eiffel Tower (7ème), Arc de Triomphe (8ème), Notre-Dame Cathedral (4ème), Louvre Museum (1er), Sacré-Cœur Basilica (18ème), Opéra Garnier (9ème), Centre Pompidou (4ème), Panthéon (5ème), Musée d'Orsay (7ème), Place de la Concorde (8ème), Champs-Élysées Avenue. Pour les quartiers : the Latin Quarter (5ème-6ème), Montmartre, Le Marais, the Champs-Élysées area.\n\nLe vocabulaire utile pour orienter : landmark (monument emblématique), sightseeing (visite touristique), city center / downtown (centre-ville), neighborhood (quartier), bank of the Seine (rive de la Seine — Left Bank/Right Bank), bridge (pont), square (place). Pour le transport : railway station (gare), subway / metro (métro), airport (aéroport), taxi rank / taxi stand (station de taxi). Il faut aussi savoir distinguer CDG (Charles de Gaulle Airport) et ORY (Orly Airport), souvent confondus par les Anglo-Saxons.",
         keyPoints: [
           "Landmark = monument emblématique",
           "Sightseeing = visite touristique",
           "City center / Downtown = centre-ville",
           "Railway station = gare / Airport = aéroport"
         ],
-        fieldExample: "Le client demande 'Where is Notre-Dame?' → 'It's on the Île de la Cité.'",
+        fieldExample: "Le client demande 'Where is Notre-Dame?' → 'It's on the Île de la Cité, in the heart of Paris.'",
+        practicalCases: [
+          {
+            situation: "Un touriste américain demande : « Can you drop me at the Notre Dame Museum? »",
+            question: "Que doit faire le conducteur ?",
+            answer: "Reformuler : « Do you mean Notre-Dame Cathedral, on the Île de la Cité? It's a cathedral, not a museum. »",
+            reasoning: "Le client se trompe (Notre-Dame est une cathédrale, pas un musée). Plutôt que de partir avec un doute, on reformule poliment et on rectifie. Cela évite une mauvaise destination et démontre une vraie connaissance de Paris — c'est un avantage compétitif majeur."
+          },
+          {
+            situation: "Un client demande : « How long to get to the Eiffel Tower from here? » On est à Opéra (9ème).",
+            question: "Donner une réponse complète en anglais.",
+            answer: "« From here, it should take approximately 20 to 25 minutes by car, depending on traffic. The Eiffel Tower is on the Left Bank, in the 7th district. »",
+            reasoning: "On combine : estimation prudente (« approximately », fourchette), localisation géographique (« Left Bank, 7th district »). Le client touriste apprécie ce contexte qui lui permet de se repérer pour ses prochaines visites. C'est aussi une opportunité de fidélisation."
+          }
+        ],
         examWarning: "Eiffel Tower, Arc de Triomphe, Notre-Dame Cathedral : mémoriser ces noms.",
         tips: [
-          "CDG = Charles de Gaulle Airport, ORY = Orly Airport"
+          "CDG = Charles de Gaulle Airport, ORY = Orly Airport",
+          "Left Bank / Right Bank = rive gauche / rive droite (très utilisé par les anglo-saxons)"
         ],
         legalRefs: []
       },
@@ -1105,16 +1201,32 @@ export const revisionModules: RevisionModule[] = [
         id: 'ang-aeroport',
         title: 'Vocabulaire aéroport',
         essential: "Terminal, Gate, Check-in, Boarding pass : mots essentiels aéroport.",
+        narrative: "L'aéroport représente une part substantielle du chiffre d'affaires T3P (forfaits CDG/Orly, navettes d'entreprises). Maîtriser le vocabulaire aéroportuaire anglais est donc un atout commercial direct. Une erreur de terminal à CDG (7 terminaux : 1, 2A, 2B, 2C, 2D, 2E, 2F, 2G, 3) peut faire perdre 20 minutes au client et lui faire rater son vol.\n\nLe vocabulaire critique se concentre sur le parcours du voyageur : check-in (enregistrement, généralement 2-3 h avant le vol), security (contrôle de sécurité), gate (porte d'embarquement, attribuée 30-60 min avant), boarding (embarquement), boarding pass (carte d'embarquement). Attention : check-in ≠ check-out. Check-out désigne le départ d'un hôtel (on libère la chambre), pas l'arrivée à l'aéroport. Cette confusion est extrêmement fréquente chez les conducteurs francophones.\n\nPour les bagages : carry-on / hand luggage (bagage cabine, généralement 8-10 kg), checked baggage (bagage en soute, à enregistrer), luggage / suitcase (valise), oversized luggage (bagage hors gabarit). Pour les types de vols : domestic flight (vol intérieur, généralement Terminal 2F à CDG), international flight (vol international), connecting flight (vol en correspondance). Toujours demander : « Which airline are you flying with? » et « Which terminal? » — ces deux informations conditionnent le point de dépose exact.",
         keyPoints: [
           "Flight = vol / Gate = porte d'embarquement",
           "Boarding pass = carte d'embarquement",
           "Check-in = enregistrement / Check-out = départ hôtel",
           "Carry-on = bagage cabine / Luggage = bagages"
         ],
-        fieldExample: "Le client dit 'Terminal 2E, Gate 34' : le chauffeur le dépose au bon endroit.",
-        examWarning: "Check-in (enregistrement) ≠ Check-out (départ hôtel).",
+        fieldExample: "Le client dit 'Terminal 2E, Gate 34' : le chauffeur le dépose au bon endroit (zone départs).",
+        practicalCases: [
+          {
+            situation: "Un client demande : « Drop me at the check-out, please. » Le conducteur l'emmène à l'aéroport CDG.",
+            question: "À quel endroit doit-il déposer le client ?",
+            answer: "Il faut d'abord demander confirmation : « Do you mean check-in, sir? Check-out is for hotels. »",
+            reasoning: "Le client a très probablement voulu dire « check-in » (enregistrement, zone Départs). « Check-out » désigne la libération d'une chambre d'hôtel. Ne pas reformuler = risque de dépose en zone Arrivées, à l'opposé. La reformulation polie évite l'erreur sans humilier le client."
+          },
+          {
+            situation: "Un client doit prendre un vol Air France pour New York. Il dit juste « CDG please ».",
+            question: "Quelles questions poser pour éviter l'erreur de terminal ?",
+            answer: "« Which airline are you flying with, and do you know your terminal? Air France international flights usually depart from Terminal 2E or 2F at CDG. »",
+            reasoning: "À CDG, Air France long-courrier = Terminal 2E ou 2F selon la destination. Déposer en Terminal 1 ferait perdre 15-20 min de navette CDGVAL au client. Le conducteur professionnel anticipe avec deux questions ciblées. Si le client ne sait pas, on vérifie sur l'app de la compagnie."
+          }
+        ],
+        examWarning: "Check-in (enregistrement) ≠ Check-out (départ hôtel). Confusion fréquente.",
         tips: [
-          "Toujours confirmer le terminal (CDG en a plusieurs)"
+          "Toujours confirmer le terminal (CDG en a plusieurs)",
+          "Demander la compagnie aérienne aide à déduire le terminal"
         ],
         legalRefs: []
       },
@@ -1122,6 +1234,7 @@ export const revisionModules: RevisionModule[] = [
         id: 'ang-situations-pratiques',
         title: 'Situations pratiques',
         essential: "'Could you spell that, please?' pour éviter les erreurs d'adresse.",
+        narrative: "Les situations délicates en anglais réclament des formules figées qu'on doit avoir mémorisées et prêtes à l'emploi. L'improvisation produit des phrases ambiguës qui dégradent le service. Trois familles de situations reviennent constamment : la non-compréhension, le problème technique ou de confort, la fin de course.\n\nFace à une adresse mal comprise (accent, prononciation), la formule magique est « Could you spell that, please? » (« Pouvez-vous l'épeler ? »). Elle est polie (« Could » au lieu de « Can »), sans connotation négative, et résout 90 % des malentendus. Variante : « Would you mind repeating the address, please? » Surtout ne JAMAIS faire semblant d'avoir compris — partir vers une mauvaise adresse coûte un client à vie.\n\nPour le confort : « Do you prefer the air conditioning on or off? », « Would you like me to lower the music? », « Is the temperature comfortable for you? ». Pour la fin de course : « We have arrived at your destination. Please make sure you have all your belongings. Here is your receipt. Have a pleasant day / a safe flight. » Pour un incident technique (panne légère, embouteillage exceptionnel) : « I am sorry, there seems to be a problem. Let me handle it / Let me find an alternative. » L'utilisation de « I am sorry » désamorce immédiatement la tension, même si le conducteur n'est pas responsable.",
         keyPoints: [
           "Could you spell that? = Pouvez-vous épeler ?",
           "I'm sorry, there seems to be a problem = Il semble y avoir un problème",
@@ -1129,9 +1242,24 @@ export const revisionModules: RevisionModule[] = [
           "Here is your receipt = Voici votre reçu"
         ],
         fieldExample: "Le chauffeur ne comprend pas l'adresse : 'Could you spell that, please?'",
+        practicalCases: [
+          {
+            situation: "Un client anglo-saxon donne une adresse mais le conducteur n'a pas saisi le nom de la rue à cause de l'accent.",
+            question: "Que doit-il faire ? Que NE PAS faire ?",
+            answer: "Demander : « Could you spell that, please? » Ne JAMAIS partir en faisant semblant d'avoir compris.",
+            reasoning: "Faire semblant = risque de mauvaise destination = perte de temps, client mécontent, voire facturation contestée. La formule « Could you spell that » est polie et professionnelle — elle montre qu'on prend la précision au sérieux. C'est l'inverse d'un aveu de faiblesse."
+          },
+          {
+            situation: "À la fin de la course, le client paie. Le conducteur veut lui souhaiter une bonne fin de journée et lui remettre son reçu.",
+            question: "Formuler une phrase de clôture professionnelle.",
+            answer: "« Thank you very much. Here is your receipt. Please make sure you have all your belongings. Have a pleasant evening! »",
+            reasoning: "On combine : remerciement (« Thank you very much »), remise du reçu (preuve commerciale), rappel des effets personnels (évite l'oubli, source de réclamations), souhait personnalisé selon l'heure (« evening » après 18 h). Cette dernière impression conditionne la note du client et son éventuelle recommandation."
+          }
+        ],
         examWarning: "Ne jamais prétendre avoir compris. Mieux vaut demander de répéter.",
         tips: [
-          "Parler lentement si le client semble ne pas comprendre"
+          "Parler lentement si le client semble ne pas comprendre",
+          "Mémoriser 5-10 phrases types couvre 80 % des situations"
         ],
         legalRefs: []
       }
@@ -1152,76 +1280,145 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'vtc-definition',
         title: 'Définition VTC',
-        essential: "VTC = réservation préalable obligatoire. Maraude interdite sous peine de 15 000€.",
+        essential: "VTC = réservation préalable obligatoire. Maraude interdite sous peine de 1 an de prison et 15 000 € d'amende.",
+        narrative: "Le statut juridique du VTC repose sur une notion fondamentale : la réservation préalable. Contrairement au taxi, qui peut prendre un client « à la volée » dans la rue (la maraude), le VTC ne peut transporter qu'un client qui a réservé sa course à l'avance, par tout moyen vérifiable (application, téléphone, site web, contrat-cadre B2B). Cette frontière, posée par la loi Thévenoud du 1er octobre 2014 et renforcée par la loi Grandguillaume du 29 décembre 2016, structure tout le métier.\n\nLa maraude — chercher des clients en circulant ou en stationnant sur la voie publique — est donc strictement interdite aux VTC. L'article L3124-9 du Code des transports prévoit des sanctions lourdes : 1 an d'emprisonnement, 15 000 € d'amende, immobilisation du véhicule, suspension de la carte professionnelle. Ce n'est pas une faute administrative mais un délit pénal. Le législateur a voulu protéger le monopole économique des taxis (qui ont payé leur ADS) tout en laissant un espace concurrentiel aux VTC sur le marché de la réservation.\n\nUne règle souvent oubliée : le retour à vide. Après avoir déposé un client, le VTC doit en principe retourner à son lieu de stationnement habituel (siège de l'entreprise ou parking de la plateforme) sauf s'il a déjà une nouvelle réservation. Cette obligation, qui peut sembler théorique, est en réalité contrôlée : un VTC qui stationne devant une gare ou un hôtel sans réservation peut être verbalisé.",
         keyPoints: [
           "VTC = Voiture de Transport avec Chauffeur",
           "Réservation préalable obligatoire (pas de prise en charge spontanée)",
-          "Maraude interdite : 1 an prison + 15 000€",
+          "Maraude interdite : 1 an prison + 15 000 € (délit pénal)",
+          "Retour à vide obligatoire sauf nouvelle réservation",
           "Inscription au registre VTC préfectoral obligatoire"
         ],
         fieldExample: "Un client hèle un VTC dans la rue : le chauffeur doit refuser (maraude = interdit).",
+        practicalCases: [
+          {
+            situation: "Un VTC vient de déposer un client à Saint-Lazare. En attendant une nouvelle réservation Uber, il se gare sur une place gratuite à proximité de la gare et attend 30 minutes.",
+            question: "Cette pratique est-elle légale ?",
+            answer: "Non. Le VTC est en infraction : sans réservation, il doit retourner à son lieu d'établissement.",
+            reasoning: "Stationner devant un point d'attraction (gare, hôtel, aéroport) sans réservation peut être qualifié de maraude (raccrochage de clientèle). Même si le conducteur n'accoste personne, l'intention de capter une demande spontanée est présumée. Sanction possible : amende + suspension de carte pro. Bonne pratique : retour au siège ou stationnement en zone neutre."
+          },
+          {
+            situation: "Un piéton hèle un VTC à un feu rouge en disant « Vous êtes libre ? Direction Châtelet ». Le VTC n'a aucune réservation à ce moment-là.",
+            question: "Peut-il accepter la course ?",
+            answer: "Non. Accepter constituerait une maraude punie d'1 an de prison et 15 000 € d'amende.",
+            reasoning: "L'article L3124-9 du Code des transports interdit formellement aux VTC de prendre un client sans réservation préalable, même si le client est demandeur. Pour que la course soit légale, il faudrait que le client la réserve via une application (même 5 secondes avant). C'est l'acte de réservation enregistrée qui légalise la prestation."
+          }
+        ],
         examWarning: "VTC = JAMAIS de maraude. C'est LA différence fondamentale avec les taxis.",
         confusionPoints: [
           "Taxi = maraude autorisée ≠ VTC = réservation préalable uniquement"
         ],
         tips: [
-          "Retour à vide obligatoire sauf nouvelle réservation"
+          "Conserver l'historique de réservation pendant 1 an minimum",
+          "Pas de stationnement sur emplacements taxis (amende immédiate)"
         ],
-        legalRefs: ["Article L3122-9 du Code des transports"]
+        legalRefs: ["Article L3122-9 du Code des transports", "Article L3124-9 (sanctions)", "Loi Thévenoud 2014", "Loi Grandguillaume 2016"]
       },
       {
         id: 'vtc-inscription-registre',
         title: 'Inscription au registre',
         essential: "Inscription au registre VTC obligatoire. Numéro à afficher sur le véhicule.",
+        narrative: "L'inscription au registre VTC est l'acte de naissance administratif de l'activité. Sans elle, ni la carte professionnelle ni le véhicule ne suffisent : le conducteur exerce illégalement, même s'il pense être « en règle » avec ses autres documents. Cette inscription, gérée par les préfectures (en Île-de-France : la DRIEAT — Direction Régionale et Interdépartementale de l'Environnement, de l'Aménagement et des Transports), valide trois éléments simultanément : l'exploitant (entreprise), le véhicule, et le conducteur.\n\nLe véhicule doit respecter des conditions techniques cumulatives : puissance ≥ 84 kW (115 ch), OU longueur ≥ 4,50 m, OU largeur ≥ 1,70 m. Un seul de ces critères suffit, mais en pratique la plupart des véhicules de gamme moyenne supérieure (Mercedes Classe E, BMW Série 5, Audi A6, Tesla Model 3) les remplissent largement. Le véhicule doit aussi être âgé de moins de 7 ans à la date d'inscription. L'assurance professionnelle « transport de personnes à titre onéreux » est obligatoire — une assurance personnelle classique ne couvre rien.\n\nUne fois inscrit, le véhicule reçoit une vignette d'identification numérotée, à apposer en bas à droite du pare-brise (côté passager). L'attestation d'inscription papier doit être présente à bord, présentable à tout contrôle (police, gendarmerie, DGCCRF). L'inscription est valable 5 ans et doit être renouvelée. Tout changement (nouveau véhicule, nouvelle adresse) doit être déclaré sous 1 mois.",
         keyPoints: [
           "Registre tenu par la préfecture ou DRIEAT (Île-de-France)",
-          "Véhicule : ≥ 84 kW OU ≥ 4,50m OU ≥ 1,70m largeur",
-          "Vignette avec numéro d'inscription visible",
+          "Véhicule : ≥ 84 kW OU ≥ 4,50 m OU ≥ 1,70 m largeur",
+          "Véhicule de moins de 7 ans à l'inscription",
+          "Vignette avec numéro d'inscription visible sur pare-brise",
           "Attestation d'inscription à bord obligatoire"
         ],
         fieldExample: "Le VTC affiche sa vignette avec son numéro d'inscription sur le pare-brise avant droit.",
-        examWarning: "Sans inscription = exercice illégal même avec la carte pro.",
-        tips: [
-          "Le numéro d'inscription est visible sur la vignette pare-brise"
+        practicalCases: [
+          {
+            situation: "Un conducteur possède sa carte professionnelle VTC depuis 6 mois. Il vient d'acheter une Renault Mégane (longueur 4,36 m, largeur 1,81 m, puissance 84 kW).",
+            question: "Ce véhicule est-il éligible au registre VTC ?",
+            answer: "Oui. Il remplit deux critères sur trois : largeur ≥ 1,70 m (1,81 m) et puissance ≥ 84 kW.",
+            reasoning: "Les critères sont alternatifs (« OU ») et non cumulatifs. Il suffit qu'UN seul soit respecté. La longueur de 4,36 m (< 4,50 m) n'est donc pas bloquante. Cependant, l'image de marque peut souffrir : la plupart des plateformes premium imposent en pratique un niveau de gamme supérieur."
+          },
+          {
+            situation: "Un VTC change de véhicule mais oublie de déclarer le changement à la préfecture. Il fait des courses avec le nouveau véhicule pendant 3 mois.",
+            question: "Quelles sont les conséquences en cas de contrôle ?",
+            answer: "Exercice illégal : le nouveau véhicule n'est pas inscrit. Sanctions possibles : amende, immobilisation du véhicule, suspension de la carte pro.",
+            reasoning: "L'inscription au registre est liée à un couple exploitant + véhicule + conducteur. Changer de véhicule sans déclaration rompt le lien réglementaire. De plus, l'assurance peut refuser sa garantie en cas d'accident (véhicule non déclaré pour l'activité). Délai légal de déclaration : 1 mois maximum après le changement."
+          }
         ],
-        legalRefs: ["Article R3122-1 du Code des transports"]
+        examWarning: "Sans inscription au registre = exercice illégal, même avec la carte pro valide.",
+        tips: [
+          "Le numéro d'inscription est visible sur la vignette pare-brise",
+          "Renouveler l'inscription tous les 5 ans (alerte agenda)"
+        ],
+        legalRefs: ["Article R3122-1 du Code des transports", "Arrêté du 23 décembre 2016 (critères véhicule)"]
       },
       {
         id: 'vtc-tarification',
         title: 'Tarification VTC',
-        essential: "Tarifs libres mais information préalable du client obligatoire.",
+        essential: "Tarifs libres mais information préalable du client obligatoire. TVA transport = 10 %.",
+        narrative: "À la différence du taxi (tarif réglementé par arrêté préfectoral), le VTC pratique des tarifs LIBRES. Chaque exploitant fixe sa grille comme il l'entend : forfait fixe (souvent utilisé pour les liaisons aéroport), tarif kilométrique, tarif horaire, ou combinaison temps + distance (modèle Uber). Cette liberté est cependant encadrée par une obligation centrale : l'information préalable et complète du client AVANT le début de la course.\n\nConcrètement, le client doit connaître soit le prix total exact (forfait), soit le mode de calcul détaillé (prix au km, prix de prise en charge, suppléments éventuels) avant de monter dans le véhicule. Sur une application, c'est l'affichage du prix estimé qui vaut information préalable. Pour une course de gré à gré, le conducteur doit annoncer oralement et idéalement écrire (SMS, mail). Ne pas respecter cette obligation expose à une qualification d'abus de faiblesse ou de pratique commerciale trompeuse (DGCCRF, jusqu'à 75 000 € d'amende pour personne physique).\n\nCôté fiscal, point CAPITAL : la TVA applicable au transport de voyageurs est de 10 %, pas 20 %. Cette TVA réduite (article 279 du CGI) s'applique à toutes les courses VTC et taxi. Le conducteur ne devient redevable de la TVA que s'il dépasse les seuils de la franchise en base (37 500 € HT en 2025) ; en dessous, il facture HT sans TVA, mais ne peut pas non plus la déduire sur ses charges. Le passage au régime réel devient intéressant quand les charges (carburant, péages, leasing) génèrent une TVA déductible significative.",
         keyPoints: [
           "Pas de tarif réglementé (libre concurrence)",
           "Modes : forfait, kilométrique, temps + distance",
           "Information prix AVANT la course obligatoire",
-          "TVA 10% pour le transport de voyageurs (si assujetti)"
+          "TVA 10 % pour le transport de voyageurs (si assujetti)",
+          "Franchise en base : 37 500 € HT en 2025"
         ],
-        fieldExample: "L'application affiche 35€ pour la course : le client accepte en connaissance de cause.",
-        examWarning: "TVA transport = 10% pour les VTC (et non 20% comme la TVA standard).",
+        fieldExample: "L'application affiche 35 € pour la course : le client accepte en connaissance de cause.",
+        practicalCases: [
+          {
+            situation: "Un VTC accepte une course de gré à gré sans annoncer le prix. À l'arrivée, il facture 80 € au client. Le client conteste et refuse de payer plus de 50 €.",
+            question: "Quelle est la position juridique ?",
+            answer: "Le conducteur est en tort : l'information préalable du prix est obligatoire. Le client est fondé à contester.",
+            reasoning: "L'article L111-1 du Code de la consommation impose au professionnel de communiquer au consommateur le prix avant la conclusion du contrat. Sans information préalable, le conducteur s'expose à : remboursement contraint, signalement DGCCRF, sanction administrative. Bonne pratique : annoncer un forfait ou un prix maximum AVANT de démarrer, idéalement par écrit (SMS)."
+          },
+          {
+            situation: "Une VTC, en début d'activité, réalise 25 000 € HT de chiffre d'affaires sur l'année. Elle est en franchise en base de TVA.",
+            question: "Doit-elle facturer la TVA à 10 % à ses clients ?",
+            answer: "Non. En franchise en base, elle facture HT sans TVA, avec la mention « TVA non applicable, art. 293 B du CGI ».",
+            reasoning: "Tant que le seuil de 37 500 € HT (2025) n'est pas dépassé, la VTC n'est pas redevable de la TVA. Elle ne la facture pas mais ne peut pas non plus la récupérer sur ses charges (carburant, leasing). Dès qu'elle dépasse le seuil, elle bascule automatiquement au régime réel à compter du 1er jour du mois de dépassement et doit facturer 10 % sur le transport."
+          }
+        ],
+        examWarning: "TVA transport voyageurs = 10 % (et non 20 % comme la TVA standard). Information préalable obligatoire.",
         confusionPoints: [
-          "TVA VTC = 10% ≠ TVA standard = 20%"
+          "TVA VTC = 10 % ≠ TVA standard = 20 %",
+          "Tarifs libres ≠ liberté de ne pas informer le client"
         ],
         tips: [
+          "Conserver toute trace écrite du tarif annoncé (SMS, screenshot app)",
           "Les suppléments doivent être annoncés à l'avance"
         ],
-        legalRefs: ["Article 279 du CGI (TVA 10%)"]
+        legalRefs: ["Article 279 du CGI (TVA 10 %)", "Article L111-1 du Code de la consommation", "Article 293 B du CGI (franchise)"]
       },
       {
         id: 'vtc-plateformes',
         title: 'Plateformes VTC',
         essential: "Le conducteur reste indépendant. La plateforme est un intermédiaire, pas un employeur.",
+        narrative: "Les plateformes de mise en relation (Uber, Bolt, Heetch, FreeNow, Marcel…) ont structuré le marché du VTC depuis 2014. Juridiquement, elles ne sont PAS des employeurs mais des intermédiaires commerciaux : elles mettent en relation un client et un conducteur indépendant en échange d'une commission (généralement 20-25 % de la course). Le conducteur conserve son statut d'auto-entrepreneur ou de société, encaisse sa rémunération nette de commission, et déclare son chiffre d'affaires personnellement.\n\nCe modèle est cependant contesté en justice. Plusieurs décisions de la Cour de cassation (notamment Uber, 4 mars 2020) ont requalifié certains conducteurs en salariés, retenant un faisceau d'indices : tarifs imposés, géolocalisation contrainte, système de notation, sanctions unilatérales. Une requalification individuelle est possible mais ne change pas le statut général de la profession : le VTC reste juridiquement indépendant tant qu'aucune décision ne le requalifie.\n\nEn pratique, un conducteur peut — et a souvent intérêt à — travailler avec PLUSIEURS plateformes simultanément (multi-apping). Cela diversifie les sources de revenus, permet de comparer les commissions et les types de courses, et réduit la dépendance à un seul acteur. Aucune clause d'exclusivité n'est légalement opposable à un indépendant. Le conducteur reste cependant seul responsable de sa conformité réglementaire : carte pro, inscription registre, assurance, factures. La plateforme ne se substitue jamais à ces obligations.",
         keyPoints: [
-          "Centrales (Uber, Bolt...) = intermédiaires inscrits",
-          "Commission prélevée sur chaque course",
-          "Possible de travailler avec plusieurs plateformes",
-          "Le conducteur reste responsable de sa conformité"
+          "Centrales (Uber, Bolt, Heetch...) = intermédiaires inscrits au registre des centrales",
+          "Commission prélevée sur chaque course (env. 20-25 %)",
+          "Possible de travailler avec plusieurs plateformes (multi-apping)",
+          "Le conducteur reste responsable de sa conformité réglementaire",
+          "Statut indépendant sauf requalification judiciaire individuelle"
         ],
-        fieldExample: "Un VTC travaille avec Uber et Bolt : il diversifie ses sources de clients.",
-        examWarning: "Statut = indépendant. Pas salarié de la plateforme (sauf requalification justice).",
+        fieldExample: "Un VTC travaille avec Uber et Bolt : il diversifie ses sources de clients et compare les commissions.",
+        practicalCases: [
+          {
+            situation: "Un conducteur VTC signe avec Uber un contrat qui prévoit une « préférence d'exclusivité » : il ne devrait pas se connecter à d'autres plateformes pendant ses heures Uber.",
+            question: "Cette clause est-elle valide juridiquement ?",
+            answer: "Très contestable. Un indépendant a en principe le droit de travailler avec qui il veut. Une clause d'exclusivité peut être un indice de requalification en salariat.",
+            reasoning: "L'indépendance d'un VTC implique la liberté de choisir ses clients et ses partenaires commerciaux. Une clause d'exclusivité imposée transforme le rapport en lien de subordination, ce qui est l'un des critères du contrat de travail. Le conducteur peut faire annuler la clause, voire demander la requalification en CDI avec rappel de salaires."
+          },
+          {
+            situation: "Un client laisse 3 sacs dans le coffre. Il appelle Uber qui le redirige vers le conducteur. Uber refuse toute responsabilité.",
+            question: "Qui est responsable des objets oubliés ?",
+            answer: "Le conducteur, en tant qu'indépendant prestataire de service. La plateforme n'est qu'un intermédiaire.",
+            reasoning: "Le contrat de transport lie le conducteur (indépendant) au client, pas la plateforme. Le conducteur a une obligation de restitution des effets oubliés. En pratique, il doit vérifier le véhicule après chaque course, conserver les objets oubliés et les restituer (souvent via la plateforme qui sert d'intermédiaire). Inversement, la plateforme ne peut pas être assignée comme employeur pour ces obligations."
+          }
+        ],
+        examWarning: "Statut = indépendant. Pas salarié de la plateforme (sauf requalification judiciaire individuelle).",
         tips: [
-          "Comparer les commissions des différentes plateformes"
+          "Comparer les commissions des différentes plateformes",
+          "Conserver ses propres relevés (ne pas dépendre des dashboards des plateformes pour la compta)"
         ],
-        legalRefs: ["Article L3141-1 du Code des transports"]
+        legalRefs: ["Article L3141-1 du Code des transports", "Cour de cassation, 4 mars 2020 (Uber)"]
       }
     ]
   },
