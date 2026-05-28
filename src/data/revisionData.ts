@@ -550,127 +550,260 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'reg-definition-t3p',
         title: 'Définition T3P',
-        essential: "T3P = Transport Public Particulier de Personnes : Taxi, VTC, VMDTR.",
+        essential: "Le T3P couvre toute activité de transport de personnes à titre onéreux, à la demande, avec un véhicule de moins de 10 places — taxi, VTC ou VMDTR.",
+        narrative: "Le sigle T3P (Transport Public Particulier de Personnes) recouvre les trois activités encadrées par les articles L3120-1 et suivants du Code des transports : le taxi, le VTC et le VMDTR (deux-roues motorisé). Le critère commun, c'est le transport à la demande contre rémunération avec un véhicule de moins de 10 places, conducteur compris. Tout ce qui sort de ce périmètre — autocar, transport sanitaire, transport scolaire — relève d'un autre régime.\n\nLa loi Thévenoud du 1er octobre 2014 a posé le socle moderne en distinguant clairement taxi (monopole de la maraude et du stationnement sur voie publique) et VTC (réservation préalable obligatoire). La loi Grandguillaume du 29 décembre 2016 a refermé la brèche LOTI utilisée par certaines plateformes et créé un examen commun T3P avec tronc commun + spécialités.\n\nLe covoiturage (L3132-1) est hors champ : pas de bénéfice pour le conducteur, simple partage des frais réels. Dès que la rémunération dépasse les frais ou que le conducteur fait du trajet sa motivation économique, on bascule en T3P illégal — transport à titre onéreux sans titre = délit.",
         keyPoints: [
-          "Transport onéreux (rémunéré) ≠ covoiturage (partage de frais)",
-          "Transport à la demande : le client choisit le trajet",
+          "Trois activités : Taxi, VTC, VMDTR",
+          "Véhicule < 10 places, transport à la demande, à titre onéreux",
           "Loi Thévenoud (2014) + Loi Grandguillaume (2016)",
-          "Les centrales de réservation sont aussi réglementées"
+          "Covoiturage = partage de frais, hors T3P",
+          "Centrales de réservation également réglementées"
         ],
-        fieldExample: "Un conducteur prend 5€ de plus que ses frais : c'est du transport onéreux, pas du covoiturage.",
-        examWarning: "Covoiturage ≠ T3P : le covoiturage ne fait pas de bénéfice, juste partage des frais.",
+        practicalCases: [
+          {
+            situation: "Marc utilise sa voiture personnelle pour emmener des inconnus rencontrés sur une application, contre 25€ par trajet alors que ses frais réels sont de 8€.",
+            question: "Cette activité relève-t-elle du covoiturage ou du T3P ?",
+            answer: "Du T3P illégal : Marc tire un bénéfice du trajet, ce n'est plus du partage de frais.",
+            reasoning: "Le covoiturage suppose que le conducteur ne tire aucun bénéfice (art. L3132-1). Dès que la rémunération excède la quote-part des frais (carburant, péage, usure), l'activité devient un transport à titre onéreux et nécessite une carte professionnelle T3P + véhicule habilité. Sans cela : 1 an de prison + 15 000€ d'amende."
+          },
+          {
+            situation: "Une plateforme propose à Léa de transporter des colis et des passagers dans un même trajet, avec un véhicule 8 places.",
+            question: "Le transport de colis seul peut-il être qualifié de T3P ?",
+            answer: "Non : le T3P concerne exclusivement le transport de personnes. Le transport de marchandises relève d'un autre régime.",
+            reasoning: "L'article L3120-1 vise le transport de personnes. Pour les colis, c'est le régime du transport routier de marchandises (capacité professionnelle distincte). Léa peut transporter des passagers en T3P ET déposer leurs bagages, mais pas faire du fret pur sous sa carte VTC."
+          }
+        ],
+        fieldExample: "Un VTC qui prend un client réservé via une appli = T3P. Un voisin qui partage les frais d'essence pour aller au travail = covoiturage.",
+        examWarning: "Le critère décisif n'est pas la plateforme utilisée mais la rémunération : bénéfice = T3P ; partage de frais = covoiturage.",
         confusionPoints: [
-          "Covoiturage = partage de frais ≠ T3P = activité commerciale"
+          "Covoiturage (partage de frais, hors T3P) ≠ VTC (bénéfice, T3P)",
+          "T3P ≠ transport collectif (autocar > 9 places)"
         ],
         tips: [
-          "Le non-respect expose à des sanctions pénales"
+          "Mémo : 3 lettres P → Public, Particulier, Personnes",
+          "Si le conducteur gagne de l'argent → T3P obligatoire"
         ],
-        legalRefs: ["Articles L3120-1 à L3124-13 du Code des transports"]
+        legalRefs: ["Articles L3120-1 à L3124-13 Code des transports", "Loi Thévenoud n°2014-1104", "Loi Grandguillaume n°2016-1920"]
       },
       {
         id: 'reg-acces-profession',
-        title: 'Conditions d\'accès',
-        essential: "Permis B ≥ 3 ans + casier vierge + visite médicale + examen T3P.",
+        title: "Conditions d'accès à la profession",
+        essential: "Quatre conditions cumulatives : permis B ≥ 3 ans, casier compatible, aptitude médicale, réussite de l'examen T3P.",
+        narrative: "Devenir conducteur T3P n'est pas une simple démarche administrative : la loi a structuré un véritable filtre d'entrée. La première condition est l'ancienneté du permis B : 3 ans minimum, ramenés à 2 ans pour ceux qui ont suivi la conduite accompagnée (AAC). Cette ancienneté garantit une expérience de conduite réelle avant de transporter du public.\n\nVient ensuite l'honorabilité professionnelle : le bulletin n°2 du casier judiciaire ne doit pas comporter de condamnation incompatible (vol, agression, conduite sous stupéfiants, délit routier grave). La préfecture vérifie ce casier à l'entrée et tous les ans pendant l'exercice : une condamnation postérieure peut entraîner le retrait de la carte.\n\nL'aptitude physique est attestée par un médecin agréé par la préfecture, lors d'une visite valable 5 ans (3 ans après 60 ans). Le formulaire Cerfa 14880 examine vue, audition, neurologie, addictions. Enfin, le candidat doit réussir l'examen T3P organisé par les CMA : épreuves d'admissibilité (tronc commun écrit) + admission (réglementation spécifique + conduite). C'est cette réussite qui ouvre la délivrance de la carte professionnelle par la préfecture.",
         keyPoints: [
-          "Permis B depuis 3 ans (2 ans si conduite accompagnée)",
-          "Casier judiciaire compatible (vérifié chaque année)",
-          "Visite médicale tous les 5 ans (médecin agréé)",
-          "Examen T3P : 7 épreuves, moyenne ≥ 12/20, mini 10/20 par épreuve"
+          "Permis B ≥ 3 ans (2 ans si conduite accompagnée)",
+          "Casier judiciaire B2 compatible, vérifié chaque année",
+          "Visite médicale médecin agréé : 5 ans (3 ans après 60 ans)",
+          "Examen T3P organisé par les Chambres des Métiers (CMA)",
+          "Conditions cumulatives : l'absence d'une seule = refus"
         ],
-        fieldExample: "Un candidat a 14 de moyenne mais 8 en réglementation : il échoue (< 10 à une épreuve).",
-        examWarning: "Moyenne 12/20 + minimum 10/20 à chaque épreuve. Les deux conditions sont cumulatives.",
+        practicalCases: [
+          {
+            situation: "Yanis a obtenu son permis B il y a 22 mois en conduite accompagnée. Il veut s'inscrire à l'examen VTC.",
+            question: "Peut-il s'inscrire dès maintenant ?",
+            answer: "Non. La conduite accompagnée ramène le délai à 2 ans, mais Yanis n'a que 22 mois — il doit attendre 2 mois supplémentaires.",
+            reasoning: "L'article R3120-7 fixe 3 ans de permis B, ramenés à 2 ans (24 mois) pour les titulaires de l'AAC. Le calcul se fait à la date de candidature à l'examen, pas à celle de la carte. Erreur classique : confondre 'conduite accompagnée' avec une dispense totale."
+          },
+          {
+            situation: "Aïcha a 62 ans et passe sa visite médicale T3P. Le médecin lui délivre un certificat d'aptitude.",
+            question: "Pour combien de temps cette aptitude est-elle valable ?",
+            answer: "3 ans, car elle a plus de 60 ans.",
+            reasoning: "L'aptitude médicale T3P est valable 5 ans pour les moins de 60 ans, mais ramenée à 3 ans à partir de 60 ans (puis 2 ans à partir de 76 ans pour certaines pathologies). Cette progressivité reflète la dégradation possible des aptitudes (vue, réflexes). À ne pas confondre avec la formation continue (14h / 5 ans), totalement indépendante."
+          }
+        ],
+        fieldExample: "Un candidat de 24 ans, permis depuis 4 ans, sans antécédent judiciaire, apte médicalement : il peut se présenter à l'examen.",
+        examWarning: "Les quatre conditions sont cumulatives ET continues : la perte de l'une d'elles (condamnation, inaptitude) entraîne le retrait de la carte, pas seulement le refus à l'entrée.",
         tips: [
-          "Casier vérifié automatiquement chaque année par la préfecture"
+          "Mémo PAME : Permis, Aptitude, Moralité, Examen",
+          "Visite médicale = formulaire Cerfa 14880"
         ],
-        legalRefs: ["Articles L3120-2-1 et R3120-7 du Code des transports"]
+        legalRefs: ["Articles L3120-2-1 et R3120-7 Code des transports", "Arrêté du 6 avril 2017"]
       },
       {
         id: 'reg-carte-professionnelle',
-        title: 'Carte professionnelle',
-        essential: "Validité 5 ans + formation continue 14h minimum obligatoire pour renouveler.",
+        title: 'Carte professionnelle T3P',
+        essential: "La carte pro est délivrée par le préfet, valable 5 ans, et son renouvellement est conditionné à 14h de formation continue suivies sur la période.",
+        narrative: "La carte professionnelle T3P est le sésame qui matérialise l'autorisation d'exercer. Elle est délivrée par le préfet du département de résidence du conducteur, après vérification des conditions d'accès et réussite de l'examen. Elle mentionne expressément l'activité autorisée : Taxi, VTC ou VMDTR — un conducteur qui veut exercer plusieurs activités doit détenir plusieurs cartes.\n\nSa validité est de 5 ans. Le renouvellement n'est pas automatique : le conducteur doit en faire la demande au plus tard 2 mois avant l'expiration, en joignant la preuve d'une formation continue d'au moins 14 heures suivie auprès d'un organisme agréé. Cette formation porte sur les évolutions réglementaires, la sécurité, la gestion et la relation client. Elle peut être suivie en une fois ou répartie sur les 5 ans.\n\nPendant le service, la carte doit rester visible et accessible : apposée sur le pare-brise pour le taxi (avec le numéro d'ADS) ou présentée à la première demande des forces de l'ordre pour le VTC et le VMDTR. Exercer avec une carte expirée, suspendue ou sans carte = délit puni d'1 an de prison et 15 000€ d'amende (L3124-4). En cas de suspension judiciaire du permis B, la carte est suspendue de plein droit.",
         keyPoints: [
-          "Délivrée par le préfet du département de domicile",
-          "Mention : Taxi, VTC ou VMDTR",
-          "Visible et accessible dans le véhicule",
-          "Renouvellement : demande 2 mois avant expiration"
+          "Délivrée par le préfet du département de résidence",
+          "Mention obligatoire : Taxi, VTC ou VMDTR",
+          "Validité 5 ans, renouvellement à demander 2 mois avant",
+          "Formation continue 14h obligatoire sur les 5 ans",
+          "Visible/accessible dans le véhicule en service"
         ],
-        fieldExample: "Un VTC exerce avec une carte expirée : 1 an de prison + 15 000€ d'amende possibles.",
-        examWarning: "Sans carte professionnelle valide = exercice illégal = sanctions pénales.",
+        practicalCases: [
+          {
+            situation: "Karim est conducteur VTC depuis 4 ans et 10 mois. Il oublie totalement la formation continue et ne fait sa demande de renouvellement que le jour de l'expiration.",
+            question: "Quelles sont les conséquences pour son activité ?",
+            answer: "Sa carte n'est pas renouvelée : il doit cesser immédiatement son activité et suivre la formation 14h avant de pouvoir redemander une carte.",
+            reasoning: "Le renouvellement exige deux conditions : demande déposée au moins 2 mois avant + attestation de formation continue. À défaut, la carte expire et tout trajet effectué après devient un exercice sans carte (1 an + 15 000€). Karim doit suspendre son activité, rattraper sa formation puis déposer une nouvelle demande complète — la préfecture peut exiger une nouvelle visite médicale si l'interruption est longue."
+          },
+          {
+            situation: "Lors d'un contrôle, un VTC présente sa carte rangée dans le coffre, dans une pochette plastique.",
+            question: "Est-il en conformité avec ses obligations ?",
+            answer: "Non. La carte doit être accessible immédiatement, pas dans le coffre.",
+            reasoning: "Pour le VTC, la carte n'est pas affichée comme chez le taxi, mais elle doit pouvoir être présentée sans délai aux agents lors d'un contrôle. La ranger dans le coffre ou la laisser à domicile équivaut à un défaut de présentation, sanctionné par une amende et une mention au dossier préfectoral. Bonne pratique : à portée de main dans la console centrale ou le porte-document conducteur."
+          }
+        ],
+        fieldExample: "Un taxi parisien renouvelle sa carte 3 mois avant expiration en joignant son attestation de stage 'Mobilians Formation' de 14h.",
+        examWarning: "Formation continue = 14h sur 5 ans, pas 14h par an. Mais elle est obligatoire pour renouveler — pas d'attestation = pas de carte.",
+        confusionPoints: [
+          "Carte pro T3P (préfecture, conducteur) ≠ ADS / autorisation VTC (entreprise, mairie/registre)",
+          "Visite médicale (5 ans) ≠ Formation continue (14h / 5 ans)"
+        ],
         tips: [
-          "Formation continue : 14h sur 5 ans, en une fois ou réparties"
+          "Programmer un rappel calendaire à 6 mois avant expiration",
+          "Garder la carte dans la console centrale, jamais dans le coffre"
         ],
-        legalRefs: ["Article R3120-7 du Code des transports"]
+        legalRefs: ["Articles R3120-7 et L3124-4 Code des transports", "Arrêté du 11 août 2017 (formation continue)"]
       },
       {
         id: 'reg-examen-t3p',
         title: 'Examen T3P',
-        essential: "Admissibilité (5 épreuves communes) + Admission (2 épreuves spécifiques).",
+        essential: "L'examen T3P comporte une admissibilité (tronc commun écrit) puis une admission (réglementation spécifique + conduite) — la réussite est exigée pour obtenir la carte.",
+        narrative: "Depuis l'arrêté du 6 avril 2017, l'examen T3P est unifié pour les trois activités, avec un tronc commun et des spécialités. Il est organisé par les Chambres de Métiers et de l'Artisanat (CMA) sous le contrôle de la préfecture. La candidature se dépose en ligne sur le site de la CMA territorialement compétente, accompagnée des pièces justifiant les conditions d'accès (permis, casier, médical).\n\nL'épreuve d'admissibilité est commune aux trois activités. Elle se compose de QCM portant sur : réglementation T3P, gestion d'entreprise, sécurité routière, capacité d'expression française et compréhension de l'anglais (niveau A2). C'est un filtre national : sans admissibilité, pas d'accès à l'admission.\n\nL'épreuve d'admission est spécifique à l'activité visée. Pour le taxi : réglementation locale + connaissance du territoire (topographie du département) + conduite. Pour le VTC : développement commercial + conduite. Pour le VMDTR : sécurité spécifique deux-roues + conduite. Chaque épreuve a sa propre note éliminatoire ; la moyenne générale ne suffit pas à compenser une note trop faible dans une matière clé. En cas d'échec, le candidat peut se représenter, généralement après un délai d'au moins 1 mois selon les sessions de la CMA.",
         keyPoints: [
-          "Admissibilité : Réglementation, Gestion, Sécurité, Français, Anglais",
-          "Admission : Réglementation locale + Conduite",
-          "QCM 4 réponses, 1 seule bonne",
-          "Échec : représentation après 1 mois"
+          "Organisation : Chambres des Métiers et de l'Artisanat (CMA)",
+          "Admissibilité : tronc commun écrit (QCM) pour les 3 activités",
+          "Admission : épreuves spécifiques + conduite",
+          "Notes éliminatoires par épreuve, pas seulement moyenne",
+          "Échec : représentation possible aux sessions suivantes"
         ],
-        fieldExample: "Un candidat taxi passe les épreuves communes, puis réglementation Paris et conduite.",
-        examWarning: "Équivalence possible pour certains diplômes (BTS Tourisme, etc.).",
+        practicalCases: [
+          {
+            situation: "Sophie obtient 13/20 de moyenne à l'admissibilité, mais 6/20 en réglementation T3P.",
+            question: "Est-elle admise à passer l'épreuve d'admission ?",
+            answer: "Non : la note éliminatoire en réglementation lui ferme l'accès à l'admission, malgré une moyenne correcte.",
+            reasoning: "L'examen T3P fonctionne avec des notes plancher par épreuve pour éviter qu'un candidat ignore totalement une matière essentielle. Une moyenne générale satisfaisante ne rachète pas une note inférieure au seuil dans une épreuve clé. Sophie doit se réinscrire et repasser au minimum l'épreuve éliminatoire à la prochaine session."
+          },
+          {
+            situation: "Hugo réussit l'admissibilité en visant le VTC. Quelques mois plus tard, il veut aussi exercer comme taxi.",
+            question: "Doit-il repasser tout l'examen ?",
+            answer: "Non : son admissibilité (tronc commun) reste acquise. Il ne repasse que l'épreuve d'admission spécifique taxi.",
+            reasoning: "Le tronc commun étant unifié pour les trois activités, sa validité est reconnue pour un changement de spécialité dans le délai prévu par la CMA. Hugo passe l'admission taxi (réglementation locale + topographie + conduite) sans refaire la partie écrite commune. C'est tout l'intérêt de l'unification de 2017."
+          }
+        ],
+        fieldExample: "Un candidat taxi enchaîne : QCM admissibilité (matin), puis quelques semaines plus tard, épreuve de topographie Paris + conduite.",
+        examWarning: "Les certificats de formation initiale obtenus dans certains centres agréés peuvent dispenser de l'examen (équivalences) — vérifier auprès de la CMA.",
         tips: [
-          "L'épreuve de conduite évalue aussi le comportement client"
+          "Tronc commun = 5 matières : Régl., Gestion, Sécurité, Français, Anglais",
+          "S'inscrire à la CMA du département où l'on souhaite exercer"
         ],
-        legalRefs: ["Arrêté du 6 avril 2017 relatif à l'examen T3P"]
+        legalRefs: ["Arrêté du 6 avril 2017 relatif à l'examen T3P", "Articles R3120-9 à R3120-13 Code des transports"]
       },
       {
         id: 'reg-obligations-communes',
-        title: 'Obligations professionnelles',
-        essential: "Assurance RC pro + info prix + non-discrimination + chiens guides acceptés.",
+        title: 'Obligations professionnelles communes',
+        essential: "Assurance RC pro, information préalable du prix, non-discrimination et transport gratuit des chiens guides s'imposent à toutes les activités T3P.",
+        narrative: "Quel que soit le statut (taxi, VTC, VMDTR), le conducteur T3P est tenu à un socle d'obligations issu des articles L3120-4 à L3120-6 du Code des transports. L'assurance responsabilité civile professionnelle est la première : elle couvre les dommages causés aux passagers et aux tiers pendant l'exercice. Sans elle, le conducteur engage son patrimoine personnel et s'expose à 3 750€ d'amende + suspension de permis.\n\nL'information préalable du client sur le prix (ou son mode de calcul) est une obligation de transparence. Le taxi affiche ses tarifs et utilise le taximètre ; le VTC communique un prix forfaitaire ou un mode de calcul (km + temps) avant la prise en charge ; le VMDTR doit annoncer la course. Toute facturation surprise est sanctionnée par la DGCCRF.\n\nLa non-discrimination est absolue : refuser un client en raison de son origine, de son apparence, de son handicap, de son orientation sexuelle ou de toute autre caractéristique protégée constitue un délit (45 000€ + 3 ans, art. 225-1 du Code pénal). En revanche, le refus pour motif légitime (sécurité, fin de service, animal autre que chien guide, état d'ébriété manifeste) reste possible — il doit pouvoir être justifié objectivement.\n\nLe transport des chiens guides d'aveugle et chiens d'assistance est obligatoire et gratuit (loi du 11 février 2005). Aucune surcharge, aucun refus possible, même pour un VTC haut de gamme.",
         keyPoints: [
-          "Assurance RC professionnelle obligatoire",
-          "Information client sur le prix ou mode de calcul",
-          "Refus discriminatoire interdit (origine, handicap...)",
-          "Chiens guides : transport obligatoire et gratuit"
+          "Assurance RC professionnelle obligatoire et permanente",
+          "Information préalable sur le prix ou son mode de calcul",
+          "Non-discrimination : 45 000€ + 3 ans (Code pénal)",
+          "Chiens guides et d'assistance : transport gratuit obligatoire",
+          "Tenue correcte, véhicule propre, courtoisie : obligations implicites"
         ],
-        fieldExample: "Un VTC refuse un client en fauteuil roulant sans raison : 45 000€ d'amende + 3 ans prison.",
-        examWarning: "Le refus pour motif légitime (sécurité, fin de service) reste possible.",
+        practicalCases: [
+          {
+            situation: "Un VTC refuse une cliente non-voyante accompagnée de son chien guide, au motif que les sièges en cuir de son véhicule sont neufs.",
+            question: "Ce refus est-il légalement justifié ?",
+            answer: "Non : c'est un refus discriminatoire doublement sanctionné (discrimination + refus chien guide).",
+            reasoning: "La loi du 11 février 2005 impose le transport gratuit des chiens guides sans exception. Le motif tiré de l'état du véhicule n'est pas légitime. Le conducteur s'expose à 45 000€ d'amende et 3 ans (Code pénal art. 225-1), assortis d'un signalement à la préfecture pouvant entraîner la suspension de la carte. Solution professionnelle : couverture de protection sur le siège, jamais refus."
+          },
+          {
+            situation: "Un taxi prend un client à 2h du matin. Il est manifestement très alcoolisé, agressif verbalement et menace le chauffeur.",
+            question: "Le chauffeur peut-il refuser la course ?",
+            answer: "Oui : c'est un motif légitime tenant à la sécurité.",
+            reasoning: "Le refus pour motif légitime reste possible : sécurité du conducteur, fin de service annoncée, demande illégale (transport de stupéfiants). L'état d'ébriété manifeste avec agressivité menace directement la sécurité de la course. Le conducteur doit pouvoir documenter le motif (témoins, mention au cahier de bord). La discrimination interdite vise les caractéristiques de la personne, pas son comportement objectif."
+          }
+        ],
+        fieldExample: "Une VTC charge une cliente en fauteuil roulant, embarque le fauteuil dans le coffre et facture le prix normal sans surcoût.",
+        examWarning: "Le refus 'sécurité' ou 'fin de service' doit être réel et justifiable — l'invoquer abusivement est requalifié en refus discriminatoire.",
+        confusionPoints: [
+          "Chien guide (gratuit, obligatoire) ≠ animal de compagnie (refus possible)",
+          "Refus discriminatoire (caractéristique personne, interdit) ≠ refus légitime (comportement/sécurité, possible)"
+        ],
         tips: [
-          "Tenue correcte et véhicule propre = obligations implicites"
+          "Garder une couverture de protection siège pour les chiens guides",
+          "Annoncer le prix avant le démarrage = preuve d'information"
         ],
-        legalRefs: ["Articles L3120-4 à L3120-6 du Code des transports"]
+        legalRefs: ["Articles L3120-4 à L3120-6 Code des transports", "Article 225-1 Code pénal", "Loi n°2005-102 du 11 février 2005"]
       },
       {
         id: 'reg-vehicule-conditions',
-        title: 'Conditions véhicule',
-        essential: "Max 6 ans (7 ans si hybride/électrique), 4-9 places, contrôle technique annuel.",
+        title: 'Conditions du véhicule',
+        essential: "Véhicule de 4 à 9 places, max 6 ans (7 ans si hybride/électrique), contrôle technique annuel professionnel.",
+        narrative: "Le véhicule T3P est soumis à des conditions strictes qui s'ajoutent à la réglementation routière classique. Côté capacité, il doit comporter entre 4 et 9 places assises, conducteur compris — au-delà, on bascule en transport collectif (autocar). En deçà, le véhicule n'offre pas la sécurité minimale exigée pour un transport rémunéré.\n\nL'âge du véhicule est plafonné à 6 ans depuis sa première mise en circulation, porté à 7 ans pour les véhicules hybrides ou électriques (décret n°2017-483). Cette exception incitative reconnaît à la fois la durabilité technique de ces motorisations et leur intérêt environnemental. Un véhicule électrique mis en circulation en 2019 peut donc encore rouler en VTC en 2026.\n\nLe VTC doit en plus respecter des critères de standing : puissance moteur ≥ 84 kW (114 ch) OU longueur ≥ 4,50 m, pour garantir le confort et différencier l'offre du taxi. Le contrôle technique est annuel (au lieu de bisannuel pour un particulier) et plus exigeant — il vérifie aussi les équipements obligatoires : ceintures fonctionnelles à toutes les places, signalétique pour le taxi (lumineux, plaque, compteur scellé). Tout défaut majeur entraîne l'immobilisation immédiate.",
         keyPoints: [
-          "Âge max : 6 ans (7 ans pour hybrides/électriques)",
-          "Places : 4 à 9 assises (conducteur compris)",
-          "Contrôle technique annuel (pro = plus strict)",
-          "VTC : puissance ≥ 84 kW OU longueur ≥ 4,50m"
+          "Capacité : 4 à 9 places conducteur compris",
+          "Âge max : 6 ans, 7 ans pour hybride/électrique",
+          "Contrôle technique annuel (renforcé pour usage pro)",
+          "VTC : puissance ≥ 84 kW OU longueur ≥ 4,50 m",
+          "Équipements obligatoires conformes (ceintures, signalétique taxi)"
         ],
-        fieldExample: "Une Tesla Model 3 de 2019 peut encore rouler en VTC en 2026 (7 ans car électrique).",
-        examWarning: "Hybrides et électriques = 1 an de plus. Ne pas oublier cette exception !",
+        practicalCases: [
+          {
+            situation: "Antoine veut acheter un véhicule pour son activité VTC. Il hésite entre une Peugeot 308 thermique de 2019 et une Tesla Model 3 de 2019.",
+            question: "Lequel pourra-t-il exploiter le plus longtemps en 2026 ?",
+            answer: "La Tesla : électrique → 7 ans maximum, donc encore exploitable jusqu'en 2026. La Peugeot thermique de 2019 a déjà dépassé les 6 ans.",
+            reasoning: "Le décret n°2017-483 distingue motorisation thermique (6 ans) et hybride/électrique (7 ans). Pour 2026 : véhicules thermiques de 2020 ou plus récents, hybrides/électriques de 2019 ou plus récents. Antoine choisira la Tesla, sachant qu'il devra la remplacer dès 2027 (8 ans). Bonus : critères de standing VTC respectés (puissance > 84 kW)."
+          },
+          {
+            situation: "Une VTC roule avec une voiture de 4,40 m et 80 kW de puissance.",
+            question: "Le véhicule est-il conforme aux exigences VTC ?",
+            answer: "Non : ni la puissance (< 84 kW) ni la longueur (< 4,50 m) ne respectent les critères VTC.",
+            reasoning: "Le décret VTC impose une condition alternative (puissance ≥ 84 kW OU longueur ≥ 4,50 m). Il suffit qu'une seule soit respectée. Ici, les deux échouent : le véhicule ne peut pas être inscrit au registre VTC. La conductrice doit changer de véhicule pour continuer son activité. À noter : ces critères ne s'appliquent pas au taxi, qui suit d'autres règles locales."
+          }
+        ],
+        fieldExample: "Une Tesla Model 3 électrique de 2019 reste exploitable en VTC en 2026 (7 ans). Une Peugeot 308 thermique de 2019 ne l'est plus (limite 6 ans dépassée).",
+        examWarning: "L'exception hybride/électrique ne s'applique qu'à l'âge du véhicule, pas aux critères de puissance/longueur VTC.",
+        confusionPoints: [
+          "Âge 6 ans (thermique) ≠ 7 ans (hybride/électrique)",
+          "Critères VTC (standing, alternatifs) ≠ critères taxi (équipements signalétiques)"
+        ],
         tips: [
-          "Prévoir un véhicule de remplacement en cas d'immobilisation"
+          "Mémo : électrique/hybride = +1 an de plus",
+          "Critères VTC = puissance OU longueur (un seul suffit)"
         ],
-        legalRefs: ["Décret n°2017-483 du 6 avril 2017"]
+        legalRefs: ["Décret n°2017-483 du 6 avril 2017", "Articles R3122-4 et R3122-5 Code des transports"]
       },
       {
         id: 'reg-sanctions',
         title: 'Sanctions et contrôles',
-        essential: "Sans carte pro = 1 an prison + 15 000€. Maraude illégale VTC = même sanction.",
+        essential: "Exercer sans carte pro ou en violation des règles de maraude expose à 1 an de prison et 15 000€ d'amende — la discrimination monte à 45 000€ et 3 ans.",
+        narrative: "Le législateur a aligné le régime des sanctions T3P sur le caractère professionnel de l'activité : les peines mêlent volet pénal (prison + amende), administratif (suspension/retrait de carte) et civil (réparation des préjudices). Exercer une activité de T3P sans carte professionnelle constitue un délit puni d'1 an de prison et 15 000€ d'amende (art. L3124-4). C'est la sanction de référence, reprise pour la plupart des infractions structurelles.\n\nLa maraude illégale d'un VTC — c'est-à-dire le fait de stationner ou de circuler sur la voie publique en quête de client sans réservation préalable — encourt la même peine. C'est l'une des grandes lignes rouges issues de la loi Thévenoud : le monopole de la maraude reste réservé aux taxis détenteurs d'une ADS. Le VTC doit pouvoir prouver, à tout contrôle, l'antériorité de la réservation (justificatif horodaté).\n\nLe défaut d'assurance RC pro est sanctionné de 3 750€ d'amende et suspension de permis (art. L324-2 Code de la route). La discrimination, déjà évoquée, monte à 45 000€ + 3 ans. À côté du volet pénal, la préfecture peut suspendre la carte (1 à 6 mois) ou la retirer définitivement après procédure contradictoire. Lors d'un contrôle (police, gendarmerie, DGCCRF, agents assermentés), le conducteur doit présenter immédiatement : carte pro, carte grise, attestation d'assurance, justificatif de réservation (VTC), feuille de route et taximètre conforme (taxi).",
         keyPoints: [
-          "Exercice sans carte : 1 an + 15 000€",
-          "Maraude VTC : 1 an + 15 000€",
+          "Exercice sans carte : 1 an de prison + 15 000€ d'amende",
+          "Maraude VTC : même sanction (1 an + 15 000€)",
           "Défaut assurance : 3 750€ + suspension permis",
-          "Refus discriminatoire : 45 000€ + 3 ans"
+          "Refus discriminatoire : 45 000€ + 3 ans (Code pénal)",
+          "Sanctions administratives cumulables : suspension/retrait carte préfecture"
         ],
-        fieldExample: "Un VTC stationne devant une gare en attendant des clients : maraude = 15 000€ d'amende.",
-        examWarning: "La maraude est réservée aux taxis. VTC = réservation préalable obligatoire.",
+        practicalCases: [
+          {
+            situation: "Un VTC stationne à proximité d'une gare en soirée, sans réservation, espérant des clients. Il est contrôlé par la police.",
+            question: "Quels sont les risques encourus ?",
+            answer: "Maraude illégale : 1 an de prison + 15 000€ d'amende, plus suspension administrative de la carte par la préfecture.",
+            reasoning: "Le VTC n'a pas le droit de prospecter sur la voie publique : il doit attendre ses clients ailleurs (parking dédié, retour à domicile) et démarrer chaque course à partir d'une réservation préalable (justifiable par horodatage). Le simple fait d'être stationné en attente devant une gare suffit à caractériser la maraude. Bonne pratique : utiliser les zones officielles 'VTC' quand elles existent et toujours conserver les preuves de réservation."
+          },
+          {
+            situation: "Lors d'un contrôle routier, un conducteur taxi présente sa carte pro mais oublie son attestation d'assurance.",
+            question: "Quelles sont les conséquences immédiates ?",
+            answer: "Présomption de défaut d'assurance, immobilisation possible du véhicule, amende forfaitaire et obligation de présenter le document sous délai.",
+            reasoning: "Le défaut de présentation de l'assurance est sanctionné même si l'assurance existe réellement (art. R211-21-5 Code des assurances) : amende forfaitaire 35€ régularisable en présentant le document sous 5 jours à un commissariat. Si l'assurance n'existe vraiment pas : 3 750€ + suspension de permis. Réflexe : conserver une attestation à jour dans la pochette véhicule + version numérique sur smartphone."
+          }
+        ],
+        fieldExample: "Un VTC en attente devant Gare de Lyon sans réservation : 1 an de prison + 15 000€ + signalement préfecture = potentielle suspension de carte.",
+        examWarning: "La maraude est définie par le COMPORTEMENT (attente client sur voie publique), pas seulement par la prise en charge — même sans client à bord, on peut être verbalisé.",
         confusionPoints: [
-          "Taxi = maraude autorisée ≠ VTC = réservation préalable uniquement"
+          "Taxi : maraude autorisée (avec ADS) ≠ VTC : réservation préalable obligatoire",
+          "Sanctions pénales (juge) ≠ sanctions administratives préfecture (suspension/retrait carte)"
         ],
         tips: [
-          "Avoir tous les documents à portée de main lors des contrôles"
+          "Toujours conserver le justificatif de réservation horodaté (VTC)",
+          "Documents à présenter : carte pro, CG, assurance, KBis/extrait, justif réservation"
         ],
-        legalRefs: ["Articles L3124-1 à L3124-13 du Code des transports"]
+        legalRefs: ["Articles L3124-1 à L3124-13 Code des transports", "Article 225-1 Code pénal", "Article L324-2 Code de la route"]
       }
     ]
   },
