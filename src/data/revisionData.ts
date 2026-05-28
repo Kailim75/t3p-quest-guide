@@ -1144,7 +1144,241 @@ export const revisionModules: RevisionModule[] = [
         legalRefs: ["Article L3121-8 du Code des transports (chiens guides)"]
       }
     ]
-  }
+  },
+  // =====================================================
+  // MODULE VMDTR — Épreuve F(M) : Sécurité et réglementation
+  // Référentiel RS5636 (France Compétences)
+  // =====================================================
+  {
+    moduleId: 'vmdtr-securite',
+    moduleName: 'F(M) – Sécurité moto & réglementation VMDTR',
+    moduleIcon: '🏍️',
+    domain: 'vmdtr',
+    examObjective: "Maîtriser la sécurité spécifique moto et la réglementation d'exploitation VMDTR (épreuve F(M)).",
+    introduction: "Accidentologie, dynamique de la moto, conduite préventive, entretien et règles d'exercice du moto-taxi.",
+    cards: [
+      {
+        id: 'vmd-accidentologie',
+        title: 'Accidentologie & facteurs de risque',
+        essential: "Les motards sont sur-représentés dans les accidents mortels : la conduite préventive est vitale.",
+        keyPoints: [
+          "Sur-représentation des 2-roues dans les accidents graves",
+          "Facteurs aggravants : alcool, stupéfiants, médicaments, stress, fatigue",
+          "Hygiène de vie et gestion du sommeil = sécurité",
+        ],
+        examWarning: "Question fréquente : l'hygiène de vie est un facteur de sécurité officiellement évalué.",
+        tips: ["Anticiper > réagir : la lecture des indices sauve des vies"],
+        legalRefs: ["Référentiel RS5636 – F(M)"],
+      },
+      {
+        id: 'vmd-dynamique',
+        title: 'Dynamique de la motocyclette',
+        essential: "L'effet gyroscopique stabilise la moto à vitesse soutenue mais pas à allure lente.",
+        keyPoints: [
+          "Effet gyroscopique = stabilité à vitesse élevée",
+          "Instabilité à basse vitesse → vigilance en manœuvre",
+          "Distance d'arrêt = distance de réaction + distance de freinage",
+          "Adhérence, état des pneus, météo influencent l'arrêt",
+        ],
+        fieldExample: "À 50 km/h sur sol sec, distance d'arrêt ≈ 25 m. Sur sol mouillé, elle peut doubler.",
+        tips: ["Vitesse × 2 → distance de freinage × 4"],
+        legalRefs: ["Référentiel RS5636 – F(M)"],
+      },
+      {
+        id: 'vmd-conduite-preventive',
+        title: "Conduite préventive & situations d'urgence",
+        essential: "Anticipation, marges de sécurité, freinage maîtrisé : le trio gagnant du moto-taxi pro.",
+        keyPoints: [
+          "Anticiper : lire les indices, comprendre les intentions des autres",
+          "Freinage d'urgence : 2 freins, moto droite, regard loin",
+          "Évitement : trajectoire courte, regard porté vers la sortie",
+          "Marges de sécurité : distance, vitesse, latérale",
+        ],
+        examWarning: "Le freinage uniquement à l'avant ou en virage = chute. À bannir.",
+        tips: ["Regard = trajectoire : on va où on regarde"],
+        legalRefs: ["Référentiel RS5636 – F(M)"],
+      },
+      {
+        id: 'vmd-entretien',
+        title: 'Vérifications & entretien',
+        essential: "Le conducteur est responsable de la sécurité technique du véhicule avant chaque prestation.",
+        keyPoints: [
+          "Pneus : pression, usure, état général",
+          "Freins : avant et arrière",
+          "Éclairage : feux avant, arrière, clignotants",
+          "Niveaux : huile, liquide de frein",
+        ],
+        fieldExample: "Contrôle visuel de 2 minutes avant de prendre un client = obligatoire.",
+        tips: ["Carnet d'entretien à jour = preuve en cas de contrôle"],
+        legalRefs: ["Référentiel RS5636 – F(M)"],
+      },
+      {
+        id: 'vmd-carte-pro',
+        title: 'Carte professionnelle VMDTR',
+        essential: "Délivrée par le préfet après réussite de l'examen ; valide 5 ans, à présenter à tout contrôle.",
+        keyPoints: [
+          "Délivrée par le préfet de résidence",
+          "Conditions : permis A2/A depuis ≥ 2 ans, aptitude médicale, honorabilité",
+          "Validité : 5 ans, renouvellement avec formation continue",
+          "À présenter en cas de contrôle + apposée visible sur le véhicule",
+        ],
+        examWarning: "Sans carte pro = exercice illégal = sanctions pénales.",
+        confusionPoints: [
+          "Préfet (pas la mairie) délivre la carte",
+          "Permis A2 ou A obligatoire (pas seulement B)",
+        ],
+        tips: ["5 ans de validité = à retenir absolument"],
+        legalRefs: ["Code des transports L.3123-1 et suivants"],
+      },
+      {
+        id: 'vmd-reservation',
+        title: 'Réservation préalable obligatoire',
+        essential: "Le VMDTR ne peut prendre un client qu'après réservation : pas de maraude, pas de stationnement taxi.",
+        keyPoints: [
+          "Toute course = réservée à l'avance (téléphone, app, web)",
+          "Maraude interdite (à la différence du taxi)",
+          "Stationnement sur emplacements taxis interdit",
+          "Justificatif de réservation à présenter en cas de contrôle",
+        ],
+        examWarning: "Confusion fréquente Taxi/VMDTR : seul le taxi peut faire de la maraude.",
+        confusionPoints: [
+          "Taxi = maraude OK + stationnement réservé",
+          "VMDTR/VTC = réservation préalable obligatoire",
+        ],
+        tips: ["Pas de réservation = pas de course"],
+        legalRefs: ["Code des transports L.3120-2 et L.3123-2"],
+      },
+      {
+        id: 'vmd-vehicule',
+        title: 'Caractéristiques du véhicule & signalétique',
+        essential: "Le véhicule doit respecter des conditions de puissance, d'âge et porter une signalétique réglementaire.",
+        keyPoints: [
+          "Puissance, âge maximum, équipements définis par décret",
+          "Signalétique obligatoire (vignette d'identification)",
+          "Pas de lumineux comme les taxis",
+          "ABS et top-case fortement recommandés voire imposés selon contrat",
+        ],
+        confusionPoints: [
+          "VMDTR ≠ taxi : pas de lumineux 'TAXI', pas de compteur horokilométrique",
+        ],
+        tips: ["Signalétique discrète mais obligatoire"],
+        legalRefs: ["Code des transports R.3123-1 et suivants"],
+      },
+    ],
+  },
+  // =====================================================
+  // MODULE VMDTR — Épreuve G(M) : Passager & commercial
+  // =====================================================
+  {
+    moduleId: 'vmdtr-commercial',
+    moduleName: 'G(M) – Passager & développement commercial',
+    moduleIcon: '🛵',
+    domain: 'vmdtr',
+    examObjective: "Maîtriser la prise en charge du passager moto et le développement commercial de l'activité (épreuve G(M)).",
+    introduction: "Sécurité du passager, EPI, gestion de la peur, marketing, fidélisation, partenariats.",
+    cards: [
+      {
+        id: 'vmd-prise-en-charge',
+        title: 'Prise en charge du passager',
+        essential: "Stationner en sécurité, expliquer la position, charger les bagages : la sécurité commence à l'arrêt.",
+        keyPoints: [
+          "Respecter la réglementation de stationnement",
+          "Sécuriser l'arrêt (emplacement, feux de détresse si besoin)",
+          "Aider à la montée, vérifier la position du passager",
+          "Charger correctement les bagages dans les top-cases",
+        ],
+        fieldExample: "Pickup hôtel : se garer hors voie circulée, attirer l'attention du client sur les voitures, l'aider à monter.",
+        tips: ["Sécurité d'abord, vitesse ensuite"],
+        legalRefs: ["Référentiel RS5636 – G(M)"],
+      },
+      {
+        id: 'vmd-consignes-passager',
+        title: 'Consignes au passager avant départ',
+        essential: "Un passager bien briefé = trajet sûr. Les consignes sont une obligation pro.",
+        keyPoints: [
+          "Position sur la moto (mains, pieds, posture)",
+          "Comportement en virage (accompagner, ne pas contrer)",
+          "Mode de communication (intercom ou signes convenus)",
+          "Conduite à tenir en cas d'arrêt/imprévu",
+        ],
+        examWarning: "Question type : 'Le conducteur doit-il donner des consignes au passager ?' → OUI, obligatoire.",
+        tips: ["Briefing de 30 sec avant chaque course"],
+        legalRefs: ["Référentiel RS5636 – G(M)"],
+      },
+      {
+        id: 'vmd-epi',
+        title: 'Équipements de protection (EPI)',
+        essential: "Casque homologué + gants certifiés = OBLIGATOIRES pour le conducteur ET le passager.",
+        keyPoints: [
+          "Casque homologué (norme ECE 22.05/22.06) – conducteur + passager",
+          "Gants certifiés CE moto – conducteur + passager",
+          "Blouson et chaussures fermées fortement recommandés",
+          "Conducteur fournit généralement les EPI au passager",
+        ],
+        examWarning: "Sans casque ET gants : refus de transport obligatoire. Sanctions du Code de la route.",
+        confusionPoints: [
+          "Casque obligatoire AUSSI pour le passager (pas seulement le conducteur)",
+        ],
+        tips: ["Pas de casque = pas de départ"],
+        legalRefs: ["Article R431-1 du Code de la route"],
+      },
+      {
+        id: 'vmd-peur-passager',
+        title: 'Gestion de la peur du passager',
+        essential: "Anticiper la peur évite les mouvements parasites qui déséquilibrent la moto.",
+        keyPoints: [
+          "Reconnaître les signes de stress (raideur, mauvaise inclinaison)",
+          "Conduite progressive et rassurante en début de course",
+          "Communication régulière (intercom, signes)",
+          "Adapter l'allure et l'inclinaison au profil du passager",
+        ],
+        fieldExample: "Passager novice : démarrer doucement, virages amples, vérifier son confort dès les premiers km.",
+        tips: ["Un passager rassuré = un passager stable"],
+        legalRefs: ["Référentiel RS5636 – G(M)"],
+      },
+      {
+        id: 'vmd-marketing',
+        title: 'Marketing & positionnement',
+        essential: "Connaître son marché, cibler sa clientèle, valoriser ses atouts différenciants.",
+        keyPoints: [
+          "Analyse de marché : qui sont les clients, quels concurrents ?",
+          "Ciblage : B2B (entreprises, hôtels), aéroport, urgences",
+          "Positionnement : rapidité, ponctualité, agilité urbaine",
+          "Prix juste = coût de revient + marge cohérente",
+        ],
+        tips: ["Différenciation > guerre des prix"],
+        legalRefs: ["Référentiel RS5636 – G(M)"],
+      },
+      {
+        id: 'vmd-fidelisation',
+        title: 'Fidélisation & prospection',
+        essential: "Garder un client coûte 5× moins cher que d'en conquérir un nouveau.",
+        keyPoints: [
+          "Qualité de service constante + personnalisation",
+          "Suivi client (anticiper les trajets récurrents)",
+          "Prospection B2B : démarcher hôtels, entreprises, conciergeries",
+          "Référencement sur plateformes (Uber, Heetch, indépendants)",
+        ],
+        examWarning: "La maraude reste INTERDITE même pour prospecter.",
+        tips: ["1 client satisfait = 3 recommandations"],
+        legalRefs: ["Référentiel RS5636 – G(M)"],
+      },
+      {
+        id: 'vmd-communication',
+        title: 'Communication numérique & partenaires',
+        essential: "Internet et réseau de partenaires = leviers principaux d'acquisition d'un VMDTR.",
+        keyPoints: [
+          "Site internet professionnel (référencement local)",
+          "Réseaux sociaux (LinkedIn pour B2B, Instagram pour image)",
+          "Plateformes de réservation reconnues",
+          "Partenariats hôtels, entreprises, événementiel",
+        ],
+        fieldExample: "Contrat-cadre avec un hôtel 4* : pickup aéroport garanti = revenu récurrent.",
+        tips: ["Partenariat > publicité ponctuelle"],
+        legalRefs: ["Référentiel RS5636 – G(M)"],
+      },
+    ],
+  },
 ];
 
 // ============================================
