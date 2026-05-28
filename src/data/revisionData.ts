@@ -4,15 +4,31 @@
 // Conformité référentiel officiel T3P 2026
 // ============================================
 
+// 📝 Cas pratique résolu type examen
+export interface PracticalCase {
+  // Situation concrète (énoncé)
+  situation: string;
+  // Question posée (formulation type examen)
+  question: string;
+  // Réponse attendue (réponse courte)
+  answer: string;
+  // Raisonnement détaillé (le "pourquoi" pédagogique)
+  reasoning: string;
+}
+
 export interface RevisionCard {
   id: string;
   title: string;
   // ⭐ L'essentiel à retenir (1 phrase max - message clé examen)
   essential: string;
+  // 📖 Narratif pédagogique (explication contextualisée, 150-250 mots, raconte la règle)
+  narrative?: string;
   // 📌 Points importants (3-5 points, 1 idée = 1 ligne)
   keyPoints: string[];
   // 🚕 Exemple terrain (situation réelle courte)
   fieldExample?: string;
+  // 📝 Cas pratiques résolus (2-3, type examen)
+  practicalCases?: PracticalCase[];
   // ⚠️ Attention à l'examen (piège fréquent)
   examWarning?: string;
   // 🧠 À ne pas confondre (Taxi/VTC/VMDTR)
