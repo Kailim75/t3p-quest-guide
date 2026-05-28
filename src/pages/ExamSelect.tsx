@@ -32,8 +32,9 @@ const examTypes: ExamType[] = [
     questionCount: 20,
     passingScore: 70, // 14/20
     icon: '🚕',
-    modules: ['taxi']
+    modules: ['taxi', 'taxi-national', 'taxi-territoire']
   },
+
   {
     id: 'admission-vtc',
     name: 'Épreuve d\'admission VTC',
