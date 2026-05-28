@@ -1698,16 +1698,33 @@ export const revisionModules: RevisionModule[] = [
         id: 'topo-arrondissements',
         title: 'Arrondissements',
         essential: "20 arrondissements en spirale depuis le centre. Code postal = 75 + n° arrondissement.",
+        narrative: "Paris est organisé en 20 arrondissements numérotés selon une spirale qui démarre au centre (le Louvre, 1er arrondissement) et se déroule dans le sens des aiguilles d'une montre vers l'extérieur. Cette logique en escargot, mise en place par Haussmann en 1860, n'a rien d'arbitraire : elle reflète l'extension historique de la ville et permet, une fois mémorisée, de localiser instantanément n'importe quelle adresse.\n\nLa Seine sépare Paris en deux rives. La RIVE DROITE (au nord de la Seine) regroupe les arrondissements 1, 2, 3, 4, puis 8 à 12, puis 16 à 20. C'est la rive des affaires, des grands magasins, des théâtres. La RIVE GAUCHE (au sud) regroupe les arrondissements 5, 6, 7, 13, 14, 15. C'est traditionnellement la rive intellectuelle (Sorbonne, éditeurs, ministères). Cette distinction est culturellement forte et utilisée dans la facturation des forfaits aéroports (rives différentes = tarifs différents).\n\nLe code postal parisien est toujours « 75 0XX » où XX est le numéro d'arrondissement sur 2 chiffres. Ainsi : 75001 = 1er, 75008 = 8ème, 75016 = 16ème, 75020 = 20ème. Exception : le 16ème a aussi le code 75116 (Auteuil) en plus du 75016 (Chaillot/Passy). Cette dualité piège les conducteurs néophytes. À l'examen comme sur le terrain, savoir convertir un code postal en arrondissement et inversement est une compétence de base testée systématiquement.",
         keyPoints: [
           "1er = Louvre (centre), spirale vers extérieur",
           "Rive droite (nord Seine) : 1-4, 8-12, 16-20",
           "Rive gauche (sud Seine) : 5-7, 13-15",
-          "Code postal : 75008 = 8ème arrondissement"
+          "Code postal : 75008 = 8ème arrondissement",
+          "16ème : 75016 ET 75116 (exception)"
         ],
         fieldExample: "Client dit '75016' : c'est le 16ème arrondissement, quartier résidentiel ouest.",
+        practicalCases: [
+          {
+            situation: "Un client donne l'adresse « 45 rue de Vaugirard, 75006 ». Le conducteur doit identifier l'arrondissement et la rive.",
+            question: "Où se situe cette adresse ?",
+            answer: "6ème arrondissement, rive gauche (quartier Saint-Sulpice / Sénat).",
+            reasoning: "75006 = 6ème arrondissement (les deux derniers chiffres). Le 6ème est en rive gauche (groupe 5-6-7-13-14-15). La rue de Vaugirard est la plus longue de Paris (4,3 km) et traverse plusieurs arrondissements ; au n° 45, on est près du Sénat et du Jardin du Luxembourg. Cette double identification (arrondissement + repère) est typique d'un conducteur expert."
+          },
+          {
+            situation: "Pour un forfait aéroport Paris → CDG, le tarif dépend de la rive de départ. Le client part du 75004 (Notre-Dame).",
+            question: "Quel forfait s'applique ?",
+            answer: "Rive droite (75004 = 4ème, rive droite) → forfait CDG rive droite = 56 € (2026).",
+            reasoning: "Le 4ème arrondissement est en rive droite (groupe 1-2-3-4). Même si Notre-Dame est sur l'Île de la Cité (centre du fleuve), administrativement le 4ème est rattaché à la rive droite. Le forfait applicable est donc 56 €, et non 65 € (rive gauche). Cette distinction est régulièrement piégée à l'examen."
+          }
+        ],
         examWarning: "Les 2 derniers chiffres du code postal = numéro d'arrondissement.",
         tips: [
-          "Périphérique = ceinture de Paris (35 km)"
+          "Périphérique = ceinture de Paris (35 km)",
+          "Spirale dans le sens horaire depuis le 1er"
         ],
         legalRefs: []
       },
@@ -1715,67 +1732,137 @@ export const revisionModules: RevisionModule[] = [
         id: 'topo-monuments',
         title: 'Monuments majeurs',
         essential: "Axe historique : Louvre → Tuileries → Concorde → Champs → Arc de Triomphe → La Défense.",
+        narrative: "Les monuments parisiens ne sont pas seulement des points touristiques : ce sont des REPÈRES DE NAVIGATION essentiels au conducteur professionnel. Un client qui dit « emmenez-moi près de la Tour Eiffel » exprime une zone (7ème, Champ-de-Mars), pas une adresse. Connaître la localisation précise, l'arrondissement, la station de métro et les axes d'accès de chaque grand monument différencie immédiatement le conducteur expert du débutant.\n\nL'AXE HISTORIQUE de Paris est l'épine dorsale de la ville : il part de la Pyramide du Louvre, traverse les jardins des Tuileries, la place de la Concorde, remonte les Champs-Élysées jusqu'à la place de l'Étoile (Arc de Triomphe), puis se prolonge par l'avenue de la Grande Armée et l'avenue Charles-de-Gaulle jusqu'à La Défense (Grande Arche). Cet axe rectiligne de 8 km est le principal repère est-ouest de Paris. Le connaître par cœur permet de comprendre 70 % des trajets touristiques.\n\nLes monuments-phares à mémoriser : TOUR EIFFEL (7ème, Champ-de-Mars, métro Bir-Hakeim ou Trocadéro pour la vue) ; ARC DE TRIOMPHE (8ème, place Charles-de-Gaulle anciennement place de l'Étoile, croisement de 12 avenues — piège visuel et nominal) ; SACRÉ-CŒUR (18ème, butte Montmartre, métro Anvers + funiculaire ou Abbesses) ; NOTRE-DAME (4ème, Île de la Cité, métro Cité) ; LOUVRE (1er, métro Palais-Royal ou Louvre-Rivoli) ; OPÉRA GARNIER (9ème, métro Opéra) ; PANTHÉON (5ème, place du Panthéon, RER Luxembourg). Attention : « place de l'Étoile » et « place Charles-de-Gaulle » désignent le même lieu.",
         keyPoints: [
           "Tour Eiffel : 7ème, Champ de Mars, métro Bir-Hakeim",
           "Arc de Triomphe : 8ème, place de l'Étoile, 12 avenues",
           "Sacré-Cœur : 18ème, Montmartre, métro Anvers",
-          "Notre-Dame : 4ème, Île de la Cité"
+          "Notre-Dame : 4ème, Île de la Cité",
+          "Axe historique : Louvre → La Défense (8 km)"
         ],
-        fieldExample: "Client veut voir 'les Champs' puis 'la Tour' : Arc de Triomphe → Tour Eiffel.",
+        fieldExample: "Client veut voir 'les Champs' puis 'la Tour' : Arc de Triomphe → Tour Eiffel via Iéna.",
+        practicalCases: [
+          {
+            situation: "Un client touriste demande « Drop me at the Étoile, near the big arch ». Le conducteur doit identifier le lieu.",
+            question: "Où va-t-il déposer le client ?",
+            answer: "Place Charles-de-Gaulle (anciennement place de l'Étoile), 8ème arrondissement, sous l'Arc de Triomphe.",
+            reasoning: "« Étoile » et « Charles-de-Gaulle » désignent le MÊME lieu — la place a été rebaptisée mais le nom historique reste utilisé. Le conducteur doit reconnaître les deux. La place est aussi le carrefour des 12 avenues (dont les Champs-Élysées, l'avenue de la Grande Armée, l'avenue Foch). Attention : la dépose se fait obligatoirement sur une avenue voisine, l'accès direct à l'Arc étant interdit aux véhicules."
+          },
+          {
+            situation: "Un client demande le trajet le plus rapide entre le Louvre et le Trocadéro.",
+            question: "Quel itinéraire emprunter ?",
+            answer: "Suivre l'axe historique : Quai du Louvre → Cours la Reine → Pont de l'Alma → Trocadéro. Ou par les Champs si trafic le permet.",
+            reasoning: "L'axe rive droite (quais + Cours la Reine) longe la Seine, est généralement plus rapide que l'axe Champs-Élysées (souvent encombré). Le passage par le pont de l'Alma offre en bonus une vue spectaculaire sur la Tour Eiffel — apprécié des touristes. Connaître les alternatives entre les grands axes permet d'optimiser le temps et d'enrichir l'expérience client."
+          }
+        ],
         examWarning: "Place de l'Étoile = Place Charles de Gaulle (deux noms pour le même lieu).",
         tips: [
-          "Attention aux zones piétonnes autour des monuments"
+          "Attention aux zones piétonnes autour des monuments",
+          "Maîtriser l'axe historique = clé de 70 % des trajets touristiques"
         ],
         legalRefs: []
       },
       {
         id: 'topo-gares',
         title: 'Gares SNCF',
-        essential: "6 grandes gares, chacune dessert une direction géographique.",
+        essential: "6 grandes gares, chacune dessert une direction géographique précise.",
+        narrative: "Les six grandes gares parisiennes sont organisées selon une logique géographique simple : chaque gare dessert la région française vers laquelle elle pointe, plus les pays voisins dans cette direction. Mémoriser cette logique évite l'erreur fatale qui consiste à déposer un client à la mauvaise gare — perte de train assurée et plainte client systématique.\n\nGARE DU NORD (10ème) : dessert le nord de la France (Lille, Calais), la Belgique, les Pays-Bas, le Royaume-Uni (Eurostar via le tunnel sous la Manche). C'est la gare LA PLUS FRÉQUENTÉE D'EUROPE (700 000 voyageurs/jour). GARE DE L'EST (10ème, juste à côté du Nord) : dessert l'est de la France (Strasbourg, Reims), l'Allemagne, l'Europe centrale. Les deux gares sont proches mais distinctes — confusion fréquente. GARE DE LYON (12ème) : sud-est de la France (Lyon, Marseille, Côte d'Azur), Suisse, Italie. C'est le hub TGV vers le sud, énorme et complexe (Hall 1, Hall 2).\n\nGARE MONTPARNASSE (15ème) : ouest et sud-ouest (Bordeaux, Nantes, Bretagne, Toulouse). GARE D'AUSTERLITZ (13ème) : centre de la France et sud (Orléans, Toulouse partiellement, Espagne en train de nuit). GARE SAINT-LAZARE (8ème) : Normandie (Rouen, Le Havre, Caen, Deauville). Particularité : Saint-Lazare ne dessert AUCUN TGV — uniquement des trains régionaux et Intercités. Une autre piège classique d'examen.\n\nLe conducteur doit aussi anticiper le temps de dépose : ces gares ont des accès véhicules contraints, et la distance entre la dépose-minute et le quai peut atteindre 10-15 minutes à pied à Montparnasse ou Gare de Lyon.",
         keyPoints: [
-          "Gare du Nord (10ème) : Londres, Belgique, TGV Nord",
+          "Gare du Nord (10ème) : Londres (Eurostar), Belgique, TGV Nord",
+          "Gare de l'Est (10ème) : Strasbourg, Allemagne",
           "Gare de Lyon (12ème) : Lyon, Marseille, Suisse, Italie",
           "Montparnasse (15ème) : Bordeaux, Nantes, Bretagne",
-          "Saint-Lazare (8ème) : Normandie (pas de TGV)"
+          "Saint-Lazare (8ème) : Normandie (PAS de TGV)",
+          "Austerlitz (13ème) : Orléans, sud-ouest (limité)"
         ],
         fieldExample: "Client va à Marseille : Gare de Lyon, TGV Sud-Est.",
-        examWarning: "Gare du Nord = la plus fréquentée d'Europe.",
+        practicalCases: [
+          {
+            situation: "Un client annonce : « Je dois prendre le train pour Strasbourg dans 1 heure, emmenez-moi à la gare. »",
+            question: "Quelle gare ?",
+            answer: "Gare de l'Est (10ème). Surtout pas Gare du Nord, qui est juste à côté mais dessert le Nord et l'international.",
+            reasoning: "Strasbourg = est de la France, donc Gare de l'Est. Les deux gares sont à 300 m l'une de l'autre, à pied par la rue La Fayette. La confusion est extrêmement fréquente, particulièrement chez les touristes qui ne distinguent pas. Erreur de dépose à Gare du Nord = ~15 min à pied avec bagages = train raté = plainte garantie. Le conducteur doit toujours reformuler : « Pour Strasbourg, c'est Gare de l'Est, je confirme ? »"
+          },
+          {
+            situation: "Un client demande de l'emmener à la « Gare TGV » pour aller à Caen.",
+            question: "Quelle gare et quel piège ?",
+            answer: "Saint-Lazare (8ème). Mais attention : aucun TGV ne dessert Caen. Le client confond « train » et « TGV ».",
+            reasoning: "Caen est en Normandie, desservie par Saint-Lazare via des trains Intercités (pas de TGV sur cet axe). Le conducteur doit délicatement rectifier : « C'est bien Saint-Lazare, mais ce sera un train régional ou Intercités, pas un TGV. » Cela évite que le client ne se trompe sur le numéro de train ou le quai à l'arrivée. La précision technique fidélise le client professionnel."
+          }
+        ],
+        examWarning: "Gare du Nord ≠ Gare de l'Est (à 300 m). Saint-Lazare ne dessert PAS de TGV.",
         tips: [
-          "Prévoir le temps de dépose (circulation + distance dans la gare)"
+          "Prévoir le temps de dépose (circulation + distance dans la gare)",
+          "Toujours reformuler la gare avant de démarrer"
         ],
         legalRefs: []
       },
       {
         id: 'topo-aeroports',
         title: 'Aéroports',
-        essential: "CDG (Roissy) = 3 terminaux. Orly = 4 terminaux. Forfaits taxi 2026.",
+        essential: "CDG (Roissy) = 3 terminaux principaux. Orly = 4 terminaux. Forfaits taxi 2026.",
+        narrative: "L'Île-de-France compte deux grands aéroports internationaux et deux secondaires. CHARLES-DE-GAULLE (CDG / Roissy) est le 1er aéroport français et le 2e européen (~76 millions de passagers/an). Il se situe à 25 km au nord-est de Paris, accessible par l'A1 (depuis la Porte de la Chapelle) ou l'A3 (depuis la Porte de Bagnolet). Le trajet prend 45 min à 1h15 selon le trafic — prévoir 1h en marge de sécurité pour un client qui décolle.\n\nCDG est composé de 3 terminaux principaux mais avec des SOUS-TERMINAUX nombreux : Terminal 1 (compagnies internationales hors Air France/SkyTeam), Terminal 2 (Air France et alliances SkyTeam, divisé en 2A, 2B, 2C, 2D, 2E, 2F, 2G), Terminal 3 (low-cost et charters). La confusion entre sous-terminaux du T2 est LE piège classique : T2E et T2F sont à 800 m l'un de l'autre, sans navette directe. Toujours demander la compagnie ET le numéro de terminal au client.\n\nORLY se situe à 14 km au sud de Paris, accessible par l'A6a et l'A6b (depuis la Porte d'Orléans) ou la N7. Trajet : 25-45 min selon trafic. Depuis 2019, les 4 terminaux historiques (Sud, Ouest, etc.) ont été renommés ORLY 1, 2, 3, 4. Orly 4 (ex-Orly Sud) accueille les vols internationaux long-courriers ; Orly 1, 2, 3 traitent essentiellement les vols domestiques et européens. LE BOURGET (à 7 km de CDG) est dédié à l'AVIATION D'AFFAIRES (jets privés). BEAUVAIS-TILLÉ est à 85 km au nord — clientèle low-cost (Ryanair, Wizz Air), forfait taxi non applicable (course longue distance).",
         keyPoints: [
           "CDG : A1 Porte de la Chapelle, RER B, Roissybus",
+          "CDG terminaux : 1, 2 (A-G), 3",
           "Orly : A6 Porte d'Orléans, Orlyval+RER B, T7",
+          "Orly terminaux : 1, 2, 3, 4 (depuis 2019)",
           "Forfaits 2026 : CDG 56€/65€, Orly 45€/36€",
           "Le Bourget : affaires, Beauvais : low-cost (85 km)"
         ],
         fieldExample: "Client va à CDG Terminal 2E : A1 Porte de la Chapelle, prévoir 1h.",
-        examWarning: "CDG a plusieurs terminaux 2 (2A, 2B, 2C, 2D, 2E, 2F, 2G). Toujours confirmer !",
+        practicalCases: [
+          {
+            situation: "Un client se présente à 16h pour un vol Lufthansa au départ de CDG à 18h30. Il dit juste « CDG, terminal 1 ».",
+            question: "Le terminal annoncé est-il cohérent ?",
+            answer: "Possible mais à vérifier : Lufthansa peut être au T1 ou au T2 selon la destination. Mieux vaut demander confirmation.",
+            reasoning: "Lufthansa (alliance Star Alliance) opère majoritairement depuis le Terminal 1 à CDG, mais certains vols partagés (codeshare Air France) partent du T2. Si le client se trompe de terminal, perte de 20-30 min en navette CDGVAL. Bonne pratique : demander à voir la carte d'embarquement ou la confirmation, et croiser avec le numéro de vol pour fiabiliser. Le temps de marge restant (2h30) est suffisant pour rattraper une erreur, mais il faut anticiper."
+          },
+          {
+            situation: "Un client demande à aller à « Roissy » avec un trajet rapide à 8h du matin.",
+            question: "Quel itinéraire et quelle estimation de temps ?",
+            answer: "A1 depuis Porte de la Chapelle (ou A3 si trafic A1 saturé). Estimation : 1h à 1h15 (heure de pointe).",
+            reasoning: "8h = pleine heure de pointe entrante. L'A1 est généralement saturée entre 7h30 et 9h30. Le conducteur peut préférer l'A3 (Porte de Bagnolet) si Waze ou Google Maps indique un meilleur temps. À cette heure, jamais promettre moins de 1h. Annoncer une fourchette « 1h à 1h15 » protège des aléas et reste fiable. Si le vol décolle dans 2h, c'est encore jouable ; sinon, alerter le client immédiatement."
+          }
+        ],
+        examWarning: "CDG a plusieurs terminaux 2 (2A, 2B, 2C, 2D, 2E, 2F, 2G). Toujours confirmer compagnie + terminal !",
         tips: [
-          "Prévoir 1h pour CDG, 30-45min pour Orly depuis Paris"
+          "Prévoir 1h pour CDG, 30-45min pour Orly depuis Paris",
+          "Beauvais = 85 km, course longue (forfait non applicable)"
         ],
         legalRefs: []
       },
       {
         id: 'topo-hopitaux',
         title: 'Hôpitaux',
-        essential: "AP-HP = réseau public. Pitié-Salpêtrière = le plus grand de France.",
+        essential: "AP-HP = réseau public parisien. Pitié-Salpêtrière = le plus grand de France.",
+        narrative: "L'Assistance Publique - Hôpitaux de Paris (AP-HP) est le plus grand centre hospitalier universitaire d'Europe : 39 hôpitaux, 100 000 personnels, 8 millions de patients/an. Connaître les principaux établissements et leurs spécialités est crucial pour le conducteur T3P, qui transporte régulièrement patients, familles et soignants. Une erreur d'hôpital sur une urgence médicale peut avoir des conséquences vitales.\n\nLes hôpitaux phares à mémoriser : PITIÉ-SALPÊTRIÈRE (13ème, boulevard de l'Hôpital) — le plus grand hôpital de France et d'Europe, toutes spécialités, urgences adultes 24/7, neurologie et cardiologie de référence. HEGP — Hôpital européen Georges-Pompidou (15ème, rue Leblanc) — moderne, urgences adultes, oncologie. COCHIN (14ème, faubourg Saint-Jacques) — maternité, médecine interne. NECKER-ENFANTS MALADES (15ème, rue de Sèvres) — référence pédiatrique nationale, urgences enfants. ROBERT-DEBRÉ (19ème, boulevard Sérurier) — autre grande pédiatrie. HÔTEL-DIEU (4ème, parvis Notre-Dame) — historique, sur l'Île de la Cité, urgences centre Paris.\n\nPour les urgences vitales, ne JAMAIS improviser : appeler le 15 (SAMU) qui orientera vers l'établissement le plus adapté selon la pathologie et la disponibilité. Pour les naissances : maternités proches de Cochin (14ème), Port-Royal (14ème), Robert-Debré (19ème), Necker (15ème), Trousseau (12ème). Hors AP-HP, l'HÔPITAL AMÉRICAIN (Neuilly) et l'HÔPITAL FRANCO-BRITANNIQUE (Levallois) accueillent une clientèle internationale aisée — souvent demandés par les VTC et taxis premium. Mémoriser les hôpitaux proches de son secteur d'activité est un investissement professionnel.",
         keyPoints: [
           "Pitié-Salpêtrière (13ème) : le plus grand, toutes spécialités",
           "HEGP Georges-Pompidou (15ème) : moderne, urgences",
-          "Necker (15ème) : pédiatrie, urgences enfants",
-          "Hôtel-Dieu (4ème) : Île de la Cité, urgences centre"
+          "Necker (15ème) et Robert-Debré (19ème) : pédiatrie",
+          "Hôtel-Dieu (4ème) : Île de la Cité, urgences centre",
+          "Hôpital Américain (Neuilly) : clientèle internationale"
         ],
         fieldExample: "Urgence enfant : Necker-Enfants malades, 15ème arrondissement.",
+        practicalCases: [
+          {
+            situation: "Un client monte avec un enfant de 4 ans visiblement souffrant, fièvre élevée. Il demande « l'hôpital le plus proche » depuis le 6ème arrondissement.",
+            question: "Que doit faire le conducteur ?",
+            answer: "Aller à Necker-Enfants malades (15ème, à 10 min) — référence pédiatrique. Sinon, appeler le 15 pour orientation.",
+            reasoning: "Pour un enfant, JAMAIS un hôpital adulte (Hôtel-Dieu, Cochin) qui n'a pas les services pédiatriques adaptés. Necker est à 10 min du 6ème par la rue de Sèvres et c'est LA référence pédiatrique parisienne. En cas de doute (gravité incertaine), appeler le 15 en conduisant donne accès à un médecin régulateur qui valide la destination. Cette précaution peut sauver une vie."
+          },
+          {
+            situation: "Un client touriste américain demande l'« American Hospital » depuis le 8ème arrondissement.",
+            question: "Quel hôpital et quelle direction ?",
+            answer: "Hôpital Américain de Paris, 63 boulevard Victor Hugo, Neuilly-sur-Seine (hors Paris intra-muros).",
+            reasoning: "L'Hôpital Américain est privé, situé à Neuilly (92), pas dans Paris. Il accueille essentiellement la clientèle internationale aisée et les expatriés. Le trajet depuis le 8ème prend ~15 min par l'avenue de la Grande Armée → Porte Maillot → boulevard du Général Koenig → Neuilly. Connaître cet établissement est typique d'un conducteur premium / VTC haut de gamme."
+          }
+        ],
         examWarning: "En urgence : appeler le 15 (SAMU) pour orientation vers l'hôpital approprié.",
         tips: [
-          "Connaître l'hôpital le plus proche de son secteur"
+          "Connaître l'hôpital le plus proche de son secteur",
+          "Pédiatrie = Necker ou Robert-Debré (jamais hôpital adulte)"
         ],
         legalRefs: []
       },
@@ -1783,35 +1870,70 @@ export const revisionModules: RevisionModule[] = [
         id: 'topo-axes',
         title: 'Axes de circulation',
         essential: "Périphérique 35 km, saturé 7h-9h et 17h-20h. A1 → CDG, A6 → Orly.",
+        narrative: "Le BOULEVARD PÉRIPHÉRIQUE est l'axe de circulation le plus emprunté de France (1,1 million de véhicules/jour). Long de 35 km, il forme la ceinture de Paris en suivant l'ancienne enceinte de Thiers. Il comporte deux sens : INTÉRIEUR (sens des aiguilles d'une montre) et EXTÉRIEUR (sens inverse). Sa vitesse maximale est de 50 km/h depuis le 1er octobre 2024 (auparavant 70 km/h). En heures de pointe (7h-9h et 17h-20h en semaine), la vitesse moyenne tombe à 10-20 km/h.\n\nLes ALTERNATIVES au périphérique sont essentielles à connaître. Les BOULEVARDS DES MARÉCHAUX (porte par porte, à l'intérieur du périph) offrent un itinéraire de contournement plus lent mais plus régulier. Les AXES TRANSVERSAUX intra-muros : axe nord-sud (boulevards de Sébastopol et Saint-Michel), axe est-ouest (rue de Rivoli, qui depuis 2020 est partiellement réservée aux vélos et bus). Les VOIES SUR BERGES rive droite et gauche sont en grande partie piétonisées depuis 2016 — ne plus les considérer comme un axe automobile rapide.\n\nLes AUTOROUTES de sortie de Paris à mémoriser : A1 (Porte de la Chapelle) → Lille, CDG. A3 (Porte de Bagnolet) → CDG alternatif, Belgique. A4 (Porte de Bercy) → Reims, Strasbourg. A6 (Porte d'Orléans / Porte d'Italie) → Lyon, Orly. A10 (Porte d'Orléans) → Orléans, Bordeaux. A13 (Porte d'Auteuil) → Rouen, Normandie. A14 (La Défense) → A13 vers Normandie. A86 = grand contournement (super-périphérique à 5-10 km de Paris). Connaître la « porte » associée à chaque destination divise par deux le temps de réflexion du conducteur.",
         keyPoints: [
-          "Périphérique : 35 km, sens horaire et anti-horaire",
-          "Champs-Élysées : Concorde ↔ Étoile, 2 km, sens unique vers Ouest",
-          "A1 : Porte de la Chapelle → CDG",
-          "A6 : Porte d'Orléans → Orly et Lyon"
+          "Périphérique : 35 km, 50 km/h depuis 2024",
+          "Saturé 7h-9h et 17h-20h",
+          "Champs-Élysées : Concorde ↔ Étoile, 2 km",
+          "A1 : Porte de la Chapelle → CDG, Lille",
+          "A6 : Porte d'Orléans/Italie → Orly, Lyon",
+          "A86 = grand contournement"
         ],
-        fieldExample: "Il est 18h, le périph est bouché : prendre les boulevards des Maréchaux.",
-        examWarning: "Voies sur berges largement fermées (piétonisation).",
+        fieldExample: "Il est 18h, le périph est bouché : prendre les boulevards des Maréchaux ou couper en intra-muros.",
+        practicalCases: [
+          {
+            situation: "Un client doit aller du 12ème arrondissement à l'aéroport de Roissy-CDG à 17h30 un vendredi.",
+            question: "Quel itinéraire ?",
+            answer: "Éviter le périphérique nord (saturé). Privilégier A3 (Porte de Bagnolet) en sortie est, ou direct via A4 puis A86 puis A1.",
+            reasoning: "Vendredi 17h30 = pic de circulation maximal sur le périph nord (combinaison heure de pointe + départs week-end). L'A3 depuis l'est est souvent plus fluide. Une autre option : sortir par A4 (Porte de Bercy) → A86 → A1 nord, plus long en distance mais souvent plus rapide. Le conducteur professionnel consulte Waze ou Coyote en temps réel pour choisir. Prévoir au moins 1h15 minimum à cette heure."
+          },
+          {
+            situation: "Un touriste demande un « tour panoramique » en taxi : voir Tour Eiffel, Arc de Triomphe, Louvre. Le conducteur doit choisir l'itinéraire.",
+            question: "Quel circuit emprunter ?",
+            answer: "Tour Eiffel (Trocadéro) → Av. Kléber → Arc de Triomphe → Champs-Élysées → Concorde → Tuileries → Louvre (Pyramide).",
+            reasoning: "Ce circuit suit l'axe historique en sens descendant (ouest → est), avec arrêts photo aisés. Il évite le périphérique (sans intérêt touristique) et utilise les artères larges. Durée typique : 45-60 min avec arrêts. Le conducteur peut commenter chaque étape — atout commercial majeur. Annoncer le prix au temps (plus juste pour les arrêts) ou un forfait visite à négocier au préalable."
+          }
+        ],
+        examWarning: "Voies sur berges largement fermées (piétonisation). Périphérique limité à 50 km/h depuis 2024.",
         tips: [
-          "Connaître les portes principales et leurs destinations"
+          "Connaître les portes principales et leurs destinations",
+          "Boulevards des Maréchaux = alternative au périph"
         ],
-        legalRefs: []
+        legalRefs: ["Arrêté Ville de Paris 2024 (limitation 50 km/h périphérique)"]
       },
       {
         id: 'topo-places',
         title: 'Places et carrefours',
         essential: "Place de l'Étoile = 12 avenues. République = manifestations fréquentes.",
+        narrative: "Les grandes places parisiennes sont à la fois des repères géographiques et des NŒUDS DE CIRCULATION particulièrement complexes. Maîtriser leur géométrie, les avenues qui les croisent, et les règles de priorité spécifiques évite les erreurs de trajet et les fausses manœuvres devant les clients.\n\nLA PLACE CHARLES-DE-GAULLE (ex-Étoile, 8ème/16ème/17ème) est emblématique : 12 avenues y convergent (Champs-Élysées, Foch, Grande Armée, Wagram, Hoche, Friedland, Marceau, Iéna, Kléber, Victor-Hugo, Carnot, Mac-Mahon). La règle de circulation est UNIQUE EN FRANCE : priorité à droite SANS exception (les véhicules entrant ont la priorité sur ceux déjà engagés). C'est l'un des rares carrefours où la sortie est plus complexe que l'entrée. Conseil : viser sa sortie dès l'entrée et ajuster progressivement.\n\nPLACE DE LA CONCORDE (8ème) : la plus grande place de Paris (8,64 ha), au pied de l'obélisque de Louxor. Carrefour entre les Tuileries, les Champs-Élysées, le pont de la Concorde et la rue Royale. Très large mais avec une signalisation dense (feux multiples). PLACE DE LA BASTILLE (4ème/11ème/12ème, à la jonction des trois arrondissements) : carrefour de l'Opéra Bastille, des boulevards Beaumarchais et Henri-IV. PLACE DE LA RÉPUBLIQUE (3ème/10ème/11ème) : grande place semi-piétonne depuis 2013, statue de Marianne. ATTENTION : c'est le LIEU DES MANIFESTATIONS PARISIENNES par excellence. Tous les samedis et lors de tout événement social, la place est partiellement ou totalement bloquée — itinéraires de contournement obligatoires (rue du Faubourg-du-Temple, boulevard Magenta).",
         keyPoints: [
-          "Place de l'Étoile (8ème) : 12 avenues, Arc de Triomphe",
+          "Place de l'Étoile (8ème) : 12 avenues, Arc de Triomphe, priorité à droite",
           "Place de la Concorde (8ème) : obélisque, Tuileries-Champs",
           "Place de la Bastille (4ème/11ème/12ème) : Opéra Bastille",
-          "Place de la République (3ème/10ème/11ème) : Marianne"
+          "Place de la République (3ème/10ème/11ème) : Marianne, manifestations",
+          "Place Vendôme (1er) : luxe, Ritz, joaillerie"
         ],
-        fieldExample: "Manifestation annoncée place de la République : éviter le secteur.",
-        examWarning: "Les grandes places = nœuds de circulation complexes. Mémoriser les sens.",
+        fieldExample: "Manifestation annoncée place de la République : passer par le boulevard Magenta.",
+        practicalCases: [
+          {
+            situation: "Le conducteur arrive sur la place de l'Étoile depuis les Champs-Élysées et doit ressortir par l'avenue Hoche.",
+            question: "Quelle stratégie de circulation ?",
+            answer: "Entrer sur l'anneau extérieur, viser progressivement Hoche en cédant à chaque entrée (priorité à droite stricte), sortir doucement.",
+            reasoning: "La place de l'Étoile est le SEUL carrefour de France où la priorité à droite s'applique sans exception, même contre un véhicule déjà engagé. Cela signifie que celui qui entre a TOUJOURS priorité sur celui qui circule sur l'anneau. Stratégie : entrer sur la voie extérieure, anticiper sa sortie en lisant les panneaux (chaque avenue est indiquée), céder le passage à toute entrée, et viser progressivement l'avenue voulue. Ne JAMAIS s'engager au centre — risque d'être bloqué."
+          },
+          {
+            situation: "Un client doit aller de la gare de l'Est à la place de la République un samedi à 14h. Le conducteur entend à la radio qu'une manifestation est annoncée.",
+            question: "Que doit-il faire ?",
+            answer: "Informer le client, proposer un dépose alternative (proche mais hors zone bloquée) ou un itinéraire de contournement.",
+            reasoning: "Toute manifestation à République bloque la place et les axes adjacents (boulevards Magenta, Saint-Martin, du Temple). Tenter de passer = être bloqué dans la circulation pendant 30 min à 2h. Le conducteur professionnel ANTICIPE : il prévient le client, propose une dépose à proximité (par exemple au métro Jacques Bonsergent, à 5 min à pied) et explique pourquoi. Cette transparence évite la facturation d'un temps perdu et entretient la confiance."
+          }
+        ],
+        examWarning: "Les grandes places = nœuds de circulation complexes. Étoile = priorité à droite stricte.",
         tips: [
-          "Attention aux manifestations fréquentes République et Bastille"
+          "Attention aux manifestations fréquentes République et Bastille",
+          "Étoile : viser sa sortie dès l'entrée"
         ],
-        legalRefs: []
+        legalRefs: ["Article R415-5 du Code de la route (priorité à droite Étoile)"]
       }
     ]
   },
