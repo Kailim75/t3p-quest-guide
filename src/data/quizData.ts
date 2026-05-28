@@ -128,10 +128,12 @@ export const modules: Module[] = [
   {
     id: 'taxi',
     name: 'Spécifique Taxi',
-    description: 'Réglementation spécifique aux taxis',
+    description: 'Réglementation et pratique du métier de taxi',
     type: 'specifique',
     icon: '🚕',
     color: 'module-taxi',
+    rsCode: 'F(T) + G(T)',
+    rsFiche: 'RS5635',
     subModules: [
       { id: 'tax-1', name: 'Licence taxi', description: 'Obtention et exploitation', questionCount: 15 },
       { id: 'tax-2', name: 'Tarification', description: 'Compteur et tarifs réglementés', questionCount: 12 },
@@ -141,10 +143,12 @@ export const modules: Module[] = [
   {
     id: 'vtc',
     name: 'Spécifique VTC',
-    description: 'Réglementation spécifique aux VTC',
+    description: 'Réglementation et pratique du métier VTC',
     type: 'specifique',
     icon: '🚗',
     color: 'module-vtc',
+    rsCode: 'F(V) + G(V)',
+    rsFiche: 'RS5637',
     subModules: [
       { id: 'vtc-1', name: 'Carte professionnelle VTC', description: 'Conditions et renouvellement', questionCount: 20 },
       { id: 'vtc-2', name: 'Réservation préalable', description: 'Obligations de réservation', questionCount: 10 },
@@ -154,10 +158,12 @@ export const modules: Module[] = [
   {
     id: 'vmdtr',
     name: 'Spécifique VMDTR',
-    description: 'Épreuves F(M) et G(M) – Moto-taxi (RS5636)',
+    description: 'Épreuves F(M) et G(M) – Moto-taxi',
     type: 'specifique',
     icon: '🏍️',
     color: 'module-vmdtr',
+    rsCode: 'F(M) + G(M)',
+    rsFiche: 'RS5636',
     subModules: [
       { id: 'vmd-securite', name: 'F(M) – Sécurité moto', description: 'Accidentologie, dynamique, conduite préventive, entretien', questionCount: 8 },
       { id: 'vmd-reglementation', name: 'F(M) – Réglementation VMDTR', description: 'Carte pro, réservation préalable, véhicules, signalétique', questionCount: 8 },
@@ -167,24 +173,28 @@ export const modules: Module[] = [
   },
   {
     id: 'taxi-national',
-    name: 'Taxi Paris 75',
-    description: 'Réglementation nationale et locale des taxis parisiens',
+    name: 'Taxi – Réglementation nationale',
+    description: 'Code des transports et règles applicables à tous les taxis',
     type: 'specifique',
     icon: '🚖',
     color: 'module-taxi',
+    rsCode: 'G(T)',
+    rsFiche: 'RS5635',
     subModules: [
       { id: 'tx75-nat', name: 'Réglementation nationale', description: 'Code des transports et lois applicables à tous les taxis', questionCount: 10 },
-      { id: 'tx75-loc', name: 'Réglementation locale Paris', description: 'Arrêtés préfectoraux et règles spécifiques au 75', questionCount: 10 },
+      { id: 'tx75-loc', name: 'Réglementation locale', description: 'Arrêtés préfectoraux et règles spécifiques au département', questionCount: 10 },
       { id: 'tx75-pra', name: 'Pratique professionnelle', description: 'Tarification, équipements et exercice quotidien', questionCount: 10 },
     ]
   },
   {
     id: 'taxi-territoire',
-    name: 'Topographie Paris',
-    description: 'Connaissance de Paris : monuments, gares, hôpitaux, axes majeurs',
+    name: 'Taxi – Territoire',
+    description: 'Connaissance du territoire d\'exercice : monuments, gares, hôpitaux, axes majeurs',
     type: 'specifique',
     icon: '🗼',
     color: 'module-taxi',
+    rsCode: 'F(T)',
+    rsFiche: 'RS5635',
     subModules: [
       { id: 'topo-mon', name: 'Monuments & Sites touristiques', description: 'Lieux emblématiques et attractions', questionCount: 10 },
       { id: 'topo-gar', name: 'Gares & Transports', description: 'Gares SNCF, routières et aéroports', questionCount: 10 },
@@ -192,6 +202,7 @@ export const modules: Module[] = [
       { id: 'topo-axe', name: 'Axes & Circulation', description: 'Boulevards, places et itinéraires', questionCount: 10 },
     ]
   },
+
   // Module Relation Client (nouveau)
   {
     id: 'relation-client',
