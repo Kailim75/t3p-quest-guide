@@ -1857,7 +1857,7 @@ export const getDefaultModuleExplanation = (moduleId: string): QuestionExplanati
       tip: "Carte professionnelle = obligatoire pour taxi, VTC et VMDTR. Validité 5 ans. Conditions : permis B >3 ans, aptitude médicale, honorabilité, examen T3P réussi.",
       legalRef: "Code des transports L3120-1 à L3120-6 | Loi Grandguillaume 2016"
     },
-    'taxi-75': {
+    'taxi-national': {
       content: "La réglementation Taxi Paris 75 couvre les spécificités des taxis parisiens : tarification fixée par le Préfet de Police, taximètre lumineux obligatoire (lettre A/B/C/D), paiement CB dès le 1er euro, zones de prise en charge définies.",
       tip: "Paris 75 = Préfet de Police. Taximètre avec voyant lumineux (A=jour, B=nuit, C=banlieue jour, D=banlieue nuit). Forfaits aéroports réglementés. CB = obligatoire.",
       legalRef: "Arrêtés préfectoraux Paris | Code des transports R3121-1"
@@ -1867,7 +1867,7 @@ export const getDefaultModuleExplanation = (moduleId: string): QuestionExplanati
       tip: "Casque homologué CE et gants certifiés = obligatoires pour conducteur ET passager. Gilet rétro-réfléchissant obligatoire de nuit/visibilité insuffisante.",
       legalRef: "Code des transports L3123-1 à L3123-2 | Code de la route R431-1"
     },
-    'topographie-paris': {
+    'taxi-territoire': {
       content: "La topographie parisienne comprend la connaissance des monuments emblématiques, gares (6 gares SNCF principales), hôpitaux majeurs et axes de circulation stratégiques. Maîtriser ces repères est essentiel pour optimiser les trajets.",
       tip: "Organisez Paris par arrondissements en spirale : 1-4 (centre historique), 5-7 (rive gauche), 8-9 (affaires/Opéra), 10-12 (gares Est/Lyon), 13-15 (sud), 16-17 (ouest résidentiel), 18-20 (nord-est populaire).",
       legalRef: "Connaissance territoriale – Référentiel Taxi Paris"
