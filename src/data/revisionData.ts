@@ -989,6 +989,7 @@ export const revisionModules: RevisionModule[] = [
         id: 'fra-communication-orale',
         title: 'Communication orale',
         essential: "Vouvoiement systématique + écoute active + ton calme et posé.",
+        narrative: "La communication orale dans le T3P n'est pas un simple échange de politesses : c'est l'outil principal de construction de la relation commerciale. Le client juge le professionnalisme du conducteur dès les premières secondes — voix, débit, choix des mots. Le vouvoiement est la règle absolue, quel que soit l'âge du client : il marque le respect et la distance professionnelle.\n\nL'écoute active est tout aussi cruciale. Il ne s'agit pas seulement d'entendre, mais de montrer qu'on a compris. Trois techniques : laisser le client finir sa phrase (jamais interrompre), reformuler pour vérifier (« Si je comprends bien, vous souhaitez… »), confirmer l'engagement (« C'est noté, nous partons donc vers… »). Cette boucle évite 80 % des malentendus sur la destination ou les arrêts.\n\nLe ton compte autant que les mots. Un débit calme rassure un client stressé (avion à prendre, rendez-vous médical). À l'inverse, un débit haché ou un ton agressif déclenche immédiatement une plainte potentielle. Enfin, le jargon technique (« on va prendre la N118 puis l'A86 ») doit être traduit en repères concrets (« on passe par l'ouest, environ 35 minutes »).",
         keyPoints: [
           "Formules : Bonjour, S'il vous plaît, Merci, Je vous en prie",
           "Écoute active : laisser parler, reformuler, confirmer",
@@ -996,9 +997,24 @@ export const revisionModules: RevisionModule[] = [
           "Annoncer : prix, durée estimée, itinéraire"
         ],
         fieldExample: "Le chauffeur reformule : 'Si je comprends bien, vous souhaitez passer par les quais ?'",
+        practicalCases: [
+          {
+            situation: "Un client monte et lance « Salut, on va à Roissy ». Le chauffeur a 25 ans, le client environ 40.",
+            question: "Comment le conducteur doit-il répondre ?",
+            answer: "« Bonjour Monsieur, je vous emmène à l'aéroport Charles-de-Gaulle. Quel terminal souhaitez-vous ? »",
+            reasoning: "Même si le client tutoie, le conducteur doit maintenir le vouvoiement (règle pro), saluer formellement, et confirmer la destination en précisant (terminal CDG). C'est à la fois du respect commercial et une sécurité (éviter de se tromper de terminal sur les 7 que compte CDG)."
+          },
+          {
+            situation: "Un client visiblement stressé monte en disant : « Je vais rater mon train à Gare de Lyon, faites vite ! »",
+            question: "Quelle est la bonne attitude verbale ?",
+            answer: "Reformuler avec calme : « Compris, Gare de Lyon le plus vite possible. Je vais prendre l'itinéraire le plus rapide compte tenu du trafic, nous y serons dans environ 20 minutes. »",
+            reasoning: "On NE PROMET PAS une heure d'arrivée précise (sinon engagement de résultat). On reformule (le client se sent entendu), on annonce l'itinéraire choisi (transparence), on donne une estimation (« environ »). Le ton calme désamorce le stress sans nier l'urgence."
+          }
+        ],
         examWarning: "Le tutoiement = faute professionnelle avec les clients.",
         tips: [
-          "Premier contact = première impression : soigner l'accueil"
+          "Premier contact = première impression : soigner l'accueil",
+          "Reformuler avant de démarrer évite les erreurs d'adresse"
         ],
         legalRefs: []
       },
@@ -1006,35 +1022,67 @@ export const revisionModules: RevisionModule[] = [
         id: 'fra-communication-ecrite',
         title: 'Communication écrite',
         essential: "Facture = mentions obligatoires (nom, SIRET, date, montant HT/TTC).",
+        narrative: "L'écrit engage le conducteur bien plus que l'oral. Une facture mal rédigée peut être rejetée fiscalement, un courriel maladroit peut coûter un contrat B2B, un SMS ambigu peut générer un litige client. Le T3P doit donc maîtriser quelques règles simples mais non négociables.\n\nLa facture est l'écrit le plus encadré. Le Code de commerce (article L441-9) impose : identité du prestataire (nom, adresse, SIRET, n° TVA si assujetti), identité du client, date d'émission, numéro de facture unique et chronologique, désignation de la prestation, prix HT, taux et montant de TVA (10 % pour le transport de voyageurs), prix TTC. Pour un VTC, ajouter le numéro d'inscription au registre VTC. L'absence d'une seule de ces mentions rend la facture irrégulière et peut entraîner un redressement.\n\nLe courriel professionnel répond à une logique simple : objet clair (« Confirmation course du 12/06 — 14h CDG »), formule d'appel (Bonjour Madame X), corps structuré (1 idée par paragraphe), formule de politesse (« Cordialement »), signature complète (nom, fonction, téléphone, SIRET). On évite les majuscules (perçues comme un cri) et les multiples points d'exclamation (perçus comme amateur).",
         keyPoints: [
           "Facture : toutes mentions légales obligatoires",
           "Courriel pro : objet clair, formule d'appel, signature",
           "Orthographe : relire avant envoi",
-          "Conserver copies des échanges importants"
+          "Conserver copies des échanges importants (10 ans pour les factures)"
         ],
-        fieldExample: "Le VTC envoie sa facture avec nom, SIRET, date, montant HT, TVA et TTC.",
-        examWarning: "Une facture sans mentions obligatoires est irrégulière fiscalement.",
+        fieldExample: "Le VTC envoie sa facture avec nom, SIRET, n° d'inscription registre VTC, date, montant HT, TVA 10 % et TTC.",
+        practicalCases: [
+          {
+            situation: "Un client professionnel demande une facture pour une course de 80 € TTC effectuée hier. Le conducteur lui envoie un SMS : « Course 80 euros, merci ».",
+            question: "Le client peut-il utiliser ce SMS comme facture pour sa comptabilité ?",
+            answer: "Non. Ce n'est pas une facture conforme et le client ne pourra pas la déduire.",
+            reasoning: "Il manque toutes les mentions obligatoires : identité complète du prestataire (SIRET, adresse), numéro de facture, date précise, ventilation HT/TVA/TTC, désignation de la prestation. Le conducteur doit émettre une vraie facture (PDF ou papier) avec un numéro chronologique unique."
+          },
+          {
+            situation: "Une entreprise demande au conducteur de modifier la date d'une facture pour qu'elle tombe sur l'exercice comptable précédent.",
+            question: "Que doit faire le conducteur ?",
+            answer: "Refuser. Une facture antidatée constitue un faux en écriture et un délit fiscal.",
+            reasoning: "Modifier la date d'une facture engage la responsabilité pénale du conducteur (faux et usage de faux, article 441-1 du Code pénal) et fiscale (fraude fiscale). La bonne pratique : émettre la facture à la date réelle de la prestation. Si erreur, faire un avoir et une nouvelle facture, jamais raturer."
+          }
+        ],
+        examWarning: "Une facture sans mentions obligatoires est irrégulière fiscalement (amende jusqu'à 15 € par mention manquante, plafonnée).",
         tips: [
-          "Éviter les majuscules (= crier) et les !!! multiples"
+          "Éviter les majuscules (= crier) et les !!! multiples",
+          "Numéroter les factures de façon strictement chronologique et continue"
         ],
-        legalRefs: ["Code de commerce (facturation)"]
+        legalRefs: ["Article L441-9 du Code de commerce", "Article 289 du CGI"]
       },
       {
         id: 'fra-comprehension-textes',
         title: 'Compréhension de textes',
         essential: "Textes réglementaires : lire chaque mot. Les nuances juridiques comptent.",
+        narrative: "Le conducteur T3P signe régulièrement des documents qui l'engagent juridiquement : contrats de partenariat avec une plateforme, contrats de location de véhicule, contrats d'assurance, conditions générales des centrales de réservation. Une lecture trop rapide peut transformer une opportunité en piège financier durable.\n\nLa première règle est de distinguer le vocabulaire juridique des mots du quotidien. « Stipuler » ne veut pas dire « préciser » mais « inscrire dans un contrat » (seul un contrat stipule, une loi dispose). « Abroger » signifie supprimer définitivement (pas suspendre). « En vigueur » signifie applicable actuellement. « Sous réserve de » introduit une condition suspensive. « Nonobstant » signifie « malgré ». Ces nuances changent radicalement la portée d'une clause.\n\nLa deuxième règle est de toujours chercher les clauses « pièges » : durée d'engagement, clause de tacite reconduction, délais et modalités de résiliation, pénalités, clause de non-concurrence, juridiction compétente en cas de litige. Une clause de tacite reconduction d'un an avec préavis de trois mois enferme le conducteur s'il rate la fenêtre. Avant de signer, il faut toujours lire l'intégralité, surligner ce qui est flou, et ne pas hésiter à demander un délai de réflexion ou un conseil professionnel.",
         keyPoints: [
           "Identifier : sujet, mots-clés, structure",
-          "Vocabulaire juridique : stipuler, abroger, en vigueur",
-          "Contrat : vérifier obligations et clauses de résiliation",
+          "Vocabulaire juridique : stipuler, abroger, en vigueur, nonobstant",
+          "Contrat : vérifier obligations, durée, résiliation, pénalités",
           "Ne jamais signer sans avoir tout lu"
         ],
-        fieldExample: "Le contrat dit 'résiliable avec préavis de 3 mois' : le chauffeur note cette échéance.",
-        examWarning: "Un document signé sans lecture = engagement quand même.",
-        tips: [
-          "En cas de doute juridique : consulter un professionnel"
+        fieldExample: "Le contrat dit 'résiliable avec préavis de 3 mois' : le chauffeur note cette échéance dans son agenda.",
+        practicalCases: [
+          {
+            situation: "Un conducteur signe un contrat avec une plateforme de réservation. L'article 7 stipule : « Le présent contrat est conclu pour une durée d'un an, renouvelable tacitement par périodes annuelles, sauf dénonciation par lettre recommandée avec accusé de réception au moins 90 jours avant l'échéance. »",
+            question: "Si le conducteur veut quitter la plateforme au bout d'un an, jusqu'à quand peut-il envoyer sa lettre de résiliation ?",
+            answer: "Au plus tard 90 jours (3 mois) avant la date anniversaire du contrat, par LRAR.",
+            reasoning: "La tacite reconduction reconduit automatiquement le contrat sauf dénonciation respectant les formes (LRAR) et le délai (90 jours). S'il rate cette fenêtre, il est engagé pour une année supplémentaire. Concrètement : si le contrat a été signé le 1er juin, la LRAR doit partir au plus tard le 3 mars de l'année suivante."
+          },
+          {
+            situation: "Un contrat d'assurance VTC contient la mention : « La garantie est acquise sous réserve du respect par l'assuré des conditions d'exercice prévues par le Code des transports. »",
+            question: "Que se passe-t-il si le conducteur fait une course de maraude (interdite en VTC) et a un accident ?",
+            answer: "L'assureur peut refuser sa garantie : la condition d'exercice légal n'était pas respectée.",
+            reasoning: "« Sous réserve de » est une condition suspensive : la garantie n'existe que si la condition est remplie. Comme la maraude est illégale pour un VTC (article L3122-9), le conducteur exerce hors cadre légal, ce qui annule la couverture. Conséquences potentielles : réparations du véhicule et indemnisation des tiers à sa charge personnelle."
+          }
         ],
-        legalRefs: []
+        examWarning: "Un document signé sans lecture = engagement quand même. La signature vaut acceptation pleine et entière.",
+        tips: [
+          "En cas de doute juridique : demander un délai et consulter",
+          "Toujours conserver l'original signé et un double"
+        ],
+        legalRefs: ["Article 1103 du Code civil (force obligatoire des contrats)"]
       }
     ]
   },
@@ -1054,16 +1102,32 @@ export const revisionModules: RevisionModule[] = [
         id: 'ang-accueil',
         title: 'Accueil en anglais',
         essential: "'May I' est plus poli que 'Can I' dans un contexte professionnel.",
+        narrative: "L'anglais T3P n'a pas vocation à être littéraire : il doit être professionnel, courtois et fonctionnel. La clientèle internationale (touristes, business travelers, équipages aériens) attend les codes de la communication anglo-saxonne hôtelière, où la politesse modale est centrale.\n\nLa distinction « Can I / May I » est l'archétype de cette politesse. « Can I take your luggage? » est correct grammaticalement mais demande une capacité. « May I take your luggage? » demande une permission — c'est la formule attendue dans un contexte de service haut de gamme. De même, « Would you like… » est plus poli que « Do you want… ». Maîtriser ces 3-4 modaux suffit pour passer d'un anglais touristique à un anglais professionnel.\n\nLes salutations s'adaptent au moment de la journée : Good morning (jusqu'à midi), Good afternoon (12 h-18 h), Good evening (après 18 h). « Good night » n'est PAS un salut d'accueil — c'est un « bonne nuit » qu'on dit quand on quitte quelqu'un le soir. Cette erreur courante trahit immédiatement un conducteur peu à l'aise. Enfin, le non-verbal — sourire, contact visuel, ouverture de portière — compense les éventuelles lacunes lexicales : un client se souvient surtout de la chaleur de l'accueil.",
         keyPoints: [
           "Good morning/afternoon/evening = Bonjour selon l'heure",
           "How may I help you? = Comment puis-je vous aider ?",
           "May I take your luggage? = Puis-je prendre vos bagages ?",
           "Please make yourself comfortable = Installez-vous"
         ],
-        fieldExample: "Le chauffeur accueille : 'Good afternoon! I will be your driver today.'",
-        examWarning: "'May I' = plus poli que 'Can I' en contexte pro.",
+        fieldExample: "Le chauffeur accueille : 'Good afternoon! I will be your driver today. May I take your luggage?'",
+        practicalCases: [
+          {
+            situation: "Il est 21h, un client international monte dans le véhicule. Le conducteur lui dit « Good night, sir ».",
+            question: "L'accueil est-il correct ?",
+            answer: "Non. « Good night » signifie « bonne nuit » (au moment où l'on se quitte). Il fallait dire « Good evening ».",
+            reasoning: "« Good night » est une formule de séparation, pas d'accueil. Le client peut être déstabilisé (est-ce que le chauffeur veut déjà qu'il descende ?). La bonne formule entre 18 h et minuit est « Good evening », qui est neutre et professionnelle."
+          },
+          {
+            situation: "Le conducteur doit demander au client s'il peut prendre ses bagages.",
+            question: "Quelle formulation choisir entre « Can I take your bag? » et « May I take your bag? » ?",
+            answer: "« May I take your bag, please? »",
+            reasoning: "« Can I » demande une capacité physique (« suis-je capable »), « May I » demande une permission polie. En contexte de service professionnel anglo-saxon, « May I » est la norme. L'ajout de « please » renforce la courtoisie. Ce détail différencie un service amateur d'un service premium."
+          }
+        ],
+        examWarning: "'May I' = plus poli que 'Can I' en contexte pro. 'Good night' ≠ accueil.",
         tips: [
-          "Le sourire et le contact visuel sont universels"
+          "Le sourire et le contact visuel sont universels",
+          "Apprendre 5 formules par cœur > improviser avec un anglais hésitant"
         ],
         legalRefs: []
       },
@@ -1071,6 +1135,7 @@ export const revisionModules: RevisionModule[] = [
         id: 'ang-trajet-informations',
         title: 'Informations trajet',
         essential: "'Approximately' = environ. Ne jamais promettre une heure exacte.",
+        narrative: "Pendant le trajet, le conducteur doit informer le client de manière claire et juridiquement prudente. Le piège classique est d'annoncer une heure d'arrivée ferme : en cas de retard, le client peut invoquer un engagement de résultat. La solution est d'utiliser systématiquement des modulateurs d'incertitude : « approximately », « about », « around », « roughly ».\n\nLa structure type d'une annonce de trajet est : situation actuelle + estimation + plan B. Exemple : « There is some traffic on the ring road (situation). We should arrive in approximately 35 minutes (estimation). If it gets worse, I will take an alternative route through the inner boulevards (plan B). » Cette structure rassure : le client comprend que le conducteur a anticipé.\n\nQuelques formulations clés à mémoriser. « We are now entering Paris » (annonce d'arrivée en zone urbaine). « The traffic is heavier than usual today » (justifie un retard sans promettre). « Would you mind if I take a different route? It will be faster » (demande l'accord avant de changer d'itinéraire — important pour la facturation et la confiance). « Is the temperature comfortable? » plutôt que « Are you hot? » (plus pro). Enfin, on évite « no problem » à toutes les sauces, qui sonne désinvolte ; on préfère « certainly » ou « of course ».",
         keyPoints: [
           "We should arrive in approximately 30 minutes",
           "There is some traffic ahead = Il y a du trafic",
@@ -1078,26 +1143,57 @@ export const revisionModules: RevisionModule[] = [
           "Is the temperature comfortable? = La température convient ?"
         ],
         fieldExample: "Le chauffeur informe : 'There is traffic, but we should arrive in about 40 minutes.'",
-        examWarning: "Toujours utiliser 'approximately' ou 'about' pour les estimations.",
+        practicalCases: [
+          {
+            situation: "Un client demande : « What time will we be at the airport? » Le conducteur sait qu'il faut environ 45 minutes mais le trafic est dense.",
+            question: "Quelle réponse adopter ?",
+            answer: "« We should arrive at the airport in approximately 45 to 55 minutes, depending on traffic. »",
+            reasoning: "Donner une fourchette plutôt qu'une heure fixe protège le conducteur et reste transparent. « Approximately » + fourchette + « depending on traffic » montrent qu'on a anticipé l'aléa. Donner « 14h30 précis » est un piège : si on arrive à 14h35, le client peut se plaindre."
+          },
+          {
+            situation: "À cause d'un accident sur l'itinéraire prévu, le conducteur souhaite passer par un trajet plus long mais plus fluide.",
+            question: "Comment l'annoncer en anglais sans froisser le client ?",
+            answer: "« There is an accident on our route. With your permission, I would like to take a slightly longer but much faster alternative. »",
+            reasoning: "On informe (transparence sur la cause), on demande l'accord (« with your permission »), on assume la conséquence (« slightly longer »), on justifie (« much faster »). Cette précaution évite la suspicion de surfacturation kilométrique et entretient la confiance."
+          }
+        ],
+        examWarning: "Toujours utiliser 'approximately' ou 'about' pour les estimations. Annoncer une heure ferme = engagement.",
         tips: [
-          "Informer proactivement rassure le client"
+          "Informer proactivement rassure le client",
+          "Demander l'accord avant tout changement d'itinéraire"
         ],
         legalRefs: []
       },
       {
         id: 'ang-vocabulaire-tourisme',
         title: 'Vocabulaire tourisme',
-        essential: "Connaître le nom anglais des monuments : Eiffel Tower, Louvre Museum...",
+        essential: "Connaître le nom anglais des monuments : Eiffel Tower, Louvre Museum, Notre-Dame Cathedral...",
+        narrative: "Un client touristique évalue le professionnalisme du conducteur à sa capacité de nommer correctement les lieux. Dire « the Eiffel Tower » au lieu de « la Tour Eiffel » est une marque de respect linguistique. La règle générale : on garde le nom propre français (Notre-Dame, Champs-Élysées, Louvre) mais on traduit le nom commun (Tower, Cathedral, Museum, Avenue).\n\nLes monuments incontournables à maîtriser : Eiffel Tower (7ème), Arc de Triomphe (8ème), Notre-Dame Cathedral (4ème), Louvre Museum (1er), Sacré-Cœur Basilica (18ème), Opéra Garnier (9ème), Centre Pompidou (4ème), Panthéon (5ème), Musée d'Orsay (7ème), Place de la Concorde (8ème), Champs-Élysées Avenue. Pour les quartiers : the Latin Quarter (5ème-6ème), Montmartre, Le Marais, the Champs-Élysées area.\n\nLe vocabulaire utile pour orienter : landmark (monument emblématique), sightseeing (visite touristique), city center / downtown (centre-ville), neighborhood (quartier), bank of the Seine (rive de la Seine — Left Bank/Right Bank), bridge (pont), square (place). Pour le transport : railway station (gare), subway / metro (métro), airport (aéroport), taxi rank / taxi stand (station de taxi). Il faut aussi savoir distinguer CDG (Charles de Gaulle Airport) et ORY (Orly Airport), souvent confondus par les Anglo-Saxons.",
         keyPoints: [
           "Landmark = monument emblématique",
           "Sightseeing = visite touristique",
           "City center / Downtown = centre-ville",
           "Railway station = gare / Airport = aéroport"
         ],
-        fieldExample: "Le client demande 'Where is Notre-Dame?' → 'It's on the Île de la Cité.'",
+        fieldExample: "Le client demande 'Where is Notre-Dame?' → 'It's on the Île de la Cité, in the heart of Paris.'",
+        practicalCases: [
+          {
+            situation: "Un touriste américain demande : « Can you drop me at the Notre Dame Museum? »",
+            question: "Que doit faire le conducteur ?",
+            answer: "Reformuler : « Do you mean Notre-Dame Cathedral, on the Île de la Cité? It's a cathedral, not a museum. »",
+            reasoning: "Le client se trompe (Notre-Dame est une cathédrale, pas un musée). Plutôt que de partir avec un doute, on reformule poliment et on rectifie. Cela évite une mauvaise destination et démontre une vraie connaissance de Paris — c'est un avantage compétitif majeur."
+          },
+          {
+            situation: "Un client demande : « How long to get to the Eiffel Tower from here? » On est à Opéra (9ème).",
+            question: "Donner une réponse complète en anglais.",
+            answer: "« From here, it should take approximately 20 to 25 minutes by car, depending on traffic. The Eiffel Tower is on the Left Bank, in the 7th district. »",
+            reasoning: "On combine : estimation prudente (« approximately », fourchette), localisation géographique (« Left Bank, 7th district »). Le client touriste apprécie ce contexte qui lui permet de se repérer pour ses prochaines visites. C'est aussi une opportunité de fidélisation."
+          }
+        ],
         examWarning: "Eiffel Tower, Arc de Triomphe, Notre-Dame Cathedral : mémoriser ces noms.",
         tips: [
-          "CDG = Charles de Gaulle Airport, ORY = Orly Airport"
+          "CDG = Charles de Gaulle Airport, ORY = Orly Airport",
+          "Left Bank / Right Bank = rive gauche / rive droite (très utilisé par les anglo-saxons)"
         ],
         legalRefs: []
       },
@@ -1105,16 +1201,32 @@ export const revisionModules: RevisionModule[] = [
         id: 'ang-aeroport',
         title: 'Vocabulaire aéroport',
         essential: "Terminal, Gate, Check-in, Boarding pass : mots essentiels aéroport.",
+        narrative: "L'aéroport représente une part substantielle du chiffre d'affaires T3P (forfaits CDG/Orly, navettes d'entreprises). Maîtriser le vocabulaire aéroportuaire anglais est donc un atout commercial direct. Une erreur de terminal à CDG (7 terminaux : 1, 2A, 2B, 2C, 2D, 2E, 2F, 2G, 3) peut faire perdre 20 minutes au client et lui faire rater son vol.\n\nLe vocabulaire critique se concentre sur le parcours du voyageur : check-in (enregistrement, généralement 2-3 h avant le vol), security (contrôle de sécurité), gate (porte d'embarquement, attribuée 30-60 min avant), boarding (embarquement), boarding pass (carte d'embarquement). Attention : check-in ≠ check-out. Check-out désigne le départ d'un hôtel (on libère la chambre), pas l'arrivée à l'aéroport. Cette confusion est extrêmement fréquente chez les conducteurs francophones.\n\nPour les bagages : carry-on / hand luggage (bagage cabine, généralement 8-10 kg), checked baggage (bagage en soute, à enregistrer), luggage / suitcase (valise), oversized luggage (bagage hors gabarit). Pour les types de vols : domestic flight (vol intérieur, généralement Terminal 2F à CDG), international flight (vol international), connecting flight (vol en correspondance). Toujours demander : « Which airline are you flying with? » et « Which terminal? » — ces deux informations conditionnent le point de dépose exact.",
         keyPoints: [
           "Flight = vol / Gate = porte d'embarquement",
           "Boarding pass = carte d'embarquement",
           "Check-in = enregistrement / Check-out = départ hôtel",
           "Carry-on = bagage cabine / Luggage = bagages"
         ],
-        fieldExample: "Le client dit 'Terminal 2E, Gate 34' : le chauffeur le dépose au bon endroit.",
-        examWarning: "Check-in (enregistrement) ≠ Check-out (départ hôtel).",
+        fieldExample: "Le client dit 'Terminal 2E, Gate 34' : le chauffeur le dépose au bon endroit (zone départs).",
+        practicalCases: [
+          {
+            situation: "Un client demande : « Drop me at the check-out, please. » Le conducteur l'emmène à l'aéroport CDG.",
+            question: "À quel endroit doit-il déposer le client ?",
+            answer: "Il faut d'abord demander confirmation : « Do you mean check-in, sir? Check-out is for hotels. »",
+            reasoning: "Le client a très probablement voulu dire « check-in » (enregistrement, zone Départs). « Check-out » désigne la libération d'une chambre d'hôtel. Ne pas reformuler = risque de dépose en zone Arrivées, à l'opposé. La reformulation polie évite l'erreur sans humilier le client."
+          },
+          {
+            situation: "Un client doit prendre un vol Air France pour New York. Il dit juste « CDG please ».",
+            question: "Quelles questions poser pour éviter l'erreur de terminal ?",
+            answer: "« Which airline are you flying with, and do you know your terminal? Air France international flights usually depart from Terminal 2E or 2F at CDG. »",
+            reasoning: "À CDG, Air France long-courrier = Terminal 2E ou 2F selon la destination. Déposer en Terminal 1 ferait perdre 15-20 min de navette CDGVAL au client. Le conducteur professionnel anticipe avec deux questions ciblées. Si le client ne sait pas, on vérifie sur l'app de la compagnie."
+          }
+        ],
+        examWarning: "Check-in (enregistrement) ≠ Check-out (départ hôtel). Confusion fréquente.",
         tips: [
-          "Toujours confirmer le terminal (CDG en a plusieurs)"
+          "Toujours confirmer le terminal (CDG en a plusieurs)",
+          "Demander la compagnie aérienne aide à déduire le terminal"
         ],
         legalRefs: []
       },
@@ -1122,6 +1234,7 @@ export const revisionModules: RevisionModule[] = [
         id: 'ang-situations-pratiques',
         title: 'Situations pratiques',
         essential: "'Could you spell that, please?' pour éviter les erreurs d'adresse.",
+        narrative: "Les situations délicates en anglais réclament des formules figées qu'on doit avoir mémorisées et prêtes à l'emploi. L'improvisation produit des phrases ambiguës qui dégradent le service. Trois familles de situations reviennent constamment : la non-compréhension, le problème technique ou de confort, la fin de course.\n\nFace à une adresse mal comprise (accent, prononciation), la formule magique est « Could you spell that, please? » (« Pouvez-vous l'épeler ? »). Elle est polie (« Could » au lieu de « Can »), sans connotation négative, et résout 90 % des malentendus. Variante : « Would you mind repeating the address, please? » Surtout ne JAMAIS faire semblant d'avoir compris — partir vers une mauvaise adresse coûte un client à vie.\n\nPour le confort : « Do you prefer the air conditioning on or off? », « Would you like me to lower the music? », « Is the temperature comfortable for you? ». Pour la fin de course : « We have arrived at your destination. Please make sure you have all your belongings. Here is your receipt. Have a pleasant day / a safe flight. » Pour un incident technique (panne légère, embouteillage exceptionnel) : « I am sorry, there seems to be a problem. Let me handle it / Let me find an alternative. » L'utilisation de « I am sorry » désamorce immédiatement la tension, même si le conducteur n'est pas responsable.",
         keyPoints: [
           "Could you spell that? = Pouvez-vous épeler ?",
           "I'm sorry, there seems to be a problem = Il semble y avoir un problème",
@@ -1129,9 +1242,24 @@ export const revisionModules: RevisionModule[] = [
           "Here is your receipt = Voici votre reçu"
         ],
         fieldExample: "Le chauffeur ne comprend pas l'adresse : 'Could you spell that, please?'",
+        practicalCases: [
+          {
+            situation: "Un client anglo-saxon donne une adresse mais le conducteur n'a pas saisi le nom de la rue à cause de l'accent.",
+            question: "Que doit-il faire ? Que NE PAS faire ?",
+            answer: "Demander : « Could you spell that, please? » Ne JAMAIS partir en faisant semblant d'avoir compris.",
+            reasoning: "Faire semblant = risque de mauvaise destination = perte de temps, client mécontent, voire facturation contestée. La formule « Could you spell that » est polie et professionnelle — elle montre qu'on prend la précision au sérieux. C'est l'inverse d'un aveu de faiblesse."
+          },
+          {
+            situation: "À la fin de la course, le client paie. Le conducteur veut lui souhaiter une bonne fin de journée et lui remettre son reçu.",
+            question: "Formuler une phrase de clôture professionnelle.",
+            answer: "« Thank you very much. Here is your receipt. Please make sure you have all your belongings. Have a pleasant evening! »",
+            reasoning: "On combine : remerciement (« Thank you very much »), remise du reçu (preuve commerciale), rappel des effets personnels (évite l'oubli, source de réclamations), souhait personnalisé selon l'heure (« evening » après 18 h). Cette dernière impression conditionne la note du client et son éventuelle recommandation."
+          }
+        ],
         examWarning: "Ne jamais prétendre avoir compris. Mieux vaut demander de répéter.",
         tips: [
-          "Parler lentement si le client semble ne pas comprendre"
+          "Parler lentement si le client semble ne pas comprendre",
+          "Mémoriser 5-10 phrases types couvre 80 % des situations"
         ],
         legalRefs: []
       }
@@ -1152,76 +1280,145 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'vtc-definition',
         title: 'Définition VTC',
-        essential: "VTC = réservation préalable obligatoire. Maraude interdite sous peine de 15 000€.",
+        essential: "VTC = réservation préalable obligatoire. Maraude interdite sous peine de 1 an de prison et 15 000 € d'amende.",
+        narrative: "Le statut juridique du VTC repose sur une notion fondamentale : la réservation préalable. Contrairement au taxi, qui peut prendre un client « à la volée » dans la rue (la maraude), le VTC ne peut transporter qu'un client qui a réservé sa course à l'avance, par tout moyen vérifiable (application, téléphone, site web, contrat-cadre B2B). Cette frontière, posée par la loi Thévenoud du 1er octobre 2014 et renforcée par la loi Grandguillaume du 29 décembre 2016, structure tout le métier.\n\nLa maraude — chercher des clients en circulant ou en stationnant sur la voie publique — est donc strictement interdite aux VTC. L'article L3124-9 du Code des transports prévoit des sanctions lourdes : 1 an d'emprisonnement, 15 000 € d'amende, immobilisation du véhicule, suspension de la carte professionnelle. Ce n'est pas une faute administrative mais un délit pénal. Le législateur a voulu protéger le monopole économique des taxis (qui ont payé leur ADS) tout en laissant un espace concurrentiel aux VTC sur le marché de la réservation.\n\nUne règle souvent oubliée : le retour à vide. Après avoir déposé un client, le VTC doit en principe retourner à son lieu de stationnement habituel (siège de l'entreprise ou parking de la plateforme) sauf s'il a déjà une nouvelle réservation. Cette obligation, qui peut sembler théorique, est en réalité contrôlée : un VTC qui stationne devant une gare ou un hôtel sans réservation peut être verbalisé.",
         keyPoints: [
           "VTC = Voiture de Transport avec Chauffeur",
           "Réservation préalable obligatoire (pas de prise en charge spontanée)",
-          "Maraude interdite : 1 an prison + 15 000€",
+          "Maraude interdite : 1 an prison + 15 000 € (délit pénal)",
+          "Retour à vide obligatoire sauf nouvelle réservation",
           "Inscription au registre VTC préfectoral obligatoire"
         ],
         fieldExample: "Un client hèle un VTC dans la rue : le chauffeur doit refuser (maraude = interdit).",
+        practicalCases: [
+          {
+            situation: "Un VTC vient de déposer un client à Saint-Lazare. En attendant une nouvelle réservation Uber, il se gare sur une place gratuite à proximité de la gare et attend 30 minutes.",
+            question: "Cette pratique est-elle légale ?",
+            answer: "Non. Le VTC est en infraction : sans réservation, il doit retourner à son lieu d'établissement.",
+            reasoning: "Stationner devant un point d'attraction (gare, hôtel, aéroport) sans réservation peut être qualifié de maraude (raccrochage de clientèle). Même si le conducteur n'accoste personne, l'intention de capter une demande spontanée est présumée. Sanction possible : amende + suspension de carte pro. Bonne pratique : retour au siège ou stationnement en zone neutre."
+          },
+          {
+            situation: "Un piéton hèle un VTC à un feu rouge en disant « Vous êtes libre ? Direction Châtelet ». Le VTC n'a aucune réservation à ce moment-là.",
+            question: "Peut-il accepter la course ?",
+            answer: "Non. Accepter constituerait une maraude punie d'1 an de prison et 15 000 € d'amende.",
+            reasoning: "L'article L3124-9 du Code des transports interdit formellement aux VTC de prendre un client sans réservation préalable, même si le client est demandeur. Pour que la course soit légale, il faudrait que le client la réserve via une application (même 5 secondes avant). C'est l'acte de réservation enregistrée qui légalise la prestation."
+          }
+        ],
         examWarning: "VTC = JAMAIS de maraude. C'est LA différence fondamentale avec les taxis.",
         confusionPoints: [
           "Taxi = maraude autorisée ≠ VTC = réservation préalable uniquement"
         ],
         tips: [
-          "Retour à vide obligatoire sauf nouvelle réservation"
+          "Conserver l'historique de réservation pendant 1 an minimum",
+          "Pas de stationnement sur emplacements taxis (amende immédiate)"
         ],
-        legalRefs: ["Article L3122-9 du Code des transports"]
+        legalRefs: ["Article L3122-9 du Code des transports", "Article L3124-9 (sanctions)", "Loi Thévenoud 2014", "Loi Grandguillaume 2016"]
       },
       {
         id: 'vtc-inscription-registre',
         title: 'Inscription au registre',
         essential: "Inscription au registre VTC obligatoire. Numéro à afficher sur le véhicule.",
+        narrative: "L'inscription au registre VTC est l'acte de naissance administratif de l'activité. Sans elle, ni la carte professionnelle ni le véhicule ne suffisent : le conducteur exerce illégalement, même s'il pense être « en règle » avec ses autres documents. Cette inscription, gérée par les préfectures (en Île-de-France : la DRIEAT — Direction Régionale et Interdépartementale de l'Environnement, de l'Aménagement et des Transports), valide trois éléments simultanément : l'exploitant (entreprise), le véhicule, et le conducteur.\n\nLe véhicule doit respecter des conditions techniques cumulatives : puissance ≥ 84 kW (115 ch), OU longueur ≥ 4,50 m, OU largeur ≥ 1,70 m. Un seul de ces critères suffit, mais en pratique la plupart des véhicules de gamme moyenne supérieure (Mercedes Classe E, BMW Série 5, Audi A6, Tesla Model 3) les remplissent largement. Le véhicule doit aussi être âgé de moins de 7 ans à la date d'inscription. L'assurance professionnelle « transport de personnes à titre onéreux » est obligatoire — une assurance personnelle classique ne couvre rien.\n\nUne fois inscrit, le véhicule reçoit une vignette d'identification numérotée, à apposer en bas à droite du pare-brise (côté passager). L'attestation d'inscription papier doit être présente à bord, présentable à tout contrôle (police, gendarmerie, DGCCRF). L'inscription est valable 5 ans et doit être renouvelée. Tout changement (nouveau véhicule, nouvelle adresse) doit être déclaré sous 1 mois.",
         keyPoints: [
           "Registre tenu par la préfecture ou DRIEAT (Île-de-France)",
-          "Véhicule : ≥ 84 kW OU ≥ 4,50m OU ≥ 1,70m largeur",
-          "Vignette avec numéro d'inscription visible",
+          "Véhicule : ≥ 84 kW OU ≥ 4,50 m OU ≥ 1,70 m largeur",
+          "Véhicule de moins de 7 ans à l'inscription",
+          "Vignette avec numéro d'inscription visible sur pare-brise",
           "Attestation d'inscription à bord obligatoire"
         ],
         fieldExample: "Le VTC affiche sa vignette avec son numéro d'inscription sur le pare-brise avant droit.",
-        examWarning: "Sans inscription = exercice illégal même avec la carte pro.",
-        tips: [
-          "Le numéro d'inscription est visible sur la vignette pare-brise"
+        practicalCases: [
+          {
+            situation: "Un conducteur possède sa carte professionnelle VTC depuis 6 mois. Il vient d'acheter une Renault Mégane (longueur 4,36 m, largeur 1,81 m, puissance 84 kW).",
+            question: "Ce véhicule est-il éligible au registre VTC ?",
+            answer: "Oui. Il remplit deux critères sur trois : largeur ≥ 1,70 m (1,81 m) et puissance ≥ 84 kW.",
+            reasoning: "Les critères sont alternatifs (« OU ») et non cumulatifs. Il suffit qu'UN seul soit respecté. La longueur de 4,36 m (< 4,50 m) n'est donc pas bloquante. Cependant, l'image de marque peut souffrir : la plupart des plateformes premium imposent en pratique un niveau de gamme supérieur."
+          },
+          {
+            situation: "Un VTC change de véhicule mais oublie de déclarer le changement à la préfecture. Il fait des courses avec le nouveau véhicule pendant 3 mois.",
+            question: "Quelles sont les conséquences en cas de contrôle ?",
+            answer: "Exercice illégal : le nouveau véhicule n'est pas inscrit. Sanctions possibles : amende, immobilisation du véhicule, suspension de la carte pro.",
+            reasoning: "L'inscription au registre est liée à un couple exploitant + véhicule + conducteur. Changer de véhicule sans déclaration rompt le lien réglementaire. De plus, l'assurance peut refuser sa garantie en cas d'accident (véhicule non déclaré pour l'activité). Délai légal de déclaration : 1 mois maximum après le changement."
+          }
         ],
-        legalRefs: ["Article R3122-1 du Code des transports"]
+        examWarning: "Sans inscription au registre = exercice illégal, même avec la carte pro valide.",
+        tips: [
+          "Le numéro d'inscription est visible sur la vignette pare-brise",
+          "Renouveler l'inscription tous les 5 ans (alerte agenda)"
+        ],
+        legalRefs: ["Article R3122-1 du Code des transports", "Arrêté du 23 décembre 2016 (critères véhicule)"]
       },
       {
         id: 'vtc-tarification',
         title: 'Tarification VTC',
-        essential: "Tarifs libres mais information préalable du client obligatoire.",
+        essential: "Tarifs libres mais information préalable du client obligatoire. TVA transport = 10 %.",
+        narrative: "À la différence du taxi (tarif réglementé par arrêté préfectoral), le VTC pratique des tarifs LIBRES. Chaque exploitant fixe sa grille comme il l'entend : forfait fixe (souvent utilisé pour les liaisons aéroport), tarif kilométrique, tarif horaire, ou combinaison temps + distance (modèle Uber). Cette liberté est cependant encadrée par une obligation centrale : l'information préalable et complète du client AVANT le début de la course.\n\nConcrètement, le client doit connaître soit le prix total exact (forfait), soit le mode de calcul détaillé (prix au km, prix de prise en charge, suppléments éventuels) avant de monter dans le véhicule. Sur une application, c'est l'affichage du prix estimé qui vaut information préalable. Pour une course de gré à gré, le conducteur doit annoncer oralement et idéalement écrire (SMS, mail). Ne pas respecter cette obligation expose à une qualification d'abus de faiblesse ou de pratique commerciale trompeuse (DGCCRF, jusqu'à 75 000 € d'amende pour personne physique).\n\nCôté fiscal, point CAPITAL : la TVA applicable au transport de voyageurs est de 10 %, pas 20 %. Cette TVA réduite (article 279 du CGI) s'applique à toutes les courses VTC et taxi. Le conducteur ne devient redevable de la TVA que s'il dépasse les seuils de la franchise en base (37 500 € HT en 2025) ; en dessous, il facture HT sans TVA, mais ne peut pas non plus la déduire sur ses charges. Le passage au régime réel devient intéressant quand les charges (carburant, péages, leasing) génèrent une TVA déductible significative.",
         keyPoints: [
           "Pas de tarif réglementé (libre concurrence)",
           "Modes : forfait, kilométrique, temps + distance",
           "Information prix AVANT la course obligatoire",
-          "TVA 10% pour le transport de voyageurs (si assujetti)"
+          "TVA 10 % pour le transport de voyageurs (si assujetti)",
+          "Franchise en base : 37 500 € HT en 2025"
         ],
-        fieldExample: "L'application affiche 35€ pour la course : le client accepte en connaissance de cause.",
-        examWarning: "TVA transport = 10% pour les VTC (et non 20% comme la TVA standard).",
+        fieldExample: "L'application affiche 35 € pour la course : le client accepte en connaissance de cause.",
+        practicalCases: [
+          {
+            situation: "Un VTC accepte une course de gré à gré sans annoncer le prix. À l'arrivée, il facture 80 € au client. Le client conteste et refuse de payer plus de 50 €.",
+            question: "Quelle est la position juridique ?",
+            answer: "Le conducteur est en tort : l'information préalable du prix est obligatoire. Le client est fondé à contester.",
+            reasoning: "L'article L111-1 du Code de la consommation impose au professionnel de communiquer au consommateur le prix avant la conclusion du contrat. Sans information préalable, le conducteur s'expose à : remboursement contraint, signalement DGCCRF, sanction administrative. Bonne pratique : annoncer un forfait ou un prix maximum AVANT de démarrer, idéalement par écrit (SMS)."
+          },
+          {
+            situation: "Une VTC, en début d'activité, réalise 25 000 € HT de chiffre d'affaires sur l'année. Elle est en franchise en base de TVA.",
+            question: "Doit-elle facturer la TVA à 10 % à ses clients ?",
+            answer: "Non. En franchise en base, elle facture HT sans TVA, avec la mention « TVA non applicable, art. 293 B du CGI ».",
+            reasoning: "Tant que le seuil de 37 500 € HT (2025) n'est pas dépassé, la VTC n'est pas redevable de la TVA. Elle ne la facture pas mais ne peut pas non plus la récupérer sur ses charges (carburant, leasing). Dès qu'elle dépasse le seuil, elle bascule automatiquement au régime réel à compter du 1er jour du mois de dépassement et doit facturer 10 % sur le transport."
+          }
+        ],
+        examWarning: "TVA transport voyageurs = 10 % (et non 20 % comme la TVA standard). Information préalable obligatoire.",
         confusionPoints: [
-          "TVA VTC = 10% ≠ TVA standard = 20%"
+          "TVA VTC = 10 % ≠ TVA standard = 20 %",
+          "Tarifs libres ≠ liberté de ne pas informer le client"
         ],
         tips: [
+          "Conserver toute trace écrite du tarif annoncé (SMS, screenshot app)",
           "Les suppléments doivent être annoncés à l'avance"
         ],
-        legalRefs: ["Article 279 du CGI (TVA 10%)"]
+        legalRefs: ["Article 279 du CGI (TVA 10 %)", "Article L111-1 du Code de la consommation", "Article 293 B du CGI (franchise)"]
       },
       {
         id: 'vtc-plateformes',
         title: 'Plateformes VTC',
         essential: "Le conducteur reste indépendant. La plateforme est un intermédiaire, pas un employeur.",
+        narrative: "Les plateformes de mise en relation (Uber, Bolt, Heetch, FreeNow, Marcel…) ont structuré le marché du VTC depuis 2014. Juridiquement, elles ne sont PAS des employeurs mais des intermédiaires commerciaux : elles mettent en relation un client et un conducteur indépendant en échange d'une commission (généralement 20-25 % de la course). Le conducteur conserve son statut d'auto-entrepreneur ou de société, encaisse sa rémunération nette de commission, et déclare son chiffre d'affaires personnellement.\n\nCe modèle est cependant contesté en justice. Plusieurs décisions de la Cour de cassation (notamment Uber, 4 mars 2020) ont requalifié certains conducteurs en salariés, retenant un faisceau d'indices : tarifs imposés, géolocalisation contrainte, système de notation, sanctions unilatérales. Une requalification individuelle est possible mais ne change pas le statut général de la profession : le VTC reste juridiquement indépendant tant qu'aucune décision ne le requalifie.\n\nEn pratique, un conducteur peut — et a souvent intérêt à — travailler avec PLUSIEURS plateformes simultanément (multi-apping). Cela diversifie les sources de revenus, permet de comparer les commissions et les types de courses, et réduit la dépendance à un seul acteur. Aucune clause d'exclusivité n'est légalement opposable à un indépendant. Le conducteur reste cependant seul responsable de sa conformité réglementaire : carte pro, inscription registre, assurance, factures. La plateforme ne se substitue jamais à ces obligations.",
         keyPoints: [
-          "Centrales (Uber, Bolt...) = intermédiaires inscrits",
-          "Commission prélevée sur chaque course",
-          "Possible de travailler avec plusieurs plateformes",
-          "Le conducteur reste responsable de sa conformité"
+          "Centrales (Uber, Bolt, Heetch...) = intermédiaires inscrits au registre des centrales",
+          "Commission prélevée sur chaque course (env. 20-25 %)",
+          "Possible de travailler avec plusieurs plateformes (multi-apping)",
+          "Le conducteur reste responsable de sa conformité réglementaire",
+          "Statut indépendant sauf requalification judiciaire individuelle"
         ],
-        fieldExample: "Un VTC travaille avec Uber et Bolt : il diversifie ses sources de clients.",
-        examWarning: "Statut = indépendant. Pas salarié de la plateforme (sauf requalification justice).",
+        fieldExample: "Un VTC travaille avec Uber et Bolt : il diversifie ses sources de clients et compare les commissions.",
+        practicalCases: [
+          {
+            situation: "Un conducteur VTC signe avec Uber un contrat qui prévoit une « préférence d'exclusivité » : il ne devrait pas se connecter à d'autres plateformes pendant ses heures Uber.",
+            question: "Cette clause est-elle valide juridiquement ?",
+            answer: "Très contestable. Un indépendant a en principe le droit de travailler avec qui il veut. Une clause d'exclusivité peut être un indice de requalification en salariat.",
+            reasoning: "L'indépendance d'un VTC implique la liberté de choisir ses clients et ses partenaires commerciaux. Une clause d'exclusivité imposée transforme le rapport en lien de subordination, ce qui est l'un des critères du contrat de travail. Le conducteur peut faire annuler la clause, voire demander la requalification en CDI avec rappel de salaires."
+          },
+          {
+            situation: "Un client laisse 3 sacs dans le coffre. Il appelle Uber qui le redirige vers le conducteur. Uber refuse toute responsabilité.",
+            question: "Qui est responsable des objets oubliés ?",
+            answer: "Le conducteur, en tant qu'indépendant prestataire de service. La plateforme n'est qu'un intermédiaire.",
+            reasoning: "Le contrat de transport lie le conducteur (indépendant) au client, pas la plateforme. Le conducteur a une obligation de restitution des effets oubliés. En pratique, il doit vérifier le véhicule après chaque course, conserver les objets oubliés et les restituer (souvent via la plateforme qui sert d'intermédiaire). Inversement, la plateforme ne peut pas être assignée comme employeur pour ces obligations."
+          }
+        ],
+        examWarning: "Statut = indépendant. Pas salarié de la plateforme (sauf requalification judiciaire individuelle).",
         tips: [
-          "Comparer les commissions des différentes plateformes"
+          "Comparer les commissions des différentes plateformes",
+          "Conserver ses propres relevés (ne pas dépendre des dashboards des plateformes pour la compta)"
         ],
-        legalRefs: ["Article L3141-1 du Code des transports"]
+        legalRefs: ["Article L3141-1 du Code des transports", "Cour de cassation, 4 mars 2020 (Uber)"]
       }
     ]
   },
@@ -1240,126 +1437,246 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'tx75-ads-licence',
         title: 'ADS (Licence taxi)',
-        essential: "ADS = Autorisation de Stationnement. Incessible depuis 2014 (loi Thévenoud).",
+        essential: "ADS = Autorisation de Stationnement. Incessible pour les nouvelles depuis 2014 (loi Thévenoud).",
+        narrative: "L'Autorisation De Stationnement (ADS), couramment appelée « licence taxi », est le droit administratif d'exploiter un véhicule comme taxi sur le territoire d'une commune. À Paris, environ 17 000 ADS sont en circulation, plafond fixé par arrêté préfectoral. C'est ce numerus clausus qui donne sa valeur (parfois > 100 000 €) à l'ADS sur le marché secondaire — ou plutôt qui le donnait, avant la réforme.\n\nLa loi Thévenoud du 1er octobre 2014 a opéré une révolution discrète mais profonde : les ADS DÉLIVRÉES APRÈS le 1er octobre 2014 sont INCESSIBLES. Elles sont attribuées gratuitement par la préfecture, à titre personnel et incessible, sur liste d'attente (plusieurs années à Paris). Le titulaire ne peut ni les vendre, ni les louer, ni les transmettre. À son départ (retraite, abandon), elles retournent à l'autorité administrative pour redistribution.\n\nLes ADS ANCIENNES (délivrées avant le 1er octobre 2014) restent cessibles, mais sous conditions : exploitation effective pendant au moins 5 ans avant la première cession, puis 15 ans pour les cessions suivantes. Cette double règle vise à éliminer progressivement la spéculation. À côté de l'ADS, le conducteur doit aussi détenir une carte professionnelle (aptitude à conduire un taxi). Les deux documents sont distincts : l'ADS est le droit du véhicule à exercer, la carte pro est l'aptitude du conducteur. Un même conducteur peut conduire plusieurs ADS différentes (locataire-gérant), et inversement une ADS peut être conduite par plusieurs conducteurs (doublage, équipes).",
         keyPoints: [
           "ADS ≠ carte pro : les deux sont obligatoires",
           "Délivrée par le préfet de police de Paris",
-          "~17 000 taxis parisiens (nombre limité)",
-          "Anciennes ADS (avant 2014) cessibles si exploitées 5 ans"
+          "~17 000 taxis parisiens (numerus clausus)",
+          "ADS post-2014 : incessibles, gratuites, liste d'attente",
+          "ADS pré-2014 : cessibles sous conditions (5 ou 15 ans d'exploitation)"
         ],
-        fieldExample: "Un chauffeur veut racheter une licence : si elle date de 2012, elle est cessible sous conditions.",
+        fieldExample: "Un chauffeur veut racheter une licence : si elle date de 2012 et a été exploitée 5 ans, elle est cessible.",
+        practicalCases: [
+          {
+            situation: "Un conducteur, titulaire d'une ADS attribuée en mars 2018, souhaite la revendre 80 000 € à un confrère.",
+            question: "L'opération est-elle légale ?",
+            answer: "Non. Les ADS délivrées après le 1er octobre 2014 sont strictement incessibles.",
+            reasoning: "La loi Thévenoud a coupé net le marché des ADS post-2014. L'attribution étant gratuite et nominative, toute cession (vente, donation, location) est nulle. En cas de tentative, la préfecture peut retirer l'ADS et le « repreneur » se retrouve sans rien (et sans recours pour récupérer son argent versé hors cadre légal). Pour exercer, il doit s'inscrire sur la liste d'attente."
+          },
+          {
+            situation: "Un chauffeur taxi conduit son propre véhicule équipé d'une ADS valide. Lors d'un contrôle, il présente l'ADS mais a oublié sa carte professionnelle à son domicile.",
+            question: "Est-il en règle ?",
+            answer: "Non. La carte professionnelle doit être présente et présentable à bord à tout moment. Sanction : amende et signalement à la préfecture.",
+            reasoning: "ADS et carte pro sont deux documents distincts et CUMULATIVEMENT obligatoires. L'ADS autorise le véhicule à exercer, la carte pro atteste de l'aptitude du conducteur (examen, casier, médical). Sans carte pro physiquement présente, le conducteur exerce sans pouvoir prouver son aptitude — c'est assimilé à un exercice illégal, même temporaire."
+          }
+        ],
         examWarning: "ADS = droit d'exploitation ≠ carte pro = aptitude à conduire. Deux documents distincts !",
         confusionPoints: [
-          "ADS = exploitation du taxi ≠ Carte pro = aptitude du conducteur"
+          "ADS = exploitation du taxi ≠ Carte pro = aptitude du conducteur",
+          "ADS post-2014 incessibles ≠ ADS pré-2014 cessibles sous conditions"
         ],
         tips: [
-          "Liste d'attente pour nouvelles ADS : plusieurs années"
+          "Liste d'attente pour nouvelles ADS : plusieurs années à Paris",
+          "Toujours avoir ADS + carte pro à bord lors d'un contrôle"
         ],
-        legalRefs: ["Loi Thévenoud 2014", "Articles L3121-1 du Code des transports"]
+        legalRefs: ["Loi Thévenoud du 1er octobre 2014", "Articles L3121-1 et suivants du Code des transports"]
       },
       {
         id: 'tx75-zones-maraude',
         title: 'Zones et maraude',
-        essential: "Maraude = réservée aux taxis. Client peut choisir n'importe quel taxi dans la file.",
+        essential: "Maraude = réservée aux taxis. Le client peut choisir n'importe quel taxi dans la file.",
+        narrative: "La maraude est le privilège historique du taxi : la possibilité de chercher et de prendre en charge des clients en circulant sur la voie publique ou en stationnant sur des emplacements réservés. C'est ce privilège qui justifie le numerus clausus et la valeur de l'ADS. Aucun VTC, aucun VMDTR ne peut faire de maraude — sous peine de sanctions pénales lourdes.\n\nL'ADS taxi parisien autorise la maraude sur le territoire de la Ville de Paris et des communes limitrophes (petite couronne). Concrètement, un taxi parisien peut prendre un client à Paris pour l'emmener à Boulogne-Billancourt, mais ne peut pas reprendre un client à Boulogne pour le déposer ailleurs en banlieue : il doit revenir à vide ou attendre une réservation. Cette règle protège les ADS des communes voisines (Levallois, Neuilly, etc.).\n\nDans les stations de taxis, la règle est « premier arrivé, premier servi » : les taxis font la queue dans l'ordre d'arrivée. MAIS — et c'est un point d'examen fréquent — le client a le DROIT de choisir n'importe quel taxi de la file, pas obligatoirement le premier. Un client peut passer devant 3 taxis pour monter dans le 4ème (par exemple pour un véhicule plus spacieux ou plus accessible). Le conducteur ne peut pas le refuser pour cette raison. À l'inverse, le conducteur a une obligation de transport : il ne peut refuser une destination que pour un motif légitime (fin de service déclarée, sécurité, animal dangereux non autorisé).",
         keyPoints: [
-          "Maraude = chercher des clients en circulant/stationnant",
-          "Zone : Paris + communes limitrophes autorisées",
-          "Stations : file d'attente, 1er arrivé = 1er servi",
-          "Mais le client peut choisir n'importe quel taxi de la file"
+          "Maraude = chercher des clients en circulant ou en stationnant",
+          "Zone autorisée : Paris + communes limitrophes",
+          "Stations : file d'attente, 1er arrivé = 1er servi (côté taxi)",
+          "MAIS le client peut choisir n'importe quel taxi de la file",
+          "Refus de course = uniquement motif légitime"
         ],
         fieldExample: "Un client passe devant 3 taxis et monte dans le 4ème : c'est son droit.",
+        practicalCases: [
+          {
+            situation: "À la station de la gare de Lyon, 5 taxis font la queue. Un client arrive, passe devant les 4 premiers et monte dans le 5ème. Le premier taxi proteste et veut empêcher le départ.",
+            question: "Qui a raison ?",
+            answer: "Le client a raison. Il a le droit légal de choisir n'importe quel taxi de la file.",
+            reasoning: "La règle « 1er arrivé, 1er servi » s'applique entre taxis (ordre de la file) mais ne lie pas le client. Le client est libre de son choix : préférence pour le modèle, la couleur, l'accessibilité, voire pour le conducteur. Le premier taxi qui refuse le départ ou tente d'imposer son tour s'expose à une plainte et un signalement à la préfecture. Cette règle est régulièrement testée à l'examen."
+          },
+          {
+            situation: "Un taxi parisien dépose un client à Versailles. À la sortie, un autre client lui demande de l'emmener à Antony.",
+            question: "Peut-il accepter cette course ?",
+            answer: "Non. Sa zone de maraude est Paris et la petite couronne. Versailles est en grande couronne — il doit revenir à vide ou avoir une réservation.",
+            reasoning: "L'ADS taxi parisien autorise la maraude uniquement sur sa zone d'attribution (Paris et certaines communes limitrophes selon arrêté). Prendre un client en maraude à Versailles serait empiéter sur la zone des taxis versaillais — c'est une infraction. En revanche, s'il avait une réservation préalable (téléphone, application taxi), la course serait légale partout."
+          }
+        ],
         examWarning: "Le client a le droit de choisir son taxi dans la file (pas obligé de prendre le premier).",
         tips: [
-          "Refuser une destination lointaine est interdit (sauf fin de service)"
+          "Refuser une destination lointaine est interdit (sauf fin de service)",
+          "Connaître précisément sa zone d'attribution (arrêté préfectoral)"
         ],
-        legalRefs: ["Arrêté préfectoral taxis parisiens"]
+        legalRefs: ["Arrêté préfectoral taxis parisiens", "Article L3121-11 du Code des transports"]
       },
       {
         id: 'tx75-taximetre-tarifs',
         title: 'Tarifs 2026',
-        essential: "4 tarifs (A, B, C, D). Forfaits aéroports 2026 : CDG 56€/65€, Orly 45€/36€.",
+        essential: "4 tarifs (A, B, C, D). Forfaits aéroports 2026 : CDG 56 €/65 €, Orly 45 €/36 €.",
+        narrative: "Les tarifs du taxi parisien sont RÉGLEMENTÉS par arrêté préfectoral, contrairement aux VTC. Ils sont révisés chaque année et entrent en vigueur le 1er février (sauf exception). Pour 2026, l'arrêté du 24 décembre 2025 a fixé les nouveaux tarifs. La structure repose sur 4 lettres (A, B, C, D) qui correspondent chacune à une combinaison zone × horaire.\n\nLE TARIF A est le moins cher : Paris intra-muros, en JOUR (10h-17h), en SEMAINE (lundi-samedi hors jours fériés). C'est le tarif standard de la journée ouvrée. LE TARIF B s'applique soit à Paris la nuit (17h-10h) et dimanches/fériés, soit à la banlieue (petite couronne) en jour. LE TARIF C couvre la banlieue de nuit/dimanche/fériés, ainsi que les retours à vide. LE TARIF D est le plus cher, dédié aux zones aéroportuaires et aux longues distances spécifiques. Le taximètre bascule automatiquement entre ces tarifs selon l'horaire et la position GPS — le chauffeur n'intervient pas.\n\nLes FORFAITS AÉROPORTS sont distincts et obligatoires pour les liaisons Paris ↔ CDG/Orly. Pour 2026 : Paris RIVE DROITE ↔ CDG = 56 € ; Paris RIVE GAUCHE ↔ CDG = 65 € (plus cher car distance plus longue depuis la rive gauche, paradoxalement). Paris RIVE DROITE ↔ Orly = 45 € ; Paris RIVE GAUCHE ↔ Orly = 36 € (moins cher, car Orly est au sud, donc plus proche de la rive gauche). Ces forfaits s'appliquent quelle que soit la durée réelle du trajet (embouteillages inclus) et ne sont pas négociables. Pièges classiques : ils ne s'appliquent pas si le client demande un détour, et ils ne couvrent pas les communes hors Paris.",
         keyPoints: [
           "A = Paris jour semaine (10h-17h) = le moins cher",
-          "B = Paris nuit/dimanche ou banlieue jour",
+          "B = Paris nuit/dimanche OU banlieue jour",
           "C = Banlieue nuit/dimanche + retour à vide",
-          "D = Zone aéroport et longue distance (le plus cher)"
+          "D = Zone aéroport et longue distance (le plus cher)",
+          "Forfaits aéroports : appliqués automatiquement, non négociables"
         ],
-        fieldExample: "Course Paris Gare du Nord → CDG : forfait rive droite 56€ (tarifs 2026).",
-        examWarning: "Forfaits 2026 : CDG rive droite 56€, rive gauche 65€ / Orly rive droite 45€, rive gauche 36€.",
+        fieldExample: "Course Paris Gare du Nord → CDG : forfait rive droite 56 € (tarifs 2026).",
+        practicalCases: [
+          {
+            situation: "Un client part de l'hôtel Lutetia (75006, rive gauche) à 22h30 un mardi pour aller à l'aéroport de Roissy-CDG.",
+            question: "Quel tarif s'applique ?",
+            answer: "Le forfait aéroport rive gauche → CDG : 65 € (tarif 2026).",
+            reasoning: "Les forfaits aéroport s'appliquent sur la liaison Paris ↔ CDG/Orly indépendamment de l'heure. Le départ étant rive gauche (6ème arrondissement), le forfait est de 65 €. Le taximètre ne tourne pas en mode classique : le forfait est annoncé et le compteur affiche directement ce montant. L'heure tardive n'augmente pas le prix (forfait inclus)."
+          },
+          {
+            situation: "Un client demande un détour de 15 minutes par les Champs-Élysées pour prendre des photos, sur un trajet Paris → CDG.",
+            question: "Le forfait s'applique-t-il toujours ?",
+            answer: "Non. Tout détour à la demande du client annule le forfait. Le taximètre passe au tarif kilométrique standard.",
+            reasoning: "Le forfait aéroport est conçu pour le trajet direct Paris ↔ aéroport. Un détour de convenance (touristique, arrêt courses) le dénature : le conducteur passe en taximètre classique. Le client doit être informé AVANT le détour que le prix risque d'être supérieur au forfait. Cette information préalable évite le litige à l'arrivée."
+          }
+        ],
+        examWarning: "Forfaits 2026 : CDG rive droite 56 €, rive gauche 65 € / Orly rive droite 45 €, rive gauche 36 €.",
         confusionPoints: [
-          "Rive droite CDG = 56€ ≠ Rive gauche CDG = 65€",
-          "Rive droite Orly = 45€ ≠ Rive gauche Orly = 36€"
+          "Rive droite CDG = 56 € ≠ Rive gauche CDG = 65 €",
+          "Rive droite Orly = 45 € ≠ Rive gauche Orly = 36 € (inversé)"
         ],
         tips: [
-          "Le forfait s'applique quelle que soit la durée effective"
+          "Le forfait s'applique quelle que soit la durée effective",
+          "Informer le client si détour = sortie du forfait"
         ],
         legalRefs: ["Arrêté du 24 décembre 2025 (tarifs 2026)"]
       },
       {
         id: 'tx75-supplements',
         title: 'Suppléments autorisés',
-        essential: "4ème passager adulte, bagages volumineux, réservation. Chien guide = gratuit.",
+        essential: "4ème passager adulte, bagages volumineux, réservation. Chien guide = transport gratuit.",
+        narrative: "Les suppléments sont strictement encadrés par l'arrêté préfectoral tarifaire. Le conducteur ne peut PAS inventer de supplément ni en majorer le montant : la liste est limitative. Tout supplément non prévu est constitutif d'une majoration illégale, sanctionnée par une amende et un signalement préfectoral.\n\nQuatre suppléments principaux sont autorisés à Paris : (1) le 4ème passager adulte — environ 4 € — destiné à compenser le confort réduit (les enfants de moins de 10 ans ne comptent pas dans ce décompte) ; (2) les bagages volumineux transportés dans le coffre (en règle générale : au-delà d'une valise par passager, ou si volume hors gabarit) ; (3) la réservation préalable par téléphone — environ 4 € pour réservation immédiate, 7 € pour réservation à l'avance ; (4) les animaux de compagnie (sauf cas d'exception ci-dessous).\n\nEXCEPTION FONDAMENTALE : les chiens guides d'aveugle et chiens d'assistance pour personnes handicapées sont transportés GRATUITEMENT et OBLIGATOIREMENT. Refuser leur transport est une discrimination réprimée par la loi (article L3121-8 du Code des transports), sanctionnée pénalement. De même, refuser un client en fauteuil roulant ou avec assistance technique est illégal. À l'inverse, sont strictement INTERDITS : le pourboire « obligatoire », l'arrondi systématique à la hausse, la majoration pour paiement carte, la surfacturation pour clientèle étrangère (discrimination tarifaire).",
         keyPoints: [
-          "4ème passager adulte : ~4€ (pas les enfants < 10 ans)",
+          "4ème passager adulte : ~4 € (pas les enfants < 10 ans)",
           "Bagages volumineux en soute : supplément autorisé",
-          "Réservation téléphonique : ~4€",
-          "Chien guide = transport gratuit obligatoire"
+          "Réservation téléphonique : ~4 € immédiate, ~7 € à l'avance",
+          "Chien guide / d'assistance = transport gratuit obligatoire",
+          "Suppléments interdits : pourboire forcé, refus d'espèces"
         ],
         fieldExample: "Un client avec 3 grandes valises : le chauffeur peut facturer un supplément bagages.",
-        examWarning: "Suppléments interdits : pourboire obligatoire, refus d'espèces, surtarification.",
-        tips: [
-          "Toujours annoncer les suppléments avant la course"
+        practicalCases: [
+          {
+            situation: "Une personne aveugle accompagnée de son chien guide hèle un taxi. Le conducteur veut facturer un supplément animal de 4 €.",
+            question: "Est-ce légal ?",
+            answer: "Non. Les chiens guides d'aveugle sont transportés gratuitement et obligatoirement. Tout supplément est illégal.",
+            reasoning: "L'article L3121-8 du Code des transports impose le transport gratuit des chiens guides et chiens d'assistance. Refuser ou facturer = discrimination liée au handicap, punie de 5 ans d'emprisonnement et 75 000 € d'amende (article 225-2 du Code pénal), sans compter la suspension administrative de l'ADS. Le conducteur doit accepter sans frais et sans question."
+          },
+          {
+            situation: "Une famille de 4 adultes + 2 enfants de 6 et 8 ans monte dans un taxi. Le conducteur facture un supplément 4ème passager + supplément 5ème passager + supplément 6ème passager.",
+            question: "Que peut-il facturer ?",
+            answer: "Uniquement le supplément 4ème passager adulte. Les enfants de moins de 10 ans ne comptent pas.",
+            reasoning: "Le supplément ne s'applique qu'à partir du 4ème PASSAGER ADULTE. Les enfants de moins de 10 ans sont exclus du décompte. De plus, un taxi standard est limité à 4 passagers (en plus du conducteur) : transporter 6 personnes (4 adultes + 2 enfants) peut être impossible selon la carte grise. Si le véhicule l'autorise, seul un supplément (4ème adulte) est facturable, pas plusieurs."
+          }
         ],
-        legalRefs: ["Arrêté préfectoral tarifaire"]
+        examWarning: "Suppléments interdits : pourboire obligatoire, refus d'espèces, surtarification, majoration carte.",
+        tips: [
+          "Toujours annoncer les suppléments AVANT la course",
+          "Refus chien guide = délit pénal (pas seulement administratif)"
+        ],
+        legalRefs: ["Arrêté préfectoral tarifaire", "Article L3121-8 du Code des transports", "Article 225-2 du Code pénal"]
       },
       {
         id: 'tx75-equipements',
         title: 'Équipements obligatoires',
-        essential: "Lumineux (vert=libre), taximètre scellé, TPE obligatoire tout montant.",
+        essential: "Lumineux (vert = libre), taximètre scellé, TPE obligatoire pour tout montant.",
+        narrative: "Un taxi parisien est immédiatement reconnaissable à ses équipements normalisés. Cette uniformisation visuelle, imposée par la préfecture, protège le client (identification facile, distinction avec les VTC) et le conducteur (preuve de légitimité, dissuasion de la concurrence déloyale). Chaque équipement obligatoire fait l'objet de contrôles techniques périodiques.\n\nLe LUMINEUX, fixé sur le toit, indique « TAXI PARISIEN » avec une lettre tarifaire visible (A, B, C, D) qui change automatiquement selon le tarif en vigueur. La couleur verte signifie « libre » (disponible pour une course), l'éteint ou orange signifie « occupé » ou « réservé ». Un lumineux défectueux empêche d'exercer. Le TAXIMÈTRE doit être homologué (norme française), scellé par un installateur agréé (toute manipulation rompt le scellé et est constitutive de fraude), et vérifié annuellement (contrôle technique métrologique). Sa précision est essentielle : un taximètre dérivant en faveur du chauffeur expose à des sanctions lourdes.\n\nLe TPE (Terminal de Paiement Électronique) est OBLIGATOIRE depuis le décret n°2017-235 du 24 février 2017. La carte bancaire doit être acceptée pour TOUT MONTANT, sans minimum. Refuser un paiement carte pour 5 € est aussi illégal que de le refuser pour 100 €. Sanction : 150 € d'amende + signalement préfecture. De plus, le conducteur ne peut pas facturer un supplément pour paiement carte (majoration interdite). Autres équipements obligatoires : la carte affichage des tarifs visible côté passager, l'attestation d'aptitude médicale, et désormais l'application LeTaxi pour la géolocalisation (registre national).",
         keyPoints: [
           "Lumineux : 'TAXI PARISIEN' + lettre tarif",
           "Vert = libre, éteint/orange = occupé/réservé",
           "Taximètre homologué, scellé, vérifié annuellement",
-          "TPE : carte bancaire acceptée pour tout montant"
+          "TPE obligatoire : carte bancaire acceptée pour TOUT montant",
+          "Pas de majoration pour paiement carte"
         ],
-        fieldExample: "Un client veut payer 8€ en carte : le chauffeur ne peut pas refuser.",
-        examWarning: "Refuser la carte bancaire = infraction (150€ d'amende + signalement préfecture).",
+        fieldExample: "Un client veut payer 8 € en carte : le chauffeur ne peut pas refuser.",
+        practicalCases: [
+          {
+            situation: "Un client effectue une course de 6,80 €. À l'arrivée, il veut payer en carte. Le conducteur refuse en disant qu'il y a un minimum de 10 € en carte.",
+            question: "Le conducteur est-il en règle ?",
+            answer: "Non. Le refus de carte bancaire pour tout montant constitue une infraction punie de 150 € d'amende.",
+            reasoning: "Le décret n°2017-235 du 24 février 2017 impose au taxi d'accepter la carte bancaire sans aucun seuil minimum. Imposer 10 €, 5 € ou n'importe quel minimum est une pratique interdite. Le client peut signaler le refus à la préfecture (photo de plaque, course datée), ce qui déclenche une enquête et une éventuelle suspension d'ADS pour récidive."
+          },
+          {
+            situation: "Un taxi a son lumineux 'TAXI PARISIEN' en panne (ampoule grillée). Il continue son service en attendant la réparation.",
+            question: "Cette pratique est-elle légale ?",
+            answer: "Non. Un lumineux non fonctionnel rend le véhicule non conforme aux conditions d'exercice. Le conducteur doit cesser l'activité jusqu'à réparation.",
+            reasoning: "Le lumineux est un équipement OBLIGATOIRE qui permet l'identification du taxi par les clients et par les forces de l'ordre. Sans lumineux fonctionnel, le client ne peut pas savoir si le taxi est libre, et l'identification visuelle taxi vs voiture privée disparaît. C'est aussi une question de concurrence loyale avec les VTC. Sanction : amende et immobilisation possible du véhicule."
+          }
+        ],
+        examWarning: "Refuser la carte bancaire = infraction (150 € d'amende + signalement préfecture).",
         tips: [
-          "Vérifier quotidiennement le bon fonctionnement des équipements"
+          "Vérifier quotidiennement le bon fonctionnement des équipements",
+          "Un scellé taximètre rompu = présomption de fraude"
         ],
-        legalRefs: ["Décret n°2017-235 (paiement électronique)"]
+        legalRefs: ["Décret n°2017-235 (paiement électronique)", "Arrêté préfectoral équipements"]
       },
       {
         id: 'tx75-obligations',
         title: 'Obligations taxi',
-        essential: "Obligation de transport sauf motif légitime. Itinéraire le plus court ou rapide.",
+        essential: "Obligation de transport sauf motif légitime. Itinéraire le plus court ou rapide au choix du client.",
+        narrative: "Le taxi exerce une mission de service public. Cette qualification, qui peut sembler théorique, génère des obligations très concrètes que n'a pas le VTC. La principale est l'OBLIGATION DE TRANSPORT : un taxi en service, signalé libre, ne peut pas refuser un client sans motif légitime. C'est la contrepartie du monopole de la maraude et du numerus clausus.\n\nLes motifs légitimes de refus sont strictement encadrés : fin de service déclarée et signalée (lumineux éteint), incompatibilité de sécurité (client visiblement violent, en état d'ébriété avec risque, transport d'objets dangereux), animal non autorisé hors chiens guides, ou impossibilité matérielle (taxi accidenté, panne en cours). Le refus pour motif « trop loin », « pas rentable », « mauvais quartier » est ILLÉGAL et expose à une amende + suspension. En cas de doute, le conducteur doit pouvoir justifier objectivement son refus.\n\nL'ITINÉRAIRE est également encadré. Le conducteur doit prendre soit le trajet le PLUS COURT (en distance), soit le plus RAPIDE (en temps), au choix du client. Si le client ne précise rien, le conducteur prend le trajet le plus court par défaut. Détour non justifié = surfacturation possible. Inversement, si le client demande un itinéraire particulier (panoramique, évitement d'une zone), le conducteur doit s'exécuter et le tarif suit (taximètre). L'INFORMATION TARIFAIRE est dès la prise en charge : le tarif en cours doit être annoncé ou visible (lettre A, B, C, D affichée), et un reçu doit être remis à la fin (obligatoire si demandé, automatique au-delà de 25 €).",
         keyPoints: [
           "Obligation de transport (pas de refus arbitraire)",
-          "Motifs légitimes : sécurité, fin de service",
+          "Motifs légitimes : sécurité, fin de service déclarée",
           "Itinéraire : le plus court OU le plus rapide (au choix client)",
-          "Information tarif dès la prise en charge"
+          "Information tarif dès la prise en charge",
+          "Reçu obligatoire au-delà de 25 € ou sur demande"
         ],
         fieldExample: "Un client demande d'aller à 80 km : le chauffeur ne peut pas refuser (sauf fin de service).",
-        examWarning: "Refuser une course sans motif légitime = amende + suspension possible.",
+        practicalCases: [
+          {
+            situation: "À 23h, un client demande à un taxi parisien libre une course Paris → Lille (220 km). Le conducteur refuse, prétextant que c'est trop loin et qu'il ne fera pas de retour.",
+            question: "Le refus est-il légitime ?",
+            answer: "Non. Le coût ou la longueur de la course n'est pas un motif légitime de refus. C'est une infraction.",
+            reasoning: "L'obligation de transport vaut pour toute destination raisonnable, indépendamment du chiffre d'affaires. Le retour à vide est compensé par les tarifs (C pour banlieue nuit, D longue distance). Le conducteur peut négocier un forfait avec le client mais ne peut pas refuser. Refus = amende, signalement, voire suspension d'ADS. Seuls les motifs réellement objectifs (fin de service déclarée AVANT la sollicitation, sécurité) sont valables."
+          },
+          {
+            situation: "Un client demande à aller de l'Opéra à Bastille. Le conducteur prend le périphérique (15 km) au lieu des grands boulevards (4 km).",
+            question: "Cette pratique est-elle légale ?",
+            answer: "Non, sauf si le client a explicitement demandé un trajet rapide et que le périph est plus rapide à cet instant. Sinon = surfacturation.",
+            reasoning: "L'obligation est de prendre le trajet le PLUS COURT ou le plus RAPIDE selon le choix du client. Sans précision, par défaut c'est le plus court. Faire 15 km au lieu de 4 sans justification est un détour facturé indûment, assimilable à de l'escroquerie. Le client peut contester la course, demander remboursement et signaler à la préfecture. En cas de litige, le GPS de l'application LeTaxi peut être consulté."
+          }
+        ],
+        examWarning: "Refuser une course sans motif légitime = amende + suspension possible. 'Trop loin' n'est PAS un motif légitime.",
         tips: [
-          "Noter le motif en cas de refus pour justification ultérieure"
+          "Noter le motif en cas de refus pour justification ultérieure",
+          "Si fin de service : éteindre le lumineux AVANT la sollicitation"
         ],
         legalRefs: ["Articles R3121-1 et suivants du Code des transports"]
       },
       {
         id: 'tx75-controles',
         title: 'Contrôles et sanctions',
-        essential: "Refus CB : 150€. Tarification non conforme : amende + immobilisation possible.",
+        essential: "Refus CB : 150 €. Tarification non conforme : amende + immobilisation possible.",
+        narrative: "Le taxi est l'une des professions les plus contrôlées en France. Police, gendarmerie, DGCCRF (concurrence et fraudes), DRIEAT (transports en IDF), et la Préfecture de Police elle-même peuvent intervenir, soit lors de contrôles routiers, soit sur signalement client, soit par opérations ciblées. La fréquence est telle que tout conducteur subit en moyenne 2-3 contrôles par an.\n\nLes documents systématiquement vérifiés sont : la carte professionnelle (conducteur), l'attestation d'ADS (véhicule), le certificat de visite technique du taximètre (annuel), l'attestation d'assurance professionnelle, le permis de conduire valide, et l'attestation d'aptitude médicale en cours de validité. L'absence d'un seul de ces documents peut entraîner l'immobilisation immédiate du véhicule. Tous doivent être à BORD et présentables.\n\nLes sanctions sont graduées selon la gravité. INFRACTIONS LÉGÈRES (équipement déficient mineur, oubli ponctuel) : avertissement, rappel à l'ordre, amende administrative (38 € à 150 €). INFRACTIONS MOYENNES (refus de CB, suppléments indus, défaut de TPE) : amende 150 € + signalement préfectoral, qui peut déclencher une procédure disciplinaire. INFRACTIONS GRAVES (maraude refusée, refus discrimination, surtarification volontaire, conduite sous influence) : convocation devant la commission de discipline, suspension temporaire de l'ADS (1 à 12 mois), voire retrait définitif en cas de récidive. Les infractions pénales (faux, escroquerie, agression) s'ajoutent et relèvent du juge pénal. Coopérer poliment et présenter immédiatement tous les documents évite l'aggravation.",
         keyPoints: [
-          "Contrôles par Préfecture de Police, police, gendarmerie",
-          "Vérification : ADS, carte pro, taximètre, assurance",
-          "Défaut TPE ou refus CB : 150€ + signalement",
-          "Comportement non pro : avertissement puis suspension ADS"
+          "Contrôles par Préfecture de Police, police, gendarmerie, DGCCRF",
+          "Vérification : ADS, carte pro, taximètre, assurance, médical",
+          "Défaut TPE ou refus CB : 150 € + signalement",
+          "Comportement non pro : avertissement → suspension ADS",
+          "Récidive : risque de retrait définitif d'ADS"
         ],
-        fieldExample: "Un taxi refuse une carte pour 12€ : le client peut signaler à la préfecture.",
+        fieldExample: "Un taxi refuse une carte pour 12 € : le client peut signaler à la préfecture (photo plaque + horaire).",
+        practicalCases: [
+          {
+            situation: "Lors d'un contrôle, le conducteur présente tous ses documents sauf le certificat de visite annuelle du taximètre, qu'il a oublié au bureau.",
+            question: "Que risque-t-il ?",
+            answer: "Immobilisation possible du véhicule jusqu'à présentation, plus amende administrative. Le taximètre non vérifiable annuellement est présumé non conforme.",
+            reasoning: "Le certificat de visite atteste de la conformité métrologique du taximètre (juste calcul des tarifs). Sans lui, impossible de garantir que le client est facturé correctement. Le conducteur doit pouvoir le présenter immédiatement. Bonne pratique : photocopie scannée sur le smartphone et original dans le porte-documents du véhicule en permanence."
+          },
+          {
+            situation: "Un client signale à la préfecture qu'un taxi a refusé la carte bancaire pour 8 €. Le conducteur reçoit une convocation.",
+            question: "Quelles sont les conséquences possibles ?",
+            answer: "Première fois : amende 150 € + rappel à la loi. Récidive : passage en commission de discipline, suspension d'ADS possible.",
+            reasoning: "Le signalement est instruit : la préfecture peut consulter les relevés de TPE pour vérifier. Si le refus est avéré, sanction graduée. La récidive est particulièrement sanctionnée car elle révèle une volonté délibérée d'enfreindre la loi. Une ou deux récidives peuvent suffire à déclencher une suspension de 1 à 3 mois — soit la perte de tout revenu sur la période. Le conducteur a intérêt à régulariser dès la première fois."
+          }
+        ],
         examWarning: "Tous les documents doivent être à portée de main lors d'un contrôle.",
         tips: [
-          "Coopérer avec les agents lors des contrôles"
+          "Coopérer poliment avec les agents lors des contrôles",
+          "Photocopier tous les documents et stocker sur smartphone (secours)"
         ],
         legalRefs: ["Articles R3124-1 et suivants du Code des transports"]
       }
@@ -1381,16 +1698,33 @@ export const revisionModules: RevisionModule[] = [
         id: 'topo-arrondissements',
         title: 'Arrondissements',
         essential: "20 arrondissements en spirale depuis le centre. Code postal = 75 + n° arrondissement.",
+        narrative: "Paris est organisé en 20 arrondissements numérotés selon une spirale qui démarre au centre (le Louvre, 1er arrondissement) et se déroule dans le sens des aiguilles d'une montre vers l'extérieur. Cette logique en escargot, mise en place par Haussmann en 1860, n'a rien d'arbitraire : elle reflète l'extension historique de la ville et permet, une fois mémorisée, de localiser instantanément n'importe quelle adresse.\n\nLa Seine sépare Paris en deux rives. La RIVE DROITE (au nord de la Seine) regroupe les arrondissements 1, 2, 3, 4, puis 8 à 12, puis 16 à 20. C'est la rive des affaires, des grands magasins, des théâtres. La RIVE GAUCHE (au sud) regroupe les arrondissements 5, 6, 7, 13, 14, 15. C'est traditionnellement la rive intellectuelle (Sorbonne, éditeurs, ministères). Cette distinction est culturellement forte et utilisée dans la facturation des forfaits aéroports (rives différentes = tarifs différents).\n\nLe code postal parisien est toujours « 75 0XX » où XX est le numéro d'arrondissement sur 2 chiffres. Ainsi : 75001 = 1er, 75008 = 8ème, 75016 = 16ème, 75020 = 20ème. Exception : le 16ème a aussi le code 75116 (Auteuil) en plus du 75016 (Chaillot/Passy). Cette dualité piège les conducteurs néophytes. À l'examen comme sur le terrain, savoir convertir un code postal en arrondissement et inversement est une compétence de base testée systématiquement.",
         keyPoints: [
           "1er = Louvre (centre), spirale vers extérieur",
           "Rive droite (nord Seine) : 1-4, 8-12, 16-20",
           "Rive gauche (sud Seine) : 5-7, 13-15",
-          "Code postal : 75008 = 8ème arrondissement"
+          "Code postal : 75008 = 8ème arrondissement",
+          "16ème : 75016 ET 75116 (exception)"
         ],
         fieldExample: "Client dit '75016' : c'est le 16ème arrondissement, quartier résidentiel ouest.",
+        practicalCases: [
+          {
+            situation: "Un client donne l'adresse « 45 rue de Vaugirard, 75006 ». Le conducteur doit identifier l'arrondissement et la rive.",
+            question: "Où se situe cette adresse ?",
+            answer: "6ème arrondissement, rive gauche (quartier Saint-Sulpice / Sénat).",
+            reasoning: "75006 = 6ème arrondissement (les deux derniers chiffres). Le 6ème est en rive gauche (groupe 5-6-7-13-14-15). La rue de Vaugirard est la plus longue de Paris (4,3 km) et traverse plusieurs arrondissements ; au n° 45, on est près du Sénat et du Jardin du Luxembourg. Cette double identification (arrondissement + repère) est typique d'un conducteur expert."
+          },
+          {
+            situation: "Pour un forfait aéroport Paris → CDG, le tarif dépend de la rive de départ. Le client part du 75004 (Notre-Dame).",
+            question: "Quel forfait s'applique ?",
+            answer: "Rive droite (75004 = 4ème, rive droite) → forfait CDG rive droite = 56 € (2026).",
+            reasoning: "Le 4ème arrondissement est en rive droite (groupe 1-2-3-4). Même si Notre-Dame est sur l'Île de la Cité (centre du fleuve), administrativement le 4ème est rattaché à la rive droite. Le forfait applicable est donc 56 €, et non 65 € (rive gauche). Cette distinction est régulièrement piégée à l'examen."
+          }
+        ],
         examWarning: "Les 2 derniers chiffres du code postal = numéro d'arrondissement.",
         tips: [
-          "Périphérique = ceinture de Paris (35 km)"
+          "Périphérique = ceinture de Paris (35 km)",
+          "Spirale dans le sens horaire depuis le 1er"
         ],
         legalRefs: []
       },
@@ -1398,67 +1732,137 @@ export const revisionModules: RevisionModule[] = [
         id: 'topo-monuments',
         title: 'Monuments majeurs',
         essential: "Axe historique : Louvre → Tuileries → Concorde → Champs → Arc de Triomphe → La Défense.",
+        narrative: "Les monuments parisiens ne sont pas seulement des points touristiques : ce sont des REPÈRES DE NAVIGATION essentiels au conducteur professionnel. Un client qui dit « emmenez-moi près de la Tour Eiffel » exprime une zone (7ème, Champ-de-Mars), pas une adresse. Connaître la localisation précise, l'arrondissement, la station de métro et les axes d'accès de chaque grand monument différencie immédiatement le conducteur expert du débutant.\n\nL'AXE HISTORIQUE de Paris est l'épine dorsale de la ville : il part de la Pyramide du Louvre, traverse les jardins des Tuileries, la place de la Concorde, remonte les Champs-Élysées jusqu'à la place de l'Étoile (Arc de Triomphe), puis se prolonge par l'avenue de la Grande Armée et l'avenue Charles-de-Gaulle jusqu'à La Défense (Grande Arche). Cet axe rectiligne de 8 km est le principal repère est-ouest de Paris. Le connaître par cœur permet de comprendre 70 % des trajets touristiques.\n\nLes monuments-phares à mémoriser : TOUR EIFFEL (7ème, Champ-de-Mars, métro Bir-Hakeim ou Trocadéro pour la vue) ; ARC DE TRIOMPHE (8ème, place Charles-de-Gaulle anciennement place de l'Étoile, croisement de 12 avenues — piège visuel et nominal) ; SACRÉ-CŒUR (18ème, butte Montmartre, métro Anvers + funiculaire ou Abbesses) ; NOTRE-DAME (4ème, Île de la Cité, métro Cité) ; LOUVRE (1er, métro Palais-Royal ou Louvre-Rivoli) ; OPÉRA GARNIER (9ème, métro Opéra) ; PANTHÉON (5ème, place du Panthéon, RER Luxembourg). Attention : « place de l'Étoile » et « place Charles-de-Gaulle » désignent le même lieu.",
         keyPoints: [
           "Tour Eiffel : 7ème, Champ de Mars, métro Bir-Hakeim",
           "Arc de Triomphe : 8ème, place de l'Étoile, 12 avenues",
           "Sacré-Cœur : 18ème, Montmartre, métro Anvers",
-          "Notre-Dame : 4ème, Île de la Cité"
+          "Notre-Dame : 4ème, Île de la Cité",
+          "Axe historique : Louvre → La Défense (8 km)"
         ],
-        fieldExample: "Client veut voir 'les Champs' puis 'la Tour' : Arc de Triomphe → Tour Eiffel.",
+        fieldExample: "Client veut voir 'les Champs' puis 'la Tour' : Arc de Triomphe → Tour Eiffel via Iéna.",
+        practicalCases: [
+          {
+            situation: "Un client touriste demande « Drop me at the Étoile, near the big arch ». Le conducteur doit identifier le lieu.",
+            question: "Où va-t-il déposer le client ?",
+            answer: "Place Charles-de-Gaulle (anciennement place de l'Étoile), 8ème arrondissement, sous l'Arc de Triomphe.",
+            reasoning: "« Étoile » et « Charles-de-Gaulle » désignent le MÊME lieu — la place a été rebaptisée mais le nom historique reste utilisé. Le conducteur doit reconnaître les deux. La place est aussi le carrefour des 12 avenues (dont les Champs-Élysées, l'avenue de la Grande Armée, l'avenue Foch). Attention : la dépose se fait obligatoirement sur une avenue voisine, l'accès direct à l'Arc étant interdit aux véhicules."
+          },
+          {
+            situation: "Un client demande le trajet le plus rapide entre le Louvre et le Trocadéro.",
+            question: "Quel itinéraire emprunter ?",
+            answer: "Suivre l'axe historique : Quai du Louvre → Cours la Reine → Pont de l'Alma → Trocadéro. Ou par les Champs si trafic le permet.",
+            reasoning: "L'axe rive droite (quais + Cours la Reine) longe la Seine, est généralement plus rapide que l'axe Champs-Élysées (souvent encombré). Le passage par le pont de l'Alma offre en bonus une vue spectaculaire sur la Tour Eiffel — apprécié des touristes. Connaître les alternatives entre les grands axes permet d'optimiser le temps et d'enrichir l'expérience client."
+          }
+        ],
         examWarning: "Place de l'Étoile = Place Charles de Gaulle (deux noms pour le même lieu).",
         tips: [
-          "Attention aux zones piétonnes autour des monuments"
+          "Attention aux zones piétonnes autour des monuments",
+          "Maîtriser l'axe historique = clé de 70 % des trajets touristiques"
         ],
         legalRefs: []
       },
       {
         id: 'topo-gares',
         title: 'Gares SNCF',
-        essential: "6 grandes gares, chacune dessert une direction géographique.",
+        essential: "6 grandes gares, chacune dessert une direction géographique précise.",
+        narrative: "Les six grandes gares parisiennes sont organisées selon une logique géographique simple : chaque gare dessert la région française vers laquelle elle pointe, plus les pays voisins dans cette direction. Mémoriser cette logique évite l'erreur fatale qui consiste à déposer un client à la mauvaise gare — perte de train assurée et plainte client systématique.\n\nGARE DU NORD (10ème) : dessert le nord de la France (Lille, Calais), la Belgique, les Pays-Bas, le Royaume-Uni (Eurostar via le tunnel sous la Manche). C'est la gare LA PLUS FRÉQUENTÉE D'EUROPE (700 000 voyageurs/jour). GARE DE L'EST (10ème, juste à côté du Nord) : dessert l'est de la France (Strasbourg, Reims), l'Allemagne, l'Europe centrale. Les deux gares sont proches mais distinctes — confusion fréquente. GARE DE LYON (12ème) : sud-est de la France (Lyon, Marseille, Côte d'Azur), Suisse, Italie. C'est le hub TGV vers le sud, énorme et complexe (Hall 1, Hall 2).\n\nGARE MONTPARNASSE (15ème) : ouest et sud-ouest (Bordeaux, Nantes, Bretagne, Toulouse). GARE D'AUSTERLITZ (13ème) : centre de la France et sud (Orléans, Toulouse partiellement, Espagne en train de nuit). GARE SAINT-LAZARE (8ème) : Normandie (Rouen, Le Havre, Caen, Deauville). Particularité : Saint-Lazare ne dessert AUCUN TGV — uniquement des trains régionaux et Intercités. Une autre piège classique d'examen.\n\nLe conducteur doit aussi anticiper le temps de dépose : ces gares ont des accès véhicules contraints, et la distance entre la dépose-minute et le quai peut atteindre 10-15 minutes à pied à Montparnasse ou Gare de Lyon.",
         keyPoints: [
-          "Gare du Nord (10ème) : Londres, Belgique, TGV Nord",
+          "Gare du Nord (10ème) : Londres (Eurostar), Belgique, TGV Nord",
+          "Gare de l'Est (10ème) : Strasbourg, Allemagne",
           "Gare de Lyon (12ème) : Lyon, Marseille, Suisse, Italie",
           "Montparnasse (15ème) : Bordeaux, Nantes, Bretagne",
-          "Saint-Lazare (8ème) : Normandie (pas de TGV)"
+          "Saint-Lazare (8ème) : Normandie (PAS de TGV)",
+          "Austerlitz (13ème) : Orléans, sud-ouest (limité)"
         ],
         fieldExample: "Client va à Marseille : Gare de Lyon, TGV Sud-Est.",
-        examWarning: "Gare du Nord = la plus fréquentée d'Europe.",
+        practicalCases: [
+          {
+            situation: "Un client annonce : « Je dois prendre le train pour Strasbourg dans 1 heure, emmenez-moi à la gare. »",
+            question: "Quelle gare ?",
+            answer: "Gare de l'Est (10ème). Surtout pas Gare du Nord, qui est juste à côté mais dessert le Nord et l'international.",
+            reasoning: "Strasbourg = est de la France, donc Gare de l'Est. Les deux gares sont à 300 m l'une de l'autre, à pied par la rue La Fayette. La confusion est extrêmement fréquente, particulièrement chez les touristes qui ne distinguent pas. Erreur de dépose à Gare du Nord = ~15 min à pied avec bagages = train raté = plainte garantie. Le conducteur doit toujours reformuler : « Pour Strasbourg, c'est Gare de l'Est, je confirme ? »"
+          },
+          {
+            situation: "Un client demande de l'emmener à la « Gare TGV » pour aller à Caen.",
+            question: "Quelle gare et quel piège ?",
+            answer: "Saint-Lazare (8ème). Mais attention : aucun TGV ne dessert Caen. Le client confond « train » et « TGV ».",
+            reasoning: "Caen est en Normandie, desservie par Saint-Lazare via des trains Intercités (pas de TGV sur cet axe). Le conducteur doit délicatement rectifier : « C'est bien Saint-Lazare, mais ce sera un train régional ou Intercités, pas un TGV. » Cela évite que le client ne se trompe sur le numéro de train ou le quai à l'arrivée. La précision technique fidélise le client professionnel."
+          }
+        ],
+        examWarning: "Gare du Nord ≠ Gare de l'Est (à 300 m). Saint-Lazare ne dessert PAS de TGV.",
         tips: [
-          "Prévoir le temps de dépose (circulation + distance dans la gare)"
+          "Prévoir le temps de dépose (circulation + distance dans la gare)",
+          "Toujours reformuler la gare avant de démarrer"
         ],
         legalRefs: []
       },
       {
         id: 'topo-aeroports',
         title: 'Aéroports',
-        essential: "CDG (Roissy) = 3 terminaux. Orly = 4 terminaux. Forfaits taxi 2026.",
+        essential: "CDG (Roissy) = 3 terminaux principaux. Orly = 4 terminaux. Forfaits taxi 2026.",
+        narrative: "L'Île-de-France compte deux grands aéroports internationaux et deux secondaires. CHARLES-DE-GAULLE (CDG / Roissy) est le 1er aéroport français et le 2e européen (~76 millions de passagers/an). Il se situe à 25 km au nord-est de Paris, accessible par l'A1 (depuis la Porte de la Chapelle) ou l'A3 (depuis la Porte de Bagnolet). Le trajet prend 45 min à 1h15 selon le trafic — prévoir 1h en marge de sécurité pour un client qui décolle.\n\nCDG est composé de 3 terminaux principaux mais avec des SOUS-TERMINAUX nombreux : Terminal 1 (compagnies internationales hors Air France/SkyTeam), Terminal 2 (Air France et alliances SkyTeam, divisé en 2A, 2B, 2C, 2D, 2E, 2F, 2G), Terminal 3 (low-cost et charters). La confusion entre sous-terminaux du T2 est LE piège classique : T2E et T2F sont à 800 m l'un de l'autre, sans navette directe. Toujours demander la compagnie ET le numéro de terminal au client.\n\nORLY se situe à 14 km au sud de Paris, accessible par l'A6a et l'A6b (depuis la Porte d'Orléans) ou la N7. Trajet : 25-45 min selon trafic. Depuis 2019, les 4 terminaux historiques (Sud, Ouest, etc.) ont été renommés ORLY 1, 2, 3, 4. Orly 4 (ex-Orly Sud) accueille les vols internationaux long-courriers ; Orly 1, 2, 3 traitent essentiellement les vols domestiques et européens. LE BOURGET (à 7 km de CDG) est dédié à l'AVIATION D'AFFAIRES (jets privés). BEAUVAIS-TILLÉ est à 85 km au nord — clientèle low-cost (Ryanair, Wizz Air), forfait taxi non applicable (course longue distance).",
         keyPoints: [
           "CDG : A1 Porte de la Chapelle, RER B, Roissybus",
+          "CDG terminaux : 1, 2 (A-G), 3",
           "Orly : A6 Porte d'Orléans, Orlyval+RER B, T7",
+          "Orly terminaux : 1, 2, 3, 4 (depuis 2019)",
           "Forfaits 2026 : CDG 56€/65€, Orly 45€/36€",
           "Le Bourget : affaires, Beauvais : low-cost (85 km)"
         ],
         fieldExample: "Client va à CDG Terminal 2E : A1 Porte de la Chapelle, prévoir 1h.",
-        examWarning: "CDG a plusieurs terminaux 2 (2A, 2B, 2C, 2D, 2E, 2F, 2G). Toujours confirmer !",
+        practicalCases: [
+          {
+            situation: "Un client se présente à 16h pour un vol Lufthansa au départ de CDG à 18h30. Il dit juste « CDG, terminal 1 ».",
+            question: "Le terminal annoncé est-il cohérent ?",
+            answer: "Possible mais à vérifier : Lufthansa peut être au T1 ou au T2 selon la destination. Mieux vaut demander confirmation.",
+            reasoning: "Lufthansa (alliance Star Alliance) opère majoritairement depuis le Terminal 1 à CDG, mais certains vols partagés (codeshare Air France) partent du T2. Si le client se trompe de terminal, perte de 20-30 min en navette CDGVAL. Bonne pratique : demander à voir la carte d'embarquement ou la confirmation, et croiser avec le numéro de vol pour fiabiliser. Le temps de marge restant (2h30) est suffisant pour rattraper une erreur, mais il faut anticiper."
+          },
+          {
+            situation: "Un client demande à aller à « Roissy » avec un trajet rapide à 8h du matin.",
+            question: "Quel itinéraire et quelle estimation de temps ?",
+            answer: "A1 depuis Porte de la Chapelle (ou A3 si trafic A1 saturé). Estimation : 1h à 1h15 (heure de pointe).",
+            reasoning: "8h = pleine heure de pointe entrante. L'A1 est généralement saturée entre 7h30 et 9h30. Le conducteur peut préférer l'A3 (Porte de Bagnolet) si Waze ou Google Maps indique un meilleur temps. À cette heure, jamais promettre moins de 1h. Annoncer une fourchette « 1h à 1h15 » protège des aléas et reste fiable. Si le vol décolle dans 2h, c'est encore jouable ; sinon, alerter le client immédiatement."
+          }
+        ],
+        examWarning: "CDG a plusieurs terminaux 2 (2A, 2B, 2C, 2D, 2E, 2F, 2G). Toujours confirmer compagnie + terminal !",
         tips: [
-          "Prévoir 1h pour CDG, 30-45min pour Orly depuis Paris"
+          "Prévoir 1h pour CDG, 30-45min pour Orly depuis Paris",
+          "Beauvais = 85 km, course longue (forfait non applicable)"
         ],
         legalRefs: []
       },
       {
         id: 'topo-hopitaux',
         title: 'Hôpitaux',
-        essential: "AP-HP = réseau public. Pitié-Salpêtrière = le plus grand de France.",
+        essential: "AP-HP = réseau public parisien. Pitié-Salpêtrière = le plus grand de France.",
+        narrative: "L'Assistance Publique - Hôpitaux de Paris (AP-HP) est le plus grand centre hospitalier universitaire d'Europe : 39 hôpitaux, 100 000 personnels, 8 millions de patients/an. Connaître les principaux établissements et leurs spécialités est crucial pour le conducteur T3P, qui transporte régulièrement patients, familles et soignants. Une erreur d'hôpital sur une urgence médicale peut avoir des conséquences vitales.\n\nLes hôpitaux phares à mémoriser : PITIÉ-SALPÊTRIÈRE (13ème, boulevard de l'Hôpital) — le plus grand hôpital de France et d'Europe, toutes spécialités, urgences adultes 24/7, neurologie et cardiologie de référence. HEGP — Hôpital européen Georges-Pompidou (15ème, rue Leblanc) — moderne, urgences adultes, oncologie. COCHIN (14ème, faubourg Saint-Jacques) — maternité, médecine interne. NECKER-ENFANTS MALADES (15ème, rue de Sèvres) — référence pédiatrique nationale, urgences enfants. ROBERT-DEBRÉ (19ème, boulevard Sérurier) — autre grande pédiatrie. HÔTEL-DIEU (4ème, parvis Notre-Dame) — historique, sur l'Île de la Cité, urgences centre Paris.\n\nPour les urgences vitales, ne JAMAIS improviser : appeler le 15 (SAMU) qui orientera vers l'établissement le plus adapté selon la pathologie et la disponibilité. Pour les naissances : maternités proches de Cochin (14ème), Port-Royal (14ème), Robert-Debré (19ème), Necker (15ème), Trousseau (12ème). Hors AP-HP, l'HÔPITAL AMÉRICAIN (Neuilly) et l'HÔPITAL FRANCO-BRITANNIQUE (Levallois) accueillent une clientèle internationale aisée — souvent demandés par les VTC et taxis premium. Mémoriser les hôpitaux proches de son secteur d'activité est un investissement professionnel.",
         keyPoints: [
           "Pitié-Salpêtrière (13ème) : le plus grand, toutes spécialités",
           "HEGP Georges-Pompidou (15ème) : moderne, urgences",
-          "Necker (15ème) : pédiatrie, urgences enfants",
-          "Hôtel-Dieu (4ème) : Île de la Cité, urgences centre"
+          "Necker (15ème) et Robert-Debré (19ème) : pédiatrie",
+          "Hôtel-Dieu (4ème) : Île de la Cité, urgences centre",
+          "Hôpital Américain (Neuilly) : clientèle internationale"
         ],
         fieldExample: "Urgence enfant : Necker-Enfants malades, 15ème arrondissement.",
+        practicalCases: [
+          {
+            situation: "Un client monte avec un enfant de 4 ans visiblement souffrant, fièvre élevée. Il demande « l'hôpital le plus proche » depuis le 6ème arrondissement.",
+            question: "Que doit faire le conducteur ?",
+            answer: "Aller à Necker-Enfants malades (15ème, à 10 min) — référence pédiatrique. Sinon, appeler le 15 pour orientation.",
+            reasoning: "Pour un enfant, JAMAIS un hôpital adulte (Hôtel-Dieu, Cochin) qui n'a pas les services pédiatriques adaptés. Necker est à 10 min du 6ème par la rue de Sèvres et c'est LA référence pédiatrique parisienne. En cas de doute (gravité incertaine), appeler le 15 en conduisant donne accès à un médecin régulateur qui valide la destination. Cette précaution peut sauver une vie."
+          },
+          {
+            situation: "Un client touriste américain demande l'« American Hospital » depuis le 8ème arrondissement.",
+            question: "Quel hôpital et quelle direction ?",
+            answer: "Hôpital Américain de Paris, 63 boulevard Victor Hugo, Neuilly-sur-Seine (hors Paris intra-muros).",
+            reasoning: "L'Hôpital Américain est privé, situé à Neuilly (92), pas dans Paris. Il accueille essentiellement la clientèle internationale aisée et les expatriés. Le trajet depuis le 8ème prend ~15 min par l'avenue de la Grande Armée → Porte Maillot → boulevard du Général Koenig → Neuilly. Connaître cet établissement est typique d'un conducteur premium / VTC haut de gamme."
+          }
+        ],
         examWarning: "En urgence : appeler le 15 (SAMU) pour orientation vers l'hôpital approprié.",
         tips: [
-          "Connaître l'hôpital le plus proche de son secteur"
+          "Connaître l'hôpital le plus proche de son secteur",
+          "Pédiatrie = Necker ou Robert-Debré (jamais hôpital adulte)"
         ],
         legalRefs: []
       },
@@ -1466,35 +1870,70 @@ export const revisionModules: RevisionModule[] = [
         id: 'topo-axes',
         title: 'Axes de circulation',
         essential: "Périphérique 35 km, saturé 7h-9h et 17h-20h. A1 → CDG, A6 → Orly.",
+        narrative: "Le BOULEVARD PÉRIPHÉRIQUE est l'axe de circulation le plus emprunté de France (1,1 million de véhicules/jour). Long de 35 km, il forme la ceinture de Paris en suivant l'ancienne enceinte de Thiers. Il comporte deux sens : INTÉRIEUR (sens des aiguilles d'une montre) et EXTÉRIEUR (sens inverse). Sa vitesse maximale est de 50 km/h depuis le 1er octobre 2024 (auparavant 70 km/h). En heures de pointe (7h-9h et 17h-20h en semaine), la vitesse moyenne tombe à 10-20 km/h.\n\nLes ALTERNATIVES au périphérique sont essentielles à connaître. Les BOULEVARDS DES MARÉCHAUX (porte par porte, à l'intérieur du périph) offrent un itinéraire de contournement plus lent mais plus régulier. Les AXES TRANSVERSAUX intra-muros : axe nord-sud (boulevards de Sébastopol et Saint-Michel), axe est-ouest (rue de Rivoli, qui depuis 2020 est partiellement réservée aux vélos et bus). Les VOIES SUR BERGES rive droite et gauche sont en grande partie piétonisées depuis 2016 — ne plus les considérer comme un axe automobile rapide.\n\nLes AUTOROUTES de sortie de Paris à mémoriser : A1 (Porte de la Chapelle) → Lille, CDG. A3 (Porte de Bagnolet) → CDG alternatif, Belgique. A4 (Porte de Bercy) → Reims, Strasbourg. A6 (Porte d'Orléans / Porte d'Italie) → Lyon, Orly. A10 (Porte d'Orléans) → Orléans, Bordeaux. A13 (Porte d'Auteuil) → Rouen, Normandie. A14 (La Défense) → A13 vers Normandie. A86 = grand contournement (super-périphérique à 5-10 km de Paris). Connaître la « porte » associée à chaque destination divise par deux le temps de réflexion du conducteur.",
         keyPoints: [
-          "Périphérique : 35 km, sens horaire et anti-horaire",
-          "Champs-Élysées : Concorde ↔ Étoile, 2 km, sens unique vers Ouest",
-          "A1 : Porte de la Chapelle → CDG",
-          "A6 : Porte d'Orléans → Orly et Lyon"
+          "Périphérique : 35 km, 50 km/h depuis 2024",
+          "Saturé 7h-9h et 17h-20h",
+          "Champs-Élysées : Concorde ↔ Étoile, 2 km",
+          "A1 : Porte de la Chapelle → CDG, Lille",
+          "A6 : Porte d'Orléans/Italie → Orly, Lyon",
+          "A86 = grand contournement"
         ],
-        fieldExample: "Il est 18h, le périph est bouché : prendre les boulevards des Maréchaux.",
-        examWarning: "Voies sur berges largement fermées (piétonisation).",
+        fieldExample: "Il est 18h, le périph est bouché : prendre les boulevards des Maréchaux ou couper en intra-muros.",
+        practicalCases: [
+          {
+            situation: "Un client doit aller du 12ème arrondissement à l'aéroport de Roissy-CDG à 17h30 un vendredi.",
+            question: "Quel itinéraire ?",
+            answer: "Éviter le périphérique nord (saturé). Privilégier A3 (Porte de Bagnolet) en sortie est, ou direct via A4 puis A86 puis A1.",
+            reasoning: "Vendredi 17h30 = pic de circulation maximal sur le périph nord (combinaison heure de pointe + départs week-end). L'A3 depuis l'est est souvent plus fluide. Une autre option : sortir par A4 (Porte de Bercy) → A86 → A1 nord, plus long en distance mais souvent plus rapide. Le conducteur professionnel consulte Waze ou Coyote en temps réel pour choisir. Prévoir au moins 1h15 minimum à cette heure."
+          },
+          {
+            situation: "Un touriste demande un « tour panoramique » en taxi : voir Tour Eiffel, Arc de Triomphe, Louvre. Le conducteur doit choisir l'itinéraire.",
+            question: "Quel circuit emprunter ?",
+            answer: "Tour Eiffel (Trocadéro) → Av. Kléber → Arc de Triomphe → Champs-Élysées → Concorde → Tuileries → Louvre (Pyramide).",
+            reasoning: "Ce circuit suit l'axe historique en sens descendant (ouest → est), avec arrêts photo aisés. Il évite le périphérique (sans intérêt touristique) et utilise les artères larges. Durée typique : 45-60 min avec arrêts. Le conducteur peut commenter chaque étape — atout commercial majeur. Annoncer le prix au temps (plus juste pour les arrêts) ou un forfait visite à négocier au préalable."
+          }
+        ],
+        examWarning: "Voies sur berges largement fermées (piétonisation). Périphérique limité à 50 km/h depuis 2024.",
         tips: [
-          "Connaître les portes principales et leurs destinations"
+          "Connaître les portes principales et leurs destinations",
+          "Boulevards des Maréchaux = alternative au périph"
         ],
-        legalRefs: []
+        legalRefs: ["Arrêté Ville de Paris 2024 (limitation 50 km/h périphérique)"]
       },
       {
         id: 'topo-places',
         title: 'Places et carrefours',
         essential: "Place de l'Étoile = 12 avenues. République = manifestations fréquentes.",
+        narrative: "Les grandes places parisiennes sont à la fois des repères géographiques et des NŒUDS DE CIRCULATION particulièrement complexes. Maîtriser leur géométrie, les avenues qui les croisent, et les règles de priorité spécifiques évite les erreurs de trajet et les fausses manœuvres devant les clients.\n\nLA PLACE CHARLES-DE-GAULLE (ex-Étoile, 8ème/16ème/17ème) est emblématique : 12 avenues y convergent (Champs-Élysées, Foch, Grande Armée, Wagram, Hoche, Friedland, Marceau, Iéna, Kléber, Victor-Hugo, Carnot, Mac-Mahon). La règle de circulation est UNIQUE EN FRANCE : priorité à droite SANS exception (les véhicules entrant ont la priorité sur ceux déjà engagés). C'est l'un des rares carrefours où la sortie est plus complexe que l'entrée. Conseil : viser sa sortie dès l'entrée et ajuster progressivement.\n\nPLACE DE LA CONCORDE (8ème) : la plus grande place de Paris (8,64 ha), au pied de l'obélisque de Louxor. Carrefour entre les Tuileries, les Champs-Élysées, le pont de la Concorde et la rue Royale. Très large mais avec une signalisation dense (feux multiples). PLACE DE LA BASTILLE (4ème/11ème/12ème, à la jonction des trois arrondissements) : carrefour de l'Opéra Bastille, des boulevards Beaumarchais et Henri-IV. PLACE DE LA RÉPUBLIQUE (3ème/10ème/11ème) : grande place semi-piétonne depuis 2013, statue de Marianne. ATTENTION : c'est le LIEU DES MANIFESTATIONS PARISIENNES par excellence. Tous les samedis et lors de tout événement social, la place est partiellement ou totalement bloquée — itinéraires de contournement obligatoires (rue du Faubourg-du-Temple, boulevard Magenta).",
         keyPoints: [
-          "Place de l'Étoile (8ème) : 12 avenues, Arc de Triomphe",
+          "Place de l'Étoile (8ème) : 12 avenues, Arc de Triomphe, priorité à droite",
           "Place de la Concorde (8ème) : obélisque, Tuileries-Champs",
           "Place de la Bastille (4ème/11ème/12ème) : Opéra Bastille",
-          "Place de la République (3ème/10ème/11ème) : Marianne"
+          "Place de la République (3ème/10ème/11ème) : Marianne, manifestations",
+          "Place Vendôme (1er) : luxe, Ritz, joaillerie"
         ],
-        fieldExample: "Manifestation annoncée place de la République : éviter le secteur.",
-        examWarning: "Les grandes places = nœuds de circulation complexes. Mémoriser les sens.",
+        fieldExample: "Manifestation annoncée place de la République : passer par le boulevard Magenta.",
+        practicalCases: [
+          {
+            situation: "Le conducteur arrive sur la place de l'Étoile depuis les Champs-Élysées et doit ressortir par l'avenue Hoche.",
+            question: "Quelle stratégie de circulation ?",
+            answer: "Entrer sur l'anneau extérieur, viser progressivement Hoche en cédant à chaque entrée (priorité à droite stricte), sortir doucement.",
+            reasoning: "La place de l'Étoile est le SEUL carrefour de France où la priorité à droite s'applique sans exception, même contre un véhicule déjà engagé. Cela signifie que celui qui entre a TOUJOURS priorité sur celui qui circule sur l'anneau. Stratégie : entrer sur la voie extérieure, anticiper sa sortie en lisant les panneaux (chaque avenue est indiquée), céder le passage à toute entrée, et viser progressivement l'avenue voulue. Ne JAMAIS s'engager au centre — risque d'être bloqué."
+          },
+          {
+            situation: "Un client doit aller de la gare de l'Est à la place de la République un samedi à 14h. Le conducteur entend à la radio qu'une manifestation est annoncée.",
+            question: "Que doit-il faire ?",
+            answer: "Informer le client, proposer un dépose alternative (proche mais hors zone bloquée) ou un itinéraire de contournement.",
+            reasoning: "Toute manifestation à République bloque la place et les axes adjacents (boulevards Magenta, Saint-Martin, du Temple). Tenter de passer = être bloqué dans la circulation pendant 30 min à 2h. Le conducteur professionnel ANTICIPE : il prévient le client, propose une dépose à proximité (par exemple au métro Jacques Bonsergent, à 5 min à pied) et explique pourquoi. Cette transparence évite la facturation d'un temps perdu et entretient la confiance."
+          }
+        ],
+        examWarning: "Les grandes places = nœuds de circulation complexes. Étoile = priorité à droite stricte.",
         tips: [
-          "Attention aux manifestations fréquentes République et Bastille"
+          "Attention aux manifestations fréquentes République et Bastille",
+          "Étoile : viser sa sortie dès l'entrée"
         ],
-        legalRefs: []
+        legalRefs: ["Article R415-5 du Code de la route (priorité à droite Étoile)"]
       }
     ]
   },
@@ -1514,33 +1953,67 @@ export const revisionModules: RevisionModule[] = [
         id: 'rel-accueil',
         title: 'Première impression',
         essential: "Les 20 premières secondes déterminent l'impression générale.",
+        narrative: "La psychologie de la perception est sans appel : un client se forge une opinion durable du conducteur en moins de 20 secondes. Cette « première impression » repose à 55 % sur le non-verbal (apparence, posture, regard), 38 % sur le paraverbal (ton, débit, volume) et seulement 7 % sur les mots eux-mêmes. Tout ce que le conducteur fera ensuite — même excellent — devra soit confirmer, soit corriger cette image initiale.\n\nQuatre piliers structurent un accueil professionnel. La PONCTUALITÉ : arriver à l'heure ou prévenir par SMS dès qu'un retard de plus de 3 min est probable. Un client qui a réservé pour 8h compte sur 8h, pas sur « entre 8h et 8h10 ». La TENUE du conducteur : propre, repassée, sans odeur (parfum trop prononcé = aussi gênant qu'odeur corporelle). Le VÉHICULE : intérieur aspiré, pas d'odeur de tabac (interdit légalement dans tout véhicule transportant un mineur, et déconseillé en toute circonstance pro), tableau de bord rangé. Le PREMIER CONTACT : descendre du véhicule, regarder le client dans les yeux, sourire sincère, « Bonjour Madame/Monsieur » clair, ouverture de portière côté trottoir.\n\nL'anticipation différencie l'expert du novice. Ouvrir le coffre AVANT que le client ne demande, proposer de l'aide pour les bagages lourds, indiquer la portière avec un geste de la main. Ces micro-attentions coûtent 5 secondes mais multiplient la note client. À l'inverse, rester téléphone à la main pendant que le client charge ses propres bagages dans le coffre est rédhibitoire.",
         keyPoints: [
-          "Ponctualité : arriver à l'heure ou prévenir",
-          "Tenue correcte, propre, pas d'odeur désagréable",
+          "Ponctualité : arriver à l'heure ou prévenir par SMS",
+          "Tenue correcte, propre, parfum discret",
           "Véhicule propre, pas d'odeur de tabac",
-          "Salutation : regarder le client, sourire, bonjour clair"
+          "Salutation : regard, sourire, bonjour clair",
+          "Anticiper : ouvrir le coffre, proposer l'aide"
         ],
         fieldExample: "Le chauffeur arrive 5 min en avance, ouvre le coffre avant qu'on lui demande.",
-        examWarning: "Première impression = 20 secondes. Soigner l'arrivée et le premier contact.",
-        tips: [
-          "Anticiper les besoins : ouvrir le coffre, proposer l'aide"
+        practicalCases: [
+          {
+            situation: "Un client réserve une course pour 7h30 (vol à 10h). À 7h28, le conducteur est encore à 8 min de l'adresse à cause d'un embouteillage imprévu.",
+            question: "Que faire ?",
+            answer: "Appeler ou envoyer un SMS immédiatement : « Léger retard d'environ 8 min dû à un imprévu, je suis en route, mes excuses. »",
+            reasoning: "Ne pas prévenir = anxiété pour le client (« est-il oublié ? va-t-il rater son vol ? »). Prévenir = transparence, sincérité, prise en main de la situation. Même si le client est contrarié, il appréciera l'honnêteté et reverra son jugement. Le silence aggrave systématiquement la perception du retard."
+          },
+          {
+            situation: "Un client monte et grimace en sentant une odeur de tabac froid dans le véhicule. Le conducteur a fumé une cigarette une heure plus tôt en pause.",
+            question: "Quelle est la bonne pratique ?",
+            answer: "NE JAMAIS fumer dans le véhicule professionnel. Aérer + désodoriser entre chaque service. S'excuser si une odeur subsiste.",
+            reasoning: "L'odeur de tabac froid est extrêmement persistante et perçue comme un manque de respect. Légalement, fumer dans un véhicule transportant un mineur est interdit (article L3512-9 du Code de la santé). Professionnellement, c'est une cause majeure de mauvaise note. La règle absolue : véhicule = espace non-fumeur, fumer dehors et changer de tenue si possible avant le service."
+          }
         ],
-        legalRefs: []
+        examWarning: "Première impression = 20 secondes. Le tabac dans le véhicule = sanction note client et risque légal.",
+        tips: [
+          "Anticiper les besoins : ouvrir le coffre, proposer l'aide",
+          "Parfum discret > parfum prononcé"
+        ],
+        legalRefs: ["Article L3512-9 du Code de la santé publique (tabac et mineurs)"]
       },
       {
         id: 'rel-communication-trajet',
         title: 'Pendant le trajet',
         essential: "Observer le client : certains veulent parler, d'autres du silence.",
+        narrative: "Le savoir-vivre en course repose sur une compétence rare : LIRE le client. Tous les passagers n'attendent pas la même chose. Le voyageur d'affaires entre deux rendez-vous a besoin de calme pour préparer ses dossiers. Le touriste en visite cherche des conseils et des anecdotes. Le client tardif veut être rassuré. Le client matinal préfère souvent le silence. Le conducteur professionnel propose, observe, s'adapte — il n'impose jamais.\n\nLa règle de base est d'OUVRIR LA PORTE à la conversation sans la forcer. Une question neutre (« Première fois à Paris ? », « Trajet rapide ou plutôt panoramique ? ») permet de tester le terrain. Si le client répond brièvement et se replonge dans son téléphone : message reçu, on respecte le silence. S'il rebondit avec enthousiasme : la conversation peut s'engager. Toujours sur des SUJETS NEUTRES : météo, monuments, événements culturels, sport (avec prudence). Sont strictement à BANNIR : politique, religion, immigration, opinion sur des personnalités publiques. Ces sujets peuvent faire perdre un client à vie en une seule phrase.\n\nL'INFORMATION SPONTANÉE est appréciée : annoncer l'itinéraire choisi (« je passe par les quais, c'est plus fluide à cette heure »), prévenir d'un imprévu (« petit bouchon devant nous, j'estime 5 min de plus »), confirmer la durée restante (« on devrait être à votre destination dans environ 15 min »). Cela rassure et donne au client une impression de contrôle. À l'inverse, le téléphone perso du conducteur en présence du client est un irritant majeur : appel à mains libres = OK si urgent et bref ; jamais consulter Instagram à l'arrêt ; jamais haut-parleur. Le client paie pour son confort, pas pour la vie sociale du conducteur.",
         keyPoints: [
           "Écoute active : ne pas interrompre",
           "Éviter sujets polémiques (politique, religion)",
           "Informer spontanément : durée, trafic, itinéraire",
-          "Téléphone perso : éviter en présence du client"
+          "Téléphone perso : éviter en présence du client",
+          "Adapter son comportement au profil observé"
         ],
-        fieldExample: "Le client travaille sur son ordinateur : le chauffeur reste silencieux.",
-        examWarning: "Si le client travaille/téléphone : ne pas le déranger.",
+        fieldExample: "Le client travaille sur son ordinateur : le chauffeur reste silencieux et coupe la radio.",
+        practicalCases: [
+          {
+            situation: "Un client engage la conversation sur la politique en disant : « Vous avez vu le dernier discours du président, c'est scandaleux non ? »",
+            question: "Comment répondre ?",
+            answer: "Désamorcer poliment : « Je préfère rester en dehors de la politique avec les clients, c'est plus simple pour tout le monde. Parlons plutôt de votre trajet ! »",
+            reasoning: "Donner son opinion = risque de braquer le client si désaccord, ou de devoir « tenir le rôle » si accord. Dans les deux cas, perte de neutralité professionnelle. La phrase de désamorçage est cadrée, polie, sans jugement. Elle redirige vers un sujet neutre. Aucun client raisonnable ne reprochera cette neutralité ; au contraire, beaucoup l'apprécient."
+          },
+          {
+            situation: "Pendant le trajet, le téléphone perso du conducteur sonne (un ami). Le client est sur un appel important.",
+            question: "Que doit faire le conducteur ?",
+            answer: "Couper la sonnerie immédiatement, ne pas répondre. Rappeler après dépose.",
+            reasoning: "Un téléphone qui sonne perturbe l'appel du client et donne une image non-pro. Idéal : passer le téléphone en silencieux AVANT chaque course. Si l'appel est vraiment urgent (famille), le conducteur peut s'excuser brièvement (« Pardonnez-moi, urgence familiale ») et répondre brièvement à mains libres avec voix discrète. Mais c'est une exception."
+          }
+        ],
+        examWarning: "Politique et religion = sujets bannis. Téléphone perso = irritant majeur.",
         tips: [
-          "Proposer sans imposer : 'Souhaitez-vous de la musique ?'"
+          "Proposer sans imposer : 'Souhaitez-vous de la musique ?'",
+          "Mettre le téléphone en silencieux avant chaque course"
         ],
         legalRefs: []
       },
@@ -1548,16 +2021,33 @@ export const revisionModules: RevisionModule[] = [
         id: 'rel-conduite-confort',
         title: 'Conduite et confort',
         essential: "Conduite souple = passager rassuré. Anticiper pour éviter les à-coups.",
+        narrative: "La qualité de la conduite est le critère le plus directement perceptible par le client : il la SUBIT physiquement. Un seul freinage brutal peut suffire à dégrader toute la note d'une course parfaite par ailleurs. À l'inverse, une conduite fluide rassure même un passager initialement nerveux et signe un conducteur expert.\n\nLe principe fondamental est l'ANTICIPATION. Lire la circulation 100-200 m à l'avance permet de lever le pied progressivement plutôt que de freiner brusquement à la dernière seconde. Sur le périph, repérer un ralentissement à distance et décélérer en relâchant l'accélérateur (frein moteur) est plus confortable qu'un coup de frein sec. En ville, anticiper le passage au rouge d'un feu en levant le pied 50 m avant évite l'à-coup. La règle d'or : si le passager doit se cramponner, c'est qu'on a mal conduit.\n\nLE CONFORT THERMIQUE est l'autre dimension cruciale, particulièrement en saison. La climatisation doit être adaptée AVANT la montée du client (préchauffage en hiver, refroidissement en été). Une fois le client à bord, DEMANDER : « La température vous convient-elle ? Souhaitez-vous que j'ajuste la climatisation ? » Ne pas demander = présumer = risque de mécontentement silencieux. Pour les véhicules avec sièges multi-zones, proposer un réglage individuel côté passager arrière. ENFIN, expliquer ses choix d'itinéraire si le client semble s'interroger : la transparence évite la suspicion de détour facturé. « Je prends les quais car les boulevards sont saturés à cette heure, ce sera plus rapide » suffit à rassurer.",
         keyPoints: [
           "Pas d'accélérations/freinages brusques",
           "Respecter le Code : le client doit se sentir en sécurité",
-          "Climatisation : vérifier le confort",
-          "Expliquer les choix d'itinéraire si demandé"
+          "Climatisation : vérifier le confort, demander avant d'ajuster",
+          "Expliquer les choix d'itinéraire si demandé",
+          "Éco-conduite = confort + économies + image"
         ],
         fieldExample: "Le chauffeur anticipe le feu rouge et freine progressivement : confort optimal.",
+        practicalCases: [
+          {
+            situation: "Un client âgé tient sa canne et semble nerveux pendant le trajet. Le conducteur prend habituellement les virages avec dynamisme.",
+            question: "Que doit-il adapter ?",
+            answer: "Réduire l'allure dans les virages, freiner plus tôt et plus doucement, accélérer plus progressivement.",
+            reasoning: "Les personnes âgées sont plus sensibles aux forces d'accélération latérales (risque de perte d'équilibre, douleurs cervicales). Adapter son style de conduite au profil du passager est un réflexe pro. Vitesse réduite de 10-15 %, anticipation accrue, virages amples. Le client âgé en retient l'impression d'un conducteur attentif et prévenant — ce qui génère souvent une fidélisation forte (et bons pourboires)."
+          },
+          {
+            situation: "En plein été, un client monte dans un véhicule garé au soleil pendant 30 min. Température intérieure : 38°C.",
+            question: "Quelle est la bonne pratique ?",
+            answer: "Anticiper : démarrer la climatisation 5 min avant l'arrivée du client (si possible à distance). Sinon : ouvrir les portes pour aérer, climatisation à fond pendant l'embarquement, demander ensuite si la température convient.",
+            reasoning: "Un véhicule surchauffé = clientèle perdue. La meilleure pratique est l'anticipation (clim à distance ou en attendant). Si impossible, le conducteur doit aérer (portes ouvertes), expliquer la situation au client, et ajuster en temps réel. Demander régulièrement le confort thermique (toutes les 5-10 min en début de course) montre l'attention au détail."
+          }
+        ],
         examWarning: "Une conduite nerveuse stresse le passager et nuit à l'image.",
         tips: [
-          "L'éco-conduite = confort passager + économies"
+          "L'éco-conduite = confort passager + économies",
+          "Anticiper 100-200 m à l'avance évite les à-coups"
         ],
         legalRefs: []
       },
@@ -1565,52 +2055,104 @@ export const revisionModules: RevisionModule[] = [
         id: 'rel-conflits',
         title: 'Gestion des conflits',
         essential: "Rester calme, écouter, reformuler, s'excuser si nécessaire, proposer une solution.",
+        narrative: "Tout conducteur T3P, quelle que soit son ancienneté, sera confronté à des conflits clients : retard, désaccord sur l'itinéraire, contestation tarifaire, énervement personnel du client. La compétence professionnelle ne consiste pas à éviter ces situations (impossibles) mais à les DÉSAMORCER avec méthode. Un client mécontent bien traité devient souvent un client fidèle ; mal traité, il publie une note 1 étoile qui coûte 10 courses futures.\n\nLa méthode éprouvée est l'ÉCOUTE ACTIVE - REFORMULATION - EXCUSE - SOLUTION. Étape 1 : laisser le client EXPRIMER sa frustration sans interrompre, même si c'est injuste, même si on n'est pas d'accord. La parole évacue la tension. Interrompre = redoubler la colère. Étape 2 : REFORMULER pour montrer qu'on a compris : « Si je comprends bien, vous trouvez que le trajet a pris trop de temps et que ça a impacté votre rendez-vous, c'est bien ça ? » Étape 3 : S'EXCUSER, même si on n'est pas directement responsable : « Je suis sincèrement désolé que cette situation vous ait causé du désagrément. » L'excuse ne reconnaît pas la faute, elle reconnaît le ressenti. Étape 4 : PROPOSER une solution : geste commercial, explication factuelle, contact ultérieur.\n\nDeux interdits absolus. JAMAIS hausser le ton ou monter en agressivité, même provoqué — un conducteur professionnel ne perd jamais son calme en service, c'est sa marque de fabrique. JAMAIS de violence verbale ou physique : insulter ou bousculer un client est un délit pénal (outrage, violence) qui détruit immédiatement la carrière. Si la situation dégénère réellement (client violent, ivre, menaçant), arrêter le véhicule en zone sûre, descendre, appeler le 17. La sécurité prime sur le chiffre d'affaires.",
         keyPoints: [
           "Ne jamais s'énerver ni hausser le ton",
           "Écouter entièrement avant de répondre",
           "Reformuler : 'Si je comprends bien...'",
-          "S'excuser même si pas directement responsable"
+          "S'excuser même si pas directement responsable",
+          "Si danger réel : arrêter en zone sûre, appeler le 17"
         ],
-        fieldExample: "Client mécontent du temps de trajet : 'Je comprends, le trafic était exceptionnel aujourd'hui.'",
-        examWarning: "Jamais de violence verbale ou physique, même provoqué.",
+        fieldExample: "Client mécontent du temps de trajet : 'Je comprends, le trafic était exceptionnel aujourd'hui, désolé pour ce désagrément.'",
+        practicalCases: [
+          {
+            situation: "À l'arrivée, un client conteste le montant et accuse le conducteur d'avoir « tourné en rond exprès » pour gonfler le prix.",
+            question: "Comment gérer ?",
+            answer: "Garder son calme, montrer l'itinéraire GPS pris (preuve), expliquer les contraintes (bouchon, déviation), proposer un geste commercial si client de bonne foi.",
+            reasoning: "L'accusation est grave mais émotionnelle. Réagir par la colère = escalade et plainte. Réponse pro : (1) calme, (2) preuve factuelle (historique GPS Uber, Waze), (3) explication objective, (4) éventuel geste commercial (5 € de remise par exemple) pour clore le différend. Cette méthode transforme un conflit en démonstration de professionnalisme. Documenter l'échange par écrit (SMS récapitulatif au client) protège en cas de plainte ultérieure."
+          },
+          {
+            situation: "Un client visiblement alcoolisé devient agressif verbalement, insulte le conducteur, menace de le frapper.",
+            question: "Que faire ?",
+            answer: "Arrêter le véhicule en lieu sûr (station-service, parking éclairé), descendre, appeler le 17 immédiatement. Ne pas répondre aux provocations.",
+            reasoning: "La sécurité physique prime sur tout. Continuer à conduire avec un client violent = risque d'agression en mouvement, accident. Arrêter en zone sûre + 17 = procédure standard. Le conducteur n'a aucune obligation de poursuivre une course avec un client violent (motif légitime de cessation). Le rapport de police protège juridiquement. NE JAMAIS répondre aux insultes : aggravation systématique."
+          }
+        ],
+        examWarning: "Jamais de violence verbale ou physique, même provoqué. La sécurité prime sur le chiffre d'affaires.",
         tips: [
-          "Un client mécontent bien traité peut devenir fidèle"
+          "Un client mécontent bien traité peut devenir fidèle",
+          "Documenter par écrit après tout incident"
         ],
-        legalRefs: []
+        legalRefs: ["Article 222-13 du Code pénal (violence)", "Article 433-5 (outrage)"]
       },
       {
         id: 'rel-fin-course',
         title: 'Fin de course',
         essential: "La dernière impression compte autant que la première.",
+        narrative: "La fin de course est sous-estimée par les conducteurs débutants, qui considèrent qu'une fois arrivés, la prestation est terminée. C'est une erreur stratégique majeure : les 30 dernières secondes pèsent autant que les 20 premières dans le souvenir du client. C'est le moment où il décide de noter 5 étoiles ou 4, de recommander ou pas, de redemander le même conducteur ou de zapper.\n\nLE PROTOCOLE de fin de course professionnel comporte 5 actes. (1) ANNONCER l'arrivée à 30-60 secondes : « Nous arrivons à destination, monsieur. » Cela permet au client de ranger ses affaires, de préparer son paiement, de finir un mail. (2) STATIONNER avec discernement : au plus près de l'entrée si possible, du bon côté (trottoir), en sécurité (pas en double file dangereuse pour le client qui descend). (3) RAPPELER les effets personnels : « N'oubliez pas de vérifier que vous avez bien toutes vos affaires : téléphone, sac, etc. » Ce rappel évite 90 % des oublis. (4) AIDER si nécessaire : descendre, ouvrir la portière côté trottoir, sortir les bagages du coffre, les déposer délicatement. (5) REMERCIER chaleureusement : « Merci pour la course, je vous souhaite une excellente fin de journée. »\n\nAPRÈS LE DÉPART, vérification systématique du véhicule : banquette arrière (téléphones, portefeuilles, gants, écouteurs), coffre (objet oublié, valise), sièges (papiers tombés). Un objet retrouvé doit être remonté immédiatement à la plateforme (Uber, Bolt) ou directement au client si contact disponible. La restitution rapide d'un objet oublié crée un client fidèle à vie. À l'inverse, ne pas vérifier = objet oublié signalé = plainte + procédure + image dégradée. Statistique éprouvée : un client satisfait parle de l'expérience à 3 personnes en moyenne ; un client mécontent à 10. La dernière impression est l'amplificateur de toute la course.",
         keyPoints: [
           "Annoncer l'arrivée : 'Nous arrivons à destination'",
           "Stationner au plus près pour sécurité/confort",
           "Rappeler : 'N'oubliez pas de vérifier vos affaires'",
-          "Remercier : 'Merci, bonne journée'"
+          "Aider si nécessaire (descendre, sortir les bagages)",
+          "Remercier chaleureusement",
+          "Vérifier le véhicule après chaque course"
         ],
-        fieldExample: "Le chauffeur aide à sortir les bagages et souhaite bon voyage au client.",
-        examWarning: "Vérifier le véhicule après chaque course (objets oubliés).",
+        fieldExample: "Le chauffeur aide à sortir les bagages, rappelle les affaires, et souhaite bon voyage au client.",
+        practicalCases: [
+          {
+            situation: "Après dépose d'un client à un hôtel, le conducteur découvre un téléphone sur la banquette arrière en faisant sa vérification.",
+            question: "Que doit-il faire ?",
+            answer: "Tenter de rattraper immédiatement le client (entrer dans l'hôtel demander à la réception) ou signaler via la plateforme + contacter le client. Conserver l'objet en sécurité.",
+            reasoning: "L'obligation de restitution s'impose au conducteur. Tentative immédiate = idéale (client encore présent). Sinon, signaler immédiatement à la plateforme (Uber, Bolt) qui met en relation. Ne JAMAIS garder l'objet sans le signaler = délit d'abus de confiance. La restitution rapide d'un téléphone = client à vie + recommandations. À l'inverse, signaler tardivement = plainte client + procédure plateforme + suspension possible."
+          },
+          {
+            situation: "Le conducteur dépose un client en double file sur une avenue passante. Le client descend côté circulation et frôle un scooter.",
+            question: "Faute du conducteur ?",
+            answer: "Oui. Le conducteur doit toujours déposer côté trottoir (pour la sécurité du client) ou trouver un emplacement sûr.",
+            reasoning: "L'article R415-11 du Code de la route impose de descendre côté trottoir. Une dépose côté circulation expose le client à un risque d'accident (responsabilité partagée du conducteur). Bonne pratique : si l'arrêt côté trottoir est impossible, faire le tour pour s'arrêter de l'autre côté, ou expliquer au client de descendre côté droit. Le confort de descente est un élément clé de la note finale."
+          }
+        ],
+        examWarning: "Vérifier le véhicule après chaque course (objets oubliés). Toujours descendre côté trottoir.",
         tips: [
-          "Client satisfait = 3 personnes informées, mécontent = 10"
+          "Client satisfait = 3 personnes informées, mécontent = 10",
+          "Dépose côté trottoir, jamais côté circulation"
         ],
-        legalRefs: []
+        legalRefs: ["Article R415-11 du Code de la route"]
       },
       {
         id: 'rel-clienteles-specifiques',
         title: 'Clientèles spécifiques',
         essential: "S'adapter sans préjugés. Chiens guides = transport obligatoire et gratuit.",
+        narrative: "Chaque profil de clientèle a ses attentes spécifiques. Le conducteur professionnel doit savoir adapter son comportement, son rythme et son service à la personne en face de lui, sans jamais tomber dans le stéréotype ni la condescendance. L'adaptation est une marque de respect, pas une discrimination.\n\nLES PERSONNES EN SITUATION DE HANDICAP. La règle absolue : PROPOSER l'aide sans l'IMPOSER. Demander : « Souhaitez-vous que je vous aide à monter / à charger votre fauteuil ? » Si oui, suivre les indications du client (chacun a sa technique). Si non, respecter. Pour les fauteuils roulants, le conducteur doit savoir les plier rapidement et les charger sans les abîmer. Le refus de transport pour cause de handicap est un DÉLIT pénal (article 225-2 du Code pénal, 5 ans d'emprisonnement et 75 000 € d'amende). Les chiens guides et chiens d'assistance sont transportés GRATUITEMENT et obligatoirement (article L3121-8 du Code des transports) — refus = délit aggravé.\n\nLES PERSONNES ÂGÉES : prendre le temps, parler plus distinctement (pas plus fort, juste plus articulé), conduire en douceur, aider à attacher la ceinture si demandé. Anticiper que monter et descendre prend plus de temps. LES ENFANTS : siège enfant si fourni par les parents, ceinture obligatoire, conduite particulièrement souple. LES TOURISTES : quelques mots dans leur langue, anecdote brève sur Paris, recommandation d'un restaurant si demandé. LES VOYAGEURS D'AFFAIRES : efficacité maximale, discrétion absolue (ne pas écouter leurs appels, ne pas commenter), ponctualité irréprochable. Anticiper les besoins (chargeur USB, eau, journaux) différencie le service premium du standard.",
         keyPoints: [
-          "Handicapés : proposer l'aide sans imposer",
+          "Handicap : proposer l'aide sans l'imposer, jamais de refus",
           "Personnes âgées : prendre le temps, parler distinctement",
           "Touristes : quelques infos sur Paris, mots en anglais",
-          "Voyageurs d'affaires : efficacité, discrétion, ponctualité"
-        ],
-        fieldExample: "Client âgé avec canne : le chauffeur l'aide à monter et attache sa ceinture.",
-        examWarning: "Le handicap n'est pas un motif de refus de transport.",
-        tips: [
+          "Voyageurs d'affaires : efficacité, discrétion, ponctualité",
           "Chiens guides = transport gratuit obligatoire (loi)"
         ],
-        legalRefs: ["Article L3121-8 du Code des transports (chiens guides)"]
+        fieldExample: "Client âgé avec canne : le chauffeur l'aide à monter, attache sa ceinture, conduit en douceur.",
+        practicalCases: [
+          {
+            situation: "Un VTC reçoit une demande de course pour un client en fauteuil roulant pliable. Il refuse en disant qu'il n'a pas le matériel pour.",
+            question: "Le refus est-il légal ?",
+            answer: "Non. Le refus pour cause de handicap est un délit pénal puni de 5 ans d'emprisonnement et 75 000 € d'amende.",
+            reasoning: "L'article 225-2 du Code pénal sanctionne la discrimination dans l'accès à un service. Un fauteuil pliable se charge dans tout coffre standard. Le conducteur a obligation de transport. Le seul refus légitime concerne un fauteuil motorisé non démontable nécessitant un véhicule TPMR adapté (et même dans ce cas, le conducteur doit aider à trouver une alternative, pas se contenter de refuser). Sanction administrative + pénale + dommages-intérêts au client."
+          },
+          {
+            situation: "Une cliente non-voyante avec son chien guide hèle un taxi. Le conducteur veut l'orienter vers un autre taxi en disant qu'il est allergique aux chiens.",
+            question: "Acceptable ?",
+            answer: "Non. Les chiens guides doivent être transportés gratuitement et obligatoirement. L'allergie n'est pas un motif légitime de refus.",
+            reasoning: "L'article L3121-8 du Code des transports est absolu : refus = discrimination liée au handicap = délit pénal aggravé (jusqu'à 75 000 € d'amende, suspension d'ADS, signalement à la défenseure des droits). Une allergie réelle se traite par antihistaminique avant service, pas par refus. La société exige que les personnes non-voyantes puissent se déplacer en autonomie — c'est non négociable."
+          }
+        ],
+        examWarning: "Le handicap n'est pas un motif de refus de transport. Chien guide = transport gratuit obligatoire.",
+        tips: [
+          "Chiens guides = transport gratuit obligatoire (loi)",
+          "Proposer l'aide sans l'imposer"
+        ],
+        legalRefs: ["Article L3121-8 du Code des transports (chiens guides)", "Article 225-2 du Code pénal (discrimination)"]
       }
     ]
   },
