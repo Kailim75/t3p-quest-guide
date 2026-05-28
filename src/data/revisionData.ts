@@ -398,140 +398,306 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'sec-distances',
         title: 'Distances de sécurité',
-        essential: "Distance d'arrêt = réaction + freinage. Elle quadruple quand la vitesse double.",
+        essential: "La distance d'arrêt = temps de réaction + distance de freinage ; elle est multipliée par 4 quand la vitesse double.",
+        narrative: "Comprendre les distances de sécurité, c'est intégrer que le véhicule ne s'arrête jamais instantanément. Quand un obstacle surgit, le conducteur a besoin d'environ 1 seconde pour percevoir, décider et amorcer le freinage : sur cette seconde de réaction, à 50 km/h on parcourt déjà 14 mètres sans freiner. À cette distance s'ajoute le freinage proprement dit, qui dépend du carré de la vitesse.\n\nC'est cette physique du carré qui explique le paradoxe le plus mal compris : doubler la vitesse ne double pas la distance d'arrêt, elle la quadruple. À 50 km/h on s'arrête en ~28 m, à 100 km/h il faut ~88 m, à 130 km/h plus de 130 m. La pluie aggrave encore : un revêtement mouillé peut multiplier la distance de freinage par 1,5 à 2, la neige ou le verglas par 3 ou plus.\n\nL'article R412-12 du Code de la route impose un intervalle minimal de 2 secondes entre véhicules (règle dite des '2 secondes'). En pratique, sur autoroute, cela correspond à environ 2 chevrons. Pour un conducteur T3P qui transporte du public, cette marge n'est pas un confort : c'est une condition de sécurité contractuelle vis-à-vis du passager.",
         keyPoints: [
-          "Intervalle minimum : 2 secondes entre véhicules",
-          "À 50 km/h : arrêt ≈ 28m (14m réaction + 14m freinage)",
-          "À 130 km/h : arrêt ≈ 130m",
-          "Route mouillée : freinage x1,5 à x2"
+          "Distance d'arrêt = réaction (~1s) + freinage (∝ vitesse²)",
+          "Règle des 2 secondes minimum entre véhicules",
+          "Doubler la vitesse → quadrupler la distance d'arrêt",
+          "Pluie : freinage ×1,5 à ×2 ; neige/verglas ×3+",
+          "Sur autoroute : 1 chevron ≈ 50 m"
         ],
-        fieldExample: "Sur autoroute à 130 km/h, il faut garder au moins 130m (2 chevrons) avec le véhicule devant.",
-        examWarning: "La distance d'arrêt quadruple si la vitesse double (pas le double !).",
+        practicalCases: [
+          {
+            situation: "Un VTC roule à 90 km/h sur route mouillée. Le véhicule devant freine brutalement.",
+            question: "Quelle distance minimale aurait-il dû maintenir, sachant que la distance d'arrêt sur sec à 90 km/h est d'environ 70 m ?",
+            answer: "Sur mouillé, il faut compter ×1,5 à ×2 : environ 100 à 140 m, soit clairement au-delà des 2 secondes 'standard'.",
+            reasoning: "La règle des 2 secondes est un minimum par temps sec. Par pluie, la majorer à 4 secondes est la pratique recommandée. Un VTC professionnel doit anticiper : ralentir avant les zones de freinage probables (entrée de ville, péages), maintenir une marge supérieure. Le passager perçoit la maîtrise du chauffeur dans ces moments-là."
+          },
+          {
+            situation: "Une cliente reproche à son chauffeur de 'coller' la voiture de devant à 50 km/h en ville.",
+            question: "Quelle distance correspond à la règle des 2 secondes à cette vitesse ?",
+            answer: "Environ 28 m (50 km/h = 13,9 m/s × 2s).",
+            reasoning: "La règle se calcule : distance = vitesse (m/s) × 2 secondes. À 50 km/h ≈ 14 m/s, soit 28 m d'intervalle. En ville, c'est rarement respecté en circulation dense, mais c'est la cible de sécurité. Pour le passager, c'est aussi une perception de confort : moins de freinages secs."
+          }
+        ],
+        fieldExample: "Sur l'A6 à 130 km/h, le conducteur garde 2 chevrons (≈ 100 m) avec le véhicule de devant — règle des 2 secondes respectée.",
+        examWarning: "Question piège récurrente : 'à 100 km/h la distance d'arrêt double-t-elle par rapport à 50 km/h ?' → NON, elle est multipliée par 4.",
+        confusionPoints: [
+          "Distance de réaction (linéaire avec la vitesse) ≠ distance de freinage (proportionnelle au carré)",
+          "Intervalle 2 secondes (règle pratique) ≠ distance d'arrêt totale (réaction + freinage)"
+        ],
         tips: [
-          "1 chevron = 50m environ sur autoroute",
-          "Temps de réaction moyen : 1 seconde"
+          "Calculer en secondes (compter '21, 22' au passage d'un repère)",
+          "Sur pluie, doubler la marge : 4 secondes minimum"
         ],
-        legalRefs: ["Article R412-12 du Code de la route"]
+        legalRefs: ["Article R412-12 Code de la route"]
       },
       {
         id: 'sec-vitesses',
         title: 'Limitations de vitesse',
-        essential: "Ville 50 / Route 80 / 2x2 voies 110 / Autoroute 130 (pluie -10 à -20 km/h).",
+        essential: "50 en ville, 80 sur route (90 si décision locale), 110 sur 2x2 voies, 130 sur autoroute — toujours -20 km/h sur autoroute mouillée.",
+        narrative: "Les limitations de vitesse ne sont pas seulement des chiffres : elles découlent des distances d'arrêt et de la gravité des chocs. En agglomération, la limite générale est 50 km/h, abaissée à 30 km/h en zone 30 (autour des écoles, centres-villes apaisés) et 20 km/h en zone de rencontre (priorité piéton). Le seuil est fixé pour qu'un piéton heurté ait une chance de survie élevée.\n\nHors agglomération, la limite est de 80 km/h sur les routes bidirectionnelles sans séparateur central, depuis le décret de juillet 2018 — certains départements ont relevé à 90 km/h sur certaines portions (décision préfectorale). Sur les 2x2 voies, on monte à 110 km/h ; sur autoroute, 130 km/h. La pluie ou neige déclenche une réduction automatique : -20 km/h sur autoroute (130→110), -10 km/h sur 2x2 voies (110→100) et hors agglo (80→70).\n\nDeux règles à connaître : par visibilité réduite < 50 m (brouillard épais, forte pluie), la vitesse est plafonnée à 50 km/h partout ; et le jeune conducteur (permis < 3 ans, < 2 ans si AAC) doit appliquer -10 km/h sur les voies rapides (100 au lieu de 110, 110 au lieu de 130). Tout dépassement ≥ 50 km/h au-dessus de la limite entraîne la rétention immédiate du permis et un délit (1 500€ + 6 points + 3 ans suspension).",
         keyPoints: [
-          "Agglomération : 50 km/h (30 en zone 30, 20 en zone rencontre)",
-          "Route : 80 km/h (90 sur décision locale)",
-          "Visibilité < 50m : 50 km/h maximum partout",
-          "Dépassement 50+ km/h = suspension immédiate du permis"
+          "Agglomération : 50 (30 en zone 30, 20 en zone rencontre)",
+          "Hors agglo : 80 (90 si décision locale)",
+          "2x2 voies : 110 ; Autoroute : 130",
+          "Pluie : -20 km/h autoroute, -10 km/h ailleurs",
+          "Visibilité < 50 m : 50 km/h maximum partout"
         ],
-        fieldExample: "Il pleut sur autoroute : la limite passe de 130 à 110 km/h automatiquement.",
-        examWarning: "Jeune conducteur = -10 km/h sur voies rapides (100/110 au lieu de 110/130).",
+        practicalCases: [
+          {
+            situation: "Sur une autoroute limitée à 130 km/h, il commence à pleuvoir. Le conducteur maintient 125 km/h.",
+            question: "Est-il en infraction et que risque-t-il ?",
+            answer: "Oui : la limite passe automatiquement à 110 km/h sous la pluie. Il est en excès de 15 km/h → 135€ + 1 point.",
+            reasoning: "La réduction par temps de pluie ne nécessite aucune signalisation : elle est applicable dès que la chaussée est mouillée. À 125 km/h alors que la limite est 110, l'excès est de 15 km/h (zone 'mineure' : entre 0 et 20 km/h au-dessus) → contravention 4e classe. À noter : un jeune conducteur aurait une limite à 100 km/h dans les mêmes conditions."
+          },
+          {
+            situation: "Dans une zone de rencontre balisée, un VTC roule à 35 km/h pour gagner du temps.",
+            question: "Quelle est l'infraction et quelle est la règle dans cette zone ?",
+            answer: "Excès de 15 km/h en zone limitée à 20 km/h, doublé d'une violation de la priorité piéton.",
+            reasoning: "La zone de rencontre (panneau B52) est limitée à 20 km/h et les piétons sont prioritaires sur l'ensemble de la chaussée. Un VTC à 35 km/h commet une double faute : excès de vitesse + mise en danger des piétons (qui peuvent traverser n'importe où). Le contexte aggrave la sanction si un piéton est heurté. Bonne pratique : suivre le rythme du piéton, klaxon proscrit."
+          }
+        ],
+        fieldExample: "À l'entrée de la zone 30 d'un centre-ville, le compteur passe de 50 à 30 km/h : freinage progressif anticipé, confort passager préservé.",
+        examWarning: "Le jeune conducteur (permis < 3 ans) doit appliquer -10 km/h SUR LES VOIES RAPIDES uniquement, pas en ville.",
+        confusionPoints: [
+          "Zone 30 (30 km/h, voiture prioritaire) ≠ Zone de rencontre (20 km/h, piéton prioritaire)",
+          "Réduction pluie -20 (autoroute) ≠ -10 (autres voies)"
+        ],
         tips: [
-          "Marge radar : 5% ou 5 km/h (le plus favorable)"
+          "Mémo voies rapides jeune conducteur : 100 / 110 au lieu de 110 / 130",
+          "Visibilité < 50 m → 50 partout (mnémonique '50 < 50')"
         ],
-        legalRefs: ["Articles R413-1 à R413-17 du Code de la route"]
+        legalRefs: ["Articles R413-1 à R413-17 Code de la route"]
       },
       {
         id: 'sec-alcool-stupefiants',
         title: 'Alcool et stupéfiants',
-        essential: "Taux légal : 0,5 g/L sang. À partir de 0,8 g/L = délit pénal.",
+        essential: "0,5 g/L = contravention, ≥ 0,8 g/L = délit ; pour les stupéfiants, c'est tolérance zéro et présence détectée = délit.",
+        narrative: "La législation alcool s'articule autour de deux seuils. Entre 0,5 g/L et 0,79 g/L de sang (soit 0,25 à 0,39 mg/L d'air expiré), c'est une contravention 4e classe : 135€ forfaitaires, retrait de 6 points, immobilisation du véhicule possible. À partir de 0,8 g/L de sang (0,4 mg/L air expiré), on bascule en délit : jusqu'à 4 500€ d'amende, 2 ans de prison, suspension de permis jusqu'à 3 ans, peines complémentaires (stage, EAD).\n\nLe taux légal s'applique uniformément à tous les conducteurs, mais une catégorie est traitée à part : le jeune conducteur (permis probatoire) doit rester sous 0,2 g/L (équivalent verre nul). Pour les T3P, certaines conventions et règlements internes des plateformes imposent également 0 g/L pendant le service. Un conducteur de transport public à risque pénal + commercial cumulé.\n\nPour les stupéfiants, c'est tolérance zéro depuis 2003 : la simple présence détectée par test salivaire (cannabis, cocaïne, opiacés, amphétamines) constitue un délit, indépendamment de toute altération réelle de conduite. Sanctions : 4 500€ + 2 ans de prison + 6 points + suspension. Le refus de se soumettre au dépistage est puni des mêmes peines que la conduite en état délictueux — c'est un message clair du législateur. Aucune méthode 'd'élimination' n'accélère la décomposition de l'alcool : seul le temps (environ 0,15 g/L/h) la dissipe. Café, douche froide, repas : aucun effet sur le taux.",
         keyPoints: [
-          "0,5-0,79 g/L = contravention (135€ + 6 points)",
-          "≥ 0,8 g/L = délit (4 500€ + prison possible)",
-          "Stupéfiants : tolérance zéro, test salivaire",
-          "Refus de dépistage = mêmes sanctions que délit"
+          "0,5-0,79 g/L sang : contravention 135€ + 6 points",
+          "≥ 0,8 g/L : délit (4 500€ + prison + suspension)",
+          "Jeune conducteur (probatoire) : 0,2 g/L maximum",
+          "Stupéfiants : tolérance zéro, présence = délit",
+          "Refus de dépistage = mêmes peines que le délit"
         ],
-        fieldExample: "Un chauffeur contrôlé à 0,6 g/L perd 6 points et paie 135€ d'amende.",
-        examWarning: "0,5 g/L = contravention ≠ 0,8 g/L = délit. Ne pas confondre les seuils !",
+        practicalCases: [
+          {
+            situation: "Un chauffeur VTC fête un anniversaire la veille au soir. Le lendemain à 9h, contrôlé, il est mesuré à 0,4 mg/L d'air expiré.",
+            question: "Quelle est la qualification juridique et quelles sanctions risque-t-il ?",
+            answer: "0,4 mg/L air expiré = 0,8 g/L sang → c'est un délit : 4 500€, 2 ans de prison, suspension jusqu'à 3 ans, 6 points.",
+            reasoning: "La conversion air expiré → sang se fait par ×2 : 0,4 mg/L air = 0,8 g/L sang, pile sur le seuil délictuel. Le chauffeur a sous-estimé le temps d'élimination (~0,15 g/L/h) : 5 verres pris à 1h du matin restent détectables 8h plus tard. Conséquence professionnelle : déconventionnement plateformes, signalement préfectoral, possible retrait de carte pro."
+          },
+          {
+            situation: "Lors d'un contrôle, un conducteur refuse le dépistage salivaire stupéfiants en disant qu'il est pressé.",
+            question: "Quelles conséquences ce refus entraîne-t-il ?",
+            answer: "Mêmes peines que la conduite sous stupéfiants : 4 500€, 2 ans de prison, suspension, 6 points.",
+            reasoning: "L'article L235-3 du Code de la route assimile expressément le refus de dépistage à la conduite sous stupéfiants. Le législateur empêche ainsi qu'un conducteur 'gagne du temps' pour faire baisser son taux. Pour un T3P, ce refus signe aussi quasi-systématiquement la fin de carrière (retrait de carte pro). Réflexe : accepter tout contrôle, c'est une protection professionnelle."
+          }
+        ],
+        fieldExample: "Un VTC mesuré à 0,6 g/L après une soirée : 135€ + 6 points + immobilisation = potentielle perte du permis probatoire.",
+        examWarning: "0,8 g/L SANG = 0,4 mg/L AIR EXPIRÉ. Ne pas confondre les deux unités, l'examen joue souvent dessus.",
+        confusionPoints: [
+          "Contravention (0,5-0,79 g/L, 135€) ≠ Délit (≥ 0,8 g/L, prison possible)",
+          "Alcool (seuil à 0,5 g/L) ≠ Stupéfiants (tolérance zéro)"
+        ],
         tips: [
-          "1 verre standard ≈ 0,20-0,25 g/L",
-          "Élimination : ~0,15 g/L par heure (le café ne change rien)"
+          "1 verre standard = +0,20 à 0,25 g/L (homme moyen 75 kg)",
+          "Élimination ≈ 0,15 g/L par heure, rien n'accélère"
         ],
-        legalRefs: ["Articles L234-1 à L234-9 du Code de la route"]
+        legalRefs: ["Articles L234-1 à L234-9 (alcool)", "Articles L235-1 à L235-5 (stupéfiants) Code de la route"]
       },
       {
         id: 'sec-fatigue-vigilance',
         title: 'Fatigue et vigilance',
-        essential: "Seul remède contre la fatigue : le sommeil. Pause 15-20 min toutes les 2h.",
+        essential: "Le seul remède efficace contre la fatigue au volant est le sommeil — pause 15-20 min toutes les 2 heures de conduite.",
+        narrative: "La fatigue est responsable d'environ 1 accident mortel sur 3 sur autoroute. C'est une cause sous-estimée parce qu'elle n'est pas visible : pas d'alcool, pas d'excès de vitesse, mais une chute brutale des capacités attentionnelles. Pour un T3P qui enchaîne les courses tard le soir ou tôt le matin, c'est un risque structurel.\n\nLe cerveau humain présente deux creux physiologiques de vigilance : entre 2h et 5h du matin, et entre 13h et 15h après le déjeuner. Pendant ces fenêtres, le risque d'endormissement est multiplié par 3 à 5. Les signaux d'alerte sont stéréotypés : bâillements répétés, yeux qui piquent, paupières lourdes, picotements dans le dos, sensation que le véhicule 'flotte', franchissement involontaire de ligne. Dès le premier signe, il faut s'arrêter.\n\nLa parade scientifiquement validée est la micro-sieste de 15 à 20 minutes : au-delà, on entre en sommeil profond et le réveil est groggy ; en deçà, l'effet est insuffisant. 20 minutes de sieste restaurent 2 à 3 heures de vigilance. Les stimulants (café, boissons énergisantes) ont un effet partiel et court (20-30 min), insuffisant en cas de dette de sommeil réelle. La règle pratique des transports professionnels : pause obligatoire toutes les 2 heures, repos quotidien d'au moins 11 heures consécutives. Pour un T3P, la planification doit intégrer ces contraintes : refuser une course de trop si la fatigue s'installe est une décision professionnelle, pas un échec commercial.",
         keyPoints: [
           "Fatigue = 1/3 des accidents mortels sur autoroute",
           "Creux de vigilance : 2h-5h et 13h-15h",
+          "Pause 15-20 min toutes les 2h de conduite",
           "Micro-sieste 15-20 min = 2-3h de vigilance restaurée",
-          "Les stimulants masquent temporairement (20-30 min)"
+          "Café/musique/fenêtre ouverte : inefficaces sur dette de sommeil"
         ],
-        fieldExample: "Après 3h de conduite de nuit, le chauffeur s'arrête 20 min pour une micro-sieste.",
-        examWarning: "Café/musique/fenêtre = solutions inefficaces. Seul le sommeil fonctionne.",
+        practicalCases: [
+          {
+            situation: "Un VTC enchaîne 4h de courses de nuit (22h-2h) et sent ses paupières devenir lourdes en attendant une nouvelle course.",
+            question: "Quelle est la meilleure décision professionnelle ?",
+            answer: "Refuser la prochaine course, s'arrêter dans un endroit sûr et faire une micro-sieste de 15-20 minutes.",
+            reasoning: "À 2h du matin, on entre dans le pic physiologique de risque, doublé d'une fatigue accumulée. Prendre une course supplémentaire = risque accidentogène majeur. Une micro-sieste restaure 2-3h de vigilance utile. Économiquement, c'est aussi rationnel : un accident = arrêt prolongé, franchise assurance, sinistre client. Le 'temps perdu' à dormir est un investissement sécurité."
+          },
+          {
+            situation: "Sur un long trajet aller-retour Paris-Lyon, un chauffeur boit un café et baisse la fenêtre pour 'tenir'.",
+            question: "Ces solutions sont-elles efficaces ?",
+            answer: "Non : effet réel court (20-30 min) et insuffisant face à une vraie fatigue. Seul l'arrêt avec sommeil l'est.",
+            reasoning: "Le café agit sur les récepteurs de l'adénosine et donne un coup de fouet bref, mais ne supprime pas la dette de sommeil sous-jacente. Le froid et la musique stimulent superficiellement mais n'inversent pas le déclin attentionnel. Le seul mécanisme biologique qui restaure la vigilance, c'est le sommeil — même bref. Insister à continuer = endormissement microscopique au volant (3-5 secondes de paupières fermées à 130 km/h = 200 m parcourus à l'aveugle)."
+          }
+        ],
+        fieldExample: "Après une course Paris-Roissy à 4h du matin, le VTC se gare sur une aire et dort 20 min avant de reprendre.",
+        examWarning: "Le café, la musique forte, l'air froid ne sont JAMAIS des solutions efficaces contre la fatigue — seul le sommeil l'est.",
+        confusionPoints: [
+          "Somnolence (alerte, encore réversible) ≠ Endormissement (sommeil involontaire, accident imminent)",
+          "Stimulant (effet 20-30 min, partiel) ≠ Sommeil (effet durable, intégral)"
+        ],
         tips: [
-          "Signes : bâillements, yeux qui piquent, ligne franchie"
+          "Mémo signes d'alerte : 'B-Y-P-L' = Bâillements, Yeux piquent, Paupières lourdes, Ligne franchie",
+          "Planifier la pause AVANT d'avoir besoin (proactif, pas réactif)"
         ],
-        legalRefs: ["Recommandations Sécurité routière"]
+        legalRefs: ["Recommandations Sécurité Routière", "Article R412-6 (maîtrise du véhicule)"]
       },
       {
         id: 'sec-eco-conduite',
         title: 'Éco-conduite',
-        essential: "Conduite souple = -15 à -25% de carburant + confort passager amélioré.",
+        essential: "Une conduite souple permet -15 à -25% de carburant ; elle améliore aussi la sécurité, la durée de vie du véhicule et le confort passager.",
+        narrative: "L'éco-conduite n'est pas une posture militante : c'est un ensemble de techniques mesurables qui réduisent à la fois la consommation, l'usure mécanique et la fatigue du conducteur. Pour un T3P, c'est aussi un argument confort majeur : un passager perçoit immédiatement la différence entre un conducteur qui accélère et freine en permanence et un conducteur qui anticipe.\n\nLe principe central est l'anticipation : lever le pied dès qu'on voit un feu rouge à 200 m, plutôt que de continuer puis freiner sec. Cela permet d'arriver au feu au moment où il repasse au vert, évitant un arrêt complet (chaque redémarrage coûte cher en carburant). Le passage de vitesses est un autre levier : passer la vitesse supérieure tôt (vers 2000-2500 tr/min en essence, 1500-2000 en diesel) maintient le moteur dans sa plage de rendement optimal.\n\nLes équipements aussi comptent. La pression des pneus doit être vérifiée chaque mois : un sous-gonflage de 0,5 bar entraîne +3 à 4% de consommation et une usure prématurée. La climatisation augmente la consommation de 10 à 15% en ville et 4 à 5% sur autoroute — à modérer, sans pour autant compromettre le confort passager. Couper le moteur dès qu'un arrêt dépasse 20-30 secondes (feu rouge long, prise en charge) économise du carburant sans solliciter le démarreur. Enfin, alléger le véhicule (galerie de toit retirée, coffre vidé) gagne quelques pourcents supplémentaires. Le bilan global d'une conduite vraiment éco : -20% de carburant, -25% d'usure freins/pneus, retours clients plus positifs.",
         keyPoints: [
-          "Anticiper : éviter accélérations/freinages brusques",
-          "Couper le moteur dès 20-30 sec d'arrêt prévu",
-          "Pneus : vérifier pression mensuelle (+0,2 bar si chargé)",
-          "Clim : +10-15% de conso en ville"
+          "Anticipation : éviter les accélérations et freinages brusques",
+          "Passage de vitesses : 2000-2500 tr/min essence, 1500-2000 diesel",
+          "Pression pneus : vérifier mensuellement, +0,2 bar si chargé",
+          "Climatisation : +10-15% conso en ville",
+          "Arrêt > 20-30s : couper le moteur"
         ],
-        fieldExample: "En anticipant les feux, le VTC économise 20% de carburant sur sa journée.",
-        examWarning: "Sous-gonflage = +3-4% de conso + usure prématurée.",
+        practicalCases: [
+          {
+            situation: "Un VTC parcourt 200 km par jour, consommation moyenne 7 L/100. En adoptant une conduite plus souple, il passe à 5,8 L/100.",
+            question: "Quelle économie annuelle réalise-t-il, à 1,80€/L sur 250 jours travaillés ?",
+            answer: "Gain : 1,2 L/100 × 200 km × 250 j = 600 L/an × 1,80€ = 1 080€/an.",
+            reasoning: "Le gain de 1,2 L/100 km correspond aux -17% typiques d'une vraie éco-conduite. À l'échelle annuelle, cela représente une part significative de la marge nette d'un VTC indépendant. Bonus non quantifié : usure pneus/freins réduite, moins d'entretien, image client plus haut de gamme. ROI immédiat."
+          },
+          {
+            situation: "Une cliente reproche à son chauffeur d'avoir coupé le moteur à un feu rouge, craignant un démarreur en panne.",
+            question: "Cette pratique est-elle recommandée et à partir de quel seuil ?",
+            answer: "Oui : recommandée dès 20-30 secondes d'arrêt. Les démarreurs modernes (Stop & Start) sont conçus pour des milliers de cycles.",
+            reasoning: "Un moteur au ralenti consomme 0,6-1 L/h : couper économise immédiatement. Les démarreurs depuis 2010 sont renforcés (technologie Stop & Start généralisée). Le pédagogique avec le client : expliquer brièvement 'je coupe pour limiter la pollution et l'usure', cela renforce l'image professionnelle. Seule exception : températures négatives ou batterie ancienne."
+          }
+        ],
+        fieldExample: "Aux abords d'un feu, le VTC lève le pied 200 m avant : le feu repasse au vert, il franchit sans s'arrêter, économise carburant et freins.",
+        examWarning: "Sous-gonflage = +3-4% de consommation ET usure prématurée des bords de pneus. Vérification mensuelle obligatoire.",
+        confusionPoints: [
+          "Régime optimal essence (2000-2500) ≠ diesel (1500-2000)",
+          "Couper moteur arrêt long (utile) ≠ rouler en roue libre point mort (interdit, dangereux)"
+        ],
         tips: [
-          "Passages vitesses : 2000-2500 tr/min (essence), 1500-2000 (diesel)"
+          "Pneus : pression à froid + 0,2 bar quand le véhicule est chargé",
+          "Coffre vide quand pas utile : -1 à 2% par tranche de 50 kg"
         ],
-        legalRefs: ["Recommandations ADEME"]
+        legalRefs: ["Recommandations ADEME", "Article R413-17 (usage modéré)"]
       },
       {
         id: 'sec-equipements-securite',
-        title: 'Équipements obligatoires',
-        essential: "Ceinture obligatoire pour tous. Gilet + triangle obligatoires à bord.",
+        title: 'Équipements de sécurité obligatoires',
+        essential: "Ceinture pour tous, gilet et triangle à bord — le conducteur est responsable du port de la ceinture par les passagers mineurs.",
+        narrative: "L'équipement de sécurité ne se limite pas à un dispositif passif : c'est un système juridique de responsabilités. Le port de la ceinture est obligatoire pour tous les occupants depuis 1990 à l'arrière (déjà depuis 1973 à l'avant). Le non-port est sanctionné par 135€ et 3 points pour la personne fautive — sauf pour les mineurs, où c'est le conducteur qui est responsable et écope de l'amende. Pour un VTC ou un taxi transportant un enfant non attaché, c'est le chauffeur qui paie.\n\nLes enfants de moins de 10 ans doivent voyager dans un dispositif de retenue adapté à leur taille et leur poids (siège auto, rehausseur). Sous 9 mois, ils doivent être placés dos à la route. L'avant est interdit aux moins de 10 ans sauf exception (cabine dépourvue de banquette arrière, ou rehausseur conforme avec airbag désactivé). Pour un T3P, il est fortement recommandé de disposer d'au moins un rehausseur pour transporter des familles avec enfants.\n\nDeux équipements doivent être à bord en permanence : le gilet haute visibilité (à portée de main, pas dans le coffre) et le triangle de présignalisation. L'absence est sanctionnée 135€ chacun. Le gilet doit être enfilé AVANT de descendre du véhicule en cas de panne ou d'accident sur la chaussée, et le triangle placé à 30 m en amont (150-200 m sur voie rapide). L'éthylotest, longtemps obligatoire mais non sanctionné, n'est plus exigé depuis 2020. La trousse de premiers secours reste fortement recommandée pour un T3P, sans être légalement imposée.",
         keyPoints: [
-          "Non-port ceinture : 135€ + 3 points pour le conducteur",
-          "Enfants < 10 ans : siège adapté obligatoire",
-          "Gilet : à portée de main (pas dans le coffre)",
-          "Éthylotest : recommandé mais pas de sanction si absent"
+          "Ceinture obligatoire pour tous les occupants (avant et arrière)",
+          "Mineurs : responsabilité du conducteur (135€ + 3 points)",
+          "Enfants < 10 ans : dispositif de retenue adapté",
+          "Gilet haute visibilité : à portée de main (pas dans le coffre)",
+          "Triangle : 30 m en amont, 150-200 m sur voie rapide"
         ],
-        fieldExample: "Un passager ne met pas sa ceinture : c'est le conducteur qui écope de l'amende.",
-        examWarning: "Le conducteur est responsable du port de ceinture des passagers mineurs.",
+        practicalCases: [
+          {
+            situation: "Un taxi transporte une mère et son fils de 8 ans. L'enfant est assis sur la banquette arrière sans rehausseur, ceinture standard.",
+            question: "Qui est responsable et que risque le chauffeur ?",
+            answer: "Le chauffeur : il est responsable du défaut de dispositif adapté (135€ + 3 points) car l'enfant a moins de 10 ans.",
+            reasoning: "L'article R412-2 impose un dispositif de retenue adapté pour les enfants de moins de 10 ans. La ceinture standard ne convient pas (pas calibrée pour les épaules d'un enfant). Pour un taxi, il est conseillé d'avoir un rehausseur léger à bord ou de proposer un véhicule équipé. Si la cliente refuse, le chauffeur peut refuser la course pour motif légitime (sécurité)."
+          },
+          {
+            situation: "Un VTC tombe en panne sur la bande d'arrêt d'urgence de l'autoroute. Il sort de son véhicule sans gilet pour aller chercher le triangle dans le coffre.",
+            question: "Quelles fautes commet-il et quels risques ?",
+            answer: "Deux fautes : sortie sans gilet (135€) et risque grave d'accident corporel (peu visible des autres conducteurs).",
+            reasoning: "Le gilet DOIT être enfilé À L'INTÉRIEUR du véhicule avant de descendre. Sortir sans gilet sur autoroute, c'est s'exposer à être fauché par un véhicule arrivant à 130 km/h. C'est pour cette raison que le gilet doit être 'à portée de main' (boîte à gants, contre-porte), pas dans le coffre — qui se trouve à l'extérieur côté circulation. Bonne pratique : prévoir un gilet pour chaque passager."
+          }
+        ],
+        fieldExample: "Avant chaque démarrage, le chauffeur jette un œil au rétroviseur pour vérifier que tous les passagers ont bouclé leur ceinture — pédagogique et préventif.",
+        examWarning: "L'éthylotest n'est PLUS obligatoire depuis 2020 — piège classique d'un QCM périmé. Le gilet et le triangle, eux, le restent.",
+        confusionPoints: [
+          "Ceinture adultes (responsabilité individuelle) ≠ ceinture mineurs (responsabilité conducteur)",
+          "Gilet À PORTÉE DE MAIN (boîte à gants) ≠ dans le coffre (inaccessible en sécurité)"
+        ],
         tips: [
-          "Trousse de secours recommandée dans le véhicule"
+          "Stocker le gilet dans la contre-porte conducteur : visible et accessible",
+          "Avoir un rehausseur pliable dans le coffre = avantage commercial"
         ],
-        legalRefs: ["Article R412-1 (ceinture)", "Article R416-19 (gilet/triangle)"]
+        legalRefs: ["Article R412-1 (ceinture)", "Article R412-2 (enfants)", "Article R416-19 (gilet et triangle)"]
       },
       {
         id: 'sec-premiers-secours',
         title: 'Premiers secours (PAS)',
-        essential: "PAS = Protéger → Alerter → Secourir. Toujours dans cet ordre.",
+        essential: "Face à un accident, la séquence à respecter est PAS : Protéger, Alerter, Secourir — toujours dans cet ordre.",
+        narrative: "La conduite à tenir face à un accident est codifiée par le protocole PAS, enseigné dans toutes les formations PSC1 (Prévention et Secours Civiques niveau 1). L'ordre n'est pas indicatif : il est impératif. Inverser les étapes peut transactionnellement aggraver la situation.\n\nProtéger, c'est éviter le sur-accident : se garer hors de la chaussée, allumer les feux de détresse, enfiler le gilet, sécuriser la zone avec le triangle (30 m, 150-200 m sur voie rapide), faire évacuer les passagers vers un endroit sûr (derrière la glissière). Ne JAMAIS s'occuper d'une victime avant d'avoir protégé la zone : un secouriste fauché par une voiture devient une victime supplémentaire.\n\nAlerter, c'est appeler les services d'urgence avec un message structuré : nature de l'accident (collision, choc piéton), localisation précise (autoroute + sens + PR si possible), nombre de victimes, état apparent (consciente/inconsciente, respire/ne respire pas). Numéros : 15 (SAMU) pour les blessés, 18 (pompiers) pour les incendies, 17 (police/gendarmerie) pour les questions de circulation, 112 (européen, fonctionne sans crédit ni SIM). Le 114 est dédié aux personnes sourdes/malentendantes (SMS).\n\nSecourir, c'est appliquer les gestes appris : ne pas déplacer une victime sauf danger immédiat (risque d'incendie, sur voie de circulation), couvrir contre le froid, parler pour rassurer, mettre en PLS (Position Latérale de Sécurité) une victime inconsciente qui respire pour éviter qu'elle s'étouffe avec sa langue ou ses vomissements. En cas d'arrêt cardio-respiratoire : massage cardiaque externe (100-120 compressions/min, 5-6 cm de profondeur) jusqu'à l'arrivée des secours ou d'un défibrillateur. La non-assistance à personne en péril est punie de 5 ans de prison et 75 000€ (art. 223-6 Code pénal).",
         keyPoints: [
-          "15 = SAMU / 17 = Police / 18 = Pompiers / 112 = européen",
-          "PLS : victime inconsciente qui respire",
-          "Massage cardiaque : 100-120/min, 5-6 cm profondeur",
-          "Ne jamais déplacer sauf danger immédiat"
+          "P-A-S : Protéger, Alerter, Secourir (ordre impératif)",
+          "Numéros : 15 SAMU, 17 Police, 18 Pompiers, 112 européen, 114 sourds",
+          "Victime inconsciente qui respire → PLS",
+          "Massage cardiaque : 100-120/min, 5-6 cm de profondeur",
+          "Non-assistance : 5 ans de prison + 75 000€ (Code pénal)"
         ],
-        fieldExample: "Accident : le chauffeur balise les lieux (Protéger), appelle le 15 (Alerter), puis assiste la victime.",
-        examWarning: "PAS = ordre strict. Protéger AVANT d'alerter, pas l'inverse.",
+        practicalCases: [
+          {
+            situation: "Sur une route, un taxi arrive sur un accident : voiture dans le fossé, conducteur conscient mais coincé, fumée légère sous le capot.",
+            question: "Quelle est la séquence d'actions correcte ?",
+            answer: "1) Protéger : se garer, gilet, triangle, feux de détresse. 2) Alerter : 18 (pompiers, à cause du risque incendie + désincarcération). 3) Secourir : parler à la victime, NE PAS la déplacer (sauf si flammes), couvrir.",
+            reasoning: "Le risque incendie justifie d'appeler les pompiers en priorité (18 ou 112). La désincarcération est leur compétence : un secouriste improvisé peut aggraver des lésions cervicales en tirant la victime. Tant que les flammes ne menacent pas directement, on ne déplace pas. Parler à la victime maintient sa conscience et calme l'angoisse. Documentation : noter heure, lieu pour le rapport."
+          },
+          {
+            situation: "Un passager d'un VTC fait un malaise sur la banquette arrière, perd connaissance mais respire normalement.",
+            question: "Quelle position adopter et pourquoi ?",
+            answer: "Mise en Position Latérale de Sécurité (PLS) pour empêcher l'étouffement par la langue ou des vomissements.",
+            reasoning: "Une victime inconsciente sur le dos risque que sa langue tombe en arrière et obstrue les voies aériennes, ou qu'elle inhale un vomi. La PLS (couché sur le côté, tête défléchie, jambe supérieure fléchie pour stabiliser) maintient les voies aériennes ouvertes. Étape suivante : appeler le 15 en restant à côté de la victime, surveiller la respiration, ne pas donner à boire ni à manger. Si arrêt respiratoire : démarrer le massage cardiaque."
+          }
+        ],
+        fieldExample: "Témoin d'un accident, le chauffeur se gare 50 m après le lieu, enfile son gilet, allume les détresses, pose le triangle, puis appelle le 15.",
+        examWarning: "P-A-S = ordre STRICT : Protéger AVANT d'alerter, AVANT de secourir. Inverser = aggravation possible.",
+        confusionPoints: [
+          "PLS (inconsciente qui RESPIRE) ≠ Massage cardiaque (inconsciente qui NE RESPIRE PAS)",
+          "Non-assistance (5 ans + 75k€) ≠ aide maladroite (protégée par la loi Bon Samaritain de 2020)"
+        ],
         tips: [
-          "Formation PSC1 recommandée pour tous conducteurs pro"
+          "Formation PSC1 (7h, ~60€) : très fortement recommandée pour tout pro T3P",
+          "Numéro européen 112 : fonctionne sans crédit, sans SIM, à l'étranger"
         ],
-        legalRefs: ["Article 223-6 Code pénal (non-assistance)"]
+        legalRefs: ["Article 223-6 Code pénal (non-assistance)", "Loi du 3 juillet 2020 dite 'Bon Samaritain'"]
       },
       {
         id: 'sec-signalisation',
         title: 'Signalisation et priorités',
-        essential: "Piéton engagé ou manifestant l'intention = priorité absolue.",
+        essential: "Un piéton engagé ou manifestant l'intention de traverser a priorité absolue ; sur un rond-point, priorité aux véhicules déjà engagés.",
+        narrative: "La hiérarchie des priorités routières répond à une logique de protection des plus vulnérables. Au sommet : le piéton. L'article R415-11 impose au conducteur de céder le passage à tout piéton engagé dans la chaussée, OU manifestant l'intention de s'engager. C'est une nuance majeure : on ne peut pas attendre qu'il pose le pied sur la chaussée pour s'arrêter. Le non-respect de la priorité piéton coûte 135€ et 6 points (passage de 4 à 6 points depuis 2018) — c'est la sanction la plus lourde après l'alcool.\n\nLes panneaux de priorité s'organisent par familles. Le STOP (AB4) impose un arrêt obligatoire à la ligne, même sans véhicule visible — 'marquer l'arrêt' est juridiquement caractérisé (roues immobilisées). Le 'Cédez le passage' (AB3a) impose de laisser passer mais sans arrêt obligatoire si la voie est dégagée. Aux intersections sans signalisation, c'est la priorité à droite qui s'applique (sauf 'route à caractère prioritaire' indiquée par panneau AB6 jaune losange).\n\nLe rond-point est une exception qui désarçonne : la signalisation 'cédez le passage' à l'entrée inverse la règle générale. La priorité va aux véhicules déjà engagés dans l'anneau, donc à GAUCHE pour le véhicule qui arrive. C'est une question piège fréquente. Pour les véhicules d'intérêt général (pompiers, SAMU, police) en intervention (gyrophare + sirène 2 tons), tout autre conducteur doit faciliter le passage : ralentir, se serrer à droite, voire monter sur le trottoir si nécessaire. Le tramway, par sa masse et son inertie, est toujours prioritaire sauf signalisation contraire — un tram à 50 km/h chargé met plus de 60 m à s'arrêter.",
         keyPoints: [
-          "STOP : arrêt obligatoire à la ligne",
-          "Rond-point : priorité aux véhicules engagés",
-          "Véhicules prioritaires (gyrophare + sirène) : faciliter passage",
-          "Tramway : toujours prioritaire sauf signalisation"
+          "Piéton engagé OU manifestant l'intention : priorité absolue (135€ + 6 points)",
+          "STOP : arrêt obligatoire à la ligne, roues immobilisées",
+          "Sans signalisation : priorité à droite",
+          "Rond-point : priorité aux véhicules engagés (donc à gauche)",
+          "Véhicules d'intérêt général en intervention : faciliter passage"
         ],
-        fieldExample: "Un piéton attend au passage : le chauffeur s'arrête pour lui laisser traverser.",
-        examWarning: "Rond-point = priorité à gauche (véhicules engagés), pas à droite !",
+        practicalCases: [
+          {
+            situation: "Un piéton se tient sur le trottoir, tête tournée vers la chaussée, prêt à traverser un passage protégé. Le VTC accélère pour passer avant lui.",
+            question: "Cette conduite est-elle légale ?",
+            answer: "Non : le piéton manifeste l'intention de traverser → priorité absolue. Le VTC commet un refus de priorité (135€ + 6 points).",
+            reasoning: "L'article R415-11 ne fait pas attendre que le piéton soit déjà sur la chaussée. L'INTENTION manifestée suffit (regard, pas en avant). Pour un VTC, c'est aussi une question commerciale : le passager observe cette attitude. Bonne pratique : marquer l'arrêt très visiblement, faire signe au piéton, repartir une fois la traversée terminée."
+          },
+          {
+            situation: "Un VTC arrive sur un rond-point. Un véhicule est déjà engagé dans l'anneau, un autre arrive sur sa droite.",
+            question: "À qui doit-il céder le passage ?",
+            answer: "Au véhicule déjà engagé dans l'anneau (situé à sa gauche). Le véhicule à droite n'a pas la priorité ici.",
+            reasoning: "Le rond-point inverse la règle 'priorité à droite' par le panneau 'cédez le passage' à chaque entrée. La priorité va aux véhicules engagés, qui circulent en sens anti-horaire — donc venant de la gauche pour celui qui entre. Erreur classique : conserver la priorité à droite par réflexe et provoquer une collision dans l'anneau. À noter : on n'utilise PAS le clignotant gauche dans l'anneau, seulement le clignotant droit en sortie."
+          }
+        ],
+        fieldExample: "À l'approche d'un passage piéton, le chauffeur lève le pied dès qu'il voit une personne se présenter, et s'arrête avant la bande blanche.",
+        examWarning: "Rond-point = priorité à gauche (aux véhicules engagés), JAMAIS à droite. Question piège ultra-fréquente.",
+        confusionPoints: [
+          "STOP (arrêt obligatoire) ≠ Cédez le passage (ralentir, s'arrêter si nécessaire)",
+          "Priorité à droite (intersection sans signalisation) ≠ Rond-point (priorité aux engagés = à gauche)"
+        ],
         tips: [
-          "En cas de doute : prudence et courtoisie"
+          "Mémo rond-point : 'on cède à ceux qui tournent déjà'",
+          "Sirène + gyrophare : se serrer à droite, jamais à gauche"
         ],
-        legalRefs: ["Articles R411 à R422 du Code de la route"]
+        legalRefs: ["Articles R411 à R422 Code de la route", "Article R415-11 (priorité piéton)"]
       }
     ]
   },
@@ -550,127 +716,260 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'reg-definition-t3p',
         title: 'Définition T3P',
-        essential: "T3P = Transport Public Particulier de Personnes : Taxi, VTC, VMDTR.",
+        essential: "Le T3P couvre toute activité de transport de personnes à titre onéreux, à la demande, avec un véhicule de moins de 10 places — taxi, VTC ou VMDTR.",
+        narrative: "Le sigle T3P (Transport Public Particulier de Personnes) recouvre les trois activités encadrées par les articles L3120-1 et suivants du Code des transports : le taxi, le VTC et le VMDTR (deux-roues motorisé). Le critère commun, c'est le transport à la demande contre rémunération avec un véhicule de moins de 10 places, conducteur compris. Tout ce qui sort de ce périmètre — autocar, transport sanitaire, transport scolaire — relève d'un autre régime.\n\nLa loi Thévenoud du 1er octobre 2014 a posé le socle moderne en distinguant clairement taxi (monopole de la maraude et du stationnement sur voie publique) et VTC (réservation préalable obligatoire). La loi Grandguillaume du 29 décembre 2016 a refermé la brèche LOTI utilisée par certaines plateformes et créé un examen commun T3P avec tronc commun + spécialités.\n\nLe covoiturage (L3132-1) est hors champ : pas de bénéfice pour le conducteur, simple partage des frais réels. Dès que la rémunération dépasse les frais ou que le conducteur fait du trajet sa motivation économique, on bascule en T3P illégal — transport à titre onéreux sans titre = délit.",
         keyPoints: [
-          "Transport onéreux (rémunéré) ≠ covoiturage (partage de frais)",
-          "Transport à la demande : le client choisit le trajet",
+          "Trois activités : Taxi, VTC, VMDTR",
+          "Véhicule < 10 places, transport à la demande, à titre onéreux",
           "Loi Thévenoud (2014) + Loi Grandguillaume (2016)",
-          "Les centrales de réservation sont aussi réglementées"
+          "Covoiturage = partage de frais, hors T3P",
+          "Centrales de réservation également réglementées"
         ],
-        fieldExample: "Un conducteur prend 5€ de plus que ses frais : c'est du transport onéreux, pas du covoiturage.",
-        examWarning: "Covoiturage ≠ T3P : le covoiturage ne fait pas de bénéfice, juste partage des frais.",
+        practicalCases: [
+          {
+            situation: "Marc utilise sa voiture personnelle pour emmener des inconnus rencontrés sur une application, contre 25€ par trajet alors que ses frais réels sont de 8€.",
+            question: "Cette activité relève-t-elle du covoiturage ou du T3P ?",
+            answer: "Du T3P illégal : Marc tire un bénéfice du trajet, ce n'est plus du partage de frais.",
+            reasoning: "Le covoiturage suppose que le conducteur ne tire aucun bénéfice (art. L3132-1). Dès que la rémunération excède la quote-part des frais (carburant, péage, usure), l'activité devient un transport à titre onéreux et nécessite une carte professionnelle T3P + véhicule habilité. Sans cela : 1 an de prison + 15 000€ d'amende."
+          },
+          {
+            situation: "Une plateforme propose à Léa de transporter des colis et des passagers dans un même trajet, avec un véhicule 8 places.",
+            question: "Le transport de colis seul peut-il être qualifié de T3P ?",
+            answer: "Non : le T3P concerne exclusivement le transport de personnes. Le transport de marchandises relève d'un autre régime.",
+            reasoning: "L'article L3120-1 vise le transport de personnes. Pour les colis, c'est le régime du transport routier de marchandises (capacité professionnelle distincte). Léa peut transporter des passagers en T3P ET déposer leurs bagages, mais pas faire du fret pur sous sa carte VTC."
+          }
+        ],
+        fieldExample: "Un VTC qui prend un client réservé via une appli = T3P. Un voisin qui partage les frais d'essence pour aller au travail = covoiturage.",
+        examWarning: "Le critère décisif n'est pas la plateforme utilisée mais la rémunération : bénéfice = T3P ; partage de frais = covoiturage.",
         confusionPoints: [
-          "Covoiturage = partage de frais ≠ T3P = activité commerciale"
+          "Covoiturage (partage de frais, hors T3P) ≠ VTC (bénéfice, T3P)",
+          "T3P ≠ transport collectif (autocar > 9 places)"
         ],
         tips: [
-          "Le non-respect expose à des sanctions pénales"
+          "Mémo : 3 lettres P → Public, Particulier, Personnes",
+          "Si le conducteur gagne de l'argent → T3P obligatoire"
         ],
-        legalRefs: ["Articles L3120-1 à L3124-13 du Code des transports"]
+        legalRefs: ["Articles L3120-1 à L3124-13 Code des transports", "Loi Thévenoud n°2014-1104", "Loi Grandguillaume n°2016-1920"]
       },
       {
         id: 'reg-acces-profession',
-        title: 'Conditions d\'accès',
-        essential: "Permis B ≥ 3 ans + casier vierge + visite médicale + examen T3P.",
+        title: "Conditions d'accès à la profession",
+        essential: "Quatre conditions cumulatives : permis B ≥ 3 ans, casier compatible, aptitude médicale, réussite de l'examen T3P.",
+        narrative: "Devenir conducteur T3P n'est pas une simple démarche administrative : la loi a structuré un véritable filtre d'entrée. La première condition est l'ancienneté du permis B : 3 ans minimum, ramenés à 2 ans pour ceux qui ont suivi la conduite accompagnée (AAC). Cette ancienneté garantit une expérience de conduite réelle avant de transporter du public.\n\nVient ensuite l'honorabilité professionnelle : le bulletin n°2 du casier judiciaire ne doit pas comporter de condamnation incompatible (vol, agression, conduite sous stupéfiants, délit routier grave). La préfecture vérifie ce casier à l'entrée et tous les ans pendant l'exercice : une condamnation postérieure peut entraîner le retrait de la carte.\n\nL'aptitude physique est attestée par un médecin agréé par la préfecture, lors d'une visite valable 5 ans (3 ans après 60 ans). Le formulaire Cerfa 14880 examine vue, audition, neurologie, addictions. Enfin, le candidat doit réussir l'examen T3P organisé par les CMA : épreuves d'admissibilité (tronc commun écrit) + admission (réglementation spécifique + conduite). C'est cette réussite qui ouvre la délivrance de la carte professionnelle par la préfecture.",
         keyPoints: [
-          "Permis B depuis 3 ans (2 ans si conduite accompagnée)",
-          "Casier judiciaire compatible (vérifié chaque année)",
-          "Visite médicale tous les 5 ans (médecin agréé)",
-          "Examen T3P : 7 épreuves, moyenne ≥ 12/20, mini 10/20 par épreuve"
+          "Permis B ≥ 3 ans (2 ans si conduite accompagnée)",
+          "Casier judiciaire B2 compatible, vérifié chaque année",
+          "Visite médicale médecin agréé : 5 ans (3 ans après 60 ans)",
+          "Examen T3P organisé par les Chambres des Métiers (CMA)",
+          "Conditions cumulatives : l'absence d'une seule = refus"
         ],
-        fieldExample: "Un candidat a 14 de moyenne mais 8 en réglementation : il échoue (< 10 à une épreuve).",
-        examWarning: "Moyenne 12/20 + minimum 10/20 à chaque épreuve. Les deux conditions sont cumulatives.",
+        practicalCases: [
+          {
+            situation: "Yanis a obtenu son permis B il y a 22 mois en conduite accompagnée. Il veut s'inscrire à l'examen VTC.",
+            question: "Peut-il s'inscrire dès maintenant ?",
+            answer: "Non. La conduite accompagnée ramène le délai à 2 ans, mais Yanis n'a que 22 mois — il doit attendre 2 mois supplémentaires.",
+            reasoning: "L'article R3120-7 fixe 3 ans de permis B, ramenés à 2 ans (24 mois) pour les titulaires de l'AAC. Le calcul se fait à la date de candidature à l'examen, pas à celle de la carte. Erreur classique : confondre 'conduite accompagnée' avec une dispense totale."
+          },
+          {
+            situation: "Aïcha a 62 ans et passe sa visite médicale T3P. Le médecin lui délivre un certificat d'aptitude.",
+            question: "Pour combien de temps cette aptitude est-elle valable ?",
+            answer: "3 ans, car elle a plus de 60 ans.",
+            reasoning: "L'aptitude médicale T3P est valable 5 ans pour les moins de 60 ans, mais ramenée à 3 ans à partir de 60 ans (puis 2 ans à partir de 76 ans pour certaines pathologies). Cette progressivité reflète la dégradation possible des aptitudes (vue, réflexes). À ne pas confondre avec la formation continue (14h / 5 ans), totalement indépendante."
+          }
+        ],
+        fieldExample: "Un candidat de 24 ans, permis depuis 4 ans, sans antécédent judiciaire, apte médicalement : il peut se présenter à l'examen.",
+        examWarning: "Les quatre conditions sont cumulatives ET continues : la perte de l'une d'elles (condamnation, inaptitude) entraîne le retrait de la carte, pas seulement le refus à l'entrée.",
         tips: [
-          "Casier vérifié automatiquement chaque année par la préfecture"
+          "Mémo PAME : Permis, Aptitude, Moralité, Examen",
+          "Visite médicale = formulaire Cerfa 14880"
         ],
-        legalRefs: ["Articles L3120-2-1 et R3120-7 du Code des transports"]
+        legalRefs: ["Articles L3120-2-1 et R3120-7 Code des transports", "Arrêté du 6 avril 2017"]
       },
       {
         id: 'reg-carte-professionnelle',
-        title: 'Carte professionnelle',
-        essential: "Validité 5 ans + formation continue 14h minimum obligatoire pour renouveler.",
+        title: 'Carte professionnelle T3P',
+        essential: "La carte pro est délivrée par le préfet, valable 5 ans, et son renouvellement est conditionné à 14h de formation continue suivies sur la période.",
+        narrative: "La carte professionnelle T3P est le sésame qui matérialise l'autorisation d'exercer. Elle est délivrée par le préfet du département de résidence du conducteur, après vérification des conditions d'accès et réussite de l'examen. Elle mentionne expressément l'activité autorisée : Taxi, VTC ou VMDTR — un conducteur qui veut exercer plusieurs activités doit détenir plusieurs cartes.\n\nSa validité est de 5 ans. Le renouvellement n'est pas automatique : le conducteur doit en faire la demande au plus tard 2 mois avant l'expiration, en joignant la preuve d'une formation continue d'au moins 14 heures suivie auprès d'un organisme agréé. Cette formation porte sur les évolutions réglementaires, la sécurité, la gestion et la relation client. Elle peut être suivie en une fois ou répartie sur les 5 ans.\n\nPendant le service, la carte doit rester visible et accessible : apposée sur le pare-brise pour le taxi (avec le numéro d'ADS) ou présentée à la première demande des forces de l'ordre pour le VTC et le VMDTR. Exercer avec une carte expirée, suspendue ou sans carte = délit puni d'1 an de prison et 15 000€ d'amende (L3124-4). En cas de suspension judiciaire du permis B, la carte est suspendue de plein droit.",
         keyPoints: [
-          "Délivrée par le préfet du département de domicile",
-          "Mention : Taxi, VTC ou VMDTR",
-          "Visible et accessible dans le véhicule",
-          "Renouvellement : demande 2 mois avant expiration"
+          "Délivrée par le préfet du département de résidence",
+          "Mention obligatoire : Taxi, VTC ou VMDTR",
+          "Validité 5 ans, renouvellement à demander 2 mois avant",
+          "Formation continue 14h obligatoire sur les 5 ans",
+          "Visible/accessible dans le véhicule en service"
         ],
-        fieldExample: "Un VTC exerce avec une carte expirée : 1 an de prison + 15 000€ d'amende possibles.",
-        examWarning: "Sans carte professionnelle valide = exercice illégal = sanctions pénales.",
+        practicalCases: [
+          {
+            situation: "Karim est conducteur VTC depuis 4 ans et 10 mois. Il oublie totalement la formation continue et ne fait sa demande de renouvellement que le jour de l'expiration.",
+            question: "Quelles sont les conséquences pour son activité ?",
+            answer: "Sa carte n'est pas renouvelée : il doit cesser immédiatement son activité et suivre la formation 14h avant de pouvoir redemander une carte.",
+            reasoning: "Le renouvellement exige deux conditions : demande déposée au moins 2 mois avant + attestation de formation continue. À défaut, la carte expire et tout trajet effectué après devient un exercice sans carte (1 an + 15 000€). Karim doit suspendre son activité, rattraper sa formation puis déposer une nouvelle demande complète — la préfecture peut exiger une nouvelle visite médicale si l'interruption est longue."
+          },
+          {
+            situation: "Lors d'un contrôle, un VTC présente sa carte rangée dans le coffre, dans une pochette plastique.",
+            question: "Est-il en conformité avec ses obligations ?",
+            answer: "Non. La carte doit être accessible immédiatement, pas dans le coffre.",
+            reasoning: "Pour le VTC, la carte n'est pas affichée comme chez le taxi, mais elle doit pouvoir être présentée sans délai aux agents lors d'un contrôle. La ranger dans le coffre ou la laisser à domicile équivaut à un défaut de présentation, sanctionné par une amende et une mention au dossier préfectoral. Bonne pratique : à portée de main dans la console centrale ou le porte-document conducteur."
+          }
+        ],
+        fieldExample: "Un taxi parisien renouvelle sa carte 3 mois avant expiration en joignant son attestation de stage 'Mobilians Formation' de 14h.",
+        examWarning: "Formation continue = 14h sur 5 ans, pas 14h par an. Mais elle est obligatoire pour renouveler — pas d'attestation = pas de carte.",
+        confusionPoints: [
+          "Carte pro T3P (préfecture, conducteur) ≠ ADS / autorisation VTC (entreprise, mairie/registre)",
+          "Visite médicale (5 ans) ≠ Formation continue (14h / 5 ans)"
+        ],
         tips: [
-          "Formation continue : 14h sur 5 ans, en une fois ou réparties"
+          "Programmer un rappel calendaire à 6 mois avant expiration",
+          "Garder la carte dans la console centrale, jamais dans le coffre"
         ],
-        legalRefs: ["Article R3120-7 du Code des transports"]
+        legalRefs: ["Articles R3120-7 et L3124-4 Code des transports", "Arrêté du 11 août 2017 (formation continue)"]
       },
       {
         id: 'reg-examen-t3p',
         title: 'Examen T3P',
-        essential: "Admissibilité (5 épreuves communes) + Admission (2 épreuves spécifiques).",
+        essential: "L'examen T3P comporte une admissibilité (tronc commun écrit) puis une admission (réglementation spécifique + conduite) — la réussite est exigée pour obtenir la carte.",
+        narrative: "Depuis l'arrêté du 6 avril 2017, l'examen T3P est unifié pour les trois activités, avec un tronc commun et des spécialités. Il est organisé par les Chambres de Métiers et de l'Artisanat (CMA) sous le contrôle de la préfecture. La candidature se dépose en ligne sur le site de la CMA territorialement compétente, accompagnée des pièces justifiant les conditions d'accès (permis, casier, médical).\n\nL'épreuve d'admissibilité est commune aux trois activités. Elle se compose de QCM portant sur : réglementation T3P, gestion d'entreprise, sécurité routière, capacité d'expression française et compréhension de l'anglais (niveau A2). C'est un filtre national : sans admissibilité, pas d'accès à l'admission.\n\nL'épreuve d'admission est spécifique à l'activité visée. Pour le taxi : réglementation locale + connaissance du territoire (topographie du département) + conduite. Pour le VTC : développement commercial + conduite. Pour le VMDTR : sécurité spécifique deux-roues + conduite. Chaque épreuve a sa propre note éliminatoire ; la moyenne générale ne suffit pas à compenser une note trop faible dans une matière clé. En cas d'échec, le candidat peut se représenter, généralement après un délai d'au moins 1 mois selon les sessions de la CMA.",
         keyPoints: [
-          "Admissibilité : Réglementation, Gestion, Sécurité, Français, Anglais",
-          "Admission : Réglementation locale + Conduite",
-          "QCM 4 réponses, 1 seule bonne",
-          "Échec : représentation après 1 mois"
+          "Organisation : Chambres des Métiers et de l'Artisanat (CMA)",
+          "Admissibilité : tronc commun écrit (QCM) pour les 3 activités",
+          "Admission : épreuves spécifiques + conduite",
+          "Notes éliminatoires par épreuve, pas seulement moyenne",
+          "Échec : représentation possible aux sessions suivantes"
         ],
-        fieldExample: "Un candidat taxi passe les épreuves communes, puis réglementation Paris et conduite.",
-        examWarning: "Équivalence possible pour certains diplômes (BTS Tourisme, etc.).",
+        practicalCases: [
+          {
+            situation: "Sophie obtient 13/20 de moyenne à l'admissibilité, mais 6/20 en réglementation T3P.",
+            question: "Est-elle admise à passer l'épreuve d'admission ?",
+            answer: "Non : la note éliminatoire en réglementation lui ferme l'accès à l'admission, malgré une moyenne correcte.",
+            reasoning: "L'examen T3P fonctionne avec des notes plancher par épreuve pour éviter qu'un candidat ignore totalement une matière essentielle. Une moyenne générale satisfaisante ne rachète pas une note inférieure au seuil dans une épreuve clé. Sophie doit se réinscrire et repasser au minimum l'épreuve éliminatoire à la prochaine session."
+          },
+          {
+            situation: "Hugo réussit l'admissibilité en visant le VTC. Quelques mois plus tard, il veut aussi exercer comme taxi.",
+            question: "Doit-il repasser tout l'examen ?",
+            answer: "Non : son admissibilité (tronc commun) reste acquise. Il ne repasse que l'épreuve d'admission spécifique taxi.",
+            reasoning: "Le tronc commun étant unifié pour les trois activités, sa validité est reconnue pour un changement de spécialité dans le délai prévu par la CMA. Hugo passe l'admission taxi (réglementation locale + topographie + conduite) sans refaire la partie écrite commune. C'est tout l'intérêt de l'unification de 2017."
+          }
+        ],
+        fieldExample: "Un candidat taxi enchaîne : QCM admissibilité (matin), puis quelques semaines plus tard, épreuve de topographie Paris + conduite.",
+        examWarning: "Les certificats de formation initiale obtenus dans certains centres agréés peuvent dispenser de l'examen (équivalences) — vérifier auprès de la CMA.",
         tips: [
-          "L'épreuve de conduite évalue aussi le comportement client"
+          "Tronc commun = 5 matières : Régl., Gestion, Sécurité, Français, Anglais",
+          "S'inscrire à la CMA du département où l'on souhaite exercer"
         ],
-        legalRefs: ["Arrêté du 6 avril 2017 relatif à l'examen T3P"]
+        legalRefs: ["Arrêté du 6 avril 2017 relatif à l'examen T3P", "Articles R3120-9 à R3120-13 Code des transports"]
       },
       {
         id: 'reg-obligations-communes',
-        title: 'Obligations professionnelles',
-        essential: "Assurance RC pro + info prix + non-discrimination + chiens guides acceptés.",
+        title: 'Obligations professionnelles communes',
+        essential: "Assurance RC pro, information préalable du prix, non-discrimination et transport gratuit des chiens guides s'imposent à toutes les activités T3P.",
+        narrative: "Quel que soit le statut (taxi, VTC, VMDTR), le conducteur T3P est tenu à un socle d'obligations issu des articles L3120-4 à L3120-6 du Code des transports. L'assurance responsabilité civile professionnelle est la première : elle couvre les dommages causés aux passagers et aux tiers pendant l'exercice. Sans elle, le conducteur engage son patrimoine personnel et s'expose à 3 750€ d'amende + suspension de permis.\n\nL'information préalable du client sur le prix (ou son mode de calcul) est une obligation de transparence. Le taxi affiche ses tarifs et utilise le taximètre ; le VTC communique un prix forfaitaire ou un mode de calcul (km + temps) avant la prise en charge ; le VMDTR doit annoncer la course. Toute facturation surprise est sanctionnée par la DGCCRF.\n\nLa non-discrimination est absolue : refuser un client en raison de son origine, de son apparence, de son handicap, de son orientation sexuelle ou de toute autre caractéristique protégée constitue un délit (45 000€ + 3 ans, art. 225-1 du Code pénal). En revanche, le refus pour motif légitime (sécurité, fin de service, animal autre que chien guide, état d'ébriété manifeste) reste possible — il doit pouvoir être justifié objectivement.\n\nLe transport des chiens guides d'aveugle et chiens d'assistance est obligatoire et gratuit (loi du 11 février 2005). Aucune surcharge, aucun refus possible, même pour un VTC haut de gamme.",
         keyPoints: [
-          "Assurance RC professionnelle obligatoire",
-          "Information client sur le prix ou mode de calcul",
-          "Refus discriminatoire interdit (origine, handicap...)",
-          "Chiens guides : transport obligatoire et gratuit"
+          "Assurance RC professionnelle obligatoire et permanente",
+          "Information préalable sur le prix ou son mode de calcul",
+          "Non-discrimination : 45 000€ + 3 ans (Code pénal)",
+          "Chiens guides et d'assistance : transport gratuit obligatoire",
+          "Tenue correcte, véhicule propre, courtoisie : obligations implicites"
         ],
-        fieldExample: "Un VTC refuse un client en fauteuil roulant sans raison : 45 000€ d'amende + 3 ans prison.",
-        examWarning: "Le refus pour motif légitime (sécurité, fin de service) reste possible.",
+        practicalCases: [
+          {
+            situation: "Un VTC refuse une cliente non-voyante accompagnée de son chien guide, au motif que les sièges en cuir de son véhicule sont neufs.",
+            question: "Ce refus est-il légalement justifié ?",
+            answer: "Non : c'est un refus discriminatoire doublement sanctionné (discrimination + refus chien guide).",
+            reasoning: "La loi du 11 février 2005 impose le transport gratuit des chiens guides sans exception. Le motif tiré de l'état du véhicule n'est pas légitime. Le conducteur s'expose à 45 000€ d'amende et 3 ans (Code pénal art. 225-1), assortis d'un signalement à la préfecture pouvant entraîner la suspension de la carte. Solution professionnelle : couverture de protection sur le siège, jamais refus."
+          },
+          {
+            situation: "Un taxi prend un client à 2h du matin. Il est manifestement très alcoolisé, agressif verbalement et menace le chauffeur.",
+            question: "Le chauffeur peut-il refuser la course ?",
+            answer: "Oui : c'est un motif légitime tenant à la sécurité.",
+            reasoning: "Le refus pour motif légitime reste possible : sécurité du conducteur, fin de service annoncée, demande illégale (transport de stupéfiants). L'état d'ébriété manifeste avec agressivité menace directement la sécurité de la course. Le conducteur doit pouvoir documenter le motif (témoins, mention au cahier de bord). La discrimination interdite vise les caractéristiques de la personne, pas son comportement objectif."
+          }
+        ],
+        fieldExample: "Une VTC charge une cliente en fauteuil roulant, embarque le fauteuil dans le coffre et facture le prix normal sans surcoût.",
+        examWarning: "Le refus 'sécurité' ou 'fin de service' doit être réel et justifiable — l'invoquer abusivement est requalifié en refus discriminatoire.",
+        confusionPoints: [
+          "Chien guide (gratuit, obligatoire) ≠ animal de compagnie (refus possible)",
+          "Refus discriminatoire (caractéristique personne, interdit) ≠ refus légitime (comportement/sécurité, possible)"
+        ],
         tips: [
-          "Tenue correcte et véhicule propre = obligations implicites"
+          "Garder une couverture de protection siège pour les chiens guides",
+          "Annoncer le prix avant le démarrage = preuve d'information"
         ],
-        legalRefs: ["Articles L3120-4 à L3120-6 du Code des transports"]
+        legalRefs: ["Articles L3120-4 à L3120-6 Code des transports", "Article 225-1 Code pénal", "Loi n°2005-102 du 11 février 2005"]
       },
       {
         id: 'reg-vehicule-conditions',
-        title: 'Conditions véhicule',
-        essential: "Max 6 ans (7 ans si hybride/électrique), 4-9 places, contrôle technique annuel.",
+        title: 'Conditions du véhicule',
+        essential: "Véhicule de 4 à 9 places, max 6 ans (7 ans si hybride/électrique), contrôle technique annuel professionnel.",
+        narrative: "Le véhicule T3P est soumis à des conditions strictes qui s'ajoutent à la réglementation routière classique. Côté capacité, il doit comporter entre 4 et 9 places assises, conducteur compris — au-delà, on bascule en transport collectif (autocar). En deçà, le véhicule n'offre pas la sécurité minimale exigée pour un transport rémunéré.\n\nL'âge du véhicule est plafonné à 6 ans depuis sa première mise en circulation, porté à 7 ans pour les véhicules hybrides ou électriques (décret n°2017-483). Cette exception incitative reconnaît à la fois la durabilité technique de ces motorisations et leur intérêt environnemental. Un véhicule électrique mis en circulation en 2019 peut donc encore rouler en VTC en 2026.\n\nLe VTC doit en plus respecter des critères de standing : puissance moteur ≥ 84 kW (114 ch) OU longueur ≥ 4,50 m, pour garantir le confort et différencier l'offre du taxi. Le contrôle technique est annuel (au lieu de bisannuel pour un particulier) et plus exigeant — il vérifie aussi les équipements obligatoires : ceintures fonctionnelles à toutes les places, signalétique pour le taxi (lumineux, plaque, compteur scellé). Tout défaut majeur entraîne l'immobilisation immédiate.",
         keyPoints: [
-          "Âge max : 6 ans (7 ans pour hybrides/électriques)",
-          "Places : 4 à 9 assises (conducteur compris)",
-          "Contrôle technique annuel (pro = plus strict)",
-          "VTC : puissance ≥ 84 kW OU longueur ≥ 4,50m"
+          "Capacité : 4 à 9 places conducteur compris",
+          "Âge max : 6 ans, 7 ans pour hybride/électrique",
+          "Contrôle technique annuel (renforcé pour usage pro)",
+          "VTC : puissance ≥ 84 kW OU longueur ≥ 4,50 m",
+          "Équipements obligatoires conformes (ceintures, signalétique taxi)"
         ],
-        fieldExample: "Une Tesla Model 3 de 2019 peut encore rouler en VTC en 2026 (7 ans car électrique).",
-        examWarning: "Hybrides et électriques = 1 an de plus. Ne pas oublier cette exception !",
+        practicalCases: [
+          {
+            situation: "Antoine veut acheter un véhicule pour son activité VTC. Il hésite entre une Peugeot 308 thermique de 2019 et une Tesla Model 3 de 2019.",
+            question: "Lequel pourra-t-il exploiter le plus longtemps en 2026 ?",
+            answer: "La Tesla : électrique → 7 ans maximum, donc encore exploitable jusqu'en 2026. La Peugeot thermique de 2019 a déjà dépassé les 6 ans.",
+            reasoning: "Le décret n°2017-483 distingue motorisation thermique (6 ans) et hybride/électrique (7 ans). Pour 2026 : véhicules thermiques de 2020 ou plus récents, hybrides/électriques de 2019 ou plus récents. Antoine choisira la Tesla, sachant qu'il devra la remplacer dès 2027 (8 ans). Bonus : critères de standing VTC respectés (puissance > 84 kW)."
+          },
+          {
+            situation: "Une VTC roule avec une voiture de 4,40 m et 80 kW de puissance.",
+            question: "Le véhicule est-il conforme aux exigences VTC ?",
+            answer: "Non : ni la puissance (< 84 kW) ni la longueur (< 4,50 m) ne respectent les critères VTC.",
+            reasoning: "Le décret VTC impose une condition alternative (puissance ≥ 84 kW OU longueur ≥ 4,50 m). Il suffit qu'une seule soit respectée. Ici, les deux échouent : le véhicule ne peut pas être inscrit au registre VTC. La conductrice doit changer de véhicule pour continuer son activité. À noter : ces critères ne s'appliquent pas au taxi, qui suit d'autres règles locales."
+          }
+        ],
+        fieldExample: "Une Tesla Model 3 électrique de 2019 reste exploitable en VTC en 2026 (7 ans). Une Peugeot 308 thermique de 2019 ne l'est plus (limite 6 ans dépassée).",
+        examWarning: "L'exception hybride/électrique ne s'applique qu'à l'âge du véhicule, pas aux critères de puissance/longueur VTC.",
+        confusionPoints: [
+          "Âge 6 ans (thermique) ≠ 7 ans (hybride/électrique)",
+          "Critères VTC (standing, alternatifs) ≠ critères taxi (équipements signalétiques)"
+        ],
         tips: [
-          "Prévoir un véhicule de remplacement en cas d'immobilisation"
+          "Mémo : électrique/hybride = +1 an de plus",
+          "Critères VTC = puissance OU longueur (un seul suffit)"
         ],
-        legalRefs: ["Décret n°2017-483 du 6 avril 2017"]
+        legalRefs: ["Décret n°2017-483 du 6 avril 2017", "Articles R3122-4 et R3122-5 Code des transports"]
       },
       {
         id: 'reg-sanctions',
         title: 'Sanctions et contrôles',
-        essential: "Sans carte pro = 1 an prison + 15 000€. Maraude illégale VTC = même sanction.",
+        essential: "Exercer sans carte pro ou en violation des règles de maraude expose à 1 an de prison et 15 000€ d'amende — la discrimination monte à 45 000€ et 3 ans.",
+        narrative: "Le législateur a aligné le régime des sanctions T3P sur le caractère professionnel de l'activité : les peines mêlent volet pénal (prison + amende), administratif (suspension/retrait de carte) et civil (réparation des préjudices). Exercer une activité de T3P sans carte professionnelle constitue un délit puni d'1 an de prison et 15 000€ d'amende (art. L3124-4). C'est la sanction de référence, reprise pour la plupart des infractions structurelles.\n\nLa maraude illégale d'un VTC — c'est-à-dire le fait de stationner ou de circuler sur la voie publique en quête de client sans réservation préalable — encourt la même peine. C'est l'une des grandes lignes rouges issues de la loi Thévenoud : le monopole de la maraude reste réservé aux taxis détenteurs d'une ADS. Le VTC doit pouvoir prouver, à tout contrôle, l'antériorité de la réservation (justificatif horodaté).\n\nLe défaut d'assurance RC pro est sanctionné de 3 750€ d'amende et suspension de permis (art. L324-2 Code de la route). La discrimination, déjà évoquée, monte à 45 000€ + 3 ans. À côté du volet pénal, la préfecture peut suspendre la carte (1 à 6 mois) ou la retirer définitivement après procédure contradictoire. Lors d'un contrôle (police, gendarmerie, DGCCRF, agents assermentés), le conducteur doit présenter immédiatement : carte pro, carte grise, attestation d'assurance, justificatif de réservation (VTC), feuille de route et taximètre conforme (taxi).",
         keyPoints: [
-          "Exercice sans carte : 1 an + 15 000€",
-          "Maraude VTC : 1 an + 15 000€",
+          "Exercice sans carte : 1 an de prison + 15 000€ d'amende",
+          "Maraude VTC : même sanction (1 an + 15 000€)",
           "Défaut assurance : 3 750€ + suspension permis",
-          "Refus discriminatoire : 45 000€ + 3 ans"
+          "Refus discriminatoire : 45 000€ + 3 ans (Code pénal)",
+          "Sanctions administratives cumulables : suspension/retrait carte préfecture"
         ],
-        fieldExample: "Un VTC stationne devant une gare en attendant des clients : maraude = 15 000€ d'amende.",
-        examWarning: "La maraude est réservée aux taxis. VTC = réservation préalable obligatoire.",
+        practicalCases: [
+          {
+            situation: "Un VTC stationne à proximité d'une gare en soirée, sans réservation, espérant des clients. Il est contrôlé par la police.",
+            question: "Quels sont les risques encourus ?",
+            answer: "Maraude illégale : 1 an de prison + 15 000€ d'amende, plus suspension administrative de la carte par la préfecture.",
+            reasoning: "Le VTC n'a pas le droit de prospecter sur la voie publique : il doit attendre ses clients ailleurs (parking dédié, retour à domicile) et démarrer chaque course à partir d'une réservation préalable (justifiable par horodatage). Le simple fait d'être stationné en attente devant une gare suffit à caractériser la maraude. Bonne pratique : utiliser les zones officielles 'VTC' quand elles existent et toujours conserver les preuves de réservation."
+          },
+          {
+            situation: "Lors d'un contrôle routier, un conducteur taxi présente sa carte pro mais oublie son attestation d'assurance.",
+            question: "Quelles sont les conséquences immédiates ?",
+            answer: "Présomption de défaut d'assurance, immobilisation possible du véhicule, amende forfaitaire et obligation de présenter le document sous délai.",
+            reasoning: "Le défaut de présentation de l'assurance est sanctionné même si l'assurance existe réellement (art. R211-21-5 Code des assurances) : amende forfaitaire 35€ régularisable en présentant le document sous 5 jours à un commissariat. Si l'assurance n'existe vraiment pas : 3 750€ + suspension de permis. Réflexe : conserver une attestation à jour dans la pochette véhicule + version numérique sur smartphone."
+          }
+        ],
+        fieldExample: "Un VTC en attente devant Gare de Lyon sans réservation : 1 an de prison + 15 000€ + signalement préfecture = potentielle suspension de carte.",
+        examWarning: "La maraude est définie par le COMPORTEMENT (attente client sur voie publique), pas seulement par la prise en charge — même sans client à bord, on peut être verbalisé.",
         confusionPoints: [
-          "Taxi = maraude autorisée ≠ VTC = réservation préalable uniquement"
+          "Taxi : maraude autorisée (avec ADS) ≠ VTC : réservation préalable obligatoire",
+          "Sanctions pénales (juge) ≠ sanctions administratives préfecture (suspension/retrait carte)"
         ],
         tips: [
-          "Avoir tous les documents à portée de main lors des contrôles"
+          "Toujours conserver le justificatif de réservation horodaté (VTC)",
+          "Documents à présenter : carte pro, CG, assurance, KBis/extrait, justif réservation"
         ],
-        legalRefs: ["Articles L3124-1 à L3124-13 du Code des transports"]
+        legalRefs: ["Articles L3124-1 à L3124-13 Code des transports", "Article 225-1 Code pénal", "Article L324-2 Code de la route"]
       }
     ]
   },
