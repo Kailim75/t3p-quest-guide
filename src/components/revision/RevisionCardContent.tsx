@@ -1,4 +1,4 @@
-import { BookOpen, Lightbulb, FileText, AlertTriangle, Car, Brain } from 'lucide-react';
+import { BookOpen, Lightbulb, FileText, AlertTriangle, Car, Brain, ScrollText, ClipboardCheck } from 'lucide-react';
 import { RevisionCard } from '@/data/revisionData';
 
 interface RevisionCardContentProps {
