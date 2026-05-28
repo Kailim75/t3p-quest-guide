@@ -1437,126 +1437,246 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'tx75-ads-licence',
         title: 'ADS (Licence taxi)',
-        essential: "ADS = Autorisation de Stationnement. Incessible depuis 2014 (loi Thévenoud).",
+        essential: "ADS = Autorisation de Stationnement. Incessible pour les nouvelles depuis 2014 (loi Thévenoud).",
+        narrative: "L'Autorisation De Stationnement (ADS), couramment appelée « licence taxi », est le droit administratif d'exploiter un véhicule comme taxi sur le territoire d'une commune. À Paris, environ 17 000 ADS sont en circulation, plafond fixé par arrêté préfectoral. C'est ce numerus clausus qui donne sa valeur (parfois > 100 000 €) à l'ADS sur le marché secondaire — ou plutôt qui le donnait, avant la réforme.\n\nLa loi Thévenoud du 1er octobre 2014 a opéré une révolution discrète mais profonde : les ADS DÉLIVRÉES APRÈS le 1er octobre 2014 sont INCESSIBLES. Elles sont attribuées gratuitement par la préfecture, à titre personnel et incessible, sur liste d'attente (plusieurs années à Paris). Le titulaire ne peut ni les vendre, ni les louer, ni les transmettre. À son départ (retraite, abandon), elles retournent à l'autorité administrative pour redistribution.\n\nLes ADS ANCIENNES (délivrées avant le 1er octobre 2014) restent cessibles, mais sous conditions : exploitation effective pendant au moins 5 ans avant la première cession, puis 15 ans pour les cessions suivantes. Cette double règle vise à éliminer progressivement la spéculation. À côté de l'ADS, le conducteur doit aussi détenir une carte professionnelle (aptitude à conduire un taxi). Les deux documents sont distincts : l'ADS est le droit du véhicule à exercer, la carte pro est l'aptitude du conducteur. Un même conducteur peut conduire plusieurs ADS différentes (locataire-gérant), et inversement une ADS peut être conduite par plusieurs conducteurs (doublage, équipes).",
         keyPoints: [
           "ADS ≠ carte pro : les deux sont obligatoires",
           "Délivrée par le préfet de police de Paris",
-          "~17 000 taxis parisiens (nombre limité)",
-          "Anciennes ADS (avant 2014) cessibles si exploitées 5 ans"
+          "~17 000 taxis parisiens (numerus clausus)",
+          "ADS post-2014 : incessibles, gratuites, liste d'attente",
+          "ADS pré-2014 : cessibles sous conditions (5 ou 15 ans d'exploitation)"
         ],
-        fieldExample: "Un chauffeur veut racheter une licence : si elle date de 2012, elle est cessible sous conditions.",
+        fieldExample: "Un chauffeur veut racheter une licence : si elle date de 2012 et a été exploitée 5 ans, elle est cessible.",
+        practicalCases: [
+          {
+            situation: "Un conducteur, titulaire d'une ADS attribuée en mars 2018, souhaite la revendre 80 000 € à un confrère.",
+            question: "L'opération est-elle légale ?",
+            answer: "Non. Les ADS délivrées après le 1er octobre 2014 sont strictement incessibles.",
+            reasoning: "La loi Thévenoud a coupé net le marché des ADS post-2014. L'attribution étant gratuite et nominative, toute cession (vente, donation, location) est nulle. En cas de tentative, la préfecture peut retirer l'ADS et le « repreneur » se retrouve sans rien (et sans recours pour récupérer son argent versé hors cadre légal). Pour exercer, il doit s'inscrire sur la liste d'attente."
+          },
+          {
+            situation: "Un chauffeur taxi conduit son propre véhicule équipé d'une ADS valide. Lors d'un contrôle, il présente l'ADS mais a oublié sa carte professionnelle à son domicile.",
+            question: "Est-il en règle ?",
+            answer: "Non. La carte professionnelle doit être présente et présentable à bord à tout moment. Sanction : amende et signalement à la préfecture.",
+            reasoning: "ADS et carte pro sont deux documents distincts et CUMULATIVEMENT obligatoires. L'ADS autorise le véhicule à exercer, la carte pro atteste de l'aptitude du conducteur (examen, casier, médical). Sans carte pro physiquement présente, le conducteur exerce sans pouvoir prouver son aptitude — c'est assimilé à un exercice illégal, même temporaire."
+          }
+        ],
         examWarning: "ADS = droit d'exploitation ≠ carte pro = aptitude à conduire. Deux documents distincts !",
         confusionPoints: [
-          "ADS = exploitation du taxi ≠ Carte pro = aptitude du conducteur"
+          "ADS = exploitation du taxi ≠ Carte pro = aptitude du conducteur",
+          "ADS post-2014 incessibles ≠ ADS pré-2014 cessibles sous conditions"
         ],
         tips: [
-          "Liste d'attente pour nouvelles ADS : plusieurs années"
+          "Liste d'attente pour nouvelles ADS : plusieurs années à Paris",
+          "Toujours avoir ADS + carte pro à bord lors d'un contrôle"
         ],
-        legalRefs: ["Loi Thévenoud 2014", "Articles L3121-1 du Code des transports"]
+        legalRefs: ["Loi Thévenoud du 1er octobre 2014", "Articles L3121-1 et suivants du Code des transports"]
       },
       {
         id: 'tx75-zones-maraude',
         title: 'Zones et maraude',
-        essential: "Maraude = réservée aux taxis. Client peut choisir n'importe quel taxi dans la file.",
+        essential: "Maraude = réservée aux taxis. Le client peut choisir n'importe quel taxi dans la file.",
+        narrative: "La maraude est le privilège historique du taxi : la possibilité de chercher et de prendre en charge des clients en circulant sur la voie publique ou en stationnant sur des emplacements réservés. C'est ce privilège qui justifie le numerus clausus et la valeur de l'ADS. Aucun VTC, aucun VMDTR ne peut faire de maraude — sous peine de sanctions pénales lourdes.\n\nL'ADS taxi parisien autorise la maraude sur le territoire de la Ville de Paris et des communes limitrophes (petite couronne). Concrètement, un taxi parisien peut prendre un client à Paris pour l'emmener à Boulogne-Billancourt, mais ne peut pas reprendre un client à Boulogne pour le déposer ailleurs en banlieue : il doit revenir à vide ou attendre une réservation. Cette règle protège les ADS des communes voisines (Levallois, Neuilly, etc.).\n\nDans les stations de taxis, la règle est « premier arrivé, premier servi » : les taxis font la queue dans l'ordre d'arrivée. MAIS — et c'est un point d'examen fréquent — le client a le DROIT de choisir n'importe quel taxi de la file, pas obligatoirement le premier. Un client peut passer devant 3 taxis pour monter dans le 4ème (par exemple pour un véhicule plus spacieux ou plus accessible). Le conducteur ne peut pas le refuser pour cette raison. À l'inverse, le conducteur a une obligation de transport : il ne peut refuser une destination que pour un motif légitime (fin de service déclarée, sécurité, animal dangereux non autorisé).",
         keyPoints: [
-          "Maraude = chercher des clients en circulant/stationnant",
-          "Zone : Paris + communes limitrophes autorisées",
-          "Stations : file d'attente, 1er arrivé = 1er servi",
-          "Mais le client peut choisir n'importe quel taxi de la file"
+          "Maraude = chercher des clients en circulant ou en stationnant",
+          "Zone autorisée : Paris + communes limitrophes",
+          "Stations : file d'attente, 1er arrivé = 1er servi (côté taxi)",
+          "MAIS le client peut choisir n'importe quel taxi de la file",
+          "Refus de course = uniquement motif légitime"
         ],
         fieldExample: "Un client passe devant 3 taxis et monte dans le 4ème : c'est son droit.",
+        practicalCases: [
+          {
+            situation: "À la station de la gare de Lyon, 5 taxis font la queue. Un client arrive, passe devant les 4 premiers et monte dans le 5ème. Le premier taxi proteste et veut empêcher le départ.",
+            question: "Qui a raison ?",
+            answer: "Le client a raison. Il a le droit légal de choisir n'importe quel taxi de la file.",
+            reasoning: "La règle « 1er arrivé, 1er servi » s'applique entre taxis (ordre de la file) mais ne lie pas le client. Le client est libre de son choix : préférence pour le modèle, la couleur, l'accessibilité, voire pour le conducteur. Le premier taxi qui refuse le départ ou tente d'imposer son tour s'expose à une plainte et un signalement à la préfecture. Cette règle est régulièrement testée à l'examen."
+          },
+          {
+            situation: "Un taxi parisien dépose un client à Versailles. À la sortie, un autre client lui demande de l'emmener à Antony.",
+            question: "Peut-il accepter cette course ?",
+            answer: "Non. Sa zone de maraude est Paris et la petite couronne. Versailles est en grande couronne — il doit revenir à vide ou avoir une réservation.",
+            reasoning: "L'ADS taxi parisien autorise la maraude uniquement sur sa zone d'attribution (Paris et certaines communes limitrophes selon arrêté). Prendre un client en maraude à Versailles serait empiéter sur la zone des taxis versaillais — c'est une infraction. En revanche, s'il avait une réservation préalable (téléphone, application taxi), la course serait légale partout."
+          }
+        ],
         examWarning: "Le client a le droit de choisir son taxi dans la file (pas obligé de prendre le premier).",
         tips: [
-          "Refuser une destination lointaine est interdit (sauf fin de service)"
+          "Refuser une destination lointaine est interdit (sauf fin de service)",
+          "Connaître précisément sa zone d'attribution (arrêté préfectoral)"
         ],
-        legalRefs: ["Arrêté préfectoral taxis parisiens"]
+        legalRefs: ["Arrêté préfectoral taxis parisiens", "Article L3121-11 du Code des transports"]
       },
       {
         id: 'tx75-taximetre-tarifs',
         title: 'Tarifs 2026',
-        essential: "4 tarifs (A, B, C, D). Forfaits aéroports 2026 : CDG 56€/65€, Orly 45€/36€.",
+        essential: "4 tarifs (A, B, C, D). Forfaits aéroports 2026 : CDG 56 €/65 €, Orly 45 €/36 €.",
+        narrative: "Les tarifs du taxi parisien sont RÉGLEMENTÉS par arrêté préfectoral, contrairement aux VTC. Ils sont révisés chaque année et entrent en vigueur le 1er février (sauf exception). Pour 2026, l'arrêté du 24 décembre 2025 a fixé les nouveaux tarifs. La structure repose sur 4 lettres (A, B, C, D) qui correspondent chacune à une combinaison zone × horaire.\n\nLE TARIF A est le moins cher : Paris intra-muros, en JOUR (10h-17h), en SEMAINE (lundi-samedi hors jours fériés). C'est le tarif standard de la journée ouvrée. LE TARIF B s'applique soit à Paris la nuit (17h-10h) et dimanches/fériés, soit à la banlieue (petite couronne) en jour. LE TARIF C couvre la banlieue de nuit/dimanche/fériés, ainsi que les retours à vide. LE TARIF D est le plus cher, dédié aux zones aéroportuaires et aux longues distances spécifiques. Le taximètre bascule automatiquement entre ces tarifs selon l'horaire et la position GPS — le chauffeur n'intervient pas.\n\nLes FORFAITS AÉROPORTS sont distincts et obligatoires pour les liaisons Paris ↔ CDG/Orly. Pour 2026 : Paris RIVE DROITE ↔ CDG = 56 € ; Paris RIVE GAUCHE ↔ CDG = 65 € (plus cher car distance plus longue depuis la rive gauche, paradoxalement). Paris RIVE DROITE ↔ Orly = 45 € ; Paris RIVE GAUCHE ↔ Orly = 36 € (moins cher, car Orly est au sud, donc plus proche de la rive gauche). Ces forfaits s'appliquent quelle que soit la durée réelle du trajet (embouteillages inclus) et ne sont pas négociables. Pièges classiques : ils ne s'appliquent pas si le client demande un détour, et ils ne couvrent pas les communes hors Paris.",
         keyPoints: [
           "A = Paris jour semaine (10h-17h) = le moins cher",
-          "B = Paris nuit/dimanche ou banlieue jour",
+          "B = Paris nuit/dimanche OU banlieue jour",
           "C = Banlieue nuit/dimanche + retour à vide",
-          "D = Zone aéroport et longue distance (le plus cher)"
+          "D = Zone aéroport et longue distance (le plus cher)",
+          "Forfaits aéroports : appliqués automatiquement, non négociables"
         ],
-        fieldExample: "Course Paris Gare du Nord → CDG : forfait rive droite 56€ (tarifs 2026).",
-        examWarning: "Forfaits 2026 : CDG rive droite 56€, rive gauche 65€ / Orly rive droite 45€, rive gauche 36€.",
+        fieldExample: "Course Paris Gare du Nord → CDG : forfait rive droite 56 € (tarifs 2026).",
+        practicalCases: [
+          {
+            situation: "Un client part de l'hôtel Lutetia (75006, rive gauche) à 22h30 un mardi pour aller à l'aéroport de Roissy-CDG.",
+            question: "Quel tarif s'applique ?",
+            answer: "Le forfait aéroport rive gauche → CDG : 65 € (tarif 2026).",
+            reasoning: "Les forfaits aéroport s'appliquent sur la liaison Paris ↔ CDG/Orly indépendamment de l'heure. Le départ étant rive gauche (6ème arrondissement), le forfait est de 65 €. Le taximètre ne tourne pas en mode classique : le forfait est annoncé et le compteur affiche directement ce montant. L'heure tardive n'augmente pas le prix (forfait inclus)."
+          },
+          {
+            situation: "Un client demande un détour de 15 minutes par les Champs-Élysées pour prendre des photos, sur un trajet Paris → CDG.",
+            question: "Le forfait s'applique-t-il toujours ?",
+            answer: "Non. Tout détour à la demande du client annule le forfait. Le taximètre passe au tarif kilométrique standard.",
+            reasoning: "Le forfait aéroport est conçu pour le trajet direct Paris ↔ aéroport. Un détour de convenance (touristique, arrêt courses) le dénature : le conducteur passe en taximètre classique. Le client doit être informé AVANT le détour que le prix risque d'être supérieur au forfait. Cette information préalable évite le litige à l'arrivée."
+          }
+        ],
+        examWarning: "Forfaits 2026 : CDG rive droite 56 €, rive gauche 65 € / Orly rive droite 45 €, rive gauche 36 €.",
         confusionPoints: [
-          "Rive droite CDG = 56€ ≠ Rive gauche CDG = 65€",
-          "Rive droite Orly = 45€ ≠ Rive gauche Orly = 36€"
+          "Rive droite CDG = 56 € ≠ Rive gauche CDG = 65 €",
+          "Rive droite Orly = 45 € ≠ Rive gauche Orly = 36 € (inversé)"
         ],
         tips: [
-          "Le forfait s'applique quelle que soit la durée effective"
+          "Le forfait s'applique quelle que soit la durée effective",
+          "Informer le client si détour = sortie du forfait"
         ],
         legalRefs: ["Arrêté du 24 décembre 2025 (tarifs 2026)"]
       },
       {
         id: 'tx75-supplements',
         title: 'Suppléments autorisés',
-        essential: "4ème passager adulte, bagages volumineux, réservation. Chien guide = gratuit.",
+        essential: "4ème passager adulte, bagages volumineux, réservation. Chien guide = transport gratuit.",
+        narrative: "Les suppléments sont strictement encadrés par l'arrêté préfectoral tarifaire. Le conducteur ne peut PAS inventer de supplément ni en majorer le montant : la liste est limitative. Tout supplément non prévu est constitutif d'une majoration illégale, sanctionnée par une amende et un signalement préfectoral.\n\nQuatre suppléments principaux sont autorisés à Paris : (1) le 4ème passager adulte — environ 4 € — destiné à compenser le confort réduit (les enfants de moins de 10 ans ne comptent pas dans ce décompte) ; (2) les bagages volumineux transportés dans le coffre (en règle générale : au-delà d'une valise par passager, ou si volume hors gabarit) ; (3) la réservation préalable par téléphone — environ 4 € pour réservation immédiate, 7 € pour réservation à l'avance ; (4) les animaux de compagnie (sauf cas d'exception ci-dessous).\n\nEXCEPTION FONDAMENTALE : les chiens guides d'aveugle et chiens d'assistance pour personnes handicapées sont transportés GRATUITEMENT et OBLIGATOIREMENT. Refuser leur transport est une discrimination réprimée par la loi (article L3121-8 du Code des transports), sanctionnée pénalement. De même, refuser un client en fauteuil roulant ou avec assistance technique est illégal. À l'inverse, sont strictement INTERDITS : le pourboire « obligatoire », l'arrondi systématique à la hausse, la majoration pour paiement carte, la surfacturation pour clientèle étrangère (discrimination tarifaire).",
         keyPoints: [
-          "4ème passager adulte : ~4€ (pas les enfants < 10 ans)",
+          "4ème passager adulte : ~4 € (pas les enfants < 10 ans)",
           "Bagages volumineux en soute : supplément autorisé",
-          "Réservation téléphonique : ~4€",
-          "Chien guide = transport gratuit obligatoire"
+          "Réservation téléphonique : ~4 € immédiate, ~7 € à l'avance",
+          "Chien guide / d'assistance = transport gratuit obligatoire",
+          "Suppléments interdits : pourboire forcé, refus d'espèces"
         ],
         fieldExample: "Un client avec 3 grandes valises : le chauffeur peut facturer un supplément bagages.",
-        examWarning: "Suppléments interdits : pourboire obligatoire, refus d'espèces, surtarification.",
-        tips: [
-          "Toujours annoncer les suppléments avant la course"
+        practicalCases: [
+          {
+            situation: "Une personne aveugle accompagnée de son chien guide hèle un taxi. Le conducteur veut facturer un supplément animal de 4 €.",
+            question: "Est-ce légal ?",
+            answer: "Non. Les chiens guides d'aveugle sont transportés gratuitement et obligatoirement. Tout supplément est illégal.",
+            reasoning: "L'article L3121-8 du Code des transports impose le transport gratuit des chiens guides et chiens d'assistance. Refuser ou facturer = discrimination liée au handicap, punie de 5 ans d'emprisonnement et 75 000 € d'amende (article 225-2 du Code pénal), sans compter la suspension administrative de l'ADS. Le conducteur doit accepter sans frais et sans question."
+          },
+          {
+            situation: "Une famille de 4 adultes + 2 enfants de 6 et 8 ans monte dans un taxi. Le conducteur facture un supplément 4ème passager + supplément 5ème passager + supplément 6ème passager.",
+            question: "Que peut-il facturer ?",
+            answer: "Uniquement le supplément 4ème passager adulte. Les enfants de moins de 10 ans ne comptent pas.",
+            reasoning: "Le supplément ne s'applique qu'à partir du 4ème PASSAGER ADULTE. Les enfants de moins de 10 ans sont exclus du décompte. De plus, un taxi standard est limité à 4 passagers (en plus du conducteur) : transporter 6 personnes (4 adultes + 2 enfants) peut être impossible selon la carte grise. Si le véhicule l'autorise, seul un supplément (4ème adulte) est facturable, pas plusieurs."
+          }
         ],
-        legalRefs: ["Arrêté préfectoral tarifaire"]
+        examWarning: "Suppléments interdits : pourboire obligatoire, refus d'espèces, surtarification, majoration carte.",
+        tips: [
+          "Toujours annoncer les suppléments AVANT la course",
+          "Refus chien guide = délit pénal (pas seulement administratif)"
+        ],
+        legalRefs: ["Arrêté préfectoral tarifaire", "Article L3121-8 du Code des transports", "Article 225-2 du Code pénal"]
       },
       {
         id: 'tx75-equipements',
         title: 'Équipements obligatoires',
-        essential: "Lumineux (vert=libre), taximètre scellé, TPE obligatoire tout montant.",
+        essential: "Lumineux (vert = libre), taximètre scellé, TPE obligatoire pour tout montant.",
+        narrative: "Un taxi parisien est immédiatement reconnaissable à ses équipements normalisés. Cette uniformisation visuelle, imposée par la préfecture, protège le client (identification facile, distinction avec les VTC) et le conducteur (preuve de légitimité, dissuasion de la concurrence déloyale). Chaque équipement obligatoire fait l'objet de contrôles techniques périodiques.\n\nLe LUMINEUX, fixé sur le toit, indique « TAXI PARISIEN » avec une lettre tarifaire visible (A, B, C, D) qui change automatiquement selon le tarif en vigueur. La couleur verte signifie « libre » (disponible pour une course), l'éteint ou orange signifie « occupé » ou « réservé ». Un lumineux défectueux empêche d'exercer. Le TAXIMÈTRE doit être homologué (norme française), scellé par un installateur agréé (toute manipulation rompt le scellé et est constitutive de fraude), et vérifié annuellement (contrôle technique métrologique). Sa précision est essentielle : un taximètre dérivant en faveur du chauffeur expose à des sanctions lourdes.\n\nLe TPE (Terminal de Paiement Électronique) est OBLIGATOIRE depuis le décret n°2017-235 du 24 février 2017. La carte bancaire doit être acceptée pour TOUT MONTANT, sans minimum. Refuser un paiement carte pour 5 € est aussi illégal que de le refuser pour 100 €. Sanction : 150 € d'amende + signalement préfecture. De plus, le conducteur ne peut pas facturer un supplément pour paiement carte (majoration interdite). Autres équipements obligatoires : la carte affichage des tarifs visible côté passager, l'attestation d'aptitude médicale, et désormais l'application LeTaxi pour la géolocalisation (registre national).",
         keyPoints: [
           "Lumineux : 'TAXI PARISIEN' + lettre tarif",
           "Vert = libre, éteint/orange = occupé/réservé",
           "Taximètre homologué, scellé, vérifié annuellement",
-          "TPE : carte bancaire acceptée pour tout montant"
+          "TPE obligatoire : carte bancaire acceptée pour TOUT montant",
+          "Pas de majoration pour paiement carte"
         ],
-        fieldExample: "Un client veut payer 8€ en carte : le chauffeur ne peut pas refuser.",
-        examWarning: "Refuser la carte bancaire = infraction (150€ d'amende + signalement préfecture).",
+        fieldExample: "Un client veut payer 8 € en carte : le chauffeur ne peut pas refuser.",
+        practicalCases: [
+          {
+            situation: "Un client effectue une course de 6,80 €. À l'arrivée, il veut payer en carte. Le conducteur refuse en disant qu'il y a un minimum de 10 € en carte.",
+            question: "Le conducteur est-il en règle ?",
+            answer: "Non. Le refus de carte bancaire pour tout montant constitue une infraction punie de 150 € d'amende.",
+            reasoning: "Le décret n°2017-235 du 24 février 2017 impose au taxi d'accepter la carte bancaire sans aucun seuil minimum. Imposer 10 €, 5 € ou n'importe quel minimum est une pratique interdite. Le client peut signaler le refus à la préfecture (photo de plaque, course datée), ce qui déclenche une enquête et une éventuelle suspension d'ADS pour récidive."
+          },
+          {
+            situation: "Un taxi a son lumineux 'TAXI PARISIEN' en panne (ampoule grillée). Il continue son service en attendant la réparation.",
+            question: "Cette pratique est-elle légale ?",
+            answer: "Non. Un lumineux non fonctionnel rend le véhicule non conforme aux conditions d'exercice. Le conducteur doit cesser l'activité jusqu'à réparation.",
+            reasoning: "Le lumineux est un équipement OBLIGATOIRE qui permet l'identification du taxi par les clients et par les forces de l'ordre. Sans lumineux fonctionnel, le client ne peut pas savoir si le taxi est libre, et l'identification visuelle taxi vs voiture privée disparaît. C'est aussi une question de concurrence loyale avec les VTC. Sanction : amende et immobilisation possible du véhicule."
+          }
+        ],
+        examWarning: "Refuser la carte bancaire = infraction (150 € d'amende + signalement préfecture).",
         tips: [
-          "Vérifier quotidiennement le bon fonctionnement des équipements"
+          "Vérifier quotidiennement le bon fonctionnement des équipements",
+          "Un scellé taximètre rompu = présomption de fraude"
         ],
-        legalRefs: ["Décret n°2017-235 (paiement électronique)"]
+        legalRefs: ["Décret n°2017-235 (paiement électronique)", "Arrêté préfectoral équipements"]
       },
       {
         id: 'tx75-obligations',
         title: 'Obligations taxi',
-        essential: "Obligation de transport sauf motif légitime. Itinéraire le plus court ou rapide.",
+        essential: "Obligation de transport sauf motif légitime. Itinéraire le plus court ou rapide au choix du client.",
+        narrative: "Le taxi exerce une mission de service public. Cette qualification, qui peut sembler théorique, génère des obligations très concrètes que n'a pas le VTC. La principale est l'OBLIGATION DE TRANSPORT : un taxi en service, signalé libre, ne peut pas refuser un client sans motif légitime. C'est la contrepartie du monopole de la maraude et du numerus clausus.\n\nLes motifs légitimes de refus sont strictement encadrés : fin de service déclarée et signalée (lumineux éteint), incompatibilité de sécurité (client visiblement violent, en état d'ébriété avec risque, transport d'objets dangereux), animal non autorisé hors chiens guides, ou impossibilité matérielle (taxi accidenté, panne en cours). Le refus pour motif « trop loin », « pas rentable », « mauvais quartier » est ILLÉGAL et expose à une amende + suspension. En cas de doute, le conducteur doit pouvoir justifier objectivement son refus.\n\nL'ITINÉRAIRE est également encadré. Le conducteur doit prendre soit le trajet le PLUS COURT (en distance), soit le plus RAPIDE (en temps), au choix du client. Si le client ne précise rien, le conducteur prend le trajet le plus court par défaut. Détour non justifié = surfacturation possible. Inversement, si le client demande un itinéraire particulier (panoramique, évitement d'une zone), le conducteur doit s'exécuter et le tarif suit (taximètre). L'INFORMATION TARIFAIRE est dès la prise en charge : le tarif en cours doit être annoncé ou visible (lettre A, B, C, D affichée), et un reçu doit être remis à la fin (obligatoire si demandé, automatique au-delà de 25 €).",
         keyPoints: [
           "Obligation de transport (pas de refus arbitraire)",
-          "Motifs légitimes : sécurité, fin de service",
+          "Motifs légitimes : sécurité, fin de service déclarée",
           "Itinéraire : le plus court OU le plus rapide (au choix client)",
-          "Information tarif dès la prise en charge"
+          "Information tarif dès la prise en charge",
+          "Reçu obligatoire au-delà de 25 € ou sur demande"
         ],
         fieldExample: "Un client demande d'aller à 80 km : le chauffeur ne peut pas refuser (sauf fin de service).",
-        examWarning: "Refuser une course sans motif légitime = amende + suspension possible.",
+        practicalCases: [
+          {
+            situation: "À 23h, un client demande à un taxi parisien libre une course Paris → Lille (220 km). Le conducteur refuse, prétextant que c'est trop loin et qu'il ne fera pas de retour.",
+            question: "Le refus est-il légitime ?",
+            answer: "Non. Le coût ou la longueur de la course n'est pas un motif légitime de refus. C'est une infraction.",
+            reasoning: "L'obligation de transport vaut pour toute destination raisonnable, indépendamment du chiffre d'affaires. Le retour à vide est compensé par les tarifs (C pour banlieue nuit, D longue distance). Le conducteur peut négocier un forfait avec le client mais ne peut pas refuser. Refus = amende, signalement, voire suspension d'ADS. Seuls les motifs réellement objectifs (fin de service déclarée AVANT la sollicitation, sécurité) sont valables."
+          },
+          {
+            situation: "Un client demande à aller de l'Opéra à Bastille. Le conducteur prend le périphérique (15 km) au lieu des grands boulevards (4 km).",
+            question: "Cette pratique est-elle légale ?",
+            answer: "Non, sauf si le client a explicitement demandé un trajet rapide et que le périph est plus rapide à cet instant. Sinon = surfacturation.",
+            reasoning: "L'obligation est de prendre le trajet le PLUS COURT ou le plus RAPIDE selon le choix du client. Sans précision, par défaut c'est le plus court. Faire 15 km au lieu de 4 sans justification est un détour facturé indûment, assimilable à de l'escroquerie. Le client peut contester la course, demander remboursement et signaler à la préfecture. En cas de litige, le GPS de l'application LeTaxi peut être consulté."
+          }
+        ],
+        examWarning: "Refuser une course sans motif légitime = amende + suspension possible. 'Trop loin' n'est PAS un motif légitime.",
         tips: [
-          "Noter le motif en cas de refus pour justification ultérieure"
+          "Noter le motif en cas de refus pour justification ultérieure",
+          "Si fin de service : éteindre le lumineux AVANT la sollicitation"
         ],
         legalRefs: ["Articles R3121-1 et suivants du Code des transports"]
       },
       {
         id: 'tx75-controles',
         title: 'Contrôles et sanctions',
-        essential: "Refus CB : 150€. Tarification non conforme : amende + immobilisation possible.",
+        essential: "Refus CB : 150 €. Tarification non conforme : amende + immobilisation possible.",
+        narrative: "Le taxi est l'une des professions les plus contrôlées en France. Police, gendarmerie, DGCCRF (concurrence et fraudes), DRIEAT (transports en IDF), et la Préfecture de Police elle-même peuvent intervenir, soit lors de contrôles routiers, soit sur signalement client, soit par opérations ciblées. La fréquence est telle que tout conducteur subit en moyenne 2-3 contrôles par an.\n\nLes documents systématiquement vérifiés sont : la carte professionnelle (conducteur), l'attestation d'ADS (véhicule), le certificat de visite technique du taximètre (annuel), l'attestation d'assurance professionnelle, le permis de conduire valide, et l'attestation d'aptitude médicale en cours de validité. L'absence d'un seul de ces documents peut entraîner l'immobilisation immédiate du véhicule. Tous doivent être à BORD et présentables.\n\nLes sanctions sont graduées selon la gravité. INFRACTIONS LÉGÈRES (équipement déficient mineur, oubli ponctuel) : avertissement, rappel à l'ordre, amende administrative (38 € à 150 €). INFRACTIONS MOYENNES (refus de CB, suppléments indus, défaut de TPE) : amende 150 € + signalement préfectoral, qui peut déclencher une procédure disciplinaire. INFRACTIONS GRAVES (maraude refusée, refus discrimination, surtarification volontaire, conduite sous influence) : convocation devant la commission de discipline, suspension temporaire de l'ADS (1 à 12 mois), voire retrait définitif en cas de récidive. Les infractions pénales (faux, escroquerie, agression) s'ajoutent et relèvent du juge pénal. Coopérer poliment et présenter immédiatement tous les documents évite l'aggravation.",
         keyPoints: [
-          "Contrôles par Préfecture de Police, police, gendarmerie",
-          "Vérification : ADS, carte pro, taximètre, assurance",
-          "Défaut TPE ou refus CB : 150€ + signalement",
-          "Comportement non pro : avertissement puis suspension ADS"
+          "Contrôles par Préfecture de Police, police, gendarmerie, DGCCRF",
+          "Vérification : ADS, carte pro, taximètre, assurance, médical",
+          "Défaut TPE ou refus CB : 150 € + signalement",
+          "Comportement non pro : avertissement → suspension ADS",
+          "Récidive : risque de retrait définitif d'ADS"
         ],
-        fieldExample: "Un taxi refuse une carte pour 12€ : le client peut signaler à la préfecture.",
+        fieldExample: "Un taxi refuse une carte pour 12 € : le client peut signaler à la préfecture (photo plaque + horaire).",
+        practicalCases: [
+          {
+            situation: "Lors d'un contrôle, le conducteur présente tous ses documents sauf le certificat de visite annuelle du taximètre, qu'il a oublié au bureau.",
+            question: "Que risque-t-il ?",
+            answer: "Immobilisation possible du véhicule jusqu'à présentation, plus amende administrative. Le taximètre non vérifiable annuellement est présumé non conforme.",
+            reasoning: "Le certificat de visite atteste de la conformité métrologique du taximètre (juste calcul des tarifs). Sans lui, impossible de garantir que le client est facturé correctement. Le conducteur doit pouvoir le présenter immédiatement. Bonne pratique : photocopie scannée sur le smartphone et original dans le porte-documents du véhicule en permanence."
+          },
+          {
+            situation: "Un client signale à la préfecture qu'un taxi a refusé la carte bancaire pour 8 €. Le conducteur reçoit une convocation.",
+            question: "Quelles sont les conséquences possibles ?",
+            answer: "Première fois : amende 150 € + rappel à la loi. Récidive : passage en commission de discipline, suspension d'ADS possible.",
+            reasoning: "Le signalement est instruit : la préfecture peut consulter les relevés de TPE pour vérifier. Si le refus est avéré, sanction graduée. La récidive est particulièrement sanctionnée car elle révèle une volonté délibérée d'enfreindre la loi. Une ou deux récidives peuvent suffire à déclencher une suspension de 1 à 3 mois — soit la perte de tout revenu sur la période. Le conducteur a intérêt à régulariser dès la première fois."
+          }
+        ],
         examWarning: "Tous les documents doivent être à portée de main lors d'un contrôle.",
         tips: [
-          "Coopérer avec les agents lors des contrôles"
+          "Coopérer poliment avec les agents lors des contrôles",
+          "Photocopier tous les documents et stocker sur smartphone (secours)"
         ],
         legalRefs: ["Articles R3124-1 et suivants du Code des transports"]
       }
