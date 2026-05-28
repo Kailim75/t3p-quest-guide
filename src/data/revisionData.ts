@@ -398,140 +398,306 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'sec-distances',
         title: 'Distances de sécurité',
-        essential: "Distance d'arrêt = réaction + freinage. Elle quadruple quand la vitesse double.",
+        essential: "La distance d'arrêt = temps de réaction + distance de freinage ; elle est multipliée par 4 quand la vitesse double.",
+        narrative: "Comprendre les distances de sécurité, c'est intégrer que le véhicule ne s'arrête jamais instantanément. Quand un obstacle surgit, le conducteur a besoin d'environ 1 seconde pour percevoir, décider et amorcer le freinage : sur cette seconde de réaction, à 50 km/h on parcourt déjà 14 mètres sans freiner. À cette distance s'ajoute le freinage proprement dit, qui dépend du carré de la vitesse.\n\nC'est cette physique du carré qui explique le paradoxe le plus mal compris : doubler la vitesse ne double pas la distance d'arrêt, elle la quadruple. À 50 km/h on s'arrête en ~28 m, à 100 km/h il faut ~88 m, à 130 km/h plus de 130 m. La pluie aggrave encore : un revêtement mouillé peut multiplier la distance de freinage par 1,5 à 2, la neige ou le verglas par 3 ou plus.\n\nL'article R412-12 du Code de la route impose un intervalle minimal de 2 secondes entre véhicules (règle dite des '2 secondes'). En pratique, sur autoroute, cela correspond à environ 2 chevrons. Pour un conducteur T3P qui transporte du public, cette marge n'est pas un confort : c'est une condition de sécurité contractuelle vis-à-vis du passager.",
         keyPoints: [
-          "Intervalle minimum : 2 secondes entre véhicules",
-          "À 50 km/h : arrêt ≈ 28m (14m réaction + 14m freinage)",
-          "À 130 km/h : arrêt ≈ 130m",
-          "Route mouillée : freinage x1,5 à x2"
+          "Distance d'arrêt = réaction (~1s) + freinage (∝ vitesse²)",
+          "Règle des 2 secondes minimum entre véhicules",
+          "Doubler la vitesse → quadrupler la distance d'arrêt",
+          "Pluie : freinage ×1,5 à ×2 ; neige/verglas ×3+",
+          "Sur autoroute : 1 chevron ≈ 50 m"
         ],
-        fieldExample: "Sur autoroute à 130 km/h, il faut garder au moins 130m (2 chevrons) avec le véhicule devant.",
-        examWarning: "La distance d'arrêt quadruple si la vitesse double (pas le double !).",
+        practicalCases: [
+          {
+            situation: "Un VTC roule à 90 km/h sur route mouillée. Le véhicule devant freine brutalement.",
+            question: "Quelle distance minimale aurait-il dû maintenir, sachant que la distance d'arrêt sur sec à 90 km/h est d'environ 70 m ?",
+            answer: "Sur mouillé, il faut compter ×1,5 à ×2 : environ 100 à 140 m, soit clairement au-delà des 2 secondes 'standard'.",
+            reasoning: "La règle des 2 secondes est un minimum par temps sec. Par pluie, la majorer à 4 secondes est la pratique recommandée. Un VTC professionnel doit anticiper : ralentir avant les zones de freinage probables (entrée de ville, péages), maintenir une marge supérieure. Le passager perçoit la maîtrise du chauffeur dans ces moments-là."
+          },
+          {
+            situation: "Une cliente reproche à son chauffeur de 'coller' la voiture de devant à 50 km/h en ville.",
+            question: "Quelle distance correspond à la règle des 2 secondes à cette vitesse ?",
+            answer: "Environ 28 m (50 km/h = 13,9 m/s × 2s).",
+            reasoning: "La règle se calcule : distance = vitesse (m/s) × 2 secondes. À 50 km/h ≈ 14 m/s, soit 28 m d'intervalle. En ville, c'est rarement respecté en circulation dense, mais c'est la cible de sécurité. Pour le passager, c'est aussi une perception de confort : moins de freinages secs."
+          }
+        ],
+        fieldExample: "Sur l'A6 à 130 km/h, le conducteur garde 2 chevrons (≈ 100 m) avec le véhicule de devant — règle des 2 secondes respectée.",
+        examWarning: "Question piège récurrente : 'à 100 km/h la distance d'arrêt double-t-elle par rapport à 50 km/h ?' → NON, elle est multipliée par 4.",
+        confusionPoints: [
+          "Distance de réaction (linéaire avec la vitesse) ≠ distance de freinage (proportionnelle au carré)",
+          "Intervalle 2 secondes (règle pratique) ≠ distance d'arrêt totale (réaction + freinage)"
+        ],
         tips: [
-          "1 chevron = 50m environ sur autoroute",
-          "Temps de réaction moyen : 1 seconde"
+          "Calculer en secondes (compter '21, 22' au passage d'un repère)",
+          "Sur pluie, doubler la marge : 4 secondes minimum"
         ],
-        legalRefs: ["Article R412-12 du Code de la route"]
+        legalRefs: ["Article R412-12 Code de la route"]
       },
       {
         id: 'sec-vitesses',
         title: 'Limitations de vitesse',
-        essential: "Ville 50 / Route 80 / 2x2 voies 110 / Autoroute 130 (pluie -10 à -20 km/h).",
+        essential: "50 en ville, 80 sur route (90 si décision locale), 110 sur 2x2 voies, 130 sur autoroute — toujours -20 km/h sur autoroute mouillée.",
+        narrative: "Les limitations de vitesse ne sont pas seulement des chiffres : elles découlent des distances d'arrêt et de la gravité des chocs. En agglomération, la limite générale est 50 km/h, abaissée à 30 km/h en zone 30 (autour des écoles, centres-villes apaisés) et 20 km/h en zone de rencontre (priorité piéton). Le seuil est fixé pour qu'un piéton heurté ait une chance de survie élevée.\n\nHors agglomération, la limite est de 80 km/h sur les routes bidirectionnelles sans séparateur central, depuis le décret de juillet 2018 — certains départements ont relevé à 90 km/h sur certaines portions (décision préfectorale). Sur les 2x2 voies, on monte à 110 km/h ; sur autoroute, 130 km/h. La pluie ou neige déclenche une réduction automatique : -20 km/h sur autoroute (130→110), -10 km/h sur 2x2 voies (110→100) et hors agglo (80→70).\n\nDeux règles à connaître : par visibilité réduite < 50 m (brouillard épais, forte pluie), la vitesse est plafonnée à 50 km/h partout ; et le jeune conducteur (permis < 3 ans, < 2 ans si AAC) doit appliquer -10 km/h sur les voies rapides (100 au lieu de 110, 110 au lieu de 130). Tout dépassement ≥ 50 km/h au-dessus de la limite entraîne la rétention immédiate du permis et un délit (1 500€ + 6 points + 3 ans suspension).",
         keyPoints: [
-          "Agglomération : 50 km/h (30 en zone 30, 20 en zone rencontre)",
-          "Route : 80 km/h (90 sur décision locale)",
-          "Visibilité < 50m : 50 km/h maximum partout",
-          "Dépassement 50+ km/h = suspension immédiate du permis"
+          "Agglomération : 50 (30 en zone 30, 20 en zone rencontre)",
+          "Hors agglo : 80 (90 si décision locale)",
+          "2x2 voies : 110 ; Autoroute : 130",
+          "Pluie : -20 km/h autoroute, -10 km/h ailleurs",
+          "Visibilité < 50 m : 50 km/h maximum partout"
         ],
-        fieldExample: "Il pleut sur autoroute : la limite passe de 130 à 110 km/h automatiquement.",
-        examWarning: "Jeune conducteur = -10 km/h sur voies rapides (100/110 au lieu de 110/130).",
+        practicalCases: [
+          {
+            situation: "Sur une autoroute limitée à 130 km/h, il commence à pleuvoir. Le conducteur maintient 125 km/h.",
+            question: "Est-il en infraction et que risque-t-il ?",
+            answer: "Oui : la limite passe automatiquement à 110 km/h sous la pluie. Il est en excès de 15 km/h → 135€ + 1 point.",
+            reasoning: "La réduction par temps de pluie ne nécessite aucune signalisation : elle est applicable dès que la chaussée est mouillée. À 125 km/h alors que la limite est 110, l'excès est de 15 km/h (zone 'mineure' : entre 0 et 20 km/h au-dessus) → contravention 4e classe. À noter : un jeune conducteur aurait une limite à 100 km/h dans les mêmes conditions."
+          },
+          {
+            situation: "Dans une zone de rencontre balisée, un VTC roule à 35 km/h pour gagner du temps.",
+            question: "Quelle est l'infraction et quelle est la règle dans cette zone ?",
+            answer: "Excès de 15 km/h en zone limitée à 20 km/h, doublé d'une violation de la priorité piéton.",
+            reasoning: "La zone de rencontre (panneau B52) est limitée à 20 km/h et les piétons sont prioritaires sur l'ensemble de la chaussée. Un VTC à 35 km/h commet une double faute : excès de vitesse + mise en danger des piétons (qui peuvent traverser n'importe où). Le contexte aggrave la sanction si un piéton est heurté. Bonne pratique : suivre le rythme du piéton, klaxon proscrit."
+          }
+        ],
+        fieldExample: "À l'entrée de la zone 30 d'un centre-ville, le compteur passe de 50 à 30 km/h : freinage progressif anticipé, confort passager préservé.",
+        examWarning: "Le jeune conducteur (permis < 3 ans) doit appliquer -10 km/h SUR LES VOIES RAPIDES uniquement, pas en ville.",
+        confusionPoints: [
+          "Zone 30 (30 km/h, voiture prioritaire) ≠ Zone de rencontre (20 km/h, piéton prioritaire)",
+          "Réduction pluie -20 (autoroute) ≠ -10 (autres voies)"
+        ],
         tips: [
-          "Marge radar : 5% ou 5 km/h (le plus favorable)"
+          "Mémo voies rapides jeune conducteur : 100 / 110 au lieu de 110 / 130",
+          "Visibilité < 50 m → 50 partout (mnémonique '50 < 50')"
         ],
-        legalRefs: ["Articles R413-1 à R413-17 du Code de la route"]
+        legalRefs: ["Articles R413-1 à R413-17 Code de la route"]
       },
       {
         id: 'sec-alcool-stupefiants',
         title: 'Alcool et stupéfiants',
-        essential: "Taux légal : 0,5 g/L sang. À partir de 0,8 g/L = délit pénal.",
+        essential: "0,5 g/L = contravention, ≥ 0,8 g/L = délit ; pour les stupéfiants, c'est tolérance zéro et présence détectée = délit.",
+        narrative: "La législation alcool s'articule autour de deux seuils. Entre 0,5 g/L et 0,79 g/L de sang (soit 0,25 à 0,39 mg/L d'air expiré), c'est une contravention 4e classe : 135€ forfaitaires, retrait de 6 points, immobilisation du véhicule possible. À partir de 0,8 g/L de sang (0,4 mg/L air expiré), on bascule en délit : jusqu'à 4 500€ d'amende, 2 ans de prison, suspension de permis jusqu'à 3 ans, peines complémentaires (stage, EAD).\n\nLe taux légal s'applique uniformément à tous les conducteurs, mais une catégorie est traitée à part : le jeune conducteur (permis probatoire) doit rester sous 0,2 g/L (équivalent verre nul). Pour les T3P, certaines conventions et règlements internes des plateformes imposent également 0 g/L pendant le service. Un conducteur de transport public à risque pénal + commercial cumulé.\n\nPour les stupéfiants, c'est tolérance zéro depuis 2003 : la simple présence détectée par test salivaire (cannabis, cocaïne, opiacés, amphétamines) constitue un délit, indépendamment de toute altération réelle de conduite. Sanctions : 4 500€ + 2 ans de prison + 6 points + suspension. Le refus de se soumettre au dépistage est puni des mêmes peines que la conduite en état délictueux — c'est un message clair du législateur. Aucune méthode 'd'élimination' n'accélère la décomposition de l'alcool : seul le temps (environ 0,15 g/L/h) la dissipe. Café, douche froide, repas : aucun effet sur le taux.",
         keyPoints: [
-          "0,5-0,79 g/L = contravention (135€ + 6 points)",
-          "≥ 0,8 g/L = délit (4 500€ + prison possible)",
-          "Stupéfiants : tolérance zéro, test salivaire",
-          "Refus de dépistage = mêmes sanctions que délit"
+          "0,5-0,79 g/L sang : contravention 135€ + 6 points",
+          "≥ 0,8 g/L : délit (4 500€ + prison + suspension)",
+          "Jeune conducteur (probatoire) : 0,2 g/L maximum",
+          "Stupéfiants : tolérance zéro, présence = délit",
+          "Refus de dépistage = mêmes peines que le délit"
         ],
-        fieldExample: "Un chauffeur contrôlé à 0,6 g/L perd 6 points et paie 135€ d'amende.",
-        examWarning: "0,5 g/L = contravention ≠ 0,8 g/L = délit. Ne pas confondre les seuils !",
+        practicalCases: [
+          {
+            situation: "Un chauffeur VTC fête un anniversaire la veille au soir. Le lendemain à 9h, contrôlé, il est mesuré à 0,4 mg/L d'air expiré.",
+            question: "Quelle est la qualification juridique et quelles sanctions risque-t-il ?",
+            answer: "0,4 mg/L air expiré = 0,8 g/L sang → c'est un délit : 4 500€, 2 ans de prison, suspension jusqu'à 3 ans, 6 points.",
+            reasoning: "La conversion air expiré → sang se fait par ×2 : 0,4 mg/L air = 0,8 g/L sang, pile sur le seuil délictuel. Le chauffeur a sous-estimé le temps d'élimination (~0,15 g/L/h) : 5 verres pris à 1h du matin restent détectables 8h plus tard. Conséquence professionnelle : déconventionnement plateformes, signalement préfectoral, possible retrait de carte pro."
+          },
+          {
+            situation: "Lors d'un contrôle, un conducteur refuse le dépistage salivaire stupéfiants en disant qu'il est pressé.",
+            question: "Quelles conséquences ce refus entraîne-t-il ?",
+            answer: "Mêmes peines que la conduite sous stupéfiants : 4 500€, 2 ans de prison, suspension, 6 points.",
+            reasoning: "L'article L235-3 du Code de la route assimile expressément le refus de dépistage à la conduite sous stupéfiants. Le législateur empêche ainsi qu'un conducteur 'gagne du temps' pour faire baisser son taux. Pour un T3P, ce refus signe aussi quasi-systématiquement la fin de carrière (retrait de carte pro). Réflexe : accepter tout contrôle, c'est une protection professionnelle."
+          }
+        ],
+        fieldExample: "Un VTC mesuré à 0,6 g/L après une soirée : 135€ + 6 points + immobilisation = potentielle perte du permis probatoire.",
+        examWarning: "0,8 g/L SANG = 0,4 mg/L AIR EXPIRÉ. Ne pas confondre les deux unités, l'examen joue souvent dessus.",
+        confusionPoints: [
+          "Contravention (0,5-0,79 g/L, 135€) ≠ Délit (≥ 0,8 g/L, prison possible)",
+          "Alcool (seuil à 0,5 g/L) ≠ Stupéfiants (tolérance zéro)"
+        ],
         tips: [
-          "1 verre standard ≈ 0,20-0,25 g/L",
-          "Élimination : ~0,15 g/L par heure (le café ne change rien)"
+          "1 verre standard = +0,20 à 0,25 g/L (homme moyen 75 kg)",
+          "Élimination ≈ 0,15 g/L par heure, rien n'accélère"
         ],
-        legalRefs: ["Articles L234-1 à L234-9 du Code de la route"]
+        legalRefs: ["Articles L234-1 à L234-9 (alcool)", "Articles L235-1 à L235-5 (stupéfiants) Code de la route"]
       },
       {
         id: 'sec-fatigue-vigilance',
         title: 'Fatigue et vigilance',
-        essential: "Seul remède contre la fatigue : le sommeil. Pause 15-20 min toutes les 2h.",
+        essential: "Le seul remède efficace contre la fatigue au volant est le sommeil — pause 15-20 min toutes les 2 heures de conduite.",
+        narrative: "La fatigue est responsable d'environ 1 accident mortel sur 3 sur autoroute. C'est une cause sous-estimée parce qu'elle n'est pas visible : pas d'alcool, pas d'excès de vitesse, mais une chute brutale des capacités attentionnelles. Pour un T3P qui enchaîne les courses tard le soir ou tôt le matin, c'est un risque structurel.\n\nLe cerveau humain présente deux creux physiologiques de vigilance : entre 2h et 5h du matin, et entre 13h et 15h après le déjeuner. Pendant ces fenêtres, le risque d'endormissement est multiplié par 3 à 5. Les signaux d'alerte sont stéréotypés : bâillements répétés, yeux qui piquent, paupières lourdes, picotements dans le dos, sensation que le véhicule 'flotte', franchissement involontaire de ligne. Dès le premier signe, il faut s'arrêter.\n\nLa parade scientifiquement validée est la micro-sieste de 15 à 20 minutes : au-delà, on entre en sommeil profond et le réveil est groggy ; en deçà, l'effet est insuffisant. 20 minutes de sieste restaurent 2 à 3 heures de vigilance. Les stimulants (café, boissons énergisantes) ont un effet partiel et court (20-30 min), insuffisant en cas de dette de sommeil réelle. La règle pratique des transports professionnels : pause obligatoire toutes les 2 heures, repos quotidien d'au moins 11 heures consécutives. Pour un T3P, la planification doit intégrer ces contraintes : refuser une course de trop si la fatigue s'installe est une décision professionnelle, pas un échec commercial.",
         keyPoints: [
           "Fatigue = 1/3 des accidents mortels sur autoroute",
           "Creux de vigilance : 2h-5h et 13h-15h",
+          "Pause 15-20 min toutes les 2h de conduite",
           "Micro-sieste 15-20 min = 2-3h de vigilance restaurée",
-          "Les stimulants masquent temporairement (20-30 min)"
+          "Café/musique/fenêtre ouverte : inefficaces sur dette de sommeil"
         ],
-        fieldExample: "Après 3h de conduite de nuit, le chauffeur s'arrête 20 min pour une micro-sieste.",
-        examWarning: "Café/musique/fenêtre = solutions inefficaces. Seul le sommeil fonctionne.",
+        practicalCases: [
+          {
+            situation: "Un VTC enchaîne 4h de courses de nuit (22h-2h) et sent ses paupières devenir lourdes en attendant une nouvelle course.",
+            question: "Quelle est la meilleure décision professionnelle ?",
+            answer: "Refuser la prochaine course, s'arrêter dans un endroit sûr et faire une micro-sieste de 15-20 minutes.",
+            reasoning: "À 2h du matin, on entre dans le pic physiologique de risque, doublé d'une fatigue accumulée. Prendre une course supplémentaire = risque accidentogène majeur. Une micro-sieste restaure 2-3h de vigilance utile. Économiquement, c'est aussi rationnel : un accident = arrêt prolongé, franchise assurance, sinistre client. Le 'temps perdu' à dormir est un investissement sécurité."
+          },
+          {
+            situation: "Sur un long trajet aller-retour Paris-Lyon, un chauffeur boit un café et baisse la fenêtre pour 'tenir'.",
+            question: "Ces solutions sont-elles efficaces ?",
+            answer: "Non : effet réel court (20-30 min) et insuffisant face à une vraie fatigue. Seul l'arrêt avec sommeil l'est.",
+            reasoning: "Le café agit sur les récepteurs de l'adénosine et donne un coup de fouet bref, mais ne supprime pas la dette de sommeil sous-jacente. Le froid et la musique stimulent superficiellement mais n'inversent pas le déclin attentionnel. Le seul mécanisme biologique qui restaure la vigilance, c'est le sommeil — même bref. Insister à continuer = endormissement microscopique au volant (3-5 secondes de paupières fermées à 130 km/h = 200 m parcourus à l'aveugle)."
+          }
+        ],
+        fieldExample: "Après une course Paris-Roissy à 4h du matin, le VTC se gare sur une aire et dort 20 min avant de reprendre.",
+        examWarning: "Le café, la musique forte, l'air froid ne sont JAMAIS des solutions efficaces contre la fatigue — seul le sommeil l'est.",
+        confusionPoints: [
+          "Somnolence (alerte, encore réversible) ≠ Endormissement (sommeil involontaire, accident imminent)",
+          "Stimulant (effet 20-30 min, partiel) ≠ Sommeil (effet durable, intégral)"
+        ],
         tips: [
-          "Signes : bâillements, yeux qui piquent, ligne franchie"
+          "Mémo signes d'alerte : 'B-Y-P-L' = Bâillements, Yeux piquent, Paupières lourdes, Ligne franchie",
+          "Planifier la pause AVANT d'avoir besoin (proactif, pas réactif)"
         ],
-        legalRefs: ["Recommandations Sécurité routière"]
+        legalRefs: ["Recommandations Sécurité Routière", "Article R412-6 (maîtrise du véhicule)"]
       },
       {
         id: 'sec-eco-conduite',
         title: 'Éco-conduite',
-        essential: "Conduite souple = -15 à -25% de carburant + confort passager amélioré.",
+        essential: "Une conduite souple permet -15 à -25% de carburant ; elle améliore aussi la sécurité, la durée de vie du véhicule et le confort passager.",
+        narrative: "L'éco-conduite n'est pas une posture militante : c'est un ensemble de techniques mesurables qui réduisent à la fois la consommation, l'usure mécanique et la fatigue du conducteur. Pour un T3P, c'est aussi un argument confort majeur : un passager perçoit immédiatement la différence entre un conducteur qui accélère et freine en permanence et un conducteur qui anticipe.\n\nLe principe central est l'anticipation : lever le pied dès qu'on voit un feu rouge à 200 m, plutôt que de continuer puis freiner sec. Cela permet d'arriver au feu au moment où il repasse au vert, évitant un arrêt complet (chaque redémarrage coûte cher en carburant). Le passage de vitesses est un autre levier : passer la vitesse supérieure tôt (vers 2000-2500 tr/min en essence, 1500-2000 en diesel) maintient le moteur dans sa plage de rendement optimal.\n\nLes équipements aussi comptent. La pression des pneus doit être vérifiée chaque mois : un sous-gonflage de 0,5 bar entraîne +3 à 4% de consommation et une usure prématurée. La climatisation augmente la consommation de 10 à 15% en ville et 4 à 5% sur autoroute — à modérer, sans pour autant compromettre le confort passager. Couper le moteur dès qu'un arrêt dépasse 20-30 secondes (feu rouge long, prise en charge) économise du carburant sans solliciter le démarreur. Enfin, alléger le véhicule (galerie de toit retirée, coffre vidé) gagne quelques pourcents supplémentaires. Le bilan global d'une conduite vraiment éco : -20% de carburant, -25% d'usure freins/pneus, retours clients plus positifs.",
         keyPoints: [
-          "Anticiper : éviter accélérations/freinages brusques",
-          "Couper le moteur dès 20-30 sec d'arrêt prévu",
-          "Pneus : vérifier pression mensuelle (+0,2 bar si chargé)",
-          "Clim : +10-15% de conso en ville"
+          "Anticipation : éviter les accélérations et freinages brusques",
+          "Passage de vitesses : 2000-2500 tr/min essence, 1500-2000 diesel",
+          "Pression pneus : vérifier mensuellement, +0,2 bar si chargé",
+          "Climatisation : +10-15% conso en ville",
+          "Arrêt > 20-30s : couper le moteur"
         ],
-        fieldExample: "En anticipant les feux, le VTC économise 20% de carburant sur sa journée.",
-        examWarning: "Sous-gonflage = +3-4% de conso + usure prématurée.",
+        practicalCases: [
+          {
+            situation: "Un VTC parcourt 200 km par jour, consommation moyenne 7 L/100. En adoptant une conduite plus souple, il passe à 5,8 L/100.",
+            question: "Quelle économie annuelle réalise-t-il, à 1,80€/L sur 250 jours travaillés ?",
+            answer: "Gain : 1,2 L/100 × 200 km × 250 j = 600 L/an × 1,80€ = 1 080€/an.",
+            reasoning: "Le gain de 1,2 L/100 km correspond aux -17% typiques d'une vraie éco-conduite. À l'échelle annuelle, cela représente une part significative de la marge nette d'un VTC indépendant. Bonus non quantifié : usure pneus/freins réduite, moins d'entretien, image client plus haut de gamme. ROI immédiat."
+          },
+          {
+            situation: "Une cliente reproche à son chauffeur d'avoir coupé le moteur à un feu rouge, craignant un démarreur en panne.",
+            question: "Cette pratique est-elle recommandée et à partir de quel seuil ?",
+            answer: "Oui : recommandée dès 20-30 secondes d'arrêt. Les démarreurs modernes (Stop & Start) sont conçus pour des milliers de cycles.",
+            reasoning: "Un moteur au ralenti consomme 0,6-1 L/h : couper économise immédiatement. Les démarreurs depuis 2010 sont renforcés (technologie Stop & Start généralisée). Le pédagogique avec le client : expliquer brièvement 'je coupe pour limiter la pollution et l'usure', cela renforce l'image professionnelle. Seule exception : températures négatives ou batterie ancienne."
+          }
+        ],
+        fieldExample: "Aux abords d'un feu, le VTC lève le pied 200 m avant : le feu repasse au vert, il franchit sans s'arrêter, économise carburant et freins.",
+        examWarning: "Sous-gonflage = +3-4% de consommation ET usure prématurée des bords de pneus. Vérification mensuelle obligatoire.",
+        confusionPoints: [
+          "Régime optimal essence (2000-2500) ≠ diesel (1500-2000)",
+          "Couper moteur arrêt long (utile) ≠ rouler en roue libre point mort (interdit, dangereux)"
+        ],
         tips: [
-          "Passages vitesses : 2000-2500 tr/min (essence), 1500-2000 (diesel)"
+          "Pneus : pression à froid + 0,2 bar quand le véhicule est chargé",
+          "Coffre vide quand pas utile : -1 à 2% par tranche de 50 kg"
         ],
-        legalRefs: ["Recommandations ADEME"]
+        legalRefs: ["Recommandations ADEME", "Article R413-17 (usage modéré)"]
       },
       {
         id: 'sec-equipements-securite',
-        title: 'Équipements obligatoires',
-        essential: "Ceinture obligatoire pour tous. Gilet + triangle obligatoires à bord.",
+        title: 'Équipements de sécurité obligatoires',
+        essential: "Ceinture pour tous, gilet et triangle à bord — le conducteur est responsable du port de la ceinture par les passagers mineurs.",
+        narrative: "L'équipement de sécurité ne se limite pas à un dispositif passif : c'est un système juridique de responsabilités. Le port de la ceinture est obligatoire pour tous les occupants depuis 1990 à l'arrière (déjà depuis 1973 à l'avant). Le non-port est sanctionné par 135€ et 3 points pour la personne fautive — sauf pour les mineurs, où c'est le conducteur qui est responsable et écope de l'amende. Pour un VTC ou un taxi transportant un enfant non attaché, c'est le chauffeur qui paie.\n\nLes enfants de moins de 10 ans doivent voyager dans un dispositif de retenue adapté à leur taille et leur poids (siège auto, rehausseur). Sous 9 mois, ils doivent être placés dos à la route. L'avant est interdit aux moins de 10 ans sauf exception (cabine dépourvue de banquette arrière, ou rehausseur conforme avec airbag désactivé). Pour un T3P, il est fortement recommandé de disposer d'au moins un rehausseur pour transporter des familles avec enfants.\n\nDeux équipements doivent être à bord en permanence : le gilet haute visibilité (à portée de main, pas dans le coffre) et le triangle de présignalisation. L'absence est sanctionnée 135€ chacun. Le gilet doit être enfilé AVANT de descendre du véhicule en cas de panne ou d'accident sur la chaussée, et le triangle placé à 30 m en amont (150-200 m sur voie rapide). L'éthylotest, longtemps obligatoire mais non sanctionné, n'est plus exigé depuis 2020. La trousse de premiers secours reste fortement recommandée pour un T3P, sans être légalement imposée.",
         keyPoints: [
-          "Non-port ceinture : 135€ + 3 points pour le conducteur",
-          "Enfants < 10 ans : siège adapté obligatoire",
-          "Gilet : à portée de main (pas dans le coffre)",
-          "Éthylotest : recommandé mais pas de sanction si absent"
+          "Ceinture obligatoire pour tous les occupants (avant et arrière)",
+          "Mineurs : responsabilité du conducteur (135€ + 3 points)",
+          "Enfants < 10 ans : dispositif de retenue adapté",
+          "Gilet haute visibilité : à portée de main (pas dans le coffre)",
+          "Triangle : 30 m en amont, 150-200 m sur voie rapide"
         ],
-        fieldExample: "Un passager ne met pas sa ceinture : c'est le conducteur qui écope de l'amende.",
-        examWarning: "Le conducteur est responsable du port de ceinture des passagers mineurs.",
+        practicalCases: [
+          {
+            situation: "Un taxi transporte une mère et son fils de 8 ans. L'enfant est assis sur la banquette arrière sans rehausseur, ceinture standard.",
+            question: "Qui est responsable et que risque le chauffeur ?",
+            answer: "Le chauffeur : il est responsable du défaut de dispositif adapté (135€ + 3 points) car l'enfant a moins de 10 ans.",
+            reasoning: "L'article R412-2 impose un dispositif de retenue adapté pour les enfants de moins de 10 ans. La ceinture standard ne convient pas (pas calibrée pour les épaules d'un enfant). Pour un taxi, il est conseillé d'avoir un rehausseur léger à bord ou de proposer un véhicule équipé. Si la cliente refuse, le chauffeur peut refuser la course pour motif légitime (sécurité)."
+          },
+          {
+            situation: "Un VTC tombe en panne sur la bande d'arrêt d'urgence de l'autoroute. Il sort de son véhicule sans gilet pour aller chercher le triangle dans le coffre.",
+            question: "Quelles fautes commet-il et quels risques ?",
+            answer: "Deux fautes : sortie sans gilet (135€) et risque grave d'accident corporel (peu visible des autres conducteurs).",
+            reasoning: "Le gilet DOIT être enfilé À L'INTÉRIEUR du véhicule avant de descendre. Sortir sans gilet sur autoroute, c'est s'exposer à être fauché par un véhicule arrivant à 130 km/h. C'est pour cette raison que le gilet doit être 'à portée de main' (boîte à gants, contre-porte), pas dans le coffre — qui se trouve à l'extérieur côté circulation. Bonne pratique : prévoir un gilet pour chaque passager."
+          }
+        ],
+        fieldExample: "Avant chaque démarrage, le chauffeur jette un œil au rétroviseur pour vérifier que tous les passagers ont bouclé leur ceinture — pédagogique et préventif.",
+        examWarning: "L'éthylotest n'est PLUS obligatoire depuis 2020 — piège classique d'un QCM périmé. Le gilet et le triangle, eux, le restent.",
+        confusionPoints: [
+          "Ceinture adultes (responsabilité individuelle) ≠ ceinture mineurs (responsabilité conducteur)",
+          "Gilet À PORTÉE DE MAIN (boîte à gants) ≠ dans le coffre (inaccessible en sécurité)"
+        ],
         tips: [
-          "Trousse de secours recommandée dans le véhicule"
+          "Stocker le gilet dans la contre-porte conducteur : visible et accessible",
+          "Avoir un rehausseur pliable dans le coffre = avantage commercial"
         ],
-        legalRefs: ["Article R412-1 (ceinture)", "Article R416-19 (gilet/triangle)"]
+        legalRefs: ["Article R412-1 (ceinture)", "Article R412-2 (enfants)", "Article R416-19 (gilet et triangle)"]
       },
       {
         id: 'sec-premiers-secours',
         title: 'Premiers secours (PAS)',
-        essential: "PAS = Protéger → Alerter → Secourir. Toujours dans cet ordre.",
+        essential: "Face à un accident, la séquence à respecter est PAS : Protéger, Alerter, Secourir — toujours dans cet ordre.",
+        narrative: "La conduite à tenir face à un accident est codifiée par le protocole PAS, enseigné dans toutes les formations PSC1 (Prévention et Secours Civiques niveau 1). L'ordre n'est pas indicatif : il est impératif. Inverser les étapes peut transactionnellement aggraver la situation.\n\nProtéger, c'est éviter le sur-accident : se garer hors de la chaussée, allumer les feux de détresse, enfiler le gilet, sécuriser la zone avec le triangle (30 m, 150-200 m sur voie rapide), faire évacuer les passagers vers un endroit sûr (derrière la glissière). Ne JAMAIS s'occuper d'une victime avant d'avoir protégé la zone : un secouriste fauché par une voiture devient une victime supplémentaire.\n\nAlerter, c'est appeler les services d'urgence avec un message structuré : nature de l'accident (collision, choc piéton), localisation précise (autoroute + sens + PR si possible), nombre de victimes, état apparent (consciente/inconsciente, respire/ne respire pas). Numéros : 15 (SAMU) pour les blessés, 18 (pompiers) pour les incendies, 17 (police/gendarmerie) pour les questions de circulation, 112 (européen, fonctionne sans crédit ni SIM). Le 114 est dédié aux personnes sourdes/malentendantes (SMS).\n\nSecourir, c'est appliquer les gestes appris : ne pas déplacer une victime sauf danger immédiat (risque d'incendie, sur voie de circulation), couvrir contre le froid, parler pour rassurer, mettre en PLS (Position Latérale de Sécurité) une victime inconsciente qui respire pour éviter qu'elle s'étouffe avec sa langue ou ses vomissements. En cas d'arrêt cardio-respiratoire : massage cardiaque externe (100-120 compressions/min, 5-6 cm de profondeur) jusqu'à l'arrivée des secours ou d'un défibrillateur. La non-assistance à personne en péril est punie de 5 ans de prison et 75 000€ (art. 223-6 Code pénal).",
         keyPoints: [
-          "15 = SAMU / 17 = Police / 18 = Pompiers / 112 = européen",
-          "PLS : victime inconsciente qui respire",
-          "Massage cardiaque : 100-120/min, 5-6 cm profondeur",
-          "Ne jamais déplacer sauf danger immédiat"
+          "P-A-S : Protéger, Alerter, Secourir (ordre impératif)",
+          "Numéros : 15 SAMU, 17 Police, 18 Pompiers, 112 européen, 114 sourds",
+          "Victime inconsciente qui respire → PLS",
+          "Massage cardiaque : 100-120/min, 5-6 cm de profondeur",
+          "Non-assistance : 5 ans de prison + 75 000€ (Code pénal)"
         ],
-        fieldExample: "Accident : le chauffeur balise les lieux (Protéger), appelle le 15 (Alerter), puis assiste la victime.",
-        examWarning: "PAS = ordre strict. Protéger AVANT d'alerter, pas l'inverse.",
+        practicalCases: [
+          {
+            situation: "Sur une route, un taxi arrive sur un accident : voiture dans le fossé, conducteur conscient mais coincé, fumée légère sous le capot.",
+            question: "Quelle est la séquence d'actions correcte ?",
+            answer: "1) Protéger : se garer, gilet, triangle, feux de détresse. 2) Alerter : 18 (pompiers, à cause du risque incendie + désincarcération). 3) Secourir : parler à la victime, NE PAS la déplacer (sauf si flammes), couvrir.",
+            reasoning: "Le risque incendie justifie d'appeler les pompiers en priorité (18 ou 112). La désincarcération est leur compétence : un secouriste improvisé peut aggraver des lésions cervicales en tirant la victime. Tant que les flammes ne menacent pas directement, on ne déplace pas. Parler à la victime maintient sa conscience et calme l'angoisse. Documentation : noter heure, lieu pour le rapport."
+          },
+          {
+            situation: "Un passager d'un VTC fait un malaise sur la banquette arrière, perd connaissance mais respire normalement.",
+            question: "Quelle position adopter et pourquoi ?",
+            answer: "Mise en Position Latérale de Sécurité (PLS) pour empêcher l'étouffement par la langue ou des vomissements.",
+            reasoning: "Une victime inconsciente sur le dos risque que sa langue tombe en arrière et obstrue les voies aériennes, ou qu'elle inhale un vomi. La PLS (couché sur le côté, tête défléchie, jambe supérieure fléchie pour stabiliser) maintient les voies aériennes ouvertes. Étape suivante : appeler le 15 en restant à côté de la victime, surveiller la respiration, ne pas donner à boire ni à manger. Si arrêt respiratoire : démarrer le massage cardiaque."
+          }
+        ],
+        fieldExample: "Témoin d'un accident, le chauffeur se gare 50 m après le lieu, enfile son gilet, allume les détresses, pose le triangle, puis appelle le 15.",
+        examWarning: "P-A-S = ordre STRICT : Protéger AVANT d'alerter, AVANT de secourir. Inverser = aggravation possible.",
+        confusionPoints: [
+          "PLS (inconsciente qui RESPIRE) ≠ Massage cardiaque (inconsciente qui NE RESPIRE PAS)",
+          "Non-assistance (5 ans + 75k€) ≠ aide maladroite (protégée par la loi Bon Samaritain de 2020)"
+        ],
         tips: [
-          "Formation PSC1 recommandée pour tous conducteurs pro"
+          "Formation PSC1 (7h, ~60€) : très fortement recommandée pour tout pro T3P",
+          "Numéro européen 112 : fonctionne sans crédit, sans SIM, à l'étranger"
         ],
-        legalRefs: ["Article 223-6 Code pénal (non-assistance)"]
+        legalRefs: ["Article 223-6 Code pénal (non-assistance)", "Loi du 3 juillet 2020 dite 'Bon Samaritain'"]
       },
       {
         id: 'sec-signalisation',
         title: 'Signalisation et priorités',
-        essential: "Piéton engagé ou manifestant l'intention = priorité absolue.",
+        essential: "Un piéton engagé ou manifestant l'intention de traverser a priorité absolue ; sur un rond-point, priorité aux véhicules déjà engagés.",
+        narrative: "La hiérarchie des priorités routières répond à une logique de protection des plus vulnérables. Au sommet : le piéton. L'article R415-11 impose au conducteur de céder le passage à tout piéton engagé dans la chaussée, OU manifestant l'intention de s'engager. C'est une nuance majeure : on ne peut pas attendre qu'il pose le pied sur la chaussée pour s'arrêter. Le non-respect de la priorité piéton coûte 135€ et 6 points (passage de 4 à 6 points depuis 2018) — c'est la sanction la plus lourde après l'alcool.\n\nLes panneaux de priorité s'organisent par familles. Le STOP (AB4) impose un arrêt obligatoire à la ligne, même sans véhicule visible — 'marquer l'arrêt' est juridiquement caractérisé (roues immobilisées). Le 'Cédez le passage' (AB3a) impose de laisser passer mais sans arrêt obligatoire si la voie est dégagée. Aux intersections sans signalisation, c'est la priorité à droite qui s'applique (sauf 'route à caractère prioritaire' indiquée par panneau AB6 jaune losange).\n\nLe rond-point est une exception qui désarçonne : la signalisation 'cédez le passage' à l'entrée inverse la règle générale. La priorité va aux véhicules déjà engagés dans l'anneau, donc à GAUCHE pour le véhicule qui arrive. C'est une question piège fréquente. Pour les véhicules d'intérêt général (pompiers, SAMU, police) en intervention (gyrophare + sirène 2 tons), tout autre conducteur doit faciliter le passage : ralentir, se serrer à droite, voire monter sur le trottoir si nécessaire. Le tramway, par sa masse et son inertie, est toujours prioritaire sauf signalisation contraire — un tram à 50 km/h chargé met plus de 60 m à s'arrêter.",
         keyPoints: [
-          "STOP : arrêt obligatoire à la ligne",
-          "Rond-point : priorité aux véhicules engagés",
-          "Véhicules prioritaires (gyrophare + sirène) : faciliter passage",
-          "Tramway : toujours prioritaire sauf signalisation"
+          "Piéton engagé OU manifestant l'intention : priorité absolue (135€ + 6 points)",
+          "STOP : arrêt obligatoire à la ligne, roues immobilisées",
+          "Sans signalisation : priorité à droite",
+          "Rond-point : priorité aux véhicules engagés (donc à gauche)",
+          "Véhicules d'intérêt général en intervention : faciliter passage"
         ],
-        fieldExample: "Un piéton attend au passage : le chauffeur s'arrête pour lui laisser traverser.",
-        examWarning: "Rond-point = priorité à gauche (véhicules engagés), pas à droite !",
+        practicalCases: [
+          {
+            situation: "Un piéton se tient sur le trottoir, tête tournée vers la chaussée, prêt à traverser un passage protégé. Le VTC accélère pour passer avant lui.",
+            question: "Cette conduite est-elle légale ?",
+            answer: "Non : le piéton manifeste l'intention de traverser → priorité absolue. Le VTC commet un refus de priorité (135€ + 6 points).",
+            reasoning: "L'article R415-11 ne fait pas attendre que le piéton soit déjà sur la chaussée. L'INTENTION manifestée suffit (regard, pas en avant). Pour un VTC, c'est aussi une question commerciale : le passager observe cette attitude. Bonne pratique : marquer l'arrêt très visiblement, faire signe au piéton, repartir une fois la traversée terminée."
+          },
+          {
+            situation: "Un VTC arrive sur un rond-point. Un véhicule est déjà engagé dans l'anneau, un autre arrive sur sa droite.",
+            question: "À qui doit-il céder le passage ?",
+            answer: "Au véhicule déjà engagé dans l'anneau (situé à sa gauche). Le véhicule à droite n'a pas la priorité ici.",
+            reasoning: "Le rond-point inverse la règle 'priorité à droite' par le panneau 'cédez le passage' à chaque entrée. La priorité va aux véhicules engagés, qui circulent en sens anti-horaire — donc venant de la gauche pour celui qui entre. Erreur classique : conserver la priorité à droite par réflexe et provoquer une collision dans l'anneau. À noter : on n'utilise PAS le clignotant gauche dans l'anneau, seulement le clignotant droit en sortie."
+          }
+        ],
+        fieldExample: "À l'approche d'un passage piéton, le chauffeur lève le pied dès qu'il voit une personne se présenter, et s'arrête avant la bande blanche.",
+        examWarning: "Rond-point = priorité à gauche (aux véhicules engagés), JAMAIS à droite. Question piège ultra-fréquente.",
+        confusionPoints: [
+          "STOP (arrêt obligatoire) ≠ Cédez le passage (ralentir, s'arrêter si nécessaire)",
+          "Priorité à droite (intersection sans signalisation) ≠ Rond-point (priorité aux engagés = à gauche)"
+        ],
         tips: [
-          "En cas de doute : prudence et courtoisie"
+          "Mémo rond-point : 'on cède à ceux qui tournent déjà'",
+          "Sirène + gyrophare : se serrer à droite, jamais à gauche"
         ],
-        legalRefs: ["Articles R411 à R422 du Code de la route"]
+        legalRefs: ["Articles R411 à R422 Code de la route", "Article R415-11 (priorité piéton)"]
       }
     ]
   },
