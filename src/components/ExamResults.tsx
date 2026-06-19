@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Trophy, XCircle, Clock, Target, CheckCircle2, X, RotateCcw, Home, ChevronDown, ChevronUp } from 'lucide-react';
-import { Question } from '@/data/quizData';
+import { parseCorrectAnswers, Question } from '@/data/quizData';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuizResults, QuizAnswer } from '@/hooks/useQuizResults';
 import { useBadges } from '@/hooks/useBadges';
@@ -66,21 +66,32 @@ const ExamResults = ({
 
   const unansweredCount = questions.length - answers.length;
 
+  const formatAnswer = (question: Question, answer: string) => {
+    return answer
+      .split(',')
+      .map(letter => {
+        const option = question.options.find(o => o.letter === letter);
+        return `${letter}. ${option?.text ?? ''}`.trim();
+      })
+      .join(' et ');
+  };
+
   // Save result to database for authenticated users using server-side validation
   useEffect(() => {
     if (user && !savedRef.current) {
       savedRef.current = true;
       
-      // Prepare answers for server validation (only questionId and answer letter)
+      // Prepare answers for server validation, including multi-answer questions.
       const serverAnswers: QuizAnswer[] = answers.map(a => ({
         questionId: a.questionId,
-        answer: a.answer as 'A' | 'B' | 'C' | 'D',
+        answer: a.answer,
       }));
 
       saveResultSecure.mutate({
         quiz_type: 'exam',
         quiz_id: examId,
         answers: serverAnswers,
+        question_ids: questions.map(q => q.id),
         time_spent: timeTaken,
       }, {
         onSuccess: async (result) => {
@@ -121,7 +132,7 @@ const ExamResults = ({
         }
       });
     }
-  }, [user]);
+  }, [answers, badges, checkBadges, examId, questions, saveResultSecure, timeTaken, toast, updateStreak, user]);
 
   return (
     <div className="animate-fade-in">
@@ -274,14 +285,17 @@ const ExamResults = ({
                     <div className="text-sm space-y-1">
                       {wasAnswered && !isCorrect && (
                         <p className="text-destructive">
-                          Votre réponse : {answer.answer}. {question.options.find(o => o.letter === answer.answer)?.text}
+                          Votre réponse : {formatAnswer(question, answer.answer)}
                         </p>
                       )}
                       {!wasAnswered && (
                         <p className="text-warning">Non répondu</p>
                       )}
                       <p className="text-success">
-                        Bonne réponse : {question.correctAnswer}. {question.options.find(o => o.letter === question.correctAnswer)?.text}
+                        Bonne réponse : {parseCorrectAnswers(question.correctAnswer).map(letter => {
+                          const option = question.options.find(o => o.letter === letter);
+                          return `${letter}. ${option?.text}`;
+                        }).join(' et ')}
                       </p>
                     </div>
 

@@ -45,17 +45,17 @@ const QuizResults = ({ questions, answers, moduleName, moduleId, timeTaken }: Qu
     if (user && !savedRef.current) {
       savedRef.current = true;
       
-      // Prepare answers for server validation
-      // For now, send first answer for each question (server only supports single answer)
+      // Prepare answers for server validation, including multi-answer questions.
       const serverAnswers: QuizAnswer[] = answers.map(a => ({
         questionId: a.questionId,
-        answer: a.answers[0] as 'A' | 'B' | 'C' | 'D',
+        answer: [...a.answers].sort().join(','),
       }));
 
       saveResultSecure.mutate({
         quiz_type: 'module',
         quiz_id: moduleId,
         answers: serverAnswers,
+        question_ids: questions.map(q => q.id),
         time_spent: timeTaken || null,
       }, {
         onSuccess: async (result) => {
@@ -96,7 +96,7 @@ const QuizResults = ({ questions, answers, moduleName, moduleId, timeTaken }: Qu
         }
       });
     }
-  }, [user]);
+  }, [answers, badges, checkBadges, moduleId, questions, saveResultSecure, timeTaken, toast, updateStreak, user]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
