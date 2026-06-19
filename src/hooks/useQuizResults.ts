@@ -60,6 +60,7 @@ export const useQuizResults = () => {
       quiz_type: 'module' | 'exam';
       quiz_id: string;
       answers: QuizAnswer[];
+      question_ids: string[];
       time_spent: number | null;
     }): Promise<ValidatedQuizResult> => {
       if (!user || !session?.access_token) {
@@ -79,6 +80,7 @@ export const useQuizResults = () => {
             quiz_type: params.quiz_type,
             quiz_id: params.quiz_id,
             answers: params.answers,
+            question_ids: params.question_ids,
             time_spent: params.time_spent,
           }),
         }

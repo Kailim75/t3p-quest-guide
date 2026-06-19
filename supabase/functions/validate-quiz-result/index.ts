@@ -1,5 +1,11 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3'
-import { correctAnswers, validQuizIds } from './correctAnswers.ts'
+import {
+  correctAnswers,
+  examQuestionCounts,
+  questionModules,
+  quizModuleIds,
+  validQuizIds,
+} from './correctAnswers.ts'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -32,6 +38,7 @@ interface ValidateQuizRequest {
   quiz_type: 'module' | 'exam';
   quiz_id: string;
   answers: QuizAnswer[];
+  question_ids?: string[];
   time_spent: number | null;
 }
 
@@ -86,6 +93,16 @@ Deno.serve(async (req) => {
       );
     }
 
+    const allowedModules = quizModuleIds[body.quiz_id];
+    const isExamQuiz = Object.prototype.hasOwnProperty.call(examQuestionCounts, body.quiz_id);
+
+    if ((body.quiz_type === 'exam') !== isExamQuiz) {
+      return new Response(
+        JSON.stringify({ error: 'quiz_type does not match quiz_id' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     // Validate answers array
     if (!Array.isArray(body.answers) || body.answers.length === 0) {
       return new Response(
@@ -113,12 +130,68 @@ Deno.serve(async (req) => {
       }
     }
 
-    // Validate each answer and calculate score
+    const questionIds = body.question_ids ?? body.answers.map((answer) => answer.questionId);
+
+    if (!Array.isArray(questionIds) || questionIds.length === 0) {
+      return new Response(
+        JSON.stringify({ error: 'question_ids array is required and must not be empty' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (questionIds.length > 200) {
+      return new Response(
+        JSON.stringify({ error: 'Too many question IDs submitted' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const expectedExamQuestionCount = examQuestionCounts[body.quiz_id];
+    if (expectedExamQuestionCount && questionIds.length !== expectedExamQuestionCount) {
+      return new Response(
+        JSON.stringify({ error: `Invalid question count for this exam. Expected ${expectedExamQuestionCount}.` }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const questionIdSet = new Set<string>();
+    for (const questionId of questionIds) {
+      if (!questionId || typeof questionId !== 'string') {
+        return new Response(
+          JSON.stringify({ error: 'Invalid question_ids structure' }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      if (questionIdSet.has(questionId)) {
+        return new Response(
+          JSON.stringify({ error: `Duplicate question ID: ${questionId}` }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+      questionIdSet.add(questionId);
+
+      if (!correctAnswers[questionId]) {
+        return new Response(
+          JSON.stringify({ error: `Unknown question ID: ${questionId}` }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      const questionModule = questionModules[questionId];
+      if (!questionModule || !allowedModules.includes(questionModule)) {
+        return new Response(
+          JSON.stringify({ error: `Question ${questionId} does not belong to quiz ${body.quiz_id}` }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+    }
+
+    // Validate each answer and calculate score.
+    // Missing answers are counted as failed against the full submitted question list.
     const validAnswerLetters = ['A', 'B', 'C', 'D'];
+    const answersByQuestionId = new Map<string, string>();
     const questionsFailed: string[] = [];
-    let correctCount = 0;
-    const totalQuestions = body.answers.length;
-    const seenQuestionIds = new Set<string>();
 
     for (const answer of body.answers) {
       // Validate answer structure
@@ -129,14 +202,20 @@ Deno.serve(async (req) => {
         );
       }
 
-      // Check for duplicate question IDs
-      if (seenQuestionIds.has(answer.questionId)) {
+      if (!questionIdSet.has(answer.questionId)) {
+        return new Response(
+          JSON.stringify({ error: `Answer submitted for question outside question_ids: ${answer.questionId}` }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      // Check for duplicate answers
+      if (answersByQuestionId.has(answer.questionId)) {
         return new Response(
           JSON.stringify({ error: `Duplicate question ID: ${answer.questionId}` }),
           { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
-      seenQuestionIds.add(answer.questionId);
 
       // Validate answer format (single or multiple, comma-separated)
       if (!answer.answer || typeof answer.answer !== 'string') {
@@ -149,28 +228,33 @@ Deno.serve(async (req) => {
       // Parse and validate each answer letter
       const answerLetters = normalizeAnswer(answer.answer);
       const invalidLetters = answerLetters.filter(letter => !validAnswerLetters.includes(letter));
-      if (invalidLetters.length > 0 || answerLetters.length === 0) {
+      const hasDuplicateLetters = new Set(answerLetters).size !== answerLetters.length;
+      if (invalidLetters.length > 0 || answerLetters.length === 0 || hasDuplicateLetters) {
         return new Response(
           JSON.stringify({ error: `Invalid answer letters for question ${answer.questionId}: ${invalidLetters.join(', ')}` }),
           { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
 
-      // Verify question exists in our database
-      const correctAnswer = correctAnswers[answer.questionId];
-      if (!correctAnswer) {
-        return new Response(
-          JSON.stringify({ error: `Unknown question ID: ${answer.questionId}` }),
-          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
+      answersByQuestionId.set(answer.questionId, answer.answer);
+    }
+
+    let correctCount = 0;
+    const totalQuestions = questionIds.length;
+    for (const questionId of questionIds) {
+      const userAnswer = answersByQuestionId.get(questionId);
+      if (!userAnswer) {
+        questionsFailed.push(questionId);
+        continue;
       }
 
+      const correctAnswer = correctAnswers[questionId];
       // Check if answer is correct (SERVER-SIDE VALIDATION)
       // Supports both single answers ('A') and multiple answers ('A,B')
-      if (areAnswersEqual(answer.answer, correctAnswer)) {
+      if (areAnswersEqual(userAnswer, correctAnswer)) {
         correctCount++;
       } else {
-        questionsFailed.push(answer.questionId);
+        questionsFailed.push(questionId);
       }
     }
 

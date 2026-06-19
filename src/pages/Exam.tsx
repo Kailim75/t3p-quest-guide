@@ -1,10 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { X, ChevronLeft, ChevronRight, Flag } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Flag, CheckSquare } from 'lucide-react';
 import Header from '@/components/Header';
 import ExamTimer from '@/components/ExamTimer';
 import ExamResults from '@/components/ExamResults';
-import { getQuestionsByModule, Question } from '@/data/quizData';
+import {
+  AnswerLetter,
+  getQuestionsByModule,
+  hasMultipleAnswers,
+  isAnswerCorrect,
+  parseCorrectAnswers,
+  Question,
+} from '@/data/quizData';
 
 interface ExamConfig {
   id: string;
@@ -62,6 +69,15 @@ interface Answer {
   isCorrect: boolean;
 }
 
+const parseAnswerString = (answer?: string): AnswerLetter[] => {
+  if (!answer) return [];
+  return answer.split(',').filter(Boolean) as AnswerLetter[];
+};
+
+const formatAnswerString = (answers: AnswerLetter[]): string => {
+  return [...answers].sort().join(',');
+};
+
 const Exam = () => {
   const { examId } = useParams<{ examId: string }>();
   const navigate = useNavigate();
@@ -118,11 +134,33 @@ const Exam = () => {
   const handleSelectAnswer = (letter: 'A' | 'B' | 'C' | 'D') => {
     const question = questions[currentIndex];
     setAnswers(prev => {
+      const existingAnswer = prev.find(a => a.questionId === question.id);
+      const selectedAnswers = parseAnswerString(existingAnswer?.answer);
       const filtered = prev.filter(a => a.questionId !== question.id);
+
+      if (hasMultipleAnswers(question.correctAnswer)) {
+        const requiredCount = parseCorrectAnswers(question.correctAnswer).length;
+        const nextAnswers = selectedAnswers.includes(letter)
+          ? selectedAnswers.filter(a => a !== letter)
+          : selectedAnswers.length >= requiredCount
+            ? selectedAnswers
+            : [...selectedAnswers, letter];
+
+        if (nextAnswers.length === 0) {
+          return filtered;
+        }
+
+        return [...filtered, {
+          questionId: question.id,
+          answer: formatAnswerString(nextAnswers),
+          isCorrect: isAnswerCorrect(nextAnswers, question.correctAnswer)
+        }];
+      }
+
       return [...filtered, {
         questionId: question.id,
         answer: letter,
-        isCorrect: letter === question.correctAnswer
+        isCorrect: isAnswerCorrect([letter], question.correctAnswer)
       }];
     });
   };
@@ -251,6 +289,9 @@ const Exam = () => {
 
   const currentQuestion = questions[currentIndex];
   const currentAnswer = answers.find(a => a.questionId === currentQuestion.id);
+  const currentSelectedAnswers = parseAnswerString(currentAnswer?.answer);
+  const isMultiAnswer = hasMultipleAnswers(currentQuestion.correctAnswer);
+  const requiredAnswerCount = parseCorrectAnswers(currentQuestion.correctAnswer).length;
   const answeredCount = answers.length;
   const isFlagged = flaggedQuestions.has(currentQuestion.id);
 
@@ -319,6 +360,16 @@ const Exam = () => {
                 </h2>
               </div>
 
+              {isMultiAnswer && (
+                <div className="flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm text-primary mb-4">
+                  <CheckSquare className="h-4 w-4" />
+                  <span className="font-medium">
+                    Sélectionnez {requiredAnswerCount} réponses
+                    <span className="ml-1">({currentSelectedAnswers.length}/{requiredAnswerCount} sélectionnées)</span>
+                  </span>
+                </div>
+              )}
+
               {/* Options */}
               <div className="space-y-3">
                 {currentQuestion.options.map((option) => (
@@ -326,11 +377,11 @@ const Exam = () => {
                     key={option.letter}
                     onClick={() => handleSelectAnswer(option.letter)}
                     className={`quiz-option w-full text-left ${
-                      currentAnswer?.answer === option.letter ? 'quiz-option-selected' : ''
+                      currentSelectedAnswers.includes(option.letter) ? 'quiz-option-selected' : ''
                     }`}
                   >
                     <span className={`option-letter ${
-                      currentAnswer?.answer === option.letter ? 'bg-accent text-accent-foreground' : ''
+                      currentSelectedAnswers.includes(option.letter) ? 'bg-accent text-accent-foreground' : ''
                     }`}>
                       {option.letter}
                     </span>
