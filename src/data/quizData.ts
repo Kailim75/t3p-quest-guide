@@ -7177,7 +7177,7 @@ export const officialQuestions: Question[] = [
   },
   {
     id: 'taxi-015', moduleId: 'taxi', subModuleId: 'tax-3',
-    text: "Un taxi parisien en maraude prend un client qui demande à se render en banlieue, hors zone. Que doit-il faire ?",
+    text: "Un taxi parisien en maraude prend un client qui demande à se rendre en banlieue, hors zone. Que doit-il faire ?",
     options: [
       { letter: 'A', text: "Assurer la course : il peut déposer hors zone, mais ne peut pas reprendre un client en maraude hors de sa zone" },
       { letter: 'B', text: "Refuser systématiquement toute destination hors Paris" },
