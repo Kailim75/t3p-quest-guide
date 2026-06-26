@@ -439,6 +439,21 @@ export const correctAnswers: Record<string, string> = {
   'taxi-013': 'A',
   'taxi-014': 'A',
   'taxi-015': 'A',
+  'taxi-016': 'A',
+  'taxi-017': 'A',
+  'taxi-018': 'A',
+  'taxi-019': 'A',
+  'taxi-020': 'A',
+  'taxi-021': 'A',
+  'taxi-022': 'A',
+  'taxi-023': 'A',
+  'taxi-024': 'A',
+  'taxi-025': 'A',
+  'taxi-026': 'A',
+  'taxi-027': 'A',
+  'taxi-028': 'A',
+  'taxi-029': 'A',
+  'taxi-030': 'A',
 };
 
 export const questionModules: Record<string, string> = {
@@ -879,6 +894,21 @@ export const questionModules: Record<string, string> = {
   'taxi-013': 'taxi',
   'taxi-014': 'taxi',
   'taxi-015': 'taxi',
+  'taxi-016': 'taxi',
+  'taxi-017': 'taxi',
+  'taxi-018': 'taxi',
+  'taxi-019': 'taxi',
+  'taxi-020': 'taxi',
+  'taxi-021': 'taxi',
+  'taxi-022': 'taxi',
+  'taxi-023': 'taxi',
+  'taxi-024': 'taxi',
+  'taxi-025': 'taxi',
+  'taxi-026': 'taxi',
+  'taxi-027': 'taxi',
+  'taxi-028': 'taxi',
+  'taxi-029': 'taxi',
+  'taxi-030': 'taxi',
 };
 
 export const quizModuleIds: Record<string, string[]> = {
