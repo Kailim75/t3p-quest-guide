@@ -424,6 +424,21 @@ export const correctAnswers: Record<string, string> = {
   'vmd-com-006': 'A,B',
   'vmd-com-007': 'A,B',
   'vmd-com-008': 'A,B',
+  'taxi-001': 'A',
+  'taxi-002': 'A',
+  'taxi-003': 'A',
+  'taxi-004': 'A',
+  'taxi-005': 'A,B',
+  'taxi-006': 'A',
+  'taxi-007': 'A',
+  'taxi-008': 'A',
+  'taxi-009': 'A',
+  'taxi-010': 'A',
+  'taxi-011': 'A',
+  'taxi-012': 'A',
+  'taxi-013': 'A',
+  'taxi-014': 'A',
+  'taxi-015': 'A',
 };
 
 export const questionModules: Record<string, string> = {
@@ -849,6 +864,21 @@ export const questionModules: Record<string, string> = {
   'vmd-com-006': 'vmdtr',
   'vmd-com-007': 'vmdtr',
   'vmd-com-008': 'vmdtr',
+  'taxi-001': 'taxi',
+  'taxi-002': 'taxi',
+  'taxi-003': 'taxi',
+  'taxi-004': 'taxi',
+  'taxi-005': 'taxi',
+  'taxi-006': 'taxi',
+  'taxi-007': 'taxi',
+  'taxi-008': 'taxi',
+  'taxi-009': 'taxi',
+  'taxi-010': 'taxi',
+  'taxi-011': 'taxi',
+  'taxi-012': 'taxi',
+  'taxi-013': 'taxi',
+  'taxi-014': 'taxi',
+  'taxi-015': 'taxi',
 };
 
 export const quizModuleIds: Record<string, string[]> = {
