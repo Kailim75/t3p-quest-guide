@@ -439,6 +439,21 @@ export const correctAnswers: Record<string, string> = {
   'taxi-013': 'A',
   'taxi-014': 'A',
   'taxi-015': 'A',
+  'taxi-016': 'A',
+  'taxi-017': 'A',
+  'taxi-018': 'A',
+  'taxi-019': 'A',
+  'taxi-020': 'A',
+  'taxi-021': 'A',
+  'taxi-022': 'A',
+  'taxi-023': 'A',
+  'taxi-024': 'A',
+  'taxi-025': 'A',
+  'taxi-026': 'A',
+  'taxi-027': 'A',
+  'taxi-028': 'A',
+  'taxi-029': 'A',
+  'taxi-030': 'A',
 };
 
 export const questionModules: Record<string, string> = {
