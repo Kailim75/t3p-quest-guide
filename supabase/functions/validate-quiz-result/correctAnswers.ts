@@ -894,6 +894,21 @@ export const questionModules: Record<string, string> = {
   'taxi-013': 'taxi',
   'taxi-014': 'taxi',
   'taxi-015': 'taxi',
+  'taxi-016': 'taxi',
+  'taxi-017': 'taxi',
+  'taxi-018': 'taxi',
+  'taxi-019': 'taxi',
+  'taxi-020': 'taxi',
+  'taxi-021': 'taxi',
+  'taxi-022': 'taxi',
+  'taxi-023': 'taxi',
+  'taxi-024': 'taxi',
+  'taxi-025': 'taxi',
+  'taxi-026': 'taxi',
+  'taxi-027': 'taxi',
+  'taxi-028': 'taxi',
+  'taxi-029': 'taxi',
+  'taxi-030': 'taxi',
 };
 
 export const quizModuleIds: Record<string, string[]> = {
