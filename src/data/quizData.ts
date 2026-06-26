@@ -134,16 +134,16 @@ export const modules: Module[] = [
   {
     id: 'taxi',
     name: 'Spécifique Taxi',
-    description: 'Réglementation et pratique du métier de taxi',
+    description: 'Réglementation locale taxi 75',
     type: 'specifique',
     icon: '🚕',
     color: 'module-taxi',
     rsCode: 'F(T) + G(T)',
     rsFiche: 'RS5635',
     subModules: [
-      { id: 'tax-1', name: 'Licence taxi', description: 'Obtention et exploitation', questionCount: 15 },
-      { id: 'tax-2', name: 'Tarification', description: 'Compteur et tarifs réglementés', questionCount: 12 },
-      { id: 'tax-3', name: 'Zones géographiques', description: 'Connaissance du territoire', questionCount: 10 },
+      { id: 'tax-1', name: 'ADS & exploitation Paris', description: 'Autorisation de stationnement et règles de la Préfecture de Police', questionCount: 6 },
+      { id: 'tax-2', name: 'Tarifs Paris 2026', description: 'Tarifs A/B/C/D, forfaits aéroports et suppléments parisiens', questionCount: 5 },
+      { id: 'tax-3', name: 'Maraude & stationnement 75', description: 'Zones de prise en charge, stations et voies de bus', questionCount: 4 },
     ]
   },
   {
