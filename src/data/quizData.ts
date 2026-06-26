@@ -141,9 +141,9 @@ export const modules: Module[] = [
     rsCode: 'F(T) + G(T)',
     rsFiche: 'RS5635',
     subModules: [
-      { id: 'tax-1', name: 'ADS & exploitation Paris', description: 'Autorisation de stationnement et règles de la Préfecture de Police', questionCount: 6 },
-      { id: 'tax-2', name: 'Tarifs Paris 2026', description: 'Tarifs A/B/C/D, forfaits aéroports et suppléments parisiens', questionCount: 5 },
-      { id: 'tax-3', name: 'Maraude & stationnement 75', description: 'Zones de prise en charge, stations et voies de bus', questionCount: 4 },
+      { id: 'tax-1', name: 'ADS & exploitation Paris', description: 'Autorisation de stationnement et règles de la Préfecture de Police', questionCount: 11 },
+      { id: 'tax-2', name: 'Tarifs Paris 2026', description: 'Tarifs A/B/C/D, forfaits aéroports et suppléments parisiens', questionCount: 10 },
+      { id: 'tax-3', name: 'Maraude & stationnement 75', description: 'Zones de prise en charge, stations, voies de bus et ZFE', questionCount: 9 },
     ]
   },
   {
