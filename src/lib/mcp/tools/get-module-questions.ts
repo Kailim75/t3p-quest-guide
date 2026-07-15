@@ -1,6 +1,6 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
-import { officialQuestions as questions } from "@/data/quizData";
+import { officialQuestions as questions } from "../../../data/quizData";
 
 export default defineTool({
   name: "get_module_questions",

@@ -1,5 +1,5 @@
 import { defineTool } from "@lovable.dev/mcp-js";
-import { modules } from "@/data/quizData";
+import { modules } from "../../../data/quizData";
 
 export default defineTool({
   name: "list_modules",
