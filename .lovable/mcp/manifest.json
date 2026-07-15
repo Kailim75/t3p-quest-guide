@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "sdk_version": "0.22.2",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://myawyyumhghbctvtnhkv.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "t3p-quest-mcp",
+      "version": "0.1.0",
+      "title": "T3P Quest MCP"
+    },
+    "tools": [
+      {
+        "name": "list_modules",
+        "title": "List training modules",
+        "description": "List all T3P training modules (Taxi, VTC, VMDTR) with their sub-modules and question counts.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_module_questions",
+        "title": "Get questions for a module",
+        "description": "Return official T3P quiz questions for a given module id (e.g. 'taxi', 'vtc', 'vmd', 'trans'). Question text, options and reference are returned; correct answers are not exposed.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "moduleId": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Module id, e.g. 'taxi' or 'vtc'."
+            },
+            "subModuleId": {
+              "type": "string",
+              "description": "Optional sub-module id to filter within the module."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200,
+              "description": "Max questions to return."
+            }
+          },
+          "required": [
+            "moduleId"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_my_progress",
+        "title": "Get my quiz progress",
+        "description": "Return the signed-in user's quiz results (module, score, total, taken_at) ordered by most recent.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_my_badges",
+        "title": "Get my badges",
+        "description": "Return the signed-in user's earned badges.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
