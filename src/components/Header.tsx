@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import AuthModal from '@/components/AuthModal';
+import BottomNav from '@/components/BottomNav';
 import ThemeToggle from '@/components/ThemeToggle';
 
 const Header = () => {
@@ -32,6 +33,7 @@ const Header = () => {
   ];
 
   return (
+    <>
     <header className="sticky top-0 z-50 border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
@@ -40,14 +42,17 @@ const Header = () => {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-xl">
               🚕
             </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-bold text-foreground">Quiz T3P</h1>
-              <p className="text-xs text-muted-foreground">Préparation à l'examen</p>
+            <div>
+              <h1 className="text-lg font-bold text-foreground leading-tight">Quiz T3P</h1>
+              <p className="text-xs text-muted-foreground">
+                <span className="sm:hidden">École T3P</span>
+                <span className="hidden sm:inline">École T3P · Préparation à l'examen</span>
+              </p>
             </div>
           </Link>
 
-          {/* Navigation */}
-          <nav className="flex items-center gap-1">
+          {/* Navigation desktop (mobile : barre en bas d'écran) */}
+          <nav className="hidden items-center gap-1 md:flex">
             {navItems.map(({ path, label, icon: Icon }) => {
               const isActive = location.pathname === path;
               return (
@@ -61,7 +66,7 @@ const Header = () => {
                   }`}
                 >
                   <Icon className="h-4 w-4" />
-                  <span className="hidden sm:inline">{label}</span>
+                  <span>{label}</span>
                 </Link>
               );
             })}
@@ -153,12 +158,16 @@ const Header = () => {
         </div>
       </div>
 
-      <AuthModal 
-        isOpen={showAuthModal} 
+      <AuthModal
+        isOpen={showAuthModal}
         onClose={() => setShowAuthModal(false)}
         defaultTab={authMode}
       />
     </header>
+
+    {/* Navigation mobile */}
+    <BottomNav />
+    </>
   );
 };
 

@@ -287,9 +287,9 @@ const LearnersCharts = ({ allResults, profiles }: LearnersChartsProps) => {
                   <Line
                     type="monotone"
                     dataKey="uniqueUsers"
-                    stroke="hsl(var(--accent-foreground))"
+                    stroke="hsl(var(--cta))"
                     strokeWidth={2}
-                    dot={{ fill: 'hsl(var(--accent-foreground))' }}
+                    dot={{ fill: 'hsl(var(--cta))' }}
                   />
                 </AreaChart>
               </ResponsiveContainer>
