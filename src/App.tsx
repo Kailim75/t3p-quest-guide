@@ -22,6 +22,7 @@ import Badges from "./pages/Badges";
 import Flashcards from "./pages/Flashcards";
 import Install from "./pages/Install";
 import NotFound from "./pages/NotFound";
+import OAuthConsent from "./pages/OAuthConsent";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,8 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
+            {/* OAuth consent (unprotected — handles its own auth) */}
+            <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
             {/* All routes are protected - require authentication */}
             <Route path="/" element={<ProtectedRoute><Index /></ProtectedRoute>} />
             <Route path="/modules" element={<ProtectedRoute><Modules /></ProtectedRoute>} />
