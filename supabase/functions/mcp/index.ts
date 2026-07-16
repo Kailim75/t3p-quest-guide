@@ -517,15 +517,15 @@ var officialQuestions = [
     id: "ges-022",
     moduleId: "gestion",
     subModuleId: "ges-1",
-    text: "Dans un bilan comptable :",
+    text: "Dans un bilan comptable, que repr\xE9sentent l'actif et le passif ?",
     options: [
-      { letter: "A", text: "L'actif est \xE9gal au passif" },
-      { letter: "B", text: "L'actif repr\xE9sente les emplois" },
-      { letter: "C", text: "Le passif est sup\xE9rieur" },
-      { letter: "D", text: "Le passif repr\xE9sente les ressources" }
+      { letter: "A", text: "L'actif repr\xE9sente les emplois (l'utilisation des ressources)" },
+      { letter: "B", text: "Le passif repr\xE9sente les ressources (l'origine des fonds)" },
+      { letter: "C", text: "L'actif repr\xE9sente les dettes" },
+      { letter: "D", text: "Le passif repr\xE9sente les immobilisations" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "\xC0 l'actif figurent les emplois (immobilisations, stocks, cr\xE9ances, tr\xE9sorerie) ; au passif, les ressources (capitaux propres, dettes). Par construction, le total de l'actif est toujours \xE9gal au total du passif.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
   },
@@ -1851,17 +1851,17 @@ var officialQuestions = [
     id: "rel-025",
     moduleId: "relation-client",
     subModuleId: "rel-1",
-    text: "Un conducteur doit adapter sa conduite :",
+    text: "Un conducteur professionnel adapte sa conduite :",
     options: [
       { letter: "A", text: "Aux conditions de circulation" },
       { letter: "B", text: "Aux attentes du client" },
-      { letter: "C", text: "\xC0 son humeur" },
-      { letter: "D", text: "\xC0 la m\xE9t\xE9o" }
+      { letter: "C", text: "\xC0 son humeur du moment" },
+      { letter: "D", text: "Aux habitudes des autres conducteurs" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "Le professionnel adapte sa conduite aux conditions de circulation (trafic, m\xE9t\xE9o, \xE9tat de la route) et aux attentes du client (confort, rendez-vous). L'humeur ou le comportement des autres conducteurs ne doivent jamais dicter la conduite.",
     reference: "Module 4 \u2013 Relation client",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "rel-026",
@@ -2110,17 +2110,17 @@ var officialQuestions = [
     id: "fra-001",
     moduleId: "francais",
     subModuleId: "fra-1",
-    text: "Le th\xE8me principal du texte professionnel est g\xE9n\xE9ralement :",
+    text: "Dans la phrase \xAB Le conducteur veille au confort de ses passagers \xBB, \xAB veiller \xE0 \xBB signifie :",
     options: [
-      { letter: "A", text: "La relation client" },
-      { letter: "B", text: "La comptabilit\xE9" },
-      { letter: "C", text: "La s\xE9curit\xE9 routi\xE8re" },
-      { letter: "D", text: "Le marketing" }
+      { letter: "A", text: "S'assurer de" },
+      { letter: "B", text: "Surveiller la nuit" },
+      { letter: "C", text: "Ignorer" },
+      { letter: "D", text: "Retarder" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "\xAB Veiller \xE0 \xBB signifie s'assurer de, prendre soin de. Le conducteur s'assure du confort de ses passagers.",
     reference: "Module 5 \u2013 Fran\xE7ais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "fra-002",
@@ -2350,31 +2350,31 @@ var officialQuestions = [
     id: "fra-016",
     moduleId: "francais",
     subModuleId: "fra-1",
-    text: "Le mot \xAB tant \xBB dans une phrase signifie :",
+    text: "Dans la phrase \xAB La ponctualit\xE9 compte tant pour le client que pour le chauffeur \xBB, \xAB tant\u2026 que \xBB signifie :",
     options: [
-      { letter: "A", text: "\xC0 la fois" },
-      { letter: "B", text: "Seulement" },
-      { letter: "C", text: "Rarement" },
-      { letter: "D", text: "Jamais" }
+      { letter: "A", text: "Aussi bien\u2026 que" },
+      { letter: "B", text: "Plus\u2026 que" },
+      { letter: "C", text: "Moins\u2026 que" },
+      { letter: "D", text: "Jamais\u2026 ni" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "\xAB Tant\u2026 que \xBB exprime une \xE9galit\xE9 d'importance : la ponctualit\xE9 compte aussi bien pour le client que pour le chauffeur.",
     reference: "Module 5 \u2013 Fran\xE7ais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "fra-017",
     moduleId: "francais",
     subModuleId: "fra-1",
-    text: "Le texte \xE9tablit un lien entre :",
+    text: "\xAB Une conduite souple r\xE9duit la fatigue du conducteur et am\xE9liore le confort du passager. \xBB Cette phrase \xE9tablit un lien entre :",
     options: [
-      { letter: "A", text: "Conduite et confort" },
-      { letter: "B", text: "Conduite et fatigue" },
-      { letter: "C", text: "Vitesse et rentabilit\xE9" },
-      { letter: "D", text: "Client et tarif" }
+      { letter: "A", text: "La conduite et la fatigue" },
+      { letter: "B", text: "La conduite et le confort" },
+      { letter: "C", text: "La vitesse et le tarif" },
+      { letter: "D", text: "Le client et l'itin\xE9raire" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "La phrase relie la conduite souple \xE0 deux effets : la r\xE9duction de la fatigue du conducteur et l'am\xE9lioration du confort du passager. Les deux liens sont donc corrects.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
   },
@@ -2462,17 +2462,17 @@ var officialQuestions = [
     id: "fra-023",
     moduleId: "francais",
     subModuleId: "fra-2",
-    text: "Le registre des textes est :",
+    text: "Quel registre de langue convient pour s'adresser \xE0 un client ?",
     options: [
-      { letter: "A", text: "Professionnel" },
-      { letter: "B", text: "Courant" },
-      { letter: "C", text: "Familier" },
-      { letter: "D", text: "Vulgaire" }
+      { letter: "A", text: "Le registre courant ou soutenu" },
+      { letter: "B", text: "Le registre familier" },
+      { letter: "C", text: "L'argot" },
+      { letter: "D", text: "Le langage SMS" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "Avec un client, on utilise un registre courant ou soutenu : phrases compl\xE8tes, formules de politesse, vocabulaire pr\xE9cis. Le registre familier, l'argot et le langage SMS sont \xE0 proscrire dans un cadre professionnel.",
     reference: "Module 5 \u2013 Fran\xE7ais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "fra-024",
@@ -2753,17 +2753,17 @@ var officialQuestions = [
     id: "ang-001",
     moduleId: "anglais",
     subModuleId: "ang-1",
-    text: "The text is mainly about:",
+    text: "\u201CA professional driver must always respect traffic laws and take care of his passengers.\u201D This sentence is mainly about:",
     options: [
       { letter: "A", text: "Professional behaviour" },
       { letter: "B", text: "Vehicle maintenance" },
       { letter: "C", text: "Pricing" },
-      { letter: "D", text: "Traffic regulations" }
+      { letter: "D", text: "Holidays" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "La phrase d\xE9crit le comportement professionnel du conducteur : respecter le code de la route et prendre soin de ses passagers.",
     reference: "Module 6 \u2013 Anglais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "ang-002",
@@ -2977,17 +2977,17 @@ var officialQuestions = [
     id: "ang-015",
     moduleId: "anglais",
     subModuleId: "ang-1",
-    text: "The main idea of the text is:",
+    text: "\u201CAlways inform your customer if you are late, and apologize for the delay.\u201D The main idea of this advice is:",
     options: [
-      { letter: "A", text: "Communication" },
+      { letter: "A", text: "Communication with the customer" },
       { letter: "B", text: "Vehicle problems" },
       { letter: "C", text: "Traffic rules" },
-      { letter: "D", text: "Pricing" }
+      { letter: "D", text: "Payment methods" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "Le conseil porte sur la communication avec le client : informer en cas de retard et s'excuser.",
     reference: "Module 6 \u2013 Anglais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "ang-016",
@@ -3057,17 +3057,17 @@ var officialQuestions = [
     id: "ang-020",
     moduleId: "anglais",
     subModuleId: "ang-1",
-    text: "The text focuses on:",
+    text: "\u201CWhere would you like to go? What time is your flight? Do you have luggage?\u201D These questions focus on:",
     options: [
-      { letter: "A", text: "Customer questions" },
+      { letter: "A", text: "The customer's needs" },
       { letter: "B", text: "Mechanical issues" },
       { letter: "C", text: "Road signs" },
-      { letter: "D", text: "Inspections" }
+      { letter: "D", text: "The weather" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "Ces trois questions servent \xE0 conna\xEEtre les besoins du client : destination, horaire de vol, bagages.",
     reference: "Module 6 \u2013 Anglais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "ang-021",
@@ -3155,15 +3155,15 @@ var officialQuestions = [
     subModuleId: "ang-1",
     text: "A delay can be caused by:",
     options: [
-      { letter: "A", text: "Traffic" },
-      { letter: "B", text: "Weather" },
+      { letter: "A", text: "Heavy traffic" },
+      { letter: "B", text: "Bad weather" },
       { letter: "C", text: "Good communication" },
-      { letter: "D", text: "Road works" }
+      { letter: "D", text: "An empty road" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "Un retard peut \xEAtre caus\xE9 par la circulation dense (heavy traffic) ou la mauvaise m\xE9t\xE9o (bad weather). Une bonne communication ne cause pas de retard : elle permet au contraire de le g\xE9rer.",
     reference: "Module 6 \u2013 Anglais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "ang-027",
@@ -3201,33 +3201,33 @@ var officialQuestions = [
     id: "ang-029",
     moduleId: "anglais",
     subModuleId: "ang-1",
-    text: "The language used is:",
+    text: "Which sentence uses correct professional English with a customer?",
     options: [
-      { letter: "A", text: "Professional" },
-      { letter: "B", text: "Clear" },
-      { letter: "C", text: "Slang" },
-      { letter: "D", text: "Technical jargon" }
+      { letter: "A", text: "\u201CGood morning sir, how may I help you?\u201D" },
+      { letter: "B", text: "\u201CHey mate, hop in!\u201D" },
+      { letter: "C", text: "\u201CWhat do you want?\u201D" },
+      { letter: "D", text: "\u201CMove faster, I'm busy.\u201D" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "\xAB Good morning sir, how may I help you? \xBB est la formule polie et professionnelle. Les trois autres sont famili\xE8res ou impolies.",
     reference: "Module 6 \u2013 Anglais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "ang-030",
     moduleId: "anglais",
     subModuleId: "ang-1",
-    text: "The goal of the texts is to:",
+    text: "\u201CDrive smoothly, help with luggage, and always be polite.\u201D The goal of these instructions is to:",
     options: [
       { letter: "A", text: "Explain professional behaviour" },
       { letter: "B", text: "Teach accounting" },
-      { letter: "C", text: "Describe vehicles" },
+      { letter: "C", text: "Describe the vehicle" },
       { letter: "D", text: "Give penalties" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "Ces consignes (conduire souplement, aider aux bagages, rester poli) d\xE9crivent le comportement professionnel attendu d'un chauffeur.",
     reference: "Module 6 \u2013 Anglais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "ang-031",
@@ -3345,17 +3345,17 @@ var officialQuestions = [
     id: "ang-038",
     moduleId: "anglais",
     subModuleId: "ang-1",
-    text: "The texts mainly describe:",
+    text: "\u201CMay I help you with your luggage?\u201D \u2014 \u201CIs the temperature comfortable for you?\u201D These sentences describe situations of:",
     options: [
-      { letter: "A", text: "Customer service situations" },
+      { letter: "A", text: "Customer service" },
       { letter: "B", text: "Traffic fines" },
       { letter: "C", text: "Vehicle maintenance" },
       { letter: "D", text: "Company law" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "Proposer d'aider avec les bagages et v\xE9rifier le confort du passager sont des situations types de service client \xE0 bord.",
     reference: "Module 6 \u2013 Anglais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "ang-039",
@@ -4393,15 +4393,15 @@ var officialQuestions = [
     id: "vtc-023",
     moduleId: "vtc",
     subModuleId: "vtc-1",
-    text: "Le contr\xF4le des VTC peut \xEAtre effectu\xE9 par :",
+    text: "Qui peut contr\xF4ler un conducteur VTC sur la voie publique ?",
     options: [
-      { letter: "A", text: "La police" },
-      { letter: "B", text: "La gendarmerie" },
-      { letter: "C", text: "Les agents habilit\xE9s" },
-      { letter: "D", text: "Les plateformes" }
+      { letter: "A", text: "Les policiers" },
+      { letter: "B", text: "Les gendarmes" },
+      { letter: "C", text: "Les plateformes de r\xE9servation" },
+      { letter: "D", text: "Les autres conducteurs VTC" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "Sur la voie publique, le contr\xF4le des VTC est exerc\xE9 par les forces de l'ordre (police, gendarmerie) ainsi que par des agents habilit\xE9s (DGCCRF, contr\xF4leurs des transports terrestres). Les plateformes n'ont aucun pouvoir de contr\xF4le.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
   },
@@ -5180,15 +5180,15 @@ var officialQuestions = [
     id: "reg-032",
     moduleId: "reglementation",
     subModuleId: "reg-1",
-    text: "La r\xE9glementation T3P concerne :",
+    text: "Parmi ces professionnels, lesquels rel\xE8vent du T3P ?",
     options: [
-      { letter: "A", text: "Les taxis" },
-      { letter: "B", text: "Les VTC" },
-      { letter: "C", text: "Les VMDTR" },
-      { letter: "D", text: "Les bus urbains" }
+      { letter: "A", text: "Les conducteurs de VTC" },
+      { letter: "B", text: "Les conducteurs de moto-taxi (VMDTR)" },
+      { letter: "C", text: "Les conducteurs de bus urbains" },
+      { letter: "D", text: "Les ambulanciers" }
     ],
-    correctAnswer: "A",
-    explanation: "La r\xE9glementation T3P concerne les trois cat\xE9gories : Taxis, VTC et VMDTR (deux-trois roues motoris\xE9s).",
+    correctAnswer: "A,B",
+    explanation: "Le T3P (transport public particulier de personnes) regroupe trois professions : les taxis, les VTC et les VMDTR (moto-taxis). Les bus rel\xE8vent du transport collectif et les ambulances du transport sanitaire.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "facile"
   },
@@ -6791,15 +6791,15 @@ var officialQuestions = [
     id: "vmd-pas-005",
     moduleId: "vmdtr",
     subModuleId: "vmd-passager",
-    text: "Quels \xE9quipements sont recommand\xE9s ou impos\xE9s pour le passager moto-taxi ?",
+    text: "Quels \xE9quipements sont obligatoires pour le passager d'un moto-taxi ?",
     options: [
-      { letter: "A", text: "Casque homologu\xE9" },
-      { letter: "B", text: "Gants" },
-      { letter: "C", text: "V\xEAtement de protection (blouson)" },
-      { letter: "D", text: "Tongs" }
+      { letter: "A", text: "Un casque homologu\xE9" },
+      { letter: "B", text: "Des gants certifi\xE9s" },
+      { letter: "C", text: "Un blouson de protection" },
+      { letter: "D", text: "Des chaussures de ville" }
     ],
     correctAnswer: "A,B",
-    explanation: "Casque et gants sont obligatoires. Blouson et chaussures ferm\xE9es sont fortement recommand\xE9s. Les tongs sont \xE0 proscrire.",
+    explanation: "Le Code de la route impose au passager d'un deux-roues motoris\xE9 le casque homologu\xE9 (art. R431-1) et les gants certifi\xE9s CE (art. R431-1-2). Le blouson renforc\xE9 et les chaussures montantes sont fortement recommand\xE9s mais non obligatoires.",
     reference: "RS5636 \u2013 G(M) EPI",
     difficulty: "facile"
   },
