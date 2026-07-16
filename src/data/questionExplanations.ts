@@ -501,9 +501,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Médiation et résolution de conflits"
   },
   'rel-017': {
-    content: "L'empathie est la capacité à comprendre les émotions du client et à y répondre de manière adaptée. Un client stressé par un vol à prendre sera rassuré par une attitude calme et une communication sur l'heure d'arrivée prévue.",
-    tip: "Se mettre à la place du client : comprendre son stress, son urgence, sa fatigue. Adapter son attitude en conséquence.",
-    legalRef: "Intelligence émotionnelle"
+    content: "La discrétion professionnelle implique de ne divulguer aucune information sur le client et de respecter sa vie privée : conversations, destinations et habitudes restent confidentielles.",
+    tip: "Ce qui se dit à bord reste à bord."
   },
   'rel-018': {
     content: "La propreté du véhicule, intérieure comme extérieure, est un élément essentiel de la qualité de service. Elle reflète le professionnalisme du conducteur et contribue au confort et au bien-être du client.",
@@ -511,19 +510,16 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Standards de qualité VTC"
   },
   'rel-019': {
-    content: "Proposer des services complémentaires (eau, chargeur de téléphone, journaux, WiFi) peut faire la différence par rapport à la concurrence et justifier un tarif plus élevé. Ces attentions sont particulièrement appréciées des clients affaires.",
-    tip: "Bouteilles d'eau, chargeurs universels, bonbons... Petit investissement, grand impact. Adapter au type de clientèle.",
-    legalRef: "Valeur ajoutée service premium"
+    content: "La relation client vise à satisfaire (répondre aux attentes) et à fidéliser (donner envie de revenir) : un client satisfait et fidèle est la meilleure publicité.",
+    tip: "Satisfaire aujourd'hui, fidéliser pour demain."
   },
   'rel-020': {
-    content: "La gestion du temps est cruciale : estimer correctement les temps de trajet, prendre en compte les aléas (trafic, travaux), communiquer proactivement en cas de retard. Un client qui rate son avion à cause du VTC ne reviendra jamais.",
-    tip: "Marge de sécurité systématique. Vérifier le trafic en temps réel. Prévenir immédiatement en cas de problème.",
-    legalRef: "Gestion du temps - Service client"
+    content: "Une attitude professionnelle se caractérise par le respect et la courtoisie : politesse constante, ton mesuré, considération pour chaque client.",
+    tip: "Respect + courtoisie = professionnalisme visible."
   },
   'rel-021': {
-    content: "Face à une demande impossible ou inappropriée, le conducteur doit refuser poliment mais fermement, en expliquant la raison (légale, sécurité, politique de l'entreprise). Proposer une alternative quand c'est possible.",
-    tip: "Savoir dire non avec tact : 'Je comprends mais malheureusement ce n'est pas possible car...' Proposer une alternative si possible.",
-    legalRef: "Assertivité professionnelle"
+    content: "Un client pressé attend en priorité une conduite fluide : efficace et sans détour inutile — mais toujours dans le respect du code de la route.",
+    tip: "Client pressé : fluidité oui, imprudence jamais."
   },
   'rel-022': {
     content: "L'aide aux bagages fait partie du service VTC : charger et décharger les valises, aider les personnes à mobilité réduite, s'assurer que rien n'est oublié à la fin de la course. Ces gestes simples sont très appréciés.",
@@ -541,34 +537,28 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Réactivité service client"
   },
   'rel-025': {
-    content: "Savoir gérer les situations particulières (enfants, personnes âgées, handicapées, étrangères) démontre un professionnalisme abouti. Adapter sa communication, proposer une aide appropriée, faire preuve de patience.",
-    tip: "Enfants : sièges adaptés, patience. Personnes âgées : aide, pas de brusquerie. Étrangers : anglais de base, patience. PMR : véhicule adapté si besoin.",
-    legalRef: "Accessibilité et inclusion"
+    content: "Le conducteur professionnel adapte sa conduite aux conditions de circulation (trafic, météo, chantier) et aux attentes du client (confort, horaire).",
+    tip: "Deux boussoles : la route et le client. Jamais l'humeur."
   },
   'rel-026': {
-    content: "La maîtrise de l'anglais basique est un atout important dans les zones touristiques et aéroportuaires. Savoir accueillir, confirmer la destination, donner des informations sur le trajet et remercier en anglais ouvre de nombreuses opportunités.",
-    tip: "Phrases clés en anglais : Hello, welcome. Where are you going? The ride will take about... Here we are. Have a nice day.",
-    legalRef: "Compétences linguistiques VTC"
+    content: "Une relation client réussie favorise la recommandation (bouche-à-oreille, avis positifs) et la fidélisation (le client revient).",
+    tip: "Client conquis = ambassadeur + habitué."
   },
   'rel-027': {
-    content: "La transparence sur les tarifs évite les malentendus et conflits. Confirmer le prix avant le départ, expliquer les éventuels suppléments (bagages, nuit, attente), fournir une facture sur demande. Pas de mauvaise surprise = client satisfait.",
-    tip: "Prix annoncé = prix payé. Pas de coûts cachés. Si supplément nécessaire, l'expliquer et obtenir l'accord avant.",
-    legalRef: "Transparence tarifaire"
+    content: "La courtoisie contribue à la satisfaction du client et à la réputation du conducteur comme de toute la profession.",
+    tip: "Chaque « bonjour » soigné construit la réputation."
   },
   'rel-028': {
-    content: "La fiabilité est la qualité première attendue d'un VTC : être là où prévu, quand prévu, dans les conditions prévues. Un service fiable se construit sur la durée et fidélise naturellement les clients.",
-    tip: "Fiabilité = confiance = fidélisation. Ne jamais annuler à la dernière minute sauf force majeure (et prévoir une solution de remplacement).",
-    legalRef: "Engagement de service"
+    content: "Un comportement inadapté entraîne une mauvaise notation sur les plateformes et une perte de clientèle : les clients mécontents ne reviennent pas et le disent.",
+    tip: "Une mauvaise course = une mauvaise note = des clients en moins."
   },
   'rel-029': {
-    content: "Le respect des préférences du client (température, musique, trajet) démontre l'attention portée à son confort. Demander en début de course, ajuster si nécessaire, mémoriser pour les clients réguliers.",
-    tip: "Demander les préférences : 'La climatisation vous convient ?', 'Souhaitez-vous de la musique ?'. Noter les préférences des réguliers.",
-    legalRef: "Personnalisation du service"
+    content: "La qualité de service repose sur l'expérience globale : accueil, propreté, conduite, ponctualité, paiement — tout compte, pas seulement le prix ou la rapidité.",
+    tip: "Le client note l'ensemble du voyage, pas un seul détail."
   },
   'rel-030': {
-    content: "La posture du conducteur (position assise, regard, gestuelle) communique autant que les mots. Une posture droite mais détendue, un regard attentif, des gestes mesurés inspirent confiance et professionnalisme.",
-    tip: "Posture droite = sérieux. Gestes calmes = maîtrise. Regard attentif = écoute. Éviter les comportements nerveux (tapoter, s'agiter).",
-    legalRef: "Communication non verbale"
+    content: "Gérer ses émotions permet de rester professionnel et d'éviter les conflits : face à l'agacement, on respire, on garde un ton neutre.",
+    tip: "Le calme du conducteur désamorce la tension du client."
   },
   'rel-031': {
     content: "L'écoute active consiste à accorder toute son attention au client, montrer qu'on comprend (acquiescements, reformulations), poser des questions si nécessaire. Elle est particulièrement importante pour comprendre des demandes spécifiques.",
@@ -576,49 +566,40 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Techniques d'écoute active"
   },
   'rel-032': {
-    content: "La gestion des objets oubliés fait partie du service : vérifier systématiquement le véhicule après chaque course, contacter le client rapidement en cas de découverte, faciliter la restitution. Un objet retrouvé et rendu = client reconnaissant.",
-    tip: "Contrôle systématique du véhicule après chaque course (banquette, plancher, poches des sièges). Objet trouvé = contacter immédiatement.",
-    legalRef: "Procédure objets trouvés"
+    content: "La courtoisie favorise la confiance et le respect mutuel : un client bien traité se comporte mieux à son tour.",
+    tip: "Courtoisie donnée = confiance et respect reçus."
   },
   'rel-033': {
-    content: "La valeur du bouche-à-oreille est considérable : un client satisfait parle de son expérience positive à 3 personnes en moyenne, un client insatisfait à 10. Le meilleur marketing est un service irréprochable.",
-    tip: "Chaque course est une publicité. Un client ravi = 3 recommandations. Un client déçu = 10 personnes prévenues contre vous.",
-    legalRef: "Marketing viral positif"
+    content: "Le service client est essentiel en VTC : c'est lui qui différencie deux conducteurs à trajet égal, et qui justifie le choix du client.",
+    tip: "À prix égal, c'est le service qui fait la différence."
   },
   'rel-034': {
-    content: "Reconnaître ses erreurs et s'excuser sincèrement quand c'est justifié désarme souvent la colère du client et permet de sauver la relation. La responsabilité assumée est plus respectée que les excuses ou le déni.",
-    tip: "Erreur = s'excuser sincèrement + proposer solution/compensation. Ne pas chercher d'excuses. Assumer responsabilise et rassure.",
-    legalRef: "Gestion des erreurs - Récupération de service"
+    content: "Gérer les attentes du client, c'est donner une information réaliste (durée, prix) et clarifier la prestation dès le départ : pas de promesse intenable.",
+    tip: "Promettre juste, puis tenir : la recette anti-déception."
   },
   'rel-035': {
-    content: "L'amélioration continue consiste à tirer des leçons de chaque course, analyser les retours clients, identifier les axes de progrès. Les meilleurs conducteurs sont ceux qui remettent constamment en question leur pratique.",
-    tip: "Après chaque course : qu'est-ce qui a bien marché ? Qu'aurais-je pu mieux faire ? Lire ses évaluations et en tirer des leçons.",
-    legalRef: "Démarche qualité continue"
+    content: "On fidélise un client grâce à un bon service et à une attitude professionnelle constante — pas par des promesses ou des rabais.",
+    tip: "La fidélité se gagne course après course."
   },
   'rel-036': {
-    content: "La première impression se forme en quelques secondes et conditionne toute la relation. Soigner son apparence, son véhicule, son premier mot et son premier sourire est donc essentiel pour démarrer la course positivement.",
-    tip: "7 secondes pour la première impression. Sourire + bonjour + confirmation du nom + proposition d'aide bagages = départ réussi.",
-    legalRef: "Psychologie de la première impression"
+    content: "La satisfaction du client impacte directement les avis en ligne et la réputation : chaque course laisse une trace numérique potentielle.",
+    tip: "Un avis 5 étoiles se prépare pendant la course, pas après."
   },
   'rel-037': {
-    content: "La conclusion de la course est aussi importante que le début : remercier, souhaiter une bonne journée/soirée, rappeler de vérifier ses affaires, proposer la carte de visite. Les derniers mots restent en mémoire.",
-    tip: "Fin de course = dernière impression. Remercier + souhaiter bonne continuation + vérifier objets oubliés + carte de visite.",
-    legalRef: "Conclusion de service"
+    content: "Le conducteur reste neutre (politique, religion, polémiques) pour respecter le client et éviter les conflits : toutes les opinions montent à bord.",
+    tip: "Neutralité = respect de tous les clients."
   },
   'rel-038': {
-    content: "Le respect des différences culturelles est important, particulièrement avec une clientèle internationale. Certains comportements peuvent être interprétés différemment selon les cultures. Rester neutre et respectueux en toutes circonstances.",
-    tip: "Éviter les sujets sensibles (politique, religion). Respecter les coutumes. En cas de doute, rester sobre et professionnel.",
-    legalRef: "Intelligence interculturelle"
+    content: "La qualité d'accueil inclut le salut et le sourire : les deux premiers signaux que reçoit le client en montant à bord.",
+    tip: "Un bonjour + un sourire : l'accueil tient en deux gestes."
   },
   'rel-039': {
-    content: "Savoir gérer son propre stress est essentiel pour rester calme et professionnel en toutes circonstances. Le stress du conducteur se transmet au client. Techniques de respiration, anticipation, organisation permettent de le maîtriser.",
-    tip: "Stress du conducteur = client stressé. Respiration profonde avant course difficile. Anticiper pour éviter les urgences.",
-    legalRef: "Gestion du stress professionnel"
+    content: "Une attitude respectueuse implique l'écoute et la politesse : laisser parler, répondre posément, employer les formules d'usage.",
+    tip: "Écouter d'abord, répondre poliment ensuite."
   },
   'rel-040': {
-    content: "La confidentialité des données clients (coordonnées, trajets, conversations) est une obligation légale et éthique. Ne jamais partager ces informations, les stocker de manière sécurisée, les supprimer quand elles ne sont plus nécessaires.",
-    tip: "Données clients = confidentielles. RGPD applicable. Ne jamais partager, même avec des collègues. Stockage sécurisé.",
-    legalRef: "RGPD et protection des données personnelles"
+    content: "La relation client est un levier de satisfaction et de fidélisation : bien menée, elle transforme une course en client régulier.",
+    tip: "Soigner la relation, c'est investir dans les prochaines courses."
   },
 
   // =====================
@@ -630,9 +611,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Grammaire française - Accord des adjectifs"
   },
   'fra-002': {
-    content: "Le passé composé se forme avec l'auxiliaire être ou avoir au présent + participe passé. Avec être, le participe s'accorde avec le sujet. Avec avoir, il s'accorde avec le COD placé avant.",
-    tip: "Être : accord avec le sujet (elle est partie). Avoir : accord avec COD avant le verbe (les valises que j'ai prises).",
-    legalRef: "Conjugaison - Accord du participe passé"
+    content: "La courtoisie désigne la politesse raffinée dans les relations avec autrui : saluer, remercier, employer les formules d'usage. Le respect est une notion voisine mais plus large.",
+    tip: "Courtoisie = politesse. On peut être poli par courtoisie, le respect va au-delà des mots."
   },
   'fra-003': {
     content: "La ponctualité est une qualité professionnelle : arriver à l'heure convenue est la première preuve de sérieux d'un conducteur, taxi comme VTC.",
@@ -640,9 +620,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Orthographe - Homophones grammaticaux"
   },
   'fra-004': {
-    content: "Les formules de politesse professionnelles : 'Je vous prie d'agréer, Madame/Monsieur, l'expression de mes salutations distinguées' pour un courrier formel. 'Cordialement' ou 'Bien cordialement' pour un email courant.",
-    tip: "Courrier formel = formule complète. Email courant = 'Cordialement'. Client = jamais de familiarité (éviter 'Cdt', 'Biz').",
-    legalRef: "Communication professionnelle écrite"
+    content: "« Faire preuve de » signifie montrer, manifester une qualité par son comportement : faire preuve de courtoisie, de patience, de professionnalisme.",
+    tip: "Faire preuve de = montrer. « Démontrer » signifie prouver par un raisonnement."
   },
   'fra-005': {
     content: "La satisfaction du client dépend du comportement du conducteur (accueil, courtoisie, conduite) et de son professionnalisme (ponctualité, tenue, discrétion) : les deux vont de pair.",
@@ -650,14 +629,12 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Grammaire - Accord sujet-verbe"
   },
   'fra-006': {
-    content: "La différence entre 'et' (conjonction d'addition) et 'est' (verbe être) : on peut remplacer 'est' par 'était'. 'Le véhicule est (était) propre et (conjonction) confortable'.",
-    tip: "Test : remplacer par 'était'. Si ça fonctionne = 'est'. Pour additionner deux éléments = 'et'.",
-    legalRef: "Orthographe - Homophones grammaticaux"
+    content: "Une communication claire évite les malentendus (le client comprend du premier coup) et le rassure (il sait où il va, quand il arrive, combien il paiera).",
+    tip: "Clarté = pas de malentendu + client rassuré."
   },
   'fra-007': {
-    content: "La ponctuation structure le texte : le point termine une phrase, la virgule sépare les éléments d'une liste ou isole un complément, le point-virgule sépare des propositions liées. Une bonne ponctuation facilite la compréhension.",
-    tip: "Point = fin de phrase. Virgule = pause courte. Point-virgule = pause moyenne entre idées liées. Deux-points = annonce.",
-    legalRef: "Ponctuation française"
+    content: "Adapter son langage, c'est employer un registre approprié à son interlocuteur : vocabulaire simple avec un touriste, précis avec un professionnel. C'est s'adapter au client.",
+    tip: "Adapter son langage = choisir le bon registre pour la bonne personne."
   },
   'fra-008': {
     content: "Avec un client, on adopte un langage professionnel : poli, clair, précis. Les registres familier, vulgaire ou argotique nuisent à l'image du conducteur et de la profession.",
@@ -665,39 +642,32 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Vocabulaire professionnel VTC"
   },
   'fra-009': {
-    content: "Le pluriel des noms composés suit des règles particulières selon la nature des mots qui les composent. Les noms et adjectifs prennent généralement la marque du pluriel, pas les verbes ni les prépositions.",
-    tip: "Nom-Nom ou Adj-Nom : les deux au pluriel (des chefs-lieux). Verbe-Nom : seul le nom peut varier (des porte-bagages).",
-    legalRef: "Orthographe - Noms composés"
+    content: "Un malentendu est une incompréhension : chacun a compris autre chose. En clientèle, on l'évite en reformulant : « Si je comprends bien, vous souhaitez… »",
+    tip: "Malentendu = mal + entendu = incompréhension. À distinguer du désaccord (on a compris, mais on n'est pas d'accord)."
   },
   'fra-010': {
-    content: "La structure d'un message professionnel : formule d'appel (Bonjour/Madame/Monsieur), corps du message clair et concis, formule de politesse, signature. Aller à l'essentiel tout en restant courtois.",
-    tip: "Message pro = objet clair + phrase d'accroche + information essentielle + formule de politesse. Éviter les pavés.",
-    legalRef: "Rédaction professionnelle"
+    content: "Le but premier d'un texte professionnel est d'informer : transmettre une information exacte et utile. Clarifier, expliquer ou convaincre sont des buts secondaires possibles.",
+    tip: "Texte professionnel : informer d'abord, sans détour ni effet de style."
   },
   'fra-011': {
-    content: "La négation en français se compose de deux éléments : 'ne' + 'pas', 'plus', 'jamais', 'rien', 'personne'. À l'oral, le 'ne' disparaît souvent, mais il doit être maintenu à l'écrit et en situation professionnelle.",
-    tip: "Oral familier : 'je sais pas'. Écrit/pro : 'je ne sais pas'. Maintenir le 'ne' en situation professionnelle.",
-    legalRef: "Grammaire - La négation"
+    content: "La discrétion professionnelle porte sur la vie privée du client et ses informations personnelles : identité, destination, conversations, habitudes.",
+    tip: "Discret = ce que je vois et entends à bord reste à bord."
   },
   'fra-012': {
-    content: "Les niveaux de langue : soutenu (correspondance formelle), courant (échanges professionnels standards), familier (à éviter avec les clients). Adapter son niveau de langue à la situation et à l'interlocuteur.",
-    tip: "Avec les clients = niveau courant à soutenu. Éviter le familier ('tranquille', 'nickel', 'pas de souci' → préférer 'très bien', 'parfait', 'avec plaisir').",
-    legalRef: "Registres de langue"
+    content: "« Notamment » signifie « en particulier » : il introduit un exemple important sans exclure les autres. « Les documents, notamment la carte professionnelle » = la carte surtout, mais pas seulement.",
+    tip: "Notamment = en particulier (la liste n'est pas fermée)."
   },
   'fra-013': {
-    content: "La différence entre 'ce' (démonstratif) et 'se' (pronom réfléchi) : 'ce' peut être remplacé par 'cela' et désigne quelque chose. 'Se' accompagne un verbe pronominal (se lever, se trouver).",
-    tip: "Se + verbe (il se lève). Ce + nom (ce véhicule) ou ce + verbe impersonnel (ce sera parfait).",
-    legalRef: "Orthographe - Homophones grammaticaux"
+    content: "Respecter la vie privée du client, c'est ne divulguer aucune information sur lui et savoir garder le silence sur ce qu'on a vu ou entendu à bord.",
+    tip: "Vie privée = ne rien divulguer + savoir se taire."
   },
   'fra-014': {
-    content: "Le futur simple exprime une action à venir. Formation : infinitif + ai, as, a, ons, ez, ont. 'Je prendrai', 'vous arriverez'. Le conditionnel exprime une possibilité ou une demande polie : infinitif + ais, ais, ait, ions, iez, aient.",
-    tip: "Futur = certitude (j'arriverai à 14h). Conditionnel = politesse ou hypothèse (pourriez-vous... / je souhaiterais...).",
-    legalRef: "Conjugaison - Futur et conditionnel"
+    content: "Le ton d'un texte informatif est neutre et objectif : il rapporte des faits sans jugement, sans ironie et sans émotion.",
+    tip: "Informatif = neutre + objectif. Dès qu'il y a un jugement, ce n'est plus informatif."
   },
   'fra-015': {
-    content: "Les synonymes enrichissent le vocabulaire et évitent les répétitions : trajet/parcours/itinéraire, client/passager/usager, rapide/prompt/diligent. Varier le vocabulaire témoigne d'une bonne maîtrise de la langue.",
-    tip: "Éviter les répétitions : alterner les synonymes. Trajet/course/parcours. Véhicule/voiture/berline. Client/passager.",
-    legalRef: "Vocabulaire et synonymie"
+    content: "Une conduite souple améliore le confort du passager (pas d'à-coups) et la sécurité (anticipation, distances respectées).",
+    tip: "Souplesse au volant = confort + sécurité, jamais l'un sans l'autre."
   },
   'fra-016': {
     content: "« Tant… que » exprime une égalité d'importance entre deux éléments : la ponctualité compte aussi bien pour le client que pour le chauffeur.",
@@ -710,24 +680,20 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Lecture de documents administratifs"
   },
   'fra-018': {
-    content: "L'impératif présent sert à donner un ordre, un conseil ou une instruction. Il ne comporte pas de sujet exprimé et n'existe qu'à 3 personnes : tu (prends), nous (prenons), vous (prenez). Le 's' tombe au 2e groupe pour 'tu'.",
-    tip: "Impératif = ordre/conseil sans sujet. 2e pers. sing. des verbes en -er : pas de 's' (Prends mais Va, Mange). Sauf devant 'en' et 'y' (Vas-y).",
-    legalRef: "Conjugaison - L'impératif"
+    content: "Le professionnalisme se rapproche le plus du sérieux : conscience professionnelle, rigueur, fiabilité. La compétence est le savoir-faire, une composante distincte.",
+    tip: "Professionnalisme ≈ sérieux (attitude). Compétence = savoir-faire (technique)."
   },
   'fra-019': {
-    content: "La construction des phrases complexes : proposition principale + proposition subordonnée. Utiliser correctement les mots de liaison (que, qui, dont, où, parce que, bien que, afin que) pour structurer le discours.",
-    tip: "Phrases claires = idée principale + compléments. Éviter les phrases trop longues. Une idée par phrase si possible.",
-    legalRef: "Syntaxe - Phrases complexes"
+    content: "Le contraire de ponctuel est « en retard ». La ponctualité se juge par rapport à l'heure convenue, pas à la vitesse du trajet.",
+    tip: "Ponctuel ↔ en retard. « Lent » s'oppose à « rapide », pas à « ponctuel »."
   },
   'fra-020': {
-    content: "Les règles typographiques : espace avant et après les deux-points, point-virgule, point d'exclamation et d'interrogation en français. Pas d'espace avant virgule et point, espace après.",
-    tip: "Typographie française : pas d'espace avant . et , → espace après. Espace avant et après : ; ! ?",
-    legalRef: "Règles typographiques françaises"
+    content: "« En toutes circonstances » signifie toujours, quelles que soient les conditions : le professionnel reste courtois même face à un client difficile.",
+    tip: "En toutes circonstances = toujours, sans exception."
   },
   'fra-021': {
-    content: "La différence entre 'ou' (choix) et 'où' (lieu/temps) : 'où' peut être remplacé par 'à quel endroit' ou 'à quel moment'. 'Ou' propose une alternative entre deux éléments.",
-    tip: "Où = lieu/temps (où allez-vous ? le jour où...). Ou = choix/alternative (café ou thé ?).",
-    legalRef: "Orthographe - Homophones grammaticaux"
+    content: "Adapter son attitude, c'est modifier son comportement selon la situation : silencieux avec un client fatigué, disponible avec un touriste curieux.",
+    tip: "Une attitude par situation : observer, puis s'ajuster."
   },
   'fra-022': {
     content: "Dans « l'image de la profession », le mot « image » désigne la réputation : la façon dont la profession est perçue par le public. Chaque conducteur contribue à cette image par son comportement.",
@@ -740,14 +706,12 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Grammaire - Compléments d'objet"
   },
   'fra-024': {
-    content: "Les mots invariables ne changent jamais d'orthographe : adverbes (toujours, maintenant), prépositions (avec, pour, sans), conjonctions (mais, ou, et, donc). Les mémoriser évite les fautes.",
-    tip: "Mots invariables = toujours la même orthographe. Jamais d'accord : toujours, beaucoup, très, maintenant...",
-    legalRef: "Orthographe - Mots invariables"
+    content: "Une phrase informative sert à informer : donner un fait, une donnée, une instruction. « Le trajet durera 20 minutes » informe ; « Quel beau temps ! » exprime une émotion.",
+    tip: "Phrase informative = un fait transmis, rien de plus."
   },
   'fra-025': {
-    content: "La concordance des temps : le temps de la subordonnée dépend du temps de la principale. Présent + présent/futur. Passé + imparfait/plus-que-parfait. 'Il dit qu'il vient' / 'Il a dit qu'il viendrait'.",
-    tip: "Principale au présent = subordonnée libre. Principale au passé = subordonnée au passé aussi (imparfait, conditionnel passé).",
-    legalRef: "Grammaire - Concordance des temps"
+    content: "« Contribuer à » signifie participer à, apporter sa part : « la ponctualité et la courtoisie contribuent à la satisfaction du client ».",
+    tip: "Contribuent = participent (chacun apporte sa part au résultat)."
   },
   'fra-026': {
     content: "Des phrases à l'impératif (« Restez courtois », « Informez le client ») donnent des conseils ou des consignes : leur intention est de guider le comportement professionnel.",
@@ -755,34 +719,28 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Rédaction professionnelle"
   },
   'fra-027': {
-    content: "Le participe présent (-ant) est invariable. L'adjectif verbal (même forme) s'accorde. Différence : le participe présent exprime une action, l'adjectif verbal une qualité. 'Des clients exigeants' (adjectif) vs 'Les clients exigeant un reçu' (participe).",
-    tip: "Action en cours = participe (invariable). Qualité permanente = adjectif verbal (s'accorde). Test : remplacer par un autre adjectif.",
-    legalRef: "Grammaire - Participe et adjectif verbal"
+    content: "Une communication adaptée favorise la compréhension (le message passe) et la confiance (le client se sent considéré).",
+    tip: "Bien communiquer = être compris + inspirer confiance."
   },
   'fra-028': {
-    content: "Les connecteurs logiques structurent le discours : cause (car, parce que), conséquence (donc, ainsi), opposition (mais, cependant), addition (de plus, également), conclusion (enfin, en somme).",
-    tip: "Connecteurs = logique du texte. Car = cause. Donc = conséquence. Mais = opposition. De plus = addition.",
-    legalRef: "Expression écrite - Connecteurs logiques"
+    content: "Le respect implique une écoute réelle de l'autre et une attitude appropriée : considérer le client tel qu'il est, sans jugement.",
+    tip: "Respecter = écouter + se comporter correctement."
   },
   'fra-029': {
-    content: "La différence entre 'leur' (pronom = à eux) et 'leurs' (adjectif possessif pluriel). 'Je leur donne' (pronom, invariable) vs 'leurs bagages' (adjectif, accord avec le nom).",
-    tip: "Leur devant un verbe = pronom invariable (je leur dis). Leurs devant un nom pluriel = adjectif possessif (leurs valises).",
-    legalRef: "Orthographe - Leur/leurs"
+    content: "Une bonne maîtrise du français permet une meilleure relation client et une communication claire : accueil soigné, explications précises, messages sans fautes.",
+    tip: "Bien parler et bien écrire = l'image professionnelle du conducteur."
   },
   'fra-030': {
-    content: "La voix passive transforme le COD en sujet : 'Le client réserve la course' → 'La course est réservée par le client'. Le complément d'agent est introduit par 'par' ou 'de'.",
-    tip: "Voix passive = être + participe passé. Le sujet subit l'action. Utile pour mettre en avant le résultat plutôt que l'auteur.",
-    legalRef: "Grammaire - Voix active et passive"
+    content: "Dans le transport de personnes, le « client » est aussi appelé « passager » une fois à bord. « Usager » désigne plutôt l'utilisateur d'un service public.",
+    tip: "Client (commercial) = passager (à bord). Usager = service public."
   },
   'fra-031': {
-    content: "L'usage du conditionnel de politesse adoucit les demandes : 'Pourriez-vous...', 'Je souhaiterais...', 'Serait-il possible de...'. Plus poli que l'impératif ou le présent ('Pouvez-vous', 'Je veux').",
-    tip: "Conditionnel = politesse. 'Je voudrais' plutôt que 'je veux'. 'Pourriez-vous' plutôt que 'pouvez-vous'.",
-    legalRef: "Formules de politesse"
+    content: "Une phrase neutre est objective et sans jugement : elle décrit sans prendre parti. « Le trafic est dense » est neutre ; « ce trafic est insupportable » ne l'est pas.",
+    tip: "Neutre = objectif + sans jugement personnel."
   },
   'fra-032': {
-    content: "Les paronymes sont des mots de prononciation proche mais de sens différent : éminent/imminent, incident/accident, allocation/allocution. Attention aux confusions qui peuvent changer le sens.",
-    tip: "Paronymes = pièges fréquents. Éminent (remarquable) ≠ imminent (proche). Effraction (cambriolage) ≠ infraction (règle enfreinte).",
-    legalRef: "Vocabulaire - Paronymes"
+    content: "La compréhension écrite consiste à saisir le sens d'un texte et à l'interpréter correctement : comprendre ce qui est dit, et ce que cela implique.",
+    tip: "Comprendre un écrit = saisir le sens + interpréter juste."
   },
   'fra-033': {
     content: "Un texte professionnel vise à informer et à clarifier : transmettre l'information exacte, compréhensible immédiatement, sans ambiguïté.",
@@ -790,29 +748,24 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Nétiquette professionnelle"
   },
   'fra-034': {
-    content: "L'accord des nombres : 'vingt' et 'cent' prennent un 's' quand ils sont multipliés et non suivis d'un autre nombre. 'Quatre-vingts' mais 'quatre-vingt-un'. 'Deux cents' mais 'deux cent cinquante'.",
-    tip: "Vingt et cent : 's' si multipliés ET derniers de l'ensemble. 80 = quatre-vingts. 81 = quatre-vingt-un (pas de 's').",
-    legalRef: "Orthographe - Nombres"
+    content: "Le vocabulaire professionnel doit être adapté (les bons termes du métier : prise en charge, course, dépose) et compréhensible par le client.",
+    tip: "Précis pour le métier, simple pour le client."
   },
   'fra-035': {
-    content: "Le vocabulaire du temps et des horaires : en avance, à l'heure, en retard, ponctuel, délai, échéance, prévisionnel, estimé. Maîtriser ces termes pour communiquer précisément avec les clients.",
-    tip: "Vocabulaire temps : arrivée prévue à / ETA / délai estimé. Éviter les approximations : 'vers 14h' → 'à 14h environ'.",
-    legalRef: "Vocabulaire professionnel"
+    content: "La satisfaction est le contentement : l'état du client dont les attentes ont été remplies.",
+    tip: "Satisfaction = contentement (attentes remplies)."
   },
   'fra-036': {
-    content: "La différence entre 'quand' (temps), 'quant' (en ce qui concerne) et 'qu'en' (que en). 'Quand partez-vous ?' / 'Quant à moi, je reste' / 'Qu'en pensez-vous ?'",
-    tip: "Quand = moment. Quant à = en ce qui concerne. Qu'en = que + en (qu'en dites-vous = que dites-vous de cela).",
-    legalRef: "Orthographe - Homophones"
+    content: "La compréhension d'un texte dépend du vocabulaire (connaître les mots) et du contexte (la situation qui éclaire le sens).",
+    tip: "Mots + contexte = compréhension. Un mot inconnu se devine souvent par le contexte."
   },
   'fra-037': {
-    content: "L'impératif négatif : 'ne' + verbe + 'pas'. À la 2e personne du singulier des verbes en -er, pas de 's' : 'ne parle pas', 'n'oublie pas'. Exception : devant 'en' et 'y' : 'n'en parle pas'.",
-    tip: "Impératif négatif 2e pers. -er : pas de 's'. Ne mange pas, ne parle pas. Mais : manges-en, vas-y.",
-    legalRef: "Conjugaison - Impératif négatif"
+    content: "Un texte clair est facile à comprendre et structuré : une idée par phrase, des phrases courtes, un ordre logique.",
+    tip: "Clair = compris du premier coup + bien organisé."
   },
   'fra-038': {
-    content: "Les formules pour demander poliment : 'Auriez-vous l'amabilité de...', 'Serait-il possible de...', 'Permettez-moi de...', 'Je me permets de vous demander...'. Plus la formule est longue, plus elle est polie.",
-    tip: "Demande polie = conditionnel + formule atténuante. 'Pourriez-vous, s'il vous plaît...' Éviter les ordres secs.",
-    legalRef: "Formules de politesse"
+    content: "Respecter les règles de la langue (grammaire, orthographe, conjugaison) permet une meilleure communication et une compréhension efficace des messages.",
+    tip: "Règles respectées = message net, image professionnelle."
   },
   'fra-039': {
     content: "Le thème d'un texte est son sujet principal : ce dont le texte parle. À distinguer de l'intention (informer, conseiller) et de la conclusion.",
@@ -820,9 +773,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Expression écrite - Cohérence"
   },
   'fra-040': {
-    content: "Résumer un texte : identifier les idées principales, éliminer les détails, reformuler avec ses propres mots, respecter l'ordre logique. Compétence utile pour rapporter un échange ou rédiger un compte-rendu.",
-    tip: "Résumé = idées essentielles uniquement. Pas de détails, pas d'opinion personnelle. Reformuler, pas copier.",
-    legalRef: "Technique du résumé"
+    content: "La maîtrise de la langue contribue à l'image professionnelle du conducteur et à la qualité du service : un message soigné inspire confiance.",
+    tip: "Bien s'exprimer, c'est déjà bien servir."
   },
 
   // =====================
@@ -834,14 +786,12 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Greetings"
   },
   'ang-002': {
-    content: "'Where would you like to go?' or 'What is your destination?' are polite ways to ask for the destination. 'Where to?' is more casual but acceptable.",
-    tip: "Formal: 'May I ask where you would like to go?' Casual: 'Where to?' or 'What's the destination?'",
-    legalRef: "English - Basic questions"
+    content: "« Arrive on time » = arriver à l'heure, être ponctuel (punctual). La ponctualité est la première qualité attendue d'un chauffeur.",
+    tip: "On time = à l'heure. Early = en avance. Late = en retard."
   },
   'ang-003': {
-    content: "'The ride will take approximately 30 minutes' or 'We should arrive in about 30 minutes'. Use 'approximately' or 'about' to indicate an estimate.",
-    tip: "Give realistic estimates. 'About/Approximately X minutes' is safer than exact times in traffic.",
-    legalRef: "English - Time expressions"
+    content: "Le chauffeur accueille le client poliment (politely) et professionnellement (professionally) : « Good morning, how may I help you? »",
+    tip: "Politely + professionally : les deux adverbes de l'accueil réussi."
   },
   'ang-004': {
     content: "Before starting the trip, the driver confirms the destination (“Could you confirm the address?”) and helps with luggage (“May I help you with your luggage?”).",
@@ -849,54 +799,44 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Pricing vocabulary"
   },
   'ang-005': {
-    content: "'May I help you with your luggage?' or 'Let me get your bags for you'. These polite offers show good service. 'Luggage' (UK) and 'baggage' (US) are both correct.",
-    tip: "'May I help...' is more polite than 'Do you need help...' Show willingness to assist.",
-    legalRef: "English - Offering help"
+    content: "« Luggage » désigne les bagages : sacs et valises (bags and suitcases). Mot indénombrable en anglais : « your luggage », jamais « luggages ».",
+    tip: "Luggage (UK) = baggage (US) = les bagages. Toujours au singulier !"
   },
   'ang-006': {
-    content: "'Have a nice day/trip/flight' or 'Enjoy your stay' are appropriate farewells. 'It was a pleasure' or 'Thank you for riding with us' add a professional touch.",
-    tip: "End positively: 'Have a great day!', 'Enjoy your stay!', 'Safe travels!' Leave a good final impression.",
-    legalRef: "English - Farewells"
+    content: "« Drive smoothly » = conduire en douceur, confortablement : accélérations et freinages progressifs, sans à-coups.",
+    tip: "Smooth = doux, sans à-coups. Smoothly = confortablement pour le passager."
   },
   'ang-007': {
-    content: "'Is the temperature comfortable?' or 'Would you like me to adjust the air conditioning?' Show attention to passenger comfort.",
-    tip: "Ask: 'Is the temperature OK for you?' 'Would you prefer it warmer/cooler?' Adjust without being asked if client seems uncomfortable.",
-    legalRef: "English - Comfort questions"
+    content: "« Traffic laws must be respected/followed » : le code de la route doit être respecté — les deux verbes sont synonymes ici.",
+    tip: "Respect = follow (les règles). Break the law = enfreindre la loi."
   },
   'ang-008': {
-    content: "'Turn left/right', 'Go straight ahead', 'It's on your left/right', 'Take the first/second exit'. Basic directions vocabulary for communication with clients.",
-    tip: "Simple directions: Left, Right, Straight, First exit, Second street. Point when speaking to clarify.",
-    legalRef: "English - Directions"
+    content: "« A comfortable ride improves customer satisfaction » : un trajet confortable améliore la satisfaction du client.",
+    tip: "Ride = trajet, course. Comfortable ride → happy customer."
   },
   'ang-009': {
-    content: "'I apologize for the delay' or 'Sorry for keeping you waiting'. Acknowledge delays promptly. 'The traffic is heavy' or 'There's been an accident' to explain.",
-    tip: "Apologize sincerely: 'I'm sorry for the delay. There's heavy traffic.' Give an updated ETA.",
-    legalRef: "English - Apologizing"
+    content: "« Journey » = trajet, voyage (trip). « How was your journey? » = comment s'est passé votre voyage ?",
+    tip: "Journey = trip = trajet/voyage."
   },
   'ang-010': {
-    content: "'Do you have a preference for the route?' or 'Would you prefer the highway or the scenic route?'. Offer choices when appropriate.",
-    tip: "Offer choices: 'Highway is faster but toll. City streets are free but might take longer. Your preference?'",
-    legalRef: "English - Offering options"
+    content: "Le confort (comfort) est directement lié à la satisfaction du client (customer satisfaction) : température, conduite, propreté.",
+    tip: "Comfort → satisfaction : le lien clé du service à bord."
   },
   'ang-011': {
-    content: "Numbers and prices: 'Fifteen euros fifty' or 'Fifteen euros and fifty cents'. Phone numbers are usually given digit by digit: 'oh-six-one-two...'",
-    tip: "For prices: 'Twenty-five euros' or '25.50 euros'. For phone: say each digit separately. 0 = 'oh' or 'zero'.",
-    legalRef: "English - Numbers and prices"
+    content: "En cas de retard (delay), le chauffeur doit informer le client : « I am sorry, I will be 10 minutes late. »",
+    tip: "Delay → inform the customer immediately + apologize."
   },
   'ang-012': {
-    content: "'Would you like a receipt?' or 'Do you need a receipt?' are standard questions. 'Here is your receipt' when providing it.",
-    tip: "Always offer: 'Would you like a receipt?' Have receipts ready. 'Here you go' when handing documents.",
-    legalRef: "English - Receipts and documents"
+    content: "« As soon as possible » (ASAP) = dès que possible, immédiatement : « I will be there as soon as possible. »",
+    tip: "ASAP = as soon as possible = au plus vite."
   },
   'ang-013': {
-    content: "'We have arrived' or 'Here we are' signal the end of the journey. 'This is your destination' confirms you're at the right place.",
-    tip: "Arrival phrases: 'Here we are!', 'We've arrived at your destination.', 'This is [address].'",
-    legalRef: "English - Arrival phrases"
+    content: "Une communication claire évite les problèmes (avoid problems) et rassure le client (reassure the customer).",
+    tip: "Clear communication = fewer problems + reassured customer."
   },
   'ang-014': {
-    content: "Days: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. 'On Monday', 'This Tuesday', 'Next Wednesday'.",
-    tip: "Days start with capital letters. 'On' + day: 'on Friday'. 'This' = current week. 'Next' = following week.",
-    legalRef: "English - Days and dates"
+    content: "« Delay » = retard. « There is a delay » = il y a du retard ; « I am late » = je suis en retard.",
+    tip: "Delay (nom) = le retard. Late (adjectif) = en retard."
   },
   'ang-015': {
     content: "The advice is about communication: informing the customer of a delay and apologizing keeps the customer's trust.",
@@ -904,24 +844,20 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Time planning"
   },
   'ang-016': {
-    content: "'Please fasten your seatbelt' or 'Could you please put on your seatbelt?' are polite safety reminders. Safety vocabulary is essential.",
-    tip: "Safety phrases: 'Please buckle up', 'Seatbelts, please', 'For your safety, please fasten your seatbelt.'",
-    legalRef: "English - Safety instructions"
+    content: "Les clients demandent souvent l'itinéraire (the route) et l'heure d'arrivée (arrival time) : « Which way are we going? What time will we arrive? »",
+    tip: "Route + arrival time : les deux questions les plus fréquentes des clients."
   },
   'ang-017': {
-    content: "'I will wait for you' or 'I'll be right here'. 'The waiting time is included in the fare' or 'Waiting time is charged at X per hour'.",
-    tip: "Waiting: 'I'll wait here', 'Take your time', 'The meter runs during waiting time.' Be clear about charges.",
-    legalRef: "English - Waiting"
+    content: "Le chauffeur répond clairement (clearly) et professionnellement (professionally), sans jargon ni familiarité.",
+    tip: "Answer clearly + professionally — jamais « rudely » ni « indirectly »."
   },
   'ang-018': {
-    content: "'There is WiFi available' or 'The WiFi password is...'. 'We have phone chargers if you need one'. Modern service vocabulary.",
-    tip: "Amenities: 'WiFi is available, password is...', 'There's a charger in the back.', 'Help yourself to water.'",
-    legalRef: "English - Amenities"
+    content: "« Estimated » = estimé, approximatif (approximate) : « estimated time of arrival (ETA) » = heure d'arrivée estimée.",
+    tip: "Estimated = approximate ≠ exact. ETA = estimated time of arrival."
   },
   'ang-019': {
-    content: "'Cash or card?' asks about payment method. 'We accept credit cards / all major cards'. 'I'm sorry, cash only' if applicable.",
-    tip: "Payment: 'How would you like to pay? Cash or card?' 'We accept Visa, Mastercard, and American Express.'",
-    legalRef: "English - Payment"
+    content: "« Arrival time » = l'heure d'arrivée à destination, à distinguer de « departure time » (heure de départ).",
+    tip: "Arrival = arrivée ↔ departure = départ."
   },
   'ang-020': {
     content: "These questions (destination, flight time, luggage) all aim at understanding the customer's needs before the trip.",
@@ -929,24 +865,20 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Clarification"
   },
   'ang-021': {
-    content: "'Excuse me' to get attention or apologize for a minor interruption. 'I beg your pardon' is more formal. 'Sorry' for apologies.",
-    tip: "'Excuse me' = before interrupting. 'Sorry' = after a mistake. 'Pardon?' = didn't hear. Different uses.",
-    legalRef: "English - Polite expressions"
+    content: "Le client (customer) est aussi appelé « passenger » (passager) ou « client » — les trois mots sont corrects en anglais.",
+    tip: "Customer = client = passenger (une fois à bord)."
   },
   'ang-022': {
-    content: "Weather: 'It's sunny/rainy/cloudy/cold/hot today'. 'The forecast says rain later'. Small talk topic that's safe and universal.",
-    tip: "Weather is safe small talk: 'Nice weather today!', 'It's quite cold, isn't it?' Avoid controversial topics.",
-    legalRef: "English - Weather vocabulary"
+    content: "Le contraire de « late » (en retard) est « early » (en avance). « On time » = pile à l'heure.",
+    tip: "Early ↔ late. On time = à l'heure exacte."
   },
   'ang-023': {
-    content: "'How was your flight?' or 'Is this your first time in [city]?' are polite conversation starters for airport pickups.",
-    tip: "Airport small talk: 'How was your flight?', 'Welcome to Paris!', 'Are you here for business or pleasure?' Light and friendly.",
-    legalRef: "English - Conversation starters"
+    content: "« Smooth driving » améliore le confort (improve comfort) et réduit le stress du passager (reduce stress).",
+    tip: "Smooth driving = comfort + less stress."
   },
   'ang-024': {
-    content: "'The hotel is 20 minutes away' or 'Your hotel is in the city center'. Locations: 'near', 'close to', 'next to', 'across from', 'behind'.",
-    tip: "Location words: near/close to, next to, across from, behind, in front of, on the corner of. Use landmarks.",
-    legalRef: "English - Locations"
+    content: "« Should » exprime un conseil ou une recommandation : « You should take the highway » = vous devriez prendre l'autoroute. « Must » exprime l'obligation.",
+    tip: "Should = conseil (devriez). Must = obligation (devez)."
   },
   'ang-025': {
     content: "To confirm = to check / to verify : s'assurer qu'une information est exacte. “Could you confirm the address, please?”",
@@ -954,19 +886,16 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Recommendations"
   },
   'ang-026': {
-    content: "'Take care' or 'Have a safe trip' express concern for the client's wellbeing. Warm farewells leave positive impressions.",
-    tip: "Warm farewells: 'Take care!', 'Safe travels!', 'Hope to see you again!', 'Enjoy your stay!'",
-    legalRef: "English - Warm expressions"
+    content: "Un retard (delay) peut être causé par la circulation dense (heavy traffic) ou la météo (bad weather).",
+    tip: "Heavy traffic + bad weather = les deux causes classiques de retard."
   },
   'ang-027': {
-    content: "'Just a moment, please' or 'I'll be right there'. 'Bear with me' asks for patience. Useful when slightly delayed.",
-    tip: "Patience phrases: 'Just a moment', 'I'll be with you shortly', 'Thank you for your patience.'",
-    legalRef: "English - Asking to wait"
+    content: "La satisfaction du client dépend de la qualité du service (service quality) et de l'attitude professionnelle (professional attitude).",
+    tip: "Service quality + attitude : les deux piliers de la satisfaction."
   },
   'ang-028': {
-    content: "Phone/address format: 'My number is...' 'The address is [number] [street name]'. Dictate slowly and clearly.",
-    tip: "Give information slowly. Repeat important details. 'Let me spell that: B-A-K-E-R Street.' Confirm understanding.",
-    legalRef: "English - Contact information"
+    content: "Un chauffeur professionnel doit être poli (polite) et respectueux (respectful) en toutes circonstances.",
+    tip: "Polite + respectful : le duo indissociable du professionnel."
   },
   'ang-029': {
     content: "“Good morning sir, how may I help you?” is the polite, professional way to greet a customer. The other sentences are too familiar or rude.",
@@ -979,39 +908,32 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Affirmative responses"
   },
   'ang-031': {
-    content: "'Unfortunately...' or 'I'm afraid...' soften negative information. 'Regrettably, there's heavy traffic' sounds more professional.",
-    tip: "Soften bad news: 'I'm afraid there's a delay', 'Unfortunately, that route is closed.' Offer alternatives.",
-    legalRef: "English - Delivering bad news"
+    content: "Informer le client à l'avance (in advance) crée la confiance (build trust) et évite les conflits (avoid conflicts).",
+    tip: "Inform in advance = trust + no conflict."
   },
   'ang-032': {
-    content: "'Allow me' or 'Let me help you with that' when assisting. 'After you' when letting the client go first.",
-    tip: "Courteous phrases: 'Allow me', 'After you', 'Please, go ahead', 'Let me get the door for you.'",
-    legalRef: "English - Courtesy phrases"
+    content: "Aider avec les bagages (help with luggage) témoigne de courtoisie (courtesy) et de professionnalisme (professionalism).",
+    tip: "« May I help you with your luggage? » : la phrase-réflexe du chauffeur."
   },
   'ang-033': {
-    content: "Months: January, February, March, April, May, June, July, August, September, October, November, December. 'In March', 'On March 15th'.",
-    tip: "Dates: 'March fifteenth' (US) or 'the fifteenth of March' (UK). Both understood. Months always capitalized.",
-    legalRef: "English - Months and dates"
+    content: "Des réponses claires (clear answers) rassurent le client (reassured) et lui donnent confiance (confident).",
+    tip: "Clear answers → reassured + confident customer."
   },
   'ang-034': {
-    content: "'I don't quite understand' or 'I'm not sure I follow'. Polite ways to say you don't understand without seeming dismissive.",
-    tip: "Polite confusion: 'I'm not sure I understand', 'Could you clarify?', 'What do you mean by...?' Don't just nod.",
-    legalRef: "English - Expressing confusion"
+    content: "Un accueil poli (polite welcome) crée une bonne première impression (good first impression) et la confiance (trust).",
+    tip: "Le premier bonjour conditionne toute la course : first impression + trust."
   },
   'ang-035': {
-    content: "'It's been a pleasure' or 'Thank you for choosing us' express gratitude professionally. Ends the interaction positively.",
-    tip: "Professional thanks: 'It's been a pleasure serving you', 'Thank you for choosing us', 'We appreciate your business.'",
-    legalRef: "English - Expressing gratitude"
+    content: "La communication professionnelle doit être claire (clear) et adaptée (adapted) au client et à la situation.",
+    tip: "Clear + adapted : les deux qualités d'une communication pro."
   },
   'ang-036': {
-    content: "'Traffic jam', 'congestion', 'roadworks/construction', 'accident ahead', 'detour'. Traffic-related vocabulary for explaining delays.",
-    tip: "Traffic vocabulary: 'Heavy traffic', 'Traffic jam', 'Roadworks ahead', 'Taking an alternative route.'",
-    legalRef: "English - Traffic vocabulary"
+    content: "« To avoid » = éviter, prévenir (prevent) : « avoid misunderstandings » = éviter les malentendus.",
+    tip: "Avoid = prevent = éviter/empêcher qu'une chose arrive."
   },
   'ang-037': {
-    content: "'Please make yourself comfortable' or 'Feel free to adjust the seat'. Creating a comfortable environment for the client.",
-    tip: "Comfort offers: 'Make yourself comfortable', 'Feel free to adjust anything', 'Let me know if you need anything.'",
-    legalRef: "English - Comfort phrases"
+    content: "Un bon chauffeur écoute pour comprendre les besoins (understand needs) et adapter son service (adapt the service).",
+    tip: "Listen → understand → adapt : la chaîne du bon service."
   },
   'ang-038': {
     content: "Offering help with luggage and checking the passenger's comfort are typical customer service situations on board.",
@@ -1019,9 +941,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Pickup arrangements"
   },
   'ang-039': {
-    content: "'Emergency exit', 'first aid kit', 'fire extinguisher'. Emergency vocabulary that may be needed in exceptional situations.",
-    tip: "Emergency words: 'Are you OK?', 'Do you need medical help?', 'I'm calling emergency services.' Stay calm.",
-    legalRef: "English - Emergency vocabulary"
+    content: "Une bonne communication réduit les problèmes (problems) et les réclamations (complaints).",
+    tip: "Good communication = fewer problems + fewer complaints."
   },
   'ang-040': {
     content: "Polite (poli), punctual (ponctuel) and discreet (discret) sont les qualités qui composent le professionnalisme (professionalism) du chauffeur.",
@@ -1033,19 +954,16 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
   // MODULE VTC (vtc-001 à vtc-040)
   // =====================
   'vtc-001': {
-    content: "La carte professionnelle VTC est délivrée par le préfet du département de résidence après réussite à l'examen T3P. Elle est valable 5 ans et doit être renouvelée avec justification des conditions (aptitude médicale, formation continue).",
-    tip: "Carte VTC = 5 ans de validité. Renouvellement : visite médicale + attestation de formation continue. Anticiper les démarches (3-6 mois avant expiration).",
-    legalRef: "Article R3120-8 du Code des transports"
+    content: "Pour exercer comme VTC, il faut être titulaire du permis B depuis au moins 3 ans (2 ans si conduite accompagnée).",
+    tip: "Permis B ≥ 3 ans (ou 2 ans avec conduite accompagnée)."
   },
   'vtc-002': {
-    content: "Le VTC doit obligatoirement disposer d'une réservation préalable avant toute prise en charge. La maraude (prise en charge spontanée dans la rue ou en station) est strictement interdite et réservée aux taxis.",
-    tip: "Réservation préalable = OBLIGATOIRE. Pas de maraude, pas de prise en charge dans la rue. Amende : 1 500€.",
-    legalRef: "Article L3120-2 du Code des transports"
+    content: "La carte professionnelle VTC est délivrée pour 5 ans par le préfet. Son renouvellement exige la formation continue.",
+    tip: "Carte pro VTC = 5 ans, renouvelable après formation continue."
   },
   'vtc-003': {
-    content: "Le véhicule VTC doit avoir entre 4 et 9 places (conducteur compris), moins de 6 ans d'ancienneté, une puissance minimale de 84 kW, et des dimensions minimales (4,50m de long, 1,70m de large) sauf véhicules hybrides/électriques.",
-    tip: "Véhicule VTC : 4-9 places, <6 ans, ≥84 kW, dimensions mini 4,50m x 1,70m. Hybride/électrique : conditions assouplies sur les dimensions.",
-    legalRef: "Article R3122-1 du Code des transports"
+    content: "La carte professionnelle doit être visible à l'intérieur du véhicule pendant l'activité et présentable à tout contrôle.",
+    tip: "Carte visible à bord, jamais dans la boîte à gants."
   },
   'vtc-004': {
     content: "La signalétique VTC est une vignette autocollante mentionnant le numéro d'inscription au registre. Elle s'appose à l'avant (angle inférieur gauche du pare-brise) et à l'arrière (angle inférieur droit de la lunette arrière) — arrêté du 6 avril 2017. Elle se retire ou se masque hors activité VTC.",
@@ -1053,19 +971,16 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Article R3122-9 du Code des transports"
   },
   'vtc-005': {
-    content: "L'assurance responsabilité civile professionnelle est obligatoire et doit couvrir les dommages causés aux passagers, aux tiers et aux bagages. Le montant minimum de couverture est défini par la réglementation.",
-    tip: "Assurance RC Pro obligatoire. Vérifier : couverture passagers, bagages, tiers. Attestation à jour dans le véhicule.",
-    legalRef: "Article R3120-4 du Code des transports"
+    content: "En dehors d'une course, le VTC doit stationner hors de la voie publique : retour à la base ou nouvelle réservation. L'attente sur la voie publique est réservée aux taxis.",
+    tip: "Pas de course = hors voie publique. L'attente en rue = taxis uniquement."
   },
   'vtc-006': {
-    content: "La signalétique VTC est obligatoire : vignette verte sur le pare-brise avec la mention 'VTC' visible de l'extérieur. Elle permet d'identifier le véhicule comme VTC autorisé.",
-    tip: "Vignette VTC verte = obligatoire sur pare-brise, visible de l'extérieur. Absence = infraction.",
-    legalRef: "Article R3122-6 du Code des transports"
+    content: "La prise en charge sans réservation préalable est interdite aux VTC : c'est de la maraude, monopole des taxis, sanctionnée pénalement.",
+    tip: "VTC sans réservation = maraude illégale = délit."
   },
   'vtc-007': {
-    content: "Le retour à la base (ou au domicile) est obligatoire entre deux courses, sauf si une nouvelle réservation a été enregistrée. Stationner en attente de client sans réservation est interdit (assimilé à la maraude).",
-    tip: "Entre deux courses : retour à la base ou nouvelle réservation reçue. Pas de stationnement en attente sans réservation = maraude déguisée.",
-    legalRef: "Article R3120-3 du Code des transports"
+    content: "La maraude électronique désigne la réservation immédiate via une plateforme géolocalisée : le client voit les véhicules proches et commande — cela reste une réservation préalable, donc légal.",
+    tip: "Maraude électronique = réservation via appli (légal) ≠ maraude de rue (interdit)."
   },
   'vtc-008': {
     content: "En cas de contrôle, le conducteur VTC présente le justificatif de réservation préalable de la course en cours, sur support papier ou électronique. Il mentionne notamment l'exploitant (n° REVTC, SIREN), le client, la date et l'heure de réservation et de prise en charge.",
@@ -1073,19 +988,16 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Article L3122-2 du Code des transports"
   },
   'vtc-009': {
-    content: "La formation continue est obligatoire pour le renouvellement de la carte professionnelle. Elle porte sur la réglementation, la sécurité et la relation client. Sa durée et son contenu sont définis réglementairement.",
-    tip: "Formation continue = obligatoire pour renouveler la carte. Anticiper : la suivre dans l'année précédant le renouvellement.",
-    legalRef: "Article R3120-9 du Code des transports"
+    content: "Au contrôle, le conducteur VTC présente sa carte professionnelle ET le justificatif de réservation préalable de la course en cours.",
+    tip: "Contrôle VTC : carte pro + preuve de réservation, toujours les deux."
   },
   'vtc-010': {
-    content: "La visite médicale d'aptitude à la conduite est obligatoire pour l'obtention et le renouvellement de la carte professionnelle. Elle doit être réalisée par un médecin agréé par la préfecture.",
-    tip: "Visite médicale préfectorale obligatoire. Médecin agréé uniquement. Validité : 5 ans (<60 ans), moins ensuite.",
-    legalRef: "Article R3120-7 du Code des transports"
+    content: "La réservation doit être effectuée avant la prise en charge : c'est elle qui rend la course légale.",
+    tip: "D'abord la réservation, ensuite le client."
   },
   'vtc-011': {
-    content: "L'examen T3P comprend deux épreuves : admissibilité (épreuves communes à toutes les professions T3P) et admission (épreuve spécifique au métier choisi : taxi, VTC ou VMDTR).",
-    tip: "Examen T3P : Admissibilité (50 questions communes) puis Admission (20 questions spécifiques). Seuil : 70% minimum.",
-    legalRef: "Arrêté du 6 avril 2017 relatif à l'examen T3P"
+    content: "Le véhicule VTC répond à des critères de confort fixés par la réglementation : dimensions minimales, puissance, nombre de portes.",
+    tip: "VTC = véhicule confortable aux normes (dimensions, puissance, portes)."
   },
   'vtc-012': {
     content: "Les véhicules hybrides et électriques sont dispensés des caractéristiques techniques imposées aux VTC, dont la condition d'ancienneté (art. L.3120-5). Les véhicules thermiques doivent avoir moins de 7 ans.",
@@ -1093,9 +1005,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Article R3120-3 du Code des transports"
   },
   'vtc-013': {
-    content: "L'exploitant VTC peut être une personne physique (entrepreneur individuel) ou une société. Il doit être inscrit au registre des métiers ou au registre du commerce et des sociétés.",
-    tip: "Statut exploitant : EI (inscription RM) ou société (RCS ou RM selon forme). L'inscription au registre VTC est distincte.",
-    legalRef: "Article L3122-1 du Code des transports"
+    content: "L'assurance obligatoire comprend la RC circulation (le véhicule) et la RC professionnelle (l'activité et les clients transportés).",
+    tip: "Deux assurances : RC circulation + RC pro. L'assurance « particulier » ne suffit pas."
   },
   'vtc-014': {
     content: "La responsabilité civile professionnelle couvre les dommages causés aux clients dans le cadre de l'activité, notamment en cas de faute professionnelle. Elle complète la RC circulation, obligatoire pour le véhicule.",
@@ -1103,24 +1014,20 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Article L3124-4 du Code des transports"
   },
   'vtc-015': {
-    content: "Le VTC peut stationner sur la voie publique le temps de la prise en charge ou de la dépose du client, mais ne peut pas stationner en attente de clientèle (maraude).",
-    tip: "Stationnement autorisé : prise en charge et dépose uniquement. Pas de stationnement en attente = maraude interdite.",
-    legalRef: "Article R3120-3 du Code des transports"
+    content: "Le défaut d'assurance expose à des sanctions administratives et pénales : conduire sans assurance est un délit.",
+    tip: "Sans assurance = délit + sanctions administratives."
   },
   'vtc-016': {
-    content: "La carte professionnelle doit être visible dans le véhicule pendant l'exercice de l'activité et présentable à tout moment lors d'un contrôle. Son absence est sanctionnable.",
-    tip: "Carte pro = visible à bord + présentable. Toujours avoir l'original sur soi. Photocopie non valable pour contrôle.",
-    legalRef: "Article R3120-6 du Code des transports"
+    content: "Le refus de client n'est possible que pour un motif légitime : sécurité, comportement dangereux, état d'ébriété avancé. La discrimination est interdite.",
+    tip: "Refuser : uniquement motif légitime, jamais la tête du client."
   },
   'vtc-017': {
-    content: "L'intermédiation (plateforme numérique) doit respecter la réglementation : vérifier les conditions d'exercice des chauffeurs, ne pas permettre la maraude, informer clairement sur les tarifs.",
-    tip: "Plateforme = intermédiaire réglementé. Doit vérifier les conditions des chauffeurs et respecter les règles VTC.",
-    legalRef: "Article L3141-1 et suivants du Code des transports"
+    content: "La propreté du véhicule est une obligation professionnelle : intérieur comme extérieur, elle fait partie de la prestation.",
+    tip: "Véhicule propre = premier signe de professionnalisme."
   },
   'vtc-018': {
-    content: "La cessation d'activité doit être déclarée au préfet dans les meilleurs délais. La carte professionnelle doit être restituée et l'inscription au registre radiée.",
-    tip: "Fin d'activité : déclarer en préfecture + restituer la carte + radiation du registre. Formalités obligatoires.",
-    legalRef: "Article R3122-14 du Code des transports"
+    content: "Le conducteur VTC est tenu à une obligation de moyens : mettre tout en œuvre pour la prestation (sécurité, ponctualité), sans garantir un résultat comme l'heure d'arrivée exacte.",
+    tip: "Moyens (tout mettre en œuvre) ≠ résultat (garantir l'issue)."
   },
   'vtc-019': {
     content: "La facture d'une course VTC est écrite et détaillée : date, trajet, montant TTC, identité du professionnel. Elle est remise au client.",
@@ -1128,69 +1035,56 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Article L3120-2 du Code des transports"
   },
   'vtc-020': {
-    content: "Le justificatif de réservation doit pouvoir être présenté lors d'un contrôle. Il peut être électronique (application) ou papier et doit comporter les informations essentielles (client, date, heure, trajet).",
-    tip: "Preuve de réservation = obligatoire et vérifiable. Application, SMS, email, papier acceptés. Conserver les traces.",
-    legalRef: "Article R3122-7 du Code des transports"
+    content: "La facture mentionne le numéro de carte professionnelle et le montant de la prestation, avec la date et le trajet.",
+    tip: "Facture : qui (carte pro), combien (montant), quoi (trajet, date)."
   },
   'vtc-021': {
-    content: "Le contrat de transport lie le VTC et le client. Il implique des obligations pour les deux parties : sécurité, ponctualité pour le VTC ; paiement, respect des règles pour le client.",
-    tip: "Contrat de transport = obligations mutuelles. VTC : conduire en sécurité au lieu convenu. Client : payer le prix convenu.",
-    legalRef: "Articles L3221-1 et suivants du Code des transports"
+    content: "Le conducteur VTC adopte une conduite souple et sécurisée : confort du client et respect du code de la route vont ensemble.",
+    tip: "Souple + sécurisée : jamais rapide ou sportive avec un client."
   },
   'vtc-022': {
-    content: "L'âge minimum pour obtenir la carte professionnelle VTC est de 21 ans. Le candidat doit également être titulaire du permis B depuis au moins 3 ans (ou 2 ans en conduite accompagnée).",
-    tip: "Conditions d'âge : 21 ans minimum + permis B depuis 3 ans (2 ans si conduite accompagnée).",
-    legalRef: "Article R3120-7 du Code des transports"
+    content: "Hors course, le VTC retourne hors de la voie publique (base, garage, domicile), sauf nouvelle réservation.",
+    tip: "Fin de course → retour base (ou nouvelle réservation)."
   },
   'vtc-023': {
-    content: "Le casier judiciaire (bulletin n°2) est vérifié lors de la demande de carte professionnelle. Certaines condamnations sont incompatibles avec l'exercice de la profession.",
-    tip: "Casier B2 vérifié. Incompatibilités : condamnations pour crimes, délits routiers graves, atteintes aux personnes, etc.",
-    legalRef: "Article R3120-7 du Code des transports"
+    content: "Le contrôle des VTC est exercé par les forces de l'ordre (police, gendarmerie) et les agents habilités (DGCCRF, contrôleurs des transports).",
+    tip: "Qui contrôle : police, gendarmerie, agents habilités — jamais les plateformes."
   },
   'vtc-024': {
-    content: "Le VTC doit informer le client du prix de la course avant le départ. Cette information peut être donnée oralement ou via l'application de réservation.",
-    tip: "Prix = communiqué avant départ. Pas de surprise à l'arrivée. Forfait ou estimation à confirmer si calcul en cours de route.",
-    legalRef: "Article R3121-4 du Code des transports"
+    content: "Le non-respect de la réglementation expose à des sanctions administratives (avertissement, retrait de carte) et pénales (amendes, prison pour les délits).",
+    tip: "Deux étages de sanctions : administratives ET pénales."
   },
   'vtc-025': {
-    content: "La mention 'véhicule avec chauffeur' ou 'VTC' doit apparaître sur les documents commerciaux et la signalétique du véhicule, distinguant clairement l'activité de celle des taxis.",
-    tip: "Identification claire VTC : vignette verte + documents commerciaux mentionnant VTC. Pas de confusion avec taxi.",
-    legalRef: "Article R3122-6 du Code des transports"
+    content: "La formation continue est obligatoire pour tous les conducteurs VTC : elle conditionne le renouvellement de la carte professionnelle.",
+    tip: "Pas de formation continue = pas de renouvellement de carte."
   },
   'vtc-026': {
-    content: "Le VTC ne peut pas utiliser de compteur horokilométrique apparent (lumineux type taxi). Le tarif est soit forfaitaire soit communiqué via l'application sans affichage type taxi.",
-    tip: "Pas de compteur type taxi visible. Tarification différente : forfait ou calcul via application. Distinction visuelle avec taxis.",
-    legalRef: "Distinction taxi/VTC - Signalétique"
+    content: "La formation continue doit être réalisée tous les 5 ans, avant le renouvellement de la carte professionnelle.",
+    tip: "Formation continue : tous les 5 ans, comme la carte."
   },
   'vtc-027': {
-    content: "Les zones de prise en charge aéroportuaires sont strictement réglementées. Le VTC doit respecter les zones dédiées et ne peut stationner dans les zones réservées aux taxis.",
-    tip: "Aéroports : zones VTC distinctes des zones taxis. Respecter la signalétique. Amendes élevées en zone interdite.",
-    legalRef: "Règlements intérieurs des aéroports"
+    content: "Le conducteur VTC respecte la réglementation en vigueur et les règles de sécurité : les demandes du client ne priment jamais sur la loi.",
+    tip: "La loi d'abord, le client ensuite : jamais l'inverse."
   },
   'vtc-028': {
-    content: "La location de véhicule avec chauffeur (VTC) se distingue du transport public de personnes par la réservation préalable et l'absence de maraude. C'est un service personnalisé.",
-    tip: "VTC = location de véhicule avec chauffeur ≠ transport public. Service personnalisé, sur réservation uniquement.",
-    legalRef: "Définition du service VTC"
+    content: "Le comportement du conducteur engage sa responsabilité personnelle et l'image de toute la profession.",
+    tip: "Une faute individuelle rejaillit sur tous les VTC."
   },
   'vtc-029': {
-    content: "Le conducteur VTC salarié doit disposer de sa propre carte professionnelle, distincte de l'inscription de son employeur au registre VTC. Chaque conducteur est individuellement qualifié.",
-    tip: "Salarié VTC = sa propre carte professionnelle obligatoire. L'inscription de l'employeur ne suffit pas pour le conducteur.",
-    legalRef: "Article R3120-8 du Code des transports"
+    content: "Toute course VTC doit obligatoirement faire l'objet d'une réservation préalable : c'est le fondement légal de l'activité.",
+    tip: "Pas de réservation = pas de course."
   },
   'vtc-030': {
-    content: "La durée de validité de l'inscription au registre VTC est de 5 ans. Le renouvellement nécessite de justifier à nouveau des conditions (assurance, véhicule conforme, carte conducteur valide).",
-    tip: "Registre VTC = 5 ans. Renouvellement : actualiser toutes les pièces (assurance, véhicule, carte pro). Anticiper les délais.",
-    legalRef: "Article R3122-9 du Code des transports"
+    content: "L'objectif principal de la réglementation VTC est de garantir la sécurité des passagers ; elle protège aussi la loyauté entre professionnels.",
+    tip: "La réglementation protège d'abord le passager."
   },
   'vtc-031': {
-    content: "Le VTC peut refuser une course si les conditions ne sont pas réunies (client en état d'ébriété avancé, comportement dangereux, animal non maîtrisé), mais ne peut discriminer selon des critères prohibés.",
-    tip: "Refus de course possible si motif légitime (sécurité, comportement). Interdit de discriminer (origine, handicap...).",
-    legalRef: "Droit du transport et non-discrimination"
+    content: "La carte professionnelle doit être restituée à la préfecture en cas de cessation d'activité.",
+    tip: "J'arrête l'activité → je rends la carte."
   },
   'vtc-032': {
-    content: "L'échange de carte professionnelle entre ancienne et nouvelle version (évolution réglementaire) peut être exigé par la préfecture. Suivre les informations officielles pour les mises à jour.",
-    tip: "Carte pro : format peut évoluer. Suivre les communications préfectorales pour les échanges obligatoires.",
-    legalRef: "Évolutions réglementaires VTC"
+    content: "La suspension de la carte professionnelle est temporaire ; le retrait définitif est une sanction distincte plus grave.",
+    tip: "Suspension = provisoire. Retrait = définitif."
   },
   'vtc-033': {
     content: "Exercer comme conducteur VTC sans carte professionnelle est un délit : 1 an d'emprisonnement et 15 000 € d'amende (art. L.3124-4), avec suspension du permis, immobilisation ou confiscation du véhicule possibles. À distinguer de la simple non-présentation immédiate de la carte (contravention).",
@@ -1198,39 +1092,32 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Article L3123-1 du Code des transports"
   },
   'vtc-034': {
-    content: "Les informations du registre VTC sont consultables par le public (nom de l'entreprise, véhicules). Cette transparence permet de vérifier qu'un VTC est bien inscrit.",
-    tip: "Registre VTC = consultation publique possible. Le client peut vérifier que l'entreprise est bien enregistrée.",
-    legalRef: "Transparence du registre VTC"
+    content: "La réservation préalable peut être écrite ou électronique (application, e-mail, SMS) : elle doit être traçable et conservée.",
+    tip: "Écrite ou électronique, mais toujours traçable."
   },
   'vtc-035': {
-    content: "Le siège de l'entreprise VTC (ou le domicile pour une EI) détermine la préfecture de rattachement pour l'inscription au registre et les démarches administratives.",
-    tip: "Préfecture compétente = siège de l'entreprise ou domicile personnel (EI). Changement d'adresse = mise à jour obligatoire.",
-    legalRef: "Compétence territoriale"
+    content: "Le registre des réservations mentionne la date et l'heure ainsi que le lieu de prise en charge de chaque course.",
+    tip: "Registre : quand (date/heure) + où (lieu de prise en charge)."
   },
   'vtc-036': {
-    content: "Les véhicules hybrides et électriques bénéficient d'assouplissements sur les critères techniques (dimensions notamment). Ces avantages encouragent la transition écologique.",
-    tip: "Véhicules propres : conditions assouplies (dimensions). Vérifier les critères actuels selon le type de motorisation.",
-    legalRef: "Article R3122-1 du Code des transports"
+    content: "Un VTC ne peut jamais stationner sur une station de taxis : ces emplacements sont réservés aux taxis en attente de clientèle.",
+    tip: "Station taxi = interdite au VTC, à toute heure."
   },
   'vtc-037': {
-    content: "La radiation du registre VTC intervient en cas de non-renouvellement, de non-respect des conditions ou à la demande de l'exploitant. Elle interdit la poursuite de l'activité.",
-    tip: "Radiation = fin de l'autorisation d'exercer. Peut être volontaire ou sanction. Continuer après radiation = exercice illégal.",
-    legalRef: "Article R3122-14 du Code des transports"
+    content: "Le macaron (vignette) VTC permet d'identifier le véhicule et de faciliter les contrôles ; il ne remplace pas la carte professionnelle.",
+    tip: "Le macaron identifie le véhicule ; la carte identifie le conducteur."
   },
   'vtc-038': {
-    content: "Le VTC doit tenir à jour un registre de ses courses (ou conserver les données de la plateforme). Ces informations peuvent être demandées lors d'un contrôle.",
-    tip: "Traçabilité des courses obligatoire. Conserver les données : date, heure, trajet, client, prix. Durée de conservation à respecter.",
-    legalRef: "Obligation de traçabilité"
+    content: "Le conducteur VTC fait preuve de neutralité (opinions gardées pour soi) et de courtoisie (politesse constante).",
+    tip: "Neutre + courtois : la posture professionnelle de base."
   },
   'vtc-039': {
-    content: "Le conducteur VTC peut travailler pour plusieurs plateformes simultanément. La carte professionnelle est personnelle et non liée à une seule entreprise ou plateforme.",
-    tip: "Multi-plateforme autorisé. La carte pro est personnelle, pas liée à une plateforme. Liberté de travailler avec plusieurs apps.",
-    legalRef: "Liberté d'exercice"
+    content: "Le respect de la réglementation contribue à la sécurité des passagers et à la crédibilité de la profession.",
+    tip: "Respecter les règles protège le client et le métier."
   },
   'vtc-040': {
-    content: "La réglementation VTC relève principalement du Code des transports. Elle est régulièrement mise à jour, nécessitant une veille juridique de la part des professionnels.",
-    tip: "Veille réglementaire importante. Code des transports + décrets/arrêtés. Les règles évoluent, se tenir informé.",
-    legalRef: "Code des transports - Partie VTC"
+    content: "Une activité exercée sans respect des règles entraîne des sanctions administratives et pénales.",
+    tip: "Hors des règles : l'administration ET le juge peuvent frapper."
   },
   // =====================
   // TAXI PARIS 75 (tx75-001 à tx75-012)
