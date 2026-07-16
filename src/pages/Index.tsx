@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpen, FileText, GraduationCap, Layers, BarChart3 } from 'lucide-react';
+import { ArrowRight, BookOpen, FileText, GraduationCap, Layers, BarChart3, PlayCircle, RotateCcw, TrendingUp } from 'lucide-react';
 import Header from '@/components/Header';
 import { getCommonModules, getSpecificModules } from '@/data/quizData';
 import { useQuizQuestions } from '@/hooks/useQuizQuestions';
+import { useQuizResults } from '@/hooks/useQuizResults';
+import { loadQuizSession } from '@/lib/quizSession';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
@@ -12,6 +14,9 @@ const Index = () => {
   const commonModules = getCommonModules();
   const specificModules = getSpecificModules();
   const { questions } = useQuizQuestions();
+  const { stats } = useQuizResults();
+  const savedSession = loadQuizSession();
+  const showJourney = !!user && (!!savedSession || stats.totalQuizzes > 0);
 
   // Fetch user profile for display name
   const { data: profile } = useQuery({
@@ -108,6 +113,67 @@ const Index = () => {
         <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-cta/5 blur-3xl" />
         <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
       </section>
+
+      {/* Votre parcours (élève connecté) */}
+      {showJourney && (
+        <section className="py-8 border-b bg-secondary/40">
+          <div className="container mx-auto px-4">
+            <h2 className="text-lg font-semibold text-foreground mb-4">Votre parcours</h2>
+            <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {savedSession && (
+                <Link
+                  to={`/quiz/${savedSession.moduleId}`}
+                  className="group flex items-center gap-4 rounded-2xl border-2 border-cta/30 bg-card p-4 transition-all hover:shadow-soft hover:-translate-y-0.5"
+                >
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cta/10">
+                    <PlayCircle className="h-5 w-5 text-cta" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-semibold text-foreground">Reprendre votre quiz</p>
+                    <p className="text-sm text-muted-foreground truncate">
+                      {savedSession.moduleName} — question {savedSession.currentIndex + 1} sur {savedSession.questionIds.length}
+                    </p>
+                  </div>
+                </Link>
+              )}
+
+              {stats.failedQuestions.length > 0 && (
+                <Link
+                  to="/revision-erreurs"
+                  className="group flex items-center gap-4 rounded-2xl border bg-card p-4 transition-all hover:shadow-soft hover:-translate-y-0.5"
+                >
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-destructive/10">
+                    <RotateCcw className="h-5 w-5 text-destructive" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-semibold text-foreground">Retravailler vos erreurs</p>
+                    <p className="text-sm text-muted-foreground">
+                      {stats.failedQuestions.length} question{stats.failedQuestions.length > 1 ? 's' : ''} à revoir
+                    </p>
+                  </div>
+                </Link>
+              )}
+
+              {stats.totalQuizzes > 0 && (
+                <Link
+                  to="/progress"
+                  className="group flex items-center gap-4 rounded-2xl border bg-card p-4 transition-all hover:shadow-soft hover:-translate-y-0.5"
+                >
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                    <TrendingUp className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-semibold text-foreground">{stats.averageScore}% de moyenne</p>
+                    <p className="text-sm text-muted-foreground">
+                      {stats.totalQuizzes} quiz réalisé{stats.totalQuizzes > 1 ? 's' : ''} — voir ma progression
+                    </p>
+                  </div>
+                </Link>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Accès rapide */}
       <section className="py-10 sm:py-14 border-b">
