@@ -1,0 +1,2 @@
+-- Applied verbatim from supabase/migrations/20260716130000_lot3_questions_lecture_eleves_et_import.sql
+-- Loaded via file below
