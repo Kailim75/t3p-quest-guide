@@ -258,8 +258,8 @@ const AdminPage = () => {
               <Card>
                 <CardContent className="pt-6">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-accent">
-                      <Crown className="h-5 w-5 text-accent-foreground" />
+                    <div className="p-2 rounded-lg bg-cta">
+                      <Crown className="h-5 w-5 text-cta-foreground" />
                     </div>
                     <div>
                       <p className="text-2xl font-bold">

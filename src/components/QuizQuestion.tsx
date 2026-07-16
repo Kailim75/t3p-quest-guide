@@ -130,7 +130,7 @@ const QuizQuestion = ({
           <span className="text-sm font-medium text-muted-foreground">
             Question {questionNumber} sur {totalQuestions}
           </span>
-          <span className="text-sm font-medium text-accent">
+          <span className="text-sm font-medium text-cta">
             {Math.round((questionNumber / totalQuestions) * 100)}%
           </span>
         </div>
@@ -189,7 +189,7 @@ const QuizQuestion = ({
                 : showResult && selectedAnswers.includes(option.letter) && !correctAnswers.includes(option.letter)
                   ? 'bg-destructive text-destructive-foreground'
                   : selectedAnswers.includes(option.letter)
-                    ? 'bg-accent text-accent-foreground'
+                    ? 'bg-primary text-primary-foreground'
                     : ''
             }`}>
               {option.letter}
@@ -205,9 +205,9 @@ const QuizQuestion = ({
         <div className="mt-6 space-y-4 animate-slide-up">
           {/* Résultat immédiat */}
           <div className={`rounded-xl border-2 p-4 ${
-            userIsCorrect 
-              ? 'border-success/30 bg-success/10' 
-              : 'border-destructive/30 bg-destructive/10'
+            userIsCorrect
+              ? 'border-success/30 bg-success/10 animate-scale-in'
+              : 'border-destructive/30 bg-destructive/10 animate-shake'
           }`}>
             <div className="flex items-center gap-3 mb-2">
               {userIsCorrect ? (

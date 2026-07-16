@@ -56,7 +56,7 @@ const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
       {card.fieldExample && (
         <div className="rounded-lg bg-secondary/50 p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Car className="h-4 w-4 text-accent" />
+            <Car className="h-4 w-4 text-cta" />
             <h4 className="font-semibold text-foreground text-sm">Exemple terrain</h4>
           </div>
           <p className="text-sm text-muted-foreground italic">"{card.fieldExample}"</p>
@@ -128,15 +128,15 @@ const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
 
       {/* 💡 Astuces */}
       {card.tips.length > 0 && (
-        <div className="rounded-lg bg-accent/10 p-4">
+        <div className="rounded-lg bg-cta/10 p-4">
           <div className="flex items-center gap-2 mb-3">
-            <Lightbulb className="h-4 w-4 text-accent" />
+            <Lightbulb className="h-4 w-4 text-cta" />
             <h4 className="font-semibold text-foreground text-sm">Astuces mémo</h4>
           </div>
           <ul className="space-y-1">
             {card.tips.map((tip, idx) => (
               <li key={idx} className="flex items-start gap-2 text-sm">
-                <span className="text-accent">💡</span>
+                <span className="text-cta">💡</span>
                 <span className="text-foreground">{tip}</span>
               </li>
             ))}

@@ -8,24 +8,29 @@ interface ModuleCardProps {
 
 const ModuleCard = ({ module }: ModuleCardProps) => {
   const totalQuestions = module.subModules.reduce((acc, sub) => acc + sub.questionCount, 0);
+  const moduleColor = `var(--${module.color})`;
 
   return (
     <Link to={`/module/${module.id}`} className="module-card group">
-      {/* Gradient accent bar */}
-      <div 
-        className="absolute left-0 top-0 h-1 w-full rounded-t-xl bg-gradient-to-r from-primary to-accent opacity-80"
+      {/* Barre couleur du module */}
+      <div
+        className="absolute left-0 top-0 h-1 w-full rounded-t-xl"
+        style={{ backgroundColor: `hsl(${moduleColor})` }}
       />
-      
+
       <div className="flex items-start gap-4">
         {/* Icon */}
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-secondary text-2xl">
+        <div
+          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl text-2xl transition-transform group-hover:scale-110"
+          style={{ backgroundColor: `hsl(${moduleColor} / 0.12)` }}
+        >
           {module.icon}
         </div>
 
         {/* Content */}
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-2 mb-1">
-            <span className={`badge-module ${module.type === 'commun' ? 'bg-primary/10 text-primary' : 'bg-accent/10 text-accent'}`}>
+            <span className={`badge-module ${module.type === 'commun' ? 'bg-primary/10 text-primary' : 'bg-cta/10 text-cta'}`}>
               {module.type === 'commun' ? 'Module commun' : 'Module spécifique'}
             </span>
             {module.rsCode && (
@@ -43,11 +48,10 @@ const ModuleCard = ({ module }: ModuleCardProps) => {
             )}
           </div>
 
-          
-          <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors">
+          <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
             {module.name}
           </h3>
-          
+
           <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
             {module.description}
           </p>
@@ -63,7 +67,7 @@ const ModuleCard = ({ module }: ModuleCardProps) => {
         </div>
 
         {/* Arrow */}
-        <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
+        <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
       </div>
     </Link>
   );

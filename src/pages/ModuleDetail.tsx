@@ -47,7 +47,7 @@ const ModuleDetail = () => {
             
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <span className={`badge-module ${module.type === 'commun' ? 'bg-primary/10 text-primary' : 'bg-accent/10 text-accent'}`}>
+                <span className={`badge-module ${module.type === 'commun' ? 'bg-primary/10 text-primary' : 'bg-cta/10 text-cta'}`}>
                   {module.type === 'commun' ? 'Module commun' : 'Module spécifique'}
                 </span>
               </div>

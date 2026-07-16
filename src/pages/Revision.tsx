@@ -59,7 +59,7 @@ const Revision = () => {
               >
                 <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-secondary/50 data-[state=open]:bg-secondary/30">
                   <div className="flex items-center gap-4 text-left">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 font-bold text-accent">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-cta/10 font-bold text-cta">
                       {index + 1}
                     </div>
                     <span className="font-semibold text-foreground">{card.title}</span>
@@ -162,8 +162,8 @@ const Revision = () => {
         </div>
 
         {/* Info Banner */}
-        <div className="mt-12 rounded-2xl border bg-accent/5 p-6 text-center">
-          <div className="flex items-center justify-center gap-2 text-accent mb-2">
+        <div className="mt-12 rounded-2xl border bg-cta/5 p-6 text-center">
+          <div className="flex items-center justify-center gap-2 text-cta mb-2">
             <Lightbulb className="h-5 w-5" />
             <span className="font-semibold">Conseil de révision</span>
           </div>

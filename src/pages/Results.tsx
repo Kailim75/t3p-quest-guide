@@ -15,8 +15,8 @@ const Results = () => {
         <div className="max-w-3xl mx-auto">
           {/* Page Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 mb-4">
-              <Trophy className="h-8 w-8 text-accent" />
+            <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-cta/10 mb-4">
+              <Trophy className="h-8 w-8 text-cta" />
             </div>
             <h1 className="text-3xl font-bold text-foreground mb-2">Vos résultats</h1>
             <p className="text-muted-foreground">

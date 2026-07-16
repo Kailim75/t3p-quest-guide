@@ -6,54 +6,60 @@
 
 @layer base {
   :root {
-    /* Couleurs principales - Bleu officiel */
-    --background: 210 20% 98%;
-    --foreground: 222 47% 11%;
+    /* ── Fond et textes — neutres légèrement teintés vert ── */
+    --background: 150 25% 98%;
+    --foreground: 165 25% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 165 25% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 165 25% 12%;
 
-    /* Bleu marine officiel */
-    --primary: 222 47% 20%;
-    --primary-foreground: 210 40% 98%;
+    /* ── Vert forêt École T3P ── */
+    --primary: 142 40% 20%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Gris clair pour les surfaces secondaires */
-    --secondary: 210 20% 96%;
-    --secondary-foreground: 222 47% 20%;
+    /* ── Surfaces secondaires ── */
+    --secondary: 150 15% 94%;
+    --secondary-foreground: 142 35% 18%;
 
-    --muted: 210 20% 94%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 150 12% 93%;
+    --muted-foreground: 160 8% 40%;
 
-    /* Bleu accent */
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
+    /* ── Accent neutre (survols shadcn) ── */
+    --accent: 150 15% 92%;
+    --accent-foreground: 165 25% 14%;
 
-    /* États */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    /* ── CTA : Orange École T3P (#EA761E) ── */
+    --cta: 26 83% 52%;
+    --cta-hover: 26 80% 46%;
+    --cta-foreground: 0 0% 100%;
 
-    --success: 142 76% 36%;
+    /* ── États ── */
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 72% 36%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 38 92% 50%;
+    --warning: 37 91% 44%;
     --warning-foreground: 0 0% 100%;
 
-    /* Couleurs par module */
-    --module-reglementation: 222 47% 20%;
+    /* ── Couleurs par module ── */
+    --module-reglementation: 142 40% 24%;
     --module-securite: 0 84% 45%;
-    --module-gestion: 142 76% 36%;
+    --module-gestion: 173 80% 30%;
     --module-francais: 271 81% 56%;
-    --module-anglais: 217 91% 60%;
-    --module-taxi: 38 92% 50%;
+    --module-anglais: 217 91% 55%;
+    --module-taxi: 37 91% 44%;
     --module-vtc: 280 67% 50%;
-    --module-vmdtr: 173 80% 40%;
+    --module-vmdtr: 199 89% 38%;
+    --module-relation: 340 65% 47%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 222 47% 20%;
+    --border: 150 12% 88%;
+    --input: 150 12% 88%;
+    --ring: 142 40% 20%;
 
     --radius: 0.75rem;
 
@@ -64,52 +70,56 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 142 40% 20%;
   }
 
   .dark {
-    --background: 222 47% 8%;
-    --foreground: 210 40% 98%;
+    --background: 165 20% 8%;
+    --foreground: 150 15% 92%;
 
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
+    --card: 165 16% 11%;
+    --card-foreground: 150 15% 92%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 165 16% 11%;
+    --popover-foreground: 150 15% 92%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 142 32% 44%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 165 12% 16%;
+    --secondary-foreground: 150 15% 88%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 165 12% 16%;
+    --muted-foreground: 155 8% 62%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 165 12% 18%;
+    --accent-foreground: 150 15% 90%;
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --cta: 26 90% 55%;
+    --cta-hover: 26 85% 48%;
+    --cta-foreground: 0 0% 100%;
 
-    --success: 142 76% 36%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 60% 42%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 38 92% 50%;
+    --warning: 37 91% 50%;
     --warning-foreground: 0 0% 100%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 212 27% 84%;
+    --border: 165 12% 19%;
+    --input: 165 12% 19%;
+    --ring: 142 32% 44%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary: 142 32% 44%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 142 32% 44%;
   }
 }
 
@@ -126,6 +136,13 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
   }
+
+  /* Réserve la place de la barre de navigation mobile */
+  @media (max-width: 767px) {
+    body:has(.bottom-nav) {
+      padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+    }
+  }
 }
 
 @layer components {
@@ -134,11 +151,11 @@
   }
 
   .quiz-option {
-    @apply relative flex items-center gap-4 rounded-lg border-2 border-border bg-card p-4 transition-all duration-200 cursor-pointer hover:border-accent hover:bg-accent/5;
+    @apply relative flex items-center gap-4 rounded-xl border-2 border-border bg-card p-4 transition-all duration-200 cursor-pointer hover:enabled:border-primary hover:enabled:bg-primary/5 active:enabled:scale-[0.99];
   }
 
   .quiz-option-selected {
-    @apply border-accent bg-accent/10;
+    @apply border-primary bg-primary/10;
   }
 
   .quiz-option-correct {
@@ -150,7 +167,7 @@
   }
 
   .option-letter {
-    @apply flex h-10 w-10 items-center justify-center rounded-lg bg-secondary font-semibold text-secondary-foreground;
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary font-semibold text-secondary-foreground;
   }
 
   .progress-bar {
@@ -158,7 +175,7 @@
   }
 
   .progress-bar-fill {
-    @apply h-full rounded-full bg-accent transition-all duration-500 ease-out;
+    @apply h-full rounded-full bg-cta transition-all duration-500 ease-out;
   }
 
   .badge-module {
@@ -177,6 +194,10 @@
     @apply btn-quiz bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm;
   }
 
+  .btn-cta {
+    @apply btn-quiz bg-cta text-cta-foreground hover:bg-cta-hover shadow-sm;
+  }
+
   .btn-secondary {
     @apply btn-quiz bg-secondary text-secondary-foreground hover:bg-secondary/80;
   }
@@ -192,7 +213,7 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-success bg-clip-text text-transparent;
   }
 
   .shadow-soft {
@@ -209,6 +230,10 @@
 
   .animate-scale-in {
     animation: scaleIn 0.3s ease-out;
+  }
+
+  .animate-shake {
+    animation: shake 0.4s ease-in-out;
   }
 }
 
@@ -240,5 +265,23 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
   }
 }

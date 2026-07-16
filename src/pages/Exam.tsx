@@ -381,7 +381,7 @@ const Exam = () => {
                     }`}
                   >
                     <span className={`option-letter ${
-                      currentSelectedAnswers.includes(option.letter) ? 'bg-accent text-accent-foreground' : ''
+                      currentSelectedAnswers.includes(option.letter) ? 'bg-primary text-primary-foreground' : ''
                     }`}>
                       {option.letter}
                     </span>

@@ -152,7 +152,7 @@ const QuizResults = ({ questions, answers, moduleName, moduleId, timeTaken }: Qu
           <div className="text-xs text-muted-foreground">Incorrectes</div>
         </div>
         <div className="stat-card">
-          <Target className="h-6 w-6 text-accent mx-auto mb-2" />
+          <Target className="h-6 w-6 text-cta mx-auto mb-2" />
           <div className="text-2xl font-bold text-foreground">70%</div>
           <div className="text-xs text-muted-foreground">Seuil requis</div>
         </div>
