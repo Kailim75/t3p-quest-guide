@@ -1,10 +1,12 @@
 import Header from '@/components/Header';
 import ModuleCard from '@/components/ModuleCard';
 import { getCommonModules, getSpecificModules } from '@/data/quizData';
+import { useQuizQuestions } from '@/hooks/useQuizQuestions';
 
 const Modules = () => {
   const commonModules = getCommonModules();
   const specificModules = getSpecificModules();
+  const { getByModule } = useQuizQuestions();
 
   return (
     <div className="min-h-screen bg-background">
@@ -35,7 +37,7 @@ const Modules = () => {
           
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {commonModules.map((module) => (
-              <ModuleCard key={module.id} module={module} />
+              <ModuleCard key={module.id} module={module} questionCount={getByModule(module.id).length} />
             ))}
           </div>
         </section>
@@ -56,7 +58,7 @@ const Modules = () => {
           
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {specificModules.map((module) => (
-              <ModuleCard key={module.id} module={module} />
+              <ModuleCard key={module.id} module={module} questionCount={getByModule(module.id).length} />
             ))}
           </div>
         </section>

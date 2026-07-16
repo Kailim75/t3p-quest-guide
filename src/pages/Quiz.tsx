@@ -4,7 +4,8 @@ import { ArrowLeft, ArrowRight, X } from 'lucide-react';
 import Header from '@/components/Header';
 import QuizQuestion from '@/components/QuizQuestion';
 import QuizResults from '@/components/QuizResults';
-import { getModuleById, getQuestionsByModule, Question, AnswerLetter } from '@/data/quizData';
+import { getModuleById, Question, AnswerLetter } from '@/data/quizData';
+import { useQuizQuestions } from '@/hooks/useQuizQuestions';
 
 interface Answer {
   questionId: string;
@@ -17,8 +18,8 @@ const Quiz = () => {
   const navigate = useNavigate();
   
   const module = getModuleById(moduleId || '');
-  const allQuestions = getQuestionsByModule(moduleId || '');
-  
+  const { getByModule, isLoading } = useQuizQuestions();
+
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -27,11 +28,24 @@ const Quiz = () => {
   const [startTime, setStartTime] = useState<number>(Date.now());
 
   useEffect(() => {
-    // Shuffle questions for variety
-    const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
+    // On attend la réponse de la base avant de mélanger, pour ne pas
+    // redistribuer les questions en cours de session
+    if (isLoading) return;
+    const shuffled = [...getByModule(moduleId || '')].sort(() => Math.random() - 0.5);
     setQuestions(shuffled);
     setStartTime(Date.now());
-  }, [moduleId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [moduleId, isLoading]);
+
+  // Spinner tant que la base répond ou que le mélange n'a pas encore eu lieu
+  const shufflePending = !!module && questions.length === 0 && getByModule(module.id).length > 0;
+  if (isLoading || shufflePending) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
 
   if (!module || questions.length === 0) {
     return (

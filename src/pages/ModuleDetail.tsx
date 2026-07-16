@@ -1,12 +1,14 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, BookOpen, Play, ChevronRight } from 'lucide-react';
 import Header from '@/components/Header';
-import { getModuleById, getQuestionsByModule } from '@/data/quizData';
+import { getModuleById } from '@/data/quizData';
+import { useQuizQuestions } from '@/hooks/useQuizQuestions';
 
 const ModuleDetail = () => {
   const { moduleId } = useParams<{ moduleId: string }>();
   const module = getModuleById(moduleId || '');
-  const questions = getQuestionsByModule(moduleId || '');
+  const { getByModule } = useQuizQuestions();
+  const questions = getByModule(moduleId || '');
 
   if (!module) {
     return (
@@ -103,7 +105,7 @@ const ModuleDetail = () => {
                 
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-muted-foreground">
-                    {subModule.questionCount} questions
+                    {questions.filter(q => q.subModuleId === subModule.id).length} questions
                   </span>
                   <ChevronRight className="h-5 w-5 text-muted-foreground" />
                 </div>

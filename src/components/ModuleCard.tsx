@@ -4,10 +4,12 @@ import { Module } from '@/data/quizData';
 
 interface ModuleCardProps {
   module: Module;
+  /** Nombre réel de questions (depuis la base) ; à défaut, total prévu du référentiel */
+  questionCount?: number;
 }
 
-const ModuleCard = ({ module }: ModuleCardProps) => {
-  const totalQuestions = module.subModules.reduce((acc, sub) => acc + sub.questionCount, 0);
+const ModuleCard = ({ module, questionCount }: ModuleCardProps) => {
+  const totalQuestions = questionCount ?? module.subModules.reduce((acc, sub) => acc + sub.questionCount, 0);
   const moduleColor = `var(--${module.color})`;
 
   return (

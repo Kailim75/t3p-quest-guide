@@ -6,10 +6,10 @@ import ExamTimer from '@/components/ExamTimer';
 import ExamResults from '@/components/ExamResults';
 import {
   AnswerLetter,
-  getQuestionsByModule,
   isAnswerCorrect,
   Question,
 } from '@/data/quizData';
+import { useQuizQuestions } from '@/hooks/useQuizQuestions';
 
 interface ExamConfig {
   id: string;
@@ -81,7 +81,8 @@ const Exam = () => {
   const navigate = useNavigate();
   
   const config = examConfigs[examId || ''];
-  
+  const { getByModules, isLoading } = useQuizQuestions();
+
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -93,18 +94,16 @@ const Exam = () => {
 
   useEffect(() => {
     if (!config) return;
-    
-    // Gather questions from all modules
-    let allQuestions: Question[] = [];
-    config.modules.forEach(moduleId => {
-      const moduleQuestions = getQuestionsByModule(moduleId);
-      allQuestions = [...allQuestions, ...moduleQuestions];
-    });
-    
+    // On attend la réponse de la base avant de composer l'épreuve
+    if (isLoading) return;
+
+    const allQuestions = getByModules(config.modules);
+
     // Shuffle and take required number
-    const shuffled = allQuestions.sort(() => Math.random() - 0.5);
+    const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
     setQuestions(shuffled.slice(0, config.questionCount));
-  }, [config]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [config, isLoading]);
 
   const handleStartExam = () => {
     setExamStarted(true);
@@ -185,6 +184,14 @@ const Exam = () => {
             Retour aux examens
           </button>
         </div>
+      </div>
+    );
+  }
+
+  if (isLoading || (questions.length === 0 && getByModules(config.modules).length > 0)) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
       </div>
     );
   }
