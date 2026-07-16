@@ -7,9 +7,7 @@ import ExamResults from '@/components/ExamResults';
 import {
   AnswerLetter,
   getQuestionsByModule,
-  hasMultipleAnswers,
   isAnswerCorrect,
-  parseCorrectAnswers,
   Question,
 } from '@/data/quizData';
 
@@ -138,29 +136,22 @@ const Exam = () => {
       const selectedAnswers = parseAnswerString(existingAnswer?.answer);
       const filtered = prev.filter(a => a.questionId !== question.id);
 
-      if (hasMultipleAnswers(question.correctAnswer)) {
-        const requiredCount = parseCorrectAnswers(question.correctAnswer).length;
-        const nextAnswers = selectedAnswers.includes(letter)
-          ? selectedAnswers.filter(a => a !== letter)
-          : selectedAnswers.length >= requiredCount
-            ? selectedAnswers
-            : [...selectedAnswers, letter];
+      // Comme à l'examen réel : le candidat peut cocher 1 ou 2 réponses sur
+      // n'importe quelle question, sans que l'interface révèle le nombre attendu.
+      const nextAnswers = selectedAnswers.includes(letter)
+        ? selectedAnswers.filter(a => a !== letter)
+        : selectedAnswers.length >= 2
+          ? [...selectedAnswers.slice(1), letter]
+          : [...selectedAnswers, letter];
 
-        if (nextAnswers.length === 0) {
-          return filtered;
-        }
-
-        return [...filtered, {
-          questionId: question.id,
-          answer: formatAnswerString(nextAnswers),
-          isCorrect: isAnswerCorrect(nextAnswers, question.correctAnswer)
-        }];
+      if (nextAnswers.length === 0) {
+        return filtered;
       }
 
       return [...filtered, {
         questionId: question.id,
-        answer: letter,
-        isCorrect: isAnswerCorrect([letter], question.correctAnswer)
+        answer: formatAnswerString(nextAnswers),
+        isCorrect: isAnswerCorrect(nextAnswers, question.correctAnswer)
       }];
     });
   };
@@ -264,6 +255,10 @@ const Exam = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary">•</span>
+                  <span>Chaque question a <strong>une ou deux bonnes réponses</strong></span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">•</span>
                   <span>Vous pouvez naviguer entre les questions</span>
                 </li>
                 <li className="flex items-start gap-2">
@@ -290,8 +285,6 @@ const Exam = () => {
   const currentQuestion = questions[currentIndex];
   const currentAnswer = answers.find(a => a.questionId === currentQuestion.id);
   const currentSelectedAnswers = parseAnswerString(currentAnswer?.answer);
-  const isMultiAnswer = hasMultipleAnswers(currentQuestion.correctAnswer);
-  const requiredAnswerCount = parseCorrectAnswers(currentQuestion.correctAnswer).length;
   const answeredCount = answers.length;
   const isFlagged = flaggedQuestions.has(currentQuestion.id);
 
@@ -360,15 +353,17 @@ const Exam = () => {
                 </h2>
               </div>
 
-              {isMultiAnswer && (
-                <div className="flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm text-primary mb-4">
-                  <CheckSquare className="h-4 w-4" />
-                  <span className="font-medium">
-                    Sélectionnez {requiredAnswerCount} réponses
-                    <span className="ml-1">({currentSelectedAnswers.length}/{requiredAnswerCount} sélectionnées)</span>
-                  </span>
-                </div>
-              )}
+              <div className="flex items-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm text-muted-foreground mb-4">
+                <CheckSquare className="h-4 w-4" />
+                <span>
+                  Une ou deux bonnes réponses selon la question
+                  {currentSelectedAnswers.length > 0 && (
+                    <span className="ml-1 font-medium text-foreground">
+                      — {currentSelectedAnswers.length} sélectionnée{currentSelectedAnswers.length > 1 ? 's' : ''}
+                    </span>
+                  )}
+                </span>
+              </div>
 
               {/* Options */}
               <div className="space-y-3">

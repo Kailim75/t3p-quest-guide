@@ -57,26 +57,22 @@ const QuizQuestion = ({
   const handleSelect = (letter: AnswerLetter) => {
     if (showResult) return;
 
-    if (isMultiAnswer) {
-      // Multi-answer mode: toggle selection
-      setSelectedAnswers(prev => {
-        const newSelection = prev.includes(letter)
-          ? prev.filter(a => a !== letter)
-          : [...prev, letter];
-        
-        // Auto-validate when correct number of answers selected
-        if (newSelection.length === requiredAnswerCount) {
-          const correct = isAnswerCorrect(newSelection, question.correctAnswer);
-          // Delay to allow UI update
-          setTimeout(() => onAnswer(newSelection, correct), 100);
-        }
-        return newSelection;
-      });
-    } else {
-      // Single answer mode: immediate validation
-      setSelectedAnswers([letter]);
-      onAnswer([letter], correctAnswers.includes(letter));
-    }
+    setSelectedAnswers(prev => {
+      // Re-cliquer désélectionne
+      if (prev.includes(letter)) {
+        return prev.filter(a => a !== letter);
+      }
+      // Au plafond, la sélection la plus ancienne est remplacée
+      if (prev.length >= requiredAnswerCount) {
+        return [...prev.slice(1), letter];
+      }
+      return [...prev, letter];
+    });
+  };
+
+  const handleValidate = () => {
+    if (showResult || selectedAnswers.length !== requiredAnswerCount) return;
+    onAnswer(selectedAnswers, isAnswerCorrect(selectedAnswers, question.correctAnswer));
   };
 
   const getOptionClass = (letter: AnswerLetter) => {
@@ -153,14 +149,16 @@ const QuizQuestion = ({
           </h2>
         </div>
         
-        {/* Multi-answer indicator */}
-        {isMultiAnswer && !showResult && (
+        {/* Nombre de réponses attendues */}
+        {!showResult && (
           <div className="flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm text-primary mb-4">
             <CheckSquare className="h-4 w-4" />
             <span className="font-medium">
-              Sélectionnez {requiredAnswerCount} réponses 
+              {isMultiAnswer
+                ? `Cette question a ${requiredAnswerCount} bonnes réponses`
+                : 'Cette question a 1 bonne réponse'}
               {selectedAnswers.length > 0 && (
-                <span className="ml-1">({selectedAnswers.length}/{requiredAnswerCount} sélectionnées)</span>
+                <span className="ml-1">({selectedAnswers.length}/{requiredAnswerCount} sélectionnée{selectedAnswers.length > 1 ? 's' : ''})</span>
               )}
             </span>
           </div>
@@ -199,6 +197,20 @@ const QuizQuestion = ({
           </button>
         ))}
       </div>
+
+      {/* Bouton de validation */}
+      {!showResult && (
+        <div className="mt-6 flex justify-end">
+          <button
+            onClick={handleValidate}
+            disabled={selectedAnswers.length !== requiredAnswerCount}
+            className="btn-cta w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Valider ma réponse
+            <Check className="h-4 w-4" />
+          </button>
+        </div>
+      )}
 
       {/* Explication de cours détaillée (affichée après réponse) */}
       {showResult && (

@@ -169,7 +169,7 @@ const Quiz = () => {
             </button>
           ) : (
             <span className="text-sm text-muted-foreground">
-              Sélectionnez une réponse
+              Sélectionnez puis validez votre réponse
             </span>
           )}
         </div>
