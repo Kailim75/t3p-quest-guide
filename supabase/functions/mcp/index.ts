@@ -296,12 +296,12 @@ var officialQuestions = [
     text: "Une entreprise individuelle se caract\xE9rise par :",
     options: [
       { letter: "A", text: "L'absence de capital minimum" },
-      { letter: "B", text: "Une responsabilit\xE9 illimit\xE9e" },
+      { letter: "B", text: "La s\xE9paration des patrimoines professionnel et personnel (depuis 2022)" },
       { letter: "C", text: "Une personnalit\xE9 morale distincte" },
-      { letter: "D", text: "Des parts sociales" }
+      { letter: "D", text: "Un capital divis\xE9 en parts sociales" }
     ],
     correctAnswer: "A,B",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "L'entreprise individuelle ne requiert aucun capital minimum. Depuis la loi du 14 f\xE9vrier 2022 (en vigueur le 15 mai 2022), les patrimoines professionnel et personnel sont s\xE9par\xE9s de plein droit. Elle n'a pas de personnalit\xE9 morale distincte de l'entrepreneur.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
   },
@@ -717,7 +717,7 @@ var officialQuestions = [
       { letter: "D", text: "Sa responsabilit\xE9 morale" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "Depuis la loi du 14 f\xE9vrier 2022, l'entreprise individuelle engage par d\xE9faut son seul patrimoine professionnel : le patrimoine personnel est prot\xE9g\xE9, sauf renonciation ou fraude. Avant 2022, le patrimoine personnel \xE9tait engag\xE9.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
   },
@@ -1842,8 +1842,8 @@ var officialQuestions = [
       { letter: "C", text: "Les messages \xE9crits" },
       { letter: "D", text: "Les expressions faciales" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "B,D",
+    explanation: "La communication non verbale comprend les gestes et les expressions faciales. Le ton de la voix rel\xE8ve du paraverbal, et les messages \xE9crits de la communication \xE9crite.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
   },
@@ -4096,8 +4096,8 @@ var officialQuestions = [
       { letter: "C", text: "Sur les porti\xE8res" },
       { letter: "D", text: "\xC0 l'int\xE9rieur du coffre" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "La vignette VTC doit \xEAtre appos\xE9e \xE0 l'avant (angle inf\xE9rieur gauche du pare-brise) et \xE0 l'arri\xE8re (angle inf\xE9rieur droit de la lunette arri\xE8re) du v\xE9hicule \u2014 arr\xEAt\xE9 du 6 avril 2017, art. R.3122-8 du Code des transports.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
   },
@@ -4153,15 +4153,15 @@ var officialQuestions = [
     id: "vtc-008",
     moduleId: "vtc",
     subModuleId: "vtc-2",
-    text: "Le registre des r\xE9servations doit \xEAtre conserv\xE9 pendant :",
+    text: "Le justificatif de r\xE9servation pr\xE9alable d'une course VTC doit \xEAtre :",
     options: [
-      { letter: "A", text: "6 mois" },
-      { letter: "B", text: "1 an" },
-      { letter: "C", text: "2 ans" },
-      { letter: "D", text: "5 ans" }
+      { letter: "A", text: "Pr\xE9sentable \xE0 tout moment en cas de contr\xF4le" },
+      { letter: "B", text: "Disponible sur support papier ou \xE9lectronique" },
+      { letter: "C", text: "D\xE9truit d\xE8s la fin de la course" },
+      { letter: "D", text: "Transmis \xE0 la mairie" }
     ],
-    correctAnswer: "C",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "Le conducteur VTC doit pouvoir pr\xE9senter le justificatif de r\xE9servation pr\xE9alable \xE0 tout contr\xF4le, sur support papier ou \xE9lectronique. Il constitue la preuve de l'activit\xE9 l\xE9gale et doit \xEAtre conserv\xE9.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
   },
@@ -4225,7 +4225,7 @@ var officialQuestions = [
       { letter: "D", text: "R\xE9serv\xE9 aux grandes villes" }
     ],
     correctAnswer: "C",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "Les v\xE9hicules hybrides et \xE9lectriques utilis\xE9s en VTC sont dispens\xE9s des caract\xE9ristiques techniques r\xE9glementaires, dont la condition d'anciennet\xE9 (art. L.3120-5 du Code des transports). Les v\xE9hicules thermiques doivent avoir moins de 7 ans.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
   },
@@ -4560,8 +4560,8 @@ var officialQuestions = [
       { letter: "C", text: "Une sanction p\xE9nale" },
       { letter: "D", text: "Une simple mise en garde" }
     ],
-    correctAnswer: "B",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "C",
+    explanation: "Exercer l'activit\xE9 de conducteur VTC sans carte professionnelle est un d\xE9lit puni d'un an d'emprisonnement et de 15 000 \u20AC d'amende (art. L.3124-4 du Code des transports), avec peines compl\xE9mentaires possibles (suspension du permis, confiscation du v\xE9hicule). Des sanctions administratives peuvent s'y ajouter.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
   },
@@ -4860,15 +4860,15 @@ var officialQuestions = [
     id: "reg-012",
     moduleId: "reglementation",
     subModuleId: "reg-3",
-    text: "Le nombre de places autoris\xE9 en VTC est :",
+    text: "Le nombre de places d'un v\xE9hicule VTC est :",
     options: [
-      { letter: "A", text: "Entre 5 et 9 places" },
+      { letter: "A", text: "De 4 \xE0 9 places, conducteur compris" },
       { letter: "B", text: "Uniquement 2 places" },
-      { letter: "C", text: "Plus de 9 places" },
-      { letter: "D", text: "Sans limite" }
+      { letter: "C", text: "Plus de 9 places obligatoirement" },
+      { letter: "D", text: "Sans limite r\xE9glementaire" }
     ],
     correctAnswer: "A",
-    explanation: "Un v\xE9hicule VTC doit avoir entre 4 et 9 places (conducteur compris), soit 5 \xE0 9 places pour les occupants.",
+    explanation: "Le v\xE9hicule VTC comporte de 4 \xE0 9 places, y compris celle du conducteur (art. R.3122-11 du Code des transports).",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "moyen"
   },
@@ -4884,7 +4884,7 @@ var officialQuestions = [
       { letter: "D", text: "Fix\xE9e par la mairie" }
     ],
     correctAnswer: "A",
-    explanation: "L'anciennet\xE9 maximale du v\xE9hicule VTC est fix\xE9e par la r\xE9glementation (g\xE9n\xE9ralement 6 ans, sauf v\xE9hicules hybrides/\xE9lectriques).",
+    explanation: "L'anciennet\xE9 maximale du v\xE9hicule VTC est fix\xE9e par la r\xE9glementation : moins de 7 ans pour les v\xE9hicules thermiques ; les hybrides et \xE9lectriques en sont dispens\xE9s (art. L.3120-5).",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "moyen"
   },
@@ -5661,7 +5661,7 @@ var officialQuestions = [
       { letter: "D", text: "Illimit\xE9" }
     ],
     correctAnswer: "B",
-    explanation: "Le numerus clausus parisien limite le nombre de licences taxi \xE0 environ 18 000.",
+    explanation: "Le numerus clausus parisien limite le nombre de licences taxi \xE0 environ 18 500 selon la Pr\xE9fecture de Police (chiffre stable autour de 18 000).",
     reference: "Pr\xE9fecture de Police de Paris",
     difficulty: "moyen"
   },
@@ -5725,7 +5725,7 @@ var officialQuestions = [
       { letter: "D", text: "Pas de forfait, au compteur" }
     ],
     correctAnswer: "B",
-    explanation: "Le forfait Paris rive droite - CDG est fix\xE9 \xE0 56 \u20AC (62 \u20AC depuis la rive gauche).",
+    explanation: "Forfaits fix\xE9s par l'arr\xEAt\xE9 tarifaire du 24 d\xE9cembre 2025 (tarifs 2026) : 56 \u20AC entre Paris rive droite et CDG, 65 \u20AC depuis la rive gauche. Montants r\xE9vis\xE9s chaque ann\xE9e.",
     reference: "Arr\xEAt\xE9 pr\xE9fectoral forfaits a\xE9roports",
     difficulty: "difficile"
   },
@@ -7245,13 +7245,13 @@ var officialQuestions = [
     subModuleId: "tax-1",
     text: "Combien existe-t-il environ d'ADS (taxis) sur la zone des taxis parisiens ?",
     options: [
-      { letter: "A", text: "Environ 17 000" },
+      { letter: "A", text: "Environ 18 000" },
       { letter: "B", text: "Environ 3 000" },
       { letter: "C", text: "Environ 50 000" },
       { letter: "D", text: "Il n'y a pas de plafond" }
     ],
     correctAnswer: "A",
-    explanation: "La zone des taxis parisiens compte environ 17 000 ADS, plafond (numerus clausus) fix\xE9 par arr\xEAt\xE9 du Pr\xE9fet de Police.",
+    explanation: "La zone des taxis parisiens compte environ 18 500 ADS, plafond (numerus clausus) fix\xE9 par arr\xEAt\xE9 du Pr\xE9fet de Police.",
     reference: "R\xE9glementation locale taxi 75",
     difficulty: "moyen"
   },
@@ -7347,7 +7347,7 @@ var officialQuestions = [
       { letter: "D", text: "Il n'y a pas de minimum" }
     ],
     correctAnswer: "A",
-    explanation: "La somme totale \xE0 payer pour une course de taxi, suppl\xE9ments inclus, ne peut \xEAtre inf\xE9rieure au minimum de perception de 8 \u20AC (arr\xEAt\xE9 tarifaire national).",
+    explanation: "La somme totale \xE0 payer pour une course, suppl\xE9ments inclus, ne peut \xEAtre inf\xE9rieure au minimum de perception de 8 \u20AC (arr\xEAt\xE9 tarifaire national, en vigueur en 2026).",
     reference: "Tarifs taxi Paris 2026",
     difficulty: "difficile"
   },

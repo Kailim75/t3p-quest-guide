@@ -48,8 +48,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Article L123-1 du Code de commerce"
   },
   'ges-008': {
-    content: "L'entreprise individuelle (EI) est la forme juridique la plus simple : pas de capital minimum requis, formalités de création allégées, décisions prises seul par l'entrepreneur. Depuis 2022, le patrimoine personnel est protégé par défaut (sauf option contraire).",
-    tip: "EI = simplicité et autonomie. Pas de capital minimum, pas d'associé, pas de personnalité morale distincte.",
+    content: "L'entreprise individuelle : pas de capital minimum, création simple, pas de personnalité morale distincte. Depuis la loi du 14 février 2022, le patrimoine personnel de l'entrepreneur est séparé de plein droit de son patrimoine professionnel : les créanciers professionnels ne peuvent saisir que ce dernier (sauf renonciation ou fraude).",
+    tip: "Depuis mai 2022 : EI = patrimoines séparés automatiquement. Fini la « responsabilité illimitée » d'avant 2022.",
     legalRef: "Loi n°2022-172 du 14 février 2022 (réforme EI)"
   },
   'ges-009': {
@@ -536,8 +536,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Compétence territoriale"
   },
   'rel-024': {
-    content: "La réactivité est essentielle dans le métier VTC : répondre rapidement aux demandes, confirmer les réservations, s'adapter aux changements de programme du client. Un service réactif rassure et fidélise.",
-    tip: "Répondre aux messages en moins de 15 min. Confirmer chaque réservation. S'adapter sans rechigner aux changements.",
+    content: "La communication non verbale regroupe les gestes, la posture et les expressions faciales. Le ton et le volume de la voix relèvent du paraverbal. Chez un client, le non-verbal du conducteur (sourire, posture ouverte) compte autant que ses mots.",
+    tip: "Non verbal = gestes + expressions. Paraverbal = ton de la voix. Verbal = les mots.",
     legalRef: "Réactivité service client"
   },
   'rel-025': {
@@ -1048,8 +1048,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Article R3122-1 du Code des transports"
   },
   'vtc-004': {
-    content: "L'inscription au registre des VTC est obligatoire pour exercer. Elle se fait auprès du préfet de région et doit être renouvelée tous les 5 ans. Elle atteste que l'entreprise remplit toutes les conditions légales.",
-    tip: "Registre VTC = préfecture de région. Obligatoire pour exercer. Contient les informations sur l'exploitant et les véhicules.",
+    content: "La signalétique VTC est une vignette autocollante mentionnant le numéro d'inscription au registre. Elle s'appose à l'avant (angle inférieur gauche du pare-brise) et à l'arrière (angle inférieur droit de la lunette arrière) — arrêté du 6 avril 2017. Elle se retire ou se masque hors activité VTC.",
+    tip: "Vignette VTC : avant ET arrière. À retirer hors activité.",
     legalRef: "Article R3122-9 du Code des transports"
   },
   'vtc-005': {
@@ -1068,8 +1068,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Article R3120-3 du Code des transports"
   },
   'vtc-008': {
-    content: "Le tarif VTC est libre mais doit être convenu avec le client avant la course. Il peut être forfaitaire ou calculé selon la distance et le temps. Le compteur horokilométrique n'est pas obligatoire.",
-    tip: "Tarif libre mais transparent. Annoncer le prix avant départ. Forfait ou calcul distance/temps. Pas de compteur obligatoire.",
+    content: "En cas de contrôle, le conducteur VTC présente le justificatif de réservation préalable de la course en cours, sur support papier ou électronique. Il mentionne notamment l'exploitant (n° REVTC, SIREN), le client, la date et l'heure de réservation et de prise en charge.",
+    tip: "Pas de justificatif de réservation présentable = suspicion de maraude illégale.",
     legalRef: "Article L3122-2 du Code des transports"
   },
   'vtc-009': {
@@ -1088,8 +1088,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Arrêté du 6 avril 2017 relatif à l'examen T3P"
   },
   'vtc-012': {
-    content: "Le délai de retour après dépose du client est réglementé. Le VTC doit retourner à son lieu d'établissement ou recevoir une nouvelle réservation. Le stationnement en attente prolongée est interdit.",
-    tip: "Après dépose : retour immédiat ou nouvelle réservation. Pas de stationnement prolongé 'en attente' = contrôlable.",
+    content: "Les véhicules hybrides et électriques sont dispensés des caractéristiques techniques imposées aux VTC, dont la condition d'ancienneté (art. L.3120-5). Les véhicules thermiques doivent avoir moins de 7 ans.",
+    tip: "Thermique : moins de 7 ans. Hybride/électrique : pas de limite d'âge.",
     legalRef: "Article R3120-3 du Code des transports"
   },
   'vtc-013': {
@@ -1193,8 +1193,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Évolutions réglementaires VTC"
   },
   'vtc-033': {
-    content: "Le contrôle des VTC peut être effectué par la police nationale, la gendarmerie, les agents de la DGCCRF ou les contrôleurs des transports terrestres.",
-    tip: "Contrôle possible par : police, gendarmerie, DGCCRF, agents des transports. Toujours avoir tous les documents à bord.",
+    content: "Exercer comme conducteur VTC sans carte professionnelle est un délit : 1 an d'emprisonnement et 15 000 € d'amende (art. L.3124-4), avec suspension du permis, immobilisation ou confiscation du véhicule possibles. À distinguer de la simple non-présentation immédiate de la carte (contravention).",
+    tip: "Sans carte pro = délit pénal (1 an + 15 000 €). Oubli de présentation = contravention.",
     legalRef: "Article L3123-1 du Code des transports"
   },
   'vtc-034': {
