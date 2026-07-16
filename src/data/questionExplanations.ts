@@ -625,8 +625,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
   // MODULE FRANÇAIS (fra-001 à fra-040)
   // =====================
   'fra-001': {
-    content: "L'adjectif qualificatif s'accorde en genre (masculin/féminin) et en nombre (singulier/pluriel) avec le nom qu'il qualifie. 'Des clients satisfaits' : clients est masculin pluriel, donc satisfaits prend un 's'.",
-    tip: "L'adjectif suit le nom : masculin/féminin, singulier/pluriel. Vérifier le nom qu'il qualifie pour l'accord.",
+    content: "« Veiller à » signifie s'assurer de, prendre soin de. Le conducteur professionnel veille au confort et à la sécurité de ses passagers tout au long de la course.",
+    tip: "Veiller à = s'assurer de. À ne pas confondre avec « surveiller » (observer attentivement).",
     legalRef: "Grammaire française - Accord des adjectifs"
   },
   'fra-002': {
@@ -700,13 +700,13 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Vocabulaire et synonymie"
   },
   'fra-016': {
-    content: "Les abréviations et acronymes courants : M. (Monsieur), Mme (Madame), RDV (rendez-vous), ASAP (dès que possible), ETA (heure d'arrivée estimée). Les utiliser à bon escient sans en abuser.",
-    tip: "M. = Monsieur (pas Mr). Mme = Madame. Mlle désuet (utiliser Mme). RDV, OK acceptables en message, pas en courrier formel.",
+    content: "« Tant… que » exprime une égalité d'importance entre deux éléments : la ponctualité compte aussi bien pour le client que pour le chauffeur.",
+    tip: "Tant… que = aussi bien… que. La structure met les deux éléments au même niveau.",
     legalRef: "Conventions typographiques"
   },
   'fra-017': {
-    content: "La compréhension d'un texte administratif nécessite de repérer les informations essentielles : qui, quoi, quand, où, comment. Les documents officiels utilisent un vocabulaire spécifique qu'il faut maîtriser.",
-    tip: "Texte administratif : repérer dates, délais, conditions, obligations. Surligner les informations clés. Ne pas hésiter à relire.",
+    content: "La phrase relie la conduite souple à deux effets : la réduction de la fatigue du conducteur et l'amélioration du confort du passager. Une conduite souple, c'est anticiper, freiner progressivement et accélérer en douceur.",
+    tip: "Repérez les DEUX effets dans la phrase : fatigue ET confort, donc deux bonnes réponses.",
     legalRef: "Lecture de documents administratifs"
   },
   'fra-018': {
@@ -735,8 +735,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Règles des majuscules"
   },
   'fra-023': {
-    content: "Le complément d'objet direct (COD) répond à 'qui ?' ou 'quoi ?' après le verbe. Le COI répond à 'à qui ?', 'de qui ?', 'à quoi ?'. Cette distinction est importante pour l'accord du participe passé.",
-    tip: "COD = qui/quoi sans préposition (j'appelle le client). COI = à qui/de qui (je téléphone au client).",
+    content: "Avec un client, on utilise le registre courant ou soutenu : phrases complètes, formules de politesse, vocabulaire précis. Le registre familier, l'argot et le langage SMS nuisent à l'image professionnelle.",
+    tip: "En cas de doute, choisissez toujours le registre le plus poli : « Bonjour monsieur, je vous en prie ».",
     legalRef: "Grammaire - Compléments d'objet"
   },
   'fra-024': {
@@ -829,8 +829,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
   // MODULE ANGLAIS (ang-001 à ang-040)
   // =====================
   'ang-001': {
-    content: "'Hello' and 'Good morning/afternoon/evening' are standard greetings. 'Good morning' is used until noon, 'Good afternoon' until 6 PM, 'Good evening' after that. 'Hi' is more informal.",
-    tip: "Morning = until 12h. Afternoon = 12h-18h. Evening = after 18h. 'Hello' works anytime.",
+    content: "The sentence describes professional behaviour: respecting traffic laws and taking care of passengers are the two pillars of the driver's job.",
+    tip: "Professional behaviour = comportement professionnel. Repérez les mots-clés : respect, take care.",
     legalRef: "English - Greetings"
   },
   'ang-002': {
@@ -899,8 +899,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Days and dates"
   },
   'ang-015': {
-    content: "'What time is your flight?' or 'When do you need to be there?' helps plan the journey. 'We should leave at...' suggests departure time.",
-    tip: "For airport: 'What time is your flight?' 'Which terminal?' 'Domestic or international?' Plan extra time.",
+    content: "The advice is about communication: informing the customer of a delay and apologizing keeps the customer's trust.",
+    tip: "Inform + apologize = communication avec le client.",
     legalRef: "English - Time planning"
   },
   'ang-016': {
@@ -924,8 +924,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Payment"
   },
   'ang-020': {
-    content: "'Can you spell that, please?' or 'Could you repeat that?' when you don't understand. 'Let me confirm: you're going to...' to verify.",
-    tip: "Don't pretend to understand. 'Sorry, could you repeat that slowly?' 'Could you spell the address?' Better to ask than make mistakes.",
+    content: "These questions (destination, flight time, luggage) all aim at understanding the customer's needs before the trip.",
+    tip: "Les questions du chauffeur au départ servent toutes à cerner les besoins du client.",
     legalRef: "English - Clarification"
   },
   'ang-021': {
@@ -969,13 +969,13 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Contact information"
   },
   'ang-029': {
-    content: "'Do you need anything else?' or 'Is there anything else I can help you with?' shows willingness to serve beyond the basics.",
-    tip: "Final check: 'Is there anything else you need?', 'All good?', 'You have everything?' Helpful attitude.",
+    content: "“Good morning sir, how may I help you?” is the polite, professional way to greet a customer. The other sentences are too familiar or rude.",
+    tip: "May I…? / How may I help you? = formules types de l'accueil professionnel en anglais.",
     legalRef: "English - Service completion"
   },
   'ang-030': {
-    content: "'Certainly' or 'Of course' are positive responses to requests. 'Right away' or 'Immediately' show promptness.",
-    tip: "Positive responses: 'Certainly!', 'Of course!', 'Absolutely!', 'My pleasure!' Show enthusiasm to help.",
+    content: "Driving smoothly, helping with luggage and staying polite are instructions describing the professional behaviour expected from a driver.",
+    tip: "Une liste de consignes de service = comportement professionnel (professional behaviour).",
     legalRef: "English - Affirmative responses"
   },
   'ang-031': {
@@ -1014,8 +1014,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Comfort phrases"
   },
   'ang-038': {
-    content: "'I'll pick you up at...' or 'The pickup point is at...'. 'Meet me at the main entrance' for specific meeting points.",
-    tip: "Pickup vocabulary: 'I'll meet you at...', 'Look for a black Mercedes', 'I'll be waiting at door 3.'",
+    content: "Offering help with luggage and checking the passenger's comfort are typical customer service situations on board.",
+    tip: "Customer service = service client : aider, vérifier le confort, s'adapter.",
     legalRef: "English - Pickup arrangements"
   },
   'ang-039': {
