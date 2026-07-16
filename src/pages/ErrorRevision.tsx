@@ -8,7 +8,8 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuizResults } from '@/hooks/useQuizResults';
-import { getQuestionsByIds, Question, AnswerLetter } from '@/data/quizData';
+import { Question, AnswerLetter } from '@/data/quizData';
+import { useQuizQuestions } from '@/hooks/useQuizQuestions';
 
 interface Answer {
   questionId: string;
@@ -20,7 +21,8 @@ const ErrorRevision = () => {
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
   const { stats, isLoading: resultsLoading } = useQuizResults();
-  
+  const { getByIds, isLoading: questionsLoading } = useQuizQuestions();
+
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -29,15 +31,17 @@ const ErrorRevision = () => {
   const [startTime] = useState<number>(Date.now());
 
   useEffect(() => {
+    if (questionsLoading) return;
     if (stats.failedQuestions.length > 0) {
-      const failedQuestions = getQuestionsByIds(stats.failedQuestions);
+      const failedQuestions = getByIds(stats.failedQuestions);
       // Shuffle for variety
       const shuffled = [...failedQuestions].sort(() => Math.random() - 0.5);
       setQuestions(shuffled);
     }
-  }, [stats.failedQuestions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stats.failedQuestions, questionsLoading]);
 
-  if (authLoading || resultsLoading) {
+  if (authLoading || resultsLoading || questionsLoading) {
     return (
       <div className="min-h-screen bg-background">
         <Header />

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, FileText, GraduationCap, Layers, BarChart3 } from 'lucide-react';
 import Header from '@/components/Header';
 import { getCommonModules, getSpecificModules } from '@/data/quizData';
+import { useQuizQuestions } from '@/hooks/useQuizQuestions';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
@@ -10,6 +11,7 @@ const Index = () => {
   const { user } = useAuth();
   const commonModules = getCommonModules();
   const specificModules = getSpecificModules();
+  const { questions } = useQuizQuestions();
 
   // Fetch user profile for display name
   const { data: profile } = useQuery({
@@ -85,8 +87,8 @@ const Index = () => {
             </h1>
 
             <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              455 questions conformes au référentiel officiel, examens blancs
-              chronométrés et corrections détaillées.
+              {questions.length} questions conformes au référentiel officiel,
+              examens blancs chronométrés et corrections détaillées.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">

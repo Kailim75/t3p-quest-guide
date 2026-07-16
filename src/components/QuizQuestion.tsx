@@ -29,7 +29,9 @@ const getCourseExplanation = (question: Question): { title: string; content: str
   const defaultExplanation = getDefaultModuleExplanation(question.moduleId);
   return {
     title: moduleName,
-    content: defaultExplanation.content,
+    // L'explication propre à la question (saisie via l'écran Administration)
+    // prime sur le texte générique du module
+    content: question.explanation?.trim() ? question.explanation : defaultExplanation.content,
     tip: defaultExplanation.tip,
     legalRef: defaultExplanation.legalRef
   };
