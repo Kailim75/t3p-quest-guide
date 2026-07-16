@@ -45,7 +45,6 @@ const QuizQuestion = ({
   const [selectedAnswers, setSelectedAnswers] = useState<AnswerLetter[]>([]);
   const isMultiAnswer = hasMultipleAnswers(question.correctAnswer);
   const correctAnswers = parseCorrectAnswers(question.correctAnswer);
-  const requiredAnswerCount = correctAnswers.length;
 
   // Reset selected answers when question changes
   useEffect(() => {
@@ -62,8 +61,9 @@ const QuizQuestion = ({
       if (prev.includes(letter)) {
         return prev.filter(a => a !== letter);
       }
-      // Au plafond, la sélection la plus ancienne est remplacée
-      if (prev.length >= requiredAnswerCount) {
+      // Comme à l'examen réel : 1 ou 2 réponses cochables sur toute question,
+      // sans se fier au corrigé enregistré. Au-delà de 2, la plus ancienne saute.
+      if (prev.length >= 2) {
         return [...prev.slice(1), letter];
       }
       return [...prev, letter];
@@ -71,7 +71,7 @@ const QuizQuestion = ({
   };
 
   const handleValidate = () => {
-    if (showResult || selectedAnswers.length !== requiredAnswerCount) return;
+    if (showResult || selectedAnswers.length === 0) return;
     onAnswer(selectedAnswers, isAnswerCorrect(selectedAnswers, question.correctAnswer));
   };
 
@@ -149,16 +149,14 @@ const QuizQuestion = ({
           </h2>
         </div>
         
-        {/* Nombre de réponses attendues */}
+        {/* Consigne de sélection */}
         {!showResult && (
           <div className="flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm text-primary mb-4">
             <CheckSquare className="h-4 w-4" />
             <span className="font-medium">
-              {isMultiAnswer
-                ? `Cette question a ${requiredAnswerCount} bonnes réponses`
-                : 'Cette question a 1 bonne réponse'}
+              Une ou deux bonnes réponses selon la question
               {selectedAnswers.length > 0 && (
-                <span className="ml-1">({selectedAnswers.length}/{requiredAnswerCount} sélectionnée{selectedAnswers.length > 1 ? 's' : ''})</span>
+                <span className="ml-1">— {selectedAnswers.length} sélectionnée{selectedAnswers.length > 1 ? 's' : ''}</span>
               )}
             </span>
           </div>
@@ -203,7 +201,7 @@ const QuizQuestion = ({
         <div className="mt-6 flex justify-end">
           <button
             onClick={handleValidate}
-            disabled={selectedAnswers.length !== requiredAnswerCount}
+            disabled={selectedAnswers.length === 0}
             className="btn-cta w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Valider ma réponse
