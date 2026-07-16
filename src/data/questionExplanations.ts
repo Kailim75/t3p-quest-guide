@@ -352,8 +352,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Article R412-12 du Code de la route"
   },
   'sec-028': {
-    content: "Le clignotant doit être actionné avant d'effectuer une manœuvre (changement de direction, dépassement, stationnement), avec une anticipation suffisante pour prévenir les autres usagers. L'absence d'usage est sanctionnée.",
-    tip: "Clignotant = AVANT la manœuvre, pas pendant. Vérifier les rétroviseurs AVANT d'actionner le clignotant.",
+    content: "Le clignotant s'actionne avant la manœuvre, avec assez d'anticipation pour prévenir les autres usagers, et reste actionné pendant toute la manœuvre (changement de direction, dépassement). Son absence d'usage est sanctionnée (art. R412-10 du Code de la route).",
+    tip: "Rétroviseurs → clignotant AVANT la manœuvre → maintien PENDANT → contrôle → manœuvre.",
     legalRef: "Article R412-10 du Code de la route"
   },
   'sec-029': {
@@ -531,8 +531,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Service complet VTC"
   },
   'rel-023': {
-    content: "La connaissance du territoire est un atout majeur : proposer le meilleur itinéraire, connaître les points d'intérêt, savoir où trouver les services (hôtels, restaurants, pharmacies). Un VTC qui connaît sa ville inspire confiance.",
-    tip: "Connaître sa zone de travail : raccourcis, zones de travaux, bons restaurants pour recommandations. Le GPS ne remplace pas l'expertise locale.",
+    content: "Le professionnalisme du conducteur se manifeste par la ponctualité (respect de l'heure convenue) et la neutralité (opinions personnelles, politiques et religieuses gardées pour soi).",
+    tip: "Ponctuel + neutre + courtois = professionnel.",
     legalRef: "Compétence territoriale"
   },
   'rel-024': {
@@ -635,8 +635,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Conjugaison - Accord du participe passé"
   },
   'fra-003': {
-    content: "La différence entre 'à' (préposition) et 'a' (verbe avoir) : on peut remplacer 'a' par 'avait'. 'Il a (avait) une réservation à (préposition) 14h'.",
-    tip: "Test simple : remplacer par 'avait'. Si ça fonctionne = 'a' (verbe). Sinon = 'à' (préposition).",
+    content: "La ponctualité est une qualité professionnelle : arriver à l'heure convenue est la première preuve de sérieux d'un conducteur, taxi comme VTC.",
+    tip: "Qualité professionnelle = attendue dans le cadre du métier, pas optionnelle.",
     legalRef: "Orthographe - Homophones grammaticaux"
   },
   'fra-004': {
@@ -645,8 +645,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Communication professionnelle écrite"
   },
   'fra-005': {
-    content: "L'accord du verbe avec le sujet : le verbe s'accorde toujours avec son sujet en nombre et en personne. Attention aux sujets inversés et aux sujets collectifs.",
-    tip: "Trouver le sujet (qui fait l'action ?) pour accorder le verbe. 'Les clients arrivent' mais 'Le groupe de clients arrive'.",
+    content: "La satisfaction du client dépend du comportement du conducteur (accueil, courtoisie, conduite) et de son professionnalisme (ponctualité, tenue, discrétion) : les deux vont de pair.",
+    tip: "Comportement + professionnalisme = les deux moteurs de la satisfaction client.",
     legalRef: "Grammaire - Accord sujet-verbe"
   },
   'fra-006': {
@@ -660,8 +660,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Ponctuation française"
   },
   'fra-008': {
-    content: "Le vocabulaire professionnel du transport : prise en charge, dépose, trajet, itinéraire, course, réservation, tarification. Utiliser les termes appropriés renforce le professionnalisme.",
-    tip: "Vocabulaire pro : 'course' ou 'trajet' (pas 'balade'). 'Prise en charge' (pas 'on y va'). 'Dépose' (pas 'on arrive').",
+    content: "Avec un client, on adopte un langage professionnel : poli, clair, précis. Les registres familier, vulgaire ou argotique nuisent à l'image du conducteur et de la profession.",
+    tip: "En clientèle : vouvoiement, phrases complètes, pas de familiarité.",
     legalRef: "Vocabulaire professionnel VTC"
   },
   'fra-009': {
@@ -730,8 +730,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Orthographe - Homophones grammaticaux"
   },
   'fra-022': {
-    content: "Les majuscules s'utilisent en début de phrase, pour les noms propres (personnes, lieux, marques), les titres de civilité abrégés (M., Mme), mais pas pour les mois, jours de la semaine, nationalités (adjectifs).",
-    tip: "Majuscule : noms propres, début de phrase, M./Mme. Minuscule : jours (lundi), mois (janvier), nationalités adjectives (français).",
+    content: "Dans « l'image de la profession », le mot « image » désigne la réputation : la façon dont la profession est perçue par le public. Chaque conducteur contribue à cette image par son comportement.",
+    tip: "Image = réputation. Un seul conducteur discourtois dégrade l'image de toute la profession.",
     legalRef: "Règles des majuscules"
   },
   'fra-023': {
@@ -750,8 +750,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Grammaire - Concordance des temps"
   },
   'fra-026': {
-    content: "L'expression écrite professionnelle : phrases courtes et claires, vocabulaire précis, ton courtois et professionnel. Relire avant d'envoyer pour corriger les fautes et vérifier la clarté du message.",
-    tip: "Message pro = clair, concis, courtois. Relecture obligatoire. Se demander : le destinataire va-t-il comprendre immédiatement ?",
+    content: "Des phrases à l'impératif (« Restez courtois », « Informez le client ») donnent des conseils ou des consignes : leur intention est de guider le comportement professionnel.",
+    tip: "Impératif + vocabulaire du métier = texte de conseil professionnel.",
     legalRef: "Rédaction professionnelle"
   },
   'fra-027': {
@@ -785,8 +785,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Vocabulaire - Paronymes"
   },
   'fra-033': {
-    content: "La rédaction d'un e-mail professionnel : objet précis, formule d'appel, corps concis, formule de conclusion, signature avec coordonnées. Éviter les majuscules (= crier), les abréviations excessives, les émojis.",
-    tip: "E-mail pro : objet clair, pas de MAJUSCULES, formule de politesse, signature. Pas d'émoji. Relecture avant envoi.",
+    content: "Un texte professionnel vise à informer et à clarifier : transmettre l'information exacte, compréhensible immédiatement, sans ambiguïté.",
+    tip: "Texte professionnel réussi = le destinataire comprend du premier coup.",
     legalRef: "Nétiquette professionnelle"
   },
   'fra-034': {
@@ -815,8 +815,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Formules de politesse"
   },
   'fra-039': {
-    content: "La cohérence textuelle : chaque phrase doit s'enchaîner logiquement avec la précédente. Utiliser des mots de reprise (il, ce, celui-ci), des connecteurs, maintenir le même temps et le même point de vue.",
-    tip: "Texte cohérent = fil conducteur clair. Chaque phrase reliée à la précédente. Pas de rupture de temps ou de sujet.",
+    content: "Le thème d'un texte est son sujet principal : ce dont le texte parle. À distinguer de l'intention (informer, conseiller) et de la conclusion.",
+    tip: "Pour trouver le thème, demandez-vous : « De quoi ça parle ? ».",
     legalRef: "Expression écrite - Cohérence"
   },
   'fra-040': {
@@ -844,8 +844,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Time expressions"
   },
   'ang-004': {
-    content: "'The fare is X euros' or 'That will be X euros'. For fixed prices: 'The fixed rate is X euros'. For meter: 'The fare is calculated by the meter'.",
-    tip: "Clarify the pricing: 'The fare is based on distance and time' or 'It's a fixed rate of X euros'.",
+    content: "Before starting the trip, the driver confirms the destination (“Could you confirm the address?”) and helps with luggage (“May I help you with your luggage?”).",
+    tip: "Confirm + help : les deux réflexes professionnels avant de démarrer.",
     legalRef: "English - Pricing vocabulary"
   },
   'ang-005': {
@@ -949,8 +949,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Locations"
   },
   'ang-025': {
-    content: "'I recommend [restaurant/place]' or 'This area is famous for...'. Sharing local knowledge adds value to the service.",
-    tip: "Share tips: 'This area has great restaurants', 'The museum is worth visiting', 'I recommend trying...'",
+    content: "To confirm = to check / to verify : s'assurer qu'une information est exacte. “Could you confirm the address, please?”",
+    tip: "Confirm ≈ check ≈ verify. Contraires : cancel (annuler), deny (nier).",
     legalRef: "English - Recommendations"
   },
   'ang-026': {
@@ -1024,8 +1024,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "English - Emergency vocabulary"
   },
   'ang-040': {
-    content: "Comparative and superlative: 'faster', 'the fastest route'. 'This way is quicker' or 'This is the shortest route'.",
-    tip: "Comparisons: 'faster/the fastest', 'shorter/the shortest', 'more comfortable/the most comfortable'. Useful for route options.",
+    content: "Polite (poli), punctual (ponctuel) and discreet (discret) sont les qualités qui composent le professionnalisme (professionalism) du chauffeur.",
+    tip: "Le suffixe -ism forme le nom de la qualité globale : professionalism.",
     legalRef: "English - Comparatives"
   },
 
@@ -1098,8 +1098,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Article L3122-1 du Code des transports"
   },
   'vtc-014': {
-    content: "Les sanctions pour exercice illégal de l'activité VTC (sans carte, sans inscription, maraude) peuvent aller jusqu'à 1 an d'emprisonnement et 15 000€ d'amende, voire la confiscation du véhicule.",
-    tip: "Exercice illégal VTC = délit. 1 an prison + 15 000€ + confiscation véhicule possible. Respecter scrupuleusement la réglementation.",
+    content: "La responsabilité civile professionnelle couvre les dommages causés aux clients dans le cadre de l'activité, notamment en cas de faute professionnelle. Elle complète la RC circulation, obligatoire pour le véhicule.",
+    tip: "RC circulation = le véhicule. RC pro = l'activité et les clients. Les deux sont obligatoires.",
     legalRef: "Article L3124-4 du Code des transports"
   },
   'vtc-015': {
@@ -1123,8 +1123,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Article R3122-14 du Code des transports"
   },
   'vtc-019': {
-    content: "Le VTC peut prendre en charge des clients à un aéroport ou une gare uniquement sur réservation préalable. La prise en charge spontanée dans ces lieux est réservée aux taxis.",
-    tip: "Aéroport/gare : uniquement sur réservation. Pas de racolage, pas de prise en charge spontanée = exclusivité taxi.",
+    content: "La facture d'une course VTC est écrite et détaillée : date, trajet, montant TTC, identité du professionnel. Elle est remise au client.",
+    tip: "Facture VTC = écrite + détaillée. Pensez D-T-M : Date, Trajet, Montant.",
     legalRef: "Article L3120-2 du Code des transports"
   },
   'vtc-020': {
