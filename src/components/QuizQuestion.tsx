@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Check, X, AlertCircle, BookOpen, Lightbulb, GraduationCap, CheckSquare } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Check, X, AlertCircle, BookOpen, FileText, Lightbulb, GraduationCap, CheckSquare } from 'lucide-react';
 import { Question, modules, AnswerLetter, parseCorrectAnswers, isAnswerCorrect, hasMultipleAnswers } from '@/data/quizData';
 import { getQuestionExplanation, getDefaultModuleExplanation } from '@/data/questionExplanations';
+import { getRevisionModuleById } from '@/data/revisionData';
 
 interface QuizQuestionProps {
   question: Question;
@@ -290,6 +292,17 @@ const QuizQuestion = ({
                   </span>
                 )}
               </div>
+
+              {/* Vers la fiche de cours du module, pour creuser après une erreur */}
+              {!userIsCorrect && getRevisionModuleById(question.moduleId) && (
+                <Link
+                  to={`/revision?module=${question.moduleId}`}
+                  className="inline-flex items-center gap-2 rounded-lg bg-primary/10 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/15 transition-colors"
+                >
+                  <FileText className="h-4 w-4" />
+                  Revoir les fiches de ce module
+                </Link>
+              )}
             </div>
           </div>
         </div>

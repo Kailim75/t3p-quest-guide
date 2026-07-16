@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, BookOpen, ChevronRight, Lightbulb, GraduationCap } from 'lucide-react';
 import Header from '@/components/Header';
 import { getAllRevisionModules, RevisionModule } from '@/data/revisionData';
@@ -15,7 +15,19 @@ import { Badge } from '@/components/ui/badge';
 
 const Revision = () => {
   const [selectedModule, setSelectedModule] = useState<RevisionModule | null>(null);
+  const [searchParams] = useSearchParams();
   const modules = getAllRevisionModules();
+
+  // Ouverture directe d'un module via /revision?module=<id>
+  // (lien « Revoir les fiches » proposé après une erreur dans le quiz)
+  useEffect(() => {
+    const moduleParam = searchParams.get('module');
+    if (moduleParam) {
+      const target = modules.find(m => m.moduleId === moduleParam);
+      if (target) setSelectedModule(target);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const domainColors = {
     commun: 'bg-primary/10 text-primary',
