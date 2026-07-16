@@ -200,12 +200,12 @@ var officialQuestions = [
     text: "Un centre de gestion agr\xE9\xE9 permet notamment :",
     options: [
       { letter: "A", text: "Une aide \xE0 la gestion" },
-      { letter: "B", text: "Une r\xE9duction de certaines p\xE9nalit\xE9s" },
+      { letter: "B", text: "Une suppression des cotisations sociales" },
       { letter: "C", text: "Une exon\xE9ration totale de charges" },
       { letter: "D", text: "Une dispense de comptabilit\xE9" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "Le centre de gestion agr\xE9\xE9 assiste l'entreprise dans sa gestion comptable et fiscale. Il ne supprime ni cotisations ni imp\xF4ts et ne dispense pas de tenir une comptabilit\xE9.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
   },
@@ -556,8 +556,8 @@ var officialQuestions = [
       { letter: "C", text: "Une charge imm\xE9diate" },
       { letter: "D", text: "Une d\xE9pense ponctuelle" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "Un investissement s'inscrit \xE0 l'actif en immobilisation et se caract\xE9rise par une utilisation durable (plus d'un exercice).",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
   },
@@ -700,8 +700,8 @@ var officialQuestions = [
       { letter: "C", text: "\xC0 la TVA pay\xE9e sur les achats" },
       { letter: "D", text: "\xC0 une charge d\xE9finitive" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "La TVA collect\xE9e est factur\xE9e aux clients pour le compte de l'\xC9tat : c'est donc aussi une dette envers l'\xC9tat jusqu'\xE0 son reversement.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
   },
@@ -732,8 +732,8 @@ var officialQuestions = [
       { letter: "C", text: "Une forme juridique" },
       { letter: "D", text: "Une soci\xE9t\xE9" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "La micro-entreprise n'est pas une forme juridique : c'est un r\xE9gime fiscal (micro-fiscal) et social (micro-social) simplifi\xE9 de l'entreprise individuelle.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
   },
@@ -796,8 +796,8 @@ var officialQuestions = [
       { letter: "C", text: "D'\xE9liminer les charges" },
       { letter: "D", text: "D'\xE9viter les contr\xF4les" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "Une bonne gestion permet d'anticiper les difficult\xE9s (tr\xE9sorerie, \xE9ch\xE9ances) et de respecter ses obligations comptables, fiscales et sociales.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
   },
@@ -975,8 +975,8 @@ var officialQuestions = [
       { letter: "C", text: "Une anomalie grave" },
       { letter: "D", text: "Un rappel d'entretien" }
     ],
-    correctAnswer: "B",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "B,C",
+    explanation: "Un voyant rouge signale un danger imm\xE9diat ou une anomalie grave : il impose l'arr\xEAt du v\xE9hicule d\xE8s que possible.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
   },
@@ -1263,8 +1263,8 @@ var officialQuestions = [
       { letter: "C", text: "Apr\xE8s la man\u0153uvre" },
       { letter: "D", text: "Uniquement en agglom\xE9ration" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "Le clignotant s'actionne avant la man\u0153uvre pour avertir les autres usagers, et reste actionn\xE9 pendant toute la man\u0153uvre (art. R412-10 du Code de la route).",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
   },
@@ -1276,11 +1276,11 @@ var officialQuestions = [
     options: [
       { letter: "A", text: "Le champ de vision" },
       { letter: "B", text: "Le temps de r\xE9action" },
-      { letter: "C", text: "La stabilit\xE9 du v\xE9hicule" },
+      { letter: "C", text: "Le niveau d'huile moteur" },
       { letter: "D", text: "La visibilit\xE9 nocturne" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "La vitesse excessive r\xE9tr\xE9cit le champ visuel (effet tunnel) et allonge la distance d'arr\xEAt. Le temps de r\xE9action, lui, reste constant : c'est la distance parcourue pendant ce temps qui augmente.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
   },
@@ -1490,8 +1490,8 @@ var officialQuestions = [
       { letter: "C", text: "S'excuser" },
       { letter: "D", text: "Acc\xE9l\xE9rer excessivement" }
     ],
-    correctAnswer: "B",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "B,C",
+    explanation: "En cas de retard impr\xE9vu, le professionnel informe le client rapidement et s'excuse : transparence et courtoisie pr\xE9servent la confiance.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
   },
@@ -1826,8 +1826,8 @@ var officialQuestions = [
       { letter: "C", text: "L'improvisation" },
       { letter: "D", text: "Le laisser-aller" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "Le professionnalisme implique la ponctualit\xE9 et la neutralit\xE9 : les opinions personnelles restent en dehors de la relation client.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
   },
@@ -2146,13 +2146,13 @@ var officialQuestions = [
     options: [
       { letter: "A", text: "Professionnelle" },
       { letter: "B", text: "Facultative" },
-      { letter: "C", text: "Importante" },
+      { letter: "C", text: "R\xE9serv\xE9e aux taxis" },
       { letter: "D", text: "Inutile" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "La ponctualit\xE9 est une qualit\xE9 professionnelle attendue de tout conducteur, taxi comme VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "fra-004",
@@ -2181,8 +2181,8 @@ var officialQuestions = [
       { letter: "C", text: "Du prix uniquement" },
       { letter: "D", text: "Du hasard" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "La satisfaction du client d\xE9pend du comportement du conducteur et de son professionnalisme \u2014 deux notions indissociables.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
   },
@@ -2222,17 +2222,17 @@ var officialQuestions = [
     id: "fra-008",
     moduleId: "francais",
     subModuleId: "fra-2",
-    text: "Le registre de langue attendu est :",
+    text: "Le registre de langue attendu avec un client est :",
     options: [
       { letter: "A", text: "Familier" },
       { letter: "B", text: "Professionnel" },
-      { letter: "C", text: "Courant" },
+      { letter: "C", text: "Vulgaire" },
       { letter: "D", text: "Argotique" }
     ],
     correctAnswer: "B",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "Avec un client, on adopte un langage professionnel : poli, clair et adapt\xE9. Les registres familier, vulgaire ou argotique sont \xE0 proscrire.",
     reference: "Module 5 \u2013 Fran\xE7ais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "fra-009",
@@ -2446,17 +2446,17 @@ var officialQuestions = [
     id: "fra-022",
     moduleId: "francais",
     subModuleId: "fra-1",
-    text: "Le mot \xAB image \xBB d\xE9signe ici :",
+    text: "Dans l'expression \xAB l'image de la profession \xBB, le mot \xAB image \xBB d\xE9signe :",
     options: [
       { letter: "A", text: "La r\xE9putation" },
-      { letter: "B", text: "La perception" },
+      { letter: "B", text: "Une illusion" },
       { letter: "C", text: "Une photo" },
       { letter: "D", text: "Un logo" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "L'image de la profession d\xE9signe sa r\xE9putation, c'est-\xE0-dire la fa\xE7on dont le public la per\xE7oit.",
     reference: "Module 5 \u2013 Fran\xE7ais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "fra-023",
@@ -2510,17 +2510,17 @@ var officialQuestions = [
     id: "fra-026",
     moduleId: "francais",
     subModuleId: "fra-1",
-    text: "L'intention principale des textes est de :",
+    text: "\xAB Restez courtois, informez le client de tout retard, adaptez votre conduite. \xBB L'intention de ces consignes est de :",
     options: [
-      { letter: "A", text: "Donner des conseils" },
-      { letter: "B", text: "Informer" },
-      { letter: "C", text: "Critiquer" },
-      { letter: "D", text: "Divertir" }
+      { letter: "A", text: "Donner des conseils professionnels" },
+      { letter: "B", text: "Raconter une histoire" },
+      { letter: "C", text: "Critiquer le conducteur" },
+      { letter: "D", text: "Divertir le lecteur" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "Ces phrases \xE0 l'imp\xE9ratif donnent des consignes de comportement professionnel : leur intention est de conseiller, pas de raconter ni de divertir.",
     reference: "Module 5 \u2013 Fran\xE7ais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "fra-027",
@@ -2629,8 +2629,8 @@ var officialQuestions = [
       { letter: "C", text: "Divertir" },
       { letter: "D", text: "Provoquer" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "Un texte professionnel vise \xE0 informer et \xE0 clarifier le message : transmettre une information exacte et compr\xE9hensible sans ambigu\xEFt\xE9.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
   },
@@ -2718,17 +2718,17 @@ var officialQuestions = [
     id: "fra-039",
     moduleId: "francais",
     subModuleId: "fra-1",
-    text: "Le th\xE8me commun aux textes professionnels est souvent :",
+    text: "Le \xAB th\xE8me \xBB d'un texte d\xE9signe :",
     options: [
-      { letter: "A", text: "La relation client" },
-      { letter: "B", text: "La communication" },
-      { letter: "C", text: "La m\xE9t\xE9o" },
-      { letter: "D", text: "Le divertissement" }
+      { letter: "A", text: "Son sujet principal" },
+      { letter: "B", text: "Sa conclusion" },
+      { letter: "C", text: "Son auteur" },
+      { letter: "D", text: "Sa longueur" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "Le th\xE8me est le sujet principal d'un texte : ce dont il parle. \xC0 distinguer de l'intention (informer, conseiller) et de la conclusion.",
     reference: "Module 5 \u2013 Fran\xE7ais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   {
     id: "fra-040",
@@ -2808,8 +2808,8 @@ var officialQuestions = [
       { letter: "C", text: "Ask for payment" },
       { letter: "D", text: "Turn off the engine" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "Avant de d\xE9marrer : confirmer la destination (\xAB Could you confirm the address? \xBB) et aider avec les bagages sont les deux bons r\xE9flexes professionnels.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
   },
@@ -3144,8 +3144,8 @@ var officialQuestions = [
       { letter: "C", text: "To cancel" },
       { letter: "D", text: "To deny" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "To confirm = to check / to verify : s'assurer qu'une information est exacte. Contraires : to cancel (annuler), to deny (nier).",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
   },
@@ -3377,17 +3377,17 @@ var officialQuestions = [
     id: "ang-040",
     moduleId: "anglais",
     subModuleId: "ang-2",
-    text: "The main quality highlighted is:",
+    text: "\u201CA good driver is polite, punctual and discreet.\u201D These qualities describe:",
     options: [
       { letter: "A", text: "Professionalism" },
-      { letter: "B", text: "Courtesy" },
-      { letter: "C", text: "Speed" },
-      { letter: "D", text: "Authority" }
+      { letter: "B", text: "Aggressiveness" },
+      { letter: "C", text: "Impatience" },
+      { letter: "D", text: "Carelessness" }
     ],
     correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    explanation: "Politesse, ponctualit\xE9 et discr\xE9tion composent le professionnalisme (professionalism) du chauffeur.",
     reference: "Module 6 \u2013 Anglais",
-    difficulty: "moyen"
+    difficulty: "facile"
   },
   // =====================
   // MODULE 6 - ANGLAIS TOURISME INTERNATIONAL (40 questions)
@@ -4256,8 +4256,8 @@ var officialQuestions = [
       { letter: "C", text: "Les infractions routi\xE8res" },
       { letter: "D", text: "Les amendes" }
     ],
-    correctAnswer: "A",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "A,B",
+    explanation: "La responsabilit\xE9 civile professionnelle couvre les dommages caus\xE9s aux clients dans le cadre de l'activit\xE9, r\xE9sultant notamment de fautes professionnelles.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
   },
@@ -4336,8 +4336,8 @@ var officialQuestions = [
       { letter: "C", text: "D\xE9taill\xE9e" },
       { letter: "D", text: "Verbale" }
     ],
-    correctAnswer: "B",
-    explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
+    correctAnswer: "B,C",
+    explanation: "La facture d'une course VTC doit \xEAtre \xE9crite et d\xE9taill\xE9e (date, trajet, montant TTC, identit\xE9 du professionnel) et remise au client.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
   },
