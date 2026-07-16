@@ -252,7 +252,7 @@ var officialQuestions = [
       { letter: "C", text: "De r\xE9duire le r\xE9sultat comptable" },
       { letter: "D", text: "D'\xE9viter la TVA" }
     ],
-    correctAnswer: "B",
+    correctAnswer: "B,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -284,7 +284,7 @@ var officialQuestions = [
       { letter: "C", text: "La facturation automatique" },
       { letter: "D", text: "L'ouverture bancaire" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -316,7 +316,7 @@ var officialQuestions = [
       { letter: "C", text: "La tr\xE9sorerie disponible" },
       { letter: "D", text: "Le patrimoine" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -348,7 +348,7 @@ var officialQuestions = [
       { letter: "C", text: "Des entreprises priv\xE9es" },
       { letter: "D", text: "Des associations" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -428,7 +428,7 @@ var officialQuestions = [
       { letter: "C", text: "Une taxe locale" },
       { letter: "D", text: "Une cotisation facultative" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -460,7 +460,7 @@ var officialQuestions = [
       { letter: "C", text: "Un investissement" },
       { letter: "D", text: "Un apport personnel" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -476,7 +476,7 @@ var officialQuestions = [
       { letter: "C", text: "De fixer la TVA" },
       { letter: "D", text: "De d\xE9terminer le r\xE9gime fiscal" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -604,7 +604,7 @@ var officialQuestions = [
       { letter: "C", text: "Un permis de conduire" },
       { letter: "D", text: "Une nationalit\xE9" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -636,7 +636,7 @@ var officialQuestions = [
       { letter: "C", text: "L'entreprise est d\xE9ficitaire" },
       { letter: "D", text: "Il y a cessation" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -652,7 +652,7 @@ var officialQuestions = [
       { letter: "C", text: "Le patrimoine" },
       { letter: "D", text: "La tr\xE9sorerie instantan\xE9e" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -684,7 +684,7 @@ var officialQuestions = [
       { letter: "C", text: "Un v\xE9hicule" },
       { letter: "D", text: "Un b\xE2timent" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -764,7 +764,7 @@ var officialQuestions = [
       { letter: "C", text: "Au b\xE9n\xE9fice maximal" },
       { letter: "D", text: "\xC0 la tr\xE9sorerie" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -780,7 +780,7 @@ var officialQuestions = [
       { letter: "C", text: "D'\xE9viter les charges" },
       { letter: "D", text: "D'augmenter la TVA" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -812,7 +812,7 @@ var officialQuestions = [
       { letter: "C", text: "De fixer les sanctions" },
       { letter: "D", text: "De remplacer la gestion" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 2 \u2013 Gestion & comptabilit\xE9",
     difficulty: "moyen"
@@ -927,7 +927,7 @@ var officialQuestions = [
       { letter: "C", text: "\xC0 tr\xE8s faible vitesse" },
       { letter: "D", text: "Sur route s\xE8che" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -991,7 +991,7 @@ var officialQuestions = [
       { letter: "C", text: "Pr\xE9venir les secours" },
       { letter: "D", text: "Reprendre la route" }
     ],
-    correctAnswer: "B",
+    correctAnswer: "B,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1023,7 +1023,7 @@ var officialQuestions = [
       { letter: "C", text: "Uniquement hors agglom\xE9ration" },
       { letter: "D", text: "Seulement en tunnel" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1055,7 +1055,7 @@ var officialQuestions = [
       { letter: "C", text: "La visibilit\xE9" },
       { letter: "D", text: "La stabilit\xE9 du v\xE9hicule" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1071,7 +1071,7 @@ var officialQuestions = [
       { letter: "C", text: "\xC0 la marque du v\xE9hicule" },
       { letter: "D", text: "\xC0 la couleur de la chauss\xE9e" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1087,7 +1087,7 @@ var officialQuestions = [
       { letter: "C", text: "Une suspension automatique" },
       { letter: "D", text: "Une confiscation du v\xE9hicule" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1103,7 +1103,7 @@ var officialQuestions = [
       { letter: "C", text: "De raccourcir syst\xE9matiquement le freinage" },
       { letter: "D", text: "D'\xE9viter tout accident" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1119,7 +1119,7 @@ var officialQuestions = [
       { letter: "C", text: "Les trajets longs" },
       { letter: "D", text: "Une bonne hydratation" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1135,7 +1135,7 @@ var officialQuestions = [
       { letter: "C", text: "Le risque d'aquaplaning" },
       { letter: "D", text: "La stabilit\xE9" }
     ],
-    correctAnswer: "B",
+    correctAnswer: "B,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1151,7 +1151,7 @@ var officialQuestions = [
       { letter: "C", text: "Rester dans le v\xE9hicule" },
       { letter: "D", text: "Mettre le triangle sur la chauss\xE9e" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1183,7 +1183,7 @@ var officialQuestions = [
       { letter: "C", text: "Suivre de tr\xE8s pr\xE8s" },
       { letter: "D", text: "Acc\xE9l\xE9rer pour d\xE9gager" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1215,7 +1215,7 @@ var officialQuestions = [
       { letter: "C", text: "Les automobilistes" },
       { letter: "D", text: "Les passagers arri\xE8re" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1295,7 +1295,7 @@ var officialQuestions = [
       { letter: "C", text: "En toutes circonstances" },
       { letter: "D", text: "Hors agglom\xE9ration uniquement" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1343,7 +1343,7 @@ var officialQuestions = [
       { letter: "C", text: "En cas de neige" },
       { letter: "D", text: "En agglom\xE9ration par temps clair" }
     ],
-    correctAnswer: "B",
+    correctAnswer: "B,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1375,7 +1375,7 @@ var officialQuestions = [
       { letter: "C", text: "Pr\xE9senter ses documents" },
       { letter: "D", text: "Refuser de coop\xE9rer" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1407,7 +1407,7 @@ var officialQuestions = [
       { letter: "C", text: "Une suspension automatique" },
       { letter: "D", text: "Une confiscation imm\xE9diate" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1423,7 +1423,7 @@ var officialQuestions = [
       { letter: "C", text: "La distance de s\xE9curit\xE9" },
       { letter: "D", text: "Le champ de vision" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1439,7 +1439,7 @@ var officialQuestions = [
       { letter: "C", text: "De doubler" },
       { letter: "D", text: "De couper la radio" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1455,7 +1455,7 @@ var officialQuestions = [
       { letter: "C", text: "D'augmenter la fatigue" },
       { letter: "D", text: "D'acc\xE9l\xE9rer le trajet" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 3 \u2013 S\xE9curit\xE9 routi\xE8re",
     difficulty: "moyen"
@@ -1474,7 +1474,7 @@ var officialQuestions = [
       { letter: "C", text: "D'augmenter le tarif" },
       { letter: "D", text: "De raccourcir le trajet" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1522,7 +1522,7 @@ var officialQuestions = [
       { letter: "C", text: "Un facteur de confiance" },
       { letter: "D", text: "Sans importance" }
     ],
-    correctAnswer: "B",
+    correctAnswer: "B,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1538,7 +1538,7 @@ var officialQuestions = [
       { letter: "C", text: "Argumenter vivement" },
       { letter: "D", text: "Ignorer la plainte" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1554,7 +1554,7 @@ var officialQuestions = [
       { letter: "C", text: "Les informations personnelles" },
       { letter: "D", text: "Le tarif affich\xE9" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1570,7 +1570,7 @@ var officialQuestions = [
       { letter: "C", text: "Du comportement du conducteur" },
       { letter: "D", text: "Du type de plateforme" }
     ],
-    correctAnswer: "B",
+    correctAnswer: "B,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1586,7 +1586,7 @@ var officialQuestions = [
       { letter: "C", text: "Influencer les futurs clients" },
       { letter: "D", text: "\xCAtre sans cons\xE9quence" }
     ],
-    correctAnswer: "B",
+    correctAnswer: "B,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1602,7 +1602,7 @@ var officialQuestions = [
       { letter: "C", text: "Excessive" },
       { letter: "D", text: "Inutile" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1634,7 +1634,7 @@ var officialQuestions = [
       { letter: "C", text: "Une familiarit\xE9 excessive" },
       { letter: "D", text: "Une neutralit\xE9 agressive" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1650,7 +1650,7 @@ var officialQuestions = [
       { letter: "C", text: "De stabiliser l'activit\xE9" },
       { letter: "D", text: "De r\xE9duire la qualit\xE9" }
     ],
-    correctAnswer: "B",
+    correctAnswer: "B,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1666,7 +1666,7 @@ var officialQuestions = [
       { letter: "C", text: "Prendre en compte les attentes" },
       { letter: "D", text: "Imposer ses choix" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1682,7 +1682,7 @@ var officialQuestions = [
       { letter: "C", text: "Le trafic routier" },
       { letter: "D", text: "Les contr\xF4les de police" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1698,7 +1698,7 @@ var officialQuestions = [
       { letter: "C", text: "La dur\xE9e du trajet" },
       { letter: "D", text: "Le stress" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1714,7 +1714,7 @@ var officialQuestions = [
       { letter: "C", text: "La confrontation" },
       { letter: "D", text: "L'indiff\xE9rence" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1730,7 +1730,7 @@ var officialQuestions = [
       { letter: "C", text: "Discuter librement" },
       { letter: "D", text: "Enregistrer les conversations" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1746,7 +1746,7 @@ var officialQuestions = [
       { letter: "C", text: "De la vitesse" },
       { letter: "D", text: "Du tarif" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1762,7 +1762,7 @@ var officialQuestions = [
       { letter: "C", text: "Acc\xE9l\xE9rer les courses" },
       { letter: "D", text: "R\xE9duire les obligations" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1778,7 +1778,7 @@ var officialQuestions = [
       { letter: "C", text: "L'autorit\xE9 excessive" },
       { letter: "D", text: "L'agressivit\xE9" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1810,7 +1810,7 @@ var officialQuestions = [
       { letter: "C", text: "La n\xE9gociation du tarif" },
       { letter: "D", text: "Le choix du v\xE9hicule" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1874,7 +1874,7 @@ var officialQuestions = [
       { letter: "C", text: "Les litiges" },
       { letter: "D", text: "Les sanctions" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1890,7 +1890,7 @@ var officialQuestions = [
       { letter: "C", text: "\xC0 la r\xE9putation" },
       { letter: "D", text: "\xC0 l'augmentation des tarifs" }
     ],
-    correctAnswer: "B",
+    correctAnswer: "B,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1906,7 +1906,7 @@ var officialQuestions = [
       { letter: "C", text: "Une hausse du chiffre d'affaires" },
       { letter: "D", text: "Une meilleure image" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1938,7 +1938,7 @@ var officialQuestions = [
       { letter: "C", text: "S'imposer" },
       { letter: "D", text: "Acc\xE9l\xE9rer la course" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1954,7 +1954,7 @@ var officialQuestions = [
       { letter: "C", text: "Pris au s\xE9rieux" },
       { letter: "D", text: "Refus\xE9" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -1970,7 +1970,7 @@ var officialQuestions = [
       { letter: "C", text: "Les tensions" },
       { letter: "D", text: "Les conflits" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -2002,7 +2002,7 @@ var officialQuestions = [
       { letter: "C", text: "Clarifier la prestation" },
       { letter: "D", text: "\xC9viter toute explication" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -2018,7 +2018,7 @@ var officialQuestions = [
       { letter: "C", text: "\xC0 une conduite agressive" },
       { letter: "D", text: "\xC0 des retards r\xE9p\xE9t\xE9s" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -2034,7 +2034,7 @@ var officialQuestions = [
       { letter: "C", text: "Les sanctions" },
       { letter: "D", text: "Les charges fixes" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -2050,7 +2050,7 @@ var officialQuestions = [
       { letter: "C", text: "Imposer son opinion" },
       { letter: "D", text: "Influencer le client" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -2066,7 +2066,7 @@ var officialQuestions = [
       { letter: "C", text: "Le silence impos\xE9" },
       { letter: "D", text: "L'indiff\xE9rence" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -2082,7 +2082,7 @@ var officialQuestions = [
       { letter: "C", text: "L'agressivit\xE9" },
       { letter: "D", text: "Le m\xE9pris" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -2098,7 +2098,7 @@ var officialQuestions = [
       { letter: "C", text: "De sanctions" },
       { letter: "D", text: "De contraintes" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 4 \u2013 Relation client",
     difficulty: "moyen"
@@ -2197,7 +2197,7 @@ var officialQuestions = [
       { letter: "C", text: "De rassurer le client" },
       { letter: "D", text: "D'augmenter la vitesse" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2213,7 +2213,7 @@ var officialQuestions = [
       { letter: "C", text: "S'adapter au client" },
       { letter: "D", text: "Parler plus vite" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2277,7 +2277,7 @@ var officialQuestions = [
       { letter: "C", text: "La vitesse" },
       { letter: "D", text: "Le tarif" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2309,7 +2309,7 @@ var officialQuestions = [
       { letter: "C", text: "Tout enregistrer" },
       { letter: "D", text: "Tout commenter" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2325,7 +2325,7 @@ var officialQuestions = [
       { letter: "C", text: "Ironique" },
       { letter: "D", text: "Agressif" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2341,7 +2341,7 @@ var officialQuestions = [
       { letter: "C", text: "La fatigue" },
       { letter: "D", text: "La vitesse" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2437,7 +2437,7 @@ var officialQuestions = [
       { letter: "C", text: "Imposer ses r\xE8gles" },
       { letter: "D", text: "Refuser le dialogue" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2533,7 +2533,7 @@ var officialQuestions = [
       { letter: "C", text: "Les conflits" },
       { letter: "D", text: "Les malentendus" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2565,7 +2565,7 @@ var officialQuestions = [
       { letter: "C", text: "Une hausse des tarifs" },
       { letter: "D", text: "Une suppression des r\xE8gles" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2597,7 +2597,7 @@ var officialQuestions = [
       { letter: "C", text: "Ironique" },
       { letter: "D", text: "Subjective" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2613,7 +2613,7 @@ var officialQuestions = [
       { letter: "C", text: "D'ignorer le contexte" },
       { letter: "D", text: "De modifier le texte" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2645,7 +2645,7 @@ var officialQuestions = [
       { letter: "C", text: "Complexe inutilement" },
       { letter: "D", text: "Familier" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2677,7 +2677,7 @@ var officialQuestions = [
       { letter: "C", text: "Uniquement de la longueur" },
       { letter: "D", text: "Du hasard" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2693,7 +2693,7 @@ var officialQuestions = [
       { letter: "C", text: "Confus" },
       { letter: "D", text: "Ambigu" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2709,7 +2709,7 @@ var officialQuestions = [
       { letter: "C", text: "Des malentendus" },
       { letter: "D", text: "Des conflits" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2741,7 +2741,7 @@ var officialQuestions = [
       { letter: "C", text: "Aux sanctions" },
       { letter: "D", text: "Aux conflits" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 5 \u2013 Fran\xE7ais",
     difficulty: "moyen"
@@ -2792,7 +2792,7 @@ var officialQuestions = [
       { letter: "C", text: "Rudely" },
       { letter: "D", text: "Aggressively" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -2856,7 +2856,7 @@ var officialQuestions = [
       { letter: "C", text: "Ignored" },
       { letter: "D", text: "Adapted freely" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -2952,7 +2952,7 @@ var officialQuestions = [
       { letter: "C", text: "Create confusion" },
       { letter: "D", text: "Increase delays" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3000,7 +3000,7 @@ var officialQuestions = [
       { letter: "C", text: "Driver salary" },
       { letter: "D", text: "Vehicle price" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3016,7 +3016,7 @@ var officialQuestions = [
       { letter: "C", text: "Rudely" },
       { letter: "D", text: "Indirectly" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3080,7 +3080,7 @@ var officialQuestions = [
       { letter: "C", text: "Inspector" },
       { letter: "D", text: "Driver" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3112,7 +3112,7 @@ var officialQuestions = [
       { letter: "C", text: "Increase speed" },
       { letter: "D", text: "Create danger" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3176,7 +3176,7 @@ var officialQuestions = [
       { letter: "C", text: "Vehicle color" },
       { letter: "D", text: "Driver age" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3192,7 +3192,7 @@ var officialQuestions = [
       { letter: "C", text: "Aggressive" },
       { letter: "D", text: "Impatient" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3240,7 +3240,7 @@ var officialQuestions = [
       { letter: "C", text: "Increase delays" },
       { letter: "D", text: "Reduce satisfaction" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3256,7 +3256,7 @@ var officialQuestions = [
       { letter: "C", text: "Weakness" },
       { letter: "D", text: "Indifference" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3272,7 +3272,7 @@ var officialQuestions = [
       { letter: "C", text: "Confused" },
       { letter: "D", text: "Angry" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3288,7 +3288,7 @@ var officialQuestions = [
       { letter: "C", text: "Stress" },
       { letter: "D", text: "Tension" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3304,7 +3304,7 @@ var officialQuestions = [
       { letter: "C", text: "Aggressive" },
       { letter: "D", text: "Confusing" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3336,7 +3336,7 @@ var officialQuestions = [
       { letter: "C", text: "Argue" },
       { letter: "D", text: "Impose rules" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -3368,7 +3368,7 @@ var officialQuestions = [
       { letter: "C", text: "Satisfaction" },
       { letter: "D", text: "Trust" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 6 \u2013 Anglais",
     difficulty: "moyen"
@@ -4176,7 +4176,7 @@ var officialQuestions = [
       { letter: "C", text: "Son contrat de travail" },
       { letter: "D", text: "Son relev\xE9 bancaire" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4272,7 +4272,7 @@ var officialQuestions = [
       { letter: "C", text: "Un simple avertissement" },
       { letter: "D", text: "Aucune cons\xE9quence" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4352,7 +4352,7 @@ var officialQuestions = [
       { letter: "C", text: "Le num\xE9ro de permis" },
       { letter: "D", text: "Le num\xE9ro de carte bancaire" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4368,7 +4368,7 @@ var officialQuestions = [
       { letter: "C", text: "S\xE9curis\xE9e" },
       { letter: "D", text: "Sportive" }
     ],
-    correctAnswer: "B",
+    correctAnswer: "B,C",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4416,7 +4416,7 @@ var officialQuestions = [
       { letter: "C", text: "Une sanction priv\xE9e" },
       { letter: "D", text: "Aucune sanction" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4464,7 +4464,7 @@ var officialQuestions = [
       { letter: "C", text: "Les demandes du client uniquement" },
       { letter: "D", text: "Les tarifs taxis" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4480,7 +4480,7 @@ var officialQuestions = [
       { letter: "C", text: "Le client" },
       { letter: "D", text: "La concurrence" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4576,7 +4576,7 @@ var officialQuestions = [
       { letter: "C", text: "Orale uniquement" },
       { letter: "D", text: "Tacite" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4592,7 +4592,7 @@ var officialQuestions = [
       { letter: "C", text: "Le num\xE9ro fiscal du client" },
       { letter: "D", text: "Le kilom\xE9trage exact" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4624,7 +4624,7 @@ var officialQuestions = [
       { letter: "C", text: "De remplacer la carte professionnelle" },
       { letter: "D", text: "De fixer les tarifs" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4640,7 +4640,7 @@ var officialQuestions = [
       { letter: "C", text: "Discrimination" },
       { letter: "D", text: "Agressivit\xE9" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4656,7 +4656,7 @@ var officialQuestions = [
       { letter: "C", text: "\xC0 la hausse des tarifs" },
       { letter: "D", text: "\xC0 la suppression des contr\xF4les" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4672,7 +4672,7 @@ var officialQuestions = [
       { letter: "C", text: "Une simple remarque" },
       { letter: "D", text: "Une r\xE9compense" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Question conforme au r\xE9f\xE9rentiel officiel VTC.",
     reference: "Module 7 \u2013 R\xE9glementation sp\xE9cifique VTC",
     difficulty: "moyen"
@@ -4899,7 +4899,7 @@ var officialQuestions = [
       { letter: "C", text: "Un brevet de secourisme obligatoire" },
       { letter: "D", text: "Une licence de taxi" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Le conducteur VTC doit poss\xE9der une aptitude m\xE9dicale valid\xE9e par un m\xE9decin agr\xE9\xE9 ET une assurance RC professionnelle.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "moyen"
@@ -4931,7 +4931,7 @@ var officialQuestions = [
       { letter: "C", text: "Une carte bancaire" },
       { letter: "D", text: "Une facture d'entretien" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Lors d'un contr\xF4le, le conducteur doit pr\xE9senter sa carte professionnelle et le justificatif de r\xE9servation de la course en cours.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "facile"
@@ -4947,7 +4947,7 @@ var officialQuestions = [
       { letter: "C", text: "L'assurance habitation" },
       { letter: "D", text: "L'assurance voyage" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "L'assurance VTC doit couvrir la responsabilit\xE9 civile circulation ET la responsabilit\xE9 civile professionnelle.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "moyen"
@@ -4963,7 +4963,7 @@ var officialQuestions = [
       { letter: "C", text: "Supprim\xE9 apr\xE8s la course" },
       { letter: "D", text: "Public" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Le registre des r\xE9servations doit \xEAtre conserv\xE9 et mis \xE0 disposition lors des contr\xF4les. Il constitue la preuve de l'activit\xE9 l\xE9gale.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "moyen"
@@ -5027,7 +5027,7 @@ var officialQuestions = [
       { letter: "C", text: "Orale uniquement" },
       { letter: "D", text: "Facultative" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "La facture VTC doit \xEAtre \xE9crite et d\xE9taill\xE9e (montant, date, trajet). Elle doit \xEAtre remise au client sur demande.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "moyen"
@@ -5043,7 +5043,7 @@ var officialQuestions = [
       { letter: "C", text: "Le num\xE9ro de carte bancaire" },
       { letter: "D", text: "Le code fiscal client" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "La facture doit mentionner le montant TTC, l'identit\xE9 du professionnel, la date et la nature de la prestation.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "moyen"
@@ -5075,7 +5075,7 @@ var officialQuestions = [
       { letter: "C", text: "Uniquement la plateforme" },
       { letter: "D", text: "Le client" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Le comportement du conducteur engage sa responsabilit\xE9 personnelle et l'image de toute la profession VTC.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "facile"
@@ -5123,7 +5123,7 @@ var officialQuestions = [
       { letter: "C", text: "Les clients" },
       { letter: "D", text: "Les plateformes" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Les contr\xF4les VTC sont effectu\xE9s par les forces de l'ordre, les agents de la DGCCRF et les contr\xF4leurs des transports.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "moyen"
@@ -5139,7 +5139,7 @@ var officialQuestions = [
       { letter: "C", text: "Une r\xE9compense" },
       { letter: "D", text: "Aucune cons\xE9quence" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Le non-respect expose \xE0 des sanctions administratives (retrait carte) ET p\xE9nales (amendes, prison).",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "facile"
@@ -5219,7 +5219,7 @@ var officialQuestions = [
       { letter: "C", text: "Li\xE9e au v\xE9hicule" },
       { letter: "D", text: "Valable \xE0 vie" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "La carte professionnelle est personnelle et non cessible. Elle ne peut pas \xEAtre pr\xEAt\xE9e ou vendue.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "facile"
@@ -5235,7 +5235,7 @@ var officialQuestions = [
       { letter: "C", text: "Uniquement orale" },
       { letter: "D", text: "Tacite" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "La r\xE9servation peut \xEAtre \xE9crite ou \xE9lectronique (application, email, SMS). Elle doit \xEAtre tra\xE7able et conserv\xE9e.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "moyen"
@@ -5251,7 +5251,7 @@ var officialQuestions = [
       { letter: "C", text: "Le num\xE9ro fiscal du client" },
       { letter: "D", text: "Le kilom\xE9trage exact" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Le registre doit mentionner la date, l'heure, le lieu de prise en charge et la destination de chaque course.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "moyen"
@@ -5267,7 +5267,7 @@ var officialQuestions = [
       { letter: "C", text: "La suppression des plateformes" },
       { letter: "D", text: "La gratuit\xE9" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "La r\xE9glementation T3P vise la protection des clients et la loyaut\xE9 entre les professionnels du secteur.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "facile"
@@ -5299,7 +5299,7 @@ var officialQuestions = [
       { letter: "C", text: "\xC0 la suppression des contr\xF4les" },
       { letter: "D", text: "\xC0 la hausse automatique des tarifs" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,B",
     explanation: "Le respect des r\xE8gles renforce la cr\xE9dibilit\xE9 de la profession VTC et la s\xE9curit\xE9 de tous.",
     reference: "Module 1 \u2013 R\xE9glementation T3P",
     difficulty: "facile"
@@ -5350,7 +5350,7 @@ var officialQuestions = [
       { letter: "C", text: "L'affichette tarifaire" },
       { letter: "D", text: "Le scell\xE9 du taxim\xE8tre" }
     ],
-    correctAnswer: "A",
+    correctAnswer: "A,D",
     explanation: "La lettre de couleur sur le taxim\xE8tre et le scell\xE9 permettent de v\xE9rifier la conformit\xE9 des tarifs.",
     reference: "R\xE9glementation nationale taxi",
     difficulty: "difficile"
