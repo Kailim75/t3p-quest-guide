@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { ArrowLeft, BookOpen, ChevronRight, Lightbulb, GraduationCap } from 'lucide-react';
+import { ArrowLeft, BookOpen, ChevronRight, Lightbulb, GraduationCap, Search, X } from 'lucide-react';
 import { ModuleIcon } from '@/lib/moduleIcons';
 import { revisionDomainFor, useTargetExam } from '@/lib/targetExam';
+import { searchFiches, searchTerms, accentInsensitiveRegex } from '@/lib/ficheSearch';
 import Header from '@/components/Header';
 import { getAllRevisionModules, RevisionModule } from '@/data/revisionData';
 import RevisionCardContent from '@/components/revision/RevisionCardContent';
@@ -15,8 +16,30 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from '@/components/ui/badge';
 
+/** Surligne les termes recherchés dans un texte. */
+const HighlightedText = ({ text, terms }: { text: string; terms: string[] }) => {
+  if (terms.length === 0) return <>{text}</>;
+  const pattern = terms.map((t) => accentInsensitiveRegex(t).source).join('|');
+  const parts = text.split(new RegExp(`(${pattern})`, 'gi'));
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? (
+          <mark key={i} className="rounded bg-cta/25 px-0.5 text-foreground">
+            {part}
+          </mark>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+};
+
 const Revision = () => {
   const [selectedModule, setSelectedModule] = useState<RevisionModule | null>(null);
+  const [query, setQuery] = useState('');
+  const [openCard, setOpenCard] = useState<string | undefined>();
   const [searchParams] = useSearchParams();
   const [target] = useTargetExam();
   const domainFilter = revisionDomainFor(target);
@@ -34,6 +57,19 @@ const Revision = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Après un clic sur un résultat de recherche : fait défiler jusqu'à la fiche ouverte
+  useEffect(() => {
+    if (selectedModule && openCard) {
+      const timer = setTimeout(() => {
+        document.getElementById(`fiche-${openCard}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [selectedModule, openCard]);
+
+  const terms = searchTerms(query);
+  const searchResults = terms.length > 0 ? searchFiches(modules, query) : [];
 
   const domainColors = {
     commun: 'bg-primary/10 text-primary',
@@ -56,24 +92,34 @@ const Revision = () => {
         
         <main className="container mx-auto px-4 py-8">
           {/* Back link */}
-          <button 
-            onClick={() => setSelectedModule(null)}
+          <button
+            onClick={() => {
+              setSelectedModule(null);
+              setOpenCard(undefined);
+            }}
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6"
           >
             <ArrowLeft className="h-4 w-4" />
-            Retour aux modules
+            {terms.length > 0 ? 'Retour aux résultats' : 'Retour aux modules'}
           </button>
 
           {/* Module Header */}
           <ModuleHeader module={selectedModule} />
 
           {/* Fiches de cours */}
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion
+            type="single"
+            collapsible
+            value={openCard ?? ''}
+            onValueChange={(value) => setOpenCard(value || undefined)}
+            className="space-y-4"
+          >
             {selectedModule.cards.map((card, index) => (
-              <AccordionItem 
-                key={card.id} 
+              <AccordionItem
+                key={card.id}
                 value={card.id}
-                className="border rounded-xl bg-card overflow-hidden"
+                id={`fiche-${card.id}`}
+                className="border rounded-xl bg-card overflow-hidden scroll-mt-24"
               >
                 <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-secondary/50 data-[state=open]:bg-secondary/30">
                   <div className="flex items-center gap-4 text-left">
@@ -142,7 +188,67 @@ const Revision = () => {
           </p>
         </div>
 
-        {/* Modules Grid */}
+        {/* Recherche dans les fiches */}
+        <div className="relative max-w-xl mx-auto mb-10">
+          <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Rechercher dans les fiches : vignette, forfait CDG, chien guide…"
+            className="w-full rounded-2xl border-2 border-border bg-card py-3 pl-12 pr-11 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors"
+            aria-label="Rechercher dans les fiches de cours"
+          />
+          {query && (
+            <button
+              onClick={() => setQuery('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted-foreground hover:bg-secondary hover:text-foreground"
+              aria-label="Effacer la recherche"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
+        </div>
+
+        {/* Résultats de recherche */}
+        {terms.length > 0 ? (
+          <div className="max-w-3xl mx-auto">
+            <p className="mb-4 text-sm text-muted-foreground">
+              {searchResults.length === 0
+                ? 'Aucune fiche ne correspond à cette recherche'
+                : `${searchResults.length} fiche${searchResults.length > 1 ? 's' : ''} trouvée${searchResults.length > 1 ? 's' : ''}`}
+              {' '}pour « {query.trim()} »
+            </p>
+            <div className="space-y-3">
+              {searchResults.map(({ module, card, snippet }) => (
+                <button
+                  key={card.id}
+                  onClick={() => {
+                    setSelectedModule(module);
+                    setOpenCard(card.id);
+                  }}
+                  className="w-full text-left rounded-2xl border bg-card p-5 hover:border-primary/40 hover:shadow-soft transition-all group"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary">
+                      <ModuleIcon moduleId={module.moduleId} className="h-5 w-5 text-primary" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors truncate">
+                        <HighlightedText text={card.title} terms={terms} />
+                      </h3>
+                      <p className="text-xs text-muted-foreground">{module.moduleName}</p>
+                    </div>
+                    <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </div>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    <HighlightedText text={snippet} terms={terms} />
+                  </p>
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {modules.map((module) => (
             <button
@@ -178,6 +284,7 @@ const Revision = () => {
             </button>
           ))}
         </div>
+        )}
 
         {/* Info Banner */}
         <div className="mt-12 rounded-2xl border bg-cta/5 p-6 text-center">
