@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { getDueQuestionIds, recordAnswer } from '@/lib/spacedRepetition';
 import { ArrowLeft, ArrowRight, X, AlertCircle, RotateCcw, CheckCircle2, Target, BookOpen } from 'lucide-react';
 import Header from '@/components/Header';
 import QuizQuestion from '@/components/QuizQuestion';
@@ -19,6 +20,8 @@ interface Answer {
 
 const ErrorRevision = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const dueOnly = searchParams.get('mode') === 'due';
   const { user, loading: authLoading } = useAuth();
   const { stats, isLoading: resultsLoading } = useQuizResults();
   const { getByIds, isLoading: questionsLoading } = useQuizQuestions();
@@ -32,14 +35,17 @@ const ErrorRevision = () => {
 
   useEffect(() => {
     if (questionsLoading) return;
-    if (stats.failedQuestions.length > 0) {
-      const failedQuestions = getByIds(stats.failedQuestions);
+    // Mode « à réviser aujourd'hui » : uniquement les questions dont
+    // l'échéance de répétition espacée est atteinte ; sinon toutes les erreurs.
+    const ids = dueOnly ? getDueQuestionIds() : stats.failedQuestions;
+    if (ids.length > 0) {
+      const failedQuestions = getByIds(ids);
       // Shuffle for variety
       const shuffled = [...failedQuestions].sort(() => Math.random() - 0.5);
       setQuestions(shuffled);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stats.failedQuestions, questionsLoading]);
+  }, [stats.failedQuestions, questionsLoading, dueOnly]);
 
   if (authLoading || resultsLoading || questionsLoading) {
     return (
@@ -84,10 +90,12 @@ const ErrorRevision = () => {
           <div className="text-center py-16">
             <CheckCircle2 className="h-16 w-16 text-green-500 mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-foreground mb-2">
-              Aucune erreur à réviser !
+              {dueOnly ? "Rien à réviser aujourd'hui !" : 'Aucune erreur à réviser !'}
             </h1>
             <p className="text-muted-foreground mb-6">
-              Vous n'avez pas encore de questions ratées. Continuez vos quiz pour en accumuler.
+              {dueOnly
+                ? 'Aucune question programmée pour aujourd\'hui. Revenez demain, ou continuez vos quiz.'
+                : 'Vous n\'avez pas encore de questions ratées. Continuez vos quiz pour en accumuler.'}
             </p>
             <div className="flex gap-4 justify-center">
               <Button variant="outline" onClick={() => navigate('/progress')}>
@@ -106,6 +114,7 @@ const ErrorRevision = () => {
   const currentQuestion = questions[currentIndex];
 
   const handleAnswer = (selectedAnswers: AnswerLetter[], isCorrect: boolean) => {
+    recordAnswer(currentQuestion.id, isCorrect);
     setAnswers(prev => [
       ...prev.filter(a => a.questionId !== currentQuestion.id),
       { questionId: currentQuestion.id, answers: selectedAnswers, isCorrect }

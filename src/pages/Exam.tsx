@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { X, ChevronLeft, ChevronRight, Flag, CheckSquare } from 'lucide-react';
 import { ModuleIcon } from '@/lib/moduleIcons';
+import { recordAnswer } from '@/lib/spacedRepetition';
 import Header from '@/components/Header';
 import ExamTimer from '@/components/ExamTimer';
 import ExamResults from '@/components/ExamResults';
@@ -94,12 +95,38 @@ const Exam = () => {
     if (isLoading) return;
 
     const allQuestions = getByModules(config.modules);
+    const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5);
 
-    // Shuffle and take required number
-    const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
-    setQuestions(shuffled.slice(0, config.questionCount));
+    // Comme à l'examen réel : tirage ÉQUILIBRÉ entre les matières
+    // (ex. admissibilité : 10 questions par matière), complété au hasard
+    // si une matière manque de questions.
+    if (config.modules.length > 1) {
+      const perModule = Math.floor(config.questionCount / config.modules.length);
+      const picked: Question[] = [];
+      const leftover: Question[] = [];
+      for (const moduleId of config.modules) {
+        const moduleQuestions = shuffle(allQuestions.filter(q => q.moduleId === moduleId));
+        picked.push(...moduleQuestions.slice(0, perModule));
+        leftover.push(...moduleQuestions.slice(perModule));
+      }
+      const filler = shuffle(leftover).slice(0, config.questionCount - picked.length);
+      setQuestions(shuffle([...picked, ...filler]).slice(0, config.questionCount));
+    } else {
+      setQuestions(shuffle(allQuestions).slice(0, config.questionCount));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config, isLoading]);
+
+  // À la fin de l'examen, alimente la révision espacée :
+  // les questions ratées (ou non répondues) reviendront à J+1.
+  useEffect(() => {
+    if (!examComplete || questions.length === 0) return;
+    for (const question of questions) {
+      const answer = answers.find(a => a.questionId === question.id);
+      recordAnswer(question.id, answer?.isCorrect ?? false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [examComplete]);
 
   const handleStartExam = () => {
     setExamStarted(true);

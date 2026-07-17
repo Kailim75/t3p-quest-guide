@@ -1,13 +1,21 @@
 import { BookOpen, Target } from 'lucide-react';
 import Header from '@/components/Header';
 import ModuleCard from '@/components/ModuleCard';
+import ParcoursSelector from '@/components/ParcoursSelector';
 import { getCommonModules, getSpecificModules } from '@/data/quizData';
 import { useQuizQuestions } from '@/hooks/useQuizQuestions';
+import { specificModuleIdsFor, useTargetExam } from '@/lib/targetExam';
 
 const Modules = () => {
   const commonModules = getCommonModules();
   const specificModules = getSpecificModules();
   const { getByModule } = useQuizQuestions();
+
+  const [target] = useTargetExam();
+  const allowedSpecific = specificModuleIdsFor(target);
+  const shownSpecificModules = allowedSpecific
+    ? specificModules.filter((m) => allowedSpecific.includes(m.id))
+    : specificModules;
 
   return (
     <div className="min-h-screen bg-background">
@@ -17,9 +25,10 @@ const Modules = () => {
         {/* Page Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2">Modules de formation</h1>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground mb-4">
             Sélectionnez un module pour commencer votre entraînement
           </p>
+          <ParcoursSelector />
         </div>
 
         {/* Common Modules */}
@@ -58,7 +67,7 @@ const Modules = () => {
           </div>
           
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {specificModules.map((module) => (
+            {shownSpecificModules.map((module) => (
               <ModuleCard key={module.id} module={module} questionCount={getByModule(module.id).length} />
             ))}
           </div>

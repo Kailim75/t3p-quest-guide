@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Trophy, XCircle, Clock, Target, CheckCircle2, X, RotateCcw, Home, ChevronDown, ChevronUp } from 'lucide-react';
-import { parseCorrectAnswers, Question } from '@/data/quizData';
+import { Trophy, XCircle, Clock, Target, CheckCircle2, X, RotateCcw, Home, ChevronDown, ChevronUp, AlertTriangle } from 'lucide-react';
+import { parseCorrectAnswers, Question, getModuleById } from '@/data/quizData';
 import { ModuleIcon } from '@/lib/moduleIcons';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuizResults, QuizAnswer } from '@/hooks/useQuizResults';
@@ -56,6 +56,36 @@ const ExamResults = ({
   const correctCount = serverResult?.score ?? localCorrectCount;
   const score = serverResult?.percentage ?? localScore;
   const passed = serverResult?.passed ?? localPassed;
+
+  // Détail par matière, comme à l'examen réel. Les notes éliminatoires ne
+  // s'appliquent qu'à l'épreuve d'admissibilité : moins de 6/20 dans une
+  // matière (4/20 pour l'anglais) = recalé, même avec un bon score global.
+  const moduleBreakdown = useMemo(() => {
+    const byModule = new Map<string, { total: number; correct: number }>();
+    for (const question of questions) {
+      const entry = byModule.get(question.moduleId) ?? { total: 0, correct: 0 };
+      entry.total += 1;
+      if (answers.find(a => a.questionId === question.id)?.isCorrect) entry.correct += 1;
+      byModule.set(question.moduleId, entry);
+    }
+    return [...byModule.entries()].map(([moduleId, { total, correct }]) => {
+      const note20 = Math.round((correct / total) * 20 * 10) / 10;
+      const minimum = moduleId === 'anglais' ? 4 : 6;
+      return {
+        moduleId,
+        name: getModuleById(moduleId)?.name ?? moduleId,
+        total,
+        correct,
+        note20,
+        minimum,
+        eliminatory: examId === 'admissibilite' && note20 < minimum,
+      };
+    });
+  }, [questions, answers, examId]);
+
+  const eliminatoryModules = moduleBreakdown.filter(m => m.eliminatory);
+  // Verdict conforme au barème CMA : seuil global ET aucune note éliminatoire.
+  const finalPassed = passed && eliminatoryModules.length === 0;
   
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -137,30 +167,43 @@ const ExamResults = ({
     <div className="animate-fade-in">
       {/* Result Header */}
       <div className={`text-center p-8 rounded-2xl mb-8 ${
-        passed 
-          ? 'bg-gradient-to-br from-success/20 to-success/5 border border-success/30' 
+        finalPassed
+          ? 'bg-gradient-to-br from-success/20 to-success/5 border border-success/30'
           : 'bg-gradient-to-br from-destructive/20 to-destructive/5 border border-destructive/30'
       }`}>
         <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full mb-4 ${
-          passed ? 'bg-success/20' : 'bg-destructive/20'
+          finalPassed ? 'bg-success/20' : 'bg-destructive/20'
         }`}>
-          {passed ? (
+          {finalPassed ? (
             <Trophy className="h-10 w-10 text-success" />
           ) : (
             <XCircle className="h-10 w-10 text-destructive" />
           )}
         </div>
-        
+
         <h1 className="text-2xl font-bold text-foreground mb-2">
-          {passed ? 'Félicitations !' : 'Examen non validé'}
+          {finalPassed ? 'Félicitations !' : 'Examen non validé'}
         </h1>
-        
+
         <p className="text-muted-foreground mb-4">
-          {passed 
-            ? 'Vous avez réussi cet examen blanc !' 
-            : `Vous n'avez pas atteint le seuil de ${passingScore}% requis.`
+          {finalPassed
+            ? 'Vous avez réussi cet examen blanc !'
+            : passed && eliminatoryModules.length > 0
+              ? 'Score global suffisant, mais une note éliminatoire vous recale — comme à l\'examen réel.'
+              : `Vous n'avez pas atteint le seuil de ${passingScore}% requis.`
           }
         </p>
+
+        {eliminatoryModules.length > 0 && (
+          <div className="mx-auto mb-4 max-w-md rounded-lg bg-destructive/10 border border-destructive/20 p-3">
+            {eliminatoryModules.map((m) => (
+              <p key={m.moduleId} className="flex items-center justify-center gap-2 text-sm font-medium text-destructive">
+                <AlertTriangle className="h-4 w-4 shrink-0" />
+                Note éliminatoire : {m.name} {m.note20.toLocaleString('fr-FR')}/20 (minimum {m.minimum}/20)
+              </p>
+            ))}
+          </div>
+        )}
 
         <div className="flex items-center justify-center gap-2 text-lg">
           <ModuleIcon moduleId={examId} className="h-6 w-6 text-primary" />
@@ -172,7 +215,7 @@ const ExamResults = ({
       <div className="grid sm:grid-cols-2 gap-4 mb-8">
         <div className="rounded-xl bg-card border p-6 text-center">
           <div className={`text-5xl font-bold mb-2 ${
-            passed ? 'text-success' : 'text-destructive'
+            finalPassed ? 'text-success' : 'text-destructive'
           }`}>
             {score}%
           </div>
@@ -228,6 +271,48 @@ const ExamResults = ({
           </div>
         </div>
       </div>
+
+      {/* Détail par matière (épreuves multi-matières) */}
+      {moduleBreakdown.length > 1 && (
+        <div className="rounded-xl bg-card border p-6 mb-8">
+          <h2 className="font-semibold text-foreground mb-1">Détail par matière</h2>
+          <p className="text-xs text-muted-foreground mb-4">
+            {examId === 'admissibilite'
+              ? 'Comme à l\'examen réel : moins de 6/20 dans une matière (4/20 en anglais) est éliminatoire.'
+              : 'Répartition de vos résultats sur les matières de l\'épreuve.'}
+          </p>
+          <div className="space-y-2">
+            {moduleBreakdown.map((m) => (
+              <div
+                key={m.moduleId}
+                className={`flex items-center justify-between gap-3 rounded-lg p-3 ${
+                  m.eliminatory ? 'bg-destructive/10 border border-destructive/20' : 'bg-secondary/50'
+                }`}
+              >
+                <div className="flex min-w-0 items-center gap-3">
+                  <ModuleIcon moduleId={m.moduleId} className="h-5 w-5 shrink-0 text-primary" />
+                  <span className="truncate text-sm font-medium text-foreground">{m.name}</span>
+                </div>
+                <div className="flex shrink-0 items-center gap-3">
+                  <span className="text-xs text-muted-foreground">
+                    {m.correct}/{m.total}
+                  </span>
+                  <span className={`text-sm font-bold ${
+                    m.eliminatory ? 'text-destructive' : 'text-foreground'
+                  }`}>
+                    {m.note20.toLocaleString('fr-FR')}/20
+                  </span>
+                  {m.eliminatory ? (
+                    <AlertTriangle className="h-4 w-4 text-destructive" />
+                  ) : (
+                    <CheckCircle2 className="h-4 w-4 text-success" />
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Details Toggle */}
       <button

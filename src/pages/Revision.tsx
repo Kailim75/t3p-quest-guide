@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, BookOpen, ChevronRight, Lightbulb, GraduationCap } from 'lucide-react';
 import { ModuleIcon } from '@/lib/moduleIcons';
+import { revisionDomainFor, useTargetExam } from '@/lib/targetExam';
 import Header from '@/components/Header';
 import { getAllRevisionModules, RevisionModule } from '@/data/revisionData';
 import RevisionCardContent from '@/components/revision/RevisionCardContent';
@@ -17,7 +18,11 @@ import { Badge } from '@/components/ui/badge';
 const Revision = () => {
   const [selectedModule, setSelectedModule] = useState<RevisionModule | null>(null);
   const [searchParams] = useSearchParams();
-  const modules = getAllRevisionModules();
+  const [target] = useTargetExam();
+  const domainFilter = revisionDomainFor(target);
+  const modules = getAllRevisionModules().filter(
+    (m) => !domainFilter || m.domain === 'commun' || m.domain === domainFilter
+  );
 
   // Ouverture directe d'un module via /revision?module=<id>
   // (lien « Revoir les fiches » proposé après une erreur dans le quiz)
