@@ -35,7 +35,7 @@
       {
         "name": "get_module_questions",
         "title": "Get questions for a module",
-        "description": "Return official T3P quiz questions for a given module id (e.g. 'taxi', 'vtc', 'vmd', 'trans'). Question text, options and reference are returned; correct answers are not exposed.",
+        "description": "Return official T3P quiz questions for a given module id (e.g. 'taxi', 'vtc', 'vmdtr'). Questions are read from the database (single source of truth); correct answers are not exposed.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
