@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, PlayCircle, RotateCcw, X } from 'lucide-react';
+import { ModuleIcon } from '@/lib/moduleIcons';
 import Header from '@/components/Header';
 import QuizQuestion from '@/components/QuizQuestion';
 import QuizResults from '@/components/QuizResults';
@@ -104,7 +105,9 @@ const Quiz = () => {
       <div className="min-h-screen bg-background">
         <Header />
         <main className="container mx-auto px-4 py-16 max-w-lg text-center">
-          <span className="text-5xl block mb-4">{module.icon}</span>
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
+            <ModuleIcon moduleId={module.id} className="h-8 w-8 text-primary" />
+          </div>
           <h1 className="text-2xl font-bold text-foreground mb-2">Quiz en cours retrouvé</h1>
           <p className="text-muted-foreground mb-8">
             {module.name} — vous vous étiez arrêté à la question {resumePrompt.index + 1} sur {questions.length}
@@ -210,7 +213,7 @@ const Quiz = () => {
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-3">
-              <span className="text-xl">{module.icon}</span>
+              <ModuleIcon moduleId={module.id} className="h-5 w-5 text-primary" />
               <div className="hidden sm:block">
                 <h1 className="text-sm font-semibold text-foreground">{module.name}</h1>
                 <p className="text-xs text-muted-foreground">Mode entraînement</p>

@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, BookOpen, Play, ChevronRight } from 'lucide-react';
+import { ModuleIcon } from '@/lib/moduleIcons';
 import Header from '@/components/Header';
 import { getModuleById } from '@/data/quizData';
 import { useQuizQuestions } from '@/hooks/useQuizQuestions';
@@ -43,8 +44,8 @@ const ModuleDetail = () => {
         {/* Module Header */}
         <div className="rounded-2xl border bg-card p-6 sm:p-8 mb-8">
           <div className="flex flex-col sm:flex-row sm:items-start gap-6">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-secondary text-3xl">
-              {module.icon}
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-secondary">
+              <ModuleIcon moduleId={module.id} className="h-8 w-8 text-primary" />
             </div>
             
             <div className="flex-1">

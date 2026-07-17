@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpen, FileText, GraduationCap, Layers, BarChart3, PlayCircle, RotateCcw, TrendingUp } from 'lucide-react';
+import { ArrowRight, BookOpen, FileText, GraduationCap, Layers, BarChart3, PlayCircle, RotateCcw, TrendingUp, Target } from 'lucide-react';
+import { ModuleIcon } from '@/lib/moduleIcons';
 import Header from '@/components/Header';
 import { getCommonModules, getSpecificModules } from '@/data/quizData';
 import { useQuizQuestions } from '@/hooks/useQuizQuestions';
@@ -224,7 +225,7 @@ const Index = () => {
             <div className="rounded-2xl border bg-card p-6">
               <div className="flex items-center gap-3 mb-5">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  📚
+                  <BookOpen className="h-5 w-5" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground">Modules communs</h3>
@@ -239,10 +240,14 @@ const Index = () => {
                     className="flex items-center gap-3 rounded-lg p-3 hover:bg-secondary transition-colors"
                   >
                     <span
-                      className="flex h-9 w-9 items-center justify-center rounded-lg text-lg"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg"
                       style={{ backgroundColor: `hsl(var(--${module.color}) / 0.12)` }}
                     >
-                      {module.icon}
+                      <ModuleIcon
+                        moduleId={module.id}
+                        className="h-5 w-5"
+                        style={{ color: `hsl(var(--${module.color}))` }}
+                      />
                     </span>
                     <span className="flex-1 font-medium text-foreground">{module.name}</span>
                     <ArrowRight className="h-4 w-4 text-muted-foreground" />
@@ -255,7 +260,7 @@ const Index = () => {
             <div className="rounded-2xl border bg-card p-6">
               <div className="flex items-center gap-3 mb-5">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cta/10 text-cta">
-                  🎯
+                  <Target className="h-5 w-5" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground">Modules spécifiques</h3>
@@ -270,10 +275,14 @@ const Index = () => {
                     className="flex items-center gap-3 rounded-lg p-3 hover:bg-secondary transition-colors"
                   >
                     <span
-                      className="flex h-9 w-9 items-center justify-center rounded-lg text-lg"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg"
                       style={{ backgroundColor: `hsl(var(--${module.color}) / 0.12)` }}
                     >
-                      {module.icon}
+                      <ModuleIcon
+                        moduleId={module.id}
+                        className="h-5 w-5"
+                        style={{ color: `hsl(var(--${module.color}))` }}
+                      />
                     </span>
                     <span className="flex-1 font-medium text-foreground">{module.name}</span>
                     <ArrowRight className="h-4 w-4 text-muted-foreground" />

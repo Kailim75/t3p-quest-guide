@@ -23,12 +23,12 @@ export default defineConfig(({ mode }) => ({
       devOptions: {
         enabled: false,
       },
-      includeAssets: ["favicon.ico", "robots.txt"],
+      includeAssets: ["favicon.ico", "favicon.svg", "apple-touch-icon.png", "robots.txt"],
       manifest: {
         name: "Quiz T3P - Préparation Examen",
         short_name: "Quiz T3P",
         description: "Application de préparation à l'examen T3P pour Taxi, VTC et VMDTR",
-        theme_color: "#1e3a5f",
+        theme_color: "#1f472e",
         background_color: "#f8fafc",
         display: "standalone",
         orientation: "portrait",
@@ -46,10 +46,10 @@ export default defineConfig(({ mode }) => ({
             type: "image/png",
           },
           {
-            src: "/pwa-512x512.png",
+            src: "/pwa-512x512-maskable.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "any maskable",
+            purpose: "maskable",
           },
         ],
       },

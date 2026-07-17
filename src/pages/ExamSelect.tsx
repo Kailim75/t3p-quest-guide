@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Clock, FileText, Award, AlertCircle, CheckCircle2 } from 'lucide-react';
 import Header from '@/components/Header';
+import { ModuleIcon } from '@/lib/moduleIcons';
 
 interface ExamType {
   id: string;
@@ -9,7 +10,6 @@ interface ExamType {
   duration: number; // in minutes
   questionCount: number;
   passingScore: number; // percentage
-  icon: string;
   modules: string[];
 }
 
@@ -21,7 +21,6 @@ const examTypes: ExamType[] = [
     duration: 90, // 1h30
     questionCount: 50,
     passingScore: 70, // 35/50
-    icon: '📝',
     modules: ['reglementation', 'securite', 'gestion', 'francais', 'anglais']
   },
   {
@@ -31,7 +30,6 @@ const examTypes: ExamType[] = [
     duration: 30,
     questionCount: 20,
     passingScore: 70, // 14/20
-    icon: '🚕',
     modules: ['taxi', 'taxi-national', 'taxi-territoire']
   },
 
@@ -42,7 +40,6 @@ const examTypes: ExamType[] = [
     duration: 30,
     questionCount: 20,
     passingScore: 70, // 14/20
-    icon: '🚗',
     modules: ['vtc']
   },
   {
@@ -52,7 +49,6 @@ const examTypes: ExamType[] = [
     duration: 30,
     questionCount: 20,
     passingScore: 70, // 14/20
-    icon: '🏍️',
     modules: ['vmdtr']
   }
 ];
@@ -100,7 +96,9 @@ const ExamSelect = () => {
             >
               <div className="rounded-2xl border bg-card p-6 transition-all hover:border-primary/50 hover:shadow-lg">
                 <div className="flex items-start gap-4">
-                  <span className="text-4xl">{exam.icon}</span>
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                    <ModuleIcon moduleId={exam.id} className="h-7 w-7 text-primary" />
+                  </div>
                   
                   <div className="flex-1 min-w-0">
                     <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-1">

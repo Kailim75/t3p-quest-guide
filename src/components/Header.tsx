@@ -15,6 +15,7 @@ import {
 import AuthModal from '@/components/AuthModal';
 import BottomNav from '@/components/BottomNav';
 import ThemeToggle from '@/components/ThemeToggle';
+import Logo from '@/components/Logo';
 
 const Header = () => {
   const location = useLocation();
@@ -39,9 +40,7 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-xl">
-              🚕
-            </div>
+            <Logo className="h-10 w-10 shrink-0 drop-shadow-sm" />
             <div>
               <h1 className="text-lg font-bold text-foreground leading-tight">Quiz T3P</h1>
               <p className="text-xs text-muted-foreground">

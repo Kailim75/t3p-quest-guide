@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2 } from "lucide-react";
+import { Loader2, ShieldCheck } from "lucide-react";
 
 // Beta typed wrapper around supabase.auth.oauth
 type OauthApi = {
@@ -152,7 +152,9 @@ export default function OAuthConsent() {
     <main className="min-h-screen flex items-center justify-center p-6 bg-background">
       <div className="w-full max-w-md space-y-6 border rounded-xl p-6 shadow-sm bg-card">
         <div className="text-center space-y-2">
-          <div className="text-4xl">🔐</div>
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+            <ShieldCheck className="h-7 w-7 text-primary" />
+          </div>
           <h1 className="text-xl font-bold">Autoriser {clientName}</h1>
           <p className="text-sm text-muted-foreground">
             {clientName} demande à accéder à votre compte T3P Quest en votre nom.

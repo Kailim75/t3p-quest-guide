@@ -6,16 +6,20 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { 
-  RotateCcw, 
-  Shuffle, 
+  RotateCcw,
+  Shuffle,
   BookOpen,
   ChevronLeft,
   Check,
   X,
   Layers,
-  AlertTriangle
+  AlertTriangle,
+  Star,
+  Pin,
+  Lightbulb
 } from 'lucide-react';
 import { revisionModules, RevisionCard } from '@/data/revisionData';
+import { ModuleIcon } from '@/lib/moduleIcons';
 
 interface FlashcardData {
   id: string;
@@ -174,7 +178,9 @@ const Flashcards = () => {
               className="w-full p-4 rounded-xl border-2 border-primary/30 bg-primary/5 hover:bg-primary/10 transition-colors text-left"
             >
               <div className="flex items-center gap-4">
-                <span className="text-3xl">📚</span>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                  <Layers className="h-6 w-6 text-primary" />
+                </div>
                 <div>
                   <h3 className="font-semibold text-foreground">Tous les modules</h3>
                   <p className="text-sm text-muted-foreground">
@@ -194,7 +200,9 @@ const Flashcards = () => {
                   className="w-full p-4 rounded-xl border bg-card hover:bg-muted/50 transition-colors text-left"
                 >
                   <div className="flex items-center gap-4">
-                    <span className="text-3xl">{module.moduleIcon}</span>
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary">
+                      <ModuleIcon moduleId={module.moduleId} className="h-6 w-6 text-primary" />
+                    </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="font-semibold text-foreground">{module.moduleName}</h3>
@@ -313,8 +321,12 @@ const Flashcards = () => {
         <div className="mb-6">
           <Progress value={progress} className="h-2" />
           <div className="flex justify-between mt-2 text-xs text-muted-foreground">
-            <span>✅ {knownCards.size} su{knownCards.size > 1 ? 's' : ''}</span>
-            <span>❌ {unknownCards.size} à revoir</span>
+            <span className="flex items-center gap-1">
+              <Check className="h-4 w-4 text-success" /> {knownCards.size} su{knownCards.size > 1 ? 's' : ''}
+            </span>
+            <span className="flex items-center gap-1">
+              <X className="h-4 w-4 text-destructive" /> {unknownCards.size} à revoir
+            </span>
           </div>
         </div>
 
@@ -336,7 +348,9 @@ const Flashcards = () => {
                   {!isFlipped ? (
                     // Question side
                     <div className="text-center">
-                      <span className="text-4xl mb-4 block">{currentCard?.moduleIcon}</span>
+                      <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+                        <ModuleIcon moduleId={currentCard?.moduleId ?? ''} className="h-7 w-7 text-primary" />
+                      </div>
                       <h2 className="text-xl font-bold text-foreground mb-4">
                         {currentCard?.question}
                       </h2>
@@ -349,13 +363,17 @@ const Flashcards = () => {
                     <div className="space-y-4">
                       {/* L'essentiel */}
                       <div className="rounded-lg bg-primary/10 p-3">
-                        <p className="text-sm font-medium text-primary">⭐ L'essentiel</p>
+                        <p className="flex items-center gap-1.5 text-sm font-medium text-primary">
+                          <Star className="h-3.5 w-3.5" /> L'essentiel
+                        </p>
                         <p className="text-sm text-foreground mt-1">{currentCard?.essential}</p>
                       </div>
 
                       {/* Points clés (max 3) */}
                       <div>
-                        <p className="text-xs font-medium text-muted-foreground mb-2">📌 Points clés</p>
+                        <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground mb-2">
+                          <Pin className="h-3 w-3" /> Points clés
+                        </p>
                         <ul className="space-y-1">
                           {currentCard?.keyPoints.slice(0, 3).map((point, idx) => (
                             <li key={idx} className="flex items-start gap-2 text-xs">
@@ -378,8 +396,9 @@ const Flashcards = () => {
 
                       {/* Astuce (1 seule) */}
                       {currentCard?.tips && currentCard.tips.length > 0 && (
-                        <p className="text-xs text-muted-foreground">
-                          💡 {currentCard.tips[0]}
+                        <p className="flex items-start gap-1.5 text-xs text-muted-foreground">
+                          <Lightbulb className="h-3.5 w-3.5 shrink-0 text-cta" />
+                          <span>{currentCard.tips[0]}</span>
                         </p>
                       )}
                     </div>

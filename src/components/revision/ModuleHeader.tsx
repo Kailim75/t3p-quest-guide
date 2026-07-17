@@ -1,5 +1,7 @@
+import { Target } from 'lucide-react';
 import { RevisionModule } from '@/data/revisionData';
 import { Badge } from '@/components/ui/badge';
+import { ModuleIcon } from '@/lib/moduleIcons';
 
 interface ModuleHeaderProps {
   module: RevisionModule;
@@ -23,8 +25,8 @@ const ModuleHeader = ({ module }: ModuleHeaderProps) => {
   return (
     <div className="rounded-2xl border bg-card p-6 sm:p-8 mb-8">
       <div className="flex items-start gap-4">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-2xl">
-          {module.moduleIcon}
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+          <ModuleIcon moduleId={module.moduleId} className="h-7 w-7 text-primary" />
         </div>
         
         <div className="flex-1">
@@ -39,8 +41,9 @@ const ModuleHeader = ({ module }: ModuleHeaderProps) => {
           
           {/* Objectif examen */}
           <div className="rounded-lg bg-primary/5 border border-primary/10 p-3 mb-3">
-            <p className="text-sm font-medium text-primary">
-              🎯 {module.examObjective}
+            <p className="flex items-start gap-2 text-sm font-medium text-primary">
+              <Target className="h-4 w-4 shrink-0 mt-0.5" />
+              <span>{module.examObjective}</span>
             </p>
           </div>
           

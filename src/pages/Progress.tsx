@@ -160,11 +160,18 @@ const ProgressPage = () => {
                   value={Math.min(stats.averageScore, 100)} 
                   className="h-3"
                 />
-                <p className="text-xs text-muted-foreground mt-2">
-                  {stats.averageScore >= 70 
-                    ? '✅ Vous êtes au-dessus du seuil de réussite de l\'examen !'
-                    : `📈 Encore ${70 - stats.averageScore}% pour atteindre le seuil de réussite.`
-                  }
+                <p className="flex items-center gap-1.5 text-xs text-muted-foreground mt-2">
+                  {stats.averageScore >= 70 ? (
+                    <>
+                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-green-500" />
+                      Vous êtes au-dessus du seuil de réussite de l'examen !
+                    </>
+                  ) : (
+                    <>
+                      <TrendingUp className="h-3.5 w-3.5 shrink-0 text-yellow-500" />
+                      Encore {70 - stats.averageScore}% pour atteindre le seuil de réussite.
+                    </>
+                  )}
                 </p>
               </div>
             </CardContent>
@@ -205,8 +212,13 @@ const ProgressPage = () => {
                         <XCircle className="h-5 w-5 text-red-500" />
                       )}
                       <div>
-                        <p className="font-medium text-sm">
-                          {result.quiz_type === 'exam' ? '🎓 Examen' : '📚 Quiz'}: {result.quiz_id}
+                        <p className="flex items-center gap-1.5 font-medium text-sm">
+                          {result.quiz_type === 'exam' ? (
+                            <GraduationCap className="h-4 w-4 shrink-0 text-muted-foreground" />
+                          ) : (
+                            <BookOpen className="h-4 w-4 shrink-0 text-muted-foreground" />
+                          )}
+                          {result.quiz_type === 'exam' ? 'Examen' : 'Quiz'} : {result.quiz_id}
                         </p>
                         <p className="text-xs text-muted-foreground">
                           {format(new Date(result.created_at), 'dd MMM yyyy à HH:mm', { locale: fr })}

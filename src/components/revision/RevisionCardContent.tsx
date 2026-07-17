@@ -1,4 +1,4 @@
-import { BookOpen, Lightbulb, FileText, AlertTriangle, Car, Brain, ScrollText, ClipboardCheck } from 'lucide-react';
+import { BookOpen, Lightbulb, FileText, AlertTriangle, Car, Brain, ScrollText, ClipboardCheck, Star, X } from 'lucide-react';
 import { RevisionCard } from '@/data/revisionData';
 
 interface RevisionCardContentProps {
@@ -11,7 +11,9 @@ const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
       {/* ⭐ L'essentiel à retenir */}
       <div className="rounded-xl bg-primary/10 border border-primary/20 p-4">
         <div className="flex items-start gap-3">
-          <span className="text-2xl">⭐</span>
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/15">
+            <Star className="h-5 w-5 text-primary" />
+          </span>
           <div>
             <h4 className="font-bold text-primary text-sm mb-1">L'essentiel</h4>
             <p className="text-foreground font-medium">{card.essential}</p>
@@ -118,7 +120,7 @@ const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
           <ul className="space-y-1">
             {card.confusionPoints.map((point, idx) => (
               <li key={idx} className="flex items-start gap-2 text-sm">
-                <span className="text-warning">❌</span>
+                <X className="h-4 w-4 shrink-0 text-warning mt-0.5" />
                 <span className="text-foreground">{point}</span>
               </li>
             ))}
@@ -136,7 +138,7 @@ const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
           <ul className="space-y-1">
             {card.tips.map((tip, idx) => (
               <li key={idx} className="flex items-start gap-2 text-sm">
-                <span className="text-cta">💡</span>
+                <Lightbulb className="h-4 w-4 shrink-0 text-cta mt-0.5" />
                 <span className="text-foreground">{tip}</span>
               </li>
             ))}

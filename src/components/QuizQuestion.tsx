@@ -285,7 +285,9 @@ const QuizQuestion = ({
 
               {/* Référence officielle */}
               <div className="flex flex-wrap items-center gap-2 pt-2 border-t text-xs text-muted-foreground">
-                <span className="rounded bg-muted px-2 py-1">📖 {question.reference}</span>
+                <span className="flex items-center gap-1 rounded bg-muted px-2 py-1">
+                  <BookOpen className="h-3 w-3" /> {question.reference}
+                </span>
                 {courseInfo.legalRef && (
                   <span className="rounded bg-primary/10 text-primary px-2 py-1 font-medium">
                     ⚖️ {courseInfo.legalRef}

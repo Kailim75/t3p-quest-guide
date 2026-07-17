@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { BookOpen, ArrowRight, Trophy } from 'lucide-react';
+import { ModuleIcon } from '@/lib/moduleIcons';
 import Header from '@/components/Header';
 import { modules } from '@/data/quizData';
 
@@ -48,7 +49,9 @@ const Results = () => {
                 to={`/module/${module.id}`}
                 className="flex items-center gap-4 rounded-xl border bg-card p-4 hover:shadow-soft transition-shadow"
               >
-                <span className="text-2xl">{module.icon}</span>
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary">
+                  <ModuleIcon moduleId={module.id} className="h-6 w-6 text-primary" />
+                </span>
                 <div className="flex-1">
                   <h3 className="font-medium text-foreground">{module.name}</h3>
                   <p className="text-sm text-muted-foreground">

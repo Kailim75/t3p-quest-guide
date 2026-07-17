@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import AuthModal from '@/components/AuthModal';
+import Logo from '@/components/Logo';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -65,9 +66,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     return (
       <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
         <div className="text-center max-w-md">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
-            <span className="text-3xl">🔐</span>
-          </div>
+          <Logo className="mx-auto mb-6 h-16 w-16 drop-shadow" />
           <h1 className="text-2xl font-bold text-foreground mb-3">
             Connexion requise
           </h1>
