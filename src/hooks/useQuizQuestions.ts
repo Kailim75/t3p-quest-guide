@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
-import { Question, AnswerLetter, getAllQuestions } from '@/data/quizData';
+import { Question, AnswerLetter } from '@/data/quizData';
 
 interface DbQuestionRow {
   id: string;
@@ -36,10 +36,10 @@ const mapDbQuestion = (q: DbQuestionRow): Question => ({
 });
 
 /**
- * Questions servies aux élèves : la base de données fait foi
- * (gérée depuis l'écran Administration). Si la base est vide ou
- * inaccessible, repli sur le fichier statique embarqué pour que
- * l'application continue de fonctionner.
+ * Questions servies aux élèves : la base de données est l'unique source
+ * (gérée depuis l'écran Administration). Le barème serveur lit la même
+ * table : toute modification dans l'admin est immédiatement effective
+ * partout, sans fichier à resynchroniser.
  */
 export const useQuizQuestions = () => {
   const { user } = useAuth();
@@ -54,18 +54,17 @@ export const useQuizQuestions = () => {
     enabled: !!user,
     staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
+    retry: 2,
   });
 
-  const dbQuestions = query.data;
-  const usingDb = !!dbQuestions && dbQuestions.length > 0;
-  const questions: Question[] = usingDb ? dbQuestions : getAllQuestions();
+  const questions: Question[] = query.data ?? [];
 
   return {
     questions,
     /** true tant que la réponse de la base n'est pas connue (utilisateur connecté uniquement) */
     isLoading: query.isLoading,
-    /** 'db' si la base répond, 'static' en repli */
-    source: usingDb ? ('db' as const) : ('static' as const),
+    /** true si la base est inaccessible (les écrans affichent leur état vide) */
+    isError: query.isError,
     getByModule: (moduleId: string) => questions.filter(q => q.moduleId === moduleId),
     getByModules: (moduleIds: string[]) => questions.filter(q => moduleIds.includes(q.moduleId)),
     getByIds: (ids: string[]) => questions.filter(q => ids.includes(q.id)),

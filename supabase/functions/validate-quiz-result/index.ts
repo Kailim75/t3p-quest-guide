@@ -1,11 +1,33 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3'
-import {
-  correctAnswers,
-  examQuestionCounts,
-  questionModules,
-  quizModuleIds,
-  validQuizIds,
-} from './correctAnswers.ts'
+
+// La base de données (table `questions`) est l'unique source des corrigés :
+// les clés de correction sont lues à chaque validation, si bien que toute
+// modification faite dans l'écran Administration est immédiatement effective.
+// Seule la STRUCTURE des quiz/examens reste définie ici.
+
+const moduleQuizIds = [
+  'reglementation',
+  'securite',
+  'gestion',
+  'francais',
+  'anglais',
+  'taxi',
+  'vtc',
+  'vmdtr',
+  'taxi-national',
+  'taxi-territoire',
+  'relation-client',
+]
+
+const examConfigs: Record<string, { count: number; modules: string[] }> = {
+  admissibilite: { count: 50, modules: ['reglementation', 'securite', 'gestion', 'francais', 'anglais'] },
+  'admission-taxi': { count: 20, modules: ['taxi', 'taxi-national', 'taxi-territoire'] },
+  'admission-vtc': { count: 20, modules: ['vtc'] },
+  'admission-vmdtr': { count: 20, modules: ['vmdtr'] },
+}
+
+// Défi du jour : 5 questions quotidiennes, tous modules confondus (quiz_type 'module')
+const DAILY_CHALLENGE_PATTERN = /^defi-\d{4}-\d{2}-\d{2}$/
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -86,15 +108,23 @@ Deno.serve(async (req) => {
     }
 
     // Validate quiz_id
-    if (!body.quiz_id || !validQuizIds.includes(body.quiz_id)) {
+    const isExamQuiz = Object.prototype.hasOwnProperty.call(examConfigs, body.quiz_id);
+    const isModuleQuiz = moduleQuizIds.includes(body.quiz_id);
+    const isDailyChallenge = DAILY_CHALLENGE_PATTERN.test(body.quiz_id);
+
+    if (!body.quiz_id || (!isExamQuiz && !isModuleQuiz && !isDailyChallenge)) {
       return new Response(
         JSON.stringify({ error: 'Invalid quiz_id' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    const allowedModules = quizModuleIds[body.quiz_id];
-    const isExamQuiz = Object.prototype.hasOwnProperty.call(examQuestionCounts, body.quiz_id);
+    // Modules autorisés pour ce quiz (null = tous, cas du défi du jour)
+    const allowedModules: string[] | null = isExamQuiz
+      ? examConfigs[body.quiz_id].modules
+      : isModuleQuiz
+        ? [body.quiz_id]
+        : null;
 
     if ((body.quiz_type === 'exam') !== isExamQuiz) {
       return new Response(
@@ -146,7 +176,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    const expectedExamQuestionCount = examQuestionCounts[body.quiz_id];
+    const expectedExamQuestionCount = isExamQuiz ? examConfigs[body.quiz_id].count : undefined;
     if (expectedExamQuestionCount && questionIds.length !== expectedExamQuestionCount) {
       return new Response(
         JSON.stringify({ error: `Invalid question count for this exam. Expected ${expectedExamQuestionCount}.` }),
@@ -170,16 +200,36 @@ Deno.serve(async (req) => {
         );
       }
       questionIdSet.add(questionId);
+    }
 
-      if (!correctAnswers[questionId]) {
+    // Lecture des corrigés dans la base : l'unique source de vérité.
+    const { data: questionRows, error: questionsError } = await supabase
+      .from('questions')
+      .select('id, correct_answer, module_id')
+      .in('id', questionIds);
+
+    if (questionsError) {
+      console.error('Questions lookup error:', questionsError);
+      return new Response(
+        JSON.stringify({ error: 'Failed to load questions for validation' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const questionData = new Map<string, { correct_answer: string; module_id: string }>(
+      (questionRows ?? []).map((row) => [row.id, { correct_answer: row.correct_answer, module_id: row.module_id }])
+    );
+
+    for (const questionId of questionIds) {
+      const question = questionData.get(questionId);
+      if (!question || !question.correct_answer) {
         return new Response(
           JSON.stringify({ error: `Unknown question ID: ${questionId}` }),
           { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
 
-      const questionModule = questionModules[questionId];
-      if (!questionModule || !allowedModules.includes(questionModule)) {
+      if (allowedModules && !allowedModules.includes(question.module_id)) {
         return new Response(
           JSON.stringify({ error: `Question ${questionId} does not belong to quiz ${body.quiz_id}` }),
           { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -248,7 +298,7 @@ Deno.serve(async (req) => {
         continue;
       }
 
-      const correctAnswer = correctAnswers[questionId];
+      const correctAnswer = questionData.get(questionId)!.correct_answer;
       // Check if answer is correct (SERVER-SIDE VALIDATION)
       // Supports both single answers ('A') and multiple answers ('A,B')
       if (areAnswersEqual(userAnswer, correctAnswer)) {
