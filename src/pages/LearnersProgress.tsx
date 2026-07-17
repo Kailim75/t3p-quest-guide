@@ -27,10 +27,16 @@ import {
   CheckCircle,
   XCircle,
   Activity,
+  AlertTriangle,
+  Moon,
+  Download,
 } from 'lucide-react';
-import { format } from 'date-fns';
+import { format, differenceInCalendarDays } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { useState } from 'react';
+import { ModuleIcon } from '@/lib/moduleIcons';
+import { getModuleById } from '@/data/quizData';
+import { useQuizQuestions } from '@/hooks/useQuizQuestions';
 import {
   Dialog,
   DialogContent,
@@ -40,12 +46,70 @@ import {
 } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
+const INACTIVITY_DAYS = 7;
+
+/** Libellé lisible d'un « seau » de résultats (module, examen blanc ou défi). */
+const bucketLabel = (bucketId: string, isExam: boolean): string => {
+  if (bucketId === 'defi') return 'Défi du jour';
+  const examNames: Record<string, string> = {
+    admissibilite: 'Examen blanc — Admissibilité',
+    'admission-taxi': 'Examen blanc — Taxi',
+    'admission-vtc': 'Examen blanc — VTC',
+    'admission-vmdtr': 'Examen blanc — VMDTR',
+  };
+  if (isExam || examNames[bucketId]) return examNames[bucketId] ?? bucketId;
+  return getModuleById(bucketId)?.name ?? bucketId;
+};
+
+/** Nombre de jours sans activité (null = jamais actif). */
+const daysInactive = (lastActivity: string | null): number | null =>
+  lastActivity ? differenceInCalendarDays(new Date(), new Date(lastActivity)) : null;
+
 const LearnersProgressPage = () => {
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
   const { isAdmin, isCheckingAdmin: adminLoading } = useAdmin();
-  const { learnersStats, globalStats, allResults, profiles, isLoading } = useLearnersProgress();
+  const { learnersStats, globalStats, hardestQuestions, moduleAverages, allResults, profiles, isLoading } = useLearnersProgress();
+  const { getByIds } = useQuizQuestions();
   const [selectedLearner, setSelectedLearner] = useState<LearnerStats | null>(null);
+  const [showInactiveOnly, setShowInactiveOnly] = useState(false);
+
+  const isInactive = (learner: LearnerStats) => {
+    const days = daysInactive(learner.lastActivity);
+    return days === null || days >= INACTIVITY_DAYS;
+  };
+  const inactiveCount = learnersStats.filter(isInactive).length;
+  const shownLearners = showInactiveOnly ? learnersStats.filter(isInactive) : learnersStats;
+
+  const hardestQuestionDetails = hardestQuestions.map((h) => ({
+    ...h,
+    question: getByIds([h.questionId])[0],
+  }));
+
+  const exportCsv = () => {
+    const header = ['Apprenant', 'Email', 'Quiz', 'Examens', 'Score moyen (%)', 'Réussite (%)', 'Série', 'Badges', 'Dernière activité'];
+    const rows = learnersStats.map((l) => [
+      l.profile.display_name ?? 'Sans nom',
+      l.profile.email ?? '',
+      l.totalQuizzes,
+      l.totalExams,
+      l.averageScore,
+      l.passRate,
+      l.currentStreak,
+      l.badgesCount,
+      l.lastActivity ? format(new Date(l.lastActivity), 'dd/MM/yyyy HH:mm') : 'jamais',
+    ]);
+    const csv = [header, ...rows]
+      .map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(';'))
+      .join('\n');
+    const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `suivi-apprenants-${format(new Date(), 'yyyy-MM-dd')}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
 
   if (authLoading || adminLoading) {
     return (
@@ -115,7 +179,7 @@ const LearnersProgressPage = () => {
         ) : (
           <>
             {/* Global Stats */}
-            <div className="grid gap-4 md:grid-cols-5 mb-8">
+            <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-6 mb-8">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Apprenants</CardTitle>
@@ -176,23 +240,141 @@ const LearnersProgressPage = () => {
                   <p className="text-xs text-muted-foreground">quiz par apprenant</p>
                 </CardContent>
               </Card>
+
+              <Card className={inactiveCount > 0 ? 'border-warning/40' : ''}>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Inactifs {INACTIVITY_DAYS} j+</CardTitle>
+                  <Moon className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">{inactiveCount}</div>
+                  <p className="text-xs text-muted-foreground">à relancer</p>
+                </CardContent>
+              </Card>
             </div>
 
             {/* Charts Section */}
             <LearnersCharts allResults={allResults} profiles={profiles} />
 
+            {/* Analyse pédagogique : questions ratées et modules faibles */}
+            <div className="grid gap-6 lg:grid-cols-2 mb-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <AlertTriangle className="h-5 w-5 text-warning" />
+                    Questions les plus ratées de la promo
+                  </CardTitle>
+                  <CardDescription>
+                    À cibler en cours — une question ratée par presque tout le monde peut aussi être mal rédigée
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {hardestQuestionDetails.length === 0 ? (
+                    <p className="text-sm text-muted-foreground py-4 text-center">
+                      Pas encore assez de résultats pour dégager une tendance
+                    </p>
+                  ) : (
+                    <ol className="space-y-3">
+                      {hardestQuestionDetails.map((h, idx) => (
+                        <li key={h.questionId} className="flex items-start gap-3">
+                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-warning/10 text-xs font-bold text-warning mt-0.5">
+                            {idx + 1}
+                          </span>
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm text-foreground line-clamp-2">
+                              {h.question?.text ?? h.questionId}
+                            </p>
+                            <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                              {h.question && (
+                                <span className="flex items-center gap-1">
+                                  <ModuleIcon moduleId={h.question.moduleId} className="h-3.5 w-3.5" />
+                                  {getModuleById(h.question.moduleId)?.name ?? h.question.moduleId}
+                                </span>
+                              )}
+                              <span className="font-medium text-warning">
+                                {h.studentCount} élève{h.studentCount > 1 ? 's' : ''} · {h.occurrences} échec{h.occurrences > 1 ? 's' : ''}
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                  )}
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <TrendingUp className="h-5 w-5 text-primary" />
+                    Modules à retravailler
+                  </CardTitle>
+                  <CardDescription>
+                    Score moyen de la promo par module, du plus faible au plus fort
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {moduleAverages.length === 0 ? (
+                    <p className="text-sm text-muted-foreground py-4 text-center">
+                      Pas encore de résultats enregistrés
+                    </p>
+                  ) : (
+                    <div className="space-y-3">
+                      {moduleAverages.map((m) => (
+                        <div key={m.bucketId}>
+                          <div className="mb-1 flex items-center justify-between gap-2 text-sm">
+                            <span className="flex min-w-0 items-center gap-2 font-medium text-foreground">
+                              <ModuleIcon moduleId={m.bucketId} className="h-4 w-4 shrink-0 text-primary" />
+                              <span className="truncate">{bucketLabel(m.bucketId, m.isExam)}</span>
+                            </span>
+                            <span className="shrink-0 text-xs text-muted-foreground">
+                              <span className={`font-bold ${m.averageScore < 70 ? 'text-destructive' : 'text-success'}`}>
+                                {m.averageScore}%
+                              </span>
+                              {' '}· {m.attempts} session{m.attempts > 1 ? 's' : ''}
+                            </span>
+                          </div>
+                          <Progress value={m.averageScore} className="h-2" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+
             {/* Learners Table */}
             <Card>
               <CardHeader>
-                <CardTitle>Liste des apprenants</CardTitle>
-                <CardDescription>
-                  Cliquez sur un apprenant pour voir ses détails
-                </CardDescription>
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <CardTitle>Liste des apprenants</CardTitle>
+                    <CardDescription>
+                      Cliquez sur un apprenant pour voir ses détails
+                    </CardDescription>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Button
+                      variant={showInactiveOnly ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => setShowInactiveOnly(!showInactiveOnly)}
+                    >
+                      <Moon className="h-4 w-4 mr-1.5" />
+                      Inactifs {INACTIVITY_DAYS} j+ ({inactiveCount})
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={exportCsv}>
+                      <Download className="h-4 w-4 mr-1.5" />
+                      Exporter (CSV)
+                    </Button>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent>
-                {learnersStats.length === 0 ? (
+                {shownLearners.length === 0 ? (
                   <div className="text-center py-8 text-muted-foreground">
-                    Aucun apprenant inscrit pour le moment
+                    {showInactiveOnly
+                      ? `Aucun apprenant inactif depuis ${INACTIVITY_DAYS} jours — tout le monde travaille !`
+                      : 'Aucun apprenant inscrit pour le moment'}
                   </div>
                 ) : (
                   <Table>
@@ -209,7 +391,7 @@ const LearnersProgressPage = () => {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {learnersStats.map((learner) => (
+                      {shownLearners.map((learner) => (
                         <TableRow 
                           key={learner.userId}
                           className="cursor-pointer hover:bg-muted/50"
@@ -260,11 +442,19 @@ const LearnersProgressPage = () => {
                           </TableCell>
                           <TableCell>
                             {learner.lastActivity ? (
-                              <span className="text-sm text-muted-foreground">
+                              <span className="flex items-center gap-2 text-sm text-muted-foreground">
                                 {format(new Date(learner.lastActivity), 'dd MMM yyyy', { locale: fr })}
+                                {isInactive(learner) && (
+                                  <Badge variant="destructive" className="text-[10px]">
+                                    inactif {daysInactive(learner.lastActivity)} j
+                                  </Badge>
+                                )}
                               </span>
                             ) : (
-                              <span className="text-sm text-muted-foreground">Aucune</span>
+                              <span className="flex items-center gap-2 text-sm text-muted-foreground">
+                                Aucune
+                                <Badge variant="destructive" className="text-[10px]">jamais actif</Badge>
+                              </span>
                             )}
                           </TableCell>
                         </TableRow>

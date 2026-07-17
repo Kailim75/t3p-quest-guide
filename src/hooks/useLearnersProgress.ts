@@ -63,6 +63,7 @@ export const useLearnersProgress = () => {
         passed: boolean;
         time_spent: number | null;
         created_at: string;
+        questions_failed: string[] | null;
       }>;
     },
     enabled: isAdmin,
@@ -123,6 +124,45 @@ export const useLearnersProgress = () => {
     };
   }) ?? [];
 
+  // Questions les plus ratées de la promo (tous résultats confondus)
+  const failuresByQuestion = new Map<string, { students: Set<string>; occurrences: number }>();
+  for (const result of allResults ?? []) {
+    for (const questionId of result.questions_failed ?? []) {
+      const entry = failuresByQuestion.get(questionId) ?? { students: new Set<string>(), occurrences: 0 };
+      entry.students.add(result.user_id);
+      entry.occurrences += 1;
+      failuresByQuestion.set(questionId, entry);
+    }
+  }
+  const hardestQuestions = [...failuresByQuestion.entries()]
+    .map(([questionId, { students, occurrences }]) => ({
+      questionId,
+      studentCount: students.size,
+      occurrences,
+    }))
+    .sort((a, b) => b.studentCount - a.studentCount || b.occurrences - a.occurrences)
+    .slice(0, 12);
+
+  // Moyennes par module / épreuve (les sessions « défi » sont regroupées)
+  const bucketOf = (r: { quiz_type: string; quiz_id: string }) =>
+    r.quiz_type === 'module' && r.quiz_id.startsWith('defi-') ? 'defi' : r.quiz_id;
+  const statsByBucket = new Map<string, { sum: number; attempts: number; isExam: boolean }>();
+  for (const result of allResults ?? []) {
+    const bucket = bucketOf(result);
+    const entry = statsByBucket.get(bucket) ?? { sum: 0, attempts: 0, isExam: result.quiz_type === 'exam' };
+    entry.sum += Number(result.percentage);
+    entry.attempts += 1;
+    statsByBucket.set(bucket, entry);
+  }
+  const moduleAverages = [...statsByBucket.entries()]
+    .map(([bucketId, { sum, attempts, isExam }]) => ({
+      bucketId,
+      isExam,
+      attempts,
+      averageScore: Math.round(sum / attempts),
+    }))
+    .sort((a, b) => a.averageScore - b.averageScore);
+
   // Global stats
   const globalStats = {
     totalLearners: profiles?.length ?? 0,
@@ -139,6 +179,8 @@ export const useLearnersProgress = () => {
   return {
     learnersStats,
     globalStats,
+    hardestQuestions,
+    moduleAverages,
     allResults: allResults ?? [],
     profiles: profiles ?? [],
     isLoading: profilesLoading || resultsLoading || streaksLoading || badgesLoading,
