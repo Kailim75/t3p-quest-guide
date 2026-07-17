@@ -6696,13 +6696,13 @@ var officialQuestions = [
     subModuleId: "vmd-reglementation",
     text: "Pour exercer comme VMDTR, le conducteur doit notamment :",
     options: [
-      { letter: "A", text: "D\xE9tenir le permis A2 ou A depuis 2 ans" },
+      { letter: "A", text: "D\xE9tenir le permis de cat\xE9gorie A depuis au moins 3 ans" },
       { letter: "B", text: "Disposer d'une attestation d'aptitude m\xE9dicale" },
       { letter: "C", text: "Poss\xE9der un v\xE9hicule \xE9lectrique uniquement" },
       { letter: "D", text: "Avoir r\xE9sid\xE9 \xE0 l'\xE9tranger" }
     ],
     correctAnswer: "A,B",
-    explanation: "Conditions cumulatives : permis A2/A depuis \u2265 2 ans, visite m\xE9dicale d'aptitude, honorabilit\xE9, formation et r\xE9ussite \xE0 l'examen.",
+    explanation: "Conditions cumulatives : permis de cat\xE9gorie A en cours de validit\xE9 depuis au moins 3 ans, visite m\xE9dicale d'aptitude, honorabilit\xE9, r\xE9ussite \xE0 l'examen. La carte est d\xE9livr\xE9e par le pr\xE9fet et vaut 5 ans.",
     reference: "RS5636 \u2013 F(M) Conditions d'acc\xE8s",
     difficulty: "moyen"
   },
