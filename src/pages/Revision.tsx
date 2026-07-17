@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, BookOpen, ChevronRight, Lightbulb, GraduationCap } from 'lucide-react';
+import { ModuleIcon } from '@/lib/moduleIcons';
 import Header from '@/components/Header';
 import { getAllRevisionModules, RevisionModule } from '@/data/revisionData';
 import RevisionCardContent from '@/components/revision/RevisionCardContent';
@@ -145,8 +146,8 @@ const Revision = () => {
               className="text-left rounded-2xl border bg-card p-6 hover:shadow-soft transition-all hover:border-primary/30 group"
             >
               <div className="flex items-center gap-4 mb-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-2xl group-hover:bg-primary/10 transition-colors">
-                  {module.moduleIcon}
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary group-hover:bg-primary/10 transition-colors">
+                  <ModuleIcon moduleId={module.moduleId} className="h-6 w-6 text-primary" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">

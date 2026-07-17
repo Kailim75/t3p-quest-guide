@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ChevronRight, BookOpen } from 'lucide-react';
 import { Module } from '@/data/quizData';
+import { ModuleIcon } from '@/lib/moduleIcons';
 
 interface ModuleCardProps {
   module: Module;
@@ -23,10 +24,14 @@ const ModuleCard = ({ module, questionCount }: ModuleCardProps) => {
       <div className="flex items-start gap-4">
         {/* Icon */}
         <div
-          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl text-2xl transition-transform group-hover:scale-110"
+          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl transition-transform group-hover:scale-110"
           style={{ backgroundColor: `hsl(${moduleColor} / 0.12)` }}
         >
-          {module.icon}
+          <ModuleIcon
+            moduleId={module.id}
+            className="h-7 w-7"
+            style={{ color: `hsl(${moduleColor})` }}
+          />
         </div>
 
         {/* Content */}

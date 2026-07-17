@@ -142,7 +142,7 @@ const QuestionsManager = () => {
 
   const getModuleName = (moduleId: string) => {
     const module = modules.find(m => m.id === moduleId);
-    return module ? `${module.icon} ${module.name}` : moduleId;
+    return module ? module.name : moduleId;
   };
 
   const convertToFormData = (question: DbQuestion): QuestionInput => ({
@@ -194,7 +194,7 @@ const QuestionsManager = () => {
               <SelectItem value="all">Tous les modules</SelectItem>
               {modules.map((module) => (
                 <SelectItem key={module.id} value={module.id}>
-                  {module.icon} {module.name}
+                  {module.name}
                 </SelectItem>
               ))}
             </SelectContent>

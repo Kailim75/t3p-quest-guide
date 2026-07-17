@@ -7,13 +7,16 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import ShareButton from '@/components/ShareButton';
 import BadgeShareCard from '@/components/BadgeShareCard';
-import { 
-  Trophy, 
-  AlertCircle, 
+import {
+  Trophy,
+  AlertCircle,
   Flame,
   Lock,
   Loader2,
-  Share2
+  Share2,
+  BookOpen,
+  Star,
+  LucideIcon
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -105,10 +108,17 @@ const BadgesPage = () => {
   const progressPercent = (unlockedCount / totalBadges) * 100;
 
   const categoryLabels: Record<string, string> = {
-    progression: '📚 Progression',
-    performance: '🏆 Performance',
-    streak: '🔥 Régularité',
-    special: '⭐ Spécial',
+    progression: 'Progression',
+    performance: 'Performance',
+    streak: 'Régularité',
+    special: 'Spécial',
+  };
+
+  const categoryIcons: Record<string, LucideIcon> = {
+    progression: BookOpen,
+    performance: Trophy,
+    streak: Flame,
+    special: Star,
   };
 
   const badgesByCategory = badges.reduce((acc, badge) => {
@@ -209,7 +219,13 @@ const BadgesPage = () => {
         {/* Badges by Category */}
         {Object.entries(badgesByCategory).map(([category, categoryBadges]) => (
           <div key={category} className="mb-8">
-            <h2 className="text-lg font-semibold mb-4">{categoryLabels[category]}</h2>
+            <h2 className="flex items-center gap-2 text-lg font-semibold mb-4">
+              {(() => {
+                const CategoryIcon = categoryIcons[category] ?? Star;
+                return <CategoryIcon className="h-5 w-5 text-primary" />;
+              })()}
+              {categoryLabels[category]}
+            </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {categoryBadges.map((badge) => (
                 <BadgeCard key={badge.id} badge={badge} />

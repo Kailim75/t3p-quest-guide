@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, X, AlertCircle, RotateCcw, CheckCircle2, Target } from 'lucide-react';
+import { ArrowLeft, ArrowRight, X, AlertCircle, RotateCcw, CheckCircle2, Target, BookOpen } from 'lucide-react';
 import Header from '@/components/Header';
 import QuizQuestion from '@/components/QuizQuestion';
 import { Card, CardContent } from '@/components/ui/card';
@@ -200,12 +200,14 @@ const ErrorRevision = () => {
               <Progress value={percentage} className="h-3" />
               
               {stillFailed > 0 ? (
-                <p className="text-sm text-muted-foreground mt-3">
-                  📚 Il reste {stillFailed} question{stillFailed > 1 ? 's' : ''} à maîtriser. Continuez à réviser !
+                <p className="flex items-center gap-1.5 text-sm text-muted-foreground mt-3">
+                  <BookOpen className="h-4 w-4 shrink-0" />
+                  Il reste {stillFailed} question{stillFailed > 1 ? 's' : ''} à maîtriser. Continuez à réviser !
                 </p>
               ) : (
-                <p className="text-sm text-green-600 mt-3">
-                  🎉 Excellent ! Vous avez corrigé toutes vos erreurs !
+                <p className="flex items-center gap-1.5 text-sm text-green-600 mt-3">
+                  <CheckCircle2 className="h-4 w-4 shrink-0" />
+                  Excellent ! Vous avez corrigé toutes vos erreurs !
                 </p>
               )}
             </CardContent>

@@ -1,3 +1,4 @@
+import { BookOpen, Target } from 'lucide-react';
 import Header from '@/components/Header';
 import ModuleCard from '@/components/ModuleCard';
 import { getCommonModules, getSpecificModules } from '@/data/quizData';
@@ -24,8 +25,8 @@ const Modules = () => {
         {/* Common Modules */}
         <section className="mb-12">
           <div className="flex items-center gap-3 mb-6">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-xl">
-              📚
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <BookOpen className="h-5 w-5" />
             </div>
             <div>
               <h2 className="text-xl font-semibold text-foreground">Modules communs</h2>
@@ -45,8 +46,8 @@ const Modules = () => {
         {/* Specific Modules */}
         <section>
           <div className="flex items-center gap-3 mb-6">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cta/10 text-xl">
-              🎯
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cta/10 text-cta">
+              <Target className="h-5 w-5" />
             </div>
             <div>
               <h2 className="text-xl font-semibold text-foreground">Modules spécifiques</h2>

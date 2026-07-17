@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Trophy, XCircle, Clock, Target, CheckCircle2, X, RotateCcw, Home, ChevronDown, ChevronUp } from 'lucide-react';
 import { parseCorrectAnswers, Question } from '@/data/quizData';
+import { ModuleIcon } from '@/lib/moduleIcons';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuizResults, QuizAnswer } from '@/hooks/useQuizResults';
 import { useBadges } from '@/hooks/useBadges';
@@ -16,7 +17,6 @@ interface Answer {
 
 interface ExamResultsProps {
   examName: string;
-  examIcon: string;
   examId: string;
   questions: Question[];
   answers: Answer[];
@@ -27,7 +27,6 @@ interface ExamResultsProps {
 
 const ExamResults = ({
   examName,
-  examIcon,
   examId,
   questions,
   answers,
@@ -164,7 +163,7 @@ const ExamResults = ({
         </p>
 
         <div className="flex items-center justify-center gap-2 text-lg">
-          <span className="text-3xl">{examIcon}</span>
+          <ModuleIcon moduleId={examId} className="h-6 w-6 text-primary" />
           <span className="font-semibold text-foreground">{examName}</span>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { X, ChevronLeft, ChevronRight, Flag, CheckSquare } from 'lucide-react';
+import { ModuleIcon } from '@/lib/moduleIcons';
 import Header from '@/components/Header';
 import ExamTimer from '@/components/ExamTimer';
 import ExamResults from '@/components/ExamResults';
@@ -18,7 +19,6 @@ interface ExamConfig {
   questionCount: number;
   passingScore: number;
   modules: string[];
-  icon: string;
 }
 
 const examConfigs: Record<string, ExamConfig> = {
@@ -28,8 +28,7 @@ const examConfigs: Record<string, ExamConfig> = {
     duration: 90 * 60, // 90 minutes in seconds
     questionCount: 50,
     passingScore: 70,
-    modules: ['reglementation', 'securite', 'gestion', 'francais', 'anglais'],
-    icon: '📝'
+    modules: ['reglementation', 'securite', 'gestion', 'francais', 'anglais']
   },
   'admission-taxi': {
     id: 'admission-taxi',
@@ -37,8 +36,7 @@ const examConfigs: Record<string, ExamConfig> = {
     duration: 30 * 60,
     questionCount: 20,
     passingScore: 70,
-    modules: ['taxi', 'taxi-national', 'taxi-territoire'],
-    icon: '🚕'
+    modules: ['taxi', 'taxi-national', 'taxi-territoire']
   },
 
   'admission-vtc': {
@@ -47,8 +45,7 @@ const examConfigs: Record<string, ExamConfig> = {
     duration: 30 * 60,
     questionCount: 20,
     passingScore: 70,
-    modules: ['vtc'],
-    icon: '🚗'
+    modules: ['vtc']
   },
   'admission-vmdtr': {
     id: 'admission-vmdtr',
@@ -56,8 +53,7 @@ const examConfigs: Record<string, ExamConfig> = {
     duration: 30 * 60,
     questionCount: 20,
     passingScore: 70,
-    modules: ['vmdtr'],
-    icon: '🏍️'
+    modules: ['vmdtr']
   }
 };
 
@@ -220,7 +216,6 @@ const Exam = () => {
         <main className="container mx-auto px-4 py-8 max-w-3xl">
           <ExamResults
             examName={config.name}
-            examIcon={config.icon}
             examId={config.id}
             questions={questions}
             answers={answers}
@@ -239,7 +234,9 @@ const Exam = () => {
         <Header />
         <main className="container mx-auto px-4 py-8 max-w-2xl">
           <div className="text-center">
-            <span className="text-6xl mb-6 block">{config.icon}</span>
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10">
+              <ModuleIcon moduleId={config.id} className="h-10 w-10 text-primary" />
+            </div>
             <h1 className="text-2xl font-bold text-foreground mb-2">{config.name}</h1>
             <p className="text-muted-foreground mb-8">
               Vous êtes sur le point de commencer l'examen blanc.
@@ -302,7 +299,7 @@ const Exam = () => {
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <span className="text-xl">{config.icon}</span>
+              <ModuleIcon moduleId={config.id} className="h-5 w-5 text-primary" />
               <div className="hidden sm:block">
                 <h1 className="text-sm font-semibold text-foreground">{config.name}</h1>
                 <p className="text-xs text-muted-foreground">

@@ -135,7 +135,7 @@ const QuestionForm = ({ open, onOpenChange, onSubmit, initialData, isLoading }: 
                 <SelectContent>
                   {modules.map((module) => (
                     <SelectItem key={module.id} value={module.id}>
-                      {module.icon} {module.name}
+                      {module.name}
                     </SelectItem>
                   ))}
                 </SelectContent>
