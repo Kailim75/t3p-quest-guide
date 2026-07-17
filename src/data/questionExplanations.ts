@@ -1694,6 +1694,540 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     tip: "I recommend = je recommande. Worth visiting = vaut le détour. Must-see = incontournable.",
     legalRef: "Module 6 – Anglais Phrases types"
   },
+
+  // =====================
+  // MODULE RÉGLEMENTATION T3P (reg-001 à reg-040)
+  // =====================
+  'reg-001': {
+    content: "T3P signifie Transport Public Particulier de Personnes. Cette famille réglementaire regroupe trois professions : les taxis (seuls autorisés à la maraude), les VTC (réservation préalable obligatoire) et les VMDTR (moto-taxis, réservation préalable également). « Public » signifie que le service est offert à tout client, « particulier » que le véhicule est loué dans son ensemble, à la course.",
+    tip: "T3P = 3 métiers : Taxi + VTC + VMDTR. Les bus (transport collectif) et les ambulances (transport sanitaire) n'en font PAS partie.",
+    legalRef: "Article L3120-1 du Code des transports"
+  },
+  'reg-002': {
+    content: "L'activité VTC relève du T3P, au même titre que les taxis et les VMDTR. Les trois professions partagent un socle commun : carte professionnelle, aptitude médicale, honorabilité, assurance spécifique. Ce qui les distingue, c'est le mode de prise en charge du client : maraude possible pour le taxi, réservation préalable obligatoire pour VTC et VMDTR.",
+    tip: "Un seul cadre (le T3P), trois métiers. La frontière clé entre eux : qui a le droit de prendre un client sans réservation.",
+    legalRef: "Articles L3120-1 et L3122-1 du Code des transports"
+  },
+  'reg-003': {
+    content: "Les prestations VTC sont réalisées à titre onéreux : le transport est effectué contre rémunération, dans un cadre professionnel déclaré. C'est ce caractère onéreux qui déclenche toute la réglementation T3P (carte pro, assurance, registre). À l'inverse, le covoiturage repose sur le simple partage de frais entre particuliers et échappe à ce cadre.",
+    tip: "Rémunération = activité professionnelle réglementée. Partage de frais = covoiturage, hors T3P.",
+    legalRef: "Articles L3120-1 et L3132-1 du Code des transports"
+  },
+  'reg-004': {
+    content: "VTC signifie Voiture de Transport avec Chauffeur. L'appellation historique « voiture de tourisme avec chauffeur » a été remplacée par la loi Thévenoud de 2014, qui a structuré la profession : registre d'exploitants, carte professionnelle, réservation préalable obligatoire et interdiction de la maraude.",
+    tip: "Depuis 2014 : Voiture de TRANSPORT avec chauffeur (plus « de tourisme »).",
+    legalRef: "Article L3122-1 du Code des transports, loi Thévenoud du 1er octobre 2014"
+  },
+  'reg-005': {
+    content: "Deux conditions cumulatives pour exercer : détenir le permis B depuis au moins 3 ans (ramené à 2 ans si conduite accompagnée) ET la carte professionnelle VTC, délivrée par le préfet après examen (ou équivalence d'expérience), vérification de l'aptitude médicale et de l'honorabilité. L'une sans l'autre ne suffit jamais.",
+    tip: "Permis 3 ans (2 en conduite accompagnée) + carte pro : mêmes exigences d'ancienneté que pour le taxi.",
+    legalRef: "Article R3120-6 du Code des transports"
+  },
+  'reg-006': {
+    content: "La carte professionnelle VTC est délivrée par le préfet après la réussite de l'examen organisé par les chambres de métiers et de l'artisanat (CMA), la vérification de l'aptitude physique (médecin agréé) et le contrôle d'honorabilité (bulletin n°2 du casier judiciaire). Elle est valable 5 ans et son renouvellement exige une formation continue de 14 heures.",
+    tip: "La CMA organise l'examen, mais c'est le PRÉFET qui délivre la carte — piège classique de QCM.",
+    legalRef: "Articles R3120-6 et R3120-7 du Code des transports"
+  },
+  'reg-007': {
+    content: "L'inscription au registre des exploitants VTC doit être effectuée AVANT tout début d'activité. Elle valide l'exploitant, le véhicule et l'assurance, et donne droit aux vignettes d'identification. Exercer sans inscription constitue un exercice illégal de la profession, même si le conducteur détient sa carte professionnelle.",
+    tip: "Ordre logique : carte pro → inscription au registre → vignettes → premiers clients. Jamais l'inverse.",
+    legalRef: "Article L3122-3 du Code des transports"
+  },
+  'reg-008': {
+    content: "Le registre des exploitants VTC est tenu par l'autorité administrative (gestion nationale, instruction en préfecture de région — DRIEAT en Île-de-France). Il est consultable par le public, ce qui permet aux clients et aux plateformes de vérifier qu'un exploitant est bien autorisé. L'inscription se renouvelle tous les 5 ans.",
+    tip: "Registre = l'EXPLOITANT (entreprise + véhicule). Carte pro = le CONDUCTEUR. Deux inscriptions distinctes.",
+    legalRef: "Article L3122-3 du Code des transports"
+  },
+  'reg-009': {
+    content: "La réservation préalable est la condition absolue de toute course VTC : le client doit avoir réservé avant la prise en charge, par tout moyen traçable (application, téléphone, courriel). C'est la frontière juridique fondamentale avec le taxi, seul détenteur du monopole de la maraude. Le justificatif de réservation doit pouvoir être présenté à tout contrôle.",
+    tip: "Pas de réservation = pas de course. Même un client qui hèle le VTC doit d'abord réserver (même 30 secondes avant).",
+    legalRef: "Article L3122-9 du Code des transports"
+  },
+  'reg-010': {
+    content: "La maraude — circuler ou stationner sur la voie publique en quête de clients — est strictement interdite aux VTC. Elle constitue un délit puni d'un an d'emprisonnement et de 15 000 € d'amende, avec immobilisation possible du véhicule et suspension de la carte professionnelle. Ce monopole des taxis est la contrepartie de leurs obligations (tarifs réglementés, obligation de transport).",
+    tip: "Stationner près d'une gare « au cas où » suffit à caractériser la maraude : l'intention de capter la clientèle est présumée.",
+    legalRef: "Articles L3120-2 et L3124-12 du Code des transports"
+  },
+  'reg-011': {
+    content: "Le véhicule VTC doit comporter au moins 4 portes, pour garantir l'accès et l'évacuation des passagers en sécurité. C'est l'un des critères techniques cumulatifs applicables aux véhicules thermiques, avec la longueur (≥ 4,50 m), la largeur (≥ 1,70 m) et la puissance (≥ 84 kW). Les véhicules hybrides et électriques sont dispensés de ces caractéristiques.",
+    tip: "Critères VTC thermique : 4 portes + 4,50 m + 1,70 m + 84 kW — CUMULATIFS. Hybride/électrique : dispensé de tout.",
+    legalRef: "Arrêté du 26 mars 2015 (caractéristiques VTC)"
+  },
+  'reg-012': {
+    content: "Le véhicule VTC comporte de 4 à 9 places assises, conducteur compris. En dessous, le véhicule n'offre pas les garanties minimales pour un transport rémunéré ; au-delà, l'activité bascule dans le transport collectif (autocar), soumis à une autre réglementation et à d'autres licences.",
+    tip: "4 à 9 places CONDUCTEUR COMPRIS : un 9 places transporte donc au maximum 8 passagers.",
+    legalRef: "Article R3122-11 du Code des transports"
+  },
+  'reg-013': {
+    content: "Un véhicule VTC thermique doit avoir moins de 7 ans d'ancienneté. Les véhicules hybrides et électriques sont totalement dispensés des caractéristiques techniques réglementaires — y compris cette condition d'âge (article L3120-5). Un VTC électrique de 8 ans reste donc réglementairement exploitable, alors qu'un thermique du même âge ne l'est plus.",
+    tip: "Thermique : moins de 7 ans. Hybride/électrique : AUCUNE limite d'âge (dispense totale).",
+    legalRef: "Article L3120-5 du Code des transports"
+  },
+  'reg-014': {
+    content: "Le conducteur VTC doit justifier d'une aptitude médicale contrôlée par un médecin agréé par le préfet, et l'activité doit être couverte par une assurance responsabilité civile professionnelle « transport de personnes à titre onéreux ». L'assurance auto personnelle, même tous risques, ne couvre jamais les courses rémunérées.",
+    tip: "Deux garde-fous : le médecin agréé valide le conducteur, la RC pro couvre l'activité. L'assurance perso ne protège RIEN en course.",
+    legalRef: "Articles R3120-6 et R3120-4 du Code des transports"
+  },
+  'reg-015': {
+    content: "L'aptitude médicale est constatée par un médecin agréé par la préfecture — jamais par le médecin traitant, qui connaît trop bien son patient pour garantir l'objectivité de l'examen. Le contrôle porte notamment sur la vue, les réflexes et les pathologies incompatibles avec la conduite professionnelle. Il se renouvelle périodiquement (tous les 5 ans avant 60 ans, plus fréquemment ensuite).",
+    tip: "Médecin AGRÉÉ ≠ médecin traitant. La liste des médecins agréés est publiée par chaque préfecture.",
+    legalRef: "Articles R226-1 et suivants du Code de la route"
+  },
+  'reg-016': {
+    content: "Lors d'un contrôle, le conducteur VTC présente sa carte professionnelle et le justificatif de réservation préalable de la course en cours (horodaté, papier ou électronique). S'y ajoutent les documents classiques : permis, carte grise, attestation d'assurance, attestation d'inscription au registre. Sans justificatif de réservation, il est présumé en maraude illégale.",
+    tip: "Réflexe pro : capture d'écran de chaque réservation avant de démarrer — un justificatif présentable même sans réseau.",
+    legalRef: "Article R3120-2-2 du Code des transports"
+  },
+  'reg-017': {
+    content: "L'assurance du VTC couvre deux risques distincts : la responsabilité civile circulation (les dommages causés par le véhicule) ET la responsabilité civile professionnelle (les dommages liés à l'activité de transport de personnes à titre onéreux). En cas d'accident en course sans RC pro, l'assureur refuse sa garantie et le conducteur indemnise sur ses fonds propres.",
+    tip: "RC circulation + RC pro « transport de personnes » : les deux mentions doivent figurer au contrat.",
+    legalRef: "Article L3120-4 du Code des transports, article L324-2 du Code de la route"
+  },
+  'reg-018': {
+    content: "Les justificatifs de réservation doivent être conservés et tenus à disposition des agents de contrôle. Ils constituent la preuve que chaque course a bien fait l'objet d'une réservation préalable — donc que l'activité est légale. En pratique, l'historique de l'application de mise en relation y pourvoit, mais un export régulier protège le conducteur.",
+    tip: "Conserver l'historique de réservations au moins un an : c'est votre meilleure défense en cas de litige ou de contrôle a posteriori.",
+    legalRef: "Article L3122-9 du Code des transports"
+  },
+  'reg-019': {
+    content: "Le VTC ne peut stationner sur la voie publique qu'au moment de la prise en charge ou de la dépose d'un client ayant réservé. Entre deux courses, il doit retourner à sa base (siège ou domicile professionnel) ou stationner hors voie publique, sauf nouvelle réservation. Attendre devant une gare ou un hôtel sans réservation caractérise la maraude.",
+    tip: "La règle du « retour à la base » est contrôlée : pas de réservation = pas de stationnement d'attente sur la voie publique.",
+    legalRef: "Article L3122-9 du Code des transports"
+  },
+  'reg-020': {
+    content: "La carte professionnelle doit être apposée de manière visible dans le véhicule (pare-brise) pendant le service et présentée à toute réquisition. Elle permet au client comme aux forces de l'ordre de vérifier immédiatement que le conducteur est autorisé. Carte oubliée au domicile = infraction, même si elle existe.",
+    tip: "Visible ET présentable : sur le pare-brise pendant la course, en poche pendant les pauses.",
+    legalRef: "Article R3120-6 du Code des transports"
+  },
+  'reg-021': {
+    content: "La signalétique VTC (vignette autocollante) identifie le véhicule comme VTC autorisé. Depuis l'arrêté du 6 avril 2017, elle s'appose en DEUX exemplaires : à l'avant dans l'angle inférieur gauche du pare-brise, et à l'arrière dans l'angle inférieur droit de la lunette arrière. Elle porte le numéro d'inscription au registre des exploitants.",
+    tip: "DEUX vignettes : avant (angle inférieur gauche du pare-brise) + arrière (angle inférieur droit de la lunette).",
+    legalRef: "Arrêté du 6 avril 2017, article R3122-8 du Code des transports"
+  },
+  'reg-022': {
+    content: "La facturation d'une course VTC doit être écrite et détaillée. Contrairement au taxi (taximètre), le prix du VTC est libre mais doit être annoncé avant la course ; la facture matérialise cet engagement. Un simple SMS « course 80 € merci » n'est pas une facture : il manque les mentions légales obligatoires.",
+    tip: "Prix libre ≠ prix opaque : annoncé AVANT la course, facturé par écrit APRÈS.",
+    legalRef: "Article L441-9 du Code de commerce"
+  },
+  'reg-023': {
+    content: "La facture mentionne obligatoirement le montant TTC, l'identité complète du professionnel (nom, adresse, SIRET), la date et la nature de la prestation. Pour un assujetti à la TVA s'ajoutent le prix HT et la TVA (10 % pour le transport de voyageurs). Une facture incomplète est irrégulière fiscalement et peut être refusée par le client professionnel.",
+    tip: "Montant + identité + date + prestation : les 4 mentions minimales. Numérotation chronologique continue obligatoire.",
+    legalRef: "Article L441-9 du Code de commerce, article 289 du CGI"
+  },
+  'reg-024': {
+    content: "Le conducteur VTC ne peut refuser un client que pour un motif légitime : comportement dangereux ou violent, état d'ébriété avec risque, demande illégale. Le refus fondé sur le handicap, l'origine, ou tout autre critère discriminatoire est un délit pénal. Le chien guide d'aveugle doit être accepté gratuitement.",
+    tip: "Motif légitime = SÉCURITÉ. Tout refus lié à la personne elle-même = discrimination pénalement sanctionnée.",
+    legalRef: "Article 225-2 du Code pénal, article L3120-4 du Code des transports"
+  },
+  'reg-025': {
+    content: "Le comportement du conducteur engage sa responsabilité personnelle (civile et pénale) mais aussi l'image de toute la profession. Le référentiel d'examen insiste sur cette double dimension : un incident isolé (agressivité, fraude, discrimination) alimente la défiance générale envers les VTC et pèse sur tous les professionnels.",
+    tip: "Vous êtes l'ambassadeur de la profession : chaque course construit — ou abîme — la réputation collective.",
+    legalRef: "Référentiel d'examen T3P (tronc commun)"
+  },
+  'reg-026': {
+    content: "La formation continue est obligatoire pour renouveler la carte professionnelle VTC : 14 heures de formation dans un centre agréé, à effectuer avant chaque échéance quinquennale. Elle actualise les connaissances (réglementation, sécurité routière, gestion) — indispensable dans un secteur où les règles évoluent régulièrement.",
+    tip: "Mémo : carte valable 5 ans, 14 h de formation continue pour renouveler. Anticiper 3 à 6 mois avant l'échéance.",
+    legalRef: "Article R3120-8-2 du Code des transports"
+  },
+  'reg-027': {
+    content: "La formation continue conditionne le renouvellement de la carte professionnelle : sans attestation de suivi des 14 heures, la carte n'est pas renouvelée et l'activité doit cesser à l'échéance. Le renouvellement n'est jamais automatique — c'est au conducteur d'anticiper sa formation et sa demande.",
+    tip: "Une carte expirée = exercice illégal dès le lendemain, avec les sanctions du travail sans carte. Programmez un rappel !",
+    legalRef: "Article R3120-8-2 du Code des transports"
+  },
+  'reg-028': {
+    content: "Les contrôles VTC relèvent de plusieurs corps : police et gendarmerie (voie publique), agents de la DGCCRF (pratiques commerciales, information sur les prix) et contrôleurs des transports terrestres. Chacun peut exiger la présentation des documents obligatoires : carte pro, justificatif de réservation, assurance, attestation d'inscription au registre.",
+    tip: "Corps de contrôle multiples = documents toujours à bord et en règle. La coopération polie évite l'aggravation.",
+    legalRef: "Articles L3124-1 et suivants du Code des transports"
+  },
+  'reg-029': {
+    content: "Le non-respect de la réglementation T3P expose à un double niveau de sanctions : administratives (avertissement, suspension ou retrait de la carte professionnelle, radiation du registre) ET pénales (amendes, peines d'emprisonnement pour les délits comme la maraude ou l'exercice sans carte). Les deux régimes se cumulent.",
+    tip: "Administratif (préfet : la carte) + pénal (juge : amende/prison) : une même infraction peut coûter les deux.",
+    legalRef: "Articles L3124-1 à L3124-13 du Code des transports"
+  },
+  'reg-030': {
+    content: "La réglementation T3P poursuit deux objectifs principaux : la sécurité des passagers (aptitude des conducteurs, état des véhicules, assurances) et la transparence de l'activité (prix annoncé, facturation, registres, identification des véhicules). Toutes les obligations du métier se rattachent à l'un de ces deux piliers.",
+    tip: "Pour retrouver le « pourquoi » d'une règle à l'examen : demandez-vous si elle protège la SÉCURITÉ ou la TRANSPARENCE.",
+    legalRef: "Code des transports, livre Ier de la troisième partie"
+  },
+  'reg-031': {
+    content: "Exercer l'activité de conducteur VTC sans carte professionnelle valide est un délit puni d'un an d'emprisonnement et de 15 000 € d'amende, avec peines complémentaires possibles : suspension du permis de conduire jusqu'à 5 ans et confiscation du véhicule. Les sanctions administratives (radiation, interdiction de réinscription) s'y ajoutent.",
+    tip: "Sans carte = délit (tribunal correctionnel), pas une simple contravention : 1 an + 15 000 €.",
+    legalRef: "Article L3124-4 du Code des transports"
+  },
+  'reg-032': {
+    content: "Le T3P regroupe exactement trois professions : les taxis, les VTC et les VMDTR (moto-taxis). Les autocars et bus relèvent du transport collectif (véhicules de plus de 9 places), et les ambulances du transport sanitaire — deux cadres réglementaires distincts, avec leurs propres licences et exigences.",
+    tip: "Piège récurrent : ambulances et bus ne sont JAMAIS du T3P. Le critère : 9 places max + location du véhicule entier.",
+    legalRef: "Article L3120-1 du Code des transports"
+  },
+  'reg-033': {
+    content: "Dès la course terminée, le VTC doit retourner à son lieu d'établissement (siège, domicile professionnel ou parking hors voie publique), sauf s'il justifie d'une nouvelle réservation préalable. Cette règle du « retour à la base » empêche les VTC de quadriller la voie publique en attente de clients, ce qui constituerait une maraude déguisée.",
+    tip: "Après chaque dépose, deux options seulement : nouvelle réservation OU retour à la base.",
+    legalRef: "Article L3122-9 du Code des transports"
+  },
+  'reg-034': {
+    content: "La carte professionnelle est strictement personnelle et incessible : elle ne peut être ni prêtée, ni louée, ni vendue. La prêter à un tiers expose les deux personnes à des poursuites — le prêteur pour complicité d'exercice illégal, l'emprunteur pour exercice sans carte. En cas de perte ou de vol, il faut demander un duplicata à la préfecture.",
+    tip: "Une carte = un conducteur. La photo et l'identité figurent dessus précisément pour empêcher tout prêt.",
+    legalRef: "Article R3120-6 du Code des transports"
+  },
+  'reg-035': {
+    content: "La réservation préalable peut prendre toute forme traçable : réservation écrite, application, courriel, SMS. L'essentiel est double : elle doit précéder la prise en charge et pouvoir être prouvée (horodatage). Un accord purement oral, sans trace, ne protège pas le conducteur en cas de contrôle.",
+    tip: "Le critère n'est pas le support mais la TRAÇABILITÉ : datée, horodatée, conservée.",
+    legalRef: "Article L3122-9 du Code des transports"
+  },
+  'reg-036': {
+    content: "Pour chaque course, les éléments de la réservation doivent être enregistrés : date, heure, lieu de prise en charge et destination. Ces informations prouvent l'antériorité de la réservation et permettent aux contrôleurs de vérifier la cohérence entre la course constatée et la réservation présentée.",
+    tip: "Date + heure + lieu + destination : les 4 informations qui font d'une réservation une preuve.",
+    legalRef: "Article R3120-2-2 du Code des transports"
+  },
+  'reg-037': {
+    content: "Au-delà de la sécurité, la réglementation T3P vise la protection des clients (information sur les prix, facturation, assurance) et la loyauté de la concurrence entre professionnels : mêmes exigences d'accès au métier, frontières claires entre taxi/VTC/VMDTR, sanctions contre l'exercice illégal qui fausse le marché.",
+    tip: "Un VTC en règle est aussi protégé PAR la réglementation : elle écarte la concurrence déloyale des non-déclarés.",
+    legalRef: "Code des transports, livre Ier de la troisième partie"
+  },
+  'reg-038': {
+    content: "En cas de cessation définitive d'activité, la carte professionnelle doit être restituée à la préfecture qui l'a délivrée. La carte reste la propriété de l'administration ; sa restitution évite les usages frauduleux de cartes « dormantes » et permet la mise à jour des registres.",
+    tip: "Fin d'activité = restitution de la carte + radiation du registre : les deux démarches vont ensemble.",
+    legalRef: "Article R3120-6 du Code des transports"
+  },
+  'reg-039': {
+    content: "Le respect des règles par chaque conducteur renforce la crédibilité collective de la profession et la sécurité de tous — clients, conducteurs et autres usagers. C'est aussi un argument commercial : plateformes et entreprises clientes privilégient les professionnels irréprochables (documents à jour, assurance, facturation propre).",
+    tip: "La conformité n'est pas qu'une contrainte : c'est un avantage concurrentiel face aux pratiques douteuses.",
+    legalRef: "Référentiel d'examen T3P (tronc commun)"
+  },
+  'reg-040': {
+    content: "VMDTR signifie Véhicules Motorisés à Deux ou Trois Roues : c'est la troisième profession du T3P, aux côtés des taxis et des VTC. Le moto-taxi obéit aux mêmes principes que le VTC (réservation préalable obligatoire, interdiction de maraude, carte professionnelle) avec des spécificités propres au deux-roues : permis A, équipements de protection pour le passager.",
+    tip: "VMDTR = le « VTC du deux-roues » : réservation obligatoire, mais permis A (≥ 3 ans) et EPI passager en plus.",
+    legalRef: "Articles L3123-1 et suivants du Code des transports"
+  },
+
+  // =====================
+  // MODULE VMDTR — F(M) SÉCURITÉ (vmd-sec-001 à 008)
+  // =====================
+  'vmd-sec-001': {
+    content: "Les conducteurs de deux-roues motorisés sont très fortement sur-représentés dans la mortalité routière : environ 22 % des tués pour à peine 2 % du trafic. À distance parcourue égale, le risque d'être tué est environ 20 fois supérieur à celui d'un automobiliste. Cette vulnérabilité (pas de carrosserie, équilibre précaire, faible visibilité) fonde toute la conduite préventive du moto-taxi professionnel.",
+    tip: "Ordre de grandeur à retenir : ~22 % des tués pour ~2 % du trafic. C'est LA statistique de l'épreuve F(M).",
+    legalRef: "Données ONISR, référentiel RS5636 – F(M)"
+  },
+  'vmd-sec-002': {
+    content: "L'effet gyroscopique des roues en rotation stabilise la moto à allure soutenue : plus les roues tournent vite, plus la machine « tient debout » toute seule. À basse vitesse (manœuvres, parking, circulation dense), cet effet disparaît et la moto devient instable — d'où l'importance du jeu gaz/embrayage/frein arrière en manœuvre lente, surtout avec un passager.",
+    tip: "Vitesse = stabilité, lenteur = instabilité. Les chutes bêtes arrivent à 5 km/h, pas à 90.",
+    legalRef: "Référentiel RS5636 – F(M), dynamique du véhicule"
+  },
+  'vmd-sec-003': {
+    content: "La distance d'arrêt se décompose en distance de réaction (parcourue pendant le temps de perception, environ 1 seconde) et distance de freinage. Elle dépend principalement de la vitesse — la distance de freinage croît comme le CARRÉ de la vitesse —, de l'adhérence (état de la route, pneus) et de la vigilance du conducteur. Sur sol mouillé, compter 1,5 à 2 fois plus.",
+    tip: "Loi du carré : vitesse × 2 = distance de freinage × 4. À 50 km/h sur sec : ≈ 25 m d'arrêt total.",
+    legalRef: "Référentiel RS5636 – F(M), article R413-17 du Code de la route"
+  },
+  'vmd-sec-004': {
+    content: "Le freinage d'urgence à moto s'exécute avec les DEUX freins simultanément (l'avant assure l'essentiel de la puissance), moto la plus verticale possible, regard porté loin vers la zone de fuite — jamais sur l'obstacle. Freiner fort moto inclinée en virage provoque la chute : il faut d'abord redresser, puis freiner.",
+    tip: "Séquence : REDRESSER → DEUX freins → regard LOIN. Freiner en courbe inclinée = chute quasi certaine.",
+    legalRef: "Référentiel RS5636 – F(M), techniques de freinage"
+  },
+  'vmd-sec-005': {
+    content: "La conduite préventive repose sur l'anticipation : balayer le champ visuel en permanence, percevoir les indices (portière, piéton distrait, véhicule qui déboîte), comprendre les intentions des autres usagers et conserver des marges de sécurité (distance avant ≥ 2 secondes, position dans la voie, vitesse adaptée). Le professionnel n'attend pas le danger : il le neutralise avant qu'il n'existe.",
+    tip: "Triade F(M) : Observer – Anticiper – Garder des marges. 80 % des accidents moto sont évitables par l'anticipation.",
+    legalRef: "Référentiel RS5636 – F(M), conduite préventive"
+  },
+  'vmd-sec-006': {
+    content: "Le référentiel liste explicitement les facteurs de risque du conducteur : alcool, stupéfiants, certains médicaments (pictogrammes niveau 2 et 3), mais aussi le stress, la fatigue et le manque de sommeil. Pour un professionnel qui transporte un passager non protégé, la tolérance zéro alcool est de fait la règle du métier, même si le seuil légal reste 0,5 g/L (0,2 g/L en permis probatoire).",
+    tip: "Fatigue = effets comparables à une alcoolémie légère. L'hygiène de vie est une compétence PROFESSIONNELLE évaluée.",
+    legalRef: "Référentiel RS5636 – F(M), articles L234-1 et R234-1 du Code de la route"
+  },
+  'vmd-sec-007': {
+    content: "Avant chaque prise de service, le moto-taxi effectue un contrôle visuel des points vitaux : pneus (pression à froid, usure — minimum légal 1 mm —, absence de coupure), freins (course de levier, plaquettes), éclairage complet (croisement, stop, clignotants), niveaux (huile, liquide de frein). Deux à trois minutes qui engagent sa responsabilité civile et pénale.",
+    tip: "Mémo P-F-E-N : Pneus, Freins, Éclairage, Niveaux — à vérifier avant CHAQUE service, pas chaque semaine.",
+    legalRef: "Référentiel RS5636 – F(M), article R314-1 du Code de la route"
+  },
+  'vmd-sec-008': {
+    content: "Le sommeil et les rythmes biologiques conditionnent directement la vigilance du conducteur : dette de sommeil, travail nocturne et repas lourds dégradent les réflexes autant qu'une alcoolémie légère. Le référentiel F(M) liste explicitement la gestion du sommeil et l'hygiène de vie parmi les déterminants de la sécurité du moto-taxi professionnel.",
+    tip: "Les heures critiques : 2 h-5 h du matin et début d'après-midi (digestion). Planifier ses pauses en conséquence.",
+    legalRef: "Référentiel RS5636 – F(M), hygiène de vie"
+  },
+
+  // =====================
+  // MODULE VMDTR — RÉGLEMENTATION (vmd-reg-001 à 008)
+  // =====================
+  'vmd-reg-001': {
+    content: "Le VMDTR est soumis à la réservation préalable obligatoire, exactement comme le VTC : interdiction de maraude et interdiction de stationner sur les emplacements réservés aux taxis. Chaque course doit être justifiable par une réservation horodatée. Prendre un client qui hèle dans la rue = exercice illégal de la profession de taxi.",
+    tip: "Le moto-taxi suit les règles du VTC : réservation d'abord, course ensuite. Les stations taxi lui sont interdites même vides.",
+    legalRef: "Articles L3120-2 et L3123-2 du Code des transports"
+  },
+  'vmd-reg-002': {
+    content: "La carte professionnelle VMDTR est délivrée par le préfet du département de résidence, après réussite de l'examen organisé par la CMA (ou équivalence d'expérience), vérification de l'aptitude médicale par un médecin agréé et contrôle d'honorabilité (bulletin n°2). Elle est valable 5 ans, renouvelable après formation continue.",
+    tip: "Comme pour taxi et VTC : la CMA fait passer l'examen, le PRÉFET délivre la carte.",
+    legalRef: "Articles L3123-2 et R3123-1 du Code des transports"
+  },
+  'vmd-reg-003': {
+    content: "Les véhicules VMDTR doivent respecter des caractéristiques minimales fixées par arrêté : puissance supérieure à 40 kW (inscrite sur la carte grise) et ancienneté inférieure à 5 ans. S'y ajoutent les équipements de sécurité (ABS sur les motos récentes, top-case pour les EPI du passager). Pas de contrôle technique, mais un entretien annuel attesté.",
+    tip: "Deux chiffres à retenir : > 40 kW et < 5 ans (arrêté du 17 mars 2015).",
+    legalRef: "Arrêté du 17 mars 2015 (caractéristiques VMDTR)"
+  },
+  'vmd-reg-004': {
+    content: "La signalétique VMDTR est une vignette d'identification apposée de manière visible sur le véhicule, portant le numéro d'inscription au registre. Tout dispositif évoquant le taxi est strictement interdit : pas de lumineux, pas de damier, pas de mention « taxi ». La confusion avec un taxi caractérise l'exercice illégal de cette profession.",
+    tip: "Vignette VMDTR = obligatoire. Lumineux/damier/« taxi » = interdits. La distinction visuelle protège le monopole du taxi.",
+    legalRef: "Articles R3123-1 et suivants du Code des transports, arrêté du 6 avril 2017"
+  },
+  'vmd-reg-005': {
+    content: "Non : un VMDTR ne peut jamais prendre en charge un client qui le hèle en circulation. La maraude est le monopole exclusif des taxis. Même si le client insiste et veut payer, la course sans réservation préalable constitue un exercice illégal de la profession de taxi, puni d'un an d'emprisonnement et de 15 000 € d'amende.",
+    tip: "La solution légale existe : faire réserver le client via l'application AVANT de démarrer — même 30 secondes suffisent.",
+    legalRef: "Articles L3120-2 et L3124-12 du Code des transports"
+  },
+  'vmd-reg-006': {
+    content: "La carte professionnelle VMDTR obéit à une double obligation : être PRÉSENTÉE à toute réquisition des forces de l'ordre et être APPOSÉE de manière visible sur le véhicule pendant le service. Sa validité est de 5 ans ; le renouvellement exige une formation continue — jamais automatique.",
+    tip: "Présentable ET visible : les deux obligations se cumulent. Renouvellement à anticiper avant l'échéance des 5 ans.",
+    legalRef: "Articles R3123-1 et suivants du Code des transports"
+  },
+  'vmd-reg-007': {
+    content: "Les conditions d'accès au métier de VMDTR sont cumulatives : permis de catégorie A en cours de validité depuis au moins 3 ans, attestation d'aptitude médicale délivrée après examen par un médecin agréé, honorabilité (bulletin n°2 compatible) et réussite à l'examen. Le permis B seul ne permet jamais d'exercer en moto-taxi.",
+    tip: "Permis A ≥ 3 ans — la même ancienneté que le permis B pour taxi/VTC, seule la catégorie change.",
+    legalRef: "Article R3120-6 du Code des transports"
+  },
+  'vmd-reg-008': {
+    content: "Comme les exploitants VTC, les exploitants VMDTR sont inscrits sur un registre national tenu par l'autorité administrative. L'inscription, préalable au début d'activité et renouvelable tous les 5 ans, valide l'exploitant, le véhicule et l'assurance. Elle donne droit à la vignette d'identification.",
+    tip: "Le registre VMDTR fonctionne comme le registre VTC : inscription AVANT la première course, renouvellement quinquennal.",
+    legalRef: "Article L3123-3 du Code des transports"
+  },
+
+  // =====================
+  // MODULE VMDTR — G(M) PASSAGER (vmd-pas-001 à 008)
+  // =====================
+  'vmd-pas-001': {
+    content: "Avant le départ, le conducteur briefe systématiquement son passager : position correcte (pieds sur les repose-pieds en permanence, mains aux poignées ou à la taille), comportement en virage (ACCOMPAGNER l'inclinaison, ne jamais se redresser contre elle), moyens de communication (intercom ou signes convenus) et conduite à tenir en cas d'imprévu. Ce briefing est une obligation professionnelle évaluée à l'épreuve G(M).",
+    tip: "Mémo briefing P.A.C.I. : Position, Accompagnement en virage, Communication, Imprévu. 30 secondes qui évitent la chute.",
+    legalRef: "Référentiel RS5636 – G(M), prise en charge du passager"
+  },
+  'vmd-pas-002': {
+    content: "Les équipements de protection individuelle obligatoires concernent le conducteur ET le passager : casque homologué (ECE 22.05 ou 22.06) pour les deux depuis 1973, gants certifiés CE moto pour les deux depuis le 20 novembre 2016. Le moto-taxi professionnel fournit les EPI au passager. Refus du client de porter le casque = refus de transport obligatoire et légitime.",
+    tip: "« Seul le conducteur doit porter le casque » = FAUX classique du QCM. Conducteur + passager, casque + gants.",
+    legalRef: "Articles R431-1 et R431-1-2 du Code de la route"
+  },
+  'vmd-pas-003': {
+    content: "La peur est une réaction normale chez le passager novice (50 à 70 % des cas) : raideur, agrippement excessif, et surtout tendance à se redresser en virage — le mouvement le plus dangereux car il contre l'inclinaison de la moto. Le référentiel exige de connaître ces mécanismes pour les anticiper : briefing rassurant, départ en douceur, allure progressive, communication régulière.",
+    tip: "Un passager qui a peur se redresse en virage. La parade : le prévenir AVANT, rouler doux, vérifier son ressenti souvent.",
+    legalRef: "Référentiel RS5636 – G(M), gestion du passager"
+  },
+  'vmd-pas-004': {
+    content: "À allure lente, le poids du passager dégrade nettement l'équilibre d'une moto lourde : l'effet gyroscopique stabilisateur est absent et le centre de gravité remonte. Les manœuvres de parking et les démarrages sont les moments les plus délicats d'une course avec passager. À vitesse stabilisée, la moto redevient stable mais les distances de freinage s'allongent.",
+    tip: "Avec passager : redoubler d'attention À BASSE VITESSE (manœuvres) et rallonger les distances de freinage à haute vitesse.",
+    legalRef: "Référentiel RS5636 – F(M)/G(M), dynamique avec passager"
+  },
+  'vmd-pas-005': {
+    content: "Le Code de la route impose au passager d'un deux-roues motorisé deux équipements : le casque homologué (article R431-1) et les gants certifiés CE (article R431-1-2, depuis novembre 2016). Le blouson renforcé, les chaussures montantes et le pantalon adapté sont fortement recommandés — et fournis par les meilleurs professionnels — mais ne sont pas légalement obligatoires.",
+    tip: "OBLIGATOIRES : casque + gants. RECOMMANDÉS : blouson, chaussures montantes. Le QCM joue sur cette frontière.",
+    legalRef: "Articles R431-1 et R431-1-2 du Code de la route"
+  },
+  'vmd-pas-006': {
+    content: "La prise en charge se déroule en séquence : sécuriser l'arrêt (emplacement autorisé hors voie circulée, béquille sur sol stable, feux de détresse si besoin), accueillir et vérifier la réservation, équiper le passager (casque ajusté, gants), charger les bagages dans le top-case homologué — jamais en sandow à l'extérieur — puis briefer avant de démarrer.",
+    tip: "La sécurité commence à l'ARRÊT : un pickup bâclé en double file expose le client avant même le premier mètre.",
+    legalRef: "Référentiel RS5636 – G(M), article R412-3 du Code de la route (chargement)"
+  },
+  'vmd-pas-007': {
+    content: "La communication pendant le trajet passe par un intercom Bluetooth (standard professionnel actuel) ou, à défaut, par des signes convenus avant le départ (tape sur l'épaule = ralentir ou s'arrêter). Elle permet au passager de signaler un inconfort, une peur ou un besoin d'arrêt sans gestes brusques qui déséquilibreraient la moto.",
+    tip: "Convenir des signes AVANT de partir : improviser un langage gestuel à 80 km/h ne fonctionne pas.",
+    legalRef: "Référentiel RS5636 – G(M), communication avec le passager"
+  },
+  'vmd-pas-008': {
+    content: "Lors d'un arrêt intermédiaire, le conducteur sécurise la manœuvre : choix d'un emplacement autorisé et stable, information du passager sur le moment et le côté de descente, vigilance sur les véhicules en approche, feux de détresse si l'arrêt gêne. Le passager ne descend jamais sans l'accord explicite du conducteur — une descente inopinée déséquilibre la moto.",
+    tip: "Règle d'or : le passager monte et descend UNIQUEMENT au signal du conducteur, moto stabilisée.",
+    legalRef: "Référentiel RS5636 – G(M), sécurité des arrêts"
+  },
+
+  // =====================
+  // MODULE VMDTR — G(M) COMMERCIAL (vmd-com-001 à 008)
+  // =====================
+  'vmd-com-001': {
+    content: "L'analyse de marché consiste à étudier la demande locale (qui a besoin de transport rapide ? entreprises, aéroports, événements), l'offre concurrente (taxis, VTC, autres moto-taxis) et à en déduire son positionnement et ses prix. C'est le préalable à toute stratégie commerciale : on ne fixe pas un tarif ni une cible sans connaître son marché.",
+    tip: "Ordre logique du programme G(M) : étudier le marché → choisir sa cible → se positionner → fixer ses prix.",
+    legalRef: "Référentiel RS5636 – G(M), développement commercial"
+  },
+  'vmd-com-002': {
+    content: "La fidélisation repose sur la qualité constante du service (ponctualité, propreté des EPI, conduite rassurante), la personnalisation (mémoriser les préférences et trajets récurrents du client) et le suivi proactif (anticiper les besoins : « je vous note votre transfert de mercredi ? »). Garder un client coûte environ cinq fois moins cher que d'en conquérir un nouveau.",
+    tip: "Pareto commercial : 20 % des clients font 80 % du chiffre — identifiez-les et chouchoutez-les.",
+    legalRef: "Référentiel RS5636 – G(M), fidélisation"
+  },
+  'vmd-com-003': {
+    content: "Le référentiel G(M) exige de savoir mener des actions de communication par internet et les moyens numériques : site web avec référencement local, fiche Google Business (avis clients), réseaux sociaux professionnels (LinkedIn pour le B2B), présence sur les plateformes de réservation. Le numérique est le premier canal d'acquisition d'un VMDTR moderne.",
+    tip: "Priorité au gratuit à fort impact : une fiche Google Business bien tenue génère l'essentiel des appels d'un service local.",
+    legalRef: "Référentiel RS5636 – G(M), communication numérique"
+  },
+  'vmd-com-004': {
+    content: "Le référentiel cite explicitement les hôtels et les entreprises comme partenaires-types du VMDTR : un contrat avec une conciergerie d'hôtel ou un service généraux d'entreprise apporte un flux de courses récurrentes et prévisibles. Le démarchage se fait par les canaux officiels (rendez-vous avec la conciergerie), jamais en abordant les clients devant l'établissement — ce serait de la maraude.",
+    tip: "Partenariat = CA récurrent garanti. Un seul hôtel 4 étoiles peut représenter 10 à 30 courses par mois.",
+    legalRef: "Référentiel RS5636 – G(M), réseau de partenaires"
+  },
+  'vmd-com-005': {
+    content: "La compétitivité d'une offre VMDTR repose sur la qualité de service et la différenciation — rapidité en circulation dense, ponctualité garantie, professionnalisme — bien plus que sur le prix le plus bas. Le moto-taxi vend du temps gagné : c'est ce qui justifie un positionnement tarifaire supérieur au VTC, pas une guerre des prix perdue d'avance.",
+    tip: "Mantra commercial : « vendre du temps gagné, pas un trajet ». La guerre des prix asphyxie ; la fiabilité fidélise.",
+    legalRef: "Référentiel RS5636 – G(M), positionnement"
+  },
+  'vmd-com-006': {
+    content: "Auprès d'un client professionnel, on met en avant les deux atouts structurels du deux-roues : l'agilité urbaine (remontée de files autorisée dans le cadre légal, gabarit réduit) et le gain de temps fiable sur les trajets congestionnés — typiquement les liaisons aéroport et les rendez-vous en centre-ville. La ponctualité chiffrée est l'argument décisif du B2B.",
+    tip: "Le client d'affaires n'achète pas une moto : il achète la certitude d'arriver à l'heure.",
+    legalRef: "Référentiel RS5636 – G(M), argumentaire commercial"
+  },
+  'vmd-com-007': {
+    content: "La prospection légale du VMDTR passe par le démarchage B2B (rendez-vous avec entreprises, hôtels, conciergeries), le référencement sur les plateformes de réservation et les partenariats. Sont interdites : la sollicitation directe de clients sur la voie publique et l'attente devant les établissements sans réservation — ces pratiques constituent de la maraude.",
+    tip: "Prospecter = viser les PRESCRIPTEURS (conciergeries, entreprises), jamais les passants. Le flyer distribué en rue frôle la maraude.",
+    legalRef: "Référentiel RS5636 – G(M), article L3120-2 du Code des transports"
+  },
+  'vmd-com-008': {
+    content: "Une stratégie de prix cohérente part du coût de revient complet (carburant, entretien, assurance pro, EPI, amortissement du véhicule — renouvelé tous les 5 ans —, charges sociales, formation) auquel s'ajoute la marge souhaitée, ajustée selon le positionnement et la concurrence. Vendre sous son coût de revient, c'est organiser sa propre faillite.",
+    tip: "D'abord CALCULER le coût de revient, ensuite fixer le prix. L'inverse (copier le prix du voisin) mène au dépôt de bilan.",
+    legalRef: "Référentiel RS5636 – G(M), détermination du prix"
+  },
+
+  // =====================
+  // MODULE TAXI PARIS (taxi-001 à taxi-030)
+  // =====================
+  'taxi-001': {
+    content: "À Paris, l'autorisation de stationnement (ADS, dite « licence ») est délivrée par le Préfet de Police, autorité compétente sur toute la zone des taxis parisiens. C'est une spécificité de la capitale : ailleurs, l'ADS est délivrée par le maire de la commune. L'ADS est le droit d'exploiter un taxi ; elle est distincte de la carte professionnelle du conducteur.",
+    tip: "Paris = Préfet de POLICE (pas le maire, pas le préfet de région). Piège récurrent du QCM parisien.",
+    legalRef: "Articles L3121-1 et suivants du Code des transports"
+  },
+  'taxi-002': {
+    content: "Le taxi ne peut pratiquer la maraude que dans le ressort de son ADS : pour un taxi parisien, la zone des taxis parisiens (Paris et de nombreuses communes limitrophes définies par arrêté). Hors de cette zone, il peut déposer un client mais ne peut pas en charger un nouveau en maraude — il rentre à vide ou sur réservation.",
+    tip: "L'ADS est un droit TERRITORIAL : maraude uniquement dans sa zone. Ailleurs : dépose oui, charge non.",
+    legalRef: "Article L3121-11 du Code des transports"
+  },
+  'taxi-003': {
+    content: "La feuille de route justifie le temps de service du taxi parisien : heures de prise et de fin de service, conducteur, véhicule. Elle permet à la Préfecture de Police de contrôler le respect de la durée maximale quotidienne d'utilisation, notamment en cas de doublage (plusieurs conducteurs sur une même ADS).",
+    tip: "Feuille de route = le « disque horaire » du taxi parisien : elle doit être tenue à jour et présentable à tout contrôle.",
+    legalRef: "Réglementation des taxis parisiens (Préfecture de Police)"
+  },
+  'taxi-004': {
+    content: "Le lumineux « TAXI PARISIEN » indique la disponibilité par un code couleur : VERT = libre, ROUGE = occupé (en charge). Un lumineux éteint signifie que le taxi est hors service. Ce dispositif normalisé permet au client d'identifier d'un coup d'œil les taxis disponibles, de jour comme de nuit.",
+    tip: "Vert = libre, rouge = occupé, éteint = hors service. (L'ancien système « éteint = occupé » a disparu.)",
+    legalRef: "Arrêté préfectoral relatif aux équipements des taxis parisiens"
+  },
+  'taxi-005': {
+    content: "Le taxi parisien doit être équipé d'un taximètre homologué et scellé (calcul du prix), de la plaque indiquant le numéro d'ADS, du lumineux « TAXI PARISIEN », et d'un terminal de paiement électronique en état de fonctionnement : la carte bancaire doit être acceptée pour tout montant, sans minimum.",
+    tip: "Les 4 équipements : taximètre scellé + plaque ADS + lumineux + TPE. Refus de la CB = 150 € d'amende.",
+    legalRef: "Article L3121-11-2 du Code des transports, arrêté préfectoral équipements"
+  },
+  'taxi-006': {
+    content: "Non : le taxi en service, signalé libre dans sa zone, est soumis à l'obligation de transport. Il ne peut refuser une course — même courte, même « pas rentable » — sans motif légitime (fin de service déclarée, sécurité, comportement dangereux du client). Le refus injustifié est une infraction sanctionnée par la Préfecture de Police.",
+    tip: "« Trop court » ou « trop loin » ne sont JAMAIS des motifs légitimes. Le monopole de la maraude a pour contrepartie l'obligation de transport.",
+    legalRef: "Articles R3121-1 et suivants du Code des transports"
+  },
+  'taxi-007': {
+    content: "Le tarif A est le tarif de jour (10 h - 17 h) en semaine pour une course dans Paris intra-muros avec retour en charge : c'est le tarif de base, le moins élevé. Les tarifs B, C et D s'appliquent selon l'heure (nuit), le jour (dimanche/férié) et la zone (banlieue, retour à vide). Le taximètre bascule automatiquement.",
+    tip: "A = Paris, jour, semaine = le moins cher. Plus on s'éloigne (heure, zone), plus on monte dans l'alphabet.",
+    legalRef: "Arrêté tarifaire annuel (tarifs des taxis parisiens)"
+  },
+  'taxi-008': {
+    content: "Les liaisons Paris ↔ aéroports font l'objet de forfaits fixes, indépendants du compteur, de la durée et des embouteillages. Pour 2026 : Paris rive droite ↔ CDG = 56 €, rive gauche ↔ CDG = 65 € ; Paris rive droite ↔ Orly = 45 €, rive gauche ↔ Orly = 36 €. Ces montants sont révisés chaque année par arrêté.",
+    tip: "CDG plus cher depuis la rive gauche (65 €), Orly plus cher depuis la rive droite (45 €) : logique de distance.",
+    legalRef: "Arrêté du 24 décembre 2025 (tarifs 2026)"
+  },
+  'taxi-009': {
+    content: "Au début de chaque course, le chauffeur enclenche le taximètre : la prise en charge (montant fixe de départ) s'affiche, puis le compteur additionne le tarif kilométrique et, aux arrêts et en marche lente, le tarif horaire. Oublier de déclencher le taximètre ou le lancer avant la montée du client constitue une irrégularité tarifaire.",
+    tip: "Taximètre : déclenché à la PRISE EN CHARGE du client, ni avant (surfacturation), ni après (course au noir).",
+    legalRef: "Réglementation des taxis (taximètre) et arrêté tarifaire"
+  },
+  'taxi-010': {
+    content: "La note (facture) est obligatoirement remise au client pour toute course d'un montant de 25 € et plus. En dessous de ce seuil, elle doit être délivrée sur simple demande. Elle mentionne la date, le trajet, le montant et l'identification du taxi — indispensable aux clients professionnels pour leurs notes de frais.",
+    tip: "≥ 25 € : note automatique. < 25 € : note sur demande. Le TPE moderne l'imprime ou l'envoie par mail.",
+    legalRef: "Arrêté du 3 octobre 1983 relatif à la publicité des prix (notes)"
+  },
+  'taxi-011': {
+    content: "Le transport de personnes par taxi est soumis au taux réduit de TVA de 10 %, comme l'ensemble du transport de voyageurs (VTC compris). Attention : le conducteur n'est redevable de la TVA que s'il dépasse les seuils de la franchise en base ; en-dessous, il facture sans TVA avec la mention « TVA non applicable, art. 293 B du CGI ».",
+    tip: "Transport de voyageurs = TVA 10 % (pas 20 %). Piège classique de l'épreuve de gestion aussi.",
+    legalRef: "Article 279 du Code général des impôts"
+  },
+  'taxi-012': {
+    content: "Le taxi parisien attend la clientèle sur les stations de taxis dédiées de sa zone (où s'applique la règle de la file) et peut aussi circuler en maraude pour être hélé. Ces deux modes s'ajoutent à la réservation (téléphone, application). Le stationnement d'attente en dehors des stations est en revanche soumis aux règles communes de stationnement.",
+    tip: "Trois canaux du taxi : station + maraude + réservation. Le VTC n'en a qu'un seul (réservation).",
+    legalRef: "Article L3121-11 du Code des transports"
+  },
+  'taxi-013': {
+    content: "Oui : les taxis sont autorisés à emprunter les voies réservées aux bus à Paris, avec ou sans client à bord. Cet avantage de circulation, matérialisé par la signalisation « BUS TAXIS », est l'un des privilèges du taxi — les VTC n'y ont pas droit. Attention toutefois aux voies expressément limitées aux seuls bus.",
+    tip: "Couloirs de bus parisiens : OUI pour les taxis (même à vide), NON pour les VTC. Vérifier le panonceau.",
+    legalRef: "Code de la route, signalisation des voies réservées ; arrêtés municipaux parisiens"
+  },
+  'taxi-014': {
+    content: "Depuis le 1er octobre 2024, la vitesse maximale sur le boulevard périphérique parisien est abaissée à 50 km/h (au lieu de 70 km/h auparavant). Cette limitation s'applique à tous les véhicules, taxis compris. La connaître est indispensable, tant pour l'examen que pour éviter les infractions en course.",
+    tip: "Périph = 50 km/h depuis octobre 2024. Les questions avec « 70 km/h » testent si vous êtes à jour.",
+    legalRef: "Arrêté de la Ville de Paris, octobre 2024"
+  },
+  'taxi-015': {
+    content: "Le taxi parisien peut conduire son client jusqu'à n'importe quelle destination, y compris hors de sa zone. En revanche, une fois hors zone, il ne peut pas y prendre de nouveau client en maraude : il revient à vide (le tarif « retour à vide » C/D compense partiellement) ou enchaîne sur une course réservée à l'avance.",
+    tip: "Dépose partout, charge seulement dans sa zone : la maraude est territoriale, pas la destination.",
+    legalRef: "Article L3121-11 du Code des transports"
+  },
+  'taxi-016': {
+    content: "Depuis la loi Thévenoud du 1er octobre 2014, les nouvelles ADS délivrées sont gratuites, nominatives et INCESSIBLES : elles ne peuvent être ni vendues, ni louées, ni transmises, et retournent à l'administration au départ du titulaire. Seules les ADS délivrées avant octobre 2014 restent cessibles, sous conditions d'exploitation effective (5 ans pour la première cession, 15 ans ensuite).",
+    tip: "La date pivot : 1er octobre 2014. Après = incessible et gratuite (liste d'attente) ; avant = cessible sous conditions.",
+    legalRef: "Loi Thévenoud du 1er octobre 2014, article L3121-2 du Code des transports"
+  },
+  'taxi-017': {
+    content: "La zone des taxis parisiens compte environ 18 500 ADS — un plafond (numerus clausus) fixé par arrêté du Préfet de Police. Ce contingentement, stable autour de 18 000 depuis des années, explique la valeur marchande des anciennes ADS cessibles et la longue liste d'attente pour les nouvelles ADS gratuites.",
+    tip: "Ordre de grandeur : ≈ 18 000-18 500 taxis parisiens. (Environ 60 000 VTC en Île-de-France, à titre de comparaison.)",
+    legalRef: "Arrêté du Préfet de Police (contingent des taxis parisiens)"
+  },
+  'taxi-018': {
+    content: "La carte professionnelle de conducteur de taxi, délivrée par la préfecture après examen, atteste l'aptitude de la PERSONNE à exercer. L'ADS, elle, est le droit d'exploitation attaché au VÉHICULE. Les deux sont obligatoires et strictement distincts : on peut détenir une carte sans ADS (conducteur locataire ou salarié) et une ADS peut être conduite par plusieurs titulaires de carte.",
+    tip: "ADS = le véhicule peut exercer. Carte pro = le conducteur peut conduire. Toujours les DEUX à bord.",
+    legalRef: "Articles L3121-1 et L3121-10 du Code des transports"
+  },
+  'taxi-019': {
+    content: "La zone des taxis parisiens ne se limite pas à Paris intra-muros : elle englobe de nombreuses communes limitrophes des Hauts-de-Seine, de Seine-Saint-Denis et du Val-de-Marne, listées par arrêté préfectoral, ainsi que les aéroports. Dans toute cette zone, le taxi parisien peut marauder et stationner en station.",
+    tip: "« Zone des taxis parisiens » > Paris : la petite couronne en fait largement partie. La liste exacte est fixée par arrêté.",
+    legalRef: "Arrêté préfectoral définissant la zone des taxis parisiens"
+  },
+  'taxi-020': {
+    content: "Oui : une même ADS peut être exploitée par plusieurs conducteurs — c'est le « doublage » (équipes jour/nuit). Chaque conducteur doit détenir sa propre carte professionnelle en cours de validité, et la feuille de route trace qui conduit à quel moment. Ce système optimise l'utilisation d'une licence contingentée.",
+    tip: "1 ADS = 1 véhicule, mais potentiellement plusieurs conducteurs (chacun avec SA carte pro).",
+    legalRef: "Articles L3121-1 et suivants du Code des transports"
+  },
+  'taxi-021': {
+    content: "Les forfaits aéroport parisiens sont différenciés selon la RIVE de départ ou d'arrivée dans Paris : rive droite ou rive gauche de la Seine. Pour CDG (au nord-est), la rive gauche est plus chère (plus loin) ; pour Orly (au sud), c'est la rive droite. Le forfait s'applique quel que soit le trafic, mais un détour demandé par le client le fait tomber.",
+    tip: "Le critère du forfait : LA RIVE (droite/gauche), pas l'arrondissement ni l'heure.",
+    legalRef: "Arrêté du 24 décembre 2025 (tarifs 2026)"
+  },
+  'taxi-022': {
+    content: "Le prix affiché au taximètre additionne trois composantes : la prise en charge (montant fixe de départ), le tarif kilométrique (selon la lettre A/B/C/D applicable) et le tarif horaire qui court à l'arrêt et en marche lente (embouteillages, feux). C'est pourquoi une course dans les bouchons coûte plus cher à distance égale.",
+    tip: "3 composantes : prise en charge + kilomètres + temps d'attente. Le minimum de perception (8 €) s'applique en bout de course.",
+    legalRef: "Arrêté tarifaire annuel (structure des tarifs taxi)"
+  },
+  'taxi-023': {
+    content: "Le minimum de perception — la somme totale minimale qu'un taxi peut percevoir pour une course, suppléments inclus — est fixé à 8 € par l'arrêté tarifaire national en vigueur en 2026. Même si le compteur affiche moins pour une course très courte, le client paie ce minimum.",
+    tip: "Course minuscule = 8 € quand même. Ce montant est révisé chaque année par arrêté (à vérifier chaque décembre).",
+    legalRef: "Arrêté tarifaire national du 24 décembre 2025"
+  },
+  'taxi-024': {
+    content: "Les quatre lettres tarifaires combinent zone et horaire. A : Paris jour en semaine. B : Paris nuit/dimanche/férié, ou banlieue jour. C : banlieue nuit/dimanche/férié et retours à vide. D : les situations les plus majorées (grande couronne à vide, notamment). Le taximètre affiche la lettre en cours et bascule automatiquement.",
+    tip: "Logique : plus c'est loin, tard ou à vide, plus la lettre monte — et le prix avec.",
+    legalRef: "Arrêté tarifaire annuel (tarifs des taxis parisiens)"
+  },
+  'taxi-025': {
+    content: "Le taxi ne peut pas refuser le paiement par carte bancaire : le terminal de paiement électronique est obligatoire, en état de fonctionnement, et la carte doit être acceptée pour TOUT montant, sans minimum. Imposer un seuil (« CB à partir de 10 € ») ou prétexter une panne récurrente est une infraction sanctionnée de 150 € d'amende et d'un signalement à la Préfecture.",
+    tip: "CB acceptée dès 1 centime. « Mon TPE est en panne » répété = signalement préfecture et procédure disciplinaire.",
+    legalRef: "Article L3121-11-2 du Code des transports"
+  },
+  'taxi-026': {
+    content: "Le taxi cumule les trois modes de prise en charge : la maraude (client qui hèle dans la zone), la station (file d'attente sur emplacements réservés) et la réservation préalable (téléphone, application). C'est son avantage structurel sur le VTC, limité à la seule réservation. En contrepartie : tarifs réglementés et obligation de transport.",
+    tip: "Taxi = 3 canaux, VTC = 1 canal. Le monopole de la maraude est LE privilège du taxi.",
+    legalRef: "Articles L3121-11 et L3120-2 du Code des transports"
+  },
+  'taxi-027': {
+    content: "Les suppléments sont strictement encadrés par l'arrêté tarifaire — liste limitative — et doivent être portés à la connaissance du client par affichage visible dans le véhicule. À Paris en 2026 : réservation immédiate 4 €, réservation à l'avance 7 €, et 5,50 € à partir du 5ᵉ passager. Les bagages ne donnent plus lieu à aucun supplément.",
+    tip: "Affichage visible obligatoire + liste limitative : tout supplément « inventé » est une majoration illégale.",
+    legalRef: "Arrêté du 24 décembre 2025 (tarifs 2026)"
+  },
+  'taxi-028': {
+    content: "Le refus de course injustifié et les prises en charge irrégulières exposent le taxi parisien à des amendes et à des mesures administratives prononcées par la Préfecture de Police après procédure : avertissement, suspension temporaire de l'ADS ou de la carte professionnelle, voire retrait en cas de récidive. La sanction administrative se cumule avec l'éventuelle sanction pénale.",
+    tip: "Le client mécontent signale facilement (plaque, heure, lieu) : chaque refus injustifié est un risque disciplinaire réel.",
+    legalRef: "Articles R3121-1 et suivants du Code des transports"
+  },
+  'taxi-029': {
+    content: "Dans les stations de gares, la règle est celle de la file : le taxi en tête prend le client qui se présente, sans choisir la destination ni négocier le prix. Refuser une course courte pour attendre une « meilleure » course est une infraction. Rappel symétrique : le CLIENT, lui, a le droit de choisir n'importe quel taxi de la file.",
+    tip: "Côté taxi : premier arrivé, premier parti, client imposé. Côté client : libre choix du taxi dans la file.",
+    legalRef: "Réglementation des stations de taxis (Préfecture de Police)"
+  },
+  'taxi-030': {
+    content: "Le taxi parisien est soumis aux restrictions de la Zone à Faibles Émissions (ZFE) de la Métropole du Grand Paris : son véhicule doit porter une vignette Crit'Air de niveau autorisé pour circuler dans le périmètre. Le renouvellement du parc vers l'hybride et l'électrique est fortement encouragé (aides, dérogations d'âge du véhicule).",
+    tip: "ZFE = vérifier la vignette Crit'Air AVANT d'acheter un véhicule de taxi, surtout d'occasion.",
+    legalRef: "Réglementation ZFE de la Métropole du Grand Paris"
+  }
 };
 
 // Fonction pour obtenir l'explication d'une question
