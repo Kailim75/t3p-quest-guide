@@ -18,6 +18,7 @@ import Progress from "./pages/Progress";
 import Admin from "./pages/Admin";
 import LearnersProgress from "./pages/LearnersProgress";
 import ErrorRevision from "./pages/ErrorRevision";
+import DailyChallenge from "./pages/DailyChallenge";
 import Badges from "./pages/Badges";
 import Flashcards from "./pages/Flashcards";
 import Install from "./pages/Install";
@@ -50,6 +51,7 @@ const App = () => (
             <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
             <Route path="/admin/learners" element={<ProtectedRoute><LearnersProgress /></ProtectedRoute>} />
             <Route path="/revision-erreurs" element={<ProtectedRoute><ErrorRevision /></ProtectedRoute>} />
+            <Route path="/defi" element={<ProtectedRoute><DailyChallenge /></ProtectedRoute>} />
             <Route path="/badges" element={<ProtectedRoute><Badges /></ProtectedRoute>} />
             <Route path="/flashcards" element={<ProtectedRoute><Flashcards /></ProtectedRoute>} />
             <Route path="/install" element={<ProtectedRoute><Install /></ProtectedRoute>} />

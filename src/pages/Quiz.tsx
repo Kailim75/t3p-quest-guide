@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, PlayCircle, RotateCcw, X } from 'lucide-react';
 import { ModuleIcon } from '@/lib/moduleIcons';
+import { recordAnswer } from '@/lib/spacedRepetition';
 import Header from '@/components/Header';
 import QuizQuestion from '@/components/QuizQuestion';
 import QuizResults from '@/components/QuizResults';
@@ -153,6 +154,7 @@ const Quiz = () => {
   const currentQuestion = questions[currentIndex];
 
   const handleAnswer = (selectedAnswers: AnswerLetter[], isCorrect: boolean) => {
+    recordAnswer(currentQuestion.id, isCorrect);
     const newAnswers = [
       ...answers.filter(a => a.questionId !== currentQuestion.id),
       { questionId: currentQuestion.id, answers: selectedAnswers, isCorrect }

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Clock, FileText, Award, AlertCircle, CheckCircle2 } from 'lucide-react';
 import Header from '@/components/Header';
 import { ModuleIcon } from '@/lib/moduleIcons';
+import { admissionExamIdFor, useTargetExam } from '@/lib/targetExam';
 
 interface ExamType {
   id: string;
@@ -54,6 +55,9 @@ const examTypes: ExamType[] = [
 ];
 
 const ExamSelect = () => {
+  const [target] = useTargetExam();
+  const yourExamId = admissionExamIdFor(target);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -88,21 +92,30 @@ const ExamSelect = () => {
 
         {/* Exam Types */}
         <div className="max-w-3xl mx-auto space-y-4">
-          {examTypes.map((exam) => (
+          {examTypes.map((exam) => {
+            const isYourExam = exam.id === yourExamId;
+            return (
             <Link
               key={exam.id}
               to={`/exam/${exam.id}`}
               className="block group"
             >
-              <div className="rounded-2xl border bg-card p-6 transition-all hover:border-primary/50 hover:shadow-lg">
+              <div className={`rounded-2xl border bg-card p-6 transition-all hover:border-primary/50 hover:shadow-lg ${
+                isYourExam ? 'border-primary/60 ring-1 ring-primary/30' : ''
+              }`}>
                 <div className="flex items-start gap-4">
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10">
                     <ModuleIcon moduleId={exam.id} className="h-7 w-7 text-primary" />
                   </div>
-                  
+
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-1">
+                    <h3 className="flex flex-wrap items-center gap-2 text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-1">
                       {exam.name}
+                      {isYourExam && (
+                        <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                          Votre épreuve
+                        </span>
+                      )}
                     </h3>
                     <p className="text-sm text-muted-foreground mb-4">
                       {exam.description}
@@ -130,7 +143,8 @@ const ExamSelect = () => {
                 </div>
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
 
         {/* Info */}

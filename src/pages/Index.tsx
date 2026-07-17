@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpen, FileText, GraduationCap, Layers, BarChart3, PlayCircle, RotateCcw, TrendingUp, Target } from 'lucide-react';
+import { ArrowRight, BookOpen, FileText, GraduationCap, Layers, BarChart3, PlayCircle, RotateCcw, TrendingUp, Target, Zap, CalendarClock, CheckCircle2 } from 'lucide-react';
 import { ModuleIcon } from '@/lib/moduleIcons';
 import Header from '@/components/Header';
+import ParcoursSelector from '@/components/ParcoursSelector';
 import { getCommonModules, getSpecificModules } from '@/data/quizData';
 import { useQuizQuestions } from '@/hooks/useQuizQuestions';
 import { useQuizResults } from '@/hooks/useQuizResults';
 import { loadQuizSession } from '@/lib/quizSession';
+import { specificModuleIdsFor, useTargetExam } from '@/lib/targetExam';
+import { getDueQuestionIds, getTodayChallenge } from '@/lib/spacedRepetition';
 import { useAuth } from '@/contexts/AuthContext';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
@@ -17,7 +20,16 @@ const Index = () => {
   const { questions } = useQuizQuestions();
   const { stats } = useQuizResults();
   const savedSession = loadQuizSession();
-  const showJourney = !!user && (!!savedSession || stats.totalQuizzes > 0);
+  const showJourney = !!user;
+
+  const [target] = useTargetExam();
+  const allowedSpecific = specificModuleIdsFor(target);
+  const shownSpecificModules = allowedSpecific
+    ? specificModules.filter((m) => allowedSpecific.includes(m.id))
+    : specificModules;
+
+  const dueCount = getDueQuestionIds().length;
+  const todayChallenge = getTodayChallenge();
 
   // Fetch user profile for display name
   const { data: profile } = useQuery({
@@ -119,8 +131,51 @@ const Index = () => {
       {showJourney && (
         <section className="py-8 border-b bg-secondary/40">
           <div className="container mx-auto px-4">
+            <div className="mb-4">
+              <ParcoursSelector />
+            </div>
             <h2 className="text-lg font-semibold text-foreground mb-4">Votre parcours</h2>
             <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Défi du jour */}
+              <Link
+                to="/defi"
+                className="group flex items-center gap-4 rounded-2xl border-2 border-primary/30 bg-card p-4 transition-all hover:shadow-soft hover:-translate-y-0.5"
+              >
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                  {todayChallenge ? (
+                    <CheckCircle2 className="h-5 w-5 text-success" />
+                  ) : (
+                    <Zap className="h-5 w-5 text-primary" />
+                  )}
+                </div>
+                <div className="min-w-0">
+                  <p className="font-semibold text-foreground">Défi du jour</p>
+                  <p className="text-sm text-muted-foreground">
+                    {todayChallenge
+                      ? `Réussi ${todayChallenge.score}/${todayChallenge.total} aujourd'hui — à demain !`
+                      : '5 questions rapides pour entretenir vos acquis'}
+                  </p>
+                </div>
+              </Link>
+
+              {/* Révisions programmées (répétition espacée) */}
+              {dueCount > 0 && (
+                <Link
+                  to="/revision-erreurs?mode=due"
+                  className="group flex items-center gap-4 rounded-2xl border bg-card p-4 transition-all hover:shadow-soft hover:-translate-y-0.5"
+                >
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cta/10">
+                    <CalendarClock className="h-5 w-5 text-cta" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-semibold text-foreground">À réviser aujourd'hui</p>
+                    <p className="text-sm text-muted-foreground">
+                      {dueCount} question{dueCount > 1 ? 's' : ''} programmée{dueCount > 1 ? 's' : ''} (J+1, J+3, J+7)
+                    </p>
+                  </div>
+                </Link>
+              )}
+
               {savedSession && (
                 <Link
                   to={`/quiz/${savedSession.moduleId}`}
@@ -268,7 +323,7 @@ const Index = () => {
                 </div>
               </div>
               <div className="space-y-1">
-                {specificModules.map((module) => (
+                {shownSpecificModules.map((module) => (
                   <Link
                     key={module.id}
                     to={`/module/${module.id}`}

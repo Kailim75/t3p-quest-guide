@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { revisionModules, RevisionCard } from '@/data/revisionData';
 import { ModuleIcon } from '@/lib/moduleIcons';
+import { revisionDomainFor, useTargetExam } from '@/lib/targetExam';
 
 interface FlashcardData {
   id: string;
@@ -40,11 +41,21 @@ const Flashcards = () => {
   const [knownCards, setKnownCards] = useState<Set<string>>(new Set());
   const [unknownCards, setUnknownCards] = useState<Set<string>>(new Set());
 
+  const [target] = useTargetExam();
+  const domainFilter = revisionDomainFor(target);
+  const parcoursModules = useMemo(
+    () =>
+      revisionModules.filter(
+        (m) => !domainFilter || m.domain === 'commun' || m.domain === domainFilter
+      ),
+    [domainFilter]
+  );
+
   // Convert revision cards to flashcards with new structure
   const allFlashcards: FlashcardData[] = useMemo(() => {
     const cards: FlashcardData[] = [];
-    
-    revisionModules.forEach(module => {
+
+    parcoursModules.forEach(module => {
       module.cards.forEach(card => {
         cards.push({
           id: card.id,
@@ -61,7 +72,7 @@ const Flashcards = () => {
     });
     
     return cards;
-  }, []);
+  }, [parcoursModules]);
 
   // Filter cards by selected module
   const flashcards = useMemo(() => {
@@ -191,7 +202,7 @@ const Flashcards = () => {
             </button>
 
             {/* Individual modules */}
-            {revisionModules.map(module => {
+            {parcoursModules.map(module => {
               const cardCount = allFlashcards.filter(c => c.moduleId === module.moduleId).length;
               return (
                 <button
