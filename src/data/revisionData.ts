@@ -589,10 +589,10 @@ export const revisionModules: RevisionModule[] = [
         id: 'sec-equipements-securite',
         title: 'Équipements de sécurité obligatoires',
         essential: "Ceinture pour tous, gilet et triangle à bord — le conducteur est responsable du port de la ceinture par les passagers mineurs.",
-        narrative: "L'équipement de sécurité ne se limite pas à un dispositif passif : c'est un système juridique de responsabilités. Le port de la ceinture est obligatoire pour tous les occupants depuis 1990 à l'arrière (déjà depuis 1973 à l'avant). Le non-port est sanctionné par 135€ et 3 points pour la personne fautive — sauf pour les mineurs, où c'est le conducteur qui est responsable et écope de l'amende. Pour un VTC ou un taxi transportant un enfant non attaché, c'est le chauffeur qui paie.\n\nLes enfants de moins de 10 ans doivent voyager dans un dispositif de retenue adapté à leur taille et leur poids (siège auto, rehausseur). Sous 9 mois, ils doivent être placés dos à la route. L'avant est interdit aux moins de 10 ans sauf exception (cabine dépourvue de banquette arrière, ou rehausseur conforme avec airbag désactivé). Pour un T3P, il est fortement recommandé de disposer d'au moins un rehausseur pour transporter des familles avec enfants.\n\nDeux équipements doivent être à bord en permanence : le gilet haute visibilité (à portée de main, pas dans le coffre) et le triangle de présignalisation. L'absence est sanctionnée 135€ chacun. Le gilet doit être enfilé AVANT de descendre du véhicule en cas de panne ou d'accident sur la chaussée, et le triangle placé à 30 m en amont (150-200 m sur voie rapide). L'éthylotest, longtemps obligatoire mais non sanctionné, n'est plus exigé depuis 2020. La trousse de premiers secours reste fortement recommandée pour un T3P, sans être légalement imposée.",
+        narrative: "L'équipement de sécurité ne se limite pas à un dispositif passif : c'est un système juridique de responsabilités. Le port de la ceinture est obligatoire pour tous les occupants depuis 1990 à l'arrière (déjà depuis 1973 à l'avant). Le non-port est sanctionné de 135€ : le conducteur non attaché perd en plus 3 points, tandis qu'un passager adulte non attaché paie l'amende lui-même, sans retrait de points. Pour les mineurs, c'est le conducteur qui est responsable : il écope de l'amende de 135€, mais SANS retrait de points. Pour un VTC ou un taxi transportant un enfant non attaché, c'est donc le chauffeur qui paie.\n\nLes enfants de moins de 10 ans doivent voyager dans un dispositif de retenue adapté à leur taille et leur poids (siège auto, rehausseur). Sous 9 mois, ils doivent être placés dos à la route. L'avant est interdit aux moins de 10 ans sauf exception (cabine dépourvue de banquette arrière, ou rehausseur conforme avec airbag désactivé). Pour un T3P, il est fortement recommandé de disposer d'au moins un rehausseur pour transporter des familles avec enfants.\n\nDeux équipements doivent être à bord en permanence : le gilet haute visibilité (à portée de main, pas dans le coffre) et le triangle de présignalisation. L'absence est sanctionnée 135€ chacun. Le gilet doit être enfilé AVANT de descendre du véhicule en cas de panne ou d'accident sur la chaussée, et le triangle placé à 30 m en amont (150-200 m sur voie rapide). L'éthylotest, longtemps obligatoire mais non sanctionné, n'est plus exigé depuis 2020. La trousse de premiers secours reste fortement recommandée pour un T3P, sans être légalement imposée.",
         keyPoints: [
           "Ceinture obligatoire pour tous les occupants (avant et arrière)",
-          "Mineurs : responsabilité du conducteur (135€ + 3 points)",
+          "Mineurs : responsabilité du conducteur (135€, sans retrait de points)",
           "Enfants < 10 ans : dispositif de retenue adapté",
           "Gilet haute visibilité : à portée de main (pas dans le coffre)",
           "Triangle : 30 m en amont, 150-200 m sur voie rapide"
@@ -601,7 +601,7 @@ export const revisionModules: RevisionModule[] = [
           {
             situation: "Un taxi transporte une mère et son fils de 8 ans. L'enfant est assis sur la banquette arrière sans rehausseur, ceinture standard.",
             question: "Qui est responsable et que risque le chauffeur ?",
-            answer: "Le chauffeur : il est responsable du défaut de dispositif adapté (135€ + 3 points) car l'enfant a moins de 10 ans.",
+            answer: "Le chauffeur : il est responsable du défaut de dispositif adapté (amende de 135€, sans retrait de points) car l'enfant a moins de 10 ans.",
             reasoning: "L'article R412-2 impose un dispositif de retenue adapté pour les enfants de moins de 10 ans. La ceinture standard ne convient pas (pas calibrée pour les épaules d'un enfant). Pour un taxi, il est conseillé d'avoir un rehausseur léger à bord ou de proposer un véhicule équipé. Si la cliente refuse, le chauffeur peut refuser la course pour motif légitime (sécurité)."
           },
           {
@@ -898,40 +898,40 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'reg-vehicule-conditions',
         title: 'Conditions du véhicule',
-        essential: "Véhicule de 4 à 9 places, max 6 ans (7 ans si hybride/électrique), contrôle technique annuel professionnel.",
-        narrative: "Le véhicule T3P est soumis à des conditions strictes qui s'ajoutent à la réglementation routière classique. Côté capacité, il doit comporter entre 4 et 9 places assises, conducteur compris — au-delà, on bascule en transport collectif (autocar). En deçà, le véhicule n'offre pas la sécurité minimale exigée pour un transport rémunéré.\n\nL'âge du véhicule est plafonné à 6 ans depuis sa première mise en circulation, porté à 7 ans pour les véhicules hybrides ou électriques (décret n°2017-483). Cette exception incitative reconnaît à la fois la durabilité technique de ces motorisations et leur intérêt environnemental. Un véhicule électrique mis en circulation en 2019 peut donc encore rouler en VTC en 2026.\n\nLe VTC doit en plus respecter des critères de standing : puissance moteur ≥ 84 kW (114 ch) OU longueur ≥ 4,50 m, pour garantir le confort et différencier l'offre du taxi. Le contrôle technique est annuel (au lieu de bisannuel pour un particulier) et plus exigeant — il vérifie aussi les équipements obligatoires : ceintures fonctionnelles à toutes les places, signalétique pour le taxi (lumineux, plaque, compteur scellé). Tout défaut majeur entraîne l'immobilisation immédiate.",
+        essential: "Véhicule de 4 à 9 places conducteur compris. Thermique : moins de 7 ans. Hybrides et électriques : dispensés des critères techniques, âge compris (art. L.3120-5).",
+        narrative: "Le véhicule T3P est soumis à des conditions strictes qui s'ajoutent à la réglementation routière classique. Côté capacité, il doit comporter entre 4 et 9 places assises, conducteur compris (art. R.3122-11) — au-delà, on bascule en transport collectif (autocar). En deçà, le véhicule n'offre pas la sécurité minimale exigée pour un transport rémunéré.\n\nCôté ancienneté, la règle actuelle est simple : un véhicule VTC thermique doit avoir moins de 7 ans. Les véhicules hybrides et électriques, eux, sont totalement DISPENSÉS des caractéristiques techniques réglementaires — y compris la condition d'âge (article L.3120-5 du Code des transports). Une Tesla de 2017 peut donc, réglementairement, toujours rouler en VTC en 2026, alors qu'une berline thermique de 2018 ne le peut plus.\n\nLe VTC thermique doit en plus respecter des critères de gabarit et de puissance fixés par l'arrêté du 26 mars 2015, et ces critères sont CUMULATIFS — tous doivent être respectés : au moins 4 portes, longueur hors tout ≥ 4,50 m, largeur hors tout ≥ 1,70 m, puissance nette du moteur ≥ 84 kW. Un seul critère manquant disqualifie le véhicule. Le contrôle technique est annuel (au lieu de bisannuel pour un particulier) et plus exigeant — il vérifie aussi les équipements obligatoires : ceintures fonctionnelles à toutes les places, signalétique pour le taxi (lumineux, plaque, compteur scellé). Tout défaut majeur entraîne l'immobilisation immédiate.",
         keyPoints: [
-          "Capacité : 4 à 9 places conducteur compris",
-          "Âge max : 6 ans, 7 ans pour hybride/électrique",
-          "Contrôle technique annuel (renforcé pour usage pro)",
-          "VTC : puissance ≥ 84 kW OU longueur ≥ 4,50 m",
-          "Équipements obligatoires conformes (ceintures, signalétique taxi)"
+          "Capacité : 4 à 9 places conducteur compris (R.3122-11)",
+          "Thermique : moins de 7 ans / hybride-électrique : dispensé de la condition d'âge",
+          "Critères VTC CUMULATIFS : 4 portes + ≥ 4,50 m + ≥ 1,70 m + ≥ 84 kW",
+          "Hybrides/électriques : dispensés de tous ces critères (art. L.3120-5)",
+          "Contrôle technique annuel (renforcé pour usage pro)"
         ],
         practicalCases: [
           {
-            situation: "Antoine veut acheter un véhicule pour son activité VTC. Il hésite entre une Peugeot 308 thermique de 2019 et une Tesla Model 3 de 2019.",
-            question: "Lequel pourra-t-il exploiter le plus longtemps en 2026 ?",
-            answer: "La Tesla : électrique → 7 ans maximum, donc encore exploitable jusqu'en 2026. La Peugeot thermique de 2019 a déjà dépassé les 6 ans.",
-            reasoning: "Le décret n°2017-483 distingue motorisation thermique (6 ans) et hybride/électrique (7 ans). Pour 2026 : véhicules thermiques de 2020 ou plus récents, hybrides/électriques de 2019 ou plus récents. Antoine choisira la Tesla, sachant qu'il devra la remplacer dès 2027 (8 ans). Bonus : critères de standing VTC respectés (puissance > 84 kW)."
+            situation: "Antoine veut acheter un véhicule pour son activité VTC en 2026. Il hésite entre une berline thermique de 2018 et une Tesla Model 3 de 2018.",
+            question: "Lequel peut-il exploiter en VTC ?",
+            answer: "La Tesla : électrique, elle est dispensée de la condition d'ancienneté. La berline thermique de 2018 a dépassé la limite de 7 ans.",
+            reasoning: "L'article L.3120-5 du Code des transports dispense les véhicules hybrides et électriques des caractéristiques techniques réglementaires, condition d'âge comprise. Pour un véhicule thermique en 2026, il faut une première mise en circulation en 2020 ou après (moins de 7 ans). C'est un avantage économique majeur des motorisations électrifiées pour les exploitants."
           },
           {
-            situation: "Une VTC roule avec une voiture de 4,40 m et 80 kW de puissance.",
+            situation: "Un VTC thermique mesure 4,60 m de long et 1,80 m de large, mais sa puissance moteur est de 70 kW.",
             question: "Le véhicule est-il conforme aux exigences VTC ?",
-            answer: "Non : ni la puissance (< 84 kW) ni la longueur (< 4,50 m) ne respectent les critères VTC.",
-            reasoning: "Le décret VTC impose une condition alternative (puissance ≥ 84 kW OU longueur ≥ 4,50 m). Il suffit qu'une seule soit respectée. Ici, les deux échouent : le véhicule ne peut pas être inscrit au registre VTC. La conductrice doit changer de véhicule pour continuer son activité. À noter : ces critères ne s'appliquent pas au taxi, qui suit d'autres règles locales."
+            answer: "Non : les critères sont cumulatifs. La puissance (70 kW < 84 kW) suffit à le disqualifier, même si les dimensions sont bonnes.",
+            reasoning: "L'arrêté du 26 mars 2015 impose des conditions CUMULATIVES pour les véhicules thermiques : 4 portes ET longueur ≥ 4,50 m ET largeur ≥ 1,70 m ET puissance ≥ 84 kW. Il ne suffit pas d'en respecter une partie. Seule une motorisation hybride ou électrique aurait dispensé ce véhicule de ces critères. À noter : ces critères ne s'appliquent pas au taxi, qui suit d'autres règles locales."
           }
         ],
-        fieldExample: "Une Tesla Model 3 électrique de 2019 reste exploitable en VTC en 2026 (7 ans). Une Peugeot 308 thermique de 2019 ne l'est plus (limite 6 ans dépassée).",
-        examWarning: "L'exception hybride/électrique ne s'applique qu'à l'âge du véhicule, pas aux critères de puissance/longueur VTC.",
+        fieldExample: "Une Tesla Model 3 électrique de 2018 reste exploitable en VTC en 2026 (dispense hybride/électrique). Une berline thermique de 2018 ne l'est plus (limite 7 ans dépassée).",
+        examWarning: "Les critères VTC (portes, dimensions, puissance) sont CUMULATIFS : un seul manquant disqualifie. Et la dispense hybride/électrique couvre TOUT, y compris l'âge.",
         confusionPoints: [
-          "Âge 6 ans (thermique) ≠ 7 ans (hybride/électrique)",
-          "Critères VTC (standing, alternatifs) ≠ critères taxi (équipements signalétiques)"
+          "Thermique < 7 ans ≠ hybride/électrique : dispensé (pas de limite d'âge)",
+          "Critères cumulatifs (ET) ≠ critères alternatifs (OU) — piège classique"
         ],
         tips: [
-          "Mémo : électrique/hybride = +1 an de plus",
-          "Critères VTC = puissance OU longueur (un seul suffit)"
+          "Mémo : hybride/électrique = dispense totale (âge, gabarit, puissance)",
+          "Avant d'acheter : vérifier portes, longueur, largeur ET puissance sur la carte grise"
         ],
-        legalRefs: ["Décret n°2017-483 du 6 avril 2017", "Articles R3122-4 et R3122-5 Code des transports"]
+        legalRefs: ["Article L3120-5 du Code des transports", "Article R3122-11 du Code des transports", "Arrêté du 26 mars 2015 (caractéristiques VTC)"]
       },
       {
         id: 'reg-sanctions',
@@ -1083,6 +1083,82 @@ export const revisionModules: RevisionModule[] = [
           "Toujours conserver l'original signé et un double"
         ],
         legalRefs: ["Article 1103 du Code civil (force obligatoire des contrats)"]
+      },
+      {
+        id: 'fra-orthographe-homophones',
+        title: 'Orthographe et homophones',
+        essential: "Les homophones (a/à, est/et, ou/où, ce/se, ces/ses…) se départagent par des tests de substitution simples — la méthode la plus fiable à l'examen.",
+        narrative: "L'épreuve de français teste massivement les homophones : des mots qui se prononcent pareil mais s'écrivent différemment. Dans les écrits professionnels (SMS de confirmation, courriels, factures), une confusion a/à ou est/et décrédibilise immédiatement le conducteur auprès d'une clientèle d'affaires. La bonne nouvelle : chaque paire se résout par un test de substitution mécanique, qui fonctionne aussi sous stress d'examen.\n\nLes tests à connaître par cœur. A / À : remplacer par « avait » — si la phrase reste correcte, c'est « a » (verbe avoir) ; sinon c'est « à » (préposition). EST / ET : remplacer par « était » — si ça fonctionne, c'est « est » (verbe être) ; sinon « et » (qu'on peut remplacer par « et puis »). OU / OÙ : « ou » se remplace par « ou bien » (choix) ; « où » indique un lieu ou un moment. ON / ONT : remplacer par « il » (→ on) ou « avaient » (→ ont). SON / SONT : « son » = le sien (possessif) ; « sont » = étaient (verbe être).\n\nLes paires plus subtiles. CE / SE : « ce » accompagne un nom ou introduit « ce que/ce qui » ; « se » précède toujours un verbe pronominal (se garer, se tromper). CES / SES : « ces » montre (démonstratif : ces valises-là) ; « ses » indique la possession (ses valises à lui). LEUR / LEURS : devant un verbe, « leur » est un pronom invariable (je leur parle) ; devant un nom, il s'accorde (leurs bagages). Enfin, -ER / -É en fin de verbe : remplacer par « vendre / vendu » — « il faut confirmer » (vendre → -er) mais « la course est confirmée » (vendue → -é).",
+        keyPoints: [
+          "a = « avait » (verbe) / à = préposition",
+          "est = « était » / et = « et puis »",
+          "ou = « ou bien » (choix) / où = lieu (accent)",
+          "ce + nom / se + verbe — ces = on montre / ses = possession",
+          "-er ou -é : test « vendre / vendu »"
+        ],
+        fieldExample: "SMS au client : « Je suis arrivé à l'adresse indiquée et je vous attends » — chaque homophone vérifié en une seconde par substitution.",
+        practicalCases: [
+          {
+            situation: "Le conducteur rédige un SMS : « Le client (a/à) réglé sa course (a/à) l'arrivée. »",
+            question: "Quelles formes choisir ?",
+            answer: "« Le client A réglé sa course À l'arrivée. » Premier mot : « avait réglé » fonctionne → « a ». Second : « avait l'arrivée » ne veut rien dire → « à ».",
+            reasoning: "Le test de substitution par « avait » est infaillible : il isole le verbe avoir de la préposition. C'est LA méthode à appliquer systématiquement à l'examen plutôt que de se fier à l'intuition, qui échoue sous stress ou en relecture rapide."
+          },
+          {
+            situation: "Dans un courriel : « Les clients ont laissé (leur/leurs) bagages dans le coffre, je (leur/leurs) rapporte demain. »",
+            question: "Quelles formes choisir ?",
+            answer: "« …laissé LEURS bagages… je LEUR rapporte… » Devant le nom pluriel « bagages », le déterminant s'accorde ; devant le verbe « rapporte », le pronom « leur » est invariable.",
+            reasoning: "La règle tient en une ligne : « leur » devant un verbe ne prend JAMAIS de s (pronom personnel invariable) ; devant un nom, il s'accorde en nombre avec ce nom. Confondre les deux est l'une des fautes les plus fréquentes des écrits professionnels."
+          }
+        ],
+        examWarning: "Ne jamais répondre à l'intuition : appliquer le test de substitution à chaque homophone, même quand la réponse « semble » évidente.",
+        confusionPoints: [
+          "leur (pronom, invariable devant verbe) ≠ leurs (déterminant, s'accorde devant nom)",
+          "c'est (= cela est) ≠ s'est (verbe pronominal : il s'est trompé)"
+        ],
+        tips: [
+          "Relire ses SMS/courriels à voix haute avant envoi : l'oreille détecte ce que l'œil rate",
+          "Mémo : à, où = accents = petits mots invariables (préposition, lieu)"
+        ],
+        legalRefs: []
+      },
+      {
+        id: 'fra-accords-conjugaison',
+        title: 'Accords et conjugaison',
+        essential: "Participe passé : avec ÊTRE, accord avec le sujet ; avec AVOIR, accord uniquement si le COD est placé AVANT le verbe.",
+        narrative: "Après les homophones, l'accord du participe passé est le deuxième grand terrain de jeu de l'épreuve de français. La règle centrale tient en deux temps. Avec l'auxiliaire ÊTRE, le participe s'accorde avec le sujet : « Les clientes sont arrivées », « Nous sommes partis à 8h ». Avec l'auxiliaire AVOIR, le participe ne s'accorde JAMAIS avec le sujet — il s'accorde seulement avec le complément d'objet direct (COD) si celui-ci est placé AVANT le verbe : « J'ai effectué les courses » (COD après : pas d'accord) mais « les courses que j'ai effectuéES » (le COD « que » = les courses, placé avant : accord).\n\nL'accord sujet-verbe réserve aussi ses pièges. Quand le sujet est inversé (« Dans le coffre se trouvent les valises »), le verbe s'accorde avec le vrai sujet (les valises), pas avec ce qui précède. Un sujet collectif (« la majorité des clients ») accepte souvent le singulier comme le pluriel, mais deux sujets reliés par « et » imposent le pluriel. Attention aux verbes éloignés de leur sujet par une longue incise : toujours retrouver QUI fait l'action avant d'accorder.\n\nCôté conjugaison, trois emplois professionnels à maîtriser. Le CONDITIONNEL DE POLITESSE adoucit une demande : « Je souhaiterais confirmer votre réservation », « Pourriez-vous préciser l'adresse ? ». Le FUTUR engage avec courtoisie : « Nous arriverons vers 15 h ». Et la formule « VEUILLEZ » (impératif de vouloir) reste la plus sûre pour les courriels : « Veuillez trouver ci-joint votre facture ». À noter : « ci-joint » placé avant le nom est invariable (« ci-joint la facture »), mais s'accorde après le nom (« la facture ci-jointe »).",
+        keyPoints: [
+          "ÊTRE → accord avec le sujet (elles sont arrivées)",
+          "AVOIR → accord avec le COD seulement s'il est AVANT le verbe",
+          "Sujet inversé : accorder avec le vrai sujet, pas le mot d'avant",
+          "Conditionnel de politesse : « je souhaiterais », « pourriez-vous »",
+          "« Veuillez trouver ci-joint » : formule sûre des courriels pro"
+        ],
+        fieldExample: "Facture par courriel : « Veuillez trouver ci-joint la facture des courses que nous avons effectuées ce mois-ci. »",
+        practicalCases: [
+          {
+            situation: "Le conducteur écrit : « Voici les factures que j'ai (envoyé/envoyées) hier. »",
+            question: "Quelle forme choisir ?",
+            answer: "« …que j'ai envoyéES ». Le COD (« que » = les factures) est placé avant le verbe : le participe s'accorde au féminin pluriel.",
+            reasoning: "Avec l'auxiliaire avoir, on cherche le COD et sa position. Ici « que » reprend « les factures » et précède « ai envoyé » : accord obligatoire. À l'inverse, « j'ai envoyé les factures » (COD après) ne s'accorde pas. Ce mécanisme est LE grand classique de l'épreuve."
+          },
+          {
+            situation: "Pour demander un délai de paiement à un client d'entreprise, le conducteur hésite entre : « Je veux être payé sous 8 jours » et une formule plus adaptée.",
+            question: "Quelle formulation professionnelle choisir ?",
+            answer: "« Je vous serais reconnaissant de bien vouloir régler la facture sous 8 jours » — conditionnel de politesse + formule indirecte.",
+            reasoning: "« Je veux » est perçu comme une exigence brutale dans un écrit commercial. Le conditionnel (« serais ») et la construction indirecte préservent la relation tout en formulant la même demande. La courtoisie écrite est explicitement évaluée à l'examen comme sur le terrain B2B."
+          }
+        ],
+        examWarning: "Avec AVOIR, ne JAMAIS accorder avec le sujet — c'est le réflexe erroné le plus répandu. Chercher le COD et sa position.",
+        confusionPoints: [
+          "être = accord sujet ≠ avoir = accord COD avant",
+          "ci-joint avant le nom (invariable) ≠ après le nom (accordé)"
+        ],
+        tips: [
+          "Réflexe avoir : poser la question « j'ai envoyé QUOI ? » et regarder où se trouve la réponse",
+          "En cas de doute dans un courriel : reformuler pour placer le COD après le verbe"
+        ],
+        legalRefs: []
       }
     ]
   },
@@ -1201,7 +1277,7 @@ export const revisionModules: RevisionModule[] = [
         id: 'ang-aeroport',
         title: 'Vocabulaire aéroport',
         essential: "Terminal, Gate, Check-in, Boarding pass : mots essentiels aéroport.",
-        narrative: "L'aéroport représente une part substantielle du chiffre d'affaires T3P (forfaits CDG/Orly, navettes d'entreprises). Maîtriser le vocabulaire aéroportuaire anglais est donc un atout commercial direct. Une erreur de terminal à CDG (7 terminaux : 1, 2A, 2B, 2C, 2D, 2E, 2F, 2G, 3) peut faire perdre 20 minutes au client et lui faire rater son vol.\n\nLe vocabulaire critique se concentre sur le parcours du voyageur : check-in (enregistrement, généralement 2-3 h avant le vol), security (contrôle de sécurité), gate (porte d'embarquement, attribuée 30-60 min avant), boarding (embarquement), boarding pass (carte d'embarquement). Attention : check-in ≠ check-out. Check-out désigne le départ d'un hôtel (on libère la chambre), pas l'arrivée à l'aéroport. Cette confusion est extrêmement fréquente chez les conducteurs francophones.\n\nPour les bagages : carry-on / hand luggage (bagage cabine, généralement 8-10 kg), checked baggage (bagage en soute, à enregistrer), luggage / suitcase (valise), oversized luggage (bagage hors gabarit). Pour les types de vols : domestic flight (vol intérieur, généralement Terminal 2F à CDG), international flight (vol international), connecting flight (vol en correspondance). Toujours demander : « Which airline are you flying with? » et « Which terminal? » — ces deux informations conditionnent le point de dépose exact.",
+        narrative: "L'aéroport représente une part substantielle du chiffre d'affaires T3P (forfaits CDG/Orly, navettes d'entreprises). Maîtriser le vocabulaire aéroportuaire anglais est donc un atout commercial direct. Une erreur de terminal à CDG (3 terminaux, dont le Terminal 2 divisé en 7 halls : 2A à 2G) peut faire perdre 20 minutes au client et lui faire rater son vol.\n\nLe vocabulaire critique se concentre sur le parcours du voyageur : check-in (enregistrement, généralement 2-3 h avant le vol), security (contrôle de sécurité), gate (porte d'embarquement, attribuée 30-60 min avant), boarding (embarquement), boarding pass (carte d'embarquement). Attention : check-in ≠ check-out. Check-out désigne le départ d'un hôtel (on libère la chambre), pas l'arrivée à l'aéroport. Cette confusion est extrêmement fréquente chez les conducteurs francophones.\n\nPour les bagages : carry-on / hand luggage (bagage cabine, généralement 8-10 kg), checked baggage (bagage en soute, à enregistrer), luggage / suitcase (valise), oversized luggage (bagage hors gabarit). Pour les types de vols : domestic flight (vol intérieur, généralement Terminal 2F à CDG), international flight (vol international), connecting flight (vol en correspondance). Toujours demander : « Which airline are you flying with? » et « Which terminal? » — ces deux informations conditionnent le point de dépose exact.",
         keyPoints: [
           "Flight = vol / Gate = porte d'embarquement",
           "Boarding pass = carte d'embarquement",
@@ -1318,21 +1394,21 @@ export const revisionModules: RevisionModule[] = [
         id: 'vtc-inscription-registre',
         title: 'Inscription au registre',
         essential: "Inscription au registre VTC obligatoire. Numéro à afficher sur le véhicule.",
-        narrative: "L'inscription au registre VTC est l'acte de naissance administratif de l'activité. Sans elle, ni la carte professionnelle ni le véhicule ne suffisent : le conducteur exerce illégalement, même s'il pense être « en règle » avec ses autres documents. Cette inscription, gérée par les préfectures (en Île-de-France : la DRIEAT — Direction Régionale et Interdépartementale de l'Environnement, de l'Aménagement et des Transports), valide trois éléments simultanément : l'exploitant (entreprise), le véhicule, et le conducteur.\n\nLe véhicule doit respecter des conditions techniques cumulatives : puissance ≥ 84 kW (115 ch), OU longueur ≥ 4,50 m, OU largeur ≥ 1,70 m. Un seul de ces critères suffit, mais en pratique la plupart des véhicules de gamme moyenne supérieure (Mercedes Classe E, BMW Série 5, Audi A6, Tesla Model 3) les remplissent largement. Le véhicule doit aussi être âgé de moins de 7 ans à la date d'inscription. L'assurance professionnelle « transport de personnes à titre onéreux » est obligatoire — une assurance personnelle classique ne couvre rien.\n\nUne fois inscrit, le véhicule reçoit une vignette d'identification numérotée, à apposer en bas à droite du pare-brise (côté passager). L'attestation d'inscription papier doit être présente à bord, présentable à tout contrôle (police, gendarmerie, DGCCRF). L'inscription est valable 5 ans et doit être renouvelée. Tout changement (nouveau véhicule, nouvelle adresse) doit être déclaré sous 1 mois.",
+        narrative: "L'inscription au registre VTC est l'acte de naissance administratif de l'activité. Sans elle, ni la carte professionnelle ni le véhicule ne suffisent : le conducteur exerce illégalement, même s'il pense être « en règle » avec ses autres documents. Cette inscription, gérée par les préfectures (en Île-de-France : la DRIEAT — Direction Régionale et Interdépartementale de l'Environnement, de l'Aménagement et des Transports), valide trois éléments simultanément : l'exploitant (entreprise), le véhicule, et le conducteur.\n\nLe véhicule thermique doit respecter des conditions techniques CUMULATIVES (arrêté du 26 mars 2015) : au moins 4 portes, longueur ≥ 4,50 m, largeur ≥ 1,70 m ET puissance ≥ 84 kW (114 ch). Tous les critères doivent être remplis — en pratique, les véhicules de gamme moyenne supérieure (Mercedes Classe E, BMW Série 5, Audi A6) les respectent largement, et les hybrides/électriques en sont totalement dispensés (art. L.3120-5). Le véhicule thermique doit aussi être âgé de moins de 7 ans. L'assurance professionnelle « transport de personnes à titre onéreux » est obligatoire — une assurance personnelle classique ne couvre rien.\n\nUne fois inscrit, le véhicule reçoit deux vignettes d'identification numérotées (arrêté du 6 avril 2017) : l'une à l'AVANT, dans l'angle inférieur gauche du pare-brise, l'autre à l'ARRIÈRE, dans l'angle inférieur droit de la lunette arrière. L'attestation d'inscription papier doit être présente à bord, présentable à tout contrôle (police, gendarmerie, DGCCRF). L'inscription est valable 5 ans et doit être renouvelée. Tout changement (nouveau véhicule, nouvelle adresse) doit être déclaré sous 1 mois.",
         keyPoints: [
           "Registre tenu par la préfecture ou DRIEAT (Île-de-France)",
-          "Véhicule : ≥ 84 kW OU ≥ 4,50 m OU ≥ 1,70 m largeur",
-          "Véhicule de moins de 7 ans à l'inscription",
-          "Vignette avec numéro d'inscription visible sur pare-brise",
+          "Véhicule thermique : 4 portes + ≥ 4,50 m + ≥ 1,70 m + ≥ 84 kW (critères cumulatifs)",
+          "Thermique de moins de 7 ans / hybride-électrique dispensé (L.3120-5)",
+          "Deux vignettes : avant (angle inférieur gauche du pare-brise) + arrière (angle inférieur droit de la lunette)",
           "Attestation d'inscription à bord obligatoire"
         ],
-        fieldExample: "Le VTC affiche sa vignette avec son numéro d'inscription sur le pare-brise avant droit.",
+        fieldExample: "Le VTC appose sa vignette avant dans l'angle inférieur gauche du pare-brise et la seconde sur la lunette arrière.",
         practicalCases: [
           {
-            situation: "Un conducteur possède sa carte professionnelle VTC depuis 6 mois. Il vient d'acheter une Renault Mégane (longueur 4,36 m, largeur 1,81 m, puissance 84 kW).",
+            situation: "Un conducteur possède sa carte professionnelle VTC depuis 6 mois. Il vient d'acheter une Renault Mégane thermique (longueur 4,36 m, largeur 1,81 m, puissance 84 kW).",
             question: "Ce véhicule est-il éligible au registre VTC ?",
-            answer: "Oui. Il remplit deux critères sur trois : largeur ≥ 1,70 m (1,81 m) et puissance ≥ 84 kW.",
-            reasoning: "Les critères sont alternatifs (« OU ») et non cumulatifs. Il suffit qu'UN seul soit respecté. La longueur de 4,36 m (< 4,50 m) n'est donc pas bloquante. Cependant, l'image de marque peut souffrir : la plupart des plateformes premium imposent en pratique un niveau de gamme supérieur."
+            answer: "Non. Les critères sont cumulatifs et la longueur de 4,36 m est insuffisante (< 4,50 m), même si la largeur et la puissance sont conformes.",
+            reasoning: "L'arrêté du 26 mars 2015 impose des critères CUMULATIFS (« ET ») pour les véhicules thermiques : 4 portes, longueur ≥ 4,50 m, largeur ≥ 1,70 m et puissance ≥ 84 kW. Un seul critère manquant bloque l'inscription. En revanche, la même Mégane en version hybride rechargeable serait éligible : les hybrides et électriques sont dispensés de ces caractéristiques (art. L.3120-5)."
           },
           {
             situation: "Un VTC change de véhicule mais oublie de déclarer le changement à la préfecture. Il fait des courses avec le nouveau véhicule pendant 3 mois.",
@@ -1419,6 +1495,82 @@ export const revisionModules: RevisionModule[] = [
           "Conserver ses propres relevés (ne pas dépendre des dashboards des plateformes pour la compta)"
         ],
         legalRefs: ["Article L3141-1 du Code des transports", "Cour de cassation, 4 mars 2020 (Uber)"]
+      },
+      {
+        id: 'vtc-acces-profession',
+        title: 'Carte professionnelle VTC',
+        essential: "Permis B depuis au moins 3 ans (2 ans si conduite accompagnée), examen CMA, aptitude médicale, honorabilité. Carte valable 5 ans, formation continue de 14 h pour renouveler.",
+        narrative: "L'accès à la profession de conducteur VTC est conditionné par la carte professionnelle, délivrée par le préfet. Quatre conditions CUMULATIVES : être titulaire du permis B depuis au moins 3 ans (ramené à 2 ans si le permis a été obtenu en conduite accompagnée), justifier de son aptitude physique par une visite médicale auprès d'un médecin agréé, satisfaire à la condition d'honorabilité (bulletin n°2 du casier judiciaire compatible — certaines condamnations sont éliminatoires), et réussir l'examen organisé par les chambres de métiers et de l'artisanat (CMA).\n\nL'examen comporte deux phases : l'ADMISSIBILITÉ (épreuves théoriques : réglementation T3P, gestion, sécurité routière, français, anglais, plus l'épreuve spécifique VTC) puis l'ADMISSION (épreuve pratique de conduite en situation professionnelle). Il existe une voie d'ÉQUIVALENCE : justifier d'une expérience professionnelle d'au moins un an dans le transport de personnes au cours des dix dernières années dispense de l'examen.\n\nLa carte est valable 5 ans. Son renouvellement n'est PAS automatique : il exige une formation continue de 14 heures dans un centre agréé. En exercice, la carte doit être apposée de manière visible dans le véhicule (pare-brise) et présentée à toute réquisition. Exercer sans carte professionnelle est un DÉLIT : 1 an d'emprisonnement et 15 000 € d'amende (art. L.3124-4 du Code des transports), avec peines complémentaires possibles (suspension du permis, confiscation du véhicule).",
+        keyPoints: [
+          "Permis B ≥ 3 ans (2 ans si conduite accompagnée)",
+          "Examen CMA : admissibilité (théorie) puis admission (pratique)",
+          "Équivalence : 1 an d'expérience de transport de personnes dans les 10 dernières années",
+          "Carte : 5 ans, renouvelée après formation continue de 14 h",
+          "Sans carte = délit : 1 an + 15 000 € (L.3124-4)"
+        ],
+        fieldExample: "Le conducteur appose sa carte pro sur le pare-brise avant chaque service : visible du client et des contrôleurs.",
+        practicalCases: [
+          {
+            situation: "Lisa a obtenu son permis B il y a 2 ans et demi, par la filière classique (pas de conduite accompagnée). Elle veut s'inscrire à l'examen VTC.",
+            question: "Peut-elle obtenir sa carte professionnelle ?",
+            answer: "Pas encore. Il lui faut 3 ans de permis B (la réduction à 2 ans est réservée à la conduite accompagnée). Elle doit attendre 6 mois.",
+            reasoning: "L'ancienneté du permis est une condition d'expérience de conduite non négociable, identique pour taxi et VTC. Elle peut toutefois mettre à profit l'attente : préparer l'examen théorique, monter son dossier d'entreprise, choisir son véhicule — l'inscription à l'examen peut précéder de peu l'échéance des 3 ans."
+          },
+          {
+            situation: "Un conducteur VTC exerce depuis 4 ans et demi. Sa carte expire dans 6 mois et il n'a pas encore suivi de formation continue.",
+            question: "Que doit-il faire pour continuer à exercer ?",
+            answer: "S'inscrire sans tarder à la formation continue de 14 h dans un centre agréé : sans elle, la carte ne sera pas renouvelée et il devra cesser l'activité à l'échéance.",
+            reasoning: "Le renouvellement n'est jamais automatique. La formation continue (réglementation, sécurité, gestion) conditionne la nouvelle carte de 5 ans. Anticiper d'au moins 3 mois évite la rupture d'activité — une carte expirée = exercice illégal dès le premier jour, avec les sanctions du travail sans carte."
+          }
+        ],
+        examWarning: "Carte pro (aptitude du CONDUCTEUR) ≠ inscription au registre (obligation de l'EXPLOITANT) : les deux sont nécessaires et distinctes.",
+        confusionPoints: [
+          "Examen CMA (accès à la profession) ≠ formation continue 14 h (renouvellement)",
+          "Permis 3 ans (classique) ≠ 2 ans (conduite accompagnée)"
+        ],
+        tips: [
+          "Mémo : « 3 ans de permis, 5 ans de carte, 14 h pour renouveler »",
+          "Programmer un rappel 6 mois avant l'expiration de la carte"
+        ],
+        legalRefs: ["Article R3120-6 du Code des transports", "Article L3124-4 du Code des transports (exercice sans carte)"]
+      },
+      {
+        id: 'vtc-assurance-documents',
+        title: 'Assurance et documents à bord',
+        essential: "Assurance RC professionnelle « transport de personnes à titre onéreux » obligatoire — l'assurance personnelle ne couvre RIEN en course. À bord : carte pro, attestation registre, assurance, justificatif de réservation.",
+        narrative: "L'assurance est le point aveugle des conducteurs débutants. Un contrat auto personnel, même « tous risques », EXCLUT l'usage professionnel : transporter un client à titre onéreux sans responsabilité civile professionnelle « transport de personnes », c'est rouler SANS assurance au sens de la loi. En cas d'accident en course, l'assureur refuse sa garantie : le conducteur paie de sa poche les dommages du véhicule, l'indemnisation du client blessé et celle des tiers — des sommes qui peuvent dépasser plusieurs centaines de milliers d'euros. Le défaut d'assurance est par ailleurs sanctionné de 3 750 € d'amende et d'une suspension de permis (art. L324-2 du Code de la route).\n\nLe VTC en exercice doit pouvoir présenter à tout contrôle (police, gendarmerie, DGCCRF) un ensemble de documents : la carte professionnelle (apposée de manière visible), l'attestation d'inscription au registre VTC en cours de validité, l'attestation d'assurance RC professionnelle, le certificat d'immatriculation, le permis de conduire, et le JUSTIFICATIF DE RÉSERVATION PRÉALABLE de la course en cours — horodaté, sur support papier ou électronique. Sans ce dernier, le conducteur est présumé en maraude illégale.\n\nL'organisation matérielle fait le professionnel : une pochette véhicule avec les originaux (ou copies conformes), des versions numériques sur smartphone en secours, et la conservation de l'historique de réservations (l'application de la plateforme y pourvoit, mais un export régulier protège en cas de litige ou de déréférencement). Après chaque changement (véhicule, assureur, adresse), mettre à jour le registre sous 1 mois et remplacer les attestations à bord.",
+        keyPoints: [
+          "RC pro « transport de personnes à titre onéreux » obligatoire",
+          "Assurance personnelle en course = défaut d'assurance (3 750 € + suspension)",
+          "À bord : carte pro, attestation registre, assurance, carte grise, permis",
+          "Justificatif de réservation horodaté : papier ou électronique",
+          "Sans justificatif = présomption de maraude illégale"
+        ],
+        fieldExample: "Contrôle devant un hôtel : le conducteur présente sa carte pro, son attestation registre et la réservation horodatée de l'application — contrôle réglé en 3 minutes.",
+        practicalCases: [
+          {
+            situation: "Un conducteur débute en VTC avec sa voiture personnelle, assurée « tous risques » à son nom. Il se dit qu'il régularisera l'assurance pro plus tard. Un client se blesse lors d'un freinage d'urgence.",
+            question: "Qui indemnise le client ?",
+            answer: "Personne d'autre que le conducteur lui-même : l'assureur refusera sa garantie (usage professionnel non déclaré). Il devra indemniser le client sur ses fonds propres et s'expose aux sanctions du défaut d'assurance.",
+            reasoning: "L'usage « transport de personnes à titre onéreux » doit être expressément couvert par le contrat. Le sinistre en course avec une assurance personnelle = exclusion de garantie + fausse déclaration de risque. La RC pro est un préalable ABSOLU au premier client, pas une régularisation différée."
+          },
+          {
+            situation: "Lors d'un contrôle, un VTC présente tous ses documents mais l'application de réservation ne charge pas (panne réseau) : impossible d'afficher le justificatif de la course en cours.",
+            question: "Que risque-t-il et comment s'en prémunir ?",
+            answer: "Présomption de maraude : verbalisation possible, à charge pour lui de prouver la réservation ensuite. Prévention : capture d'écran systématique de chaque course acceptée avant de démarrer.",
+            reasoning: "La charge de la preuve de la réservation préalable pèse sur le conducteur, au moment du contrôle. Une capture d'écran horodatée (ou un SMS de confirmation) stockée hors ligne constitue un justificatif présentable même sans réseau. Réflexe simple qui évite une procédure longue et une immobilisation."
+          }
+        ],
+        examWarning: "« Tous risques » personnel ≠ assurance professionnelle : en course, seule la RC pro transport de personnes couvre. Piège récurrent de l'examen.",
+        confusionPoints: [
+          "Attestation d'assurance (souscription) ≠ garantie acquise (respect des conditions d'exercice légal)",
+          "Justificatif de réservation (course en cours) ≠ historique de réservations (conservation)"
+        ],
+        tips: [
+          "Copies numériques de tous les documents sur smartphone + originaux dans la pochette véhicule",
+          "Capture d'écran de chaque réservation avant de démarrer la course"
+        ],
+        legalRefs: ["Article L324-2 du Code de la route (défaut d'assurance)", "Article L3122-9 du Code des transports (réservation préalable)"]
       }
     ]
   },
@@ -1438,11 +1590,11 @@ export const revisionModules: RevisionModule[] = [
         id: 'tx75-ads-licence',
         title: 'ADS (Licence taxi)',
         essential: "ADS = Autorisation de Stationnement. Incessible pour les nouvelles depuis 2014 (loi Thévenoud).",
-        narrative: "L'Autorisation De Stationnement (ADS), couramment appelée « licence taxi », est le droit administratif d'exploiter un véhicule comme taxi sur le territoire d'une commune. À Paris, environ 17 000 ADS sont en circulation, plafond fixé par arrêté préfectoral. C'est ce numerus clausus qui donne sa valeur (parfois > 100 000 €) à l'ADS sur le marché secondaire — ou plutôt qui le donnait, avant la réforme.\n\nLa loi Thévenoud du 1er octobre 2014 a opéré une révolution discrète mais profonde : les ADS DÉLIVRÉES APRÈS le 1er octobre 2014 sont INCESSIBLES. Elles sont attribuées gratuitement par la préfecture, à titre personnel et incessible, sur liste d'attente (plusieurs années à Paris). Le titulaire ne peut ni les vendre, ni les louer, ni les transmettre. À son départ (retraite, abandon), elles retournent à l'autorité administrative pour redistribution.\n\nLes ADS ANCIENNES (délivrées avant le 1er octobre 2014) restent cessibles, mais sous conditions : exploitation effective pendant au moins 5 ans avant la première cession, puis 15 ans pour les cessions suivantes. Cette double règle vise à éliminer progressivement la spéculation. À côté de l'ADS, le conducteur doit aussi détenir une carte professionnelle (aptitude à conduire un taxi). Les deux documents sont distincts : l'ADS est le droit du véhicule à exercer, la carte pro est l'aptitude du conducteur. Un même conducteur peut conduire plusieurs ADS différentes (locataire-gérant), et inversement une ADS peut être conduite par plusieurs conducteurs (doublage, équipes).",
+        narrative: "L'Autorisation De Stationnement (ADS), couramment appelée « licence taxi », est le droit administratif d'exploiter un véhicule comme taxi sur le territoire d'une commune. À Paris, environ 18 000 ADS sont en circulation (≈ 18 500 selon la Préfecture de Police), plafond fixé par arrêté préfectoral. C'est ce numerus clausus qui donne sa valeur (parfois > 100 000 €) à l'ADS sur le marché secondaire — ou plutôt qui le donnait, avant la réforme.\n\nLa loi Thévenoud du 1er octobre 2014 a opéré une révolution discrète mais profonde : les ADS DÉLIVRÉES APRÈS le 1er octobre 2014 sont INCESSIBLES. Elles sont attribuées gratuitement par la préfecture, à titre personnel et incessible, sur liste d'attente (plusieurs années à Paris). Le titulaire ne peut ni les vendre, ni les louer, ni les transmettre. À son départ (retraite, abandon), elles retournent à l'autorité administrative pour redistribution.\n\nLes ADS ANCIENNES (délivrées avant le 1er octobre 2014) restent cessibles, mais sous conditions : exploitation effective pendant au moins 5 ans avant la première cession, puis 15 ans pour les cessions suivantes. Cette double règle vise à éliminer progressivement la spéculation. À côté de l'ADS, le conducteur doit aussi détenir une carte professionnelle (aptitude à conduire un taxi). Les deux documents sont distincts : l'ADS est le droit du véhicule à exercer, la carte pro est l'aptitude du conducteur. Un même conducteur peut conduire plusieurs ADS différentes (locataire-gérant), et inversement une ADS peut être conduite par plusieurs conducteurs (doublage, équipes).",
         keyPoints: [
           "ADS ≠ carte pro : les deux sont obligatoires",
           "Délivrée par le préfet de police de Paris",
-          "~17 000 taxis parisiens (numerus clausus)",
+          "~18 000 taxis parisiens (numerus clausus, ≈ 18 500)",
           "ADS post-2014 : incessibles, gratuites, liste d'attente",
           "ADS pré-2014 : cessibles sous conditions (5 ou 15 ans d'exploitation)"
         ],
@@ -1547,45 +1699,49 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'tx75-supplements',
         title: 'Suppléments autorisés',
-        essential: "4ème passager adulte, bagages volumineux, réservation. Chien guide = transport gratuit.",
-        narrative: "Les suppléments sont strictement encadrés par l'arrêté préfectoral tarifaire. Le conducteur ne peut PAS inventer de supplément ni en majorer le montant : la liste est limitative. Tout supplément non prévu est constitutif d'une majoration illégale, sanctionnée par une amende et un signalement préfectoral.\n\nQuatre suppléments principaux sont autorisés à Paris : (1) le 4ème passager adulte — environ 4 € — destiné à compenser le confort réduit (les enfants de moins de 10 ans ne comptent pas dans ce décompte) ; (2) les bagages volumineux transportés dans le coffre (en règle générale : au-delà d'une valise par passager, ou si volume hors gabarit) ; (3) la réservation préalable par téléphone — environ 4 € pour réservation immédiate, 7 € pour réservation à l'avance ; (4) les animaux de compagnie (sauf cas d'exception ci-dessous).\n\nEXCEPTION FONDAMENTALE : les chiens guides d'aveugle et chiens d'assistance pour personnes handicapées sont transportés GRATUITEMENT et OBLIGATOIREMENT. Refuser leur transport est une discrimination réprimée par la loi (article L3121-8 du Code des transports), sanctionnée pénalement. De même, refuser un client en fauteuil roulant ou avec assistance technique est illégal. À l'inverse, sont strictement INTERDITS : le pourboire « obligatoire », l'arrondi systématique à la hausse, la majoration pour paiement carte, la surfacturation pour clientèle étrangère (discrimination tarifaire).",
+        essential: "Trois suppléments seulement : réservation immédiate 4 €, réservation à l'avance 7 €, passager à partir du 5ème 5,50 €. Bagages : GRATUITS. Chien guide = transport gratuit.",
+        narrative: "Les suppléments sont strictement encadrés par l'arrêté tarifaire annuel. Le conducteur ne peut PAS inventer de supplément ni en majorer le montant : la liste est limitative. Tout supplément non prévu est constitutif d'une majoration illégale, sanctionnée par une amende et un signalement préfectoral.\n\nPour les taxis parisiens, trois suppléments seulement sont autorisés (tarifs 2026) : (1) la réservation immédiate — 4 € ; (2) la réservation à l'avance — 7 € ; (3) le supplément passager — 5,50 € à partir de la 5ème personne transportée. C'est tout. Les BAGAGES ne donnent plus lieu à AUCUN supplément : valises, sacs et poussettes sont inclus dans le prix de la course. Il n'existe pas non plus de supplément « animal » dans la grille parisienne — l'ancien régime (4ème passager, bagages volumineux, animaux) a été supprimé et reste un piège classique de QCM périmé.\n\nEXCEPTION FONDAMENTALE : les chiens guides d'aveugle et chiens d'assistance pour personnes handicapées sont transportés GRATUITEMENT et OBLIGATOIREMENT. Refuser leur transport est une discrimination réprimée par la loi (article L3121-8 du Code des transports), sanctionnée pénalement. De même, refuser un client en fauteuil roulant ou avec assistance technique est illégal. À l'inverse, sont strictement INTERDITS : le pourboire « obligatoire », l'arrondi systématique à la hausse, la majoration pour paiement carte, la surfacturation pour clientèle étrangère (discrimination tarifaire).",
         keyPoints: [
-          "4ème passager adulte : ~4 € (pas les enfants < 10 ans)",
-          "Bagages volumineux en soute : supplément autorisé",
-          "Réservation téléphonique : ~4 € immédiate, ~7 € à l'avance",
+          "Réservation : 4 € (immédiate), 7 € (à l'avance)",
+          "Passagers : 5,50 € à partir de la 5ème personne transportée",
+          "Bagages : AUCUN supplément (transport inclus dans le prix)",
           "Chien guide / d'assistance = transport gratuit obligatoire",
-          "Suppléments interdits : pourboire forcé, refus d'espèces"
+          "Suppléments interdits : pourboire forcé, majoration carte, refus d'espèces"
         ],
-        fieldExample: "Un client avec 3 grandes valises : le chauffeur peut facturer un supplément bagages.",
+        fieldExample: "Un client avec 3 grandes valises : aucun supplément bagages ne peut être facturé, le transport des bagages est inclus.",
         practicalCases: [
           {
             situation: "Une personne aveugle accompagnée de son chien guide hèle un taxi. Le conducteur veut facturer un supplément animal de 4 €.",
             question: "Est-ce légal ?",
             answer: "Non. Les chiens guides d'aveugle sont transportés gratuitement et obligatoirement. Tout supplément est illégal.",
-            reasoning: "L'article L3121-8 du Code des transports impose le transport gratuit des chiens guides et chiens d'assistance. Refuser ou facturer = discrimination liée au handicap, punie de 5 ans d'emprisonnement et 75 000 € d'amende (article 225-2 du Code pénal), sans compter la suspension administrative de l'ADS. Le conducteur doit accepter sans frais et sans question."
+            reasoning: "L'article L3121-8 du Code des transports impose le transport gratuit des chiens guides et chiens d'assistance. Refuser ou facturer = discrimination liée au handicap, punie pénalement (article 225-2 du Code pénal : jusqu'à 3 ans d'emprisonnement et 45 000 € d'amende), sans compter la suspension administrative de l'ADS. Le conducteur doit accepter sans frais et sans question."
           },
           {
-            situation: "Une famille de 4 adultes + 2 enfants de 6 et 8 ans monte dans un taxi. Le conducteur facture un supplément 4ème passager + supplément 5ème passager + supplément 6ème passager.",
+            situation: "Une famille de 4 adultes + 2 enfants monte dans un taxi-monospace homologué 6 places passagers, avec 4 valises. Le conducteur veut facturer un supplément par valise et par passager au-delà du 3ème.",
             question: "Que peut-il facturer ?",
-            answer: "Uniquement le supplément 4ème passager adulte. Les enfants de moins de 10 ans ne comptent pas.",
-            reasoning: "Le supplément ne s'applique qu'à partir du 4ème PASSAGER ADULTE. Les enfants de moins de 10 ans sont exclus du décompte. De plus, un taxi standard est limité à 4 passagers (en plus du conducteur) : transporter 6 personnes (4 adultes + 2 enfants) peut être impossible selon la carte grise. Si le véhicule l'autorise, seul un supplément (4ème adulte) est facturable, pas plusieurs."
+            answer: "Uniquement le supplément passager de 5,50 € à partir de la 5ème personne transportée. Les bagages sont gratuits et les 4 premiers passagers n'entraînent aucun supplément.",
+            reasoning: "La grille parisienne 2026 (arrêté du 24 décembre 2025) ne prévoit que trois suppléments : réservation immédiate (4 €), réservation à l'avance (7 €) et passager à partir du 5ème (5,50 €). Facturer les valises ou les 3ème/4ème passagers est une majoration illégale. Attention aussi à la capacité : le nombre de passagers ne doit jamais dépasser celui de la carte grise."
           }
         ],
-        examWarning: "Suppléments interdits : pourboire obligatoire, refus d'espèces, surtarification, majoration carte.",
+        examWarning: "Plus AUCUN supplément bagages ni animal à Paris. Le supplément passager démarre au 5ème (pas au 4ème — ancienne règle piège).",
+        confusionPoints: [
+          "Supplément passager : à partir du 5ème (l'ancien « 4ème passager » a disparu)",
+          "Réservation immédiate 4 € ≠ réservation à l'avance 7 €"
+        ],
         tips: [
           "Toujours annoncer les suppléments AVANT la course",
           "Refus chien guide = délit pénal (pas seulement administratif)"
         ],
-        legalRefs: ["Arrêté préfectoral tarifaire", "Article L3121-8 du Code des transports", "Article 225-2 du Code pénal"]
+        legalRefs: ["Arrêté du 24 décembre 2025 (tarifs 2026)", "Article L3121-8 du Code des transports", "Article 225-2 du Code pénal"]
       },
       {
         id: 'tx75-equipements',
         title: 'Équipements obligatoires',
-        essential: "Lumineux (vert = libre), taximètre scellé, TPE obligatoire pour tout montant.",
-        narrative: "Un taxi parisien est immédiatement reconnaissable à ses équipements normalisés. Cette uniformisation visuelle, imposée par la préfecture, protège le client (identification facile, distinction avec les VTC) et le conducteur (preuve de légitimité, dissuasion de la concurrence déloyale). Chaque équipement obligatoire fait l'objet de contrôles techniques périodiques.\n\nLe LUMINEUX, fixé sur le toit, indique « TAXI PARISIEN » avec une lettre tarifaire visible (A, B, C, D) qui change automatiquement selon le tarif en vigueur. La couleur verte signifie « libre » (disponible pour une course), l'éteint ou orange signifie « occupé » ou « réservé ». Un lumineux défectueux empêche d'exercer. Le TAXIMÈTRE doit être homologué (norme française), scellé par un installateur agréé (toute manipulation rompt le scellé et est constitutive de fraude), et vérifié annuellement (contrôle technique métrologique). Sa précision est essentielle : un taximètre dérivant en faveur du chauffeur expose à des sanctions lourdes.\n\nLe TPE (Terminal de Paiement Électronique) est OBLIGATOIRE depuis le décret n°2017-235 du 24 février 2017. La carte bancaire doit être acceptée pour TOUT MONTANT, sans minimum. Refuser un paiement carte pour 5 € est aussi illégal que de le refuser pour 100 €. Sanction : 150 € d'amende + signalement préfecture. De plus, le conducteur ne peut pas facturer un supplément pour paiement carte (majoration interdite). Autres équipements obligatoires : la carte affichage des tarifs visible côté passager, l'attestation d'aptitude médicale, et désormais l'application LeTaxi pour la géolocalisation (registre national).",
+        essential: "Lumineux (vert = libre, rouge = occupé), taximètre scellé, TPE obligatoire pour tout montant.",
+        narrative: "Un taxi parisien est immédiatement reconnaissable à ses équipements normalisés. Cette uniformisation visuelle, imposée par la préfecture, protège le client (identification facile, distinction avec les VTC) et le conducteur (preuve de légitimité, dissuasion de la concurrence déloyale). Chaque équipement obligatoire fait l'objet de contrôles techniques périodiques.\n\nLe LUMINEUX, fixé sur le toit, indique « TAXI PARISIEN » avec une lettre tarifaire visible (A, B, C, D) qui change automatiquement selon le tarif en vigueur. La couleur VERTE signifie « libre » (disponible pour une course), la couleur ROUGE signifie « occupé » ; un lumineux ÉTEINT indique que le taxi est hors service (fin de service, retour au garage). Un lumineux défectueux empêche d'exercer. Le TAXIMÈTRE doit être homologué (norme française), scellé par un installateur agréé (toute manipulation rompt le scellé et est constitutive de fraude), et vérifié annuellement (contrôle technique métrologique). Sa précision est essentielle : un taximètre dérivant en faveur du chauffeur expose à des sanctions lourdes.\n\nLe TPE (Terminal de Paiement Électronique) est OBLIGATOIRE et doit être en état de fonctionnement (article L.3121-11-2 du Code des transports, issu de la loi Thévenoud). La carte bancaire doit être acceptée pour TOUT MONTANT, sans minimum. Refuser un paiement carte pour 5 € est aussi illégal que de le refuser pour 100 €. Sanction : 150 € d'amende + signalement préfecture. De plus, le conducteur ne peut pas facturer un supplément pour paiement carte (majoration interdite). Autres équipements obligatoires : la carte affichage des tarifs visible côté passager, l'attestation d'aptitude médicale, et désormais l'application LeTaxi pour la géolocalisation (registre national).",
         keyPoints: [
           "Lumineux : 'TAXI PARISIEN' + lettre tarif",
-          "Vert = libre, éteint/orange = occupé/réservé",
+          "Vert = libre, rouge = occupé, éteint = hors service",
           "Taximètre homologué, scellé, vérifié annuellement",
           "TPE obligatoire : carte bancaire acceptée pour TOUT montant",
           "Pas de majoration pour paiement carte"
@@ -1596,7 +1752,7 @@ export const revisionModules: RevisionModule[] = [
             situation: "Un client effectue une course de 6,80 €. À l'arrivée, il veut payer en carte. Le conducteur refuse en disant qu'il y a un minimum de 10 € en carte.",
             question: "Le conducteur est-il en règle ?",
             answer: "Non. Le refus de carte bancaire pour tout montant constitue une infraction punie de 150 € d'amende.",
-            reasoning: "Le décret n°2017-235 du 24 février 2017 impose au taxi d'accepter la carte bancaire sans aucun seuil minimum. Imposer 10 €, 5 € ou n'importe quel minimum est une pratique interdite. Le client peut signaler le refus à la préfecture (photo de plaque, course datée), ce qui déclenche une enquête et une éventuelle suspension d'ADS pour récidive."
+            reasoning: "La loi (article L.3121-11-2 du Code des transports) impose au taxi un TPE en état de fonctionnement et l'acceptation de la carte bancaire sans aucun seuil minimum. Imposer 10 €, 5 € ou n'importe quel minimum est une pratique interdite. Le client peut signaler le refus à la préfecture (photo de plaque, course datée), ce qui déclenche une enquête et une éventuelle suspension d'ADS pour récidive."
           },
           {
             situation: "Un taxi a son lumineux 'TAXI PARISIEN' en panne (ampoule grillée). Il continue son service en attendant la réparation.",
@@ -1610,7 +1766,7 @@ export const revisionModules: RevisionModule[] = [
           "Vérifier quotidiennement le bon fonctionnement des équipements",
           "Un scellé taximètre rompu = présomption de fraude"
         ],
-        legalRefs: ["Décret n°2017-235 (paiement électronique)", "Arrêté préfectoral équipements"]
+        legalRefs: ["Article L3121-11-2 du Code des transports (TPE)", "Arrêté préfectoral équipements"]
       },
       {
         id: 'tx75-obligations',
@@ -1698,13 +1854,13 @@ export const revisionModules: RevisionModule[] = [
         id: 'topo-arrondissements',
         title: 'Arrondissements',
         essential: "20 arrondissements en spirale depuis le centre. Code postal = 75 + n° arrondissement.",
-        narrative: "Paris est organisé en 20 arrondissements numérotés selon une spirale qui démarre au centre (le Louvre, 1er arrondissement) et se déroule dans le sens des aiguilles d'une montre vers l'extérieur. Cette logique en escargot, mise en place par Haussmann en 1860, n'a rien d'arbitraire : elle reflète l'extension historique de la ville et permet, une fois mémorisée, de localiser instantanément n'importe quelle adresse.\n\nLa Seine sépare Paris en deux rives. La RIVE DROITE (au nord de la Seine) regroupe les arrondissements 1, 2, 3, 4, puis 8 à 12, puis 16 à 20. C'est la rive des affaires, des grands magasins, des théâtres. La RIVE GAUCHE (au sud) regroupe les arrondissements 5, 6, 7, 13, 14, 15. C'est traditionnellement la rive intellectuelle (Sorbonne, éditeurs, ministères). Cette distinction est culturellement forte et utilisée dans la facturation des forfaits aéroports (rives différentes = tarifs différents).\n\nLe code postal parisien est toujours « 75 0XX » où XX est le numéro d'arrondissement sur 2 chiffres. Ainsi : 75001 = 1er, 75008 = 8ème, 75016 = 16ème, 75020 = 20ème. Exception : le 16ème a aussi le code 75116 (Auteuil) en plus du 75016 (Chaillot/Passy). Cette dualité piège les conducteurs néophytes. À l'examen comme sur le terrain, savoir convertir un code postal en arrondissement et inversement est une compétence de base testée systématiquement.",
+        narrative: "Paris est organisé en 20 arrondissements numérotés selon une spirale qui démarre au centre (le Louvre, 1er arrondissement) et se déroule dans le sens des aiguilles d'une montre vers l'extérieur. Cette logique en escargot, mise en place par Haussmann en 1860, n'a rien d'arbitraire : elle reflète l'extension historique de la ville et permet, une fois mémorisée, de localiser instantanément n'importe quelle adresse.\n\nLa Seine sépare Paris en deux rives. La RIVE DROITE (au nord de la Seine) regroupe les arrondissements 1, 2, 3, 4, puis 8 à 12, puis 16 à 20. C'est la rive des affaires, des grands magasins, des théâtres. La RIVE GAUCHE (au sud) regroupe les arrondissements 5, 6, 7, 13, 14, 15. C'est traditionnellement la rive intellectuelle (Sorbonne, éditeurs, ministères). Cette distinction est culturellement forte et utilisée dans la facturation des forfaits aéroports (rives différentes = tarifs différents).\n\nLe code postal parisien est toujours « 75 0XX » où XX est le numéro d'arrondissement sur 2 chiffres. Ainsi : 75001 = 1er, 75008 = 8ème, 75016 = 16ème, 75020 = 20ème. Exception : le 16ème possède deux codes postaux — 75016 pour sa partie SUD (Auteuil) et 75116 pour sa partie NORD (Passy, Chaillot). Cette dualité piège les conducteurs néophytes. À l'examen comme sur le terrain, savoir convertir un code postal en arrondissement et inversement est une compétence de base testée systématiquement.",
         keyPoints: [
           "1er = Louvre (centre), spirale vers extérieur",
           "Rive droite (nord Seine) : 1-4, 8-12, 16-20",
           "Rive gauche (sud Seine) : 5-7, 13-15",
           "Code postal : 75008 = 8ème arrondissement",
-          "16ème : 75016 ET 75116 (exception)"
+          "16ème : 75016 (sud, Auteuil) ET 75116 (nord, Passy/Chaillot)"
         ],
         fieldExample: "Client dit '75016' : c'est le 16ème arrondissement, quartier résidentiel ouest.",
         practicalCases: [
@@ -2110,7 +2266,7 @@ export const revisionModules: RevisionModule[] = [
             situation: "Le conducteur dépose un client en double file sur une avenue passante. Le client descend côté circulation et frôle un scooter.",
             question: "Faute du conducteur ?",
             answer: "Oui. Le conducteur doit toujours déposer côté trottoir (pour la sécurité du client) ou trouver un emplacement sûr.",
-            reasoning: "L'article R415-11 du Code de la route impose de descendre côté trottoir. Une dépose côté circulation expose le client à un risque d'accident (responsabilité partagée du conducteur). Bonne pratique : si l'arrêt côté trottoir est impossible, faire le tour pour s'arrêter de l'autre côté, ou expliquer au client de descendre côté droit. Le confort de descente est un élément clé de la note finale."
+            reasoning: "La sécurité de la descente incombe au conducteur : la dépose doit toujours se faire côté trottoir. Une dépose côté circulation expose le client à un risque d'accident (responsabilité du conducteur engagée). Bonne pratique : si l'arrêt côté trottoir est impossible, faire le tour pour s'arrêter de l'autre côté, ou expliquer au client de descendre côté droit. Le confort de descente est un élément clé de la note finale."
           }
         ],
         examWarning: "Vérifier le véhicule après chaque course (objets oubliés). Toujours descendre côté trottoir.",
@@ -2118,13 +2274,13 @@ export const revisionModules: RevisionModule[] = [
           "Client satisfait = 3 personnes informées, mécontent = 10",
           "Dépose côté trottoir, jamais côté circulation"
         ],
-        legalRefs: ["Article R415-11 du Code de la route"]
+        legalRefs: []
       },
       {
         id: 'rel-clienteles-specifiques',
         title: 'Clientèles spécifiques',
         essential: "S'adapter sans préjugés. Chiens guides = transport obligatoire et gratuit.",
-        narrative: "Chaque profil de clientèle a ses attentes spécifiques. Le conducteur professionnel doit savoir adapter son comportement, son rythme et son service à la personne en face de lui, sans jamais tomber dans le stéréotype ni la condescendance. L'adaptation est une marque de respect, pas une discrimination.\n\nLES PERSONNES EN SITUATION DE HANDICAP. La règle absolue : PROPOSER l'aide sans l'IMPOSER. Demander : « Souhaitez-vous que je vous aide à monter / à charger votre fauteuil ? » Si oui, suivre les indications du client (chacun a sa technique). Si non, respecter. Pour les fauteuils roulants, le conducteur doit savoir les plier rapidement et les charger sans les abîmer. Le refus de transport pour cause de handicap est un DÉLIT pénal (article 225-2 du Code pénal, 5 ans d'emprisonnement et 75 000 € d'amende). Les chiens guides et chiens d'assistance sont transportés GRATUITEMENT et obligatoirement (article L3121-8 du Code des transports) — refus = délit aggravé.\n\nLES PERSONNES ÂGÉES : prendre le temps, parler plus distinctement (pas plus fort, juste plus articulé), conduire en douceur, aider à attacher la ceinture si demandé. Anticiper que monter et descendre prend plus de temps. LES ENFANTS : siège enfant si fourni par les parents, ceinture obligatoire, conduite particulièrement souple. LES TOURISTES : quelques mots dans leur langue, anecdote brève sur Paris, recommandation d'un restaurant si demandé. LES VOYAGEURS D'AFFAIRES : efficacité maximale, discrétion absolue (ne pas écouter leurs appels, ne pas commenter), ponctualité irréprochable. Anticiper les besoins (chargeur USB, eau, journaux) différencie le service premium du standard.",
+        narrative: "Chaque profil de clientèle a ses attentes spécifiques. Le conducteur professionnel doit savoir adapter son comportement, son rythme et son service à la personne en face de lui, sans jamais tomber dans le stéréotype ni la condescendance. L'adaptation est une marque de respect, pas une discrimination.\n\nLES PERSONNES EN SITUATION DE HANDICAP. La règle absolue : PROPOSER l'aide sans l'IMPOSER. Demander : « Souhaitez-vous que je vous aide à monter / à charger votre fauteuil ? » Si oui, suivre les indications du client (chacun a sa technique). Si non, respecter. Pour les fauteuils roulants, le conducteur doit savoir les plier rapidement et les charger sans les abîmer. Le refus de transport pour cause de handicap est un DÉLIT pénal (article 225-2 du Code pénal : jusqu'à 3 ans d'emprisonnement et 45 000 € d'amende). Les chiens guides et chiens d'assistance sont transportés GRATUITEMENT et obligatoirement (article L3121-8 du Code des transports) — refus = délit aggravé.\n\nLES PERSONNES ÂGÉES : prendre le temps, parler plus distinctement (pas plus fort, juste plus articulé), conduire en douceur, aider à attacher la ceinture si demandé. Anticiper que monter et descendre prend plus de temps. LES ENFANTS : siège enfant si fourni par les parents, ceinture obligatoire, conduite particulièrement souple. LES TOURISTES : quelques mots dans leur langue, anecdote brève sur Paris, recommandation d'un restaurant si demandé. LES VOYAGEURS D'AFFAIRES : efficacité maximale, discrétion absolue (ne pas écouter leurs appels, ne pas commenter), ponctualité irréprochable. Anticiper les besoins (chargeur USB, eau, journaux) différencie le service premium du standard.",
         keyPoints: [
           "Handicap : proposer l'aide sans l'imposer, jamais de refus",
           "Personnes âgées : prendre le temps, parler distinctement",
@@ -2137,14 +2293,14 @@ export const revisionModules: RevisionModule[] = [
           {
             situation: "Un VTC reçoit une demande de course pour un client en fauteuil roulant pliable. Il refuse en disant qu'il n'a pas le matériel pour.",
             question: "Le refus est-il légal ?",
-            answer: "Non. Le refus pour cause de handicap est un délit pénal puni de 5 ans d'emprisonnement et 75 000 € d'amende.",
+            answer: "Non. Le refus pour cause de handicap est un délit pénal puni de 3 ans d'emprisonnement et 45 000 € d'amende.",
             reasoning: "L'article 225-2 du Code pénal sanctionne la discrimination dans l'accès à un service. Un fauteuil pliable se charge dans tout coffre standard. Le conducteur a obligation de transport. Le seul refus légitime concerne un fauteuil motorisé non démontable nécessitant un véhicule TPMR adapté (et même dans ce cas, le conducteur doit aider à trouver une alternative, pas se contenter de refuser). Sanction administrative + pénale + dommages-intérêts au client."
           },
           {
             situation: "Une cliente non-voyante avec son chien guide hèle un taxi. Le conducteur veut l'orienter vers un autre taxi en disant qu'il est allergique aux chiens.",
             question: "Acceptable ?",
             answer: "Non. Les chiens guides doivent être transportés gratuitement et obligatoirement. L'allergie n'est pas un motif légitime de refus.",
-            reasoning: "L'article L3121-8 du Code des transports est absolu : refus = discrimination liée au handicap = délit pénal aggravé (jusqu'à 75 000 € d'amende, suspension d'ADS, signalement à la défenseure des droits). Une allergie réelle se traite par antihistaminique avant service, pas par refus. La société exige que les personnes non-voyantes puissent se déplacer en autonomie — c'est non négociable."
+            reasoning: "L'article L3121-8 du Code des transports est absolu : refus = discrimination liée au handicap = délit pénal (jusqu'à 3 ans et 45 000 € d'amende, suspension d'ADS, signalement au Défenseur des droits). Une allergie réelle se traite par antihistaminique avant service, pas par refus. La société exige que les personnes non-voyantes puissent se déplacer en autonomie — c'est non négociable."
           }
         ],
         examWarning: "Le handicap n'est pas un motif de refus de transport. Chien guide = transport gratuit obligatoire.",
@@ -2303,12 +2459,12 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'vmd-carte-pro',
         title: 'Carte professionnelle VMDTR',
-        essential: "Délivrée par le préfet après réussite de l'examen RS5636. Validité 5 ans, renouvelable avec formation continue. Permis A2 ou A depuis ≥ 2 ans obligatoire.",
-        narrative: "La carte professionnelle VMDTR (Véhicule Motorisé à Deux ou Trois Roues) est régie par les articles L.3123-1 et suivants du Code des transports, issus de la loi Thévenoud du 1er octobre 2014. Elle conditionne l'exercice légal de l'activité : sans carte, c'est exercice illégal d'une profession réglementée (sanctions pénales jusqu'à 1 an d'emprisonnement et 15 000 € d'amende — Art. L.3124-9).\n\nLes conditions de délivrance sont strictes : être titulaire du permis A2 ou A depuis au moins 2 ans (ce qui exclut le permis B seul, contrairement au VTC), avoir réussi l'examen organisé par les chambres des métiers et de l'artisanat (CMA), justifier d'une aptitude médicale (examen par médecin agréé), produire un bulletin n°2 de casier judiciaire compatible (condition d'honorabilité).\n\nLa carte est délivrée par le préfet du département de résidence (jamais la mairie, attention au piège QCM). Elle est valable 5 ans. Le renouvellement est conditionné à une formation continue de 14 h en CMA agréée. Elle doit être présentée à toute réquisition des forces de l'ordre et apposée de manière visible sur le véhicule pendant l'exploitation.",
+        essential: "Délivrée par le préfet après réussite de l'examen RS5636. Validité 5 ans, renouvelable avec formation continue. Permis de catégorie A en cours de validité depuis au moins 3 ans obligatoire.",
+        narrative: "La carte professionnelle VMDTR (Véhicule Motorisé à Deux ou Trois Roues) est régie par les articles L.3123-1 et suivants du Code des transports, issus de la loi Thévenoud du 1er octobre 2014. Elle conditionne l'exercice légal de l'activité : sans carte, c'est exercice illégal d'une profession réglementée (sanctions pénales jusqu'à 1 an d'emprisonnement et 15 000 € d'amende — Art. L.3124-9).\n\nLes conditions de délivrance sont strictes : être titulaire d'un permis de catégorie A en cours de validité depuis au moins 3 ans (le permis B seul ne suffit jamais pour le VMDTR), avoir réussi l'examen organisé par les chambres des métiers et de l'artisanat (CMA), justifier d'une aptitude médicale (examen par médecin agréé), produire un bulletin n°2 de casier judiciaire compatible (condition d'honorabilité).\n\nLa carte est délivrée par le préfet du département de résidence (jamais la mairie, attention au piège QCM). Elle est valable 5 ans. Le renouvellement est conditionné à une formation continue de 14 h en CMA agréée. Elle doit être présentée à toute réquisition des forces de l'ordre et apposée de manière visible sur le véhicule pendant l'exploitation.",
         keyPoints: [
           "Cadre légal : loi Thévenoud 2014, Code des transports L.3123-1+",
           "Délivrée par le PRÉFET (pas la mairie, pas la CMA)",
-          "Conditions : permis A2/A ≥ 2 ans, examen RS5636, aptitude médicale, honorabilité",
+          "Conditions : permis A ≥ 3 ans, examen RS5636, aptitude médicale, honorabilité",
           "Validité 5 ans, renouvellement avec formation continue de 14 h",
           "Exercice sans carte = délit (1 an + 15 000 €)",
         ],
@@ -2316,8 +2472,8 @@ export const revisionModules: RevisionModule[] = [
           {
             situation: "Vous venez d'obtenir votre permis A il y a 18 mois et souhaitez vous lancer comme VMDTR.",
             question: "Pouvez-vous passer l'examen et obtenir votre carte pro ?",
-            answer: "NON. La condition est de détenir le permis A2 ou A depuis au moins 2 ans. Vous devez attendre 6 mois supplémentaires.",
-            reasoning: "L'expérience moto minimale est une garantie de sécurité non négociable. C'est une différence majeure avec le VTC (permis B + 3 ans).",
+            answer: "NON. La condition est de détenir le permis de catégorie A depuis au moins 3 ans. Vous devez attendre encore 18 mois.",
+            reasoning: "L'expérience moto minimale est une garantie de sécurité non négociable. La durée est la même que pour le taxi et le VTC (permis B ≥ 3 ans) — seule la catégorie de permis change (A pour le deux-roues).",
           },
           {
             situation: "Votre carte pro arrive à échéance dans 3 mois. Vous n'avez pas encore fait votre formation continue.",
@@ -2328,7 +2484,7 @@ export const revisionModules: RevisionModule[] = [
         ],
         examWarning: "Pièges QCM fréquents : c'est le PRÉFET (pas la mairie, pas la CMA) qui DÉLIVRE la carte. La CMA organise seulement l'examen.",
         confusionPoints: [
-          "VMDTR = permis A2/A ≥ 2 ans ≠ VTC = permis B ≥ 3 ans",
+          "VMDTR = permis A ≥ 3 ans ≠ VTC = permis B ≥ 3 ans (même durée, catégorie différente)",
           "Examen organisé par CMA ≠ délivrance par préfet",
         ],
         tips: ["Retenir : '5 ans / 14 heures' = validité / formation continue"],
@@ -2371,11 +2527,12 @@ export const revisionModules: RevisionModule[] = [
       {
         id: 'vmd-vehicule',
         title: 'Caractéristiques du véhicule & signalétique',
-        essential: "Le véhicule doit respecter des conditions de puissance, d'âge et porter la signalétique réglementaire VMDTR. Interdiction stricte des dispositifs visuels propres aux taxis (lumineux, damier).",
-        narrative: "Les caractéristiques du véhicule VMDTR sont fixées par les articles R.3123-1 et suivants du Code des transports. Le véhicule doit être un 2 ou 3 roues motorisé d'au moins 125 cm³ ou équivalent électrique, d'un âge maximal défini par décret (typiquement 7 ans en usage pro), avec un équipement minimum de sécurité : ABS obligatoire (depuis 2017 pour les motos neuves > 125 cm³), béquille latérale stable, top-case homologué pour le rangement EPI passager.\n\nLa signalétique réglementaire prend la forme d'une vignette d'identification apposée de manière visible sur le véhicule, généralement à l'arrière. Elle mentionne le numéro d'inscription au registre des exploitants VTC/VMDTR géré par le ministère des Transports. Cette vignette permet aux contrôleurs et aux clients de vérifier l'authenticité de l'exploitant.\n\nA contrario, le VMDTR a INTERDICTION d'utiliser tout dispositif visuel évoquant le taxi : pas de lumineux 'TAXI' sur le top-case, pas de damier sur la carrosserie, pas de compteur horokilométrique apparent. Le non-respect = présomption d'exercice illégal de la profession de taxi. L'esprit du législateur : éviter toute confusion dans l'esprit du public.",
+        essential: "Puissance > 40 kW et moins de 5 ans d'ancienneté (arrêté du 17 mars 2015). Signalétique réglementaire VMDTR obligatoire ; interdiction stricte des dispositifs visuels propres aux taxis (lumineux, damier).",
+        narrative: "Les caractéristiques du véhicule VMDTR sont fixées par la réglementation (Code des transports et arrêté du 17 mars 2015). Le véhicule doit être un 2 ou 3 roues motorisé dont la puissance, inscrite sur le certificat d'immatriculation, est SUPÉRIEURE à 40 kW, et dont l'ancienneté est INFÉRIEURE à 5 ans. Autre spécificité : pas de contrôle technique, mais un entretien annuel attesté. S'y ajoute un équipement minimum de sécurité : ABS obligatoire (depuis 2017 pour les motos neuves > 125 cm³), béquille latérale stable, top-case homologué pour le rangement EPI passager.\n\nLa signalétique réglementaire prend la forme d'une vignette d'identification apposée de manière visible sur le véhicule, généralement à l'arrière. Elle mentionne le numéro d'inscription au registre des exploitants VTC/VMDTR géré par le ministère des Transports. Cette vignette permet aux contrôleurs et aux clients de vérifier l'authenticité de l'exploitant.\n\nA contrario, le VMDTR a INTERDICTION d'utiliser tout dispositif visuel évoquant le taxi : pas de lumineux 'TAXI' sur le top-case, pas de damier sur la carrosserie, pas de compteur horokilométrique apparent. Le non-respect = présomption d'exercice illégal de la profession de taxi. L'esprit du législateur : éviter toute confusion dans l'esprit du public.",
         keyPoints: [
-          "Cadre : Code des transports R.3123-1+",
-          "Cylindrée mini 125 cm³ (ou équivalent élec), âge max ~7 ans",
+          "Cadre : Code des transports + arrêté du 17 mars 2015",
+          "Puissance > 40 kW (carte grise) et ancienneté < 5 ans",
+          "Pas de contrôle technique, mais entretien annuel attesté",
           "ABS obligatoire (motos neuves > 125 cm³ depuis 2017)",
           "Vignette d'identification VMDTR visible sur le véhicule",
           "INTERDICTION lumineux/damier/compteur taxi",
@@ -2388,10 +2545,10 @@ export const revisionModules: RevisionModule[] = [
             reasoning: "Le terme 'taxi' est juridiquement réservé. Le bon usage : 'Moto VTC' ou 'Transport moto privé', mentions neutres autorisées. Préférer le branding de la plateforme ou un logo propre.",
           },
           {
-            situation: "Votre moto a 8 ans et 180 000 km. Elle est parfaitement entretenue.",
+            situation: "Votre moto a 6 ans et 120 000 km. Elle est parfaitement entretenue.",
             question: "Pouvez-vous continuer à l'utiliser comme outil pro ?",
-            answer: "Non si la limite d'âge fixée par décret pour votre activité est de 7 ans. Le bon entretien ne dispense pas du respect de la limite d'âge réglementaire.",
-            reasoning: "La limite d'âge est une mesure d'ordre public liée à la sécurité et à la qualité de service. Vérifier la valeur exacte en vigueur dans le décret applicable au moment du contrôle.",
+            answer: "Non. L'arrêté du 17 mars 2015 impose une ancienneté de moins de 5 ans pour les véhicules VMDTR. Le bon entretien ne dispense pas du respect de la limite d'âge réglementaire.",
+            reasoning: "La limite d'âge est une mesure d'ordre public liée à la sécurité et à la qualité de service. À 6 ans, le véhicule doit être remplacé pour poursuivre l'activité, quelle que soit sa condition mécanique.",
           },
         ],
         confusionPoints: [
@@ -2399,7 +2556,7 @@ export const revisionModules: RevisionModule[] = [
           "Vignette d'identification (VMDTR) ≠ plaque taxi ADS",
         ],
         tips: ["Règle d'or : 'Discrétion réglementée, vignette obligatoire'"],
-        legalRefs: ["Code des transports R.3123-1 à R.3123-4", "Arrêté du 6 avril 2017 (équipements VTC/VMDTR)"],
+        legalRefs: ["Code des transports R.3123-1 à R.3123-4", "Arrêté du 17 mars 2015 (caractéristiques VMDTR)", "Arrêté du 6 avril 2017 (signalétique)"],
       },
     ],
   },
