@@ -15,6 +15,7 @@ import {
   TrendingUp,
   FileText,
   BookOpen,
+  Zap,
 } from 'lucide-react';
 
 /** Icône moto (absente de lucide), dessinée dans le même style de trait. */
@@ -69,6 +70,8 @@ const iconByModuleId: Record<string, IconComponent> = {
   'admission-taxi': CarTaxiFront,
   'admission-vtc': CarFront,
   'admission-vmdtr': MotorbikeIcon,
+  // Défi du jour (sessions quotidiennes)
+  defi: Zap,
 };
 
 export const getModuleIcon = (moduleId: string): IconComponent =>
