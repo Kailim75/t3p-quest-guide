@@ -61,8 +61,8 @@ export const modules: Module[] = [
   // MODULES COMMUNS
   {
     id: 'reglementation',
-    name: 'Réglementation T3P',
-    description: 'Réglementation du transport public particulier de personnes',
+    name: 'A. Réglementation du T3P',
+    description: 'Épreuve A — Réglementation du transport public particulier de personnes',
     type: 'commun',
     icon: '📋',
     color: 'module-reglementation',
@@ -75,8 +75,8 @@ export const modules: Module[] = [
   },
   {
     id: 'securite',
-    name: 'Sécurité routière',
-    description: 'Prévention des risques et conduite sécuritaire',
+    name: 'C. Sécurité routière',
+    description: 'Épreuve C — Sécurité routière : prévention des risques et conduite sécuritaire',
     type: 'commun',
     icon: '🛡️',
     color: 'module-securite',
@@ -89,8 +89,8 @@ export const modules: Module[] = [
   },
   {
     id: 'gestion',
-    name: 'Gestion & Comptabilité',
-    description: 'Gestion d\'entreprise et obligations comptables',
+    name: 'B. Gestion',
+    description: 'Épreuve B — Gestion : gestion d\'entreprise et obligations comptables',
     type: 'commun',
     icon: '📊',
     color: 'module-gestion',
@@ -103,8 +103,8 @@ export const modules: Module[] = [
   },
   {
     id: 'francais',
-    name: 'Français',
-    description: 'Compréhension et expression en français',
+    name: 'D. Langue française',
+    description: 'Épreuve D — Capacité d\'expression et de compréhension en langue française',
     type: 'commun',
     icon: '🇫🇷',
     color: 'module-francais',
@@ -116,8 +116,8 @@ export const modules: Module[] = [
   },
   {
     id: 'anglais',
-    name: 'Anglais',
-    description: 'Compréhension et expression en anglais - Tourisme international',
+    name: 'E. Langue anglaise',
+    description: 'Épreuve E — Capacité d\'expression et de compréhension en anglais (niveau A2 CECRL)',
     type: 'commun',
     icon: '🇬🇧',
     color: 'module-anglais',
@@ -133,12 +133,12 @@ export const modules: Module[] = [
   // MODULES SPÉCIFIQUES
   {
     id: 'taxi',
-    name: 'Spécifique Taxi',
-    description: 'Réglementation locale taxi 75',
+    name: 'F(T). Territoire et réglementation locale (Paris)',
+    description: 'Épreuve F(T) — Connaissance du territoire et réglementation locale : ADS, tarifs et maraude à Paris',
     type: 'specifique',
     icon: '🚕',
     color: 'module-taxi',
-    rsCode: 'F(T) + G(T)',
+    rsCode: 'F(T)',
     rsFiche: 'RS5635',
     subModules: [
       { id: 'tax-1', name: 'ADS & exploitation Paris', description: 'Autorisation de stationnement et règles de la Préfecture de Police', questionCount: 11 },
@@ -148,8 +148,8 @@ export const modules: Module[] = [
   },
   {
     id: 'vtc',
-    name: 'Spécifique VTC',
-    description: 'Réglementation et pratique du métier VTC',
+    name: 'F(V) + G(V). Spécifique VTC',
+    description: 'Épreuves F(V) et G(V) — Développement commercial, gestion propre et réglementation nationale VTC',
     type: 'specifique',
     icon: '🚗',
     color: 'module-vtc',
@@ -163,8 +163,8 @@ export const modules: Module[] = [
   },
   {
     id: 'vmdtr',
-    name: 'Spécifique VMDTR',
-    description: 'Épreuves F(M) et G(M) – Moto-taxi',
+    name: 'F(M) + G(M). Spécifique VMDTR',
+    description: 'Épreuves F(M) et G(M) — Sécurité moto, réglementation, passager et développement commercial',
     type: 'specifique',
     icon: '🏍️',
     color: 'module-vmdtr',
@@ -179,8 +179,8 @@ export const modules: Module[] = [
   },
   {
     id: 'taxi-national',
-    name: 'Taxi – Réglementation nationale',
-    description: 'Code des transports et règles applicables à tous les taxis',
+    name: 'G(T). Réglementation taxi (nationale et Paris)',
+    description: 'Épreuve G(T) — Réglementation nationale taxi et gestion propre à l\'activité',
     type: 'specifique',
     icon: '🚖',
     color: 'module-taxi',
@@ -194,8 +194,8 @@ export const modules: Module[] = [
   },
   {
     id: 'taxi-territoire',
-    name: 'Taxi – Territoire',
-    description: 'Connaissance du territoire d\'exercice : monuments, gares, hôpitaux, axes majeurs',
+    name: 'F(T). Connaissance du territoire (Paris)',
+    description: 'Épreuve F(T) — Connaissance du territoire d\'exercice : monuments, gares, hôpitaux, axes majeurs',
     type: 'specifique',
     icon: '🗼',
     color: 'module-taxi',
@@ -212,8 +212,8 @@ export const modules: Module[] = [
   // Module Relation Client (nouveau)
   {
     id: 'relation-client',
-    name: 'Relation Client',
-    description: 'Qualité de service et relation client',
+    name: 'Relation client (transversal)',
+    description: 'Compétences transversales aux épreuves : accueil, communication et gestion des situations difficiles',
     type: 'commun',
     icon: '🤝',
     color: 'module-relation',

@@ -57,7 +57,7 @@ export const revisionModules: RevisionModule[] = [
   // =====================================================
   {
     moduleId: 'gestion',
-    moduleName: 'Gestion & Comptabilité',
+    moduleName: 'B. Gestion',
     moduleIcon: '📊',
     domain: 'commun',
     examObjective: 'Maîtriser les bases comptables et fiscales pour créer et gérer une entreprise de transport.',
@@ -389,7 +389,7 @@ export const revisionModules: RevisionModule[] = [
   // =====================================================
   {
     moduleId: 'securite',
-    moduleName: 'Sécurité routière',
+    moduleName: 'C. Sécurité routière',
     moduleIcon: '🛡️',
     domain: 'commun',
     examObjective: 'Connaître les règles du Code de la route, la prévention des risques et les premiers secours.',
@@ -707,7 +707,7 @@ export const revisionModules: RevisionModule[] = [
   // =====================================================
   {
     moduleId: 'reglementation',
-    moduleName: 'Réglementation T3P',
+    moduleName: 'A. Réglementation du T3P',
     moduleIcon: '📋',
     domain: 'commun',
     examObjective: 'Maîtriser le cadre légal du T3P : définitions, conditions d\'accès, carte professionnelle.',
@@ -979,7 +979,7 @@ export const revisionModules: RevisionModule[] = [
   // =====================================================
   {
     moduleId: 'francais',
-    moduleName: 'Français',
+    moduleName: 'D. Langue française',
     moduleIcon: '🇫🇷',
     domain: 'commun',
     examObjective: 'Maîtriser la communication orale et écrite professionnelle en français.',
@@ -1168,7 +1168,7 @@ export const revisionModules: RevisionModule[] = [
   // =====================================================
   {
     moduleId: 'anglais',
-    moduleName: 'Anglais',
+    moduleName: 'E. Langue anglaise',
     moduleIcon: '🇬🇧',
     domain: 'commun',
     examObjective: 'Communiquer en anglais avec une clientèle internationale.',
@@ -1347,7 +1347,7 @@ export const revisionModules: RevisionModule[] = [
   // =====================================================
   {
     moduleId: 'vtc',
-    moduleName: 'Métier VTC',
+    moduleName: 'F(V) + G(V). Spécifique VTC',
     moduleIcon: '🚘',
     domain: 'vtc',
     examObjective: 'Maîtriser les spécificités VTC : réservation préalable, registre, tarification libre.',
@@ -1580,7 +1580,7 @@ export const revisionModules: RevisionModule[] = [
   // =====================================================
   {
     moduleId: 'taxi-national',
-    moduleName: 'Taxi Paris 75',
+    moduleName: 'G(T). Réglementation taxi (nationale et Paris)',
     moduleIcon: '🚖',
     domain: 'taxi',
     examObjective: 'Maîtriser la réglementation taxi parisien : ADS, tarifs, équipements, zones.',
@@ -1844,7 +1844,7 @@ export const revisionModules: RevisionModule[] = [
   // =====================================================
   {
     moduleId: 'taxi-territoire',
-    moduleName: 'Topographie Paris',
+    moduleName: 'F(T). Connaissance du territoire (Paris)',
     moduleIcon: '🗼',
     domain: 'taxi',
     examObjective: 'Connaître Paris : arrondissements, monuments, gares, hôpitaux, axes de circulation.',
@@ -2099,7 +2099,7 @@ export const revisionModules: RevisionModule[] = [
   // =====================================================
   {
     moduleId: 'relation-client',
-    moduleName: 'Relation Client',
+    moduleName: 'Relation client (transversal)',
     moduleIcon: '🤝',
     domain: 'commun',
     examObjective: 'Maîtriser l\'accueil, la communication et la gestion des situations délicates.',
@@ -2318,7 +2318,7 @@ export const revisionModules: RevisionModule[] = [
   // =====================================================
   {
     moduleId: 'vmdtr-securite',
-    moduleName: 'F(M) – Sécurité moto & réglementation VMDTR',
+    moduleName: 'F(M). Sécurité moto et réglementation VMDTR',
     moduleIcon: '🏍️',
     domain: 'vmdtr',
     examObjective: "Maîtriser la sécurité spécifique moto et la réglementation d'exploitation VMDTR (épreuve F(M)).",
@@ -2565,7 +2565,7 @@ export const revisionModules: RevisionModule[] = [
   // =====================================================
   {
     moduleId: 'vmdtr-commercial',
-    moduleName: 'G(M) – Passager & développement commercial',
+    moduleName: 'G(M). Prise en charge du passager et développement commercial',
     moduleIcon: '🛵',
     domain: 'vmdtr',
     examObjective: "Maîtriser la prise en charge du passager moto et le développement commercial de l'activité (épreuve G(M)).",
