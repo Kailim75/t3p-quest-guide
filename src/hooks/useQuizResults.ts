@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -134,11 +135,14 @@ export const useQuizResults = () => {
     },
   });
 
-  // Get statistics
-  const stats = {
+  // Get statistics — mémorisées pour garder une identité stable entre les
+  // rendus : des composants (ex. Révision des erreurs) dépendent de
+  // stats.failedQuestions dans des effets, et un objet recréé à chaque rendu
+  // relancerait ces effets en boucle.
+  const stats = useMemo(() => ({
     totalQuizzes: results?.length ?? 0,
     totalExams: results?.filter(r => r.quiz_type === 'exam').length ?? 0,
-    averageScore: results?.length 
+    averageScore: results?.length
       ? Math.round(results.reduce((acc, r) => acc + r.percentage, 0) / results.length)
       : 0,
     passRate: results?.length
@@ -146,7 +150,7 @@ export const useQuizResults = () => {
       : 0,
     // Get unique failed questions across all results
     failedQuestions: [...new Set(results?.flatMap(r => r.questions_failed) ?? [])],
-  };
+  }), [results]);
 
   // Get results by module
   const getResultsByModule = (moduleId: string) => {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { getDueQuestionIds, recordAnswer } from '@/lib/spacedRepetition';
 import { ArrowLeft, ArrowRight, X, AlertCircle, RotateCcw, CheckCircle2, Target, BookOpen } from 'lucide-react';
@@ -33,8 +33,18 @@ const ErrorRevision = () => {
   const [sessionComplete, setSessionComplete] = useState(false);
   const [startTime] = useState<number>(Date.now());
 
+  // La session n'est constituée qu'UNE seule fois par visite : sans ce verrou,
+  // tout rafraîchissement des résultats (retour sur l'onglet, sauvegarde…)
+  // re-mélangerait les questions en pleine révision — la question affichée
+  // changeait alors sous les yeux de l'élève.
+  const sessionBuiltFor = useRef<string | null>(null);
+
   useEffect(() => {
-    if (questionsLoading) return;
+    if (questionsLoading || resultsLoading) return;
+    const sessionKey = dueOnly ? 'due' : 'all';
+    if (sessionBuiltFor.current === sessionKey) return;
+    sessionBuiltFor.current = sessionKey;
+
     // Mode « à réviser aujourd'hui » : uniquement les questions dont
     // l'échéance de répétition espacée est atteinte ; sinon toutes les erreurs.
     const ids = dueOnly ? getDueQuestionIds() : stats.failedQuestions;
@@ -45,7 +55,7 @@ const ErrorRevision = () => {
       setQuestions(shuffled);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stats.failedQuestions, questionsLoading, dueOnly]);
+  }, [stats.failedQuestions, questionsLoading, resultsLoading, dueOnly]);
 
   if (authLoading || resultsLoading || questionsLoading) {
     return (
