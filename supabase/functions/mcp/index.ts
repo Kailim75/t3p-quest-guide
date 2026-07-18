@@ -13,8 +13,8 @@ var modules = [
   // MODULES COMMUNS
   {
     id: "reglementation",
-    name: "R\xE9glementation T3P",
-    description: "R\xE9glementation du transport public particulier de personnes",
+    name: "A. R\xE9glementation du T3P",
+    description: "\xC9preuve A \u2014 R\xE9glementation du transport public particulier de personnes",
     type: "commun",
     icon: "\u{1F4CB}",
     color: "module-reglementation",
@@ -27,8 +27,8 @@ var modules = [
   },
   {
     id: "securite",
-    name: "S\xE9curit\xE9 routi\xE8re",
-    description: "Pr\xE9vention des risques et conduite s\xE9curitaire",
+    name: "C. S\xE9curit\xE9 routi\xE8re",
+    description: "\xC9preuve C \u2014 S\xE9curit\xE9 routi\xE8re : pr\xE9vention des risques et conduite s\xE9curitaire",
     type: "commun",
     icon: "\u{1F6E1}\uFE0F",
     color: "module-securite",
@@ -41,8 +41,8 @@ var modules = [
   },
   {
     id: "gestion",
-    name: "Gestion & Comptabilit\xE9",
-    description: "Gestion d'entreprise et obligations comptables",
+    name: "B. Gestion",
+    description: "\xC9preuve B \u2014 Gestion : gestion d'entreprise et obligations comptables",
     type: "commun",
     icon: "\u{1F4CA}",
     color: "module-gestion",
@@ -55,8 +55,8 @@ var modules = [
   },
   {
     id: "francais",
-    name: "Fran\xE7ais",
-    description: "Compr\xE9hension et expression en fran\xE7ais",
+    name: "D. Langue fran\xE7aise",
+    description: "\xC9preuve D \u2014 Capacit\xE9 d'expression et de compr\xE9hension en langue fran\xE7aise",
     type: "commun",
     icon: "\u{1F1EB}\u{1F1F7}",
     color: "module-francais",
@@ -68,8 +68,8 @@ var modules = [
   },
   {
     id: "anglais",
-    name: "Anglais",
-    description: "Compr\xE9hension et expression en anglais - Tourisme international",
+    name: "E. Langue anglaise",
+    description: "\xC9preuve E \u2014 Capacit\xE9 d'expression et de compr\xE9hension en anglais (niveau A2 CECRL)",
     type: "commun",
     icon: "\u{1F1EC}\u{1F1E7}",
     color: "module-anglais",
@@ -84,12 +84,12 @@ var modules = [
   // MODULES SPÉCIFIQUES
   {
     id: "taxi",
-    name: "Sp\xE9cifique Taxi",
-    description: "R\xE9glementation locale taxi 75",
+    name: "F(T). Territoire et r\xE9glementation locale (Paris)",
+    description: "\xC9preuve F(T) \u2014 Connaissance du territoire et r\xE9glementation locale : ADS, tarifs et maraude \xE0 Paris",
     type: "specifique",
     icon: "\u{1F695}",
     color: "module-taxi",
-    rsCode: "F(T) + G(T)",
+    rsCode: "F(T)",
     rsFiche: "RS5635",
     subModules: [
       { id: "tax-1", name: "ADS & exploitation Paris", description: "Autorisation de stationnement et r\xE8gles de la Pr\xE9fecture de Police", questionCount: 11 },
@@ -99,8 +99,8 @@ var modules = [
   },
   {
     id: "vtc",
-    name: "Sp\xE9cifique VTC",
-    description: "R\xE9glementation et pratique du m\xE9tier VTC",
+    name: "F(V) + G(V). Sp\xE9cifique VTC",
+    description: "\xC9preuves F(V) et G(V) \u2014 D\xE9veloppement commercial, gestion propre et r\xE9glementation nationale VTC",
     type: "specifique",
     icon: "\u{1F697}",
     color: "module-vtc",
@@ -114,8 +114,8 @@ var modules = [
   },
   {
     id: "vmdtr",
-    name: "Sp\xE9cifique VMDTR",
-    description: "\xC9preuves F(M) et G(M) \u2013 Moto-taxi",
+    name: "F(M) + G(M). Sp\xE9cifique VMDTR",
+    description: "\xC9preuves F(M) et G(M) \u2014 S\xE9curit\xE9 moto, r\xE9glementation, passager et d\xE9veloppement commercial",
     type: "specifique",
     icon: "\u{1F3CD}\uFE0F",
     color: "module-vmdtr",
@@ -130,8 +130,8 @@ var modules = [
   },
   {
     id: "taxi-national",
-    name: "Taxi \u2013 R\xE9glementation nationale",
-    description: "Code des transports et r\xE8gles applicables \xE0 tous les taxis",
+    name: "G(T). R\xE9glementation taxi (nationale et Paris)",
+    description: "\xC9preuve G(T) \u2014 R\xE9glementation nationale taxi et gestion propre \xE0 l'activit\xE9",
     type: "specifique",
     icon: "\u{1F696}",
     color: "module-taxi",
@@ -145,8 +145,8 @@ var modules = [
   },
   {
     id: "taxi-territoire",
-    name: "Taxi \u2013 Territoire",
-    description: "Connaissance du territoire d'exercice : monuments, gares, h\xF4pitaux, axes majeurs",
+    name: "F(T). Connaissance du territoire (Paris)",
+    description: "\xC9preuve F(T) \u2014 Connaissance du territoire d'exercice : monuments, gares, h\xF4pitaux, axes majeurs",
     type: "specifique",
     icon: "\u{1F5FC}",
     color: "module-taxi",
@@ -162,8 +162,8 @@ var modules = [
   // Module Relation Client (nouveau)
   {
     id: "relation-client",
-    name: "Relation Client",
-    description: "Qualit\xE9 de service et relation client",
+    name: "Relation client (transversal)",
+    description: "Comp\xE9tences transversales aux \xE9preuves : accueil, communication et gestion des situations difficiles",
     type: "commun",
     icon: "\u{1F91D}",
     color: "module-relation",
