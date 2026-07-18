@@ -7,6 +7,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Loader2, Mail, Lock, User } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import { lovable } from '@/integrations/lovable';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -27,11 +28,11 @@ const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalProps) =>
   const handleGoogleSignIn = async () => {
     setGoogleLoading(true);
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: window.location.origin,
-        },
+      // Google est en mode « Managed by Lovable » : l'authentification passe
+      // par le broker OAuth de Lovable, pas par l'endpoint Supabase direct.
+      // Le wrapper redirige vers Google puis rétablit la session Supabase.
+      const { error } = await lovable.auth.signInWithOAuth('google', {
+        redirect_uri: window.location.origin,
       });
       if (error) {
         toast({
