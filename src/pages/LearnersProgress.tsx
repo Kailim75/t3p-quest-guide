@@ -30,6 +30,7 @@ import {
   AlertTriangle,
   Moon,
   Download,
+  Mail,
 } from 'lucide-react';
 import { format, differenceInCalendarDays } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -109,6 +110,41 @@ const LearnersProgressPage = () => {
     link.download = `suivi-apprenants-${format(new Date(), 'yyyy-MM-dd')}.csv`;
     link.click();
     URL.revokeObjectURL(url);
+  };
+
+  // Relance des apprenants inactifs : ouvre le logiciel de messagerie du
+  // formateur avec un message prêt à envoyer (destinataires en copie cachée
+  // pour ne pas exposer les adresses entre élèves). Le formateur relit et
+  // envoie lui-même — rien n'est envoyé automatiquement.
+  const relanceInactifs = () => {
+    const emails = learnersStats
+      .filter(isInactive)
+      .map((l) => l.profile.email)
+      .filter((e): e is string => !!e);
+
+    if (emails.length === 0) return;
+
+    const subject = 'Reprenez votre préparation à l\'examen T3P';
+    const body = [
+      'Bonjour,',
+      '',
+      'Nous avons remarqué que vous ne vous êtes pas connecté(e) depuis quelques jours à votre application de préparation à l\'examen T3P.',
+      '',
+      'La régularité est la clé de la réussite : quelques minutes par jour suffisent.',
+      '',
+      'Reconnectez-vous dès maintenant pour :',
+      '• relever votre défi du jour (5 questions rapides) ;',
+      '• vous entraîner sur vos modules et refaire vos erreurs ;',
+      '• relire vos fiches de cours.',
+      '',
+      '👉 https://www.t3pcampus.com',
+      '',
+      'À très vite,',
+      'L\'équipe pédagogique — École T3P',
+    ].join('\r\n');
+
+    const link = `mailto:${encodeURIComponent(user?.email ?? '')}?bcc=${encodeURIComponent(emails.join(','))}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = link;
   };
 
   if (authLoading || adminLoading) {
@@ -361,6 +397,16 @@ const LearnersProgressPage = () => {
                     >
                       <Moon className="h-4 w-4 mr-1.5" />
                       Inactifs {INACTIVITY_DAYS} j+ ({inactiveCount})
+                    </Button>
+                    <Button
+                      variant="default"
+                      size="sm"
+                      onClick={relanceInactifs}
+                      disabled={inactiveCount === 0}
+                      title={inactiveCount === 0 ? 'Aucun apprenant inactif à relancer' : undefined}
+                    >
+                      <Mail className="h-4 w-4 mr-1.5" />
+                      Relancer les inactifs ({inactiveCount})
                     </Button>
                     <Button variant="outline" size="sm" onClick={exportCsv}>
                       <Download className="h-4 w-4 mr-1.5" />
