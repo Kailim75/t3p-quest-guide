@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
       
       const { data, error } = await supabase
         .from('profiles')
-        .select('is_approved')
+        .select('is_approved, access_expires_at, archived_at')
         .eq('id', user.id)
         .maybeSingle();
 
@@ -85,6 +85,50 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
           isOpen={showAuthModal} 
           onClose={() => setShowAuthModal(false)} 
         />
+      </div>
+    );
+  }
+
+  // Compte archivé par le formateur : accès fermé, historique conservé.
+  if (!isAdmin && profile?.archived_at) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
+        <div className="text-center max-w-md">
+          <Logo className="mx-auto mb-6 h-16 w-16 drop-shadow" />
+          <h1 className="text-2xl font-bold text-foreground mb-3">
+            Accès clôturé
+          </h1>
+          <p className="text-muted-foreground mb-4">
+            Votre formation est terminée et votre accès à l'application a été clôturé.
+            Votre progression reste enregistrée.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Besoin d'un accès à nouveau ? Contactez votre école.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // Fin d'accès atteinte : la désactivation est automatique, évaluée ici à
+  // chaque tentative d'accès (aucune tâche planifiée nécessaire).
+  if (!isAdmin && profile?.access_expires_at && new Date(profile.access_expires_at).getTime() < Date.now()) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
+        <div className="text-center max-w-md">
+          <Logo className="mx-auto mb-6 h-16 w-16 drop-shadow" />
+          <h1 className="text-2xl font-bold text-foreground mb-3">
+            Accès expiré
+          </h1>
+          <p className="text-muted-foreground mb-4">
+            Votre période d'accès à l'application a pris fin le{' '}
+            {new Date(profile.access_expires_at).toLocaleDateString('fr-FR')}.
+            Votre progression reste enregistrée.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Pour prolonger votre accès, contactez votre école.
+          </p>
+        </div>
       </div>
     );
   }

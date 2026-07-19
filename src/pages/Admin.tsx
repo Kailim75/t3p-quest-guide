@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { useAdmin, AppRole } from '@/hooks/useAdmin';
+import { useAdmin, AppRole, isAccessExpired } from '@/hooks/useAdmin';
 import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -34,7 +34,9 @@ import {
   UserX,
   Clock,
   FileQuestion,
-  BarChart3
+  BarChart3,
+  Archive,
+  ArchiveRestore
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -56,11 +58,60 @@ const roleBadgeVariants: Record<AppRole, 'default' | 'secondary' | 'outline'> = 
 const AdminPage = () => {
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
-  const { isAdmin, isCheckingAdmin, users, isLoadingUsers, addRole, removeRole, approveUser, rejectUser } = useAdmin();
+  const { isAdmin, isCheckingAdmin, users, isLoadingUsers, addRole, removeRole, approveUser, rejectUser, setAccessExpiry, archiveUser, unarchiveUser } = useAdmin();
   const { toast } = useToast();
 
-  const pendingUsers = users.filter(u => !u.is_approved);
-  const approvedUsers = users.filter(u => u.is_approved);
+  // Les apprenants archivés sortent des listes actives (ils ne repartent pas
+  // dans la file « en attente ») mais gardent tout leur historique.
+  const pendingUsers = users.filter(u => !u.is_approved && !u.archived_at);
+  const approvedUsers = users.filter(u => u.is_approved && !u.archived_at);
+  const archivedUsers = users.filter(u => !!u.archived_at);
+
+  const handleSetExpiry = async (userId: string, value: string) => {
+    // <input type="date"> renvoie '' quand on efface : on retire alors la limite.
+    // Sinon l'accès court jusqu'à la fin de la journée choisie.
+    const expiresAt = value ? new Date(`${value}T23:59:59`).toISOString() : null;
+    try {
+      await setAccessExpiry.mutateAsync({ userId, expiresAt });
+      toast({
+        title: expiresAt ? 'Date de fin d\'accès enregistrée' : 'Accès sans limite',
+        description: expiresAt
+          ? `L'apprenant pourra utiliser l'application jusqu'au ${new Date(expiresAt).toLocaleDateString('fr-FR')} inclus.`
+          : "L'apprenant garde un accès sans date de fin.",
+      });
+    } catch {
+      toast({
+        title: 'Erreur',
+        description: "Impossible d'enregistrer la date de fin d'accès.",
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const handleArchive = async (userId: string, name: string) => {
+    if (!window.confirm(`Archiver ${name} ? Son accès sera fermé immédiatement, mais toute sa progression sera conservée. Vous pourrez le réactiver à tout moment.`)) return;
+    try {
+      await archiveUser.mutateAsync(userId);
+      toast({
+        title: 'Apprenant archivé',
+        description: `${name} ne peut plus se connecter. Son historique est conservé.`,
+      });
+    } catch {
+      toast({ title: 'Erreur', description: "Impossible d'archiver cet apprenant.", variant: 'destructive' });
+    }
+  };
+
+  const handleUnarchive = async (userId: string, name: string) => {
+    try {
+      await unarchiveUser.mutateAsync(userId);
+      toast({
+        title: 'Apprenant réactivé',
+        description: `${name} peut de nouveau se connecter.`,
+      });
+    } catch {
+      toast({ title: 'Erreur', description: 'Impossible de réactiver cet apprenant.', variant: 'destructive' });
+    }
+  };
 
   const handleAddRole = async (userId: string, role: AppRole) => {
     try {
@@ -364,6 +415,7 @@ const AdminPage = () => {
                         <TableRow>
                           <TableHead>Utilisateur</TableHead>
                           <TableHead>Statut</TableHead>
+                          <TableHead>Accès jusqu'au</TableHead>
                           <TableHead>Rôles</TableHead>
                           <TableHead>Inscrit le</TableHead>
                           <TableHead className="text-right">Actions</TableHead>
@@ -383,10 +435,33 @@ const AdminPage = () => {
                               </div>
                             </TableCell>
                             <TableCell>
-                              <Badge variant="default" className="bg-green-600">
-                                <UserCheck className="h-3 w-3 mr-1" />
-                                Approuvé
-                              </Badge>
+                              {isAccessExpired(userItem.access_expires_at) ? (
+                                <Badge variant="destructive">
+                                  <Clock className="h-3 w-3 mr-1" />
+                                  Accès expiré
+                                </Badge>
+                              ) : (
+                                <Badge variant="default" className="bg-green-600">
+                                  <UserCheck className="h-3 w-3 mr-1" />
+                                  Approuvé
+                                </Badge>
+                              )}
+                            </TableCell>
+                            <TableCell>
+                              <input
+                                type="date"
+                                aria-label={`Fin d'accès de ${userItem.display_name || userItem.email}`}
+                                defaultValue={
+                                  userItem.access_expires_at
+                                    ? format(new Date(userItem.access_expires_at), 'yyyy-MM-dd')
+                                    : ''
+                                }
+                                onChange={(e) => handleSetExpiry(userItem.id, e.target.value)}
+                                className="rounded-md border bg-background px-2 py-1 text-sm"
+                              />
+                              <p className="mt-1 text-[11px] text-muted-foreground">
+                                {userItem.access_expires_at ? 'Désactivation automatique' : 'Sans limite'}
+                              </p>
                             </TableCell>
                             <TableCell>
                               <div className="flex flex-wrap gap-1">
@@ -426,8 +501,16 @@ const AdminPage = () => {
                                       Révoquer l'accès
                                     </DropdownMenuItem>
                                   )}
+                                  {userItem.id !== user?.id && (
+                                    <DropdownMenuItem
+                                      onClick={() => handleArchive(userItem.id, userItem.display_name || userItem.email)}
+                                    >
+                                      <Archive className="mr-2 h-4 w-4" />
+                                      Archiver (fin de formation)
+                                    </DropdownMenuItem>
+                                  )}
                                   {!userItem.roles.includes('admin') && (
-                                    <DropdownMenuItem 
+                                    <DropdownMenuItem
                                       onClick={() => handleAddRole(userItem.id, 'admin')}
                                     >
                                       <UserPlus className="mr-2 h-4 w-4" />
@@ -478,6 +561,64 @@ const AdminPage = () => {
                 )}
               </CardContent>
             </Card>
+
+            {/* Apprenants archivés : accès fermé, historique conservé */}
+            {archivedUsers.length > 0 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Archive className="h-5 w-5 text-muted-foreground" />
+                    Apprenants archivés ({archivedUsers.length})
+                  </CardTitle>
+                  <p className="text-sm text-muted-foreground">
+                    Formation terminée : ils ne peuvent plus se connecter, mais toute leur
+                    progression est conservée. Vous pouvez les réactiver à tout moment.
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Apprenant</TableHead>
+                          <TableHead>Archivé le</TableHead>
+                          <TableHead className="text-right">Actions</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {archivedUsers.map((userItem) => (
+                          <TableRow key={userItem.id} className="opacity-75">
+                            <TableCell>
+                              <div>
+                                <p className="font-medium">{userItem.display_name || 'Sans nom'}</p>
+                                <p className="text-sm text-muted-foreground">{userItem.email}</p>
+                              </div>
+                            </TableCell>
+                            <TableCell>
+                              <span className="text-sm text-muted-foreground">
+                                {userItem.archived_at
+                                  ? format(new Date(userItem.archived_at), 'dd MMM yyyy', { locale: fr })
+                                  : '—'}
+                              </span>
+                            </TableCell>
+                            <TableCell className="text-right">
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => handleUnarchive(userItem.id, userItem.display_name || userItem.email)}
+                              >
+                                <ArchiveRestore className="h-4 w-4 mr-1.5" />
+                                Réactiver
+                              </Button>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
           </TabsContent>
 
           <TabsContent value="questions">

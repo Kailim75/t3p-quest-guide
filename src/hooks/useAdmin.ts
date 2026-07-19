@@ -18,7 +18,15 @@ export interface UserWithProfile {
   created_at: string;
   roles: AppRole[];
   is_approved: boolean;
+  /** Fin d'accès de l'apprenant ; null = accès sans limite. */
+  access_expires_at: string | null;
+  /** Date d'archivage ; null = apprenant actif. */
+  archived_at: string | null;
 }
+
+/** Un accès est échu si une date de fin est passée (désactivation automatique). */
+export const isAccessExpired = (accessExpiresAt: string | null): boolean =>
+  !!accessExpiresAt && new Date(accessExpiresAt).getTime() < Date.now();
 
 export const useAdmin = () => {
   const { user } = useAuth();
@@ -68,6 +76,8 @@ export const useAdmin = () => {
         display_name: profile.display_name,
         created_at: profile.created_at,
         is_approved: profile.is_approved,
+        access_expires_at: profile.access_expires_at ?? null,
+        archived_at: profile.archived_at ?? null,
         roles: (roles || [])
           .filter(r => r.user_id === profile.id)
           .map(r => r.role as AppRole),
@@ -123,6 +133,51 @@ export const useAdmin = () => {
     },
   });
 
+  // Définir (ou retirer) la date de fin d'accès d'un apprenant
+  const setAccessExpiry = useMutation({
+    mutationFn: async ({ userId, expiresAt }: { userId: string; expiresAt: string | null }) => {
+      const { error } = await supabase
+        .from('profiles')
+        .update({ access_expires_at: expiresAt })
+        .eq('id', userId);
+
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-users'] });
+    },
+  });
+
+  // Archiver un apprenant : il ne peut plus se connecter, son historique est conservé
+  const archiveUser = useMutation({
+    mutationFn: async (userId: string) => {
+      const { error } = await supabase
+        .from('profiles')
+        .update({ archived_at: new Date().toISOString() })
+        .eq('id', userId);
+
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-users'] });
+    },
+  });
+
+  // Réactiver un apprenant archivé
+  const unarchiveUser = useMutation({
+    mutationFn: async (userId: string) => {
+      const { error } = await supabase
+        .from('profiles')
+        .update({ archived_at: null })
+        .eq('id', userId);
+
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-users'] });
+    },
+  });
+
   // Reject/unapprove user
   const rejectUser = useMutation({
     mutationFn: async (userId: string) => {
@@ -148,5 +203,8 @@ export const useAdmin = () => {
     removeRole,
     approveUser,
     rejectUser,
+    setAccessExpiry,
+    archiveUser,
+    unarchiveUser,
   };
 };
