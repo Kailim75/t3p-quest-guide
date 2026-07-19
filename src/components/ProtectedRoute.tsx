@@ -2,8 +2,10 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import { Hourglass } from 'lucide-react';
 import AuthModal from '@/components/AuthModal';
 import Logo from '@/components/Logo';
+import WelcomeScreen from '@/components/WelcomeScreen';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -61,31 +63,16 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     );
   }
 
-  // If not authenticated, show auth modal
+  // If not authenticated, show the welcome screen + auth modal
   if (!user) {
     return (
-      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
-        <div className="text-center max-w-md">
-          <Logo className="mx-auto mb-6 h-16 w-16 drop-shadow" />
-          <h1 className="text-2xl font-bold text-foreground mb-3">
-            Connexion requise
-          </h1>
-          <p className="text-muted-foreground mb-6">
-            Connectez-vous ou créez un compte pour accéder à l'application T3P Quest et suivre votre progression.
-          </p>
-          <button
-            onClick={() => setShowAuthModal(true)}
-            className="btn-primary"
-          >
-            Se connecter / S'inscrire
-          </button>
-        </div>
-        
-        <AuthModal 
-          isOpen={showAuthModal} 
-          onClose={() => setShowAuthModal(false)} 
+      <>
+        <WelcomeScreen onSignIn={() => setShowAuthModal(true)} />
+        <AuthModal
+          isOpen={showAuthModal}
+          onClose={() => setShowAuthModal(false)}
         />
-      </div>
+      </>
     );
   }
 
@@ -138,17 +125,20 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     return (
       <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
         <div className="text-center max-w-md">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-yellow-500/10 mb-6">
-            <span className="text-3xl">⏳</span>
-          </div>
-          <h1 className="text-2xl font-bold text-foreground mb-3">
-            Inscription en attente
+          <Logo className="mx-auto mb-6 h-16 w-16 drop-shadow" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-warning/10 px-4 py-1.5 text-sm font-medium text-warning">
+            <Hourglass className="h-4 w-4" />
+            En attente de validation
+          </span>
+          <h1 className="mt-4 text-2xl font-bold text-foreground mb-3">
+            Bienvenue, votre compte est créé !
           </h1>
           <p className="text-muted-foreground mb-4">
-            Votre compte a été créé avec succès ! Un administrateur doit valider votre inscription avant que vous puissiez accéder à l'application.
+            Votre école doit valider votre inscription avant de vous ouvrir l'accès.
+            C'est généralement rapide.
           </p>
           <p className="text-sm text-muted-foreground">
-            Vous serez notifié dès que votre compte sera approuvé.
+            Reconnectez-vous un peu plus tard : vous pourrez alors commencer votre entraînement.
           </p>
         </div>
       </div>
