@@ -16,32 +16,32 @@ export type Database = {
     Tables: {
       profiles: {
         Row: {
+          access_expires_at: string | null
+          archived_at: string | null
           created_at: string
           display_name: string | null
           email: string | null
           id: string
-          access_expires_at: string | null
-          archived_at: string | null
           is_approved: boolean
           updated_at: string
         }
         Insert: {
+          access_expires_at?: string | null
+          archived_at?: string | null
           created_at?: string
           display_name?: string | null
           email?: string | null
           id: string
-          access_expires_at?: string | null
-          archived_at?: string | null
           is_approved?: boolean
           updated_at?: string
         }
         Update: {
+          access_expires_at?: string | null
+          archived_at?: string | null
           created_at?: string
           display_name?: string | null
           email?: string | null
           id?: string
-          access_expires_at?: string | null
-          archived_at?: string | null
           is_approved?: boolean
           updated_at?: string
         }
