@@ -20,6 +20,8 @@ export type Database = {
           display_name: string | null
           email: string | null
           id: string
+          access_expires_at: string | null
+          archived_at: string | null
           is_approved: boolean
           updated_at: string
         }
@@ -28,6 +30,8 @@ export type Database = {
           display_name?: string | null
           email?: string | null
           id: string
+          access_expires_at?: string | null
+          archived_at?: string | null
           is_approved?: boolean
           updated_at?: string
         }
@@ -36,6 +40,8 @@ export type Database = {
           display_name?: string | null
           email?: string | null
           id?: string
+          access_expires_at?: string | null
+          archived_at?: string | null
           is_approved?: boolean
           updated_at?: string
         }

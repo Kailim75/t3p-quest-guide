@@ -34,6 +34,9 @@ export const useLearnersProgress = () => {
         .from('profiles')
         .select('*')
         .eq('is_approved', true)
+        // Les apprenants archivés (formation terminée) sortent du suivi actif :
+        // ils ne faussent plus les moyennes et ne sont plus relancés par email.
+        .is('archived_at', null)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
