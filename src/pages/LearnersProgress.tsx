@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   Table,
   TableBody,
@@ -31,6 +32,7 @@ import {
   Moon,
   Download,
   Mail,
+  MessageCircle,
 } from 'lucide-react';
 import { format, differenceInCalendarDays } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -75,12 +77,29 @@ const LearnersProgressPage = () => {
   const [selectedLearner, setSelectedLearner] = useState<LearnerStats | null>(null);
   const [showInactiveOnly, setShowInactiveOnly] = useState(false);
 
+  // Sélection des apprenants à relancer (cases à cocher dans la liste).
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+
   const isInactive = (learner: LearnerStats) => {
     const days = daysInactive(learner.lastActivity);
     return days === null || days >= INACTIVITY_DAYS;
   };
   const inactiveCount = learnersStats.filter(isInactive).length;
   const shownLearners = showInactiveOnly ? learnersStats.filter(isInactive) : learnersStats;
+
+  const toggleSelected = (id: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
+  const selectInactifs = () =>
+    setSelectedIds(new Set(learnersStats.filter(isInactive).map((l) => l.userId)));
+  const selectAllShown = () => setSelectedIds(new Set(shownLearners.map((l) => l.userId)));
+  const clearSelection = () => setSelectedIds(new Set());
+
+  const selectedLearners = learnersStats.filter((l) => selectedIds.has(l.userId));
 
   const hardestQuestionDetails = hardestQuestions.map((h) => ({
     ...h,
@@ -112,16 +131,14 @@ const LearnersProgressPage = () => {
     URL.revokeObjectURL(url);
   };
 
-  // Relance des apprenants inactifs : ouvre le logiciel de messagerie du
+  // Relance par email de la sélection : ouvre le logiciel de messagerie du
   // formateur avec un message prêt à envoyer (destinataires en copie cachée
-  // pour ne pas exposer les adresses entre élèves). Le formateur relit et
-  // envoie lui-même — rien n'est envoyé automatiquement.
-  const relanceInactifs = () => {
-    const emails = learnersStats
-      .filter(isInactive)
+  // pour ne pas exposer les adresses entre élèves). Rien n'est envoyé
+  // automatiquement — le formateur relit et envoie lui-même.
+  const relanceEmailSelection = () => {
+    const emails = selectedLearners
       .map((l) => l.profile.email)
       .filter((e): e is string => !!e);
-
     if (emails.length === 0) return;
 
     const subject = 'Reprenez votre préparation à l\'examen T3P';
@@ -145,6 +162,21 @@ const LearnersProgressPage = () => {
 
     const link = `mailto:${encodeURIComponent(user?.email ?? '')}?bcc=${encodeURIComponent(emails.join(','))}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = link;
+  };
+
+  // Relance WhatsApp d'un apprenant : ouvre WhatsApp avec un message
+  // pré-rempli ; le formateur choisit le contact et envoie. WhatsApp ne
+  // permettant qu'une conversation à la fois, la relance est individuelle.
+  const relanceWhatsApp = (learner: LearnerStats) => {
+    const prenom = (learner.profile.display_name || '').split(' ')[0];
+    const message = [
+      `Bonjour ${prenom || ''}`.trim() + ' 👋',
+      "On ne t'a pas vu sur l'application de préparation T3P depuis quelques jours.",
+      'Quelques minutes par jour suffisent : relève ton défi du jour, refais tes erreurs et relis tes fiches.',
+      '👉 https://www.t3pcampus.com',
+      "L'équipe École T3P",
+    ].join('\n\n');
+    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
   };
 
   if (authLoading || adminLoading) {
@@ -386,7 +418,7 @@ const LearnersProgressPage = () => {
                   <div>
                     <CardTitle>Liste des apprenants</CardTitle>
                     <CardDescription>
-                      Cliquez sur un apprenant pour voir ses détails
+                      Cochez les apprenants à relancer, ou utilisez le bouton WhatsApp par ligne.
                     </CardDescription>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
@@ -398,19 +430,41 @@ const LearnersProgressPage = () => {
                       <Moon className="h-4 w-4 mr-1.5" />
                       Inactifs {INACTIVITY_DAYS} j+ ({inactiveCount})
                     </Button>
-                    <Button
-                      variant="default"
-                      size="sm"
-                      onClick={relanceInactifs}
-                      disabled={inactiveCount === 0}
-                      title={inactiveCount === 0 ? 'Aucun apprenant inactif à relancer' : undefined}
-                    >
-                      <Mail className="h-4 w-4 mr-1.5" />
-                      Relancer les inactifs ({inactiveCount})
-                    </Button>
                     <Button variant="outline" size="sm" onClick={exportCsv}>
                       <Download className="h-4 w-4 mr-1.5" />
                       Exporter (CSV)
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Barre de sélection et de relance */}
+                <div className="mt-4 flex flex-wrap items-center gap-2 rounded-xl border bg-secondary/40 p-3">
+                  <span className="text-sm font-medium text-foreground">
+                    {selectedIds.size > 0
+                      ? `${selectedIds.size} sélectionné${selectedIds.size > 1 ? 's' : ''}`
+                      : 'Sélectionner :'}
+                  </span>
+                  <Button variant="ghost" size="sm" onClick={selectInactifs} disabled={inactiveCount === 0}>
+                    Les inactifs ({inactiveCount})
+                  </Button>
+                  <Button variant="ghost" size="sm" onClick={selectAllShown} disabled={shownLearners.length === 0}>
+                    Tout
+                  </Button>
+                  {selectedIds.size > 0 && (
+                    <Button variant="ghost" size="sm" onClick={clearSelection}>
+                      Effacer
+                    </Button>
+                  )}
+                  <div className="ml-auto">
+                    <Button
+                      variant="default"
+                      size="sm"
+                      onClick={relanceEmailSelection}
+                      disabled={selectedIds.size === 0}
+                      title={selectedIds.size === 0 ? 'Cochez au moins un apprenant' : undefined}
+                    >
+                      <Mail className="h-4 w-4 mr-1.5" />
+                      Relancer par email ({selectedIds.size})
                     </Button>
                   </div>
                 </div>
@@ -426,6 +480,13 @@ const LearnersProgressPage = () => {
                   <Table>
                     <TableHeader>
                       <TableRow>
+                        <TableHead className="w-10">
+                          <Checkbox
+                            aria-label="Tout sélectionner"
+                            checked={shownLearners.length > 0 && shownLearners.every((l) => selectedIds.has(l.userId))}
+                            onCheckedChange={(v) => (v ? selectAllShown() : clearSelection())}
+                          />
+                        </TableHead>
                         <TableHead>Apprenant</TableHead>
                         <TableHead className="text-center">Quiz</TableHead>
                         <TableHead className="text-center">Examens</TableHead>
@@ -434,15 +495,23 @@ const LearnersProgressPage = () => {
                         <TableHead className="text-center">Série</TableHead>
                         <TableHead className="text-center">Badges</TableHead>
                         <TableHead>Dernière activité</TableHead>
+                        <TableHead className="text-center">Relancer</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {shownLearners.map((learner) => (
-                        <TableRow 
+                        <TableRow
                           key={learner.userId}
                           className="cursor-pointer hover:bg-muted/50"
                           onClick={() => setSelectedLearner(learner)}
                         >
+                          <TableCell onClick={(e) => e.stopPropagation()}>
+                            <Checkbox
+                              aria-label={`Sélectionner ${learner.profile.display_name || learner.profile.email}`}
+                              checked={selectedIds.has(learner.userId)}
+                              onCheckedChange={() => toggleSelected(learner.userId)}
+                            />
+                          </TableCell>
                           <TableCell>
                             <div>
                               <p className="font-medium">
@@ -502,6 +571,18 @@ const LearnersProgressPage = () => {
                                 <Badge variant="destructive" className="text-[10px]">jamais actif</Badge>
                               </span>
                             )}
+                          </TableCell>
+                          <TableCell className="text-center" onClick={(e) => e.stopPropagation()}>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => relanceWhatsApp(learner)}
+                              title="Relancer par WhatsApp (message pré-rempli)"
+                              className="text-green-600 hover:text-green-700 hover:bg-green-600/10"
+                            >
+                              <MessageCircle className="h-4 w-4" />
+                              <span className="ml-1.5 hidden sm:inline">WhatsApp</span>
+                            </Button>
                           </TableCell>
                         </TableRow>
                       ))}
