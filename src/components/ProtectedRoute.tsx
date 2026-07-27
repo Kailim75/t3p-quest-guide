@@ -6,6 +6,8 @@ import { Hourglass } from 'lucide-react';
 import AuthModal from '@/components/AuthModal';
 import Logo from '@/components/Logo';
 import WelcomeScreen from '@/components/WelcomeScreen';
+import { pullProgress } from '@/lib/progressSync';
+import { setSyncUser } from '@/lib/progressPush';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -14,6 +16,17 @@ interface ProtectedRouteProps {
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const { user, loading } = useAuth();
   const [showAuthModal, setShowAuthModal] = useState(false);
+
+  // Progression rattachée au compte : à la connexion, l'appareil s'aligne sur
+  // le compte (et remonte ce qu'il avait accumulé auparavant).
+  useEffect(() => {
+    if (!user) {
+      setSyncUser(null);
+      return;
+    }
+    setSyncUser(user.id);
+    void pullProgress(user.id);
+  }, [user]);
 
   // Check if user is approved
   const { data: profile, isLoading: isLoadingProfile } = useQuery({
