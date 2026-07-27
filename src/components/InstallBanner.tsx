@@ -1,17 +1,6 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Download, X, Bell, WifiOff, Smartphone } from 'lucide-react';
-import { usePWA } from '@/hooks/usePWA';
-
-const DISMISSED_KEY = 't3p-install-banner-dismissed';
-
-/** Nombre de jours pendant lesquels on n'importune plus après un « plus tard ». */
-const SNOOZE_DAYS = 14;
-
-const isSnoozed = () => {
-  const until = localStorage.getItem(DISMISSED_KEY);
-  return until !== null && Date.now() < Number(until);
-};
+import { useInstallInvite } from '@/hooks/useInstallInvite';
 
 /**
  * Invitation à installer l'application sur l'écran d'accueil.
@@ -22,15 +11,9 @@ const isSnoozed = () => {
  * page d'instructions plutôt que d'ouvrir une boîte de dialogue système.
  */
 const InstallBanner = () => {
-  const { canPromptInstall, isInstallable, isIOS, installApp } = usePWA();
-  const [dismissed, setDismissed] = useState(isSnoozed);
+  const { visible, isInstallable, isIOS, installApp, snooze } = useInstallInvite();
 
-  if (!canPromptInstall || dismissed) return null;
-
-  const snooze = () => {
-    localStorage.setItem(DISMISSED_KEY, String(Date.now() + SNOOZE_DAYS * 86_400_000));
-    setDismissed(true);
-  };
+  if (!visible) return null;
 
   return (
     <section className="container mx-auto px-4 pt-6">

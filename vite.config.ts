@@ -55,6 +55,8 @@ export default defineConfig(({ mode }) => ({
       },
       workbox: {
         navigateFallbackDenylist: [/^\/~oauth/],
+        // Rappels de révision : gestionnaires push / notificationclick.
+        importScripts: ["/push-sw.js"],
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
         // Le bundle principal dépasse 2 Mo (452 fiches pédagogiques embarquées) :
         // on relève la limite pour qu'il reste disponible hors ligne.
