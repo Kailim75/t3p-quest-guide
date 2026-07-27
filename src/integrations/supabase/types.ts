@@ -23,6 +23,7 @@ export type Database = {
           email: string | null
           id: string
           is_approved: boolean
+          target_exam: string | null
           updated_at: string
         }
         Insert: {
@@ -33,6 +34,7 @@ export type Database = {
           email?: string | null
           id: string
           is_approved?: boolean
+          target_exam?: string | null
           updated_at?: string
         }
         Update: {
@@ -43,6 +45,7 @@ export type Database = {
           email?: string | null
           id?: string
           is_approved?: boolean
+          target_exam?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -161,6 +164,30 @@ export type Database = {
         }
         Relationships: []
       }
+      user_daily_challenges: {
+        Row: {
+          challenge_date: string
+          created_at: string
+          score: number
+          total: number
+          user_id: string
+        }
+        Insert: {
+          challenge_date: string
+          created_at?: string
+          score: number
+          total: number
+          user_id: string
+        }
+        Update: {
+          challenge_date?: string
+          created_at?: string
+          score?: number
+          total?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -178,6 +205,33 @@ export type Database = {
           created_at?: string
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_srs_entries: {
+        Row: {
+          due_on: string
+          fails: number
+          question_id: string
+          stage: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          due_on: string
+          fails?: number
+          question_id: string
+          stage?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          due_on?: string
+          fails?: number
+          question_id?: string
+          stage?: number
+          updated_at?: string
           user_id?: string
         }
         Relationships: []
