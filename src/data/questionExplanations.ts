@@ -2227,6 +2227,217 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     content: "Le taxi parisien est soumis aux restrictions de la Zone à Faibles Émissions (ZFE) de la Métropole du Grand Paris : son véhicule doit porter une vignette Crit'Air de niveau autorisé pour circuler dans le périmètre. Le renouvellement du parc vers l'hybride et l'électrique est fortement encouragé (aides, dérogations d'âge du véhicule).",
     tip: "ZFE = vérifier la vignette Crit'Air AVANT d'acheter un véhicule de taxi, surtout d'occasion.",
     legalRef: "Réglementation ZFE de la Métropole du Grand Paris"
+  },
+
+  // =====================
+  // RENFORT CONTENU : français, anglais et topographie
+  // =====================
+  'fra-041': {
+    content: "« Tacite reconduction » signifie que le contrat se renouvelle tout seul si personne ne dit rien. Pour en sortir, deux conditions se cumulent toujours : la forme exigée (ici la lettre recommandée, qui fait preuve) et le délai de préavis (ici 3 mois avant la date anniversaire). Manquer l'une des deux, c'est se retrouver engagé une année de plus.",
+    tip: "Dès la signature d'un contrat, notez immédiatement dans votre agenda la date limite de dénonciation, pas la date d'échéance.",
+    legalRef: "Article 1212 du Code civil (tacite reconduction)"
+  },
+  'fra-042': {
+    content: "Le mot « inclus » (ou « compris ») change la portée d'une date : « jusqu'au 15 inclus » couvre le 15, alors que « jusqu'au 15 » seul peut prêter à discussion. Dans les avis administratifs, repérez toujours trois éléments : qui est concerné, quoi, et jusqu'à quand exactement.",
+    tip: "Cherchez systématiquement « inclus », « à compter de », « au plus tard » : ces mots portent toute la portée juridique de la phrase.",
+  },
+  'fra-043': {
+    content: "Une clause qui commence par « la garantie ne s'applique pas lorsque… » est une clause d'EXCLUSION : elle décrit les cas où l'assureur ne paiera pas. En transport de personnes, les conducteurs autorisés sont listés aux conditions particulières ; tout conducteur supplémentaire doit être déclaré AVANT de prendre le volant.",
+    tip: "Repérez les mots « ne s'applique pas », « sauf », « à l'exclusion de » : ils annoncent toujours ce que l'assureur refuse de couvrir.",
+  },
+  'fra-044': {
+    content: "Futur ou conditionnel ? Le test : remplacez par « nous ». « Nous serons » → futur, donc « je serai » (engagement). « Nous serions » → conditionnel, donc « je serais » (hypothèse : « je serais ravi de vous conduire »). Dans une confirmation de course, c'est le futur : vous vous engagez.",
+    tip: "Confirmation = futur (« je serai »). Politesse ou hypothèse = conditionnel (« je serais ravi »).",
+  },
+  'fra-045': {
+    content: "Un écrit professionnel reste neutre et courtois, même quand le client signale une erreur : on ne se justifie pas, on ne reproche rien, on corrige. Attention aussi à l'accord : « la facture rectifiée » (féminin). Rappel utile : « ci-joint » placé AVANT le nom reste invariable, mais accordé après le nom (« la facture ci-jointe »).",
+    tip: "Reconnaître une erreur sans commentaire superflu inspire plus confiance qu'une justification.",
+  },
+  'fra-046': {
+    content: "Deux règles se croisent ici. Avec AVOIR : on cherche le complément d'objet et sa position — « j'ai effectué QUOI ? » → « que » (= les courses), placé avant, donc accord (« effectuées »). Le participe « été » du verbe être, lui, ne s'accorde JAMAIS.",
+    tip: "Le piège classique : « été » ne prend jamais de s. « Ont été réglées » et non « ont étés réglées ».",
+  },
+  'fra-047': {
+    content: "« Le cas échéant » introduit une éventualité, pas une certitude : l'action n'est demandée que si la situation se produit. À ne pas confondre avec « en tout état de cause » (dans tous les cas) ni avec « à défaut » (si cela ne se produit pas). Ces locutions reviennent souvent dans les contrats et les échanges professionnels.",
+    tip: "Mémo : « le cas échéant » = SI ça arrive. « En tout état de cause » = DANS TOUS LES CAS.",
+  },
+  'fra-048': {
+    content: "Une bonne annonce tarifaire tient en trois temps : le fait (le détour sort du forfait), la conséquence (passage au compteur), et le moment (avant de partir, pour que le client décide en connaissance de cause). C'est à la fois une exigence commerciale et une obligation d'information du consommateur.",
+    tip: "Toute mauvaise nouvelle tarifaire s'annonce AVANT la prestation, jamais à l'arrivée.",
+    legalRef: "Article L111-1 du Code de la consommation"
+  },
+  'fra-049': {
+    content: "« Faute de quoi », « à défaut », « sous peine de » annoncent tous une sanction : lisez toujours ce qui suit, c'est la conséquence réelle. Ne surinterprétez pas non plus — une note de service interne ne peut pas créer de sanction administrative (amende, retrait de carte) qui relève de l'autorité publique.",
+    tip: "Repérez la sanction annoncée : elle est écrite juste après « faute de quoi » ou « sous peine de ».",
+  },
+  'fra-050': {
+    content: "Test infaillible pour -er / -é / -ez : remplacez le verbe par « vendre ». « Pourriez-vous me VENDRE » sonne juste → infinitif, donc « préciser ». Si « vendu » convenait, ce serait « précisé ». La terminaison -ez ne s'emploie qu'avec un sujet « vous » conjugué (« vous précisez »).",
+    tip: "Mémo : après pouvoir, vouloir, devoir, aller → toujours l'infinitif (« pourriez-vous préciser »).",
+  },
+  'fra-051': {
+    content: "« Deux valises chacun » : le mot « chacun » multiplie par le nombre de personnes. Quatre passagers × deux valises = huit valises — un volume qu'une berline classique ne peut pas absorber. Bien lire une demande, c'est en extraire les contraintes matérielles avant d'accepter la course.",
+    tip: "Traquez les mots multiplicateurs : « chacun », « par personne », « chaque ». Ils changent tout le calcul.",
+  },
+  'fra-052': {
+    content: "L'objet d'un courriel sert à retrouver le message plus tard : il doit contenir les repères utiles (quoi, quand, où) en quelques mots. Les majuscules sont perçues comme un cri et les points d'exclamation multiples font amateur. Réservez le corps du message aux phrases complètes.",
+    tip: "Un bon objet se lit en une seconde et se retrouve six mois plus tard dans une boîte pleine.",
+  },
+  'fra-053': {
+    content: "Lire une clause de pénalité, c'est identifier précisément le seuil et le sens de la comparaison : ici « moins de deux heures avant » déclenche la facturation, donc au-delà de deux heures rien n'est dû. Facturer quand même serait une pratique commerciale contestable, sans base contractuelle.",
+    tip: "Sur les seuils, posez-vous toujours la question : est-on AVANT ou APRÈS la limite ? La réponse détermine le droit.",
+  },
+  'fra-054': {
+    content: "Trois pièges dans une seule phrase. « m'a » = « me avait » (verbe avoir) alors que « ma » est un possessif. « demandé » suit l'auxiliaire (test : « m'a vendu », pas « m'a vendre »). Enfin, on EMMÈNE une personne (on l'accompagne) et on APPORTE une chose ; « amener » s'emploie aussi pour les personnes mais « emmener » marque le trajet complet.",
+    tip: "Emmener/amener = personnes. Emporter/apporter = objets. Le « m » de emMener aide : on Mène quelqu'un.",
+  },
+  'fra-055': {
+    content: "« Sans excéder » signifie « sans dépasser » : c'est un maximum, pas une durée fixe. Le client peut arriver au bout de cinq minutes comme de vingt-cinq. Repérer un plafond dans une consigne évite deux erreurs symétriques : partir trop tôt (perte du client) ou attendre indéfiniment (perte de temps non rémunéré).",
+    tip: "« Sans excéder » = au maximum. « Au moins » = au minimum. Deux mots qui inversent complètement la consigne.",
+  },
+  'ang-081': {
+    content: "« To drop someone off » = déposer quelqu'un ; « to pick someone up » = prendre quelqu'un en charge. Ce sont les deux verbes les plus utilisés du métier. Le client demande ici de descendre avant l'adresse finale : on s'exécute, en s'arrêtant côté trottoir et en sécurité, sans facturer de supplément.",
+    tip: "Mémo : pick up = prendre en charge, drop off = déposer. Ces deux-là reviennent dans presque toutes les courses.",
+  },
+  'ang-082': {
+    content: "Deux exigences se combinent : rassurer et ne pas s'engager sur une heure précise. Les mots « about », « approximately », « around » et la formule « depending on traffic » remplissent exactement ce rôle. Donner une heure ferme transforme une estimation en engagement de résultat.",
+    tip: "Toujours une fourchette + « depending on traffic ». Jamais d'heure exacte.",
+  },
+  'ang-083': {
+    content: "Vocabulaire d'aéroport indispensable : delayed (retardé), cancelled (annulé), missing luggage (bagage égaré), boarding pass (carte d'embarquement), connecting flight (correspondance). Un client dont les bagages manquent sortira souvent bien après l'heure d'atterrissage : c'est une information utile pour votre planning.",
+    tip: "Delayed ≠ cancelled. Un vol delayed arrive quand même : le client viendra, plus tard.",
+  },
+  'ang-084': {
+    content: "La politesse anglo-saxonne passe par les modaux : « Would you like… ? », « May I… ? », « Shall I… ? ». Ne contredisez jamais un ressenti (« it is not cold ») : le confort perçu par le client est ce qui compte pour la note. Vocabulaire utile : heating (chauffage), air conditioning (climatisation), to turn up/down (augmenter/baisser).",
+    tip: "« Would you like me to… ? » est la formule passe-partout pour proposer un service sans l'imposer.",
+  },
+  'ang-085': {
+    content: "Le touriste attend deux choses : une durée réaliste et un repère géographique. « Right bank / left bank » (rive droite / rive gauche) sont les repères que les anglophones utilisent spontanément à Paris. Depuis la gare de Lyon, le Louvre se rejoint en une quinzaine de minutes par les quais, hors heure de pointe.",
+    tip: "Associez toujours durée + repère : « fifteen minutes, on the right bank » vaut mieux qu'un simple « not far ».",
+  },
+  'ang-086': {
+    content: "« To fasten a seat belt » = attacher sa ceinture. La consigne est obligatoire, mais la forme reste courtoise : « Could you… please ? » obtient le même résultat qu'un ordre, sans braquer le client. En cas de refus persistant, on rappelle calmement que le trajet ne peut pas commencer.",
+    tip: "Consigne obligatoire ≠ ton autoritaire. « Could you… please » suffit dans 99 % des cas.",
+    legalRef: "Article R412-1 du Code de la route (ceinture)"
+  },
+  'ang-087': {
+    content: "« Receipt » se prononce /rɪˈsiːt/ (le p est muet) et désigne le reçu ou la note remise au client. C'est une demande très fréquente de la clientèle d'affaires, qui doit justifier ses frais. Rappel métier : la note est obligatoire à partir de 25 € et sur simple demande en dessous.",
+    tip: "Receipt = reçu / note. Le « p » ne se prononce pas.",
+  },
+  'ang-088': {
+    content: "La discrétion fait partie du service, particulièrement avec la clientèle d'affaires : baisser la radio et se taire, sans jamais commenter le contenu de l'appel. Ce réflexe est très remarqué — c'est exactement ce qui distingue un service premium d'une simple course.",
+    tip: "Un client au téléphone = silence radio, au sens propre comme au figuré.",
+  },
+  'ang-089': {
+    content: "Les jours de fermeture des grands musées parisiens font partie des questions récurrentes des touristes : le Louvre ferme le mardi, le musée d'Orsay le lundi. Un conducteur qui connaît ces informations évite à son client un déplacement inutile — et gagne souvent une course retour.",
+    tip: "Louvre = fermé mardi. Orsay = fermé lundi. Deux informations qui impressionnent toujours un touriste.",
+  },
+  'ang-090': {
+    content: "Structure à retenir pour tout imprévu : cause (« there is a demonstration »), action (« I will take another route »), conséquence (« a few extra minutes »). Le client accepte presque toujours un aléa expliqué et pris en main ; ce qu'il supporte mal, c'est le silence ou la passivité. Vocabulaire : demonstration/strike (manifestation/grève), roadworks (travaux), diversion (déviation).",
+    tip: "Cause + action + conséquence : trois éléments, une phrase, un client rassuré.",
+  },
+  'ang-091': {
+    content: "Distinguez « arrivals » (arrivées, où l'on prend en charge) et « departures » (départs, où l'on dépose). Préciser une porte ou un point de rendez-vous (« gate 4 », « door B ») évite les longues recherches dans un hall bondé — pensez-y systématiquement dans vos messages de confirmation.",
+    tip: "Arrivals = je récupère. Departures = je dépose. Toujours ajouter un point de rendez-vous précis.",
+  },
+  'ang-092': {
+    content: "En anglais comme en français, la réponse est la même : on accepte et on propose son aide sans l'imposer (« May I help you… ? »). Un fauteuil pliant se charge dans tout coffre standard. Refuser une course en raison d'un handicap est un délit, et facturer un supplément à ce titre est une discrimination.",
+    tip: "Proposer l'aide, jamais l'imposer : « May I help you with the wheelchair? » et on suit les indications du client.",
+    legalRef: "Article 225-2 du Code pénal (discrimination)"
+  },
+  'ang-093': {
+    content: "Les points de vue en hauteur sont une question touristique classique : Tour Eiffel, tour Montparnasse (dont la terrasse a l'avantage d'offrir une vue AVEC la tour Eiffel dedans), Arc de Triomphe, Sacré-Cœur et Galeries Lafayette. Savoir conseiller ces lieux fait la différence pour un conducteur travaillant avec une clientèle étrangère.",
+    tip: "L'astuce à donner aux touristes : depuis Montparnasse, la vue contient la tour Eiffel — ce que la tour Eiffel ne peut pas offrir.",
+  },
+  'ang-094': {
+    content: "La fin de course pèse autant que l'accueil dans le souvenir du client. Trois éléments : annoncer l'arrivée, rappeler les effets personnels (« belongings » = affaires personnelles, cela évite 90 % des oublis) et souhaiter une bonne suite. « Have a pleasant stay » pour un touriste, « have a safe flight » avant un vol.",
+    tip: "« Belongings » est le mot juste pour les affaires personnelles — pas « affairs », qui signifie tout autre chose.",
+  },
+  'ang-095': {
+    content: "Confusion la plus coûteuse du métier : a.m. = matin (avant midi), p.m. = après-midi et soir. Se tromper sur une prise en charge à 6 h du matin fait rater un avion. Dans le doute, reformulez la confirmation en toutes lettres : « six in the morning, is that correct? ».",
+    tip: "a.m. = matin. p.m. = après-midi/soir. En cas de doute sur un vol, reformulez : l'erreur coûte un client à vie.",
+  },
+  'topo-041': {
+    content: "Mémoriser la porte associée à chaque grand axe divise par deux le temps de réflexion en course : A1 (porte de la Chapelle) → CDG et Lille ; A3 (porte de Bagnolet) → CDG en alternative ; A4 (porte de Bercy) → Reims, Strasbourg ; A6 (porte d'Orléans/Italie) → Orly et Lyon ; A13 (porte d'Auteuil) → Rouen, Normandie.",
+    tip: "Mémo : A1 = nord = CDG. A6 = sud = Orly. Les deux aéroports, les deux directions opposées.",
+  },
+  'topo-042': {
+    content: "Le vendredi en fin d'après-midi cumule heure de pointe et départs de week-end : le périphérique nord est le point noir habituel vers CDG. Deux alternatives : l'A3 depuis l'est parisien, ou le grand contournement par l'A86. La règle du métier : depuis l'est, on ne remonte pas le périphérique nord à cette heure-là.",
+    tip: "Prévoir 1 h 15 minimum vers CDG un vendredi soir, et annoncer une fourchette au client dès le départ.",
+  },
+  'topo-043': {
+    content: "Chaque gare parisienne dessert la direction vers laquelle elle pointe : Montparnasse → ouest et sud-ouest (Bordeaux, Nantes, Rennes) ; Lyon → sud-est (Lyon, Marseille, Suisse, Italie) ; Nord → Lille, Belgique, Londres ; Est → Strasbourg, Allemagne ; Saint-Lazare → Normandie ; Austerlitz → centre et sud (Orléans, Espagne de nuit). Se tromper de gare fait rater un train.",
+    tip: "Reformulez toujours : « Pour Bordeaux, c'est Montparnasse, je confirme ? » Cinq secondes qui sauvent une course.",
+  },
+  'topo-044': {
+    content: "Saint-Lazare est la gare de la Normandie (Rouen, Le Havre, Caen, Deauville) et la seule grande gare parisienne sans desserte TGV. Un client qui demande « la gare du TGV pour Deauville » se trompe : il faut le conduire à Saint-Lazare tout en rectifiant délicatement, pour qu'il ne cherche pas un train qui n'existe pas.",
+    tip: "Saint-Lazare = Normandie, et PAS de TGV. C'est un piège classique de l'épreuve.",
+  },
+  'topo-045': {
+    content: "Deux noms, un seul lieu : la place de l'Étoile a été rebaptisée place Charles-de-Gaulle, mais les deux appellations restent employées — un conducteur parisien doit reconnaître les deux. Aucun véhicule ne peut s'arrêter au pied de l'Arc : on dépose avenue de Wagram, avenue Hoche ou avenue de Friedland, et le client emprunte le souterrain.",
+    tip: "Étoile = Charles-de-Gaulle. Et jamais de dépose sur l'anneau : on choisit une avenue adjacente.",
+  },
+  'topo-046': {
+    content: "Le périphérique est limité à 50 km/h depuis octobre 2024 (contre 70 auparavant). Long de 35 km, il compte deux sens — intérieur (sens des aiguilles d'une montre) et extérieur — et reste l'axe le plus fréquenté de France, saturé de 7 h à 9 h 30 et de 17 h à 20 h.",
+    tip: "Toute question mentionnant « 70 km/h » sur le périphérique est périmée depuis octobre 2024.",
+    legalRef: "Arrêté de la Ville de Paris, octobre 2024"
+  },
+  'topo-047': {
+    content: "Les urgences pédiatriques ne se trouvent pas dans tous les hôpitaux : à Paris, ce sont principalement Necker-Enfants malades (15e), Robert-Debré (19e) et Trousseau (12e). Conduire un enfant aux urgences adultes fait perdre un temps précieux. En cas de doute sur la gravité, le 15 (SAMU) donne la bonne destination — un réflexe qui peut sauver une vie.",
+    tip: "Enfant = Necker, Robert-Debré ou Trousseau. Jamais un service d'urgences adultes.",
+  },
+  'topo-048': {
+    content: "Repères hospitaliers utiles au conducteur parisien : Pitié-Salpêtrière (13e, le plus grand, toutes spécialités) ; Georges-Pompidou (15e, moderne) ; Cochin (14e) ; Necker (15e, pédiatrie) ; Hôtel-Dieu (4e, sur l'île de la Cité) ; Robert-Debré (19e, pédiatrie). Connaître ceux de son secteur fait gagner un temps décisif.",
+    tip: "Pitié-Salpêtrière = 13e, boulevard de l'Hôpital. Le plus grand de France.",
+  },
+  'topo-049': {
+    content: "Les Grands Boulevards forment l'axe est-ouest historique de la rive droite : de la Madeleine à la République, prolongés par Beaumarchais jusqu'à la Bastille. Emprunter le périphérique pour un trajet intra-muros de 4 km serait un détour facturé indûment — le genre de pratique qui vaut une réclamation.",
+    tip: "Trajet intra-muros court = jamais le périphérique. Le client compare toujours avec son application.",
+  },
+  'topo-050': {
+    content: "La distinction des rives structure toute la topographie parisienne, et détermine même le forfait aéroport applicable. Rive gauche : 5e, 6e, 7e, 13e, 14e, 15e (Orsay, Tour Eiffel, Panthéon, Montparnasse). Rive droite : 1er à 4e, 8e à 12e, 16e à 20e (Louvre, Pompidou, Opéra, Sacré-Cœur).",
+    tip: "Astuce : la rive gauche regroupe six arrondissements seulement — 5, 6, 7, 13, 14, 15. Tout le reste est rive droite.",
+  },
+  'topo-051': {
+    content: "Gare du Nord (Lille, Bruxelles, Londres) et gare de l'Est (Strasbourg, Allemagne) sont à 300 mètres l'une de l'autre : une erreur de dépose coûte au client une quinzaine de minutes à pied avec ses bagages, et souvent son train. Gare de Lyon et Austerlitz sont également proches, de part et d'autre de la Seine, mais plus éloignées.",
+    tip: "Nord = Lille/Londres. Est = Strasbourg/Allemagne. À 300 m d'écart : toujours reformuler la destination.",
+  },
+  'topo-052': {
+    content: "Trois ceintures concentriques à connaître : les boulevards des Maréchaux (à l'intérieur, porte par porte, avec feux mais trafic plus régulier), le boulevard périphérique (35 km, 50 km/h), et l'A86 (le « super-périphérique », à 5-10 km de Paris). Quand le périphérique bloque, les Maréchaux sont souvent plus lents mais prévisibles.",
+    tip: "Périphérique bloqué ? Les Maréchaux à l'intérieur, l'A86 à l'extérieur. Deux échappatoires à connaître.",
+  },
+  'topo-053': {
+    content: "Le Trocadéro (16e, rive droite) offre la vue la plus photographiée de la tour Eiffel (7e, rive gauche) : les deux sont face à face, séparés par la Seine et le pont d'Iéna. Un client qui veut « photographier la tour Eiffel » veut souvent le Trocadéro, pas le pied de la tour : reformuler évite une déception.",
+    tip: "La plus belle vue de la tour Eiffel n'est pas au pied de la tour : c'est au Trocadéro, en face.",
+  },
+  'topo-054': {
+    content: "Douze avenues convergent place Charles-de-Gaulle, et la règle y est inverse de celle des ronds-points ordinaires : la priorité revient aux véhicules qui ENTRENT, pas à ceux déjà engagés. Stratégie : rester sur l'anneau extérieur, viser sa sortie dès l'entrée, céder à chaque insertion, et ne jamais s'engager vers le centre.",
+    tip: "Rond-point ordinaire : priorité à celui qui est dedans. Étoile : priorité à celui qui entre. L'inverse.",
+    legalRef: "Article R415-5 du Code de la route"
+  },
+  'topo-055': {
+    content: "Orly est à 14 km au sud de Paris, accessible par l'A6 (portes d'Orléans ou d'Italie) ou par la N7 ; compter 25 à 45 minutes selon le trafic. Depuis le sud parisien (13e, 14e, 15e), c'est un trajet court — d'où un forfait rive gauche moins élevé que depuis la rive droite.",
+    tip: "Orly = sud = A6. CDG = nord = A1. Se tromper d'aéroport ou d'axe fait rater un avion.",
+  },
+  'topo-056': {
+    content: "La Défense est le premier quartier d'affaires européen, situé hors de Paris dans les Hauts-de-Seine — un point important pour un taxi parisien, dont la zone de maraude s'arrête à sa zone d'attribution. On y accède par l'avenue Charles-de-Gaulle depuis la porte Maillot, dans le prolongement exact de l'axe historique.",
+    tip: "La Défense est HORS Paris : dépose possible, mais pas de reprise de client en maraude.",
+  },
+  'topo-057': {
+    content: "Les liaisons entre gares sont une demande fréquente, souvent dans l'urgence d'une correspondance. Gare de Lyon (12e, rive droite) → Montparnasse (15e, rive gauche) traverse tout Paris : compter 20 à 35 minutes, davantage aux heures de pointe. Annoncez une fourchette dès le départ pour que le client décide s'il a le temps.",
+    tip: "Correspondance entre gares parisiennes : annoncez toujours une fourchette, jamais un temps ferme.",
+  },
+  'topo-058': {
+    content: "Deux établissements privés accueillent principalement la clientèle internationale : l'hôpital américain (Neuilly-sur-Seine) et l'hôpital franco-britannique (Levallois-Perret). Tous deux se trouvent hors de Paris, à l'ouest, à une quinzaine de minutes du 8e arrondissement par la porte Maillot.",
+    tip: "Hôpital américain = Neuilly, pas Paris. Une destination fréquente de la clientèle premium.",
+  },
+  'topo-059': {
+    content: "République (3e/10e/11e) est semi-piétonne depuis 2013 mais reste accessible à la circulation sur son pourtour. Sa particularité opérationnelle est ailleurs : c'est le lieu de rassemblement des manifestations parisiennes. Les jours concernés, la place et les boulevards Magenta, Saint-Martin et du Temple sont bloqués — il faut anticiper une dépose à distance et prévenir le client.",
+    tip: "Manifestation annoncée à République : proposez une dépose à proximité (métro Jacques-Bonsergent) plutôt que de rester bloqué.",
+  },
+  'topo-060': {
+    content: "La Zone à Faibles Émissions du Grand Paris, délimitée par l'A86, restreint la circulation des véhicules les plus polluants selon leur vignette Crit'Air. Les taxis et VTC y sont soumis comme les autres. Avant tout achat de véhicule, notamment d'occasion, vérifier son classement Crit'Air : un véhicule non conforme devient inexploitable dans la zone.",
+    tip: "Avant d'acheter un véhicule d'occasion : vérifiez sa vignette Crit'Air, pas seulement son kilométrage.",
+    legalRef: "Réglementation ZFE de la Métropole du Grand Paris"
   }
 };
 
