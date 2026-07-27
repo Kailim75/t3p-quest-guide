@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { pushTargetExam } from '@/lib/progressPush';
 
 /** Parcours choisi par l'élève : son métier, ou « tous » pour tout afficher. */
 export type TargetExam = 'taxi' | 'vtc' | 'vmdtr' | 'tous';
@@ -23,12 +24,24 @@ export const loadTargetExam = (): TargetExam | null => {
 };
 
 export const saveTargetExam = (target: TargetExam) => {
+  writeTargetExam(target);
+  // Rattaché au compte : le parcours suit l'élève d'un appareil à l'autre.
+  pushTargetExam(target);
+};
+
+/** Écriture locale seule (sans renvoi vers le compte). */
+const writeTargetExam = (target: TargetExam) => {
   try {
     localStorage.setItem(STORAGE_KEY, target);
   } catch {
     // stockage indisponible : le choix ne sera pas persisté
   }
   window.dispatchEvent(new Event(CHANGE_EVENT));
+};
+
+/** Applique le parcours enregistré sur le compte (synchronisation). */
+export const applyTargetExamFromServer = (target: TargetExam) => {
+  writeTargetExam(target);
 };
 
 /** Ids des modules spécifiques du métier choisi (null = pas de filtre). */

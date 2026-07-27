@@ -15,6 +15,8 @@ export interface SrsEntry {
   fails: number;
 }
 
+import { pushSrsEntry, pushChallenge } from '@/lib/progressPush';
+
 const STORAGE_KEY = 'quiz-t3p-srs';
 const INTERVALS_DAYS = [1, 3, 7];
 
@@ -50,6 +52,11 @@ const saveSrs = (store: Record<string, SrsEntry>) => {
   }
 };
 
+/** Remplace le cache local par l'état du compte (synchronisation à la connexion). */
+export const replaceSrs = (store: Record<string, SrsEntry>) => {
+  saveSrs(store);
+};
+
 /** À appeler à chaque question corrigée (quiz, examen, révision, défi). */
 export const recordAnswer = (questionId: string, correct: boolean) => {
   const store = loadSrs();
@@ -61,12 +68,15 @@ export const recordAnswer = (questionId: string, correct: boolean) => {
       due: inDays(INTERVALS_DAYS[0]),
       fails: (entry?.fails ?? 0) + 1,
     };
+    pushSrsEntry(questionId, store[questionId]);
   } else if (entry) {
     if (entry.stage >= INTERVALS_DAYS.length - 1) {
       delete store[questionId]; // maîtrisée
+      pushSrsEntry(questionId, null);
     } else {
       const nextStage = entry.stage + 1;
       store[questionId] = { ...entry, stage: nextStage, due: inDays(INTERVALS_DAYS[nextStage]) };
+      pushSrsEntry(questionId, store[questionId]);
     }
   }
   // Bonne réponse sur une question jamais ratée : rien à programmer.
@@ -89,7 +99,8 @@ export const getScheduledCount = (): number => Object.keys(loadSrs()).length;
 // Défi du jour
 // ---------------------------------------------------------------------------
 
-const CHALLENGE_KEY = 'quiz-t3p-defi';
+export const CHALLENGE_STORAGE_KEY = 'quiz-t3p-defi';
+const CHALLENGE_KEY = CHALLENGE_STORAGE_KEY;
 
 export interface DailyChallengeState {
   date: string;
@@ -109,6 +120,7 @@ export const getTodayChallenge = (): DailyChallengeState | null => {
 };
 
 export const markChallengeDone = (score: number, total: number) => {
+  pushChallenge(today(), score, total);
   try {
     localStorage.setItem(
       CHALLENGE_KEY,
