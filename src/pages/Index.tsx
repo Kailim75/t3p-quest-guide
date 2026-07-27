@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen, FileText, GraduationCap, Layers, BarChart3, PlayC
 import { ModuleIcon } from '@/lib/moduleIcons';
 import Header from '@/components/Header';
 import ParcoursSelector from '@/components/ParcoursSelector';
+import InstallBanner from '@/components/InstallBanner';
 import { getCommonModules, getSpecificModules } from '@/data/quizData';
 import { useQuizQuestions } from '@/hooks/useQuizQuestions';
 import { useQuizResults } from '@/hooks/useQuizResults';
@@ -126,6 +127,9 @@ const Index = () => {
         <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-cta/5 blur-3xl" />
         <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
       </section>
+
+      {/* Invitation à installer l'app (masquée si déjà installée ou reportée) */}
+      <InstallBanner />
 
       {/* Votre parcours (élève connecté) */}
       {showJourney && (

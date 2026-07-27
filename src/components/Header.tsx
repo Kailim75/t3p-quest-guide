@@ -21,7 +21,7 @@ const Header = () => {
   const location = useLocation();
   const { user, signOut, loading } = useAuth();
   const { isAdmin } = useAdmin();
-  const { isInstallable, isInstalled } = usePWA();
+  const { canPromptInstall } = usePWA();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
 
@@ -103,7 +103,7 @@ const Header = () => {
                       Mes badges
                     </Link>
                   </DropdownMenuItem>
-                  {isInstallable && !isInstalled && (
+                  {canPromptInstall && (
                     <DropdownMenuItem asChild>
                       <Link to="/install" className="flex items-center gap-2 cursor-pointer">
                         <Download className="h-4 w-4" />
