@@ -18,7 +18,6 @@ export type Database = {
         Row: {
           access_expires_at: string | null
           archived_at: string | null
-          target_exam: string | null
           created_at: string
           display_name: string | null
           email: string | null
@@ -29,7 +28,6 @@ export type Database = {
         Insert: {
           access_expires_at?: string | null
           archived_at?: string | null
-          target_exam?: string | null
           created_at?: string
           display_name?: string | null
           email?: string | null
@@ -40,7 +38,6 @@ export type Database = {
         Update: {
           access_expires_at?: string | null
           archived_at?: string | null
-          target_exam?: string | null
           created_at?: string
           display_name?: string | null
           email?: string | null
@@ -98,57 +95,6 @@ export type Database = {
           sub_module_id?: string
           text?: string
           updated_at?: string
-        }
-        Relationships: []
-      }
-      user_srs_entries: {
-        Row: {
-          user_id: string
-          question_id: string
-          stage: number
-          due_on: string
-          fails: number
-          updated_at: string
-        }
-        Insert: {
-          user_id: string
-          question_id: string
-          stage?: number
-          due_on: string
-          fails?: number
-          updated_at?: string
-        }
-        Update: {
-          user_id?: string
-          question_id?: string
-          stage?: number
-          due_on?: string
-          fails?: number
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      user_daily_challenges: {
-        Row: {
-          user_id: string
-          challenge_date: string
-          score: number
-          total: number
-          created_at: string
-        }
-        Insert: {
-          user_id: string
-          challenge_date: string
-          score: number
-          total: number
-          created_at?: string
-        }
-        Update: {
-          user_id?: string
-          challenge_date?: string
-          score?: number
-          total?: number
-          created_at?: string
         }
         Relationships: []
       }
