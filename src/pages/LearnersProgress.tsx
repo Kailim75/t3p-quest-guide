@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { useAdmin } from '@/hooks/useAdmin';
+import { usePushReminders } from '@/hooks/usePushReminders';
+import { useToast } from '@/hooks/use-toast';
 import { useLearnersProgress, LearnerStats } from '@/hooks/useLearnersProgress';
 import Header from '@/components/Header';
 import LearnersCharts from '@/components/admin/LearnersCharts';
@@ -33,6 +35,7 @@ import {
   Download,
   Mail,
   MessageCircle,
+  Bell,
 } from 'lucide-react';
 import { format, differenceInCalendarDays } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -71,6 +74,8 @@ const daysInactive = (lastActivity: string | null): number | null =>
 const LearnersProgressPage = () => {
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
+  const { subscribedIds, sendReminder } = usePushReminders();
+  const { toast } = useToast();
   const { isAdmin, isCheckingAdmin: adminLoading } = useAdmin();
   const { learnersStats, globalStats, hardestQuestions, moduleAverages, allResults, profiles, isLoading } = useLearnersProgress();
   const { getByIds } = useQuizQuestions();
@@ -162,6 +167,35 @@ const LearnersProgressPage = () => {
 
     const link = `mailto:${encodeURIComponent(user?.email ?? '')}?bcc=${encodeURIComponent(emails.join(','))}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = link;
+  };
+
+  // Rappel par notification : part directement du serveur, sans passer par
+  // le logiciel du formateur. Seuls les apprenants ayant accepté les rappels
+  // sur au moins un appareil peuvent le recevoir.
+  const notifiables = selectedLearners.filter((l) => subscribedIds.has(l.userId));
+
+  const relanceNotification = async () => {
+    if (notifiables.length === 0) return;
+    try {
+      const result = await sendReminder.mutateAsync({
+        userIds: notifiables.map((l) => l.userId),
+        title: 'École T3P',
+        body: "On ne vous a pas vu depuis quelques jours : 5 questions suffisent aujourd'hui.",
+      });
+      toast({
+        title: `Rappel envoyé à ${result.sent ?? 0} appareil${(result.sent ?? 0) > 1 ? 's' : ''}`,
+        description:
+          result.expired || result.failed
+            ? `${result.expired ?? 0} abonnement(s) expiré(s), ${result.failed ?? 0} échec(s).`
+            : undefined,
+      });
+    } catch (error) {
+      toast({
+        title: "Le rappel n'a pas pu être envoyé",
+        description: error instanceof Error ? error.message : 'Réessayez dans un instant.',
+        variant: 'destructive',
+      });
+    }
   };
 
   // Relance WhatsApp d'un apprenant : ouvre WhatsApp avec un message
@@ -455,7 +489,27 @@ const LearnersProgressPage = () => {
                       Effacer
                     </Button>
                   )}
-                  <div className="ml-auto">
+                  <div className="ml-auto flex flex-wrap items-center gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={relanceNotification}
+                      disabled={notifiables.length === 0 || sendReminder.isPending}
+                      title={
+                        selectedIds.size === 0
+                          ? 'Cochez au moins un apprenant'
+                          : notifiables.length === 0
+                            ? "Aucun des apprenants sélectionnés n'a activé les rappels"
+                            : `Notification directe à ${notifiables.length} apprenant(s)`
+                      }
+                    >
+                      {sendReminder.isPending ? (
+                        <Loader2 className="h-4 w-4 mr-1.5 animate-spin" />
+                      ) : (
+                        <Bell className="h-4 w-4 mr-1.5" />
+                      )}
+                      Notifier ({notifiables.length})
+                    </Button>
                     <Button
                       variant="default"
                       size="sm"

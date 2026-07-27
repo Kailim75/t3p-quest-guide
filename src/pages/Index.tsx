@@ -4,6 +4,7 @@ import { ModuleIcon } from '@/lib/moduleIcons';
 import Header from '@/components/Header';
 import ParcoursSelector from '@/components/ParcoursSelector';
 import InstallBanner from '@/components/InstallBanner';
+import ReminderPrompt from '@/components/ReminderPrompt';
 import { getCommonModules, getSpecificModules } from '@/data/quizData';
 import { useQuizQuestions } from '@/hooks/useQuizQuestions';
 import { useQuizResults } from '@/hooks/useQuizResults';
@@ -130,6 +131,9 @@ const Index = () => {
 
       {/* Invitation à installer l'app (masquée si déjà installée ou reportée) */}
       <InstallBanner />
+
+      {/* Puis, une fois l'installation faite ou écartée : les rappels */}
+      <ReminderPrompt />
 
       {/* Votre parcours (élève connecté) */}
       {showJourney && (
