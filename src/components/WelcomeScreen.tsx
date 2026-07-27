@@ -7,7 +7,7 @@ interface WelcomeScreenProps {
 
 /** Chiffres réels de la banque de contenu (affichés avant connexion). */
 const stats = [
-  { value: '452', label: 'questions officielles' },
+  { value: '502', label: 'questions officielles' },
   { value: '74', label: 'fiches de cours' },
   { value: '4', label: 'examens blancs' },
 ];
