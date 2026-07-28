@@ -182,12 +182,19 @@ const LearnersProgressPage = () => {
         title: 'École T3P',
         body: "On ne vous a pas vu depuis quelques jours : 5 questions suffisent aujourd'hui.",
       });
+      const failed = result.failed ?? 0;
       toast({
         title: `Rappel envoyé à ${result.sent ?? 0} appareil${(result.sent ?? 0) > 1 ? 's' : ''}`,
         description:
-          result.expired || result.failed
-            ? `${result.expired ?? 0} abonnement(s) expiré(s), ${result.failed ?? 0} échec(s).`
+          result.expired || failed
+            ? [
+                `${result.expired ?? 0} abonnement(s) expiré(s), ${failed} échec(s).`,
+                result.reason,
+              ]
+                .filter(Boolean)
+                .join(' ')
             : undefined,
+        variant: failed > 0 ? 'destructive' : undefined,
       });
     } catch (error) {
       toast({

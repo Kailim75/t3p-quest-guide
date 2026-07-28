@@ -48,6 +48,8 @@ export const usePushReminders = () => {
         sent?: number;
         failed?: number;
         expired?: number;
+        /** Motif renvoyé par le service de push en cas de refus. */
+        reason?: string;
         error?: string;
       };
       if (!response.ok) throw new Error(result.error ?? "L'envoi a échoué");

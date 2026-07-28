@@ -101,6 +101,7 @@ Deno.serve(async (req) => {
     })
 
     let sent = 0
+    let lastError = ''
     const expired: string[] = []
     const failures: string[] = []
 
@@ -115,13 +116,19 @@ Deno.serve(async (req) => {
       } catch (error) {
         // 404/410 : l'élève a désinstallé l'app ou révoqué l'autorisation.
         // L'abonnement est mort, on nettoie plutôt que de réessayer sans fin.
-        const status =
-          error instanceof webpush.PushMessageError ? error.response.status : undefined
+        const pushError = error instanceof webpush.PushMessageError ? error : null
+        const status = pushError?.response.status
+
         if (status === 404 || status === 410) {
           expired.push(row.endpoint)
         } else {
           failures.push(row.endpoint)
-          console.error('Échec envoi push', row.endpoint, error)
+          // Le service de push explique son refus dans le corps de la
+          // réponse (Apple : « BadJwtToken », « TopicDisallowed »…) :
+          // sans lui, un 403 reste indéchiffrable.
+          const reason = pushError ? await pushError.response.text().catch(() => '') : ''
+          lastError = `${status ?? 'erreur'} ${reason}`.trim()
+          console.error('Échec envoi push', status, reason, row.endpoint, error)
         }
       }
     }
@@ -130,7 +137,12 @@ Deno.serve(async (req) => {
       await supabase.from('push_subscriptions').delete().in('endpoint', expired)
     }
 
-    return json({ sent, failed: failures.length, expired: expired.length })
+    return json({
+      sent,
+      failed: failures.length,
+      expired: expired.length,
+      ...(lastError ? { reason: lastError.slice(0, 300) } : {}),
+    })
   } catch (error) {
     console.error('push-send', error)
     return json({ error: (error as Error).message ?? 'Erreur inattendue' }, 500)
