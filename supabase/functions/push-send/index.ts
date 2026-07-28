@@ -77,12 +77,15 @@ Deno.serve(async (req) => {
     // l'envoi de rappels, là où la clé de service donnerait toute la base.
     const cronSecret = Deno.env.get('PUSH_CRON_SECRET')
     const isCron = !!cronSecret && req.headers.get('x-cron-secret') === cronSecret
+    let isAutomated = isCron
 
     if (!isCron) {
       const token = req.headers.get('Authorization')?.replace('Bearer ', '') ?? ''
       if (!token) return json({ error: 'Authentification requise' }, 401)
 
-      if (token !== serviceKey) {
+      if (token === serviceKey) {
+        isAutomated = true
+      } else {
         const { data: { user }, error: authError } = await supabase.auth.getUser(token)
         if (authError || !user) return json({ error: 'Authentification invalide' }, 401)
 
@@ -94,7 +97,13 @@ Deno.serve(async (req) => {
       }
     }
 
-    const { user_ids, audience, force, title, body, url }: PushRequest = await req.json()
+    // Une tâche planifiée n'envoie pas toujours de corps : pour un appel
+    // automatique sans instruction, le rappel du soir est le comportement voulu.
+    const request: PushRequest = await req.json().catch(() => ({}))
+    const { user_ids, force, title, body, url } = request
+    const audience =
+      request.audience ?? (isAutomated && !user_ids?.length ? 'defi-du-jour' : undefined)
+
     const now = new Date()
     const today = parisDay(now)
 
