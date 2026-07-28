@@ -1,5 +1,5 @@
 import * as webpush from 'jsr:@negrel/webpush@0.5.0'
-import { vapidSubject } from '../push-send/vapidSubject.ts'
+import { vapidSubject } from '../_shared/vapidSubject.ts'
 
 /**
  * Clé publique VAPID, nécessaire au navigateur pour s'abonner aux rappels.

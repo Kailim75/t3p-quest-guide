@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { vapidSubject } from '../../supabase/functions/push-send/vapidSubject';
+import { vapidSubject } from '../../supabase/functions/_shared/vapidSubject';
 
 /**
  * Le premier envoi réel a échoué sur ce détail : le secret contenait déjà

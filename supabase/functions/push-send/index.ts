@@ -1,6 +1,6 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3'
 import * as webpush from 'jsr:@negrel/webpush@0.5.0'
-import { vapidSubject } from './vapidSubject.ts'
+import { vapidSubject } from '../_shared/vapidSubject.ts'
 
 /**
  * Envoi des rappels de révision aux apprenants (Web Push).
