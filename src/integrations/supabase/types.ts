@@ -56,6 +56,7 @@ export type Database = {
           created_at: string
           endpoint: string
           id: string
+          last_reminded_at: string | null
           last_seen_at: string
           p256dh: string
           user_agent: string | null
@@ -66,6 +67,7 @@ export type Database = {
           created_at?: string
           endpoint: string
           id?: string
+          last_reminded_at?: string | null
           last_seen_at?: string
           p256dh: string
           user_agent?: string | null
@@ -76,6 +78,7 @@ export type Database = {
           created_at?: string
           endpoint?: string
           id?: string
+          last_reminded_at?: string | null
           last_seen_at?: string
           p256dh?: string
           user_agent?: string | null
