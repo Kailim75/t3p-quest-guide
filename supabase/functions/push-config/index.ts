@@ -23,18 +23,27 @@ Deno.serve(async (req) => {
   }
 
   let publicKey: string | null = null
+  // Diagnostic : la clé publique servie aux navigateurs doit être celle qui
+  // correspond à la clé privée de signature, sinon le service de push
+  // rejette l'envoi (Apple : 403 Forbidden).
+  let keyPairValid: boolean | null = null
 
   try {
     const exported = JSON.parse(Deno.env.get('VAPID_KEYS') ?? '{}')
     if (exported.publicKey && exported.privateKey) {
       const keys = await webpush.importVapidKeys(exported)
       publicKey = await webpush.exportApplicationServerKey(keys)
+
+      const probe = new TextEncoder().encode('t3p-vapid-selftest')
+      const algorithm = { name: 'ECDSA', hash: 'SHA-256' }
+      const signature = await crypto.subtle.sign(algorithm, keys.privateKey, probe)
+      keyPairValid = await crypto.subtle.verify(algorithm, keys.publicKey, signature, probe)
     }
   } catch (error) {
     console.error('VAPID_KEYS illisible', error)
   }
 
-  return new Response(JSON.stringify({ publicKey }), {
+  return new Response(JSON.stringify({ publicKey, keyPairValid }), {
     status: publicKey ? 200 : 503,
     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
   })
