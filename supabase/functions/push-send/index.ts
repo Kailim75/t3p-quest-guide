@@ -1,5 +1,6 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3'
 import * as webpush from 'jsr:@negrel/webpush@0.5.0'
+import { vapidSubject } from './vapidSubject.ts'
 
 /**
  * Envoi des rappels de révision aux apprenants (Web Push).
@@ -90,7 +91,7 @@ Deno.serve(async (req) => {
       { extractable: false }
     )
     const appServer = await webpush.ApplicationServer.new({
-      contactInformation: `mailto:${Deno.env.get('VAPID_SUBJECT') ?? 'contact@t3pcampus.com'}`,
+      contactInformation: vapidSubject(Deno.env.get('VAPID_SUBJECT')),
       vapidKeys,
     })
 

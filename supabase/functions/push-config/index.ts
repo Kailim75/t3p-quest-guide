@@ -1,4 +1,5 @@
 import * as webpush from 'jsr:@negrel/webpush@0.5.0'
+import { vapidSubject } from '../push-send/vapidSubject.ts'
 
 /**
  * Clé publique VAPID, nécessaire au navigateur pour s'abonner aux rappels.
@@ -43,7 +44,11 @@ Deno.serve(async (req) => {
     console.error('VAPID_KEYS illisible', error)
   }
 
-  return new Response(JSON.stringify({ publicKey, keyPairValid }), {
+  // L'adresse de contact voyage dans chaque envoi : l'exposer ici permet de
+  // vérifier sa forme (le protocole impose mailto: ou https:) sans envoi réel.
+  const subject = vapidSubject(Deno.env.get('VAPID_SUBJECT'))
+
+  return new Response(JSON.stringify({ publicKey, keyPairValid, subject }), {
     status: publicKey ? 200 : 503,
     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
   })
