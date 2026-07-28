@@ -30,6 +30,14 @@ interface SubscriptionRow {
   auth: string
 }
 
+/**
+ * Les clés d'abonnement doivent être en base64**url**. Certaines lignes ont
+ * été enregistrées en base64 standard : on normalise à la lecture plutôt que
+ * d'exiger des élèves qu'ils réactivent leurs rappels.
+ */
+const normalizeKey = (value: string) =>
+  value.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+
 const json = (payload: unknown, status = 200) =>
   new Response(JSON.stringify(payload), {
     status,
@@ -100,7 +108,7 @@ Deno.serve(async (req) => {
       try {
         const subscriber = appServer.subscribe({
           endpoint: row.endpoint,
-          keys: { p256dh: row.p256dh, auth: row.auth },
+          keys: { p256dh: normalizeKey(row.p256dh), auth: normalizeKey(row.auth) },
         })
         await subscriber.pushTextMessage(message, {})
         sent++

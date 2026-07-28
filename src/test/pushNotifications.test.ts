@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeEach, afterEach, vi } from 'vitest';
-import { getPushStatus } from '@/lib/pushNotifications';
+import { getPushStatus, toBase64Url } from '@/lib/pushNotifications';
 
 /**
  * L'état des rappels décide de ce qu'on affiche à l'élève. Le cas qui compte :
@@ -46,6 +46,28 @@ beforeEach(() => setStandalone(false));
 afterEach(() => {
   vi.unstubAllGlobals();
   setUserAgent(CHROME_ANDROID);
+});
+
+/**
+ * Les clés d'abonnement doivent être en base64url. Encodées en base64
+ * standard, le service de push d'Apple rejetait l'envoi
+ * (« Cannot decode input as base64: Invalid character (/) »).
+ */
+describe('toBase64Url', () => {
+  it("n'émet aucun caractère interdit par les services de push", () => {
+    // Ces octets produisent « + », « / » et un remplissage « = » en base64 standard.
+    const bytes = new Uint8Array([0xfb, 0xff, 0xbf, 0x00]).buffer;
+
+    const encoded = toBase64Url(bytes);
+
+    expect(btoa(String.fromCharCode(0xfb, 0xff, 0xbf, 0x00))).toMatch(/[+/=]/); // le piège existe bien
+    expect(encoded).not.toMatch(/[+/=]/);
+    expect(encoded).toBe('-_-_AA');
+  });
+
+  it('renvoie une chaîne vide quand le navigateur ne fournit pas la clé', () => {
+    expect(toBase64Url(null)).toBe('');
+  });
 });
 
 describe('getPushStatus', () => {

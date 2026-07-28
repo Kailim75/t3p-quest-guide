@@ -58,8 +58,29 @@ const decodeKey = (base64: string) => {
   return Uint8Array.from(raw, (char) => char.charCodeAt(0));
 };
 
-const encodeKey = (buffer: ArrayBuffer | null) =>
-  buffer ? btoa(String.fromCharCode(...new Uint8Array(buffer))) : '';
+/**
+ * base64**url** — et pas base64 standard : les services de push rejettent
+ * les caractères `+`, `/` et `=` dans les clés d'abonnement.
+ */
+export const toBase64Url = (buffer: ArrayBuffer | null): string => {
+  if (!buffer) return '';
+  return btoa(String.fromCharCode(...new Uint8Array(buffer)))
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
+};
+
+/**
+ * Clés de l'abonnement. `toJSON()` les fournit déjà au bon format ; on ne
+ * ré-encode soi-même que si le navigateur ne les expose pas ainsi.
+ */
+const subscriptionKeys = (subscription: PushSubscription) => {
+  const fromJson = (subscription.toJSON().keys ?? {}) as { p256dh?: string; auth?: string };
+  return {
+    p256dh: fromJson.p256dh ?? toBase64Url(subscription.getKey('p256dh')),
+    auth: fromJson.auth ?? toBase64Url(subscription.getKey('auth')),
+  };
+};
 
 /**
  * Demande la permission, souscrit et enregistre l'abonnement en base.
@@ -81,12 +102,14 @@ export const enablePush = async (userId: string): Promise<PushStatus> => {
       applicationServerKey: decodeKey(await fetchPublicKey()),
     }));
 
+  const { p256dh, auth } = subscriptionKeys(subscription);
+
   const { error } = await supabase.from('push_subscriptions').upsert(
     {
       user_id: userId,
       endpoint: subscription.endpoint,
-      p256dh: encodeKey(subscription.getKey('p256dh')),
-      auth: encodeKey(subscription.getKey('auth')),
+      p256dh,
+      auth,
       user_agent: navigator.userAgent.slice(0, 300),
       last_seen_at: new Date().toISOString(),
     },
