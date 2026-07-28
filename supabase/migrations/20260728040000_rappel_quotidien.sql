@@ -1,0 +1,12 @@
+-- Rappel automatique du soir
+--
+-- Une notification à 19 h (heure de Paris) aux apprenants encore actifs qui
+-- n'ont pas fait leur défi du jour. La tâche planifiée s'exécute toutes les
+-- heures et l'edge function décide : pg_cron ne raisonne qu'en UTC, un
+-- horaire figé enverrait à 18 h l'été ou à 20 h l'hiver.
+
+ALTER TABLE public.push_subscriptions
+  ADD COLUMN IF NOT EXISTS last_reminded_at timestamptz;
+
+COMMENT ON COLUMN public.push_subscriptions.last_reminded_at IS
+  'Dernier rappel automatique envoyé à cet appareil. Garde-fou anti-doublon : une relance par jour.';

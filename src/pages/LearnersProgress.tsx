@@ -36,6 +36,7 @@ import {
   Mail,
   MessageCircle,
   Bell,
+  Zap,
 } from 'lucide-react';
 import { format, differenceInCalendarDays } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -195,6 +196,29 @@ const LearnersProgressPage = () => {
                 .join(' ')
             : undefined,
         variant: failed > 0 ? 'destructive' : undefined,
+      });
+    } catch (error) {
+      toast({
+        title: "Le rappel n'a pas pu être envoyé",
+        description: error instanceof Error ? error.message : 'Réessayez dans un instant.',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  // Même relance que celle envoyée automatiquement à 19 h, déclenchée à la
+  // demande : tous les apprenants actifs qui n'ont pas fait leur défi du jour.
+  const relanceRetardataires = async () => {
+    try {
+      const result = await sendReminder.mutateAsync({ audience: 'defi-du-jour' });
+      const envoyes = result.sent ?? 0;
+      toast({
+        title: envoyes
+          ? `Rappel du soir envoyé à ${envoyes} appareil${envoyes > 1 ? 's' : ''}`
+          : 'Personne à relancer',
+        description: envoyes
+          ? undefined
+          : "Tous les apprenants abonnés ont fait leur défi, ou ont déjà été relancés aujourd'hui.",
       });
     } catch (error) {
       toast({
@@ -497,6 +521,16 @@ const LearnersProgressPage = () => {
                     </Button>
                   )}
                   <div className="ml-auto flex flex-wrap items-center gap-2">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={relanceRetardataires}
+                      disabled={sendReminder.isPending}
+                      title="Notifier tous les abonnés qui n'ont pas fait leur défi du jour (envoyé automatiquement à 19 h)"
+                    >
+                      <Zap className="h-4 w-4 mr-1.5" />
+                      Rappel du soir
+                    </Button>
                     <Button
                       variant="outline"
                       size="sm"

@@ -24,7 +24,14 @@ export const usePushReminders = () => {
   });
 
   const sendReminder = useMutation({
-    mutationFn: async (params: { userIds: string[]; title?: string; body?: string }) => {
+    mutationFn: async (params: {
+      /** Destinataires choisis à la main dans le tableau. */
+      userIds?: string[];
+      /** Ou bien : tous les retardataires du défi du jour. */
+      audience?: 'defi-du-jour';
+      title?: string;
+      body?: string;
+    }) => {
       if (!session?.access_token) throw new Error('Session expirée');
 
       const response = await fetch(
@@ -35,12 +42,13 @@ export const usePushReminders = () => {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${session.access_token}`,
           },
-          body: JSON.stringify({
-            user_ids: params.userIds,
-            title: params.title,
-            body: params.body,
-            url: '/',
-          }),
+          body: JSON.stringify(
+            params.audience
+              ? // Déclenchement manuel du rappel du soir : on court-circuite
+                // la garde horaire, sinon rien ne partirait avant 19 h.
+                { audience: params.audience, force: true }
+              : { user_ids: params.userIds, title: params.title, body: params.body, url: '/' }
+          ),
         }
       );
 
