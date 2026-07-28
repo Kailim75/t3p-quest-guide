@@ -1,0 +1,65 @@
+name: Rappel de révision du soir
+
+# Notifie les apprenants qui n'ont pas fait leur défi du jour.
+#
+# La tâche s'exécute toutes les heures et c'est l'edge function qui décide
+# d'envoyer ou non : elle n'agit qu'à 19 h, heure de Paris. Un horaire fixe
+# ici enverrait à 18 h l'été ou à 20 h l'hiver, GitHub ne planifiant qu'en UTC.
+#
+# Prérequis : le secret PUSH_CRON_SECRET du dépôt doit avoir la même valeur
+# que le secret du même nom côté Lovable (Cloud → Secrets).
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  # Permet aussi de déclencher la relance à la main depuis l'onglet Actions.
+  workflow_dispatch:
+    inputs:
+      forcer:
+        description: "Envoyer même hors du créneau de 19 h (pour tester)"
+        type: boolean
+        default: false
+
+jobs:
+  rappel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Envoyer les rappels
+        env:
+          CRON_SECRET: ${{ secrets.PUSH_CRON_SECRET }}
+          FUNCTION_URL: https://myawyyumhghbctvtnhkv.supabase.co/functions/v1/push-send
+          FORCER: ${{ inputs.forcer }}
+        run: |
+          set -euo pipefail
+
+          # Tant que le secret n'est pas renseigné, on sort sans erreur : une
+          # tâche horaire en échec enverrait un courriel d'alerte chaque heure.
+          if [ -z "${CRON_SECRET}" ]; then
+            echo "::warning::Secret PUSH_CRON_SECRET absent : rappel non envoyé."
+            exit 0
+          fi
+
+          if [ "${FORCER:-false}" = "true" ]; then
+            corps_requete='{"audience":"defi-du-jour","force":true}'
+          else
+            corps_requete='{"audience":"defi-du-jour"}'
+          fi
+
+          reponse=$(curl -sS -X POST "${FUNCTION_URL}" \
+            -H "x-cron-secret: ${CRON_SECRET}" \
+            -H 'Content-Type: application/json' \
+            -d "${corps_requete}" \
+            -w '\n%{http_code}')
+
+          corps=$(printf '%s' "${reponse}" | sed '$d')
+          code=$(printf '%s' "${reponse}" | tail -n1)
+
+          echo "Réponse (${code}) : ${corps}"
+
+          if [ "${code}" != "200" ]; then
+            echo "::error::L'envoi a échoué (HTTP ${code})."
+            exit 1
+          fi
+
+          # Hors du créneau de 19 h, la fonction ne fait rien : c'est normal.
+          echo "${corps}" | grep -q '"skipped"' && echo "Hors créneau, aucun envoi." || true
