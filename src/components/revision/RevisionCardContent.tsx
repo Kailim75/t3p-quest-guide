@@ -37,6 +37,24 @@ const RevisionCardContent = ({ card, moduleQuestions, status, onStatusChange }: 
         </div>
       </div>
 
+      {/* 🔢 Les chiffres qui rapportent des points */}
+      {card.keyFigures && card.keyFigures.length > 0 && (
+        <div
+          className={`grid gap-2 ${card.keyFigures.length === 1 ? 'grid-cols-1' : card.keyFigures.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}
+        >
+          {card.keyFigures.map((figure, idx) => (
+            <div key={idx} className="rounded-xl border bg-card p-3 text-center">
+              <p className="text-lg font-bold leading-tight text-primary sm:text-xl">
+                {figure.value}
+              </p>
+              <p className="mt-1 text-[11px] leading-tight text-muted-foreground sm:text-xs">
+                {figure.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* 📖 Narratif pédagogique */}
       {card.narrative && (
         <div className="rounded-xl border bg-card/50 p-5">

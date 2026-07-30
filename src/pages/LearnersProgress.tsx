@@ -43,6 +43,10 @@ import { fr } from 'date-fns/locale';
 import { useState } from 'react';
 import { ModuleIcon } from '@/lib/moduleIcons';
 import { getModuleById } from '@/data/quizData';
+import { getAllRevisionModules } from '@/data/revisionData';
+
+/** Nombre total de fiches de cours proposées dans l'application. */
+const totalFiches = getAllRevisionModules().reduce((n, m) => n + m.cards.length, 0);
 import { useQuizQuestions } from '@/hooks/useQuizQuestions';
 import {
   Dialog,
@@ -113,12 +117,14 @@ const LearnersProgressPage = () => {
   }));
 
   const exportCsv = () => {
-    const header = ['Apprenant', 'Email', 'Quiz', 'Examens', 'Score moyen (%)', 'Réussite (%)', 'Série', 'Badges', 'Dernière activité'];
+    const header = ['Apprenant', 'Email', 'Quiz', 'Examens', `Fiches maîtrisées (sur ${totalFiches})`, 'Fiches à revoir', 'Score moyen (%)', 'Réussite (%)', 'Série', 'Badges', 'Dernière activité'];
     const rows = learnersStats.map((l) => [
       l.profile.display_name ?? 'Sans nom',
       l.profile.email ?? '',
       l.totalQuizzes,
       l.totalExams,
+      l.fichesMaitrisees,
+      l.fichesARevoir,
       l.averageScore,
       l.passRate,
       l.currentStreak,
@@ -585,6 +591,7 @@ const LearnersProgressPage = () => {
                         <TableHead>Apprenant</TableHead>
                         <TableHead className="text-center">Quiz</TableHead>
                         <TableHead className="text-center">Examens</TableHead>
+                        <TableHead className="text-center">Fiches</TableHead>
                         <TableHead className="text-center">Score moyen</TableHead>
                         <TableHead className="text-center">Réussite</TableHead>
                         <TableHead className="text-center">Série</TableHead>
@@ -622,6 +629,22 @@ const LearnersProgressPage = () => {
                           </TableCell>
                           <TableCell className="text-center">
                             <Badge variant="outline">{learner.totalExams}</Badge>
+                          </TableCell>
+                          <TableCell className="text-center">
+                            {learner.fichesMaitrisees + learner.fichesARevoir > 0 ? (
+                              <div
+                                className="flex items-center justify-center gap-1.5 text-sm"
+                                title={`${learner.fichesMaitrisees} maîtrisée(s), ${learner.fichesARevoir} à revoir, sur ${totalFiches} fiches`}
+                              >
+                                <span className="font-medium text-success">{learner.fichesMaitrisees}</span>
+                                {learner.fichesARevoir > 0 && (
+                                  <span className="text-warning">+{learner.fichesARevoir}</span>
+                                )}
+                                <span className="text-xs text-muted-foreground">/ {totalFiches}</span>
+                              </div>
+                            ) : (
+                              <span className="text-xs text-muted-foreground">—</span>
+                            )}
                           </TableCell>
                           <TableCell className="text-center">
                             <Badge variant={getScoreVariant(learner.averageScore)}>
