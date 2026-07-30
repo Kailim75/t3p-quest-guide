@@ -21,6 +21,10 @@ export interface LearnerStats {
   longestStreak: number;
   badgesCount: number;
   lastActivity: string | null;
+  /** Fiches de cours marquées « maîtrisée » par l'apprenant. */
+  fichesMaitrisees: number;
+  /** Fiches de cours marquées « à revoir ». */
+  fichesARevoir: number;
 }
 
 export const useLearnersProgress = () => {
@@ -100,11 +104,26 @@ export const useLearnersProgress = () => {
     enabled: isAdmin,
   });
 
+  // Avancement de lecture des fiches (statuts posés par les apprenants)
+  const { data: allFicheProgress } = useQuery({
+    queryKey: ['admin-all-fiche-progress'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('user_fiche_progress')
+        .select('user_id, status');
+
+      if (error) throw error;
+      return data;
+    },
+    enabled: isAdmin,
+  });
+
   // Compute learner stats
   const learnersStats: LearnerStats[] = profiles?.map(profile => {
     const userResults = allResults?.filter(r => r.user_id === profile.id) ?? [];
     const userStreak = allStreaks?.find(s => s.user_id === profile.id);
     const userBadges = allBadges?.filter(b => b.user_id === profile.id) ?? [];
+    const userFiches = allFicheProgress?.filter(f => f.user_id === profile.id) ?? [];
 
     const examResults = userResults.filter(r => r.quiz_type === 'exam');
     const passedResults = userResults.filter(r => r.passed);
@@ -124,6 +143,8 @@ export const useLearnersProgress = () => {
       longestStreak: userStreak?.longest_streak ?? 0,
       badgesCount: userBadges.length,
       lastActivity: userResults.length > 0 ? userResults[0].created_at : null,
+      fichesMaitrisees: userFiches.filter(f => f.status === 'maitrisee').length,
+      fichesARevoir: userFiches.filter(f => f.status === 'a-revoir').length,
     };
   }) ?? [];
 

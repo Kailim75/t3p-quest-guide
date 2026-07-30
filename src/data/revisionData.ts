@@ -16,11 +16,21 @@ export interface PracticalCase {
   reasoning: string;
 }
 
+// 🔢 Chiffre clé à mémoriser (affiché en vignette sous l'essentiel)
+export interface KeyFigure {
+  // La valeur, courte ("45 %", "5 ans", "1 an + 15 000 €")
+  value: string;
+  // Ce qu'elle représente, en quelques mots
+  label: string;
+}
+
 export interface RevisionCard {
   id: string;
   title: string;
   // ⭐ L'essentiel à retenir (1 phrase max - message clé examen)
   essential: string;
+  // 🔢 Les chiffres qui rapportent des points (1 à 3, facultatif)
+  keyFigures?: KeyFigure[];
   // 📖 Narratif pédagogique (explication contextualisée, 150-250 mots, raconte la règle)
   narrative?: string;
   // 📌 Points importants (3-5 points, 1 idée = 1 ligne)
@@ -65,6 +75,11 @@ export const revisionModules: RevisionModule[] = [
     cards: [
       {
         id: 'ges-formes-juridiques',
+        keyFigures: [
+          { value: "~45 %", label: "cotisations TNS (SARL maj.)" },
+          { value: "~80 %", label: "assimilé salarié (SASU)" },
+          { value: "50 %", label: "le seuil qui change tout" },
+        ],
         title: 'Formes juridiques',
         essential: "Le choix de la forme juridique détermine la responsabilité du dirigeant, son régime social et sa fiscalité — trois leviers indissociables.",
         narrative: "Quand un futur conducteur T3P se lance, la première décision n'est pas le véhicule mais la structure. L'Entreprise Individuelle (EI), depuis la loi du 14 février 2022, sépare automatiquement patrimoine personnel et professionnel : les créanciers professionnels ne peuvent plus saisir la résidence principale ni les biens privés. C'est devenu la voie la plus simple pour démarrer seul.\n\nDès qu'on veut s'associer ou protéger un patrimoine important, on bascule en société. La SARL/EURL loge le gérant majoritaire au régime des Travailleurs Non Salariés (TNS) — environ 45% de cotisations sur le bénéfice, mais une protection sociale plus faible (pas d'assurance chômage, indemnités journalières limitées). La SAS/SASU range le président au régime assimilé salarié : ~80% de charges sur la rémunération, mais une couverture identique à un cadre du privé.\n\nPour le VTC, l'inscription au Répertoire des Métiers (RM) est obligatoire — l'activité est qualifiée d'artisanale (décret n°98-247). Le taxi, lui, s'inscrit au RCS. Le code APE de référence reste 49.32Z (transport de voyageurs par taxi) pour les deux.",
@@ -103,6 +118,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'ges-creation-entreprise',
+        keyFigures: [
+          { value: "9 chiffres", label: "SIREN = l'entreprise" },
+          { value: "14 chiffres", label: "SIRET = l'établissement" },
+          { value: "99 ans", label: "durée max d'une société" },
+        ],
         title: "Création d'entreprise",
         essential: "L'immatriculation au RCS (taxi) ou au RM (VTC) donne l'existence légale ; exercer avant = travail dissimulé sanctionné pénalement.",
         narrative: "La création d'une entreprise T3P n'est pas qu'une formalité administrative : c'est l'acte qui donne naissance à une personne juridique distincte. Le dossier passe par le guichet unique INPI depuis 2023 (qui a remplacé les CFE), centralisant l'inscription au registre, l'affiliation sociale, fiscale et — pour le VTC — l'inscription au Répertoire des Métiers.\n\nÀ la sortie, l'entrepreneur reçoit un SIREN à 9 chiffres (identifiant unique de l'entreprise) et autant de SIRET à 14 chiffres que d'établissements (SIREN + 5 chiffres de NIC). Le Kbis (sociétés) ou l'extrait K (EI commerçant) matérialise l'immatriculation et reste exigé par les banques, assureurs et plateformes.\n\nPour les sociétés, deux obligations s'ajoutent : la publication d'une annonce légale dans un journal habilité du département du siège (coût ~150-200€), et l'ouverture d'un compte bancaire dédié sur lequel doit être déposé le capital avant immatriculation. La durée de vie d'une société est limitée à 99 ans (prorogeable). L'EI échappe à ces deux contraintes : pas d'annonce, pas de capital, compte pro recommandé mais non obligatoire si le CA reste < 10 000€/an sur 2 ans.",
@@ -138,6 +158,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'ges-comptabilite',
+        keyFigures: [
+          { value: "10 ans", label: "conservation comptable" },
+          { value: "6 ans", label: "conservation fiscale" },
+        ],
         title: 'Documents comptables',
         essential: "Le bilan photographie le patrimoine à un instant T ; le compte de résultat filme l'activité sur l'exercice — deux outils complémentaires, jamais interchangeables.",
         narrative: "Tout chef d'entreprise T3P, même en société unipersonnelle, doit présenter chaque année trois documents : bilan, compte de résultat et annexe. Ensemble, ils forment les comptes annuels imposés par l'article L123-12 du Code de commerce.\n\nLe bilan est une photographie : à la date de clôture, il liste à gauche tout ce que l'entreprise possède (actif : véhicule, trésorerie, créances clients) et à droite tout ce qui finance ces biens (passif : capital, réserves, emprunts, dettes fournisseurs). Par construction, actif = passif — toujours équilibré.\n\nLe compte de résultat est un film : il enregistre tous les produits (recettes des courses, ventes diverses) et toutes les charges (carburant, assurance, amortissements, cotisations) de l'exercice. La différence donne le résultat net : bénéfice si positif, perte si négatif. Ce résultat vient ensuite alimenter les capitaux propres au bilan suivant — c'est le lien entre les deux documents.\n\nLes durées de conservation sont strictes : 10 ans pour les livres et pièces comptables (article L123-22), 6 ans pour les documents fiscaux (article L102 B LPF). En cas de contrôle, l'absence d'un document peut entraîner rejet de comptabilité et taxation d'office. Le micro-entrepreneur, lui, est dispensé : un simple livre des recettes (et registre des achats si vente de biens) suffit.",
@@ -207,6 +231,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'ges-fiscalite',
+        keyFigures: [
+          { value: "10 %", label: "TVA transport de voyageurs" },
+          { value: "37 500 €", label: "franchise en base (services)" },
+          { value: "15 %", label: "IS jusqu'à 42 500 € de bénéfice" },
+        ],
         title: 'Fiscalité et TVA',
         essential: "Le transport public de voyageurs (taxi, VTC, VMDTR) relève strictement du taux réduit de TVA à 10%, sans exception.",
         narrative: "La TVA est une taxe sur la valeur ajoutée : l'entreprise la collecte auprès du client (sur le prix de la course), en déduit celle qu'elle a payée à ses fournisseurs (carburant, entretien, véhicule), et reverse à l'État la différence. Si la TVA déductible dépasse la collectée, on obtient un crédit de TVA, remboursable ou imputable sur les périodes suivantes.\n\nLe taux applicable au transport de voyageurs est de 10% depuis 2014 (article 279 b bis du CGI, complété par l'article 68 de l'annexe III). Ce taux réduit s'applique à toutes les courses taxi, VTC et VMDTR — c'est une exception au taux normal de 20%. Erreur classique à l'examen : appliquer 20% à une course.\n\nPour le carburant, les règles de récupération de TVA dépendent de la motorisation : gazole et essence à 80% récupérables sur véhicules de tourisme ; GPL, électricité, hydrogène à 100%. C'est un levier fiscal important pour orienter la flotte vers les énergies propres.\n\nLe régime micro-entrepreneur bénéficie d'une franchise en base de TVA tant que le CA reste sous 37 500€/an pour les prestations de service (seuils 2025) : pas de TVA facturée, pas de récupération. Au-delà, bascule en régime réel avec collecte et déclarations périodiques.\n\nL'impôt sur le bénéfice dépend de la forme : EI à l'IR dans la catégorie BIC (bénéfices industriels et commerciaux), société à l'IS (15% jusqu'à 42 500€ de bénéfice, 25% au-delà).",
@@ -245,6 +274,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'ges-charges-sociales',
+        keyFigures: [
+          { value: "21,2 %", label: "micro : forfait sur le CA" },
+          { value: "9,2 %", label: "CSG — finance la Sécu" },
+          { value: "0,5 %", label: "CRDS — rembourse la dette" },
+        ],
         title: 'Charges sociales',
         essential: "CSG (9,2%) finance la Sécurité sociale ; CRDS (0,5%) rembourse la dette sociale créée en 1996 — deux contributions distinctes.",
         narrative: "Les charges sociales d'un conducteur T3P dépendent directement de sa structure juridique : trois régimes coexistent et déterminent le coût réel du travail.\n\nLe micro-entrepreneur paie un forfait unique de 21,2% sur le CA encaissé (prestations de service BIC, taux 2025) — pas de bénéfice à calculer, pas de cotisations minimales en l'absence de CA. Simplicité maximale, protection sociale minimale.\n\nLe TNS (gérant majoritaire de SARL, EURL, entrepreneur individuel au réel) cotise environ 45% sur le bénéfice — maladie, retraite de base et complémentaire, invalidité-décès, allocations familiales, CSG/CRDS. Cotisations minimales dues même en l'absence de bénéfice (~1 200€/an).\n\nL'assimilé salarié (président de SAS/SASU, gérant minoritaire de SARL) supporte des cotisations équivalentes à un cadre du privé : ~80% de la rémunération nette (charges patronales + salariales). En contrepartie, il bénéficie du régime général : meilleure couverture maladie, retraite, prévoyance. Il n'a en revanche pas droit à l'assurance chômage (sauf adhésion volontaire type GSC).\n\nLa CSG (Contribution Sociale Généralisée, créée en 1991) finance la Sécurité sociale au sens large : 9,2% sur les revenus d'activité, dont 6,8% déductibles du revenu imposable. La CRDS (Contribution au Remboursement de la Dette Sociale, créée par l'ordonnance de 1996) sert exclusivement à rembourser la dette de la Sécurité sociale : 0,5% sur la même assiette, non déductible. Le piège examen : confondre les deux ou inverser leurs taux.",
@@ -280,6 +314,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'ges-amortissement',
+        keyFigures: [
+          { value: "4-5 ans", label: "amortissement d'un véhicule" },
+          { value: "500 € HT", label: "seuil immobilisation / charge" },
+        ],
         title: 'Amortissement',
         essential: "L'amortissement étale comptablement le coût d'un investissement sur sa durée d'utilisation et réduit chaque année le bénéfice imposable.",
         narrative: "Quand un conducteur achète son véhicule, il ne déduit pas l'intégralité du prix la première année : ce serait fausser sa fiscalité. Il amortit : il répartit la charge sur la durée d'utilisation prévue, généralement 4 à 5 ans pour un véhicule professionnel (soit 20 à 25% par an en mode linéaire).\n\nDeux méthodes existent. L'amortissement linéaire applique un montant constant chaque année (ex : 25 000€ sur 5 ans = 5 000€/an). L'amortissement dégressif accélère la déduction au début (utile pour les véhicules à forte décote), réservé à certains biens éligibles. Le linéaire est la règle générale pour les véhicules T3P.\n\nLe législateur a fixé un plafond fiscal de déductibilité pour éviter les abus sur véhicules haut de gamme (article 39-4 CGI) : 9 900€ pour véhicules > 165 g CO₂/km, 18 300€ pour 130 à 165 g, 20 300€ pour < 130 g, 30 000€ pour les véhicules électriques (< 20 g CO₂/km).\n\nAttention : ces plafonds ne s'appliquent pas aux taxis ni aux VTC dans le cadre de l'exception 'transport public de voyageurs' — un point pédagogique souvent mal compris. Un taxi peut amortir intégralement son véhicule, quelle que soit sa valeur, car l'usage commercial neutralise la limitation prévue pour les véhicules de tourisme privés.\n\nDistinguer enfin immobilisation (bien durable > 500€ HT amorti sur plusieurs années) et charge (consommé dans l'exercice : carburant, péages, entretien courant déduits intégralement l'année du paiement).",
@@ -348,6 +386,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'ges-difficultes',
+        keyFigures: [
+          { value: "45 jours", label: "pour déclarer la cessation" },
+          { value: "5-15 ans", label: "interdiction de gérer encourue" },
+        ],
         title: 'Difficultés et cessation',
         essential: "La cessation des paiements doit être déclarée au tribunal sous 45 jours, sous peine de sanctions personnelles contre le dirigeant.",
         narrative: "La cessation des paiements survient lorsque l'entreprise ne peut plus faire face au passif exigible (dettes échues) avec son actif disponible (trésorerie immédiate). Ce n'est pas une simple difficulté passagère : c'est une situation juridique précise qui déclenche des obligations légales strictes.\n\nLe dirigeant dispose de 45 jours à compter de la date de cessation pour la déclarer au tribunal (de commerce pour sociétés et EI commerçants, judiciaire pour les autres). Ne pas le faire constitue une faute de gestion qui peut entraîner la faillite personnelle ou l'interdiction de gérer pour 5 à 15 ans, voire des sanctions pénales (banqueroute).\n\nTrois procédures existent, dans l'ordre de gravité :\n\nSauvegarde (Livre VI Code de commerce) : à demander avant la cessation, quand l'entreprise rencontre des difficultés sérieuses mais reste solvable. C'est un outil préventif négocié, avec gel des dettes et plan sur 10 ans maximum.\n\nRedressement judiciaire : ouvert après cessation des paiements si l'activité semble redressable. Période d'observation de 6 mois (renouvelable), puis plan de continuation ou de cession.\n\nLiquidation judiciaire : prononcée quand le redressement est manifestement impossible. Arrêt de l'activité, vente des actifs, désintéressement des créanciers selon l'ordre légal (super-privilégiés salariés d'abord, puis Trésor, puis créanciers chirographaires).\n\nLa différence cruciale entre sauvegarde et redressement tient à la date : sauvegarde = anticipation, redressement = constat de cessation déjà intervenue.",
@@ -397,6 +439,11 @@ export const revisionModules: RevisionModule[] = [
     cards: [
       {
         id: 'sec-distances',
+        keyFigures: [
+          { value: "× 4", label: "distance d'arrêt si vitesse × 2" },
+          { value: "2 s", label: "écart minimum entre véhicules" },
+          { value: "50 m", label: "un chevron d'autoroute" },
+        ],
         title: 'Distances de sécurité',
         essential: "La distance d'arrêt = temps de réaction + distance de freinage ; elle est multipliée par 4 quand la vitesse double.",
         narrative: "Comprendre les distances de sécurité, c'est intégrer que le véhicule ne s'arrête jamais instantanément. Quand un obstacle surgit, le conducteur a besoin d'environ 1 seconde pour percevoir, décider et amorcer le freinage : sur cette seconde de réaction, à 50 km/h on parcourt déjà 14 mètres sans freiner. À cette distance s'ajoute le freinage proprement dit, qui dépend du carré de la vitesse.\n\nC'est cette physique du carré qui explique le paradoxe le plus mal compris : doubler la vitesse ne double pas la distance d'arrêt, elle la quadruple. À 50 km/h on s'arrête en ~28 m, à 100 km/h il faut ~88 m, à 130 km/h plus de 130 m. La pluie aggrave encore : un revêtement mouillé peut multiplier la distance de freinage par 1,5 à 2, la neige ou le verglas par 3 ou plus.\n\nL'article R412-12 du Code de la route impose un intervalle minimal de 2 secondes entre véhicules (règle dite des '2 secondes'). En pratique, sur autoroute, cela correspond à environ 2 chevrons. Pour un conducteur T3P qui transporte du public, cette marge n'est pas un confort : c'est une condition de sécurité contractuelle vis-à-vis du passager.",
@@ -435,6 +482,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'sec-vitesses',
+        keyFigures: [
+          { value: "50", label: "en agglomération" },
+          { value: "80", label: "hors agglomération" },
+          { value: "130", label: "autoroute (110 si pluie)" },
+        ],
         title: 'Limitations de vitesse',
         essential: "50 en ville, 80 sur route (90 si décision locale), 110 sur 2x2 voies, 130 sur autoroute — toujours -20 km/h sur autoroute mouillée.",
         narrative: "Les limitations de vitesse ne sont pas seulement des chiffres : elles découlent des distances d'arrêt et de la gravité des chocs. En agglomération, la limite générale est 50 km/h, abaissée à 30 km/h en zone 30 (autour des écoles, centres-villes apaisés) et 20 km/h en zone de rencontre (priorité piéton). Le seuil est fixé pour qu'un piéton heurté ait une chance de survie élevée.\n\nHors agglomération, la limite est de 80 km/h sur les routes bidirectionnelles sans séparateur central, depuis le décret de juillet 2018 — certains départements ont relevé à 90 km/h sur certaines portions (décision préfectorale). Sur les 2x2 voies, on monte à 110 km/h ; sur autoroute, 130 km/h. La pluie ou neige déclenche une réduction automatique : -20 km/h sur autoroute (130→110), -10 km/h sur 2x2 voies (110→100) et hors agglo (80→70).\n\nDeux règles à connaître : par visibilité réduite < 50 m (brouillard épais, forte pluie), la vitesse est plafonnée à 50 km/h partout ; et le jeune conducteur (permis < 3 ans, < 2 ans si AAC) doit appliquer -10 km/h sur les voies rapides (100 au lieu de 110, 110 au lieu de 130). Tout dépassement ≥ 50 km/h au-dessus de la limite entraîne la rétention immédiate du permis et un délit (1 500€ + 6 points + 3 ans suspension).",
@@ -473,6 +525,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'sec-alcool-stupefiants',
+        keyFigures: [
+          { value: "0,5 g/L", label: "contravention + 6 points" },
+          { value: "0,8 g/L", label: "délit" },
+          { value: "0,2 g/L", label: "jeune conducteur" },
+        ],
         title: 'Alcool et stupéfiants',
         essential: "0,5 g/L = contravention, ≥ 0,8 g/L = délit ; pour les stupéfiants, c'est tolérance zéro et présence détectée = délit.",
         narrative: "La législation alcool s'articule autour de deux seuils. Entre 0,5 g/L et 0,79 g/L de sang (soit 0,25 à 0,39 mg/L d'air expiré), c'est une contravention 4e classe : 135€ forfaitaires, retrait de 6 points, immobilisation du véhicule possible. À partir de 0,8 g/L de sang (0,4 mg/L air expiré), on bascule en délit : jusqu'à 4 500€ d'amende, 2 ans de prison, suspension de permis jusqu'à 3 ans, peines complémentaires (stage, EAD).\n\nLe taux légal s'applique uniformément à tous les conducteurs, mais une catégorie est traitée à part : le jeune conducteur (permis probatoire) doit rester sous 0,2 g/L (équivalent verre nul). Pour les T3P, certaines conventions et règlements internes des plateformes imposent également 0 g/L pendant le service. Un conducteur de transport public à risque pénal + commercial cumulé.\n\nPour les stupéfiants, c'est tolérance zéro depuis 2003 : la simple présence détectée par test salivaire (cannabis, cocaïne, opiacés, amphétamines) constitue un délit, indépendamment de toute altération réelle de conduite. Sanctions : 4 500€ + 2 ans de prison + 6 points + suspension. Le refus de se soumettre au dépistage est puni des mêmes peines que la conduite en état délictueux — c'est un message clair du législateur. Aucune méthode 'd'élimination' n'accélère la décomposition de l'alcool : seul le temps (environ 0,15 g/L/h) la dissipe. Café, douche froide, repas : aucun effet sur le taux.",
@@ -511,6 +568,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'sec-fatigue-vigilance',
+        keyFigures: [
+          { value: "1/3", label: "des morts d'autoroute : la fatigue" },
+          { value: "15-20 min", label: "de pause toutes les 2 h" },
+        ],
         title: 'Fatigue et vigilance',
         essential: "Le seul remède efficace contre la fatigue au volant est le sommeil — pause 15-20 min toutes les 2 heures de conduite.",
         narrative: "La fatigue est responsable d'environ 1 accident mortel sur 3 sur autoroute. C'est une cause sous-estimée parce qu'elle n'est pas visible : pas d'alcool, pas d'excès de vitesse, mais une chute brutale des capacités attentionnelles. Pour un T3P qui enchaîne les courses tard le soir ou tôt le matin, c'est un risque structurel.\n\nLe cerveau humain présente deux creux physiologiques de vigilance : entre 2h et 5h du matin, et entre 13h et 15h après le déjeuner. Pendant ces fenêtres, le risque d'endormissement est multiplié par 3 à 5. Les signaux d'alerte sont stéréotypés : bâillements répétés, yeux qui piquent, paupières lourdes, picotements dans le dos, sensation que le véhicule 'flotte', franchissement involontaire de ligne. Dès le premier signe, il faut s'arrêter.\n\nLa parade scientifiquement validée est la micro-sieste de 15 à 20 minutes : au-delà, on entre en sommeil profond et le réveil est groggy ; en deçà, l'effet est insuffisant. 20 minutes de sieste restaurent 2 à 3 heures de vigilance. Les stimulants (café, boissons énergisantes) ont un effet partiel et court (20-30 min), insuffisant en cas de dette de sommeil réelle. La règle pratique des transports professionnels : pause obligatoire toutes les 2 heures, repos quotidien d'au moins 11 heures consécutives. Pour un T3P, la planification doit intégrer ces contraintes : refuser une course de trop si la fatigue s'installe est une décision professionnelle, pas un échec commercial.",
@@ -549,6 +610,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'sec-eco-conduite',
+        keyFigures: [
+          { value: "-15 à -25 %", label: "de carburant en conduite souple" },
+          { value: "+10-15 %", label: "de conso avec la clim en ville" },
+        ],
         title: 'Éco-conduite',
         essential: "Une conduite souple permet -15 à -25% de carburant ; elle améliore aussi la sécurité, la durée de vie du véhicule et le confort passager.",
         narrative: "L'éco-conduite n'est pas une posture militante : c'est un ensemble de techniques mesurables qui réduisent à la fois la consommation, l'usure mécanique et la fatigue du conducteur. Pour un T3P, c'est aussi un argument confort majeur : un passager perçoit immédiatement la différence entre un conducteur qui accélère et freine en permanence et un conducteur qui anticipe.\n\nLe principe central est l'anticipation : lever le pied dès qu'on voit un feu rouge à 200 m, plutôt que de continuer puis freiner sec. Cela permet d'arriver au feu au moment où il repasse au vert, évitant un arrêt complet (chaque redémarrage coûte cher en carburant). Le passage de vitesses est un autre levier : passer la vitesse supérieure tôt (vers 2000-2500 tr/min en essence, 1500-2000 en diesel) maintient le moteur dans sa plage de rendement optimal.\n\nLes équipements aussi comptent. La pression des pneus doit être vérifiée chaque mois : un sous-gonflage de 0,5 bar entraîne +3 à 4% de consommation et une usure prématurée. La climatisation augmente la consommation de 10 à 15% en ville et 4 à 5% sur autoroute — à modérer, sans pour autant compromettre le confort passager. Couper le moteur dès qu'un arrêt dépasse 20-30 secondes (feu rouge long, prise en charge) économise du carburant sans solliciter le démarreur. Enfin, alléger le véhicule (galerie de toit retirée, coffre vidé) gagne quelques pourcents supplémentaires. Le bilan global d'une conduite vraiment éco : -20% de carburant, -25% d'usure freins/pneus, retours clients plus positifs.",
@@ -587,6 +652,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'sec-equipements-securite',
+        keyFigures: [
+          { value: "135 €", label: "ceinture d'un mineur (0 point)" },
+          { value: "30 m", label: "triangle en amont de l'obstacle" },
+          { value: "150-200 m", label: "triangle sur voie rapide" },
+        ],
         title: 'Équipements de sécurité obligatoires',
         essential: "Ceinture pour tous, gilet et triangle à bord — le conducteur est responsable du port de la ceinture par les passagers mineurs.",
         narrative: "L'équipement de sécurité ne se limite pas à un dispositif passif : c'est un système juridique de responsabilités. Le port de la ceinture est obligatoire pour tous les occupants depuis 1990 à l'arrière (déjà depuis 1973 à l'avant). Le non-port est sanctionné de 135€ : le conducteur non attaché perd en plus 3 points, tandis qu'un passager adulte non attaché paie l'amende lui-même, sans retrait de points. Pour les mineurs, c'est le conducteur qui est responsable : il écope de l'amende de 135€, mais SANS retrait de points. Pour un VTC ou un taxi transportant un enfant non attaché, c'est donc le chauffeur qui paie.\n\nLes enfants de moins de 10 ans doivent voyager dans un dispositif de retenue adapté à leur taille et leur poids (siège auto, rehausseur). Sous 9 mois, ils doivent être placés dos à la route. L'avant est interdit aux moins de 10 ans sauf exception (cabine dépourvue de banquette arrière, ou rehausseur conforme avec airbag désactivé). Pour un T3P, il est fortement recommandé de disposer d'au moins un rehausseur pour transporter des familles avec enfants.\n\nDeux équipements doivent être à bord en permanence : le gilet haute visibilité (à portée de main, pas dans le coffre) et le triangle de présignalisation. L'absence est sanctionnée 135€ chacun. Le gilet doit être enfilé AVANT de descendre du véhicule en cas de panne ou d'accident sur la chaussée, et le triangle placé à 30 m en amont (150-200 m sur voie rapide). L'éthylotest, longtemps obligatoire mais non sanctionné, n'est plus exigé depuis 2020. La trousse de premiers secours reste fortement recommandée pour un T3P, sans être légalement imposée.",
@@ -625,6 +695,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'sec-premiers-secours',
+        keyFigures: [
+          { value: "112", label: "urgences partout en Europe" },
+          { value: "100-120/min", label: "rythme du massage cardiaque" },
+          { value: "75 000 €", label: "non-assistance (+ 5 ans)" },
+        ],
         title: 'Premiers secours (PAS)',
         essential: "Face à un accident, la séquence à respecter est PAS : Protéger, Alerter, Secourir — toujours dans cet ordre.",
         narrative: "La conduite à tenir face à un accident est codifiée par le protocole PAS, enseigné dans toutes les formations PSC1 (Prévention et Secours Civiques niveau 1). L'ordre n'est pas indicatif : il est impératif. Inverser les étapes peut transactionnellement aggraver la situation.\n\nProtéger, c'est éviter le sur-accident : se garer hors de la chaussée, allumer les feux de détresse, enfiler le gilet, sécuriser la zone avec le triangle (30 m, 150-200 m sur voie rapide), faire évacuer les passagers vers un endroit sûr (derrière la glissière). Ne JAMAIS s'occuper d'une victime avant d'avoir protégé la zone : un secouriste fauché par une voiture devient une victime supplémentaire.\n\nAlerter, c'est appeler les services d'urgence avec un message structuré : nature de l'accident (collision, choc piéton), localisation précise (autoroute + sens + PR si possible), nombre de victimes, état apparent (consciente/inconsciente, respire/ne respire pas). Numéros : 15 (SAMU) pour les blessés, 18 (pompiers) pour les incendies, 17 (police/gendarmerie) pour les questions de circulation, 112 (européen, fonctionne sans crédit ni SIM). Le 114 est dédié aux personnes sourdes/malentendantes (SMS).\n\nSecourir, c'est appliquer les gestes appris : ne pas déplacer une victime sauf danger immédiat (risque d'incendie, sur voie de circulation), couvrir contre le froid, parler pour rassurer, mettre en PLS (Position Latérale de Sécurité) une victime inconsciente qui respire pour éviter qu'elle s'étouffe avec sa langue ou ses vomissements. En cas d'arrêt cardio-respiratoire : massage cardiaque externe (100-120 compressions/min, 5-6 cm de profondeur) jusqu'à l'arrivée des secours ou d'un défibrillateur. La non-assistance à personne en péril est punie de 5 ans de prison et 75 000€ (art. 223-6 Code pénal).",
@@ -663,6 +738,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'sec-signalisation',
+        keyFigures: [
+          { value: "135 € + 6 pts", label: "refus de priorité à un piéton" },
+        ],
         title: 'Signalisation et priorités',
         essential: "Un piéton engagé ou manifestant l'intention de traverser a priorité absolue ; sur un rond-point, priorité aux véhicules déjà engagés.",
         narrative: "La hiérarchie des priorités routières répond à une logique de protection des plus vulnérables. Au sommet : le piéton. L'article R415-11 impose au conducteur de céder le passage à tout piéton engagé dans la chaussée, OU manifestant l'intention de s'engager. C'est une nuance majeure : on ne peut pas attendre qu'il pose le pied sur la chaussée pour s'arrêter. Le non-respect de la priorité piéton coûte 135€ et 6 points (passage de 4 à 6 points depuis 2018) — c'est la sanction la plus lourde après l'alcool.\n\nLes panneaux de priorité s'organisent par familles. Le STOP (AB4) impose un arrêt obligatoire à la ligne, même sans véhicule visible — 'marquer l'arrêt' est juridiquement caractérisé (roues immobilisées). Le 'Cédez le passage' (AB3a) impose de laisser passer mais sans arrêt obligatoire si la voie est dégagée. Aux intersections sans signalisation, c'est la priorité à droite qui s'applique (sauf 'route à caractère prioritaire' indiquée par panneau AB6 jaune losange).\n\nLe rond-point est une exception qui désarçonne : la signalisation 'cédez le passage' à l'entrée inverse la règle générale. La priorité va aux véhicules déjà engagés dans l'anneau, donc à GAUCHE pour le véhicule qui arrive. C'est une question piège fréquente. Pour les véhicules d'intérêt général (pompiers, SAMU, police) en intervention (gyrophare + sirène 2 tons), tout autre conducteur doit faciliter le passage : ralentir, se serrer à droite, voire monter sur le trottoir si nécessaire. Le tramway, par sa masse et son inertie, est toujours prioritaire sauf signalisation contraire — un tram à 50 km/h chargé met plus de 60 m à s'arrêter.",
@@ -715,6 +793,10 @@ export const revisionModules: RevisionModule[] = [
     cards: [
       {
         id: 'reg-definition-t3p',
+        keyFigures: [
+          { value: "< 10 places", label: "le véhicule T3P" },
+          { value: "2014", label: "loi Thévenoud" },
+        ],
         title: 'Définition T3P',
         essential: "Le T3P couvre toute activité de transport de personnes à titre onéreux, à la demande, avec un véhicule de moins de 10 places — taxi, VTC ou VMDTR.",
         narrative: "Le sigle T3P (Transport Public Particulier de Personnes) recouvre les trois activités encadrées par les articles L3120-1 et suivants du Code des transports : le taxi, le VTC et le VMDTR (deux-roues motorisé). Le critère commun, c'est le transport à la demande contre rémunération avec un véhicule de moins de 10 places, conducteur compris. Tout ce qui sort de ce périmètre — autocar, transport sanitaire, transport scolaire — relève d'un autre régime.\n\nLa loi Thévenoud du 1er octobre 2014 a posé le socle moderne en distinguant clairement taxi (monopole de la maraude et du stationnement sur voie publique) et VTC (réservation préalable obligatoire). La loi Grandguillaume du 29 décembre 2016 a refermé la brèche LOTI utilisée par certaines plateformes et créé un examen commun T3P avec tronc commun + spécialités.\n\nLe covoiturage (L3132-1) est hors champ : pas de bénéfice pour le conducteur, simple partage des frais réels. Dès que la rémunération dépasse les frais ou que le conducteur fait du trajet sa motivation économique, on bascule en T3P illégal — transport à titre onéreux sans titre = délit.",
@@ -753,6 +835,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'reg-acces-profession',
+        keyFigures: [
+          { value: "3 ans", label: "de permis B minimum" },
+          { value: "5 ans", label: "visite médicale (3 ans après 60)" },
+          { value: "4", label: "conditions cumulatives" },
+        ],
         title: "Conditions d'accès à la profession",
         essential: "Quatre conditions cumulatives : permis B ≥ 3 ans, casier compatible, aptitude médicale, réussite de l'examen T3P.",
         narrative: "Devenir conducteur T3P n'est pas une simple démarche administrative : la loi a structuré un véritable filtre d'entrée. La première condition est l'ancienneté du permis B : 3 ans minimum, ramenés à 2 ans pour ceux qui ont suivi la conduite accompagnée (AAC). Cette ancienneté garantit une expérience de conduite réelle avant de transporter du public.\n\nVient ensuite l'honorabilité professionnelle : le bulletin n°2 du casier judiciaire ne doit pas comporter de condamnation incompatible (vol, agression, conduite sous stupéfiants, délit routier grave). La préfecture vérifie ce casier à l'entrée et tous les ans pendant l'exercice : une condamnation postérieure peut entraîner le retrait de la carte.\n\nL'aptitude physique est attestée par un médecin agréé par la préfecture, lors d'une visite valable 5 ans (3 ans après 60 ans). Le formulaire Cerfa 14880 examine vue, audition, neurologie, addictions. Enfin, le candidat doit réussir l'examen T3P organisé par les CMA : épreuves d'admissibilité (tronc commun écrit) + admission (réglementation spécifique + conduite). C'est cette réussite qui ouvre la délivrance de la carte professionnelle par la préfecture.",
@@ -787,6 +874,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'reg-carte-professionnelle',
+        keyFigures: [
+          { value: "5 ans", label: "validité de la carte" },
+          { value: "14 h", label: "formation continue sur 5 ans" },
+          { value: "2 mois", label: "délai pour renouveler" },
+        ],
         title: 'Carte professionnelle T3P',
         essential: "La carte pro est délivrée par le préfet, valable 5 ans, et son renouvellement est conditionné à 14h de formation continue suivies sur la période.",
         narrative: "La carte professionnelle T3P est le sésame qui matérialise l'autorisation d'exercer. Elle est délivrée par le préfet du département de résidence du conducteur, après vérification des conditions d'accès et réussite de l'examen. Elle mentionne expressément l'activité autorisée : Taxi, VTC ou VMDTR — un conducteur qui veut exercer plusieurs activités doit détenir plusieurs cartes.\n\nSa validité est de 5 ans. Le renouvellement n'est pas automatique : le conducteur doit en faire la demande au plus tard 2 mois avant l'expiration, en joignant la preuve d'une formation continue d'au moins 14 heures suivie auprès d'un organisme agréé. Cette formation porte sur les évolutions réglementaires, la sécurité, la gestion et la relation client. Elle peut être suivie en une fois ou répartie sur les 5 ans.\n\nPendant le service, la carte doit rester visible et accessible : apposée sur le pare-brise pour le taxi (avec le numéro d'ADS) ou présentée à la première demande des forces de l'ordre pour le VTC et le VMDTR. Exercer avec une carte expirée, suspendue ou sans carte = délit puni d'1 an de prison et 15 000€ d'amende (L3124-4). En cas de suspension judiciaire du permis B, la carte est suspendue de plein droit.",
@@ -825,6 +917,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'reg-examen-t3p',
+        keyFigures: [
+          { value: "5", label: "matières au tronc commun" },
+        ],
         title: 'Examen T3P',
         essential: "L'examen T3P comporte une admissibilité (tronc commun écrit) puis une admission (réglementation spécifique + conduite) — la réussite est exigée pour obtenir la carte.",
         narrative: "Depuis l'arrêté du 6 avril 2017, l'examen T3P est unifié pour les trois activités, avec un tronc commun et des spécialités. Il est organisé par les Chambres de Métiers et de l'Artisanat (CMA) sous le contrôle de la préfecture. La candidature se dépose en ligne sur le site de la CMA territorialement compétente, accompagnée des pièces justifiant les conditions d'accès (permis, casier, médical).\n\nL'épreuve d'admissibilité est commune aux trois activités. Elle se compose de QCM portant sur : réglementation T3P, gestion d'entreprise, sécurité routière, capacité d'expression française et compréhension de l'anglais (niveau A2). C'est un filtre national : sans admissibilité, pas d'accès à l'admission.\n\nL'épreuve d'admission est spécifique à l'activité visée. Pour le taxi : réglementation locale + connaissance du territoire (topographie du département) + conduite. Pour le VTC : développement commercial + conduite. Pour le VMDTR : sécurité spécifique deux-roues + conduite. Chaque épreuve a sa propre note éliminatoire ; la moyenne générale ne suffit pas à compenser une note trop faible dans une matière clé. En cas d'échec, le candidat peut se représenter, généralement après un délai d'au moins 1 mois selon les sessions de la CMA.",
@@ -859,6 +954,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'reg-obligations-communes',
+        keyFigures: [
+          { value: "45 000 €", label: "refus discriminatoire (+ 3 ans)" },
+          { value: "0 €", label: "chien guide : transport gratuit" },
+        ],
         title: 'Obligations professionnelles communes',
         essential: "Assurance RC pro, information préalable du prix, non-discrimination et transport gratuit des chiens guides s'imposent à toutes les activités T3P.",
         narrative: "Quel que soit le statut (taxi, VTC, VMDTR), le conducteur T3P est tenu à un socle d'obligations issu des articles L3120-4 à L3120-6 du Code des transports. L'assurance responsabilité civile professionnelle est la première : elle couvre les dommages causés aux passagers et aux tiers pendant l'exercice. Sans elle, le conducteur engage son patrimoine personnel et s'expose à 3 750€ d'amende + suspension de permis.\n\nL'information préalable du client sur le prix (ou son mode de calcul) est une obligation de transparence. Le taxi affiche ses tarifs et utilise le taximètre ; le VTC communique un prix forfaitaire ou un mode de calcul (km + temps) avant la prise en charge ; le VMDTR doit annoncer la course. Toute facturation surprise est sanctionnée par la DGCCRF.\n\nLa non-discrimination est absolue : refuser un client en raison de son origine, de son apparence, de son handicap, de son orientation sexuelle ou de toute autre caractéristique protégée constitue un délit (45 000€ + 3 ans, art. 225-1 du Code pénal). En revanche, le refus pour motif légitime (sécurité, fin de service, animal autre que chien guide, état d'ébriété manifeste) reste possible — il doit pouvoir être justifié objectivement.\n\nLe transport des chiens guides d'aveugle et chiens d'assistance est obligatoire et gratuit (loi du 11 février 2005). Aucune surcharge, aucun refus possible, même pour un VTC haut de gamme.",
@@ -897,6 +996,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'reg-vehicule-conditions',
+        keyFigures: [
+          { value: "4 à 9", label: "places, conducteur compris" },
+          { value: "< 7 ans", label: "véhicule thermique" },
+          { value: "84 kW", label: "puissance mini VTC (thermique)" },
+        ],
         title: 'Conditions du véhicule',
         essential: "Véhicule de 4 à 9 places conducteur compris. Thermique : moins de 7 ans. Hybrides et électriques : dispensés des critères techniques, âge compris (art. L.3120-5).",
         narrative: "Le véhicule T3P est soumis à des conditions strictes qui s'ajoutent à la réglementation routière classique. Côté capacité, il doit comporter entre 4 et 9 places assises, conducteur compris (art. R.3122-11) — au-delà, on bascule en transport collectif (autocar). En deçà, le véhicule n'offre pas la sécurité minimale exigée pour un transport rémunéré.\n\nCôté ancienneté, la règle actuelle est simple : un véhicule VTC thermique doit avoir moins de 7 ans. Les véhicules hybrides et électriques, eux, sont totalement DISPENSÉS des caractéristiques techniques réglementaires — y compris la condition d'âge (article L.3120-5 du Code des transports). Une Tesla de 2017 peut donc, réglementairement, toujours rouler en VTC en 2026, alors qu'une berline thermique de 2018 ne le peut plus.\n\nLe VTC thermique doit en plus respecter des critères de gabarit et de puissance fixés par l'arrêté du 26 mars 2015, et ces critères sont CUMULATIFS — tous doivent être respectés : au moins 4 portes, longueur hors tout ≥ 4,50 m, largeur hors tout ≥ 1,70 m, puissance nette du moteur ≥ 84 kW. Un seul critère manquant disqualifie le véhicule. Le contrôle technique est annuel (au lieu de bisannuel pour un particulier) et plus exigeant — il vérifie aussi les équipements obligatoires : ceintures fonctionnelles à toutes les places, signalétique pour le taxi (lumineux, plaque, compteur scellé). Tout défaut majeur entraîne l'immobilisation immédiate.",
@@ -935,6 +1039,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'reg-sanctions',
+        keyFigures: [
+          { value: "1 an + 15 000 €", label: "exercice sans carte" },
+          { value: "3 750 €", label: "défaut d'assurance" },
+          { value: "45 000 €", label: "refus discriminatoire" },
+        ],
         title: 'Sanctions et contrôles',
         essential: "Exercer sans carte pro ou en violation des règles de maraude expose à 1 an de prison et 15 000€ d'amende — la discrimination monte à 45 000€ et 3 ans.",
         narrative: "Le législateur a aligné le régime des sanctions T3P sur le caractère professionnel de l'activité : les peines mêlent volet pénal (prison + amende), administratif (suspension/retrait de carte) et civil (réparation des préjudices). Exercer une activité de T3P sans carte professionnelle constitue un délit puni d'1 an de prison et 15 000€ d'amende (art. L3124-4). C'est la sanction de référence, reprise pour la plupart des infractions structurelles.\n\nLa maraude illégale d'un VTC — c'est-à-dire le fait de stationner ou de circuler sur la voie publique en quête de client sans réservation préalable — encourt la même peine. C'est l'une des grandes lignes rouges issues de la loi Thévenoud : le monopole de la maraude reste réservé aux taxis détenteurs d'une ADS. Le VTC doit pouvoir prouver, à tout contrôle, l'antériorité de la réservation (justificatif horodaté).\n\nLe défaut d'assurance RC pro est sanctionné de 3 750€ d'amende et suspension de permis (art. L324-2 Code de la route). La discrimination, déjà évoquée, monte à 45 000€ + 3 ans. À côté du volet pénal, la préfecture peut suspendre la carte (1 à 6 mois) ou la retirer définitivement après procédure contradictoire. Lors d'un contrôle (police, gendarmerie, DGCCRF, agents assermentés), le conducteur doit présenter immédiatement : carte pro, carte grise, attestation d'assurance, justificatif de réservation (VTC), feuille de route et taximètre conforme (taxi).",
@@ -1020,6 +1129,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'fra-communication-ecrite',
+        keyFigures: [
+          { value: "15 €", label: "par mention manquante (facture)" },
+          { value: "10 ans", label: "conservation des factures" },
+        ],
         title: 'Communication écrite',
         essential: "Facture = mentions obligatoires (nom, SIRET, date, montant HT/TTC).",
         narrative: "L'écrit engage le conducteur bien plus que l'oral. Une facture mal rédigée peut être rejetée fiscalement, un courriel maladroit peut coûter un contrat B2B, un SMS ambigu peut générer un litige client. Le T3P doit donc maîtriser quelques règles simples mais non négociables.\n\nLa facture est l'écrit le plus encadré. Le Code de commerce (article L441-9) impose : identité du prestataire (nom, adresse, SIRET, n° TVA si assujetti), identité du client, date d'émission, numéro de facture unique et chronologique, désignation de la prestation, prix HT, taux et montant de TVA (10 % pour le transport de voyageurs), prix TTC. Pour un VTC, ajouter le numéro d'inscription au registre VTC. L'absence d'une seule de ces mentions rend la facture irrégulière et peut entraîner un redressement.\n\nLe courriel professionnel répond à une logique simple : objet clair (« Confirmation course du 12/06 — 14h CDG »), formule d'appel (Bonjour Madame X), corps structuré (1 idée par paragraphe), formule de politesse (« Cordialement »), signature complète (nom, fonction, téléphone, SIRET). On évite les majuscules (perçues comme un cri) et les multiples points d'exclamation (perçus comme amateur).",
@@ -1355,6 +1468,9 @@ export const revisionModules: RevisionModule[] = [
     cards: [
       {
         id: 'vtc-definition',
+        keyFigures: [
+          { value: "1 an + 15 000 €", label: "maraude : le délit" },
+        ],
         title: 'Définition VTC',
         essential: "VTC = réservation préalable obligatoire. Maraude interdite sous peine de 1 an de prison et 15 000 € d'amende.",
         narrative: "Le statut juridique du VTC repose sur une notion fondamentale : la réservation préalable. Contrairement au taxi, qui peut prendre un client « à la volée » dans la rue (la maraude), le VTC ne peut transporter qu'un client qui a réservé sa course à l'avance, par tout moyen vérifiable (application, téléphone, site web, contrat-cadre B2B). Cette frontière, posée par la loi Thévenoud du 1er octobre 2014 et renforcée par la loi Grandguillaume du 29 décembre 2016, structure tout le métier.\n\nLa maraude — chercher des clients en circulant ou en stationnant sur la voie publique — est donc strictement interdite aux VTC. L'article L3124-9 du Code des transports prévoit des sanctions lourdes : 1 an d'emprisonnement, 15 000 € d'amende, immobilisation du véhicule, suspension de la carte professionnelle. Ce n'est pas une faute administrative mais un délit pénal. Le législateur a voulu protéger le monopole économique des taxis (qui ont payé leur ADS) tout en laissant un espace concurrentiel aux VTC sur le marché de la réservation.\n\nUne règle souvent oubliée : le retour à vide. Après avoir déposé un client, le VTC doit en principe retourner à son lieu de stationnement habituel (siège de l'entreprise ou parking de la plateforme) sauf s'il a déjà une nouvelle réservation. Cette obligation, qui peut sembler théorique, est en réalité contrôlée : un VTC qui stationne devant une gare ou un hôtel sans réservation peut être verbalisé.",
@@ -1392,6 +1508,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vtc-inscription-registre',
+        keyFigures: [
+          { value: "4,50 m", label: "longueur mini (thermique)" },
+          { value: "84 kW", label: "puissance mini (thermique)" },
+          { value: "2", label: "vignettes : avant + arrière" },
+        ],
         title: 'Inscription au registre',
         essential: "Inscription au registre VTC obligatoire. Numéro à afficher sur le véhicule.",
         narrative: "L'inscription au registre VTC est l'acte de naissance administratif de l'activité. Sans elle, ni la carte professionnelle ni le véhicule ne suffisent : le conducteur exerce illégalement, même s'il pense être « en règle » avec ses autres documents. Cette inscription, gérée par les préfectures (en Île-de-France : la DRIEAT — Direction Régionale et Interdépartementale de l'Environnement, de l'Aménagement et des Transports), valide trois éléments simultanément : l'exploitant (entreprise), le véhicule, et le conducteur.\n\nLe véhicule thermique doit respecter des conditions techniques CUMULATIVES (arrêté du 26 mars 2015) : au moins 4 portes, longueur ≥ 4,50 m, largeur ≥ 1,70 m ET puissance ≥ 84 kW (114 ch). Tous les critères doivent être remplis — en pratique, les véhicules de gamme moyenne supérieure (Mercedes Classe E, BMW Série 5, Audi A6) les respectent largement, et les hybrides/électriques en sont totalement dispensés (art. L.3120-5). Le véhicule thermique doit aussi être âgé de moins de 7 ans. L'assurance professionnelle « transport de personnes à titre onéreux » est obligatoire — une assurance personnelle classique ne couvre rien.\n\nUne fois inscrit, le véhicule reçoit deux vignettes d'identification numérotées (arrêté du 6 avril 2017) : l'une à l'AVANT, dans l'angle inférieur gauche du pare-brise, l'autre à l'ARRIÈRE, dans l'angle inférieur droit de la lunette arrière. L'attestation d'inscription papier doit être présente à bord, présentable à tout contrôle (police, gendarmerie, DGCCRF). L'inscription est valable 5 ans et doit être renouvelée. Tout changement (nouveau véhicule, nouvelle adresse) doit être déclaré sous 1 mois.",
@@ -1426,6 +1547,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vtc-tarification',
+        keyFigures: [
+          { value: "10 %", label: "TVA transport de voyageurs" },
+          { value: "37 500 €", label: "franchise en base (2025)" },
+        ],
         title: 'Tarification VTC',
         essential: "Tarifs libres mais information préalable du client obligatoire. TVA transport = 10 %.",
         narrative: "À la différence du taxi (tarif réglementé par arrêté préfectoral), le VTC pratique des tarifs LIBRES. Chaque exploitant fixe sa grille comme il l'entend : forfait fixe (souvent utilisé pour les liaisons aéroport), tarif kilométrique, tarif horaire, ou combinaison temps + distance (modèle Uber). Cette liberté est cependant encadrée par une obligation centrale : l'information préalable et complète du client AVANT le début de la course.\n\nConcrètement, le client doit connaître soit le prix total exact (forfait), soit le mode de calcul détaillé (prix au km, prix de prise en charge, suppléments éventuels) avant de monter dans le véhicule. Sur une application, c'est l'affichage du prix estimé qui vaut information préalable. Pour une course de gré à gré, le conducteur doit annoncer oralement et idéalement écrire (SMS, mail). Ne pas respecter cette obligation expose à une qualification d'abus de faiblesse ou de pratique commerciale trompeuse (DGCCRF, jusqu'à 75 000 € d'amende pour personne physique).\n\nCôté fiscal, point CAPITAL : la TVA applicable au transport de voyageurs est de 10 %, pas 20 %. Cette TVA réduite (article 279 du CGI) s'applique à toutes les courses VTC et taxi. Le conducteur ne devient redevable de la TVA que s'il dépasse les seuils de la franchise en base (37 500 € HT en 2025) ; en dessous, il facture HT sans TVA, mais ne peut pas non plus la déduire sur ses charges. Le passage au régime réel devient intéressant quand les charges (carburant, péages, leasing) génèrent une TVA déductible significative.",
@@ -1464,6 +1589,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vtc-plateformes',
+        keyFigures: [
+          { value: "20-25 %", label: "commission des plateformes" },
+        ],
         title: 'Plateformes VTC',
         essential: "Le conducteur reste indépendant. La plateforme est un intermédiaire, pas un employeur.",
         narrative: "Les plateformes de mise en relation (Uber, Bolt, Heetch, FreeNow, Marcel…) ont structuré le marché du VTC depuis 2014. Juridiquement, elles ne sont PAS des employeurs mais des intermédiaires commerciaux : elles mettent en relation un client et un conducteur indépendant en échange d'une commission (généralement 20-25 % de la course). Le conducteur conserve son statut d'auto-entrepreneur ou de société, encaisse sa rémunération nette de commission, et déclare son chiffre d'affaires personnellement.\n\nCe modèle est cependant contesté en justice. Plusieurs décisions de la Cour de cassation (notamment Uber, 4 mars 2020) ont requalifié certains conducteurs en salariés, retenant un faisceau d'indices : tarifs imposés, géolocalisation contrainte, système de notation, sanctions unilatérales. Une requalification individuelle est possible mais ne change pas le statut général de la profession : le VTC reste juridiquement indépendant tant qu'aucune décision ne le requalifie.\n\nEn pratique, un conducteur peut — et a souvent intérêt à — travailler avec PLUSIEURS plateformes simultanément (multi-apping). Cela diversifie les sources de revenus, permet de comparer les commissions et les types de courses, et réduit la dépendance à un seul acteur. Aucune clause d'exclusivité n'est légalement opposable à un indépendant. Le conducteur reste cependant seul responsable de sa conformité réglementaire : carte pro, inscription registre, assurance, factures. La plateforme ne se substitue jamais à ces obligations.",
@@ -1498,6 +1626,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vtc-acces-profession',
+        keyFigures: [
+          { value: "3 ans", label: "de permis B (2 si accompagnée)" },
+          { value: "5 ans", label: "validité de la carte" },
+          { value: "14 h", label: "formation pour renouveler" },
+        ],
         title: 'Carte professionnelle VTC',
         essential: "Permis B depuis au moins 3 ans (2 ans si conduite accompagnée), examen CMA, aptitude médicale, honorabilité. Carte valable 5 ans, formation continue de 14 h pour renouveler.",
         narrative: "L'accès à la profession de conducteur VTC est conditionné par la carte professionnelle, délivrée par le préfet. Quatre conditions CUMULATIVES : être titulaire du permis B depuis au moins 3 ans (ramené à 2 ans si le permis a été obtenu en conduite accompagnée), justifier de son aptitude physique par une visite médicale auprès d'un médecin agréé, satisfaire à la condition d'honorabilité (bulletin n°2 du casier judiciaire compatible — certaines condamnations sont éliminatoires), et réussir l'examen organisé par les chambres de métiers et de l'artisanat (CMA).\n\nL'examen comporte deux phases : l'ADMISSIBILITÉ (épreuves théoriques : réglementation T3P, gestion, sécurité routière, français, anglais, plus l'épreuve spécifique VTC) puis l'ADMISSION (épreuve pratique de conduite en situation professionnelle). Il existe une voie d'ÉQUIVALENCE : justifier d'une expérience professionnelle d'au moins un an dans le transport de personnes au cours des dix dernières années dispense de l'examen.\n\nLa carte est valable 5 ans. Son renouvellement n'est PAS automatique : il exige une formation continue de 14 heures dans un centre agréé. En exercice, la carte doit être apposée de manière visible dans le véhicule (pare-brise) et présentée à toute réquisition. Exercer sans carte professionnelle est un DÉLIT : 1 an d'emprisonnement et 15 000 € d'amende (art. L.3124-4 du Code des transports), avec peines complémentaires possibles (suspension du permis, confiscation du véhicule).",
@@ -1536,6 +1669,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vtc-assurance-documents',
+        keyFigures: [
+          { value: "3 750 €", label: "assurance perso en course" },
+        ],
         title: 'Assurance et documents à bord',
         essential: "Assurance RC professionnelle « transport de personnes à titre onéreux » obligatoire — l'assurance personnelle ne couvre RIEN en course. À bord : carte pro, attestation registre, assurance, justificatif de réservation.",
         narrative: "L'assurance est le point aveugle des conducteurs débutants. Un contrat auto personnel, même « tous risques », EXCLUT l'usage professionnel : transporter un client à titre onéreux sans responsabilité civile professionnelle « transport de personnes », c'est rouler SANS assurance au sens de la loi. En cas d'accident en course, l'assureur refuse sa garantie : le conducteur paie de sa poche les dommages du véhicule, l'indemnisation du client blessé et celle des tiers — des sommes qui peuvent dépasser plusieurs centaines de milliers d'euros. Le défaut d'assurance est par ailleurs sanctionné de 3 750 € d'amende et d'une suspension de permis (art. L324-2 du Code de la route).\n\nLe VTC en exercice doit pouvoir présenter à tout contrôle (police, gendarmerie, DGCCRF) un ensemble de documents : la carte professionnelle (apposée de manière visible), l'attestation d'inscription au registre VTC en cours de validité, l'attestation d'assurance RC professionnelle, le certificat d'immatriculation, le permis de conduire, et le JUSTIFICATIF DE RÉSERVATION PRÉALABLE de la course en cours — horodaté, sur support papier ou électronique. Sans ce dernier, le conducteur est présumé en maraude illégale.\n\nL'organisation matérielle fait le professionnel : une pochette véhicule avec les originaux (ou copies conformes), des versions numériques sur smartphone en secours, et la conservation de l'historique de réservations (l'application de la plateforme y pourvoit, mais un export régulier protège en cas de litige ou de déréférencement). Après chaque changement (véhicule, assureur, adresse), mettre à jour le registre sous 1 mois et remplacer les attestations à bord.",
@@ -1588,6 +1724,10 @@ export const revisionModules: RevisionModule[] = [
     cards: [
       {
         id: 'tx75-ads-licence',
+        keyFigures: [
+          { value: "~18 000", label: "taxis parisiens" },
+          { value: "2014", label: "ADS incessibles depuis" },
+        ],
         title: 'ADS (Licence taxi)',
         essential: "ADS = Autorisation de Stationnement. Incessible pour les nouvelles depuis 2014 (loi Thévenoud).",
         narrative: "L'Autorisation De Stationnement (ADS), couramment appelée « licence taxi », est le droit administratif d'exploiter un véhicule comme taxi sur le territoire d'une commune. À Paris, environ 18 000 ADS sont en circulation (≈ 18 500 selon la Préfecture de Police), plafond fixé par arrêté préfectoral. C'est ce numerus clausus qui donne sa valeur (parfois > 100 000 €) à l'ADS sur le marché secondaire — ou plutôt qui le donnait, avant la réforme.\n\nLa loi Thévenoud du 1er octobre 2014 a opéré une révolution discrète mais profonde : les ADS DÉLIVRÉES APRÈS le 1er octobre 2014 sont INCESSIBLES. Elles sont attribuées gratuitement par la préfecture, à titre personnel et incessible, sur liste d'attente (plusieurs années à Paris). Le titulaire ne peut ni les vendre, ni les louer, ni les transmettre. À son départ (retraite, abandon), elles retournent à l'autorité administrative pour redistribution.\n\nLes ADS ANCIENNES (délivrées avant le 1er octobre 2014) restent cessibles, mais sous conditions : exploitation effective pendant au moins 5 ans avant la première cession, puis 15 ans pour les cessions suivantes. Cette double règle vise à éliminer progressivement la spéculation. À côté de l'ADS, le conducteur doit aussi détenir une carte professionnelle (aptitude à conduire un taxi). Les deux documents sont distincts : l'ADS est le droit du véhicule à exercer, la carte pro est l'aptitude du conducteur. Un même conducteur peut conduire plusieurs ADS différentes (locataire-gérant), et inversement une ADS peut être conduite par plusieurs conducteurs (doublage, équipes).",
@@ -1660,6 +1800,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'tx75-taximetre-tarifs',
+        keyFigures: [
+          { value: "56 € / 65 €", label: "CDG rive droite / gauche" },
+          { value: "45 € / 36 €", label: "Orly rive droite / gauche" },
+          { value: "4", label: "tarifs : A, B, C, D" },
+        ],
         title: 'Tarifs 2026',
         essential: "4 tarifs (A, B, C, D). Forfaits aéroports 2026 : CDG 56 €/65 €, Orly 45 €/36 €.",
         narrative: "Les tarifs du taxi parisien sont RÉGLEMENTÉS par arrêté préfectoral, contrairement aux VTC. Ils sont révisés chaque année et entrent en vigueur le 1er février (sauf exception). Pour 2026, l'arrêté du 24 décembre 2025 a fixé les nouveaux tarifs. La structure repose sur 4 lettres (A, B, C, D) qui correspondent chacune à une combinaison zone × horaire.\n\nLE TARIF A est le moins cher : Paris intra-muros, en JOUR (10h-17h), en SEMAINE (lundi-samedi hors jours fériés). C'est le tarif standard de la journée ouvrée. LE TARIF B s'applique soit à Paris la nuit (17h-10h) et dimanches/fériés, soit à la banlieue (petite couronne) en jour. LE TARIF C couvre la banlieue de nuit/dimanche/fériés, ainsi que les retours à vide. LE TARIF D est le plus cher, dédié aux zones aéroportuaires et aux longues distances spécifiques. Le taximètre bascule automatiquement entre ces tarifs selon l'horaire et la position GPS — le chauffeur n'intervient pas.\n\nLes FORFAITS AÉROPORTS sont distincts et obligatoires pour les liaisons Paris ↔ CDG/Orly. Pour 2026 : Paris RIVE DROITE ↔ CDG = 56 € ; Paris RIVE GAUCHE ↔ CDG = 65 € (plus cher car distance plus longue depuis la rive gauche, paradoxalement). Paris RIVE DROITE ↔ Orly = 45 € ; Paris RIVE GAUCHE ↔ Orly = 36 € (moins cher, car Orly est au sud, donc plus proche de la rive gauche). Ces forfaits s'appliquent quelle que soit la durée réelle du trajet (embouteillages inclus) et ne sont pas négociables. Pièges classiques : ils ne s'appliquent pas si le client demande un détour, et ils ne couvrent pas les communes hors Paris.",
@@ -1698,6 +1843,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'tx75-supplements',
+        keyFigures: [
+          { value: "4 € / 7 €", label: "résa immédiate / à l'avance" },
+          { value: "5,50 €", label: "à partir du 5e passager" },
+          { value: "0 €", label: "bagages : gratuits" },
+        ],
         title: 'Suppléments autorisés',
         essential: "Trois suppléments seulement : réservation immédiate 4 €, réservation à l'avance 7 €, passager à partir du 5ème 5,50 €. Bagages : GRATUITS. Chien guide = transport gratuit.",
         narrative: "Les suppléments sont strictement encadrés par l'arrêté tarifaire annuel. Le conducteur ne peut PAS inventer de supplément ni en majorer le montant : la liste est limitative. Tout supplément non prévu est constitutif d'une majoration illégale, sanctionnée par une amende et un signalement préfectoral.\n\nPour les taxis parisiens, trois suppléments seulement sont autorisés (tarifs 2026) : (1) la réservation immédiate — 4 € ; (2) la réservation à l'avance — 7 € ; (3) le supplément passager — 5,50 € à partir de la 5ème personne transportée. C'est tout. Les BAGAGES ne donnent plus lieu à AUCUN supplément : valises, sacs et poussettes sont inclus dans le prix de la course. Il n'existe pas non plus de supplément « animal » dans la grille parisienne — l'ancien régime (4ème passager, bagages volumineux, animaux) a été supprimé et reste un piège classique de QCM périmé.\n\nEXCEPTION FONDAMENTALE : les chiens guides d'aveugle et chiens d'assistance pour personnes handicapées sont transportés GRATUITEMENT et OBLIGATOIREMENT. Refuser leur transport est une discrimination réprimée par la loi (article L3121-8 du Code des transports), sanctionnée pénalement. De même, refuser un client en fauteuil roulant ou avec assistance technique est illégal. À l'inverse, sont strictement INTERDITS : le pourboire « obligatoire », l'arrondi systématique à la hausse, la majoration pour paiement carte, la surfacturation pour clientèle étrangère (discrimination tarifaire).",
@@ -1736,6 +1886,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'tx75-equipements',
+        keyFigures: [
+          { value: "150 €", label: "refus de carte bancaire" },
+        ],
         title: 'Équipements obligatoires',
         essential: "Lumineux (vert = libre, rouge = occupé), taximètre scellé, TPE obligatoire pour tout montant.",
         narrative: "Un taxi parisien est immédiatement reconnaissable à ses équipements normalisés. Cette uniformisation visuelle, imposée par la préfecture, protège le client (identification facile, distinction avec les VTC) et le conducteur (preuve de légitimité, dissuasion de la concurrence déloyale). Chaque équipement obligatoire fait l'objet de contrôles techniques périodiques.\n\nLe LUMINEUX, fixé sur le toit, indique « TAXI PARISIEN » avec une lettre tarifaire visible (A, B, C, D) qui change automatiquement selon le tarif en vigueur. La couleur VERTE signifie « libre » (disponible pour une course), la couleur ROUGE signifie « occupé » ; un lumineux ÉTEINT indique que le taxi est hors service (fin de service, retour au garage). Un lumineux défectueux empêche d'exercer. Le TAXIMÈTRE doit être homologué (norme française), scellé par un installateur agréé (toute manipulation rompt le scellé et est constitutive de fraude), et vérifié annuellement (contrôle technique métrologique). Sa précision est essentielle : un taximètre dérivant en faveur du chauffeur expose à des sanctions lourdes.\n\nLe TPE (Terminal de Paiement Électronique) est OBLIGATOIRE et doit être en état de fonctionnement (article L.3121-11-2 du Code des transports, issu de la loi Thévenoud). La carte bancaire doit être acceptée pour TOUT MONTANT, sans minimum. Refuser un paiement carte pour 5 € est aussi illégal que de le refuser pour 100 €. Sanction : 150 € d'amende + signalement préfecture. De plus, le conducteur ne peut pas facturer un supplément pour paiement carte (majoration interdite). Autres équipements obligatoires : la carte affichage des tarifs visible côté passager, l'attestation d'aptitude médicale, et désormais l'application LeTaxi pour la géolocalisation (registre national).",
@@ -1770,6 +1923,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'tx75-obligations',
+        keyFigures: [
+          { value: "25 €", label: "reçu obligatoire au-delà" },
+        ],
         title: 'Obligations taxi',
         essential: "Obligation de transport sauf motif légitime. Itinéraire le plus court ou rapide au choix du client.",
         narrative: "Le taxi exerce une mission de service public. Cette qualification, qui peut sembler théorique, génère des obligations très concrètes que n'a pas le VTC. La principale est l'OBLIGATION DE TRANSPORT : un taxi en service, signalé libre, ne peut pas refuser un client sans motif légitime. C'est la contrepartie du monopole de la maraude et du numerus clausus.\n\nLes motifs légitimes de refus sont strictement encadrés : fin de service déclarée et signalée (lumineux éteint), incompatibilité de sécurité (client visiblement violent, en état d'ébriété avec risque, transport d'objets dangereux), animal non autorisé hors chiens guides, ou impossibilité matérielle (taxi accidenté, panne en cours). Le refus pour motif « trop loin », « pas rentable », « mauvais quartier » est ILLÉGAL et expose à une amende + suspension. En cas de doute, le conducteur doit pouvoir justifier objectivement son refus.\n\nL'ITINÉRAIRE est également encadré. Le conducteur doit prendre soit le trajet le PLUS COURT (en distance), soit le plus RAPIDE (en temps), au choix du client. Si le client ne précise rien, le conducteur prend le trajet le plus court par défaut. Détour non justifié = surfacturation possible. Inversement, si le client demande un itinéraire particulier (panoramique, évitement d'une zone), le conducteur doit s'exécuter et le tarif suit (taximètre). L'INFORMATION TARIFAIRE est dès la prise en charge : le tarif en cours doit être annoncé ou visible (lettre A, B, C, D affichée), et un reçu doit être remis à la fin (obligatoire si demandé, automatique au-delà de 25 €).",
@@ -1852,6 +2008,10 @@ export const revisionModules: RevisionModule[] = [
     cards: [
       {
         id: 'topo-arrondissements',
+        keyFigures: [
+          { value: "20", label: "arrondissements en spirale" },
+          { value: "75116", label: "Passy-Chaillot (nord du 16e)" },
+        ],
         title: 'Arrondissements',
         essential: "20 arrondissements en spirale depuis le centre. Code postal = 75 + n° arrondissement.",
         narrative: "Paris est organisé en 20 arrondissements numérotés selon une spirale qui démarre au centre (le Louvre, 1er arrondissement) et se déroule dans le sens des aiguilles d'une montre vers l'extérieur. Cette logique en escargot, mise en place par Haussmann en 1860, n'a rien d'arbitraire : elle reflète l'extension historique de la ville et permet, une fois mémorisée, de localiser instantanément n'importe quelle adresse.\n\nLa Seine sépare Paris en deux rives. La RIVE DROITE (au nord de la Seine) regroupe les arrondissements 1, 2, 3, 4, puis 8 à 12, puis 16 à 20. C'est la rive des affaires, des grands magasins, des théâtres. La RIVE GAUCHE (au sud) regroupe les arrondissements 5, 6, 7, 13, 14, 15. C'est traditionnellement la rive intellectuelle (Sorbonne, éditeurs, ministères). Cette distinction est culturellement forte et utilisée dans la facturation des forfaits aéroports (rives différentes = tarifs différents).\n\nLe code postal parisien est toujours « 75 0XX » où XX est le numéro d'arrondissement sur 2 chiffres. Ainsi : 75001 = 1er, 75008 = 8ème, 75016 = 16ème, 75020 = 20ème. Exception : le 16ème possède deux codes postaux — 75016 pour sa partie SUD (Auteuil) et 75116 pour sa partie NORD (Passy, Chaillot). Cette dualité piège les conducteurs néophytes. À l'examen comme sur le terrain, savoir convertir un code postal en arrondissement et inversement est une compétence de base testée systématiquement.",
@@ -1886,6 +2046,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'topo-monuments',
+        keyFigures: [
+          { value: "8 km", label: "axe Louvre → La Défense" },
+          { value: "12", label: "avenues à l'Étoile" },
+        ],
         title: 'Monuments majeurs',
         essential: "Axe historique : Louvre → Tuileries → Concorde → Champs → Arc de Triomphe → La Défense.",
         narrative: "Les monuments parisiens ne sont pas seulement des points touristiques : ce sont des REPÈRES DE NAVIGATION essentiels au conducteur professionnel. Un client qui dit « emmenez-moi près de la Tour Eiffel » exprime une zone (7ème, Champ-de-Mars), pas une adresse. Connaître la localisation précise, l'arrondissement, la station de métro et les axes d'accès de chaque grand monument différencie immédiatement le conducteur expert du débutant.\n\nL'AXE HISTORIQUE de Paris est l'épine dorsale de la ville : il part de la Pyramide du Louvre, traverse les jardins des Tuileries, la place de la Concorde, remonte les Champs-Élysées jusqu'à la place de l'Étoile (Arc de Triomphe), puis se prolonge par l'avenue de la Grande Armée et l'avenue Charles-de-Gaulle jusqu'à La Défense (Grande Arche). Cet axe rectiligne de 8 km est le principal repère est-ouest de Paris. Le connaître par cœur permet de comprendre 70 % des trajets touristiques.\n\nLes monuments-phares à mémoriser : TOUR EIFFEL (7ème, Champ-de-Mars, métro Bir-Hakeim ou Trocadéro pour la vue) ; ARC DE TRIOMPHE (8ème, place Charles-de-Gaulle anciennement place de l'Étoile, croisement de 12 avenues — piège visuel et nominal) ; SACRÉ-CŒUR (18ème, butte Montmartre, métro Anvers + funiculaire ou Abbesses) ; NOTRE-DAME (4ème, Île de la Cité, métro Cité) ; LOUVRE (1er, métro Palais-Royal ou Louvre-Rivoli) ; OPÉRA GARNIER (9ème, métro Opéra) ; PANTHÉON (5ème, place du Panthéon, RER Luxembourg). Attention : « place de l'Étoile » et « place Charles-de-Gaulle » désignent le même lieu.",
@@ -1920,6 +2084,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'topo-gares',
+        keyFigures: [
+          { value: "6", label: "grandes gares parisiennes" },
+          { value: "300 m", label: "entre gare du Nord et de l'Est" },
+        ],
         title: 'Gares SNCF',
         essential: "6 grandes gares, chacune dessert une direction géographique précise.",
         narrative: "Les six grandes gares parisiennes sont organisées selon une logique géographique simple : chaque gare dessert la région française vers laquelle elle pointe, plus les pays voisins dans cette direction. Mémoriser cette logique évite l'erreur fatale qui consiste à déposer un client à la mauvaise gare — perte de train assurée et plainte client systématique.\n\nGARE DU NORD (10ème) : dessert le nord de la France (Lille, Calais), la Belgique, les Pays-Bas, le Royaume-Uni (Eurostar via le tunnel sous la Manche). C'est la gare LA PLUS FRÉQUENTÉE D'EUROPE (700 000 voyageurs/jour). GARE DE L'EST (10ème, juste à côté du Nord) : dessert l'est de la France (Strasbourg, Reims), l'Allemagne, l'Europe centrale. Les deux gares sont proches mais distinctes — confusion fréquente. GARE DE LYON (12ème) : sud-est de la France (Lyon, Marseille, Côte d'Azur), Suisse, Italie. C'est le hub TGV vers le sud, énorme et complexe (Hall 1, Hall 2).\n\nGARE MONTPARNASSE (15ème) : ouest et sud-ouest (Bordeaux, Nantes, Bretagne, Toulouse). GARE D'AUSTERLITZ (13ème) : centre de la France et sud (Orléans, Toulouse partiellement, Espagne en train de nuit). GARE SAINT-LAZARE (8ème) : Normandie (Rouen, Le Havre, Caen, Deauville). Particularité : Saint-Lazare ne dessert AUCUN TGV — uniquement des trains régionaux et Intercités. Une autre piège classique d'examen.\n\nLe conducteur doit aussi anticiper le temps de dépose : ces gares ont des accès véhicules contraints, et la distance entre la dépose-minute et le quai peut atteindre 10-15 minutes à pied à Montparnasse ou Gare de Lyon.",
@@ -1955,6 +2123,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'topo-aeroports',
+        keyFigures: [
+          { value: "1 h", label: "Paris → CDG" },
+          { value: "30-45 min", label: "Paris → Orly" },
+          { value: "85 km", label: "Beauvais : hors forfait" },
+        ],
         title: 'Aéroports',
         essential: "CDG (Roissy) = 3 terminaux principaux. Orly = 4 terminaux. Forfaits taxi 2026.",
         narrative: "L'Île-de-France compte deux grands aéroports internationaux et deux secondaires. CHARLES-DE-GAULLE (CDG / Roissy) est le 1er aéroport français et le 2e européen (~76 millions de passagers/an). Il se situe à 25 km au nord-est de Paris, accessible par l'A1 (depuis la Porte de la Chapelle) ou l'A3 (depuis la Porte de Bagnolet). Le trajet prend 45 min à 1h15 selon le trafic — prévoir 1h en marge de sécurité pour un client qui décolle.\n\nCDG est composé de 3 terminaux principaux mais avec des SOUS-TERMINAUX nombreux : Terminal 1 (compagnies internationales hors Air France/SkyTeam), Terminal 2 (Air France et alliances SkyTeam, divisé en 2A, 2B, 2C, 2D, 2E, 2F, 2G), Terminal 3 (low-cost et charters). La confusion entre sous-terminaux du T2 est LE piège classique : T2E et T2F sont à 800 m l'un de l'autre, sans navette directe. Toujours demander la compagnie ET le numéro de terminal au client.\n\nORLY se situe à 14 km au sud de Paris, accessible par l'A6a et l'A6b (depuis la Porte d'Orléans) ou la N7. Trajet : 25-45 min selon trafic. Depuis 2019, les 4 terminaux historiques (Sud, Ouest, etc.) ont été renommés ORLY 1, 2, 3, 4. Orly 4 (ex-Orly Sud) accueille les vols internationaux long-courriers ; Orly 1, 2, 3 traitent essentiellement les vols domestiques et européens. LE BOURGET (à 7 km de CDG) est dédié à l'AVIATION D'AFFAIRES (jets privés). BEAUVAIS-TILLÉ est à 85 km au nord — clientèle low-cost (Ryanair, Wizz Air), forfait taxi non applicable (course longue distance).",
@@ -1990,6 +2163,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'topo-hopitaux',
+        keyFigures: [
+          { value: "15", label: "SAMU : orientation d'urgence" },
+        ],
         title: 'Hôpitaux',
         essential: "AP-HP = réseau public parisien. Pitié-Salpêtrière = le plus grand de France.",
         narrative: "L'Assistance Publique - Hôpitaux de Paris (AP-HP) est le plus grand centre hospitalier universitaire d'Europe : 39 hôpitaux, 100 000 personnels, 8 millions de patients/an. Connaître les principaux établissements et leurs spécialités est crucial pour le conducteur T3P, qui transporte régulièrement patients, familles et soignants. Une erreur d'hôpital sur une urgence médicale peut avoir des conséquences vitales.\n\nLes hôpitaux phares à mémoriser : PITIÉ-SALPÊTRIÈRE (13ème, boulevard de l'Hôpital) — le plus grand hôpital de France et d'Europe, toutes spécialités, urgences adultes 24/7, neurologie et cardiologie de référence. HEGP — Hôpital européen Georges-Pompidou (15ème, rue Leblanc) — moderne, urgences adultes, oncologie. COCHIN (14ème, faubourg Saint-Jacques) — maternité, médecine interne. NECKER-ENFANTS MALADES (15ème, rue de Sèvres) — référence pédiatrique nationale, urgences enfants. ROBERT-DEBRÉ (19ème, boulevard Sérurier) — autre grande pédiatrie. HÔTEL-DIEU (4ème, parvis Notre-Dame) — historique, sur l'Île de la Cité, urgences centre Paris.\n\nPour les urgences vitales, ne JAMAIS improviser : appeler le 15 (SAMU) qui orientera vers l'établissement le plus adapté selon la pathologie et la disponibilité. Pour les naissances : maternités proches de Cochin (14ème), Port-Royal (14ème), Robert-Debré (19ème), Necker (15ème), Trousseau (12ème). Hors AP-HP, l'HÔPITAL AMÉRICAIN (Neuilly) et l'HÔPITAL FRANCO-BRITANNIQUE (Levallois) accueillent une clientèle internationale aisée — souvent demandés par les VTC et taxis premium. Mémoriser les hôpitaux proches de son secteur d'activité est un investissement professionnel.",
@@ -2024,6 +2200,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'topo-axes',
+        keyFigures: [
+          { value: "35 km", label: "tour du périphérique" },
+          { value: "50 km/h", label: "sur le périph depuis 2024" },
+        ],
         title: 'Axes de circulation',
         essential: "Périphérique 35 km, saturé 7h-9h et 17h-20h. A1 → CDG, A6 → Orly.",
         narrative: "Le BOULEVARD PÉRIPHÉRIQUE est l'axe de circulation le plus emprunté de France (1,1 million de véhicules/jour). Long de 35 km, il forme la ceinture de Paris en suivant l'ancienne enceinte de Thiers. Il comporte deux sens : INTÉRIEUR (sens des aiguilles d'une montre) et EXTÉRIEUR (sens inverse). Sa vitesse maximale est de 50 km/h depuis le 1er octobre 2024 (auparavant 70 km/h). En heures de pointe (7h-9h et 17h-20h en semaine), la vitesse moyenne tombe à 10-20 km/h.\n\nLes ALTERNATIVES au périphérique sont essentielles à connaître. Les BOULEVARDS DES MARÉCHAUX (porte par porte, à l'intérieur du périph) offrent un itinéraire de contournement plus lent mais plus régulier. Les AXES TRANSVERSAUX intra-muros : axe nord-sud (boulevards de Sébastopol et Saint-Michel), axe est-ouest (rue de Rivoli, qui depuis 2020 est partiellement réservée aux vélos et bus). Les VOIES SUR BERGES rive droite et gauche sont en grande partie piétonisées depuis 2016 — ne plus les considérer comme un axe automobile rapide.\n\nLes AUTOROUTES de sortie de Paris à mémoriser : A1 (Porte de la Chapelle) → Lille, CDG. A3 (Porte de Bagnolet) → CDG alternatif, Belgique. A4 (Porte de Bercy) → Reims, Strasbourg. A6 (Porte d'Orléans / Porte d'Italie) → Lyon, Orly. A10 (Porte d'Orléans) → Orléans, Bordeaux. A13 (Porte d'Auteuil) → Rouen, Normandie. A14 (La Défense) → A13 vers Normandie. A86 = grand contournement (super-périphérique à 5-10 km de Paris). Connaître la « porte » associée à chaque destination divise par deux le temps de réflexion du conducteur.",
@@ -2059,6 +2239,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'topo-places',
+        keyFigures: [
+          { value: "12", label: "avenues, priorité à droite (Étoile)" },
+        ],
         title: 'Places et carrefours',
         essential: "Place de l'Étoile = 12 avenues. République = manifestations fréquentes.",
         narrative: "Les grandes places parisiennes sont à la fois des repères géographiques et des NŒUDS DE CIRCULATION particulièrement complexes. Maîtriser leur géométrie, les avenues qui les croisent, et les règles de priorité spécifiques évite les erreurs de trajet et les fausses manœuvres devant les clients.\n\nLA PLACE CHARLES-DE-GAULLE (ex-Étoile, 8ème/16ème/17ème) est emblématique : 12 avenues y convergent (Champs-Élysées, Foch, Grande Armée, Wagram, Hoche, Friedland, Marceau, Iéna, Kléber, Victor-Hugo, Carnot, Mac-Mahon). La règle de circulation est UNIQUE EN FRANCE : priorité à droite SANS exception (les véhicules entrant ont la priorité sur ceux déjà engagés). C'est l'un des rares carrefours où la sortie est plus complexe que l'entrée. Conseil : viser sa sortie dès l'entrée et ajuster progressivement.\n\nPLACE DE LA CONCORDE (8ème) : la plus grande place de Paris (8,64 ha), au pied de l'obélisque de Louxor. Carrefour entre les Tuileries, les Champs-Élysées, le pont de la Concorde et la rue Royale. Très large mais avec une signalisation dense (feux multiples). PLACE DE LA BASTILLE (4ème/11ème/12ème, à la jonction des trois arrondissements) : carrefour de l'Opéra Bastille, des boulevards Beaumarchais et Henri-IV. PLACE DE LA RÉPUBLIQUE (3ème/10ème/11ème) : grande place semi-piétonne depuis 2013, statue de Marianne. ATTENTION : c'est le LIEU DES MANIFESTATIONS PARISIENNES par excellence. Tous les samedis et lors de tout événement social, la place est partiellement ou totalement bloquée — itinéraires de contournement obligatoires (rue du Faubourg-du-Temple, boulevard Magenta).",
@@ -2107,6 +2290,9 @@ export const revisionModules: RevisionModule[] = [
     cards: [
       {
         id: 'rel-accueil',
+        keyFigures: [
+          { value: "20 s", label: "pour la première impression" },
+        ],
         title: 'Première impression',
         essential: "Les 20 premières secondes déterminent l'impression générale.",
         narrative: "La psychologie de la perception est sans appel : un client se forge une opinion durable du conducteur en moins de 20 secondes. Cette « première impression » repose à 55 % sur le non-verbal (apparence, posture, regard), 38 % sur le paraverbal (ton, débit, volume) et seulement 7 % sur les mots eux-mêmes. Tout ce que le conducteur fera ensuite — même excellent — devra soit confirmer, soit corriger cette image initiale.\n\nQuatre piliers structurent un accueil professionnel. La PONCTUALITÉ : arriver à l'heure ou prévenir par SMS dès qu'un retard de plus de 3 min est probable. Un client qui a réservé pour 8h compte sur 8h, pas sur « entre 8h et 8h10 ». La TENUE du conducteur : propre, repassée, sans odeur (parfum trop prononcé = aussi gênant qu'odeur corporelle). Le VÉHICULE : intérieur aspiré, pas d'odeur de tabac (interdit légalement dans tout véhicule transportant un mineur, et déconseillé en toute circonstance pro), tableau de bord rangé. Le PREMIER CONTACT : descendre du véhicule, regarder le client dans les yeux, sourire sincère, « Bonjour Madame/Monsieur » clair, ouverture de portière côté trottoir.\n\nL'anticipation différencie l'expert du novice. Ouvrir le coffre AVANT que le client ne demande, proposer de l'aide pour les bagages lourds, indiquer la portière avec un geste de la main. Ces micro-attentions coûtent 5 secondes mais multiplient la note client. À l'inverse, rester téléphone à la main pendant que le client charge ses propres bagages dans le coffre est rédhibitoire.",
@@ -2175,6 +2361,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'rel-conduite-confort',
+        keyFigures: [
+          { value: "100-200 m", label: "d'anticipation, zéro à-coup" },
+        ],
         title: 'Conduite et confort',
         essential: "Conduite souple = passager rassuré. Anticiper pour éviter les à-coups.",
         narrative: "La qualité de la conduite est le critère le plus directement perceptible par le client : il la SUBIT physiquement. Un seul freinage brutal peut suffire à dégrader toute la note d'une course parfaite par ailleurs. À l'inverse, une conduite fluide rassure même un passager initialement nerveux et signe un conducteur expert.\n\nLe principe fondamental est l'ANTICIPATION. Lire la circulation 100-200 m à l'avance permet de lever le pied progressivement plutôt que de freiner brusquement à la dernière seconde. Sur le périph, repérer un ralentissement à distance et décélérer en relâchant l'accélérateur (frein moteur) est plus confortable qu'un coup de frein sec. En ville, anticiper le passage au rouge d'un feu en levant le pied 50 m avant évite l'à-coup. La règle d'or : si le passager doit se cramponner, c'est qu'on a mal conduit.\n\nLE CONFORT THERMIQUE est l'autre dimension cruciale, particulièrement en saison. La climatisation doit être adaptée AVANT la montée du client (préchauffage en hiver, refroidissement en été). Une fois le client à bord, DEMANDER : « La température vous convient-elle ? Souhaitez-vous que j'ajuste la climatisation ? » Ne pas demander = présumer = risque de mécontentement silencieux. Pour les véhicules avec sièges multi-zones, proposer un réglage individuel côté passager arrière. ENFIN, expliquer ses choix d'itinéraire si le client semble s'interroger : la transparence évite la suspicion de détour facturé. « Je prends les quais car les boulevards sont saturés à cette heure, ce sera plus rapide » suffit à rassurer.",
@@ -2209,6 +2398,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'rel-conflits',
+        keyFigures: [
+          { value: "17", label: "police, si danger réel" },
+        ],
         title: 'Gestion des conflits',
         essential: "Rester calme, écouter, reformuler, s'excuser si nécessaire, proposer une solution.",
         narrative: "Tout conducteur T3P, quelle que soit son ancienneté, sera confronté à des conflits clients : retard, désaccord sur l'itinéraire, contestation tarifaire, énervement personnel du client. La compétence professionnelle ne consiste pas à éviter ces situations (impossibles) mais à les DÉSAMORCER avec méthode. Un client mécontent bien traité devient souvent un client fidèle ; mal traité, il publie une note 1 étoile qui coûte 10 courses futures.\n\nLa méthode éprouvée est l'ÉCOUTE ACTIVE - REFORMULATION - EXCUSE - SOLUTION. Étape 1 : laisser le client EXPRIMER sa frustration sans interrompre, même si c'est injuste, même si on n'est pas d'accord. La parole évacue la tension. Interrompre = redoubler la colère. Étape 2 : REFORMULER pour montrer qu'on a compris : « Si je comprends bien, vous trouvez que le trajet a pris trop de temps et que ça a impacté votre rendez-vous, c'est bien ça ? » Étape 3 : S'EXCUSER, même si on n'est pas directement responsable : « Je suis sincèrement désolé que cette situation vous ait causé du désagrément. » L'excuse ne reconnaît pas la faute, elle reconnaît le ressenti. Étape 4 : PROPOSER une solution : geste commercial, explication factuelle, contact ultérieur.\n\nDeux interdits absolus. JAMAIS hausser le ton ou monter en agressivité, même provoqué — un conducteur professionnel ne perd jamais son calme en service, c'est sa marque de fabrique. JAMAIS de violence verbale ou physique : insulter ou bousculer un client est un délit pénal (outrage, violence) qui détruit immédiatement la carrière. Si la situation dégénère réellement (client violent, ivre, menaçant), arrêter le véhicule en zone sûre, descendre, appeler le 17. La sécurité prime sur le chiffre d'affaires.",
@@ -2243,6 +2435,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'rel-fin-course',
+        keyFigures: [
+          { value: "3 / 10", label: "bouche-à-oreille : satisfait / déçu" },
+        ],
         title: 'Fin de course',
         essential: "La dernière impression compte autant que la première.",
         narrative: "La fin de course est sous-estimée par les conducteurs débutants, qui considèrent qu'une fois arrivés, la prestation est terminée. C'est une erreur stratégique majeure : les 30 dernières secondes pèsent autant que les 20 premières dans le souvenir du client. C'est le moment où il décide de noter 5 étoiles ou 4, de recommander ou pas, de redemander le même conducteur ou de zapper.\n\nLE PROTOCOLE de fin de course professionnel comporte 5 actes. (1) ANNONCER l'arrivée à 30-60 secondes : « Nous arrivons à destination, monsieur. » Cela permet au client de ranger ses affaires, de préparer son paiement, de finir un mail. (2) STATIONNER avec discernement : au plus près de l'entrée si possible, du bon côté (trottoir), en sécurité (pas en double file dangereuse pour le client qui descend). (3) RAPPELER les effets personnels : « N'oubliez pas de vérifier que vous avez bien toutes vos affaires : téléphone, sac, etc. » Ce rappel évite 90 % des oublis. (4) AIDER si nécessaire : descendre, ouvrir la portière côté trottoir, sortir les bagages du coffre, les déposer délicatement. (5) REMERCIER chaleureusement : « Merci pour la course, je vous souhaite une excellente fin de journée. »\n\nAPRÈS LE DÉPART, vérification systématique du véhicule : banquette arrière (téléphones, portefeuilles, gants, écouteurs), coffre (objet oublié, valise), sièges (papiers tombés). Un objet retrouvé doit être remonté immédiatement à la plateforme (Uber, Bolt) ou directement au client si contact disponible. La restitution rapide d'un objet oublié crée un client fidèle à vie. À l'inverse, ne pas vérifier = objet oublié signalé = plainte + procédure + image dégradée. Statistique éprouvée : un client satisfait parle de l'expérience à 3 personnes en moyenne ; un client mécontent à 10. La dernière impression est l'amplificateur de toute la course.",
@@ -2278,6 +2473,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'rel-clienteles-specifiques',
+        keyFigures: [
+          { value: "0 €", label: "chien guide : gratuit, obligatoire" },
+        ],
         title: 'Clientèles spécifiques',
         essential: "S'adapter sans préjugés. Chiens guides = transport obligatoire et gratuit.",
         narrative: "Chaque profil de clientèle a ses attentes spécifiques. Le conducteur professionnel doit savoir adapter son comportement, son rythme et son service à la personne en face de lui, sans jamais tomber dans le stéréotype ni la condescendance. L'adaptation est une marque de respect, pas une discrimination.\n\nLES PERSONNES EN SITUATION DE HANDICAP. La règle absolue : PROPOSER l'aide sans l'IMPOSER. Demander : « Souhaitez-vous que je vous aide à monter / à charger votre fauteuil ? » Si oui, suivre les indications du client (chacun a sa technique). Si non, respecter. Pour les fauteuils roulants, le conducteur doit savoir les plier rapidement et les charger sans les abîmer. Le refus de transport pour cause de handicap est un DÉLIT pénal (article 225-2 du Code pénal : jusqu'à 3 ans d'emprisonnement et 45 000 € d'amende). Les chiens guides et chiens d'assistance sont transportés GRATUITEMENT et obligatoirement (article L3121-8 du Code des transports) — refus = délit aggravé.\n\nLES PERSONNES ÂGÉES : prendre le temps, parler plus distinctement (pas plus fort, juste plus articulé), conduire en douceur, aider à attacher la ceinture si demandé. Anticiper que monter et descendre prend plus de temps. LES ENFANTS : siège enfant si fourni par les parents, ceinture obligatoire, conduite particulièrement souple. LES TOURISTES : quelques mots dans leur langue, anecdote brève sur Paris, recommandation d'un restaurant si demandé. LES VOYAGEURS D'AFFAIRES : efficacité maximale, discrétion absolue (ne pas écouter leurs appels, ne pas commenter), ponctualité irréprochable. Anticiper les besoins (chargeur USB, eau, journaux) différencie le service premium du standard.",
@@ -2326,6 +2524,11 @@ export const revisionModules: RevisionModule[] = [
     cards: [
       {
         id: 'vmd-accidentologie',
+        keyFigures: [
+          { value: "22 %", label: "des tués : les deux-roues" },
+          { value: "2 %", label: "du trafic seulement" },
+          { value: "80 %", label: "des accidents évitables" },
+        ],
         title: 'Accidentologie & facteurs de risque',
         essential: "Les usagers de deux-roues motorisés représentent environ 22 % des tués sur la route alors qu'ils ne pèsent que ~2 % du trafic. Pour un moto-taxi pro, la conduite préventive n'est pas une option : c'est le cœur du métier.",
         narrative: "L'Observatoire national interministériel de la sécurité routière (ONISR) le rappelle chaque année : à kilomètre parcouru égal, un motard a un risque d'être tué environ 22 fois supérieur à celui d'un automobiliste. Cette sur-mortalité s'explique par l'absence de carrosserie, l'instabilité intrinsèque du 2-roues et la moindre visibilité dans le trafic.\n\nLes facteurs aggravants sont parfaitement identifiés par le référentiel RS5636 : la vitesse excessive ou inadaptée, l'alcool (seuil légal abaissé à 0,2 g/L pour les jeunes permis), les stupéfiants (tolérance zéro), certains médicaments (pictogramme niveau 2 ou 3), mais aussi le stress, la fatigue et le manque de sommeil. Un moto-taxi qui enchaîne 12 heures sans pause cumule un déficit d'attention équivalent à 0,5 g/L d'alcool dans le sang.\n\nL'hygiène de vie devient donc un sujet professionnel : sommeil suffisant, pauses régulières, hydratation, alimentation légère pendant le service. C'est ce qui distingue le pilote professionnel du conducteur du dimanche.",
@@ -2360,6 +2563,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vmd-dynamique',
+        keyFigures: [
+          { value: "× 4", label: "freinage si vitesse × 2" },
+          { value: "2 s", label: "de sécurité (3 sous la pluie)" },
+        ],
         title: 'Dynamique de la motocyclette',
         essential: "L'effet gyroscopique stabilise la moto à vitesse soutenue mais elle devient instable à basse vitesse. La distance d'arrêt suit une loi quadratique : doubler la vitesse quadruple la distance de freinage.",
         narrative: "Comprendre la physique de sa moto, c'est comprendre ses limites. À haute vitesse, les roues en rotation génèrent un effet gyroscopique qui maintient la moto debout — c'est pour cela qu'un 2-roues lancé est stable. À basse vitesse (manœuvres, parking, embouteillages), cet effet disparaît : la moto devient instable et exige un pilotage actif (jeu de gaz, embrayage, frein arrière).\n\nLa distance d'arrêt se décompose en deux : la distance de réaction (parcourue pendant le temps de perception ≈ 1 s) et la distance de freinage proprement dite. La distance de réaction est proportionnelle à la vitesse, mais la distance de freinage suit le carré de la vitesse — c'est la loi du V². À 50 km/h sur sol sec, on compte ≈ 25 m d'arrêt total. À 100 km/h, on est déjà à ≈ 80 m. Sur sol mouillé, multiplier par 1,5 à 2.\n\nL'adhérence dépend de la qualité du pneu (gomme, sculpture, pression), de l'état de la route (sec, mouillé, gravillons, peinture, plaques d'égout) et de la température. Un pneu sous-gonflé chauffe, perd de l'adhérence et peut éclater. La vérification de pression est une obligation pro avant la prise de service.",
@@ -2394,6 +2601,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vmd-conduite-preventive',
+        keyFigures: [
+          { value: "70/30", label: "freinage avant / arrière (sec)" },
+          { value: "2017", label: "ABS obligatoire (> 125 cm³)" },
+        ],
         title: "Conduite préventive & situations d'urgence",
         essential: "Anticiper > réagir. Le freinage d'urgence se fait avec les deux freins, moto droite, regard porté loin. En courbe, ne jamais bloquer les roues : préférer l'évitement.",
         narrative: "La conduite préventive repose sur trois piliers : observation, anticipation, marges de sécurité. L'observation, c'est balayer en permanence le champ visuel à 360° (rétros, angles morts, intersections). L'anticipation, c'est lire les indices : enfant au bord du trottoir, voiture qui ralentit sans clignoter, bus à l'arrêt. Les marges, c'est garder une distance avant (≥ 2 secondes), latérale (couloirs, portières), et adapter la vitesse à la visibilité.\n\nEn situation d'urgence, le pilote pro doit avoir des automatismes. Le freinage d'urgence se fait moto droite, regard porté loin (jamais sur l'obstacle, sinon on y va), avec une répartition typique 70 % avant / 30 % arrière sur le sec. L'ABS, désormais obligatoire sur toute moto neuve > 125 cm³ depuis 2017, empêche le blocage mais ne réduit pas la distance — il préserve la trajectoire.\n\nL'évitement obéit à la règle du regard : 'on va où on regarde'. En cas d'obstacle soudain, regarder la sortie (et non l'obstacle), incliner la moto par contre-braquage léger, puis redresser. Freiner FORT en courbe = chute quasi certaine ; mieux vaut élargir la trajectoire et continuer.",
@@ -2428,6 +2639,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vmd-entretien',
+        keyFigures: [
+          { value: "1 mm", label: "usure légale mini des pneus" },
+        ],
         title: 'Vérifications & entretien du véhicule',
         essential: "Le conducteur engage sa responsabilité civile ET pénale sur l'état mécanique de sa moto. Contrôle visuel obligatoire avant chaque prise de service.",
         narrative: "Le moto-taxi est responsable de l'état de son outil de travail. La jurisprudence est claire : en cas d'accident lié à un défaut mécanique (pneus lisses, frein défaillant, éclairage HS), la responsabilité pénale du conducteur est engagée — au titre de l'article 121-3 du Code pénal (mise en danger par négligence).\n\nLe contrôle pré-service tient en 2-3 minutes et couvre les points vitaux : PNEUS (pression à froid selon constructeur, usure mini légale 1 mm sur toute la surface, état général sans hernie ni coupure), FREINS (test statique avant départ, course de levier normale), ÉCLAIRAGE (feux croisement/route, position, stop, clignotants, plaque), NIVEAUX (huile moteur, liquide de frein dans le réservoir, liquide de refroidissement si visible), COMMANDES (gaz, embrayage retour franc).\n\nL'entretien périodique suit le carnet constructeur (révisions tous les 6 000 à 10 000 km selon modèle). Le carnet d'entretien à jour est une PREUVE en cas de contrôle ou de litige assurance. Pour un VMDTR, on recommande une révision rapprochée tous les 4 000 à 5 000 km vu l'intensité d'usage.",
@@ -2458,6 +2672,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vmd-carte-pro',
+        keyFigures: [
+          { value: "3 ans", label: "de permis A minimum" },
+          { value: "5 ans", label: "validité de la carte" },
+          { value: "14 h", label: "formation pour renouveler" },
+        ],
         title: 'Carte professionnelle VMDTR',
         essential: "Délivrée par le préfet après réussite de l'examen RS5636. Validité 5 ans, renouvelable avec formation continue. Permis de catégorie A en cours de validité depuis au moins 3 ans obligatoire.",
         narrative: "La carte professionnelle VMDTR (Véhicule Motorisé à Deux ou Trois Roues) est régie par les articles L.3123-1 et suivants du Code des transports, issus de la loi Thévenoud du 1er octobre 2014. Elle conditionne l'exercice légal de l'activité : sans carte, c'est exercice illégal d'une profession réglementée (sanctions pénales jusqu'à 1 an d'emprisonnement et 15 000 € d'amende — Art. L.3124-9).\n\nLes conditions de délivrance sont strictes : être titulaire d'un permis de catégorie A en cours de validité depuis au moins 3 ans (le permis B seul ne suffit jamais pour le VMDTR), avoir réussi l'examen organisé par les chambres des métiers et de l'artisanat (CMA), justifier d'une aptitude médicale (examen par médecin agréé), produire un bulletin n°2 de casier judiciaire compatible (condition d'honorabilité).\n\nLa carte est délivrée par le préfet du département de résidence (jamais la mairie, attention au piège QCM). Elle est valable 5 ans. Le renouvellement est conditionné à une formation continue de 14 h en CMA agréée. Elle doit être présentée à toute réquisition des forces de l'ordre et apposée de manière visible sur le véhicule pendant l'exploitation.",
@@ -2492,6 +2711,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vmd-reservation',
+        keyFigures: [
+          { value: "1 an + 15 000 €", label: "maraude : exercice illégal" },
+        ],
         title: 'Réservation préalable obligatoire (interdiction de maraude)',
         essential: "Le VMDTR ne peut prendre un client QU'APRÈS RÉSERVATION préalable. Pas de maraude, pas de stationnement sur emplacements taxis. C'est la frontière juridique majeure avec le taxi.",
         narrative: "Le principe de séparation entre taxi et VMDTR/VTC est posé par l'article L.3120-2 du Code des transports : seuls les taxis peuvent prendre un client 'sur la voie publique' sans réservation préalable (maraude). Les VTC et VMDTR, eux, sont soumis à l'obligation absolue de réservation préalable, formalisée par un justificatif daté (SMS, mail, capture d'app, ticket plateforme).\n\nConcrètement, cela interdit : 1) de stationner sur des emplacements réservés aux taxis (sanction = amende + immobilisation), 2) de circuler à vide en cherchant le client visuellement (la 'maraude électronique' via géolocalisation d'une app reste tolérée tant qu'il y a réservation), 3) de prendre un client qui hèle en pleine rue sans réservation préalable (refus obligatoire).\n\nAprès dépose du client, le VMDTR doit retourner à son lieu d'établissement ou se mettre en attente d'une nouvelle réservation, sans stationner aux endroits réservés aux taxis (gares, aéroports, stations dédiées). Cette obligation est contrôlée : en cas de doute, présenter le justificatif de réservation aux forces de l'ordre. Sans justificatif, présomption d'exercice illégal de la profession de taxi.",
@@ -2526,6 +2748,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vmd-vehicule',
+        keyFigures: [
+          { value: "> 40 kW", label: "puissance minimale" },
+          { value: "< 5 ans", label: "ancienneté maximale" },
+        ],
         title: 'Caractéristiques du véhicule & signalétique',
         essential: "Puissance > 40 kW et moins de 5 ans d'ancienneté (arrêté du 17 mars 2015). Signalétique réglementaire VMDTR obligatoire ; interdiction stricte des dispositifs visuels propres aux taxis (lumineux, damier).",
         narrative: "Les caractéristiques du véhicule VMDTR sont fixées par la réglementation (Code des transports et arrêté du 17 mars 2015). Le véhicule doit être un 2 ou 3 roues motorisé dont la puissance, inscrite sur le certificat d'immatriculation, est SUPÉRIEURE à 40 kW, et dont l'ancienneté est INFÉRIEURE à 5 ans. Autre spécificité : pas de contrôle technique, mais un entretien annuel attesté. S'y ajoute un équipement minimum de sécurité : ABS obligatoire (depuis 2017 pour les motos neuves > 125 cm³), béquille latérale stable, top-case homologué pour le rangement EPI passager.\n\nLa signalétique réglementaire prend la forme d'une vignette d'identification apposée de manière visible sur le véhicule, généralement à l'arrière. Elle mentionne le numéro d'inscription au registre des exploitants VTC/VMDTR géré par le ministère des Transports. Cette vignette permet aux contrôleurs et aux clients de vérifier l'authenticité de l'exploitant.\n\nA contrario, le VMDTR a INTERDICTION d'utiliser tout dispositif visuel évoquant le taxi : pas de lumineux 'TAXI' sur le top-case, pas de damier sur la carrosserie, pas de compteur horokilométrique apparent. Le non-respect = présomption d'exercice illégal de la profession de taxi. L'esprit du législateur : éviter toute confusion dans l'esprit du public.",
@@ -2602,6 +2828,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vmd-consignes-passager',
+        keyFigures: [
+          { value: "30 s", label: "de briefing avant chaque départ" },
+        ],
         title: 'Consignes au passager avant départ',
         essential: "Briefer le passager est une obligation pro (référentiel G(M)). 30 secondes de consignes claires = trajet sûr. Position, comportement en virage, communication, conduite à tenir en cas d'imprévu.",
         narrative: "Le briefing passager est l'un des points les plus évalués au G(M). Il se structure autour de 4 messages clés :\n\n1) POSITION : pieds toujours sur les repose-pieds (même à l'arrêt aux feux), mains posées sur les poignées de maintien du top-case ou autour de la taille du conducteur, dos droit, regard par-dessus l'épaule du conducteur (pas sur le côté qui crée un déséquilibre).\n\n2) COMPORTEMENT EN VIRAGE : ACCOMPAGNER l'inclinaison du conducteur (ne jamais 'contrer' en se redressant — c'est la cause majeure de chute avec passager novice). Regarder dans la même direction que le conducteur.\n\n3) COMMUNICATION : si intercom Bluetooth (standard moderne), tester avant départ. Sinon, signes convenus : tape épaule droite = arrêt rapide nécessaire, tape épaule gauche = ralentissement souhaité.\n\n4) CONDUITE EN CAS D'IMPRÉVU : ne pas descendre tant que le conducteur n'a pas dit 'OK', en cas de chute lâcher la moto et rouler sur le côté.\n\nCe briefing engage la responsabilité pro : un client non briefé qui chute peut invoquer un défaut de conseil.",
@@ -2632,6 +2861,11 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vmd-epi',
+        keyFigures: [
+          { value: "135 € + 3 pts", label: "défaut de casque" },
+          { value: "68 € + 1 pt", label: "défaut de gants" },
+          { value: "2016", label: "gants CE obligatoires depuis" },
+        ],
         title: 'Équipements de protection individuelle (EPI)',
         essential: "Casque homologué + gants certifiés CE moto = OBLIGATOIRES pour le conducteur ET le passager. Article R.431-1 du Code de la route. Pas d'EPI = pas de départ, refus de transport obligatoire.",
         narrative: "L'obligation du casque homologué pour conducteur ET passager d'un 2-roues motorisé remonte à 1973 (Art. R.431-1 du Code de la route). Depuis le 20 novembre 2016, s'y ajoute l'obligation de gants certifiés CE moto pour les deux occupants. Ce sont des obligations LÉGALES, pas des recommandations.\n\nLes normes en vigueur : casque homologué ECE 22.05 ou la nouvelle norme ECE 22.06 (entrée en vigueur progressive depuis 2021, plus exigeante sur les impacts obliques). Gants certifiés CE EN 13594 (norme spécifique gants moto, niveau 1 ou 2). Tout casque jet, intégral, modulable est accepté tant qu'il porte l'étiquette d'homologation ; les casques 'fashion', 'bol' non homologués sont INTERDITS.\n\nEn pratique pro, le VMDTR fournit les EPI au passager : casque (souvent en plusieurs tailles XS-XL, vérifié et nettoyé entre chaque client), gants, et idéalement blouson de protection. Le client peut refuser le casque proposé et apporter le sien si conforme. Si le client refuse de porter le casque ou les gants = REFUS DE TRANSPORT obligatoire (et non discriminatoire au sens de la loi).\n\nSanction pour défaut de casque : amende forfaitaire 135 €, retrait 3 points pour le conducteur ; pour défaut de gants : amende 68 € + 1 point.",
@@ -2666,6 +2900,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vmd-peur-passager',
+        keyFigures: [
+          { value: "50-70 %", label: "des novices ont peur" },
+        ],
         title: 'Gestion de la peur du passager',
         essential: "Anticiper et désamorcer la peur évite les mouvements parasites qui déséquilibrent la moto. Conduite progressive, communication, adaptation au profil sont les leviers du pro.",
         narrative: "La peur est une réaction physiologique normale pour 50 à 70 % des passagers novices. Elle se traduit par : raideur du corps (épaules contractées), tendance à contre-incliner en virage, mouvements brusques, agrippement excessif au conducteur. Tous ces signes augmentent l'instabilité de la moto et le risque de chute.\n\nLe rôle du pilote pro est triple. PRÉVENIR : identifier dès le briefing les signes de stress (questions répétitives, voix hésitante, gestes fermés) et adapter le ton (rassurant, posé, factuel). DÉTECTER en roulant : raideur perceptible dans le dos, mouvements de tête anxieux dans le rétro, agrippement marqué. ADAPTER : démarrer en douceur, virages amples au début, accélérations progressives, vitesse réduite de 10-15 % les premiers kilomètres, communication régulière par intercom ('tout va bien ?', 'on va bientôt prendre l'autoroute, vous me faites signe si trop vite').\n\nUne fois la confiance installée (généralement après 5-10 minutes), on peut revenir à un rythme normal. Mais certains passagers restent stressés tout le trajet : ne JAMAIS forcer le rythme par orgueil ou par contrainte horaire. Mieux vaut arriver 5 min en retard qu'avoir un passager qui contre-incline dans un virage rapide.",
@@ -2696,6 +2933,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vmd-marketing',
+        keyFigures: [
+          { value: "+30-50 %", label: "plus rapide en ville" },
+          { value: "20-30 %", label: "au-dessus du prix VTC" },
+        ],
         title: 'Marketing & positionnement',
         essential: "Connaître son marché, cibler une clientèle prioritaire, valoriser des atouts différenciants. Le VMDTR gagne sur la rapidité urbaine, pas sur le prix bas.",
         narrative: "Le marché du VMDTR en France reste de niche (~1 500 à 2 000 pros actifs) mais en croissance régulière, porté par la congestion urbaine et les besoins d'urgence. Trois grands segments structurent l'activité :\n\n1) B2B PREMIUM (cadres pressés, dirigeants, déplacements aéroport-bureau) : marges fortes, clients fidèles, exigence de ponctualité absolue. Vente directe ou via conciergeries d'entreprise.\n\n2) AÉROPORT (Roissy, Orly, Le Bourget) : forte volumétrie, prix encadrés par la concurrence, nécessité d'être référencé sur plateformes ou en partenariat hôtel.\n\n3) URGENCE & MÉDICAL (transport d'échantillons biologiques, documents urgents, escorte de cadres en retard) : marges très fortes, créneau spécialisé exigeant disponibilité 24/7.\n\nLe positionnement doit s'articuler autour des 3 avantages structurels du 2-roues : rapidité (gain de 30-50 % en zone congestionnée), ponctualité (engagement sur l'horaire d'arrivée), agilité (accès aux zones interdites aux 4-roues). La guerre des prix avec les VTC est PERDUE d'avance : un VMDTR doit se vendre 20-30 % plus cher qu'un VTC standard, et le justifier par le gain de temps. Le prix juste = coût de revient (carburant, entretien, assurance, formation, charges, amortissement) + marge cohérente (typiquement 20-40 %).",
@@ -2725,6 +2966,10 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vmd-fidelisation',
+        keyFigures: [
+          { value: "5 ×", label: "moins cher de fidéliser" },
+          { value: "80/20", label: "du CA vient de 20 % des clients" },
+        ],
         title: 'Fidélisation & prospection',
         essential: "Garder un client coûte environ 5 fois moins cher que d'en conquérir un nouveau (loi de Pareto marketing). La qualité de service constante + suivi proactif = base de la fidélisation pro.",
         narrative: "La fidélisation se construit sur quatre piliers : QUALITÉ CONSTANTE (ponctualité, courtoisie, hygiène moto/EPI irréprochable à chaque course), PERSONNALISATION (mémoriser les préférences : trajet habituel, température casque, marque d'eau préférée à offrir), SUIVI PROACTIF (anticiper les besoins récurrents — 'M. Dupont, je note votre Roissy de mercredi prochain ?'), AVANTAGES FIDÉLITÉ (tarifs préférentiels au-delà de X courses/mois, créneaux prioritaires).\n\nLa prospection B2B s'organise par cibles : hôtels 4-5* (conciergerie), entreprises de centre-ville (services généraux), cabinets d'avocats/notaires (urgences), studios de production (transports VIP), événements (Roland-Garros, Fashion Week, Salon du Bourget). La démarche se fait en porte-à-porte argumenté, avec carte de visite professionnelle, plaquette de référencement, et idéalement une course d'essai offerte.\n\nLe référencement sur plateformes (Heetch Moto, plateformes spécialisées B2B, conciergeries digitales type John Paul/Quintessentially) apporte un flux complémentaire, mais à marge réduite (commission 20-30 %). L'idéal pour un pro mature : 60-70 % de clients directs fidélisés + 30-40 % de plateforme pour combler les creux.\n\nATTENTION : la prospection ne peut JAMAIS prendre la forme de maraude. Pas de distribution de flyers en pleine rue à des passants, pas de stationnement 'pour se montrer' devant un hôtel sans réservation. Le démarchage doit être ciblé et professionnel (entreprises, conciergeries, RDV pris).",
@@ -2755,6 +3000,9 @@ export const revisionModules: RevisionModule[] = [
       },
       {
         id: 'vmd-communication',
+        keyFigures: [
+          { value: "40 %", label: "maxi par canal d'acquisition" },
+        ],
         title: 'Communication numérique & partenaires',
         essential: "Internet (site, réseaux sociaux, plateformes) et réseau de partenaires (hôtels, conciergeries, entreprises) sont les deux leviers d'acquisition principaux d'un VMDTR moderne.",
         narrative: "La communication d'un VMDTR moderne s'articule sur deux axes complémentaires : DIGITAL (visibilité, génération de leads) et PARTENARIATS (CA récurrent garanti).\n\nLe digital commence par un site web professionnel optimisé pour le référencement local (SEO local : 'moto taxi Paris', 'VMDTR Roissy'). Le site doit présenter clairement : services, tarifs indicatifs, zones desservies, contact (téléphone visible, formulaire, WhatsApp Business), références/témoignages, mentions légales conformes (Art. 19 LCEN). Les réseaux sociaux à cibler : LinkedIn pour la prospection B2B (publications régulières sur les actualités transport pro), Instagram pour l'image (photos de moto, témoignages, lifestyle pro), Google Business Profile pour le référencement local et les avis clients.\n\nL'inscription sur plateformes de réservation reconnues (Heetch Moto, plateformes B2B spécialisées) apporte un flux régulier mais avec commission (20-30 %). À utiliser comme complément, pas comme dépendance — un pro qui ne dépend qu'à 100 % d'une plateforme est en risque (déréférencement, baisse de commission unilatérale).\n\nLes partenariats sont le Graal commercial : un contrat-cadre avec un hôtel 4* peut représenter 10-30 courses/mois récurrentes ; un partenariat avec une conciergerie B2B (John Paul, Quintessentially, conciergeries d'entreprises) peut générer 50-100 courses/mois. Le partenariat repose sur la confiance : qualité irréprochable, disponibilité, facturation propre, communication fluide.",

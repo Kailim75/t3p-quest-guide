@@ -96,6 +96,27 @@ describe('progression des fiches', () => {
   });
 });
 
+describe('chiffres clés des fiches', () => {
+  it('chaque vignette est complète et les fiches en ont au plus 3', async () => {
+    const { getAllRevisionModules } = await import('@/data/revisionData');
+    const cards = getAllRevisionModules().flatMap((m) => m.cards);
+    const withFigures = cards.filter((c) => c.keyFigures?.length);
+
+    // La majorité des fiches ont des chiffres à mémoriser (59 rédigées).
+    expect(withFigures.length).toBeGreaterThanOrEqual(55);
+
+    for (const card of withFigures) {
+      expect(card.keyFigures!.length).toBeLessThanOrEqual(3);
+      for (const figure of card.keyFigures!) {
+        expect(figure.value.trim()).not.toBe('');
+        expect(figure.label.trim()).not.toBe('');
+        // Une vignette reste courte : c'est une photo mentale, pas une phrase.
+        expect(figure.label.length).toBeLessThanOrEqual(45);
+      }
+    }
+  });
+});
+
 describe('temps de lecture', () => {
   it('estime au moins une minute et grandit avec le contenu', () => {
     const courte = readingMinutes(fiche());
