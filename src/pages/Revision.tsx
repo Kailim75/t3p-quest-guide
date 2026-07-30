@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { ArrowLeft, BookOpen, ChevronRight, Lightbulb, GraduationCap, Search, X } from 'lucide-react';
+import { ArrowLeft, BookOpen, CheckCircle2, ChevronRight, Clock, Lightbulb, GraduationCap, RotateCcw, Search, X } from 'lucide-react';
 import { ModuleIcon } from '@/lib/moduleIcons';
 import { revisionDomainFor, useTargetExam } from '@/lib/targetExam';
+import { useQuizQuestions } from '@/hooks/useQuizQuestions';
+import { questionModulesFor } from '@/lib/ficheQuizMatch';
+import { readingMinutes } from '@/lib/ficheText';
+import { loadFicheProgress, moduleFicheProgress } from '@/lib/ficheProgress';
 import { searchFiches, searchTerms, accentInsensitiveRegex } from '@/lib/ficheSearch';
 import Header from '@/components/Header';
 import { getAllRevisionModules, RevisionModule } from '@/data/revisionData';
@@ -43,6 +47,9 @@ const Revision = () => {
   const [searchParams] = useSearchParams();
   const [target] = useTargetExam();
   const domainFilter = revisionDomainFor(target);
+  const { getByModules } = useQuizQuestions();
+  // Statuts « maîtrisée / à revoir » des fiches (cache local, synchronisé au compte)
+  const [ficheStore, setFicheStore] = useState(loadFicheProgress);
   const modules = getAllRevisionModules().filter(
     (m) => !domainFilter || m.domain === 'commun' || m.domain === domainFilter
   );
@@ -122,16 +129,33 @@ const Revision = () => {
                 className="border rounded-xl bg-card overflow-hidden scroll-mt-24"
               >
                 <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-secondary/50 data-[state=open]:bg-secondary/30">
-                  <div className="flex items-center gap-4 text-left">
+                  <div className="flex flex-1 items-center gap-4 text-left">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-cta/10 font-bold text-cta">
                       {index + 1}
                     </div>
-                    <span className="font-semibold text-foreground">{card.title}</span>
+                    <div className="min-w-0 flex-1">
+                      <span className="font-semibold text-foreground">{card.title}</span>
+                      <span className="mt-0.5 flex items-center gap-1 text-xs font-normal text-muted-foreground">
+                        <Clock className="h-3 w-3" />
+                        {readingMinutes(card)} min
+                      </span>
+                    </div>
+                    {ficheStore[card.id]?.status === 'maitrisee' && (
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-success" aria-label="Fiche maîtrisée" />
+                    )}
+                    {ficheStore[card.id]?.status === 'a-revoir' && (
+                      <RotateCcw className="h-5 w-5 shrink-0 text-warning" aria-label="Fiche à revoir" />
+                    )}
                   </div>
                 </AccordionTrigger>
-                
+
                 <AccordionContent className="px-6 pb-6 pt-2">
-                  <RevisionCardContent card={card} />
+                  <RevisionCardContent
+                    card={card}
+                    moduleQuestions={getByModules(questionModulesFor(selectedModule.moduleId))}
+                    status={ficheStore[card.id]?.status ?? null}
+                    onStatusChange={() => setFicheStore(loadFicheProgress())}
+                  />
                 </AccordionContent>
               </AccordionItem>
             ))}
@@ -250,7 +274,9 @@ const Revision = () => {
           </div>
         ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {modules.map((module) => (
+          {modules.map((module) => {
+            const avancement = moduleFicheProgress(module.cards.map((c) => c.id), ficheStore);
+            return (
             <button
               key={module.moduleId}
               onClick={() => setSelectedModule(module)}
@@ -281,8 +307,39 @@ const Revision = () => {
               <p className="text-sm text-muted-foreground line-clamp-2">
                 {module.examObjective}
               </p>
+
+              {/* Avancement de lecture du module */}
+              {avancement.travaillees > 0 ? (
+                <div className="mt-4">
+                  <div className="flex h-1.5 overflow-hidden rounded-full bg-secondary">
+                    <div
+                      className="bg-success"
+                      style={{ width: `${(avancement.maitrisees / avancement.total) * 100}%` }}
+                    />
+                    <div
+                      className="bg-warning"
+                      style={{ width: `${(avancement.aRevoir / avancement.total) * 100}%` }}
+                    />
+                  </div>
+                  <p className="mt-1.5 text-xs text-muted-foreground">
+                    {[
+                      avancement.maitrisees > 0 &&
+                        `${avancement.maitrisees} maîtrisée${avancement.maitrisees > 1 ? 's' : ''}`,
+                      avancement.aRevoir > 0 && `${avancement.aRevoir} à revoir`,
+                    ]
+                      .filter(Boolean)
+                      .join(' · ')}
+                    {' '}sur {avancement.total}
+                  </p>
+                </div>
+              ) : (
+                <p className="mt-4 text-xs text-muted-foreground/70">
+                  Pas encore commencé
+                </p>
+              )}
             </button>
-          ))}
+            );
+          })}
         </div>
         )}
 

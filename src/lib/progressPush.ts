@@ -63,6 +63,21 @@ export const pushChallenge = (date: string, score: number, total: number) => {
     });
 };
 
+export const pushFicheStatus = (ficheId: string, status: 'maitrisee' | 'a-revoir') => {
+  const userId = currentUserId;
+  if (!userId) return;
+
+  void supabase
+    .from('user_fiche_progress')
+    .upsert(
+      { user_id: userId, fiche_id: ficheId, status, updated_at: new Date().toISOString() },
+      { onConflict: 'user_id,fiche_id' }
+    )
+    .then(({ error }) => {
+      if (error) console.warn('Synchronisation fiches impossible', error);
+    });
+};
+
 export const pushTargetExam = (target: TargetExam) => {
   const userId = currentUserId;
   if (!userId) return;
