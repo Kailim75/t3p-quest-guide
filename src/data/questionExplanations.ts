@@ -1244,8 +1244,8 @@ export const questionExplanations: Record<string, QuestionExplanation> = {
     legalRef: "Arrêté préfectoral zone taxi Paris"
   },
   'tx75-024': {
-    content: "Les taxis parisiens appliquent différents tarifs : Tarif A (jour en semaine dans Paris), Tarif B (nuit 17h-10h, dimanches et fériés dans Paris), Tarif C (jour banlieue), Tarif D (nuit banlieue). Les tarifs B, C, D sont plus élevés que le tarif A.",
-    tip: "A = jour Paris. B = nuit/dimanche Paris. C = jour banlieue. D = nuit banlieue. De A à D = du moins cher au plus cher.",
+    content: "Les taxis parisiens appliquent trois tarifs : Tarif A (jour en semaine dans Paris, 10h-17h), Tarif B (nuit 17h-10h, dimanche en journée et jours fériés dans Paris, ou banlieue de jour), Tarif C (nuit du dimanche à Paris, banlieue de nuit et au-delà de la zone). Il n'existe PAS de tarif D à Paris — la grille à quatre lettres est celle des taxis de province.",
+    tip: "Paris = A, B, C seulement. Le tarif D (retour à vide de nuit) n'existe qu'en province — piège d'examen.",
     legalRef: "Arrêté préfectoral tarifs taxi Paris"
   },
   'tx75-025': {
