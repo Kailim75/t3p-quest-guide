@@ -1,11 +1,25 @@
-import { BookOpen, Lightbulb, FileText, AlertTriangle, Car, Brain, ScrollText, ClipboardCheck, Star, X } from 'lucide-react';
+import { BookOpen, Lightbulb, FileText, AlertTriangle, Car, Brain, ScrollText, ClipboardCheck, Star, X, CheckCircle2, RotateCcw } from 'lucide-react';
 import { RevisionCard } from '@/data/revisionData';
+import { Question } from '@/data/quizData';
+import { HighlightFigures } from '@/lib/ficheText';
+import { FicheStatus, setFicheStatus } from '@/lib/ficheProgress';
+import PracticalCaseBlock from '@/components/revision/PracticalCaseBlock';
+import FicheQuiz from '@/components/revision/FicheQuiz';
 
 interface RevisionCardContentProps {
   card: RevisionCard;
+  /** Questions de la banque officielle pour le mini-quiz de fin de fiche. */
+  moduleQuestions: Question[];
+  status: FicheStatus | null;
+  onStatusChange: (status: FicheStatus) => void;
 }
 
-const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
+const RevisionCardContent = ({ card, moduleQuestions, status, onStatusChange }: RevisionCardContentProps) => {
+  const markAs = (next: FicheStatus) => {
+    setFicheStatus(card.id, next);
+    onStatusChange(next);
+  };
+
   return (
     <div className="space-y-5">
       {/* ⭐ L'essentiel à retenir */}
@@ -16,7 +30,9 @@ const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
           </span>
           <div>
             <h4 className="font-bold text-primary text-sm mb-1">L'essentiel</h4>
-            <p className="text-foreground font-medium">{card.essential}</p>
+            <p className="text-foreground font-medium text-[15px] leading-relaxed">
+              <HighlightFigures text={card.essential} />
+            </p>
           </div>
         </div>
       </div>
@@ -48,7 +64,9 @@ const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
               <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary mt-0.5">
                 {idx + 1}
               </span>
-              <span className="text-muted-foreground">{point}</span>
+              <span className="text-muted-foreground">
+                <HighlightFigures text={point} />
+              </span>
             </li>
           ))}
         </ul>
@@ -73,27 +91,12 @@ const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
             <h4 className="font-semibold text-foreground text-sm uppercase tracking-wide">Cas pratiques type examen</h4>
           </div>
           {card.practicalCases.map((pc, idx) => (
-            <div key={idx} className="rounded-xl border border-primary/20 bg-primary/[0.03] p-4 space-y-3">
-              <div>
-                <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary-foreground text-xs font-bold mr-2">
-                  {idx + 1}
-                </span>
-                <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Situation</span>
-                <p className="text-sm text-foreground mt-1.5">{pc.situation}</p>
-              </div>
-              <div className="border-l-2 border-primary/40 pl-3">
-                <span className="text-xs font-semibold uppercase tracking-wide text-primary">Question</span>
-                <p className="text-sm font-medium text-foreground mt-1">{pc.question}</p>
-              </div>
-              <div className="rounded-lg bg-success/10 border border-success/20 p-3">
-                <span className="text-xs font-semibold uppercase tracking-wide text-success">Réponse</span>
-                <p className="text-sm text-foreground mt-1">{pc.answer}</p>
-              </div>
-              <div>
-                <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Raisonnement</span>
-                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{pc.reasoning}</p>
-              </div>
-            </div>
+            <PracticalCaseBlock
+              key={idx}
+              practicalCase={pc}
+              index={idx}
+              onNeedsReview={() => markAs('a-revoir')}
+            />
           ))}
         </div>
       )}
@@ -145,6 +148,38 @@ const RevisionCardContent = ({ card }: RevisionCardContentProps) => {
           </ul>
         </div>
       )}
+
+      {/* 🎯 Mini-quiz : vérifier que c'est acquis */}
+      <FicheQuiz card={card} moduleQuestions={moduleQuestions} />
+
+      {/* ✅ Où en êtes-vous sur cette fiche ? */}
+      <div className="rounded-xl border bg-secondary/40 p-4">
+        <p className="text-sm font-semibold text-foreground mb-2.5">Où en êtes-vous ?</p>
+        <div className="flex gap-2">
+          <button
+            onClick={() => markAs('maitrisee')}
+            className={`flex-1 rounded-lg border py-2.5 text-sm font-medium transition-colors ${
+              status === 'maitrisee'
+                ? 'border-success bg-success/15 text-foreground'
+                : 'bg-card text-foreground hover:border-success/50'
+            }`}
+          >
+            <CheckCircle2 className="mr-1.5 inline h-4 w-4 align-[-2px] text-success" />
+            Fiche maîtrisée
+          </button>
+          <button
+            onClick={() => markAs('a-revoir')}
+            className={`flex-1 rounded-lg border py-2.5 text-sm font-medium transition-colors ${
+              status === 'a-revoir'
+                ? 'border-warning bg-warning/15 text-foreground'
+                : 'bg-card text-foreground hover:border-warning/50'
+            }`}
+          >
+            <RotateCcw className="mr-1.5 inline h-4 w-4 align-[-2px] text-warning" />
+            À revoir
+          </button>
+        </div>
+      </div>
 
       {/* ⚖️ Références légales */}
       {card.legalRefs.length > 0 && (

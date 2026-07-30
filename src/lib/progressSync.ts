@@ -1,7 +1,12 @@
 import { supabase } from '@/integrations/supabase/client';
 import { loadSrs, replaceSrs, SrsEntry, today, CHALLENGE_STORAGE_KEY } from '@/lib/spacedRepetition';
 import { loadTargetExam, TargetExam, applyTargetExamFromServer } from '@/lib/targetExam';
-import { pushSrsEntry, pushTargetExam, setSyncUser } from '@/lib/progressPush';
+import { pushFicheStatus, pushSrsEntry, pushTargetExam, setSyncUser } from '@/lib/progressPush';
+import {
+  FicheProgressEntry,
+  loadFicheProgress,
+  replaceFicheProgress,
+} from '@/lib/ficheProgress';
 
 /**
  * Alignement de l'appareil sur le compte, à la connexion.
@@ -79,4 +84,33 @@ export const pullProgress = async (userId: string) => {
       // stockage indisponible : le défi sera simplement reproposé ici
     }
   }
+
+  // --- Fiches de cours (statuts maîtrisée / à revoir) ---
+  const { data: ficheRows, error: ficheError } = await supabase
+    .from('user_fiche_progress')
+    .select('fiche_id, status, updated_at')
+    .eq('user_id', userId);
+
+  if (ficheError) {
+    console.warn('Récupération de la progression des fiches impossible', ficheError);
+    return;
+  }
+
+  const fiches: Record<string, FicheProgressEntry> = {};
+  for (const row of ficheRows ?? []) {
+    fiches[row.fiche_id] = {
+      status: row.status as FicheProgressEntry['status'],
+      updatedAt: row.updated_at,
+    };
+  }
+
+  // Statuts posés sur cet appareil avant la synchronisation : on les remonte.
+  for (const [ficheId, entry] of Object.entries(loadFicheProgress())) {
+    if (!fiches[ficheId]) {
+      fiches[ficheId] = entry;
+      pushFicheStatus(ficheId, entry.status);
+    }
+  }
+
+  replaceFicheProgress(fiches);
 };
