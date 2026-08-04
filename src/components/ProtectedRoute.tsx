@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { Hourglass } from 'lucide-react';
 import AuthModal from '@/components/AuthModal';
+import CompleteNameDialog from '@/components/CompleteNameDialog';
 import Logo from '@/components/Logo';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import { pullProgress } from '@/lib/progressSync';
@@ -36,7 +37,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
       
       const { data, error } = await supabase
         .from('profiles')
-        .select('is_approved, access_expires_at, archived_at')
+        .select('is_approved, access_expires_at, archived_at, display_name')
         .eq('id', user.id)
         .maybeSingle();
 
@@ -158,7 +159,13 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     );
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      {/* Comptes créés sans nom (connexion Google) : on le demande une fois. */}
+      {profile && !profile.display_name?.trim() && <CompleteNameDialog user={user} />}
+      {children}
+    </>
+  );
 };
 
 export default ProtectedRoute;
